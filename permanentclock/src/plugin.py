@@ -21,9 +21,9 @@ import os
 from Components.Console import Console
 
 if not os.path.exists(resolveFilename(SCOPE_LIBDIR, 'enigma2/python/Components/Converter/PermanentClockTime.pyo')):
-	Console().ePopen('cp %s %s % (resolveFilename(SCOPE_PLUGINS, "Extensions/PermanentClock/PermanentClockTime.pyo"), resolveFilename(SCOPE_LIBDIR, 'enigma2/python/Components/Converter/PermanentClockTime.pyo'))))
+	Console().ePopen('cp %s %s) % (resolveFilename(SCOPE_PLUGINS, "Extensions/PermanentClock/PermanentClockTime.pyo"), resolveFilename(SCOPE_LIBDIR, 'enigma2/python/Components/Converter/PermanentClockTime.pyo'))
 if not os.path.exists(resolveFilename(SCOPE_LIBDIR, 'enigma2/python/Components/Renderer/PermanentClockWatches.pyo')):
-	Console().ePopen('cp %s %s % (resolveFilename(SCOPE_PLUGINS, "Extensions/PermanentClock/PermanentClockWatches.pyo"), resolveFilename(SCOPE_LIBDIR, 'enigma2/python/Components/Renderer/PermanentClockWatches.pyo'))))
+	Console().ePopen('cp %s) % (resolveFilename(SCOPE_PLUGINS, "Extensions/PermanentClock/PermanentClockWatches.pyo"), resolveFilename(SCOPE_LIBDIR, 'enigma2/python/Components/Renderer/PermanentClockWatches.pyo'))
 
 _session = None
 def localeInit():
