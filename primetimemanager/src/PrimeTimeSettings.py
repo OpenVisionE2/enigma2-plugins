@@ -84,7 +84,7 @@ class PrimeTimeSettings(ConfigListScreen, Screen):
 		list.append(getConfigListEntry(_("Red Button function:"), config.plugins.PrimeTimeManager.RedButton))
 		list.append(getConfigListEntry(_("Exit from Multi EPG on selected service:"), config.plugins.PrimeTimeManager.CloseMultiEPG))
 		list.append(getConfigListEntry(_("'Timer Edit' key menu - show conflict timer:"), config.plugins.PrimeTimeManager.TimerEditKeyMenu))
-		if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/AutoTimer/plugin.py")):
+		if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/AutoTimer/plugin.pyo")):
 			list.append(getConfigListEntry(_("Use AutoTimer plugin instead remove favorites:"), config.plugins.PrimeTimeManager.UseAutotimer))
 
 		ConfigListScreen.__init__(self, list)

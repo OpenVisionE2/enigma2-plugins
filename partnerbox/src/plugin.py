@@ -1787,7 +1787,7 @@ class E2EPGList(MenuList):
 		self.clock_add_pixmap = LoadPixmap(resolveFilename(SCOPE_PLUGINS, 'Extensions/Partnerbox/icons/remote_epgclock_add.png'))
 		self.clock_pre_pixmap = LoadPixmap(resolveFilename(SCOPE_PLUGINS, 'Extensions/Partnerbox/icons/remote_epgclock_pre.png'))
 		self.clock_post_pixmap = LoadPixmap(resolveFilename(SCOPE_PLUGINS, 'Extensions/Partnerbox/icons/remote_epgclock_post.png'))
-		self.clock_prepost_pixmap = LoadPixmap(resolveFilename(SCOPE_PLUGINS, 'Extensions/Partnerbox/icons/remote_epgclock_prepost.png')
+		self.clock_prepost_pixmap = LoadPixmap(resolveFilename(SCOPE_PLUGINS, 'Extensions/Partnerbox/icons/remote_epgclock_prepost.png'))
 		self.zapclock_pixmap = LoadPixmap(resolveFilename(SCOPE_PLUGINS, 'Extensions/Partnerbox/icons/remote_zapclock.png'))
 		self.zapclock_add_pixmap = LoadPixmap(resolveFilename(SCOPE_PLUGINS, 'Extensions/Partnerbox/icons/remote_zapclock_add.png'))
 		self.zapclock_pre_pixmap = LoadPixmap(resolveFilename(SCOPE_PLUGINS, 'Extensions/Partnerbox/icons/remote_zapclock_pre.png'))
