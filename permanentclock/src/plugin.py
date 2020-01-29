@@ -209,7 +209,7 @@ class PermanentClockNewScreen(Screen):
 			elif config.plugins.PermanentClock.color_digital.value == "3":
 				self.skin = SKIN0L
 		Screen.__init__(self, session)
-		self.skin_path = resolveFilename(SCOPE_PLUGINS, "Extensions/Blindscan")
+		self.skin_path = resolveFilename(SCOPE_PLUGINS, "Extensions/permanentclock")
 		self.onShow.append(self.movePosition)
 
 	def movePosition(self):
