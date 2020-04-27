@@ -176,7 +176,7 @@ class EPGBackupConfig(Screen, HelpableScreen, ConfigListScreen):
 					self.list.append(getConfigListEntry(_("Maximum Boot-Count"), config.plugins.epgbackup.max_boot_count, _("After that times of unsuccesfully boot enigma2, the EPG-File will be deleted."), False))
 					self.list.append(getConfigListEntry(_("Enable Debug"), config.plugins.epgbackup.enable_debug, _("Should debugmessages be printed?\nMessages from the shell-script will be append to a file. The filename will be added with the current date"), True))
 					if config.plugins.epgbackup.enable_debug.value:
-						self.list.append(getConfigListEntry(_("append plugin-messages"), config.plugins.epgbackup.plugin_debug_in_file, _("Should the debug-messages from the enigma-plugin also be append to the logfile? If you choose no the messages will print(only to standard-out."), False)))
+						self.list.append(getConfigListEntry(_("append plugin-messages"), config.plugins.epgbackup.plugin_debug_in_file, _("Should the debug-messages from the enigma-plugin also be append to the logfile? If you choose no the messages will print only to standard-out."), False))
 						self.list.append(getConfigListEntry(_("Log-directory"), config.plugins.epgbackup.backup_log_dir, _("Directory for the Logfiles."), False))
 					if gUserScriptExists:
 						self.list.append(getConfigListEntry(_("Show in User-Scripts"), config.plugins.epgbackup.showin_usr_scripts, _("Should the Manage-Script be shown in User-Scripts?"), False))
