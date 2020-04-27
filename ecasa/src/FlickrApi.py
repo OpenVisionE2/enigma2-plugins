@@ -13,7 +13,7 @@ from twisted.internet import reactor
 from twisted.internet.defer import Deferred
 from twisted.web.client import downloadPage
 
-our_print(= lambda *args, **kwargs: print("[FlickrApi]", *args, **kwargs))
+our_print = lambda *args, **kwargs: print("[FlickrApi]", *args, **kwargs)
 
 class FakeExif:
 	def __init__(self):
