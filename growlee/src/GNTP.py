@@ -11,7 +11,7 @@ import re
 import threading
 import collections
 
-our_print(= lambda *args, **kwargs: print("[growlee.GNTP]", *args, **kwargs))
+our_print = lambda *args, **kwargs: print("[growlee.GNTP]", *args, **kwargs)
 
 try:
 	from Screens.MessageBox import MessageBox
