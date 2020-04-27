@@ -43,7 +43,7 @@ try:
 except NameError:
 	xrange = range
 
-our_print(= lambda *args, **kwargs: print("[EcasaGui]", *args, **kwargs))
+our_print = lambda *args, **kwargs: print("[EcasaGui]", *args, **kwargs)
 
 AUTHENTICATION_ERROR_ID = "EcasaAuthenticationError"
 
