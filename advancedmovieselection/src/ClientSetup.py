@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 #  Advanced Movie Selection for Dreambox-Enigma2
 #
 #  The plugin is developed on the basis from a lot of single plugins (thx for the code @ all)
@@ -67,7 +67,7 @@ class ClientSetupList(GUIComponent):
         width = self.l.getItemSize().width()
         width_up_r = 250
         width_up_l = width - width_up_r
-        width_dn_r = width / 2
+        width_dn_r = width // 2
         width_dn_l = width - width_dn_r
         pos_up_r = width - width_up_r 
         pos_dn_r = width - width_dn_r

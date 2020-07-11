@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 # FanControl2
 # joergm6 IHAD
 # PID-controller by Lukasz S.
@@ -66,7 +66,7 @@ def Test0(wert):
 def skal(x, x1, x2, y1, y2):
 	if x > x2: return y2
 	if x < x1: return y1
-	m = (y2 - y1) / Test0(x2 - x1)
+	m = (y2 - y1) // Test0(x2 - x1)
 	y = m * x + y1
 	return y
 
@@ -116,7 +116,7 @@ def Free(dir):
 	if not os.path.exists(dir):
 		return False
 	s = os.statvfs(dir)
-	return (s.f_bsize * s.f_bavail / 1024 / 1024) > 10
+	return (s.f_bsize * s.f_bavail // 1024 // 1024) > 10
 
 def getVoltage(fanid):
 	f = open("/proc/stb/fp/fan_vlt", "r")
@@ -177,7 +177,7 @@ def GetFanRPM():
 	f = open("/proc/stb/fp/fan_speed", "r")
 	value = int(f.readline().strip()[:-4])
 	f.close()
-	value = int(value / int(config.plugins.FanControl.Multi.value))
+	value = int(value // int(config.plugins.FanControl.Multi.value))
 	if value > 0 and value < 6000:
 		RPMread = 0
 	else:
@@ -1011,7 +1011,7 @@ class FanControl2(Screen):
 				m2 = ti[count]
 		if m2 == 0.1:
 			m2 = m1
-		return (m1 + m2) / 2.0
+		return (m1 + m2) // 2.0
 
 	def cycle(self):
 		self.Range = self.maxTemp - self.targetTemp

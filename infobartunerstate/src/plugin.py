@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 #######################################################################
 #
 #    InfoBar Tuner State for Enigma-2
@@ -65,7 +65,7 @@ field_choices = [
 									("Number",									_("Channel Number")),
 									("Channel",									_("Channel Name")),
 									("Name",										_("Name")),
-									("TimeLeftDuration",				_("Time Left / Duration")),
+									("TimeLeftDuration",				_("Time Left // Duration")),
 									("TimeLeft",								_("Time Left")),
 									("TimeElapsed",							_("Time Elapsed")),
 									("Begin",										_("Begin")),
@@ -76,7 +76,7 @@ field_choices = [
 									("TimerDestination",				_("Destination")),		#TODO howto do for file streams
 									("StreamClient",						_("Stream Client")),
 									("StreamClientPort",				_("Stream Client with Port")),
-									("DestinationStreamClient",	_("Destination / Client")),
+									("DestinationStreamClient",	_("Destination // Client")),
 									#Throughput
 									#Overall transfer
 									("FileSize",								_("File Size")),
@@ -105,8 +105,8 @@ event_choices = [
 									("prepare",						_("Prepare record")),
 									("start",							_("Start record")),
 									("end",								_("End record")),
-									("startend",					_("Start / End record")),
-									("preparestartend",		_("Prepare / Start / End record")),
+									("startend",					_("Start // End record")),
+									("preparestartend",		_("Prepare // Start // End record")),
 								]
 #config.infobartunerstate.show_on_events            = ConfigSelection(default = "%H:%M", choices = event_choices)
 
@@ -161,7 +161,7 @@ config.infobartunerstate.offset_spacing            = ConfigSelectionNumber(-1000
 config.infobartunerstate.offset_rightside          = ConfigSelectionNumber(-1000, 1000, 1, default = 0)
 config.infobartunerstate.placeholder_pogressbar    = ConfigYesNo(default = True)
 config.infobartunerstate.variable_field_width      = ConfigYesNo(default = True)
-#MAYBE provide different sorting types / options
+#MAYBE provide different sorting types // options
 config.infobartunerstate.list_goesup               = ConfigYesNo(default = False)
 config.infobartunerstate.infobar_timeout           = ConfigSelectionNumber(0, 100, 1, default = 0)
 

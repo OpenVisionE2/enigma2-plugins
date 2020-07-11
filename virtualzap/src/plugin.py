@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import division
 #
 #  VirtualZap E2
 #
@@ -446,9 +447,9 @@ class VirtualZap(Screen):
 					t = localtime(event[0][1])
 					duration = event[0][2]
 					if modus == 0:
-						timedisplay = "+%d min" % (((event[0][1] + duration) - time()) / 60)
+						timedisplay = "+%d min" % (((event[0][1] + duration) - time()) // 60)
 					elif modus == 1:
-						timedisplay = "%d min" %  (duration / 60)
+						timedisplay = "%d min" %  (duration // 60)
 					return "%02d:%02d %s" % (t[3],t[4], event[0][4]), timedisplay
 				else:
 					return "", ""

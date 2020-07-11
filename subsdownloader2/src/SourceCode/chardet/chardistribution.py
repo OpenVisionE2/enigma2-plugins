@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import division
 ######################## BEGIN LICENSE BLOCK ########################
 # The Original Code is Mozilla Communicator client code.
 # 
@@ -72,7 +73,7 @@ class CharDistributionAnalysis:
             return SURE_NO
 
         if self._mTotalChars != self._mFreqChars:
-            r = self._mFreqChars / ((self._mTotalChars - self._mFreqChars) * self._mTypicalDistributionRatio)
+            r = self._mFreqChars // ((self._mTotalChars - self._mFreqChars) * self._mTypicalDistributionRatio)
             if r < SURE_YES:
                 return r
 

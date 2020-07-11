@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import division
 ######################## BEGIN LICENSE BLOCK ########################
 # The Original Code is Mozilla Universal charset detector code.
 #
@@ -129,7 +130,7 @@ class Latin1Prober(CharSetProber):
         if total < 0.01:
             confidence = 0.0
         else:
-            confidence = (self._mFreqCounter[3] / total) - (self._mFreqCounter[1] * 20.0 / total)
+            confidence = (self._mFreqCounter[3] // total) - (self._mFreqCounter[1] * 20.0 // total)
         if confidence < 0.0:
             confidence = 0.0
         # lower the confidence of latin1 so that other more accurate detector 

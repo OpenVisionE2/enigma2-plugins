@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import division
 #######################################################################
 #
 #    Vali's File-List with some extendet functions
@@ -331,7 +332,7 @@ class FileList(MenuList):
 			info = serviceHandler.info(serviceref)
 			tslen = info.getLength(serviceref)
 			if tslen > 0:
-				tslen = "%d:%02d" % (tslen / 60, tslen % 60)
+				tslen = "%d:%02d" % (tslen // 60, tslen % 60)
 			else:
 				tslen = ""
 		return tslen

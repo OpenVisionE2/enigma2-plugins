@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 import os, struct
 from Components.config import config
 from Screens.InfoBarGenerics import InfoBarCueSheetSupport
@@ -166,13 +166,13 @@ class CutListSupportBase:
         stop_before_end_time = int(config.AdvancedMovieSelection.stop_before_end_time.value)
         length, last = self.getCuePositions()
         if stop_before_end_time > 0:
-            if (length - last) / 60 < stop_before_end_time or length < last:
+            if (length - last) // 60 < stop_before_end_time or length < last:
                 self.ENABLE_RESUME_SUPPORT = False
             else:
                 self.ENABLE_RESUME_SUPPORT = True
         if config.AdvancedMovieSelection.jump_first_mark.value == True:
             first = self.getFirstMark()
-            if first and length > 0 and first / 90000 < length / 2:
+            if first and length > 0 and first // 90000 < length // 2:
                 self.jump_first_play_last = first
                 if not hasLastPosition(self.currentService):
                     self.ENABLE_RESUME_SUPPORT = False
@@ -252,9 +252,9 @@ class CutListSupportBase:
         last_pos = 0
         for pts, what in self.cut_list:
             if what == self.CUT_TYPE_OUT:
-                length = pts / 90000
+                length = pts // 90000
             if what == self.CUT_TYPE_LAST:
-                last_pos = pts / 90000
+                last_pos = pts // 90000
 
         if length == 0:
             from ServiceProvider import ServiceCenter

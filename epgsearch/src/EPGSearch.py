@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import division
 # for localized messages
 from . import _, allowShowOrbital, getOrbposConfList
 
@@ -151,7 +152,7 @@ class EPGSearchList(EPGList):
 				picwidth += (self.picx + self.gap)
 			else:
 				picwidth = self.picx + self.posx
-			res.append((eListboxPythonMultiContent.TYPE_PIXMAP_ALPHABLEND, width - picwidth, (r4.h / 2 - self.posy), self.picx, self.picy, pic))
+			res.append((eListboxPythonMultiContent.TYPE_PIXMAP_ALPHABLEND, width - picwidth, (r4.h // 2 - self.posy), self.picx, self.picy, pic))
 		if picwidth:
 			picwidth += (self.gap*2)
 		res.append((eListboxPythonMultiContent.TYPE_TEXT, r4.x, r4.y, r4.w - picwidth, r4.h, 0, RT_HALIGN_LEFT | RT_VALIGN_CENTER, serviceref.getServiceName() + ": " + EventName))
@@ -600,7 +601,7 @@ class EPGSearch(EPGSelection):
 		l.instance.setSelectionEnable(False)
 		# Match an RIBDT search for dummy entries
 		invalSref = eServiceReference().toString()
-		searching = [(invalSref, -1, -1, -1, "")] * (config.epgselection.enhanced_itemsperpage.value / 2)
+		searching = [(invalSref, -1, -1, -1, "")] * (config.epgselection.enhanced_itemsperpage.value // 2)
 		searching.append((invalSref, -1, -1, -1, _("Searching...")))
 		l.list = searching
 		l.l.setList(searching)

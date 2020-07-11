@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 from . import _
 
 from Components.AVSwitch import AVSwitch
@@ -1159,7 +1159,7 @@ class MyTubePlayerMainScreen(Screen, ConfigListScreen):
 		Duration = entry.getDuration()
 		if Duration is not 0:
 			durationInSecs = int(Duration)
-			mins = int(durationInSecs / 60)
+			mins = int(durationInSecs // 60)
 			secs = durationInSecs - mins * 60
 			duration = "%d:%02d" % (mins, secs)
 		else:
@@ -1401,7 +1401,7 @@ class MyTubeVideoInfoScreen(Screen):
 
 		if self.videoinfo["Duration"] is not 0:
 			durationInSecs = int(self.videoinfo["Duration"])
-			mins = int(durationInSecs / 60)
+			mins = int(durationInSecs // 60)
 			secs = durationInSecs - mins * 60
 			duration = "%d:%02d" % (mins, secs)
 			self["duration"].setText(_("Duration: ") + str(duration))

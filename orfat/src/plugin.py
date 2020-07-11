@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 ##
 ## ORF.at IPTV
 ## by AliAbdul
@@ -306,8 +306,8 @@ class ORFMain(Screen):
 		height = size.height()
 		self["pic"].instance.setPixmap(picture)
 		self["pic"].instance.resize(eSize(width, height))
-		left = int((550 / 2) - (width / 2))
-		top = int((450 / 2) - (height / 2))
+		left = int((550 // 2) - (width // 2))
+		top = int((450 // 2) - (height // 2))
 		self["pic"].moveTo(left, top, 1)
 		self["pic"].startMoving()
 		self["pic"].show()

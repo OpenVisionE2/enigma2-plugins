@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 
 '''
 Copyright (C) 2011 cmikula
@@ -86,12 +86,12 @@ class TrashMovieList(GUIComponent):
         date = _("Record date:") + ' ' + self.getDate(serviceref)
         time = _("Record time:") + ' ' + self.getTime(serviceref)
         description = serviceref.getShortDescription()
-        filesize = float(getServiceSize(serviceref.getPath()) / (1024 * 1024))
+        filesize = float(getServiceSize(serviceref.getPath()) // (1024 * 1024))
         if filesize <= 999:
             size = "%d MB" % (filesize)
         else:
             format_string = "%%.%sf GB" % (config.AdvancedMovieSelection.filesize_digits.value)
-            size = (format_string) % (filesize / 1000.0)
+            size = (format_string) % (filesize // 1000.0)
 
         res.append(MultiContentEntryText(pos=(5, 2), size=(width - 155, 26), font=0, flags=RT_HALIGN_LEFT, text=serviceref.getName()))
         res.append(MultiContentEntryText(pos=(width - 155, 2), size=(150, 26), font=0, flags=RT_HALIGN_RIGHT, text=size))
@@ -284,10 +284,10 @@ class Wastebasket(Screen, HelpableScreen):
         count = Trashcan.getTrashCount()
         cap = Trashcan.getTrashSize()
         if cap <= 999:
-            wastebasket_info = (_("Trash count: %d") % (count)) + ' / ' + (_("Trash size: %d MB") % cap)
+            wastebasket_info = (_("Trash count: %d") % (count)) + ' // ' + (_("Trash size: %d MB") % cap)
         else:
             format_string = _("Trash size:") + " %%.%sf GB" % (config.AdvancedMovieSelection.filesize_digits.value)
-            wastebasket_info = _("Trash count:") + (" %d / " % (count)) + (format_string) % (cap / 1000.0)
+            wastebasket_info = _("Trash count:") + (" %d // " % (count)) + (format_string) % (cap // 1000.0)
         if count == 0:
             self["wastetxt"].setText(_("Wastebasket is empty!"))
         else:

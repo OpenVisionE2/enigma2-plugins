@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 from re import sub
 from datetime import datetime
 from md5 import md5
@@ -190,7 +190,7 @@ class EventListener:
             if seek != None:
                 r= seek.getLength()
                 if not r[0]:
-                    tracklength = r[1] / 90000
+                    tracklength = r[1] // 90000
             return self.getTrack( artist = currPlay.info().getInfoString(iServiceInformation.sTagArtist),
                                   title = currPlay.info().getInfoString(iServiceInformation.sTagTitle),
                                   album = currPlay.info().getInfoString(iServiceInformation.sTagAlbum),

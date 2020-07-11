@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 #  Advanced Movie Selection for Dreambox-Enigma2
 #
 #  The plugin is developed on the basis from a lot of single plugins (thx for the code @ all)
@@ -109,8 +109,8 @@ class ProgressList(GUIComponent):
             if copied == 0:
                 copied = 1
             elapsed_time = job.getElapsedTime()
-            progress = copied * 100 / full
-            b_per_sec = elapsed_time != 0 and copied / elapsed_time or 0
+            progress = copied * 100 // full
+            b_per_sec = elapsed_time != 0 and copied // elapsed_time or 0
             mode = job.getMode() and _("Move") or _("Copy")
             name_info = _("Name:")
             if job.isCancelled():
@@ -136,7 +136,7 @@ class ProgressList(GUIComponent):
             from_info = os.path.basename(src_p) + " (%s)" % (src_p)
             to_info = os.path.basename(dst_p) + " (%s)" % (dst_p)
             remaining_bytes = full - copied
-            remaining_seconds = b_per_sec != 0 and remaining_bytes / b_per_sec or -1
+            remaining_seconds = b_per_sec != 0 and remaining_bytes // b_per_sec or -1
             remaining_elements = "%d (%s)" % (job.getFileCount() - job.getFileIndex(), realSize(remaining_bytes, 1))
             if job.isFinished():
                 remaining_time = mode
@@ -145,9 +145,9 @@ class ProgressList(GUIComponent):
             elif remaining_seconds > 60 * 60:
                 remaining_time = time.strftime("%H:%M:%S", time.gmtime(remaining_seconds)) 
             elif remaining_seconds > 120:
-                remaining_time = _("Around %d minutes") % (remaining_seconds / 60)
+                remaining_time = _("Around %d minutes") % (remaining_seconds // 60)
             elif remaining_seconds > 60:
-                remaining_time = _("Around %d minute") % (remaining_seconds / 60)
+                remaining_time = _("Around %d minute") % (remaining_seconds // 60)
             else:
                 remaining_time = "%d %s" % (remaining_seconds, _("Seconds"))
             speed = realSize(b_per_sec, 3) + "/" + _("Second")

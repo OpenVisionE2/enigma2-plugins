@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import division
 from twisted.web import resource, http
 from globals import *
 from plugin import *
@@ -168,7 +169,7 @@ class FC2webLog(resource.Resource):
 				else:
 					html += "<BR>" + _("Filesize : %d %sByte") % (int(s.st_size/1024), "k")
 				s = os.statvfs(config.plugins.FanControl.LogPath.value)
-				html += "<BR>" + _("Disk free : %d MByte") % (int(s.f_bsize * s.f_bavail / 1024 / 1024))
+				html += "<BR>" + _("Disk free : %d MByte") % (int(s.f_bsize * s.f_bavail // 1024 // 1024))
 				html += "<form method=\"GET\">"
 				html += "<input type=\"hidden\" name=\"cmd\" value=\"data\">"
 				html += "<input type=\"submit\" value=\"%s\">" % _("Download")
@@ -204,7 +205,7 @@ class FC2webLog(resource.Resource):
 				else:
 					html += "<BR>" + _("Filesize : %d %sByte") % (int(s.st_size/1024), "k")
 				s = os.statvfs(config.plugins.FanControl.LogPath.value)
-				html += "<BR>" + _("Disk free : %d MByte") % (int(s.f_bsize * s.f_bavail / 1024 / 1024))
+				html += "<BR>" + _("Disk free : %d MByte") % (int(s.f_bsize * s.f_bavail // 1024 // 1024))
 				html += "<form method=\"GET\">"
 				html += "<input type=\"hidden\" name=\"cmd\" value=\"events\">"
 				html += "<input type=\"submit\" value=\"%s\">" % _("Download")

@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import division
 from Plugins.Plugin import PluginDescriptor
 from Screens.Screen import Screen
 from Screens.MessageBox import MessageBox
@@ -50,7 +51,7 @@ def _getCutsLength(filename, len_sec):
 				len_pts += len_sec * 90000 - in_pts
 	except:
 		pass
-	return len_pts / 90000
+	return len_pts // 90000
 
 
 class MovieCut(ChoiceBox):
@@ -166,8 +167,8 @@ class CutTask(Task):
 	def prepare(self):
 		if self.inlen and self.outlen:
 			try:
-				self.end = getsize(self.inpath) * self.outlen / self.inlen
-				self.end += self.end / 50	# add 2% for a bit of leeway
+				self.end = getsize(self.inpath) * self.outlen // self.inlen
+				self.end += self.end // 50	# add 2% for a bit of leeway
 				self.progressTimer.start(1000)
 			except:
 				pass

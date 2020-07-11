@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 ##
 ## Podcast
 ## by AliAbdul
@@ -126,7 +126,7 @@ class BufferThread():
 		self.download.start().addCallback(self.httpFinished).addErrback(self.httpFailed)
 
 	def httpProgress(self, recvbytes, totalbytes):
-		self.progress = int(100 * recvbytes / float(totalbytes))
+		self.progress = int(100 * recvbytes // float(totalbytes))
 
 	def httpFinished(self, string=""):
 		self.downloading = False

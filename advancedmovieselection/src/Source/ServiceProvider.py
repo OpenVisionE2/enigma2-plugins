@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 import os
 from Components.Element import cached
 from Components.Sources.ServiceEvent import ServiceEvent as eServiceEvent
@@ -266,7 +266,7 @@ class Info:
         cut_list = self.cue.getCutList()
         for pts, what in cut_list:
             if what == 1:
-                self.length = pts / 90000
+                self.length = pts // 90000
 
         if self.length == 0:
             file_name = serviceref.getPath()

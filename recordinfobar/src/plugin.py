@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import division
 from . import _, _N, PLUGIN_NAME
 from Plugins.Plugin import PluginDescriptor
 from Components.config import config, ConfigSubsection, ConfigBoolean, ConfigSelection, ConfigInteger, ConfigYesNo, ConfigNumber, ConfigNothing, NoSave, ConfigText
@@ -278,7 +279,7 @@ class RecInfoBar(Screen):
 							name = timer.service_ref.getServiceName()
 							prov = self.getServiceProvider(timer.service_ref.ref)
 							rec_name = timer.name
-							begintime = ((timer.end - timer.begin) / 60)
+							begintime = ((timer.end - timer.begin) // 60)
 							begintimestr = strftime("%H:%M ", localtime(timer.begin))
 							begintimeendstr = strftime("%H:%M ", localtime(timer.end))
 							default = (config.plugins.RecInfobar.default_zap.value == "yes")
@@ -355,7 +356,7 @@ class RecInfoBar(Screen):
 				fields[6] += _('Stream')
 			else:
 				fields[6] += _("Tuner: %s")%(value[6])
-			fields[7] += _("+%d min / %s")%(r/60, value[7][1])
+			fields[7] += _("+%d min // %s")%(r/60, value[7][1])
 			fields[8] += self.getSignalQuality(value[8])
 		cnt = 0
 		for x in self.labels:
@@ -371,7 +372,7 @@ class RecInfoBar(Screen):
 			if data:
 				snr = data.get("tuner_signal_quality")
 				if snr is not None:
-					return "SNR:  %d %%" % (snr * 100 / 65536)
+					return "SNR:  %d %%" % (snr * 100 // 65536)
 		return ''
 
 	def reSize(self):
@@ -415,7 +416,7 @@ class RecInfoBar(Screen):
 							end += 3600 * 24 
 						beginstr = strftime("%H:%M", localtime(begin))
 						endstr = strftime("%H:%M", localtime(end))
-						duration = ((end - begin) / 60)
+						duration = ((end - begin) // 60)
 						remaining = (end, _("%s...%s (%d mins)") % (beginstr, endstr, duration))
 						num, bqname = self.getServiceNumber(timer.service_ref.ref)
 						prov = self.getServiceProvider(timer.service_ref.ref)
@@ -657,7 +658,7 @@ class RecInfoBar(Screen):
 										end += 3600 * 24 
 									beginstr = strftime("%H:%M", localtime(begin))
 									endstr = strftime("%H:%M", localtime(end))
-									duration = ((end - begin) / 60)
+									duration = ((end - begin) // 60)
 									remaining = (end, _("%s...%s (%d mins)") % (beginstr, endstr, duration))
 									reclist = [val[0], val[1], val[2], val[3], val[4], val[5], val[6], remaining, val[8]]
 									service = k

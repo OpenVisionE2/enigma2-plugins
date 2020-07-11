@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 ######################## BEGIN LICENSE BLOCK ########################
 # The Original Code is Mozilla Universal charset detector code.
 #
@@ -101,9 +101,9 @@ class SingleByteCharSetProber(CharSetProber):
         r = 0.01
         if self._mTotalSeqs > 0:
 #            print(self._mSeqCounters[POSITIVE_CAT], self._mTotalSeqs, self._mModel['mTypicalPositiveRatio'])
-            r = (1.0 * self._mSeqCounters[POSITIVE_CAT]) / self._mTotalSeqs / self._mModel['mTypicalPositiveRatio']
+            r = (1.0 * self._mSeqCounters[POSITIVE_CAT]) // self._mTotalSeqs // self._mModel['mTypicalPositiveRatio']
 #            print(r, self._mFreqChar, self._mTotalChar)
-            r = r * self._mFreqChar / self._mTotalChar
+            r = r * self._mFreqChar // self._mTotalChar
             if r >= 1.0:
                 r = 0.99
         return r

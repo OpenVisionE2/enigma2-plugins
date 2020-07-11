@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import division
 #
 # EventList - Converter
 #
@@ -77,7 +78,7 @@ class EventList(Converter, object):
 	def getEventTuple(self,event):
 		time = "%s - %s" % (strftime("%H:%M", localtime(event.getBeginTime())), strftime("%H:%M", localtime(event.getBeginTime() + event.getDuration())))
 		title = event.getEventName()
-		duration = "%d min" % (event.getDuration() / 60)
+		duration = "%d min" % (event.getDuration() // 60)
 		return (time,title,duration)
 
 	def changed(self, what):

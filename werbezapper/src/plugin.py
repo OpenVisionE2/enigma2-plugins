@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import division
 # for localized messages
 from . import _
 
@@ -26,7 +27,7 @@ def main(session, servicelist, **kwargs):
 	# Show dialog
 	zapperInstance.showSelection()
 
-# Instant start / stop monitoring
+# Instant start // stop monitoring
 def startstop(session, servicelist, **kwargs):
 	# Create Instance if none present
 	global zapperInstance
@@ -56,8 +57,8 @@ def Plugins(**kwargs):
 			needsRestart = False,
 		),
 		PluginDescriptor(
-			name = "Werbezapper Start / Stop monitoring",
-			description = _("Start / Stop monitoring instantly"),
+			name = "Werbezapper Start // Stop monitoring",
+			description = _("Start // Stop monitoring instantly"),
 			where = PluginDescriptor.WHERE_EXTENSIONSMENU,
 			fnc = startstop,
 			needsRestart = False,

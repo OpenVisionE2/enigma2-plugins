@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 from enigma import eTimer, iServiceInformation, iPlayableService, ePicLoad, RT_VALIGN_CENTER, RT_HALIGN_LEFT, RT_HALIGN_RIGHT, RT_HALIGN_CENTER, gFont, eListbox, ePoint, eListboxPythonMultiContent, eServiceCenter
 from Components.MenuList import MenuList
 from Screens.Screen import Screen
@@ -200,14 +200,14 @@ class MC_AudioPlayer(Screen, HelpableScreen, InfoBarSeek):
 		self["actions"] = HelpableActionMap(self, "MC_AudioPlayerActions", 
 			{
 				"ok": (self.KeyOK, "Play selected file"),
-				"playpause": (self.PlayPause, "Play / Pause"),
+				"playpause": (self.PlayPause, "Play // Pause"),
 				"cancel": (self.Exit, "Exit Audio Player"),
 				"left": (self.leftUp, "List Top"),
 				"right": (self.rightDown, "List Bottom"),
 				"up": (self.up, "List up"),
 				"down": (self.down, "List down"),
-				"menu": (self.showMenu, "File / Folder Options"),
-				"video": (self.visibility, "Show / Hide Player"),
+				"menu": (self.showMenu, "File // Folder Options"),
+				"video": (self.visibility, "Show // Hide Player"),
 				"info": (self.showLyrics, "Lyrics"),
 				"stop": (self.StopPlayback, "Stop Playback"),
 				"red": (self.Playlists, "Playlists"),
@@ -654,13 +654,13 @@ class MC_WebRadio(Screen, HelpableScreen):
 		self["actions"] = HelpableActionMap(self, "MC_AudioPlayerActions", 
 			{
 				"ok": (self.KeyOK, "Play selected file"),
-				"playpause": (self.PlayPause, "Play / Pause"),
+				"playpause": (self.PlayPause, "Play // Pause"),
 				"cancel": (self.Exit, "Exit Audio Player"),
 				"left": (self.leftUp, "List Top"),
 				"right": (self.rightDown, "List Bottom"),
 				"up": (self.up, "List up"),
 				"down": (self.down, "List down"),
-				"video": (self.visibility, "Show / Hide Player"),
+				"video": (self.visibility, "Show // Hide Player"),
 				"green": (self.showMenu, "Menu"),
 				"stop": (self.StopPlayback, "Stop Playback"),
 				"red": (self.deleteFile, "Delete"),
@@ -972,8 +972,8 @@ class MC_AudioPlaylist(Screen, InfoBarSeek):
 				"right": (self.rightDown, "List Bottom"),
 				"up": (self.up, "List up"),
 				"down": (self.down, "List down"),
-				"menu": (self.showMenu, "File / Folder Options"),
-				"video": (self.visibility, "Show / Hide Player"),
+				"menu": (self.showMenu, "File // Folder Options"),
+				"video": (self.visibility, "Show // Hide Player"),
 				"info": (self.showLyrics, "Lyrics"),
 				"stop": (self.StopPlayback, "Stop Playback"),
 				"red": (self.Exit, "Close Playlist"),
@@ -982,7 +982,7 @@ class MC_AudioPlaylist(Screen, InfoBarSeek):
 				"blue": (self.Exit, "Close Playlist"),
 				"next": (self.KeyNext, "Next song"),
 				"previous": (self.KeyPrevious, "Previous song"),
-				"playpause": (self.PlayPause, "Play / Pause"),
+				"playpause": (self.PlayPause, "Play // Pause"),
 				"stop": (self.StopPlayback, "Stop"),
 			}, -2)
 		self.JpgTimer = eTimer()

@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 #  Advanced Movie Selection for Dreambox-Enigma2
 #
 #  The plugin is developed on the basis from a lot of single plugins (thx for the code @ all)
@@ -61,8 +61,8 @@ class MoviePreview():
         self.cpY = self["CoverPreview"].instance.position().y()
         self.cpW = self["CoverPreview"].instance.size().width()
         self.cpH = self["CoverPreview"].instance.size().height()
-        self.piconX = self.cpX + int(self.cpW / 2) - int(100 / 2)
-        self.piconY = self.cpY + int(self.cpH / 2) - int(60 / 2)
+        self.piconX = self.cpX + int(self.cpW // 2) - int(100 // 2)
+        self.piconY = self.cpY + int(self.cpH // 2) - int(60 // 2)
 
     def loadPreview(self, serviceref):
         self.hideDialog()
@@ -235,13 +235,13 @@ class VideoPreview():
                     length, last = self.getCuePositions()
                     stop_before_end_time = int(config.AdvancedMovieSelection.stop_before_end_time.value)
                     if stop_before_end_time > 0:
-                        if (((length) - (last / 90000)) / 60) < stop_before_end_time:
+                        if (((length) - (last // 90000)) // 60) < stop_before_end_time:
                             return
                     if last > 0 and config.AdvancedMovieSelection.video_preview_marker.value:
                         if self.service.getPath().endswith('ts'):
                             seekable.seekTo(last)
                         else:
-                            self.minutes = long(last / 90000 / 60)
+                            self.minutes = long(last // 90000 // 60)
                             if isinstance(self.service, eServiceReferenceDvd):
                                 self.resume_point = last
                                 self.dvd_preview_timer.start(1000, True)
@@ -287,7 +287,7 @@ class VideoPreview():
         last_pos = 0
         for (pts, what) in self.cut_list:
             if what == 1 == InfoBarCueSheetSupport.CUT_TYPE_OUT:
-                length = pts / 90000
+                length = pts // 90000
             elif what == InfoBarCueSheetSupport.CUT_TYPE_LAST:
                 last_pos = pts
         if length == 0:

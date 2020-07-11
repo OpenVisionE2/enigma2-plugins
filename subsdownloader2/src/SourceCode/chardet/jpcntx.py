@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import division
 ######################## BEGIN LICENSE BLOCK ########################
 # The Original Code is Mozilla Communicator client code.
 #
@@ -164,7 +165,7 @@ class JapaneseContextAnalysis:
     def get_confidence(self):
         # This is just one way to calculate confidence. It works well for me.
         if self._mTotalRel > MINIMUM_DATA_THRESHOLD:
-            return (self._mTotalRel - self._mRelSample[0]) / self._mTotalRel
+            return (self._mTotalRel - self._mRelSample[0]) // self._mTotalRel
         else:
             return DONT_KNOW
 

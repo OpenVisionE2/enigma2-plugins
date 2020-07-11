@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 #  Advanced Movie Selection for Dreambox-Enigma2
 #
 #  The plugin is developed on the basis from a lot of single plugins (thx for the code @ all)
@@ -250,7 +250,7 @@ class AdvancedMovieSelectionSetup(ConfigListScreen, Screen):
         listsize = self["config"].instance.size()
         self.listWidth = listsize.width()
         self.listHeight = listsize.height()
-        self.bouquet_length = int(self.listHeight / 25)
+        self.bouquet_length = int(self.listHeight // 25)
 
     def nextBouquet(self):
         self["config"].setCurrentIndex(max(self["config"].getCurrentIndex() - self.bouquet_length, 0))

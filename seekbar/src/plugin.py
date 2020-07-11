@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 ##
 ## Seekbar
 ## by AliAbdul
@@ -84,7 +84,7 @@ class Seekbar(ConfigListScreen, Screen):
 				position = self.seek.getPlayPosition()
 				if self.length and position:
 					if int(position[1]) > 0:
-						self.percent = float(position[1]) * 100.0 / float(self.length[1])
+						self.percent = float(position[1]) * 100.0 // float(self.length[1])
 		
 		self.minuteInput = ConfigNumber(default=5)
 		self.positionEntry = ConfigSelection(choices=["<>"], default="<>")
@@ -118,7 +118,7 @@ class Seekbar(ConfigListScreen, Screen):
 			self["cursor"].moveTo(x, 125, 1)
 
 			self["cursor"].startMoving()
-			pts = int(float(self.length[1]) / 100.0 * self.percent)
+			pts = int(float(self.length[1]) // 100.0 * self.percent)
 			self["time"].setText("%d:%02d" % ((pts/60/90000), ((pts/90000)%60)))
 
 	def exit(self):
@@ -132,14 +132,14 @@ class Seekbar(ConfigListScreen, Screen):
 			if self.length:
 				if self.dvd: # seekTo() doesn't work for DVD Player
 					oldPosition = self.seek.getPlayPosition()[1]
-					newPosition = int(float(self.length[1]) / 100.0 * self.percent)
+					newPosition = int(float(self.length[1]) // 100.0 * self.percent)
 					if newPosition > oldPosition:
 						pts = newPosition - oldPosition
 					else:
 						pts = -1*(oldPosition - newPosition)
 					DVDPlayer.doSeekRelative(self.infobarInstance, pts)
 				else:
-					self.seek.seekTo(int(float(self.length[1]) / 100.0 * self.percent))
+					self.seek.seekTo(int(float(self.length[1]) // 100.0 * self.percent))
 				self.exit()
 		elif sel == self.minuteInput:
 			pts = self.minuteInput.value * 60 * 90000
@@ -156,7 +156,7 @@ class Seekbar(ConfigListScreen, Screen):
 	def keyLeft(self):
 		sel = self["config"].getCurrent()[1]
 		if sel == self.positionEntry:
-			self.percent -= float(config.plugins.Seekbar.sensibility.value) / 10.0
+			self.percent -= float(config.plugins.Seekbar.sensibility.value) // 10.0
 			if self.percent < 0.0:
 				self.percent = 0.0
 		else:
@@ -165,7 +165,7 @@ class Seekbar(ConfigListScreen, Screen):
 	def keyRight(self):
 		sel = self["config"].getCurrent()[1]
 		if sel == self.positionEntry:
-			self.percent += float(config.plugins.Seekbar.sensibility.value) / 10.0
+			self.percent += float(config.plugins.Seekbar.sensibility.value) // 10.0
 			if self.percent > 100.0:
 				self.percent = 100.0
 		else:

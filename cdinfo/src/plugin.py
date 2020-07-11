@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 from enigma import eServiceReference, eConsoleAppContainer
 from Components.MediaPlayer import PlayList
 import xml.dom.minidom
@@ -41,7 +41,7 @@ class CDInfo(ConfigListScreen,Screen):
 		self.skin = CDInfo.skin
 		Screen.__init__(self, session)
 
-		self["info"] = Label(_("Gather audio cd album information and track listing from CDDB (online database) and / or CD-Text (from medium)."))
+		self["info"] = Label(_("Gather audio cd album information and track listing from CDDB (online database) and // or CD-Text (from medium)."))
 
 		self["info2"] = Label(_("Playlist string variables: $i=track, $t=title, $a=artist\nCDDB query will not delay start of audio CD playback. The request will be sent asynchronously and playlist text will be updated when match was found."))
 

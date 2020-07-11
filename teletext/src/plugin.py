@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import division
 from __init__ import _, _debug , _log
 
 from enigma import iServiceInformation, iPlayableService, eSocketNotifier, getDesktop, ePoint, eSize, eServiceReference
@@ -67,7 +68,7 @@ SPLIT_MODE_TAP = "tap"
 SPLIT_MODE_TIP = "tip"
 splittingModeList = [ (SPLIT_MODE_PAT, _("picture and teletext")), (SPLIT_MODE_TAP, _("teletext and picture")), (SPLIT_MODE_TIP, _("teletext in picture")) ]
 textlevelModeList = [ ("0", "1.0"), ("1", "1.5"), ("2", "2.5"), ("3", "3.5") ]
-regionList = [ ("0", _("Western and Central Europe")), ("8", _("Eastern Europe")), ("16", _("Western Europe and Turkey")), ("24", _("Central and Southeast Europe")), ("32", _("Cyrillic")), ("48", _("Turkish / Greek")), ("64", _("Arabic")), ("80", _("Hebrew / Arabic")) ]
+regionList = [ ("0", _("Western and Central Europe")), ("8", _("Eastern Europe")), ("16", _("Western Europe and Turkey")), ("24", _("Central and Southeast Europe")), ("32", _("Cyrillic")), ("48", _("Turkish // Greek")), ("64", _("Arabic")), ("80", _("Hebrew // Arabic")) ]
 filterList = [ ("%d"%DISABLED,_("Disabled")), ("%d"%BILINEAR,_("bilinear")), ("%d"%ANISOTROPIC,_("anisotropic")), ("%d"%SHARP,_("sharp")), ("%d"%SHARPER,_("sharper"))]
 
 HELP_TEXT_POS          = _("Enter values (left, top, right, bottom) or press TEXT to move and resize the teletext graphically.")
@@ -96,8 +97,8 @@ NAV_MODE_SIZE_TIP_TEXT = 2
 
 # i.d.R. bezeichnet man 90% der vollen Aufloesung als "Title-Safe-Area" --> Default
 
-DEF_TOP    = dsk_height / 20
-DEF_LEFT   = dsk_width / 20
+DEF_TOP    = dsk_height // 20
+DEF_LEFT   = dsk_width // 20
 DEF_RIGHT  = dsk_width - DEF_LEFT
 DEF_BOTTOM = dsk_height - DEF_TOP
 
@@ -210,22 +211,22 @@ class TeleText(Screen):
     self.helpList.append((self["actions"], "TeleTextActions", [("6", _("enter page number"))]))
     self.helpList.append((self["actions"], "TeleTextActions", [("7", _("enter page number"))]))
     self.helpList.append((self["actions"], "TeleTextActions", [("8", _("enter page number"))]))
-    self.helpList.append((self["actions"], "TeleTextActions", [("9", _("enter page number / page 100"))]))
-    self.helpList.append((self["actions"], "TeleTextActions", [("prev", _("prev channel / channel list"))]))
-    self.helpList.append((self["actions"], "TeleTextActions", [("0", _("enter page number / rezap"))]))
-    self.helpList.append((self["actions"], "TeleTextActions", [("next", _("next channel / channel list"))]))
+    self.helpList.append((self["actions"], "TeleTextActions", [("9", _("enter page number // page 100"))]))
+    self.helpList.append((self["actions"], "TeleTextActions", [("prev", _("prev channel // channel list"))]))
+    self.helpList.append((self["actions"], "TeleTextActions", [("0", _("enter page number // rezap"))]))
+    self.helpList.append((self["actions"], "TeleTextActions", [("next", _("next channel // channel list"))]))
     self.helpList.append((self["actions"], "OkCancelActions", [("cancel", _("exit"))]))
 #    self.helpList.append((self["actions"], "TeleTextActions", [("volUp",_("increase width"))]))
 #    self.helpList.append((self["actions"], "TeleTextActions", [("volDown",_("decrease width"))]))
-    self.helpList.append((self["actions"], "TeleTextActions", [("nextBouquet",_("zoom / increase height"))]))
-    self.helpList.append((self["actions"], "TeleTextActions", [("prevBouquet",_("favorites / decrease height"))]))
+    self.helpList.append((self["actions"], "TeleTextActions", [("nextBouquet",_("zoom // increase height"))]))
+    self.helpList.append((self["actions"], "TeleTextActions", [("prevBouquet",_("favorites // decrease height"))]))
     self.helpList.append((self["actions"], "TeleTextActions", [("info", _("toggle info"))]))
     self.helpList.append((self["actions"], "TeleTextActions", [("menu", _("teletext settings"))]))
-    self.helpList.append((self["actions"], "TeleTextActions", [("up", _("next page / catch page / move"))]))
-    self.helpList.append((self["actions"], "TeleTextActions", [("left", _("prev sub page / move"))]))
-    self.helpList.append((self["actions"], "OkCancelActions", [("ok", _("start page catching / select page"))]))
-    self.helpList.append((self["actions"], "TeleTextActions", [("right", _("next sub page / move"))]))
-    self.helpList.append((self["actions"], "TeleTextActions", [("down", _("prev page / catch page / move"))]))
+    self.helpList.append((self["actions"], "TeleTextActions", [("up", _("next page // catch page // move"))]))
+    self.helpList.append((self["actions"], "TeleTextActions", [("left", _("prev sub page // move"))]))
+    self.helpList.append((self["actions"], "OkCancelActions", [("ok", _("start page catching // select page"))]))
+    self.helpList.append((self["actions"], "TeleTextActions", [("right", _("next sub page // move"))]))
+    self.helpList.append((self["actions"], "TeleTextActions", [("down", _("prev page // catch page // move"))]))
     self.helpList.append((self["actions"], "TeleTextActions", [("video", _("toggle flof/top"))]))
     self.helpList.append((self["actions"], "TeleTextActions", [("red", _("red teletext link"))]))
     self.helpList.append((self["actions"], "TeleTextActions", [("green", _("green teletext link"))]))

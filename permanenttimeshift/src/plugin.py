@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 #####################################################
 # Permanent Timeshift Plugin for Enigma2 Dreamboxes
 # Coded by Homey (c) 2013
@@ -713,12 +713,12 @@ class InfoBar(InfoBarOrg):
 			if not timeshift_saved:
 				try:
 					stat = statvfs(config.usage.default_path.value)
-					freespace = stat.f_bfree / 1000 * stat.f_bsize / 1000
+					freespace = stat.f_bfree // 1000 * stat.f_bsize // 1000
 					randomint = randint(1, 999)
 
 					if timeshiftfile is None:
 						# Get Filesize for Free Space Check
-						filesize = int(os_path.getsize("%s/%s" % (config.usage.timeshift_path.value,savefilename)) / (1024*1024))
+						filesize = int(os_path.getsize("%s/%s" % (config.usage.timeshift_path.value,savefilename)) // (1024*1024))
 
 						# Save Current Event by copying it to the other device
 						if filesize <= freespace:
@@ -730,7 +730,7 @@ class InfoBar(InfoBarOrg):
 							self.ptsCreateEITFile(fullname)
 					elif timeshiftfile.startswith("pts_livebuffer"):
 						# Get Filesize for Free Space Check
-						filesize = int(os_path.getsize("%s/%s" % (config.usage.timeshift_path.value, timeshiftfile)) / (1024*1024))
+						filesize = int(os_path.getsize("%s/%s" % (config.usage.timeshift_path.value, timeshiftfile)) // (1024*1024))
 
 						# Save stored timeshift by copying it to the other device
 						if filesize <= freespace:
@@ -1103,8 +1103,8 @@ class InfoBar(InfoBarOrg):
 
 			cur_pos = self.pvrStateDialog["PTSSeekPointer"].position
 			jumptox = int(cur_pos[0]) - int(self.pts_seekpointer_MinX)
-			jumptoperc = round((jumptox / 400.0) * 100, 0)
-			jumptotime = int((length / 100) * jumptoperc)
+			jumptoperc = round((jumptox // 400.0) * 100, 0)
+			jumptotime = int((length // 100) * jumptoperc)
 			jumptodiff = position - jumptotime
 
 			self.doSeekRelative(-jumptodiff)

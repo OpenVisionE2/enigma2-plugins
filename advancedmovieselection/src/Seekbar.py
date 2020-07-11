@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import division
 #  Advanced Movie Selection for Dreambox-Enigma2
 #
 #  The plugin is developed on the basis from a lot of single plugins (thx for the code @ all)
@@ -54,7 +55,7 @@ class Seekbar(ConfigListScreen, Screen):
                 position = self.seek.getPlayPosition()
                 if self.length and position:
                     if int(position[1]) > 0:
-                        self.percent = float(position[1]) * 100.0 / float(self.length[1])
+                        self.percent = float(position[1]) * 100.0 // float(self.length[1])
         
         self.minuteInput = ConfigNumber(default=5)
         self.positionEntry = ConfigSelection(choices=[_("Use arrow left/right for position")], default=_("Use arrow left/right for position"))
@@ -102,7 +103,7 @@ class Seekbar(ConfigListScreen, Screen):
                 x = 5 + int(6.8 * self.percent)
             self["cursor"].moveTo(x, 100, 1)
             self["cursor"].startMoving()
-            pts = int(float(self.length[1]) / 100.0 * self.percent)
+            pts = int(float(self.length[1]) // 100.0 * self.percent)
             self["time"].setText(_("Manual jump to:") + ' ' + ("%d:%02d" % ((pts/60/90000), ((pts/90000)%60))))
 
     def exit(self):
@@ -116,14 +117,14 @@ class Seekbar(ConfigListScreen, Screen):
             if self.length:
                 if self.dvd: # seekTo() doesn't work for DVD Player
                     oldPosition = self.seek.getPlayPosition()[1]
-                    newPosition = int(float(self.length[1]) / 100.0 * self.percent)
+                    newPosition = int(float(self.length[1]) // 100.0 * self.percent)
                     if newPosition > oldPosition:
                         pts = newPosition - oldPosition
                     else:
                         pts = -1*(oldPosition - newPosition)
                     DVDPlayer.doSeekRelative(self.infobarInstance, pts)
                 else:
-                    self.seek.seekTo(int(float(self.length[1]) / 100.0 * self.percent))
+                    self.seek.seekTo(int(float(self.length[1]) // 100.0 * self.percent))
                 self.exit()
         elif sel == self.minuteInput:
             pts = self.minuteInput.value * 60 * 90000
@@ -138,7 +139,7 @@ class Seekbar(ConfigListScreen, Screen):
     def keyLeft(self):
         sel = self["config"].getCurrent()[1]
         if sel == self.positionEntry:
-            self.percent -= float(config.AdvancedMovieSelection.sensibility.value) / 1.0
+            self.percent -= float(config.AdvancedMovieSelection.sensibility.value) // 1.0
             if self.percent < 0.0:
                 self.percent = 0.0
         else:
@@ -147,7 +148,7 @@ class Seekbar(ConfigListScreen, Screen):
     def keyRight(self):
         sel = self["config"].getCurrent()[1]
         if sel == self.positionEntry:
-            self.percent += float(config.AdvancedMovieSelection.sensibility.value) / 1.0
+            self.percent += float(config.AdvancedMovieSelection.sensibility.value) // 1.0
             if self.percent > 100.0:
                 self.percent = 100.0
         else:

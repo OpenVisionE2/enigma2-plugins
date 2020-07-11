@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import division
 #######################################################################
 #
 #    Push Service for Enigma-2
@@ -25,7 +26,7 @@ from ModuleBase import ModuleBase
 # Plugin base class
 class ControllerBase(ModuleBase):
 	# You only have to overwrite the functions You need
-	# If You don't have to save something, You don't need getOptions / setOptions
+	# If You don't have to save something, You don't need getOptions // setOptions
 	
 	UniqueCounter = 0
 	

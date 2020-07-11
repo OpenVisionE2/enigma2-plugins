@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import division
 from . import _
 from Screens.Screen import Screen
 from Plugins.Plugin import PluginDescriptor
@@ -130,11 +131,11 @@ class Channelnumber:
 				self.blinkCounter = 0
 				if self.blink:
 					if config.plugins.VFD_ini.recClockBlink.value == "brightness":
-						eDBoxLCD.getInstance().setLCDBrightness(config.plugins.VFD_ini.ClockLevel2.value * 255 / 10)
+						eDBoxLCD.getInstance().setLCDBrightness(config.plugins.VFD_ini.ClockLevel2.value * 255 // 10)
 					self.blink = False
 				else:
 					if config.plugins.VFD_ini.recClockBlink.value == "brightness":
-						eDBoxLCD.getInstance().setLCDBrightness(config.plugins.VFD_ini.ClockLevel1.value * 255 / 10)
+						eDBoxLCD.getInstance().setLCDBrightness(config.plugins.VFD_ini.ClockLevel1.value * 255 // 10)
 					self.blink = True
 
 		if config.plugins.VFD_ini.showClock.value == 'True' or config.plugins.VFD_ini.showClock.value == 'True_All' or config.plugins.VFD_ini.showClock.value == 'True_Switch':
@@ -193,7 +194,7 @@ class Channelnumber:
 		else:
 			MyRecLed = False
 			if self.blink:
-				eDBoxLCD.getInstance().setLCDBrightness(config.lcd.bright.value * 255 / 10)
+				eDBoxLCD.getInstance().setLCDBrightness(config.lcd.bright.value * 255 // 10)
 				self.blink = False
 
 ChannelnumberInstance = None

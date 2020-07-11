@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 
 from twisted.internet.defer import Deferred
 from twisted.internet.protocol import ClientFactory, ServerFactory
@@ -332,7 +332,7 @@ class SimpleVDRProtocol(LineReceiver):
 			VolumeControl.instance.volDown()
 		elif args:
 			try:
-				num = int(args) / 2.55
+				num = int(args) // 2.55
 			except ValueError:
 				payload = "%d %s" % (CODE_SYNTAX, str(e).replace('\n', ' ').replace('\r', ''))
 				return self.sendLine(payload)

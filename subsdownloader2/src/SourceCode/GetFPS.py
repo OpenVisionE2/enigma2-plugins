@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 import sys
 import struct
 
@@ -24,7 +24,7 @@ class GetFPS(object):
             return self.get_mkv_fps()
         elif s == "RIFF":
             self.file.seek(32)
-            return 1000000.0 / float(struct.unpack('<I', self.file.read(4))[0])
+            return 1000000.0 // float(struct.unpack('<I', self.file.read(4))[0])
         else:
             raise Exception('Error: Unknown file format not AVI/MKV')
 

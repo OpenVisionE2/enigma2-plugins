@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 #
 #  MerlinEPGCenter E2 Plugin
 #
@@ -681,7 +681,7 @@ class MerlinEPGCenter(TimerEditList, MerlinEPGActions, EmbeddedVolumeControl):
 			self["upcomingSeparator"].hide()
 			self["upcoming"].hide()
 			
-			newHeight = self.listHeightMin / self["list"].itemHeight * self["list"].itemHeight
+			newHeight = self.listHeightMin // self["list"].itemHeight * self["list"].itemHeight
 			
 			if config.plugins.merlinEpgCenter.showEventInfo.value:
 				self["list"].maxWidth = self.listWidthMin
@@ -696,7 +696,7 @@ class MerlinEPGCenter(TimerEditList, MerlinEPGActions, EmbeddedVolumeControl):
 		border = 5
 		
 		# resize self["list"] and self["upcoming"]
-		newHeight = ((self.listHeightMin - self.heightDiff - border) / self["list"].itemHeight) * self["list"].itemHeight
+		newHeight = ((self.listHeightMin - self.heightDiff - border) // self["list"].itemHeight) * self["list"].itemHeight
 		
 		if config.plugins.merlinEpgCenter.showEventInfo.value:
 			self["list"].maxWidth = self.listWidthMin
@@ -1044,7 +1044,7 @@ class MerlinEPGCenter(TimerEditList, MerlinEPGActions, EmbeddedVolumeControl):
 					
 				remainBeginString = ""
 				percent = 0
-				duraString = "%d" % ((sel.end - sel.begin) / 60)
+				duraString = "%d" % ((sel.end - sel.begin) // 60)
 		else:
 			# check for similar events if similar events aren't shown already
 			if not self.similarShown and (self.currentMode == MULTI_EPG_NOW or self.currentMode == MULTI_EPG_NEXT or self.currentMode == SINGLE_EPG or self.currentMode == MULTI_EPG_PRIMETIME):
@@ -1113,25 +1113,25 @@ class MerlinEPGCenter(TimerEditList, MerlinEPGActions, EmbeddedVolumeControl):
 			endString = strftime("%H:%M", localtime(begin + duration))
 			
 			if self.currentMode != TIMERLIST:
-				duraString = "%d" % (duration / 60)
+				duraString = "%d" % (duration // 60)
 				now = int(time())
 				
 				if self.currentMode == SINGLE_EPG:
 					if self["list"].instance.getCurrentIndex() == 0:
-						timeValue = (begin + duration - now) /  60 + 1
-						percent = int((now - begin) * 100 / duration)
+						timeValue = (begin + duration - now) //  60 + 1
+						percent = int((now - begin) * 100 // duration)
 					else:
-						timeValue = (now - begin) /  60
+						timeValue = (now - begin) //  60
 						percent = 0
 				elif self.currentMode == MULTI_EPG_NEXT:
-					timeValue = (now - begin) /  60
+					timeValue = (now - begin) //  60
 					percent = 0
 				else:
 					if now >= begin:
-						timeValue = (begin + duration - now) /  60 + 1
-						percent = int((now - begin) * 100 / duration)
+						timeValue = (begin + duration - now) //  60 + 1
+						percent = int((now - begin) * 100 // duration)
 					else:
-						timeValue = (now - begin) /  60
+						timeValue = (now - begin) //  60
 						percent = 0
 						
 				if (KEEP_OUTDATED_TIME == 0 and (begin + duration) > now) or (KEEP_OUTDATED_TIME != 0 and (begin + duration) > now):
@@ -1142,7 +1142,7 @@ class MerlinEPGCenter(TimerEditList, MerlinEPGActions, EmbeddedVolumeControl):
 						timeValue /= 60
 						remainBeginString += "%02dh" % timeValue
 					elif fabs(timeValue) >= 1440:
-						timeValue = (timeValue / 1440) +1
+						timeValue = (timeValue // 1440) +1
 						remainBeginString += "%02dd" % timeValue
 					else:
 						if timeValue < 0:
@@ -1196,7 +1196,7 @@ class MerlinEPGCenter(TimerEditList, MerlinEPGActions, EmbeddedVolumeControl):
 					
 				if config.plugins.merlinEpgCenter.listProgressStyle.value == STYLE_MULTI_PIXMAP or config.plugins.merlinEpgCenter.listProgressStyle.value == STYLE_MULTI_PIXMAP_LIST_OFF:
 					if percent > 0:
-						part = int(round(percent / 25)) + 1
+						part = int(round(percent // 25)) + 1
 						if part < 0:
 							part = 0
 						elif part > 4:
@@ -1894,7 +1894,7 @@ class MerlinEPGCenter(TimerEditList, MerlinEPGActions, EmbeddedVolumeControl):
 				if number == 6 and self.oldMode != EPGSEARCH_RESULT: # epg search
 					self.setMode(searchEpg = True)
 					
-					# reset / don't show similar events option
+					# reset // don't show similar events option
 					self.similarShown = False
 					self["key_red"].setText("")
 					self["epgRedActions"].setEnabled(False)
@@ -1902,7 +1902,7 @@ class MerlinEPGCenter(TimerEditList, MerlinEPGActions, EmbeddedVolumeControl):
 					# add possibility to add the service name to the list of epg search terms
 					self["key_blue"].setText(_("Set search term"))
 					self["epgBlueActions"].setEnabled(True)
-				elif number == 5 and AUTOTIMER and self.oldMode == TIMERLIST: # toggle timer / autotimer
+				elif number == 5 and AUTOTIMER and self.oldMode == TIMERLIST: # toggle timer // autotimer
 					if self.timerListMode == LIST_MODE_TIMER:
 						self.timerListMode = LIST_MODE_AUTOTIMER
 						self["tab_text_%d" % TIMERLIST].setText("AutoTimer")
@@ -2122,9 +2122,9 @@ class MerlinEPGCenter(TimerEditList, MerlinEPGActions, EmbeddedVolumeControl):
 			
 		lineHeight = int(fontRenderClass.getInstance().getLineHeight(self["description"].instance.getFont()))
 		if config.plugins.merlinEpgCenter.showVideoPicture.value:
-			maxVisibleLines = int((self.videoPicturePosY - self.descriptionPosY - 5) / lineHeight)
+			maxVisibleLines = int((self.videoPicturePosY - self.descriptionPosY - 5) // lineHeight)
 		else:
-			maxVisibleLines = int(self.descriptionHeightMax / lineHeight)
+			maxVisibleLines = int(self.descriptionHeightMax // lineHeight)
 		newHeight = lineHeight * maxVisibleLines
 		self["description"].instance.resize(eSize(self.descriptionWidthMax, newHeight))
 		

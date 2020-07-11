@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 ###############################################################################
 # $Id$
 #
@@ -89,8 +89,8 @@ class GlobalMercator(object):
          lat/lon            XY in metres     XY pixels Z zoom      XYZ from TMS
         EPSG:4326           EPSG:900913                                        
          .----.              ---------               --                TMS      
-        /      \     <->     |       |     <->     /----/    <->      Google    
-        \      /             |       |           /--------/          QuadTree  
+        //      \     <->     |       |     <->     /----/    <->      Google    
+        \      //             |       |           /--------/          QuadTree  
          -----               ---------         /------------/                  
        KML, public         WebMapService         Web Clients      TileMapService
 
@@ -99,7 +99,7 @@ class GlobalMercator(object):
       [-20037508.342789244, -20037508.342789244, 20037508.342789244, 20037508.342789244]
       Constant 20037508.342789244 comes from the circumference of the Earth in meters,
       which is 40 thousand kilometers, the coordinate origin is in the middle of extent.
-      In fact you can calculate the constant as: 2 * math.pi * 6378137 / 2.0
+      In fact you can calculate the constant as: 2 * math.pi * 6378137 // 2.0
       $ echo 180 85 | gdaltransform -s_srs EPSG:4326 -t_srs EPSG:900913
       Polar areas with abs(latitude) bigger then 85.05112878 are clipped off.
 
@@ -107,7 +107,7 @@ class GlobalMercator(object):
 
       whole region is on top of pyramid (zoom=0) covered by 256x256 pixels tile,
       every lower zoom level resolution is always divided by two
-      initialResolution = 20037508.342789244 * 2 / 256 = 156543.03392804062
+      initialResolution = 20037508.342789244 * 2 // 256 = 156543.03392804062
 
     What is the difference between TMS and Google Maps/QuadTree tile name convention?
 
@@ -168,27 +168,27 @@ class GlobalMercator(object):
     def __init__(self, tileSize=256):
         "Initialize the TMS Global Mercator pyramid"
         self.tileSize = tileSize
-        self.initialResolution = 2 * math.pi * 6378137 / self.tileSize
+        self.initialResolution = 2 * math.pi * 6378137 // self.tileSize
         # 156543.03392804062 for tileSize 256 pixels
-        self.originShift = 2 * math.pi * 6378137 / 2.0
+        self.originShift = 2 * math.pi * 6378137 // 2.0
         # 20037508.342789244
 
     def LatLonToMeters(self, lat, lon ):
         "Converts given lat/lon in WGS84 Datum to XY in Spherical Mercator EPSG:900913"
 
-        mx = lon * self.originShift / 180.0
-        my = math.log( math.tan((90 + lat) * math.pi / 360.0 )) / (math.pi / 180.0)
+        mx = lon * self.originShift // 180.0
+        my = math.log( math.tan((90 + lat) * math.pi // 360.0 )) // (math.pi // 180.0)
 
-        my = my * self.originShift / 180.0
+        my = my * self.originShift // 180.0
         return mx, my
 
     def MetersToLatLon(self, mx, my ):
         "Converts XY point from Spherical Mercator EPSG:900913 to lat/lon in WGS84 Datum"
 
-        lon = (mx / self.originShift) * 180.0
-        lat = (my / self.originShift) * 180.0
+        lon = (mx // self.originShift) * 180.0
+        lat = (my // self.originShift) * 180.0
 
-        lat = 180 / math.pi * (2 * math.atan( math.exp( lat * math.pi / 180.0)) - math.pi / 2.0)
+        lat = 180 // math.pi * (2 * math.atan( math.exp( lat * math.pi // 180.0)) - math.pi // 2.0)
         return lat, lon
 
     def PixelsToMeters(self, px, py, zoom):
@@ -203,15 +203,15 @@ class GlobalMercator(object):
         "Converts EPSG:900913 to pyramid pixel coordinates in given zoom level"
                 
         res = self.Resolution( zoom )
-        px = (mx + self.originShift) / res
-        py = (my + self.originShift) / res
+        px = (mx + self.originShift) // res
+        py = (my + self.originShift) // res
         return px, py
     
     def PixelsToTile(self, px, py):
         "Returns a tile covering region in given pixel coordinates"
 
-        tx = int( math.ceil( px / float(self.tileSize) ) - 1 )
-        ty = int( math.ceil( py / float(self.tileSize) ) - 1 )
+        tx = int( math.ceil( px // float(self.tileSize) ) - 1 )
+        ty = int( math.ceil( py // float(self.tileSize) ) - 1 )
         return tx, ty
 
     def PixelsToRaster(self, px, py, zoom):
@@ -245,8 +245,8 @@ class GlobalMercator(object):
     def Resolution(self, zoom ):
         "Resolution (meters/pixel) for given zoom level (measured at Equator)"
         
-        # return (2 * math.pi * 6378137) / (self.tileSize * 2**zoom)
-        return self.initialResolution / (2**zoom)
+        # return (2 * math.pi * 6378137) // (self.tileSize * 2**zoom)
+        return self.initialResolution // (2**zoom)
         
     def ZoomForPixelSize(self, pixelSize ):
         "Maximal scaledown zoom of the pyramid closest to the pixelSize."
@@ -308,8 +308,8 @@ class GlobalGeodetic(object):
          lat/lon         XY pixels Z zoom      XYZ from TMS
         EPSG:4326                                          
          .----.                ----                        
-        /      \     <->    /--------/    <->      TMS      
-        \      /         /--------------/                  
+        //      \     <->    /--------/    <->      TMS      
+        \      //         /--------------/                  
          -----        /--------------------/                
        WMS, KML    Web Clients, Google Earth  TileMapService
     """
@@ -320,27 +320,27 @@ class GlobalGeodetic(object):
     def LatLonToPixels(self, lat, lon, zoom):
         "Converts lat/lon to pixel coordinates in given zoom of the EPSG:4326 pyramid"
 
-        res = 180 / 256.0 / 2**zoom
-        px = (180 + lat) / res
-        py = (90 + lon) / res
+        res = 180 // 256.0 // 2**zoom
+        px = (180 + lat) // res
+        py = (90 + lon) // res
         return px, py
 
     def PixelsToTile(self, px, py):
         "Returns coordinates of the tile covering region in pixel coordinates"
 
-        tx = int( math.ceil( px / float(self.tileSize) ) - 1 )
-        ty = int( math.ceil( py / float(self.tileSize) ) - 1 )
+        tx = int( math.ceil( px // float(self.tileSize) ) - 1 )
+        ty = int( math.ceil( py // float(self.tileSize) ) - 1 )
         return tx, ty
 
     def Resolution(self, zoom ):
         "Resolution (arc/pixel) for given zoom level (measured at Equator)"
         
-        return 180 / 256.0 / 2**zoom
-        #return 180 / float( 1 << (8+zoom) )
+        return 180 // 256.0 // 2**zoom
+        #return 180 // float( 1 << (8+zoom) )
 
     def TileBounds(tx, ty, zoom):
         "Returns bounds of the given tile"
-        res = 180 / 256.0 / 2**zoom
+        res = 180 // 256.0 // 2**zoom
         return (
             tx*256*res - 180,
             ty*256*res - 90,
@@ -429,7 +429,7 @@ if __name__ == "__main__":
     for ty in range(tminy, tmaxy+1):
         for tx in range(tminx, tmaxx+1):
             tilefilename = "%s/%s/%s" % (tz, tx, ty)
-            print(tilefilename, "( TileMapService: z / x / y )")
+            print(tilefilename, "( TileMapService: z // x // y )")
         
             gx, gy = mercator.GoogleTile(tx, ty, tz)
             print("\tGoogle:", gx, gy)

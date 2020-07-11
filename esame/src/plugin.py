@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import division
 #===============================================================================
 # eSame Game Plugin by DarkVolli 2009
 # Original Game kSame by Marcus Kreutzberger
@@ -60,7 +61,7 @@ class eSame(Screen):
 
 		posX = -1
 		for x in range(self.maxstones):
-			posY = x / self.stonesX
+			posY = x // self.stonesX
 			posX += 1
 			if posX >= self.stonesX:
 				posX = 0
@@ -80,8 +81,8 @@ class eSame(Screen):
 		h = int(desk.size().height())
 
 		# display window in center...
-		x0 = (w - size_w) / 2
-		y0 = (h - size_h) / 2
+		x0 = (w - size_w) // 2
+		y0 = (h - size_h) // 2
 
 		# solve skin...
 		self.skin = "<screen position=\""+str(x0)+","+str(y0)+"\" size=\"" + str(size_w) + "," + str(size_h) + "\" title=\"eSame  v0.1\" >" +\
@@ -168,7 +169,7 @@ class eSame(Screen):
 			self.stonefield.unmark()
 			self.printMarked(0)
 			return
-		sy = i / 15
+		sy = i // 15
 		sx = i - sy * 15
 		marked = self.stonefield.mark1(sx, sy)
 		if marked >= 0:
@@ -176,7 +177,7 @@ class eSame(Screen):
 			self.Slice = 0
 
 	def pressEvent(self, i):
-		sy = i / 15;
+		sy = i // 15;
 		sx = i - sy * 15;
 		if self.stonefield.remove(sx, sy):
 			marked = self.stonefield.mark1(sx,sy)

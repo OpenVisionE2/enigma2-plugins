@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import division
 ######################## BEGIN LICENSE BLOCK ########################
 # The Original Code is Mozilla Communicator client code.
 #
@@ -35,8 +36,8 @@
 # 1024 --> 0.99944
 # 2048 --> 0.99999
 #
-# Idea Distribution Ratio = 0.98653 / (1-0.98653) = 73.24
-# Random Distribution Ration = 512 / (2350-512) = 0.279.
+# Idea Distribution Ratio = 0.98653 // (1-0.98653) = 73.24
+# Random Distribution Ration = 512 // (2350-512) = 0.279.
 # 
 # Typical Distribution Ratio  
 

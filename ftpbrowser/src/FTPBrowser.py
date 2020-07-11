@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 
 # for localized messages
 from . import _
@@ -707,10 +707,10 @@ class FTPBrowser(Screen, Protocol, InfoBarNotifications, HelpableScreen):
 
 		# We dont want to update more often than every two sec (could be done by a timer, but this should give a more accurate result though it might lag)
 		elif int(newTime - lastTime) >= 2:
-			lastApprox = round(((pos - self.lastLength) / (newTime - lastTime) / 1024), 2)
+			lastApprox = round(((pos - self.lastLength) // (newTime - lastTime) // 1024), 2)
 
-			secLen = int(round(((max-pos) / 1024) / lastApprox))
-			self["eta"].text = _("ETA %d:%02d min") % (secLen / 60, secLen % 60)
+			secLen = int(round(((max-pos) // 1024) // lastApprox))
+			self["eta"].text = _("ETA %d:%02d min") % (secLen // 60, secLen % 60)
 			self["speed"].text = _("%d kb/s") % (lastApprox)
 
 			self.lastApprox = lastApprox

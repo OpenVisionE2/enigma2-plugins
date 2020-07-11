@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 # ZDF Mediathek by AliAbdul
 from Components.ActionMap import HelpableActionMap
 from Components.AVSwitch import AVSwitch
@@ -803,7 +803,7 @@ class ZDFMediathek(Screen, HelpableScreen):
 			links = getTitleLinks(html)
 			txt = ""
 			for x in links:
-				txt = txt + x[1] + " / "
+				txt = txt + x[1] + " // "
 			if len(txt) > 1:
 				txt = txt[:-3]
 				if (len(links) > 1):

@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 ############################################################################
 #    Copyright (C) 2008 by Volker Christian                                #
 #    Volker.Christian@fh-hagenberg.at                                      #
@@ -83,7 +83,7 @@ class YouTubeVideoDetailsScreen(Screen):
 		self.entry = entry
 		self["video_description"] = ScrollLabel(entry.getDescription())
 		durationInSecs = int(entry.getDuration())
-		mins = int(durationInSecs / 60)
+		mins = int(durationInSecs // 60)
 		secs = durationInSecs - mins * 60
 		duration = "%d:%02d" % (mins, secs)
 		

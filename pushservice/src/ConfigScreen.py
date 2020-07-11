@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import division
 #######################################################################
 #
 #    Push Service for Enigma-2
@@ -317,7 +318,7 @@ class ConfigScreen(Screen, ConfigListScreen, HelpableScreen, PushServiceBase):
 		# Build xml config and write it
 		self.save()
 		
-		# If we need assign / "write" access import the plugin
+		# If we need assign // "write" access import the plugin
 		# global won't work across module scope
 		import plugin
 		if config.pushservice.enable.value:

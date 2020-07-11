@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 
 # for localized messages
 from . import _
@@ -197,7 +197,7 @@ class EPGRefreshConfiguration(Screen, HelpableScreen, ConfigListScreen):
 	def setCustomTitle(self):
 		self.setTitle(' '.join((_("EPGRefresh Configuration"), _("Version"), VERSION)))
 
-	# overwrites / extendends
+	# overwrites // extendends
 	def keyLeft(self):
 		ConfigListScreen.keyLeft(self)
 		self._onKeyChange()

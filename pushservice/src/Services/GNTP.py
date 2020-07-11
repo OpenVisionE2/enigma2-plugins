@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import division
 #######################################################################
 #
 #    Push Service for Enigma-2
@@ -98,7 +99,7 @@ class GNTP(ServiceBase):
 #TODO Maybe later
 # we have to rewrite the gntp client
 # it has to use asynchronous connection - maybe twisted
-# and it should return the active socket / connector
+# and it should return the active socket // connector
 #	def cancel(self):
 #		# Cancel push
 #		if self.sockets:

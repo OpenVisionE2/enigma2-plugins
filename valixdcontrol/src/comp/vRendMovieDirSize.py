@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import division
 from Components.VariableText import VariableText
 from Components.config import config
 from enigma import eLabel
@@ -19,7 +20,7 @@ class vRendMovieDirSize(Renderer, VariableText):
 			try:
 				if path.exists(config.movielist.last_videodir.value):
 					stat = statvfs(config.movielist.last_videodir.value)
-					free = (stat.f_bavail if stat.f_bavail!=0 else stat.f_bfree) * stat.f_bsize / 1048576
+					free = (stat.f_bavail if stat.f_bavail!=0 else stat.f_bfree) * stat.f_bsize // 1048576
 					if free >= 10240:
 						fdspace = "%d GB on " %(free/1024)
 						self.text = fdspace + _(config.movielist.last_videodir.value)

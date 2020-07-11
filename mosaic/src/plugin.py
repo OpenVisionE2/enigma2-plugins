@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 # Mosaic by AliAbdul
 from Components.ActionMap import NumberActionMap
 from Components.config import config, ConfigSubsection, ConfigInteger
@@ -58,8 +58,8 @@ class Mosaic(Screen):
 	size = desktop.size()
 	width = size.width()
 	height = size.height()
-	windowWidth = width / 4
-	windowHeight = height / 4
+	windowWidth = width // 4
+	windowHeight = height // 4
 
 	positions = []
 	x = 80
@@ -67,7 +67,7 @@ class Mosaic(Screen):
 	for i in range(1, 10):
 		positions.append([x, y])
 		x += windowWidth
-		x += ((width - 160) - (windowWidth * 3)) / 2
+		x += ((width - 160) - (windowWidth * 3)) // 2
 		if (i == 3) or (i == 6):
 			y = y + windowHeight + 20
 			x = 80
@@ -190,7 +190,7 @@ class Mosaic(Screen):
 		self["channel1"].setText(name)
 		self["event1"].setText(event_name)
 		self.session.nav.playService(ref)
-		self["count"].setText(_("Channel: ") + "1 / " + str(len(self.ref_list)))
+		self["count"].setText(_("Channel: ") + "1 // " + str(len(self.ref_list)))
 		self["playState"].instance.setPixmap(playingIcon)
 		# Start updating the video-screenshots
 		self.updateTimer.start(1, 1)
@@ -299,7 +299,7 @@ class Mosaic(Screen):
 
 			# Show the servicename
 			self["channel" + str(self.current_window)].setText(name)
-			self["count"].setText(_("Channel: ") + str(self.current_refidx + 1) + " / " + str(len(self.ref_list)))
+			self["count"].setText(_("Channel: ") + str(self.current_refidx + 1) + " // " + str(len(self.ref_list)))
 
 			# Restart timer
 			self.working = False
@@ -327,7 +327,7 @@ class Mosaic(Screen):
 			self.updateTimer.start(1000, 1)
 
 	def updateCountdownLabel(self):
-		self["countdown"].setText("%s %s / %s" % (_("Countdown:"), str(self.countdown), str(config.plugins.Mosaic.countdown.value)))
+		self["countdown"].setText("%s %s // %s" % (_("Countdown:"), str(self.countdown), str(config.plugins.Mosaic.countdown.value)))
 
 	def getEventName(self, info, ref):
 		event = info.getEvent(ref)

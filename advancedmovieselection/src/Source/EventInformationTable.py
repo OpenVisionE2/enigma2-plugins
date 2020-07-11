@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 """
 Copyright (C) 2011 cmikula
 
@@ -50,8 +50,8 @@ def getLanguageCode(db):
 
 
 def toDate(mjd):
-    year = int((mjd - 15078.2) / 365.25)
-    month = int((mjd - 14956 - int(year * 365.25)) / 30.6001)
+    year = int((mjd - 15078.2) // 365.25)
+    month = int((mjd - 14956 - int(year * 365.25)) // 30.6001)
     day = int(mjd - 14956 - int(year * 365.25) - int(month * 30.6001))
     if month == 14 or month == 15:
         k = 1
@@ -76,8 +76,8 @@ def parseDVBtime(t1, t2, t3, t4, t5, _hash=None):
     tm_min = fromBCD(t4)
     tm_hour = fromBCD(t3)
     mjd = t1 << 8 | t2
-    tm_year = int((mjd - 15078.2) / 365.25)
-    tm_mon = int((mjd - 14956.1 - int(tm_year * 365.25)) / 30.6001)
+    tm_year = int((mjd - 15078.2) // 365.25)
+    tm_mon = int((mjd - 14956.1 - int(tm_year * 365.25)) // 30.6001)
     tm_mday = int(mjd - 14956 - int(tm_year * 365.25) - int(tm_mon * 30.6001))
     if tm_mon == 14 or tm_mon == 15:
         k = 1
@@ -381,9 +381,9 @@ def writeEIT(file_name, eit_file, name, overview, genre, extended_info, released
         data = ('').join(data)
         if runtime:
             rt = int(runtime)
-            h = rt / 60
+            h = rt // 60
             m = rt - 60 * h
-            runtime = h << 8 | m / 10 << 4 | m % 10
+            runtime = h << 8 | m // 10 << 4 | m % 10
         else:
             runtime = 304
         event_id = 0
@@ -832,7 +832,7 @@ def printEIT(file_name):
     print(eit.getExtendedDescription())
     print(eit.getBeginTimeString())
     print(eit.getBeginTime())
-    print(eit.getDuration() / 60)
+    print(eit.getDuration() // 60)
     print('Length: ' + str(eit.descriptors_loop_length))
     print('\n')
 
@@ -924,7 +924,7 @@ if __name__ == '__main__':
                         print(eit.short_description)
                         print(eit.extended_description)
                         print(eit.getBeginTimeString())
-                        print(eit.duration / 60)
+                        print(eit.duration // 60)
                         print('Length: ' + str(eit.descriptors_loop_length))
                         print('\n')
                     continue

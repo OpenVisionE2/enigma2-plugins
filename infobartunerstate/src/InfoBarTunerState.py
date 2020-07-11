@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 #######################################################################
 #
 #    InfoBar Tuner State for Enigma-2
@@ -236,7 +236,7 @@ class InfoBarTunerState(object):
 		#eventNewProgramInfo
 		#decoder state
 				
-		# Add current running records / streams
+		# Add current running records // streams
 		# We do it right here to ensure the InfoBar is intantiated
 		self.updateRecordTimer()
 		if config.infobartunerstate.show_streams.value:
@@ -679,14 +679,14 @@ class InfoBarTunerState(object):
 						win.updateTimes( begin, end, endless )
 						win.update()
 				else:
-					# Type INFO / FINISHED
+					# Type INFO // FINISHED
 					win.update()
 				
 				# Calculate field width
 				widths = map( lambda (w1, w2): max( w1, w2 ), zip_longest( widths, win.widths ) )
 		
 		#if self.entries:
-			# Get initial padding / offset position and apply user offset
+			# Get initial padding // offset position and apply user offset
 			padding = self.padding + int(config.infobartunerstate.offset_padding.value)
 			#print("IBTS px, self.padding, config.padding", px, self.padding, int(config.infobartunerstate.offset_padding.value))
 			
@@ -831,7 +831,7 @@ class TunerStateBase(Screen):
 		self.progresswidth = self["Progress"].instance.size().width()
 
 	def reorder(self, widths, overwidth=0):
-		# Get initial padding / offset position and apply user offset
+		# Get initial padding // offset position and apply user offset
 		padding = self.padding + int(config.infobartunerstate.offset_padding.value)
 		#print("IBTS px, self.padding, config.padding", px, self.padding, int(config.infobartunerstate.offset_padding.value))
 		
@@ -855,7 +855,7 @@ class TunerStateBase(Screen):
 			elif field == "TimerProgressGraphical":
 				#self[field].instance.resize( eSize(width, sh) )
 				# Center the progress field vertically
-				y = int( ( sh - self["Progress"].instance.size().height() ) / 2 )
+				y = int( ( sh - self["Progress"].instance.size().height() ) // 2 )
 				self["Progress"].instance.move( ePoint(px, y) )
 			
 			elif field == "Name":
@@ -1077,18 +1077,18 @@ class TunerState(TunerStateBase):
 				# Adjust the watched movie length (98% of movie length) 
 				# else we will never see the 100%
 				# Alternative using math.ceil but then we won't see 0
-				length = duration / 100.0 * 98.0
+				length = duration // 100.0 * 98.0
 				# Calculate progress and round up
-				progress = timeelapsed / length * 100.0
+				progress = timeelapsed // length * 100.0
 				# Normalize progress
 				if progress < 0: progress = 0
 				elif progress > 100: progress = 100
 			else:
 				progress = None
 			
-		self.duration = duration and duration is not None and math.ceil( ( duration ) / 60.0 )
-		self.timeleft = timeleft and timeleft is not None and math.ceil( ( timeleft ) / 60.0 )
-		self.timeelapsed = timeelapsed and timeelapsed is not None and math.ceil( ( timeelapsed ) / 60.0 )
+		self.duration = duration and duration is not None and math.ceil( ( duration ) // 60.0 )
+		self.timeleft = timeleft and timeleft is not None and math.ceil( ( timeleft ) // 60.0 )
+		self.timeelapsed = timeelapsed and timeelapsed is not None and math.ceil( ( timeelapsed ) // 60.0 )
 		self.progress = progress and progress is not None and int( progress )
 		#print("IBTS duration, timeleft, timeelapsed, progress", self.duration, self.timeleft, self.timeelapsed, self.progress)
 		
@@ -1096,17 +1096,17 @@ class TunerState(TunerStateBase):
 		filename = self.filename
 		if filename and os.path.exists( filename ):
 			filesize = os.path.getsize( filename ) 
-			self.filesize = filesize / (1024*1024)
+			self.filesize = filesize // (1024*1024)
 			
 			try:
 				stat = os.statvfs( filename )
-				self.freespace = ( stat.f_bfree / 1000 * stat.f_bsize / 1000 ) / 1024
+				self.freespace = ( stat.f_bfree // 1000 * stat.f_bsize // 1000 ) // 1024
 				#free = os.stat(path).st_size/1048576)
 			except OSError:
 				pass
 
 	def update(self):
-		#TODO Handle Live / Stream Entries - Update several Labels
+		#TODO Handle Live // Stream Entries - Update several Labels
 		self.updateDynamicContent()
 		height = self.instance.size().height()
 		widths = []

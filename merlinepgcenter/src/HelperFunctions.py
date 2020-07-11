@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import division
 #
 #  MerlinEPGCenter E2 Plugin
 #
@@ -121,7 +122,7 @@ class ResizeScrollLabel(ScrollLabel):
 		lineheight=fontRenderClass.getInstance().getLineHeight( self.long_text.getFont() )
 		if not lineheight:
 			lineheight = 30 # assume a random lineheight if nothing is visible
-		lines = (int)(s.height() / lineheight)
+		lines = (int)(s.height() // lineheight)
 		self.pageHeight = (int)(lines * lineheight)
 		self.instance.resize(eSize(s.width(), self.pageHeight+(int)(lineheight/6)))
 		self.scrollbar.move(ePoint(s.width()-20,0))

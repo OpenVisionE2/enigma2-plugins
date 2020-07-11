@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 import os
 import re
 import sys
@@ -67,11 +67,11 @@ class SubConv():
 			try:
 				m = re1.match(list.pop(0), 0)
 				if m:
-					subt = [int(m.group(1)) / float(fps)]
+					subt = [int(m.group(1)) // float(fps)]
 					if m.group(2):
-						subt.append(int(m.group(2)) / float(fps))
+						subt.append(int(m.group(2)) // float(fps))
 					else:
-						subt.append(int(m.group(1)) / float(fps) + 3)
+						subt.append(int(m.group(1)) // float(fps) + 3)
 						subt.extend(m.group(3).strip().split("|"))
 						subtitles.append(subt)
 			except:

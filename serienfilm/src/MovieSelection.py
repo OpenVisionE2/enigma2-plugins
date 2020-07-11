@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 # for localized messages     
 from . import _x
 
@@ -291,11 +291,11 @@ class MovieSelection(Screen, HelpableScreen, SelectionEventInfo):
 
 		self["NumberActions"] = HelpableActionMap(self, "SetupActions",
 			{
-				"0": (self.toggleSort, _x("Toggle date / alphabetic sort mode")),
+				"0": (self.toggleSort, _x("Toggle date // alphabetic sort mode")),
 				"deleteBackward": (self.moveToIndexStrt, _x("Jump to listbegin")),
 				"deleteForward": (self.moveToIndexEnd, _x("Jump to listend")),
-				"5": (self.toggleMinimal, _x("Toggle style minimal / compact")),
-				"8": (self.toggleTags, _x("Toggle description / tags display")),
+				"5": (self.toggleMinimal, _x("Toggle style minimal // compact")),
+				"8": (self.toggleTags, _x("Toggle description // tags display")),
 			})
 
 

@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import division
 #
 #  Partnerbox E2
 #
@@ -284,12 +285,12 @@ def Partnerbox_MultiEntry(self, changecount, service, eventId, beginTime, durati
 			end = localtime(beginTime+duration)
 			res.extend((
 				(eListboxPythonMultiContent.TYPE_TEXT, r4.x, r4.y, r4.w, r4.h, 1, RT_HALIGN_CENTER|RT_VALIGN_CENTER, _("%02d.%02d - %02d.%02d")%(begin[3],begin[4],end[3],end[4])),
-				(eListboxPythonMultiContent.TYPE_TEXT, r3.x, r3.y, fact1, r3.h, 1, RT_HALIGN_RIGHT|RT_VALIGN_CENTER, _("%d min") % (duration / 60))
+				(eListboxPythonMultiContent.TYPE_TEXT, r3.x, r3.y, fact1, r3.h, 1, RT_HALIGN_RIGHT|RT_VALIGN_CENTER, _("%d min") % (duration // 60))
 			))
 		else:
-			percent = (nowTime - beginTime) * 100 / duration
+			percent = (nowTime - beginTime) * 100 // duration
 			prefix = "+"
-			remaining = ((beginTime+duration) - int(time())) / 60
+			remaining = ((beginTime+duration) - int(time())) // 60
 			if remaining <= 0:
 				prefix = ""
 			res.extend((
@@ -388,7 +389,7 @@ def isInTimer(self, eventid, begin, duration, service):
 					bt = localtime(begin)
 					bday = bt.tm_wday
 					begin2 = 1440 + bt.tm_hour * 60 + bt.tm_min
-					end2 = begin2 + duration / 60
+					end2 = begin2 + duration // 60
 				xbt = localtime(x.begin)
 				xet = localtime(timer_end)
 				offset_day = False
@@ -398,7 +399,7 @@ def isInTimer(self, eventid, begin, duration, service):
 					if oday == -1: oday = 6
 					offset_day = x.repeated & (1 << oday)
 				xbegin = 1440 + xbt.tm_hour * 60 + xbt.tm_min
-				xend = xbegin + ((timer_end - x.begin) / 60)
+				xend = xbegin + ((timer_end - x.begin) // 60)
 				if xend < xbegin:
 					xend += 1440
 				if x.repeated & (1 << bday) and checking_time:
@@ -515,13 +516,13 @@ def isInRemoteTimer(self, begin, duration, service):
 				if chktime is None:
 					chktime = localtime(begin)
 					chktimecmp = chktime.tm_wday * 1440 + chktime.tm_hour * 60 + chktime.tm_min
-					chktimecmp_end = chktimecmp + (duration / 60)
+					chktimecmp_end = chktimecmp + (duration // 60)
 				time = localtime(x.timebegin)
 				for y in range(7):
 					if x.repeated & (2 ** y):
 						timecmp = y * 1440 + time.tm_hour * 60 + time.tm_min
-						if timecmp <= chktimecmp < (timecmp + ((x.timeend - x.timebegin) / 60)):
-							time_match = ((timecmp + ((x.timeend - x.timebegin) / 60)) - chktimecmp) * 60
+						if timecmp <= chktimecmp < (timecmp + ((x.timeend - x.timebegin) // 60)):
+							time_match = ((timecmp + ((x.timeend - x.timebegin) // 60)) - chktimecmp) * 60
 						elif chktimecmp <= timecmp < chktimecmp_end:
 							time_match = (chktimecmp_end - timecmp) * 60
 			else:

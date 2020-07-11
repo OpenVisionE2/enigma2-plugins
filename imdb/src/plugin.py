@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 # for localized messages
 from . import _
 
@@ -543,7 +543,7 @@ class IMDB(Screen, HelpableScreen):
 			if ratingtext:
 				ratingtext = ratingtext.group("rating")
 				if ratingtext != '<span id="voteuser"></span>':
-					text = ratingtext                                # + " / 10"
+					text = ratingtext                                # + " // 10"
 					rating = _("User Rating") + ": " + text
 			else:
 				rating = (_("User Rating") + ": ")
@@ -782,7 +782,7 @@ class IMDB(Screen, HelpableScreen):
 			if rating:
 				rating = rating.group("rating")
 				if rating != '<span id="voteuser"></span>':
-					Ratingtext = _("User Rating") + ": " + rating + " / 10"
+					Ratingtext = _("User Rating") + ": " + rating + " // 10"
 					self.ratingstars = int(10*round(float(rating.replace(',','.')),1))
 					self["stars"].show()
 					self["stars"].setValue(self.ratingstars)
@@ -952,7 +952,7 @@ class IMDbSetup(Screen, ConfigListScreen):
 		self.list.append(getConfigListEntry(_("Show search in plugin browser"), config.plugins.imdb.showinplugins, _("Enable this to be able to access IMDb searches from within the plugin browser.")))
 		self.list.append(getConfigListEntry(_("Show setup in plugin browser"), config.plugins.imdb.showsetupinplugins, _("Enable this to be able to access IMDb search setup from within the plugin browser.")))
 		self.list.append(getConfigListEntry(_("Show in movie list"), config.plugins.imdb.showinmovielist, _("Enable this to be able to access IMDb searches from within the movie list."))),
-		self.list.append(getConfigListEntry(_("Words / phrases to ignore "), config.plugins.imdb.ignore_tags, _("This option allows you add words/phrases for IMDb to ignore when searching. Please separate the words/phrases with commas.")))
+		self.list.append(getConfigListEntry(_("Words // phrases to ignore "), config.plugins.imdb.ignore_tags, _("This option allows you add words/phrases for IMDb to ignore when searching. Please separate the words/phrases with commas.")))
 		self.list.append(getConfigListEntry(_("Show full movie or series name in title menu"), config.plugins.imdb.showlongmenuinfo, _("Show the whole IMDb title information for a movie or series, including, for example, alternative names and whether it's a series. Takes effect after the next search of IMDb for a show name.")))
 		self.list.append(getConfigListEntry(_("Show episode and year information in cast list"), config.plugins.imdb.showepisodeinfo, _("Show episode and year information for cast when available. Takes effect after the next fetch of show details.")))
 		self["config"].list = self.list

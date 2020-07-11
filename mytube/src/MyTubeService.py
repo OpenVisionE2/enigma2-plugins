@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 from enigma import ePythonMessagePump
 
 from ThreadQueue import ThreadQueue
@@ -785,7 +785,7 @@ class MyTubePlayerService():
 		if self.feed.start_index is None:
 			return 1
 		
-		return int(int(self.feed.start_index.text) / int(self.itemCount())) + 1
+		return int(int(self.feed.start_index.text) // int(self.itemCount())) + 1
 
 class YoutubeQueryThread(Thread):
 	def __init__(self, query, param, gotFeed, gotFeedError, callback, errorback):

@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 #===============================================================================
 # Battleship Plugin by DarkVolli 2011
 #
@@ -496,7 +496,7 @@ def calcNewField(field):
 	for i in range(XYMAX):
 		if field[i] == 4:
 			lx = i % XMAX
-			ly = i / XMAX
+			ly = i // XMAX
 			if lx > 0:
 				if field[lx+ly*XMAX-1] == 0:
 					field[lx+ly*XMAX-1] = 2
@@ -551,7 +551,7 @@ def calcNewField(field):
 	while 1:
 		if i+1<XYMAX:
 			x = rand() % XMAX
-			y = 2 * (rand() % (YMAX / 2)) + (x % 2)
+			y = 2 * (rand() % (YMAX // 2)) + (x % 2)
 		else:
 			x = rand() % XMAX
 			y = rand() % YMAX

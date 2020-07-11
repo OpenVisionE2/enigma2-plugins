@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 #  Advanced Movie Selection for Dreambox-Enigma2
 #
 #  The plugin is developed on the basis from a lot of single plugins (thx for the code @ all)
@@ -455,7 +455,7 @@ class MovieList(GUIComponent):
             length = _len
         
             if _len > 0:
-                _len = "%d:%02d" % (_len / 60, _len % 60)
+                _len = "%d:%02d" % (_len // 60, _len % 60)
             else:
                 _len = ""
             
@@ -505,19 +505,19 @@ class MovieList(GUIComponent):
                     cut_list = CueSheet(serviceref).getCutList()
                     for (pts, what) in cut_list:
                         if what == 1 and length == 0:
-                            length = pts / 90000
+                            length = pts // 90000
                         if what == 3:
                             last = pts
                 elif cue is not None:
                     cut_list = cue.getCutList()
                     for (pts, what) in cut_list:
                         if what == 1 and length == 0:
-                            length = pts / 90000
+                            length = pts // 90000
                         if what == 3:
                             last = pts
                 perc = 0
                 if last is not None and length > 0:
-                    perc = int((float(last) / 90000 / float(length)) * 100);
+                    perc = int((float(last) // 90000 // float(length)) * 100);
                     if perc > 100:
                         perc = 100
                     if perc < 0:
@@ -539,7 +539,7 @@ class MovieList(GUIComponent):
                     #    png = LoadPixmap(resolveFilename(SCOPE_CURRENT_PLUGIN, IMAGE_PATH + MEDIAEXTENSIONS[extension] + ".png"))   
                         
                     if self.show_progressbar:
-                        top = int((self.l.getItemSize().height() - 6) / 2) + 1
+                        top = int((self.l.getItemSize().height() - 6) // 2) + 1
                         res.append(MultiContentEntryProgress(pos=(0 + offset, top), size=(50, 6), percent=perc, borderWidth=1, foreColor=color, backColorSelected=color)) #Topfi: added backColorSelected
                         offset = offset + 55
         
@@ -578,7 +578,7 @@ class MovieList(GUIComponent):
                     filename = os.path.splitext(serviceref.getPath())[0] + ".jpg"
                 else:
                     filename = serviceref.getPath() + ".jpg"
-                filesize = float(info.getFileSize(serviceref) / (1024 * 1024))
+                filesize = float(info.getFileSize(serviceref) // (1024 * 1024))
                 prec_text = str(perc) + '%'
                 png = None
                 series_path = os.path.join(os.path.dirname(serviceref.getPath()), "series.jpg")
@@ -611,7 +611,7 @@ class MovieList(GUIComponent):
                     if filesize <= 999:
                         filesize = "%d MB" % (filesize)
                     else:
-                        filesize = "%s GB" % (round(filesize / 1000, 2))                
+                        filesize = "%s GB" % (round(filesize // 1000, 2))                
                     res.append(MultiContentEntryText(pos=(width - 185, 28), size=(180, 30), font=2, flags=RT_HALIGN_RIGHT, text=filesize, color=color, color_sel=color)) #Topfi: added color_sel
                 # Line 3: begin_string, progress bar, percent, tags, movie length
                 res.append(MultiContentEntryText(pos=(0 + offset, 55), size=(100, 20), font=1, flags=RT_HALIGN_LEFT, text=begin_string, color=color, color_sel=color)) #Topfi: added color_sel
@@ -1168,11 +1168,11 @@ class MovieList(GUIComponent):
             cutList = cue.getCutList()
             for (pts, what) in cutList:
                 if what == 3:
-                    last = pts / 90000
+                    last = pts // 90000
                     break
         if length == 0:
             return 0
-        perc = int((float(last) / float(length)) * 100);
+        perc = int((float(last) // float(length)) * 100);
         return perc
 
     def updateMetaFromEit(self):

@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 #
 #  fstabeditor
 #
@@ -148,7 +148,7 @@ class fstabViewerScreen(Screen,HelpableScreen):
 			fstabFile.close()
 			
 		self["menulist"].l.setList(self.fstabEntryList)
-		self["entryinfo"].setText("%d / %d" %(self["menulist"].getSelectedIndex()+1, self.counter))
+		self["entryinfo"].setText("%d // %d" %(self["menulist"].getSelectedIndex()+1, self.counter))
 	
 	def writeFile(self, returnvalue):
 		if returnvalue != 0:
@@ -161,7 +161,7 @@ class fstabViewerScreen(Screen,HelpableScreen):
 			self.buildScreen()
 			
 	def selectionChanged(self):
-		self["entryinfo"].setText("%d / %d" %(self["menulist"].getSelectedIndex()+1, self.counter))
+		self["entryinfo"].setText("%d // %d" %(self["menulist"].getSelectedIndex()+1, self.counter))
 		
 	def mountall(self):
 		Console().ePopen("mount -a")

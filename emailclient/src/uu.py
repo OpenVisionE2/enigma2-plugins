@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 #! /usr/bin/python2.7
 
 # Copyright 1994 by Lance Ellinghouse

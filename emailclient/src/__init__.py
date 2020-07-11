@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 '''
 Common functions for EmailClient
 '''
@@ -55,4 +55,4 @@ def scaleV(y2, y1):
 		y1 = y2*576/720
 	return scale(y2, y1, 720, 576, DESKTOP_HEIGHT)
 def scale(y2, y1, x2, x1, x):
-	return (y2 - y1) * (x - x1) / (x2 - x1) + y1
+	return (y2 - y1) * (x - x1) // (x2 - x1) + y1

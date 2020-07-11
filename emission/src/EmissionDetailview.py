@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import division
 
 # GUI (Screens)
 from Screens.Screen import Screen
@@ -229,8 +230,8 @@ class EmissionDetailview(Screen, HelpableScreen):
 			self["private"].text = ""
 			self["files"].setList([])
 		else:
-			self["upspeed"].text = _("%d kb/s") % (torrent.rateUpload / 1024)
-			self["downspeed"].text = _("%d kb/s") % (torrent.rateDownload / 1024)
+			self["upspeed"].text = _("%d kb/s") % (torrent.rateUpload // 1024)
+			self["downspeed"].text = _("%d kb/s") % (torrent.rateDownload // 1024)
 			self["progress"].setValue(int(torrent.progress))
 
 			status = torrent.status
@@ -268,7 +269,7 @@ class EmissionDetailview(Screen, HelpableScreen):
 				l.append((id, x['priority'], str(completed/1048576) + " MB", \
 					x['selected'], str(x['name']), str(size/1048576) + " MB", \
 					x['selected'] and _("downloading") or _("skipping"), \
-					int(100*(completed / float(size)))
+					int(100*(completed // float(size)))
 				))
 
 			index = min(self["files"].index, len(l)-1)

@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 #####################################################
 # TVCharts Plugin for Enigma2 Dreamboxes
 # Coded by Homey (c) 2011
@@ -68,7 +68,7 @@ class ChannelListMenu(MenuList):
 def ChannelListEntryComponent(type, channelname, serviceref, eventid, eventname, starttime, endtime, usercount, percent):
 	res = [ (serviceref, eventid) ]
 
-	# PIXMAP / PICON
+	# PIXMAP // PICON
 	pixmap = resolveFilename(SCOPE_CURRENT_SKIN, "picon_default.png")
 	searchPaths = ('/usr/share/enigma2/picon/','/media/cf/picon/','/media/usb/picon/')
 

@@ -1,8 +1,8 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 #  PrimeTimeManager E2
-#  Coded by by Shaderman (c) 2010-2011 / Dimitrij openPLi 2013-2016
+#  Coded by by Shaderman (c) 2010-2011 // Dimitrij openPLi 2013-2016
 #
 #################
 ### CHANGELOG ###
@@ -489,7 +489,7 @@ class PrimeTimeManager(Screen, HelpableScreen):
 		return services
 
 	####################################
-	### TRANSPONDER / CONFLICT STUFF ###
+	### TRANSPONDER // CONFLICT STUFF ###
 	####################################
 
 	# check for a conflict between two timers
@@ -1372,7 +1372,7 @@ class PrimeTimeManager(Screen, HelpableScreen):
 		else:
 			self["favList" + str(self.activeList.position)].selectionEnabled(1)
 
-	# change the active list (prime time / favorites)
+	# change the active list (prime time // favorites)
 	def changeActiveList(self):
 		if self.activeList.name == "ptList":
 			# only activate the favorite list if it has entries already
@@ -1819,7 +1819,7 @@ class PrimeTimeManager(Screen, HelpableScreen):
 			timerEntry = self.getRecordTimerEntry(selected)
 			self.session.openWithCallback(boundFunction(self.timerEntryScreenClosed, selected), TimerEntry, timerEntry)
 
-	# enable / disable the "set day" button
+	# enable // disable the "set day" button
 	def setSetDayButton(self):
 		numFavorites = len(self.favoriteEvents[self.dayOffset].services)
 
@@ -1830,7 +1830,7 @@ class PrimeTimeManager(Screen, HelpableScreen):
 			self["key_yellow"].text = _("Set day")
 			self.setDayEnabled = True
 
-	# enable / disable the "set timer" button
+	# enable // disable the "set timer" button
 	def setSetTimerButton(self):
 		selected = self[self.activeList.name + str(self.activeList.position)].getCurrent()[0]
 		sRef = selected[SERVICEREF]
@@ -2280,22 +2280,22 @@ class PreviewList(MenuList):
 		else:
 			begin = strftime("%H:%M", localtime(beginTime))
 
-			res.append((eListboxPythonMultiContent.TYPE_TEXT, 0, 75 + offsetY, width / 2, 18, 0, RT_HALIGN_LEFT|RT_VALIGN_CENTER, _("Begin time") + ":"))
-			res.append((eListboxPythonMultiContent.TYPE_TEXT, width / 2, 75 + offsetY, width / 2, 18, 0, RT_HALIGN_LEFT|RT_VALIGN_CENTER, "%s" % begin))
+			res.append((eListboxPythonMultiContent.TYPE_TEXT, 0, 75 + offsetY, width // 2, 18, 0, RT_HALIGN_LEFT|RT_VALIGN_CENTER, _("Begin time") + ":"))
+			res.append((eListboxPythonMultiContent.TYPE_TEXT, width // 2, 75 + offsetY, width // 2, 18, 0, RT_HALIGN_LEFT|RT_VALIGN_CENTER, "%s" % begin))
 
 			if config.plugins.PrimeTimeManager.DurationOrEndTime.value == "duration":
-				#duration = _("%dh:%02dmin") % (durationTime / 3600, (durationTime / 60) - ((durationTime / 3600) * 60))
-				res.append((eListboxPythonMultiContent.TYPE_TEXT, 0, 95 + offsetY, width / 2, 18, 0, RT_HALIGN_LEFT|RT_VALIGN_CENTER, _("Duration") + ":"))
-				res.append((eListboxPythonMultiContent.TYPE_TEXT, width / 2, 95 + offsetY, width / 2, 18, 0, RT_HALIGN_LEFT|RT_VALIGN_CENTER, _("%d min") % (durationTime / 60)))
+				#duration = _("%dh:%02dmin") % (durationTime // 3600, (durationTime // 60) - ((durationTime // 3600) * 60))
+				res.append((eListboxPythonMultiContent.TYPE_TEXT, 0, 95 + offsetY, width // 2, 18, 0, RT_HALIGN_LEFT|RT_VALIGN_CENTER, _("Duration") + ":"))
+				res.append((eListboxPythonMultiContent.TYPE_TEXT, width // 2, 95 + offsetY, width // 2, 18, 0, RT_HALIGN_LEFT|RT_VALIGN_CENTER, _("%d min") % (durationTime // 60)))
 			else:
 				end = strftime("%H:%M", localtime(beginTime + durationTime))
-				res.append((eListboxPythonMultiContent.TYPE_TEXT, 0, 95 + offsetY, width / 2, 18, 0, RT_HALIGN_LEFT|RT_VALIGN_CENTER, _("End time") + ":"))
-				res.append((eListboxPythonMultiContent.TYPE_TEXT, width / 2, 95 + offsetY, width / 2, 18, 0, RT_HALIGN_LEFT|RT_VALIGN_CENTER, "%s" % end))
+				res.append((eListboxPythonMultiContent.TYPE_TEXT, 0, 95 + offsetY, width // 2, 18, 0, RT_HALIGN_LEFT|RT_VALIGN_CENTER, _("End time") + ":"))
+				res.append((eListboxPythonMultiContent.TYPE_TEXT, width // 2, 95 + offsetY, width // 2, 18, 0, RT_HALIGN_LEFT|RT_VALIGN_CENTER, "%s" % end))
 
 			if self.listType is FAVORITE:
 				bouquet = self.serviceBouquet[serviceRef]
 				res.append((eListboxPythonMultiContent.TYPE_TEXT, 0, 75, width, 18, 0, RT_HALIGN_LEFT|RT_VALIGN_CENTER, _("Bouquet:")))
-				res.append((eListboxPythonMultiContent.TYPE_TEXT, width / 2, 75, width / 2, 18, 0, RT_HALIGN_LEFT|RT_VALIGN_CENTER, bouquet))
+				res.append((eListboxPythonMultiContent.TYPE_TEXT, width // 2, 75, width // 2, 18, 0, RT_HALIGN_LEFT|RT_VALIGN_CENTER, bouquet))
 
 				if numConflicts > 9:
 					numConflicts = 10
@@ -2402,7 +2402,7 @@ class NoScrollBarLabel(ScrollLabel):
 		lineheight=fontRenderClass.getInstance().getLineHeight( self.long_text.getFont() )
 		if not lineheight:
 			lineheight = 30 # assume a random lineheight if nothing is visible
-		lines = (int)(s.height() / lineheight)
+		lines = (int)(s.height() // lineheight)
 		self.pageHeight = (int)(lines * lineheight)
 		self.instance.resize(eSize(s.width(), self.pageHeight+(int)(lineheight/6)))
 		self.long_text.move(ePoint(0,0))

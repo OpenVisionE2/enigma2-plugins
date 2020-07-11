@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 ##
 ## RS Downloader
 ## by AliAbdul
@@ -385,8 +385,8 @@ class RSDownload:
 
 	def httpProgress(self, recvbytes, totalbytes):
 		if self.size == 0:
-			self.size = int((totalbytes / 1024) / 1024)
-		self.progress = int(100.0 * float(recvbytes) / float(totalbytes))
+			self.size = int((totalbytes // 1024) // 1024)
+		self.progress = int(100.0 * float(recvbytes) // float(totalbytes))
 
 	def httpFinished(self, string=None):
 		if string is not None:
@@ -944,7 +944,7 @@ class RSSearch(Screen):
 				except:
 					pass
 				
-				self.instance.setTitle(_("Page %d / %d. Push < > to switch the page...")%(self.curPage, self.maxPage))
+				self.instance.setTitle(_("Page %d // %d. Push < > to switch the page...")%(self.curPage, self.maxPage))
 			
 			while html.__contains__('title="Download"'):
 				idx = html.index('title="Download"')

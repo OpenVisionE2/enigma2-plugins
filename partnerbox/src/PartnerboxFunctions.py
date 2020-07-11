@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 #
 #  Partnerbox E2
 #
@@ -77,13 +77,13 @@ def isInTimerList(begin, duration, service, eventid, timer_list):
 				if chktime is None:
 					chktime = localtime(begin)
 					chktimecmp = chktime.tm_wday * 1440 + chktime.tm_hour * 60 + chktime.tm_min
-					chktimecmp_end = chktimecmp + (duration / 60)
+					chktimecmp_end = chktimecmp + (duration // 60)
 				time = localtime(x.timebegin)
 				for y in range(7):
 					if x.repeated & (2 ** y):
 						timecmp = y * 1440 + time.tm_hour * 60 + time.tm_min
-						if timecmp <= chktimecmp < (timecmp + ((x.timeend - x.timebegin) / 60)):
-							time_match = ((timecmp + ((x.timeend - x.timebegin) / 60)) - chktimecmp) * 60
+						if timecmp <= chktimecmp < (timecmp + ((x.timeend - x.timebegin) // 60)):
+							time_match = ((timecmp + ((x.timeend - x.timebegin) // 60)) - chktimecmp) * 60
 						elif chktimecmp <= timecmp < chktimecmp_end:
 							time_match = (chktimecmp_end - timecmp) * 60
 			else: 
@@ -118,7 +118,7 @@ def isInRepeatTimer(self, timer, event):
 	bt = localtime(begin)
 	bday = bt.tm_wday
 	begin2 = 1440 + bt.tm_hour * 60 + bt.tm_min
-	end2 = begin2 + duration / 60
+	end2 = begin2 + duration // 60
 	xbt = localtime(timer.begin)
 	xet = localtime(timer_end)
 	offset_day = False
@@ -128,7 +128,7 @@ def isInRepeatTimer(self, timer, event):
 		if oday == -1: oday = 6
 		offset_day = timer.repeated & (1 << oday)
 	xbegin = 1440 + xbt.tm_hour * 60 + xbt.tm_min
-	xend = xbegin + ((timer_end - timer.begin) / 60)
+	xend = xbegin + ((timer_end - timer.begin) // 60)
 	if xend < xbegin:
 		xend += 1440
 	if timer.repeated & (1 << bday) and checking_time:

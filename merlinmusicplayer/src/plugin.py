@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 #
 #  Merlin Music Player E2
 #
@@ -448,7 +448,7 @@ def getID3Tags(root,filename):
 		except:
 			length = -1
 		if not isFlac:
-			bitrate = audio.info.bitrate / 1000
+			bitrate = audio.info.bitrate // 1000
 		else:
 			bitrate = None
 	else:

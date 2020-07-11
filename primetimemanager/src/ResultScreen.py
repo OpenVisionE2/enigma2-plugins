@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import division
 from . import _
 from time import localtime, strftime
 from Components.ActionMap import HelpableActionMap
@@ -170,16 +171,16 @@ class ResultList(GUIComponent, object):
 		res.append((eListboxPythonMultiContent.TYPE_TEXT, 105, 100, 105, 18, 0, RT_HALIGN_LEFT|RT_VALIGN_CENTER, "%s" % begin))
 
 		if config.plugins.PrimeTimeManager.DurationOrEndTime.value == "duration":
-			#duration = "%d:%02d" % (favorite[DURATION] / 60, favorite[DURATION] % 60)
+			#duration = "%d:%02d" % (favorite[DURATION] // 60, favorite[DURATION] % 60)
 			res.append((eListboxPythonMultiContent.TYPE_TEXT, 5, 120, 105, 18, 0, RT_HALIGN_LEFT|RT_VALIGN_CENTER, _("Duration") + ":"))
-			res.append((eListboxPythonMultiContent.TYPE_TEXT, 105, 120, 105, 18, 0, RT_HALIGN_LEFT|RT_VALIGN_CENTER, _("%d min") % (favorite[DURATION] / 60)))
+			res.append((eListboxPythonMultiContent.TYPE_TEXT, 105, 120, 105, 18, 0, RT_HALIGN_LEFT|RT_VALIGN_CENTER, _("%d min") % (favorite[DURATION] // 60)))
 		else:
 			end = strftime("%H:%M", localtime(favorite[BEGIN] + favorite[DURATION]))
 			res.append((eListboxPythonMultiContent.TYPE_TEXT, 5, 120, 105, 18, 0, RT_HALIGN_LEFT|RT_VALIGN_CENTER, _("End time") + ":"))
 			res.append((eListboxPythonMultiContent.TYPE_TEXT, 105, 120, 105, 18, 0, RT_HALIGN_LEFT|RT_VALIGN_CENTER, "%s" % end))
 
 		res.append((eListboxPythonMultiContent.TYPE_TEXT, 5, 75, width, 18, 0, RT_HALIGN_LEFT|RT_VALIGN_CENTER, _("Bouquet") + ":"))
-		res.append((eListboxPythonMultiContent.TYPE_TEXT, 105, 75, width / 2, 18, 0, RT_HALIGN_LEFT|RT_VALIGN_CENTER, bouquet))
+		res.append((eListboxPythonMultiContent.TYPE_TEXT, 105, 75, width // 2, 18, 0, RT_HALIGN_LEFT|RT_VALIGN_CENTER, bouquet))
 
 		res.append((eListboxPythonMultiContent.TYPE_PIXMAP_ALPHATEST, 190, 103, 17, 30, self.digitList[numConflicts]))
 
@@ -222,9 +223,9 @@ class ResultList(GUIComponent, object):
 
 			timerDuration = similarTimer.end - similarTimer.begin
 			if config.plugins.PrimeTimeManager.DurationOrEndTime.value == "duration":
-				#duration = "%d:%02d" % (timerDuration / 60, timerDuration % 60)
+				#duration = "%d:%02d" % (timerDuration // 60, timerDuration % 60)
 				res.append((eListboxPythonMultiContent.TYPE_TEXT, 275, 120, 105, 18, 0, RT_HALIGN_LEFT|RT_VALIGN_CENTER, _("Duration") + ":"))
-				res.append((eListboxPythonMultiContent.TYPE_TEXT, 380, 120, 105, 18, 0, RT_HALIGN_LEFT|RT_VALIGN_CENTER, _("%d min") % (timerDuration / 60)))
+				res.append((eListboxPythonMultiContent.TYPE_TEXT, 380, 120, 105, 18, 0, RT_HALIGN_LEFT|RT_VALIGN_CENTER, _("%d min") % (timerDuration // 60)))
 			else:
 				end = strftime("%H:%M", localtime(similarTimer.begin + favorite[DURATION]))
 				res.append((eListboxPythonMultiContent.TYPE_TEXT, 275, 120, 105, 18, 0, RT_HALIGN_LEFT|RT_VALIGN_CENTER, _("End time") + ":"))

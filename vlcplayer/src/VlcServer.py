@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 #===============================================================================
 # VLC Player Plugin by A. Latsch 2007
 #                   modified by Volker Christian 2008
@@ -273,8 +273,8 @@ class VlcServer:
 			#New canvas - since VLC 0.9
 			if oldVLC:
 				transcode.append("vfilter=canvas{width=%s,height=%s,aspect=%s}" % (
-					str(int(float(videoNormList[0]) - float(videoNormList[0]) * float(self.getOverscanCorrection()) / 100)),
-					str(int(float(videoNormList[1]) - float(videoNormList[1]) * float(self.getOverscanCorrection()) / 100)),
+					str(int(float(videoNormList[0]) - float(videoNormList[0]) * float(self.getOverscanCorrection()) // 100)),
+					str(int(float(videoNormList[1]) - float(videoNormList[1]) * float(self.getOverscanCorrection()) // 100)),
 					videoNormList[2]
 				))
 			if self.getSOverlay():

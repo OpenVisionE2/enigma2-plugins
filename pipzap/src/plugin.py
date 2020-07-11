@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 
 # Plugin definition
 from Plugins.Plugin import PluginDescriptor
@@ -371,11 +371,11 @@ class PictureInPictureZapping(Screen):
 		y = config.av.pip.value[1]
 		width = getDesktop(0).size().width()
 		height = getDesktop(0).size().height()
-		if x > width / 2:
+		if x > width // 2:
 			x = 40
 		else:
 			x = width - 120
-		if y > height / 2:
+		if y > height // 2:
 			y = 40
 		else:
 			y = height - 55

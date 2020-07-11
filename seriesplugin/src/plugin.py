@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import division
 import os, sys, traceback
 
 # Localization
@@ -373,7 +374,7 @@ def Plugins(**kwargs):
 	return descriptors
 
 #######################################################
-# Add / Remove menu functions
+# Add // Remove menu functions
 def addSeriesPlugin(menu, title, fnc=None):
 	# Add to menu
 	if( menu == WHERE_EPGMENU ):

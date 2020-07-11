@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 """
 Copyright (C) 2012 cmikula
 
@@ -34,16 +34,16 @@ def realSize(bytes, digits=1, factor=1024):
     f = '%%.%df' % digits
     if size < 1000:
         return f % size + ' Bytes'
-    size = size / factor
+    size = size // factor
     if size < 1000:
         return f % size + ' KB'
-    size = size / factor
+    size = size // factor
     if size < 1000:
         return f % size + ' MB'
-    size = size / factor
+    size = size // factor
     if size < 1000:
         return f % size + ' GB'
-    size = size / factor
+    size = size // factor
     return f % size + ' TB'
 
 
@@ -459,8 +459,8 @@ class JobMonitor:
                     full = job.getSizeTotal()
                     copied = job.getSizeCopied()
                     elapsed_time = job.getElapsedTime()
-                    progress = copied * 100 / full
-                    b_per_sec = copied / elapsed_time
+                    progress = copied * 100 // full
+                    b_per_sec = copied // elapsed_time
                     print('%0s,%s' % job.getFileInfo())
                     print('%s: %0d%%, %s, %s, %s/S - %.3f S (%d/%d)' % (job.getMovieName(), progress, realSize(full), realSize(copied), realSize(b_per_sec, 3), elapsed_time, job.getCurrentIndex(), job.getFileCount()))
                     if job.isFinished():

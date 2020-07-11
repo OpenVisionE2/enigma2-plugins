@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+from __future__ import division, print_function
 
 '''
 Copyright (C) 2011 cmikula
@@ -49,7 +49,7 @@ class AsynchTrash(Thread):
     def run(self):
         self.cancel = False
         if(self.wait_ms > 0):
-            seconds = self.wait_ms / 1000.0
+            seconds = self.wait_ms // 1000.0
             time.sleep(seconds)
         for service in self.items:
             if self.cancel:
@@ -237,5 +237,5 @@ class Trashcan:
     @staticmethod
     def getTrashSize():
         global trash_size
-        return float(trash_size / (1024 * 1024))
+        return float(trash_size // (1024 * 1024))
     

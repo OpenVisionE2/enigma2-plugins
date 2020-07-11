@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import division
 #
 #    SmartInfo-Converter for Dreambox/Enigma-2
 #    Coded by Vali (c)2009-2011
@@ -66,8 +67,8 @@ class vConvSmartInfo(Poll, Converter, object):
 				frontendData = (feinfo and feinfo.getAll(True))
 				if (frontendData is not None):
 					if ((frontendData.get("tuner_type") == "DVB-S") or (frontendData.get("tuner_type") == "DVB-C")):
-						frequency = (str((frontendData.get("frequency") / 1000)) + " MHz")
-						symbolrate = (str((float(frontendData.get("symbol_rate")) / float(1000000))) + " MS/s")
+						frequency = (str((frontendData.get("frequency") // 1000)) + " MHz")
+						symbolrate = (str((float(frontendData.get("symbol_rate")) // float(1000000))) + " MS/s")
 						try:
 							if (frontendData.get("tuner_type") == "DVB-S"):
 								polarisation_i = frontendData.get("polarization")
@@ -86,7 +87,7 @@ class vConvSmartInfo(Poll, Converter, object):
 								orb_pos = str((float(orbital_pos))/10.0) + "E"
 						Ret_Text = Ret_Text + "Pos: " + orb_pos + "   "
 					elif (frontendData.get("tuner_type") == "DVB-T"):
-						frequency = (str((frontendData.get("frequency") / 1000)) + " MHz")
+						frequency = (str((frontendData.get("frequency") // 1000)) + " MHz")
 						Ret_Text = Ret_Text + "Frequency: " + frequency
 				prvd = info.getInfoString(iServiceInformation.sProvider)
 				Ret_Text = self.kurz(prvd) + "     " + Ret_Text
@@ -103,7 +104,7 @@ class vConvSmartInfo(Poll, Converter, object):
 						sensotN = sensors.getSensorName(id)
 						if sensotN == "undefined":
 							sensotN = "sensor-"+str(id)
-				Ret_Text = "max. Box-Temp:  " + str(maxtemp) + "°C / " + sensotN + "\n" + Ret_Text
+				Ret_Text = "max. Box-Temp:  " + str(maxtemp) + "°C // " + sensotN + "\n" + Ret_Text
 			except:
 				pass
 			return Ret_Text
