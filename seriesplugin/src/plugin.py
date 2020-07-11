@@ -32,7 +32,7 @@ VERSION = "5.6"
 DESCRIPTION = _("SeriesPlugin")
 SHOWINFO = _("Show series info (SP)")
 RENAMESERIES = _("Rename serie(s) (SP)")
-CHECKTIMERS = _("Check timer list for series (SP)")"
+CHECKTIMERS = _("Check timer list for series (SP)")
 TERMS = "http://www.serienserver.de"
 ABOUT = "\n  " + NAME + " " + VERSION + "\n\n" \
 				+ _("  (C) 2012 by betonme @ IHAD")
