@@ -1,6 +1,5 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import division
 # Format counter
 from time import strftime
 
@@ -89,7 +88,7 @@ class AutoTimerComponent(object):
 		self.series_labeling = series_labeling
 		self.setEndtime = setEndtime
 
-### Attributes // Properties
+### Attributes / Properties
 
 	def setAfterEvent(self, afterevent):
 		if afterevent is not self._afterevent:

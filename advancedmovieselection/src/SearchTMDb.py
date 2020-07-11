@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import division, print_function
+from __future__ import print_function
 from __init__ import _
 import urllib, shutil, os
 from enigma import RT_WRAP, RT_VALIGN_CENTER, RT_HALIGN_LEFT, RT_HALIGN_RIGHT, gFont, eListbox, eListboxPythonMultiContent
@@ -378,12 +378,12 @@ class TMDbMain(Screen, HelpableScreen, InfoLoadChoice):
                 else:
                     self['description'].setText(_("No description for ' %s ' at themoviedb.org found!") % name)
                 if released:
-                    extended = _('Appeared: %s') % released + ' // '
+                    extended = _('Appeared: %s') % released + ' / '
                 if runtime:
-                    extended += _('Runtime: %s minutes') % runtime + ' // '
+                    extended += _('Runtime: %s minutes') % runtime + ' / '
                 certification = tmdb.decodeCertification(movie.releases)
                 if certification:
-                    extended += _('Certification: %s') % _(certification) + ' // '
+                    extended += _('Certification: %s') % _(certification) + ' / '
                 rating = str(movie.userrating)
                 extended += _('Rating: %s\n') % rating
                 self.ratingstars = int(10 * round(float(rating.replace(',', '.')), 1))
@@ -394,10 +394,10 @@ class TMDbMain(Screen, HelpableScreen, InfoLoadChoice):
                     extended += _('Genre: %s\n') % (', ').join(genres)
                 studios = [ x.name.encode('utf-8', 'ignore') for x in movie.studios ]
                 if len(studios) > 0:
-                    extended += _('Studio: %s') % (', ').join(studios) + ' // '
+                    extended += _('Studio: %s') % (', ').join(studios) + ' / '
                 crew = [ x.name.encode('utf-8', 'ignore') for x in movie.crew if x.job == 'Director' ]
                 if len(crew) > 0:
-                    extended += _('Director: %s') % (', ').join(crew) + ' // '
+                    extended += _('Director: %s') % (', ').join(crew) + ' / '
                 crew = [ x.name.encode('utf-8', 'ignore') for x in movie.crew if x.job == 'Producer' ]
                 if len(crew) > 0:
                     extended += _('Production: %s\n') % (', ').join(crew)

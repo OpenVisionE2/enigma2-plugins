@@ -1,6 +1,5 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import division
 #######################################################################
 #
 #    Series Plugin for Enigma-2
@@ -108,7 +107,7 @@ class SeriesPluginInfoScreen(Screen):
 		self["duration"] = Label()
 		
 		self["key_red"] = Button("")				# Rename or Record
-		self["key_green"] = Button("")			# Trakt Seen // Not Seen
+		self["key_green"] = Button("")			# Trakt Seen / Not Seen
 		self["key_yellow"] = Button("")			# Show all Episodes of current season
 		self["key_blue"] = Button("")				# Show all Seasons
 		
@@ -232,7 +231,7 @@ class SeriesPluginInfoScreen(Screen):
 			except:
 				# Maybe it is an old reference
 				# Has the movie been renamed earlier?
-				# Refresh // reload the list?
+				# Refresh / reload the list?
 				self["event_episode"].setText( "No valid selection!" )
 				log.debug("No valid selection", str(ref))
 				return

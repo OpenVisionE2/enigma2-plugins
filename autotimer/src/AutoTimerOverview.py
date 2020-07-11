@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import division, print_function
+from __future__ import print_function
 # for localized messages
 from . import _, config
 
@@ -301,7 +301,7 @@ class AutoTimerOverview(Screen, HelpableScreen):
 				autotimerFaq = PluginHelp(*reader)
 				autotimerFaq.open(self.session)
 			elif ret == "preview":
-				# todo timeout // error handling
+				# todo timeout / error handling
 				self.autotimer.parseEPG(simulateOnly = True, callback = self.openPreview)
 			elif ret == "import":
 				newTimer = self.autotimer.defaultTimer.clone()

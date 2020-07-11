@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import division, print_function
+from __future__ import print_function
 #######################################################################
 #
 #    Push Service for Enigma-2
@@ -68,7 +68,7 @@ class PushServiceBase(Modules, ConfigFile):
 
 
 	######################################
-	# Setter // Getter
+	# Setter / Getter
 	def getServices(self):
 		return self.services or []
 

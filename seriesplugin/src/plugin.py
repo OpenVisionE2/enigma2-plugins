@@ -1,6 +1,5 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import division
 import os, sys, traceback
 
 # Localization
@@ -33,18 +32,10 @@ VERSION = "5.6"
 DESCRIPTION = _("SeriesPlugin")
 SHOWINFO = _("Show series info (SP)")
 RENAMESERIES = _("Rename serie(s) (SP)")
-CHECKTIMERS = _("Check timer list for series (SP)")
-SUPPORT = "http://bit.ly/seriespluginihad"
-DONATE = "http://bit.ly/seriespluginpaypal"
+CHECKTIMERS = _("Check timer list for series (SP)")"
 TERMS = "http://www.serienserver.de"
 ABOUT = "\n  " + NAME + " " + VERSION + "\n\n" \
-				+ _("  (C) 2012 by betonme @ IHAD \n\n") \
-				+ _("  Terms: ") + TERMS + "\n\n" \
-				+ _("  {lookups:d} successful lookups.\n") \
-				+ _("  How much time have You saved?\n\n") \
-				+ _("  Support: ") + SUPPORT + "\n" \
-				+ _("  Feel free to donate. \n") \
-				+ _("  PayPal: ") + DONATE
+				+ _("  (C) 2012 by betonme @ IHAD")
 
 USER_AGENT = "Enigma2-"+NAME
 
@@ -374,7 +365,7 @@ def Plugins(**kwargs):
 	return descriptors
 
 #######################################################
-# Add // Remove menu functions
+# Add / Remove menu functions
 def addSeriesPlugin(menu, title, fnc=None):
 	# Add to menu
 	if( menu == WHERE_EPGMENU ):

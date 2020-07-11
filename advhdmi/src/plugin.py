@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import division, print_function
+from __future__ import print_function
 
 from traceback import print_exc
 from sys import stdout, exc_info
@@ -110,7 +110,7 @@ ADVHDMI_VERSION = "1.4.3"
 # To implement a hook, just instantiate a AdvHdmiCecIF,
 # and overwrite the methods before_event and/or after_event
 
-# Events with boolean-return, that means if the CEC-signal has to be send // handled
+# Events with boolean-return, that means if the CEC-signal has to be send / handled
 ADVHDMI_BEFORE_POWERON = "BEFORE_POWERON"
 ADVHDMI_BEFORE_POWEROFF = "BEFORE_POWEROFF"
 ADVHDMI_BEFORE_RECEIVED_STANDBY = "BEFORE_RECEIVED_STANDBY"

@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import division, print_function
+from __future__ import print_function
 ##
 ## Movielist Preview
 ## by AliAbdul
@@ -418,7 +418,7 @@ class MovielistPreviewAutoCreator(Screen):
 			if fileExists(png):
 				self.grabDone()
 			else:
-				counter = "%d // %d" % (self.current, self.filescount)
+				counter = "%d / %d" % (self.current, self.filescount)
 				self["label"].setText(_("%s - creating preview for movie %s") % (counter, movie))
 				if movie.endswith(".ts"):
 					ref = eServiceReference(1, 0, movie)

@@ -1,6 +1,5 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import division
 #######################################################################
 #
 #    Push Service for Enigma-2
@@ -34,8 +33,7 @@ import gntp.notifier
 APP_NAME = _("{box:s} {name:s}")
 NOTIFICATION_TYPE = _("{name:s}")
 GROWL_SUBJECT_TEMPLATE = _("{box:s}: {subject:s}")
-GROWL_BODY_TEMPLATE = 	_("{body:s}\n\n") \
-											+ _("Donate {donate:s}")
+GROWL_BODY_TEMPLATE = _("{body:s}\n\n")
 
 
 class GNTP(ServiceBase):
@@ -56,7 +54,7 @@ class GNTP(ServiceBase):
 		self.setOption( 'priority',   NoSave(ConfigNumber(default = 1)),                       _("Send with priority") )
 
 	def push(self, callback, errback, pluginname, subject, body="", attachments=[]):
-		from Plugins.Extensions.PushService.plugin import NAME, VERSION, SUPPORT, DONATE
+		from Plugins.Extensions.PushService.plugin import NAME, VERSION
 		
 		box = config.pushservice.boxname.value
 		app = APP_NAME.format( **{'box': box, 'name': NAME} )
@@ -65,7 +63,7 @@ class GNTP(ServiceBase):
 		# Prepare message
 		if body == "": body = subject
 		subject = GROWL_SUBJECT_TEMPLATE.format( **{'box': box, 'subject': subject} )
-		body = GROWL_BODY_TEMPLATE.format( **{'body': str(body), 'name': NAME, 'version': VERSION, 'plugin': pluginname, 'support': SUPPORT, 'donate': DONATE} )
+		body = GROWL_BODY_TEMPLATE.format( **{'body': str(body), 'name': NAME, 'version': VERSION, 'plugin': pluginname} )
 		
 		# Registrate
 		growl = gntp.notifier.GrowlNotifier(
@@ -99,7 +97,7 @@ class GNTP(ServiceBase):
 #TODO Maybe later
 # we have to rewrite the gntp client
 # it has to use asynchronous connection - maybe twisted
-# and it should return the active socket // connector
+# and it should return the active socket / connector
 #	def cancel(self):
 #		# Cancel push
 #		if self.sockets:

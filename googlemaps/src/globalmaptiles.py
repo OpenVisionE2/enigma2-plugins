@@ -89,8 +89,8 @@ class GlobalMercator(object):
          lat/lon            XY in metres     XY pixels Z zoom      XYZ from TMS
         EPSG:4326           EPSG:900913                                        
          .----.              ---------               --                TMS      
-        //      \     <->     |       |     <->     /----/    <->      Google    
-        \      //             |       |           /--------/          QuadTree  
+        /      \     <->     |       |     <->     /----/    <->      Google    
+        \      /             |       |           /--------/          QuadTree  
          -----               ---------         /------------/                  
        KML, public         WebMapService         Web Clients      TileMapService
 
@@ -308,8 +308,8 @@ class GlobalGeodetic(object):
          lat/lon         XY pixels Z zoom      XYZ from TMS
         EPSG:4326                                          
          .----.                ----                        
-        //      \     <->    /--------/    <->      TMS      
-        \      //         /--------------/                  
+        /      \     <->    /--------/    <->      TMS      
+        \      /         /--------------/                  
          -----        /--------------------/                
        WMS, KML    Web Clients, Google Earth  TileMapService
     """
@@ -429,7 +429,7 @@ if __name__ == "__main__":
     for ty in range(tminy, tmaxy+1):
         for tx in range(tminx, tmaxx+1):
             tilefilename = "%s/%s/%s" % (tz, tx, ty)
-            print(tilefilename, "( TileMapService: z // x // y )")
+            print(tilefilename, "( TileMapService: z / x / y )")
         
             gx, gy = mercator.GoogleTile(tx, ty, tz)
             print("\tGoogle:", gx, gy)

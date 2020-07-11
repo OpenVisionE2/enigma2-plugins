@@ -1,6 +1,5 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import division
 # Screens
 from Screens.Screen import Screen
 from Screens.ChoiceBox import ChoiceBox
@@ -196,7 +195,7 @@ class EPGBackupConfig(Screen, HelpableScreen, ConfigListScreen):
 			or (self.confShowSetupIn != "system" and config.plugins.epgbackup.show_setup_in.value == "system"):
 			self.needsEnigmaRestart = True
 	
-	# overwrites // extendends
+	# overwrites / extendends
 	def keyLeft(self):
 		ConfigListScreen.keyLeft(self)
 		self._onKeyChange()

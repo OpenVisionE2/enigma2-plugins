@@ -1,6 +1,5 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import division
 #######################################################################
 #
 #    InfoBar Tuner State for Enigma-2
@@ -201,7 +200,7 @@ class InfoBarTunerStateConfiguration(Screen, ConfigListScreen):
 		
 		# Overwrite Screen close function to handle new config
 		
-		# We need assign // "write" access import the plugin module
+		# We need assign / "write" access import the plugin module
 		# global won't work across module scope
 		import plugin
 		if config.infobartunerstate.enabled.value:

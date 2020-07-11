@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import division, print_function
+from __future__ import print_function
 
 # for localized messages
 from . import _
@@ -683,7 +683,7 @@ class AutoTimer:
 
 				if conflicts:
 					# Maybe use newEntry.log
-					conflictString += ' // '.join(["%s (%s)" % (x.name, strftime("%Y%m%d %H%M", localtime(x.begin))) for x in conflicts])
+					conflictString += ' / '.join(["%s (%s)" % (x.name, strftime("%Y%m%d %H%M", localtime(x.begin))) for x in conflicts])
 					print("[AutoTimer] conflict with %s detected" % (conflictString))
 
 					if config.plugins.autotimer.addsimilar_on_conflict.value:

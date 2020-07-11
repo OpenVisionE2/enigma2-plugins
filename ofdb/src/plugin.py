@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import division, print_function
+from __future__ import print_function
 from Plugins.Plugin import PluginDescriptor
 from twisted.web.client import downloadPage
 from enigma import ePicLoad, eServiceReference
@@ -417,7 +417,7 @@ class OFDB(Screen):
 			rating = ratingmask.search(self.inhtml)
 			Ratingtext = _("no user rating yet")
 			if rating:
-				Ratingtext = rating.group("g_rating") + rating.group("rating") + " // 10"
+				Ratingtext = rating.group("g_rating") + rating.group("rating") + " / 10"
 				self.ratingstars = int(10*round(float(rating.group("rating")),1))
 				self["stars"].show()
 				self["stars"].setValue(self.ratingstars)

@@ -1,6 +1,5 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import division
 ######################## BEGIN LICENSE BLOCK ########################
 # The Original Code is Mozilla Universal charset detector code.
 #
@@ -128,7 +127,7 @@ import constants
 # model probers scores. The answer is returned in the form of the name of the
 # charset identified, either "windows-1255" or "ISO-8859-8".
 
-# windows-1255 // ISO-8859-8 code points of interest
+# windows-1255 / ISO-8859-8 code points of interest
 FINAL_KAF = '\xea'
 NORMAL_KAF = '\xeb'
 FINAL_MEM = '\xed'

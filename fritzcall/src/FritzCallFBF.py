@@ -1,6 +1,5 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import division
 '''
 Created on 30.09.2012
 $Author: michael $
@@ -2395,7 +2394,7 @@ class FritzCallFBF_05_50(object):
 		found = re.match(r'.*IPv6-Präfix: ([^<]*)</span>', html, re.S)
 		if found:
 			if ipAddress:
-				ipAddress = ipAddress + ' // ' + found.group(1)
+				ipAddress = ipAddress + ' / ' + found.group(1)
 			else:
 				ipAddress = found.group(1)
 			self.info("ipAddress v6: " + ipAddress)
@@ -2407,7 +2406,7 @@ class FritzCallFBF_05_50(object):
 				dslState = ['5', None, None]
 				found = re.match(r'.*<a href="[^"]*">(DSL|Kabel)</a></td><td(?: )?>(?:bereit|verbunden), ([^<]*)<img src=\'[^\']*\' height=\'[^\']*\'>&nbsp;([^<]*)<img src=\'[^\']*\' height=\'[^\']*\'></td></tr>', html, re.S)
 				if found:
-					dslState[1] = found.group(2) + " // " + found.group(3)
+					dslState[1] = found.group(2) + " / " + found.group(3)
 					dslState[2] = found.group(1)
 			else:
 				dslState = ['0', None, None]
@@ -3257,7 +3256,7 @@ class FritzCallFBF_06_35(object):
 				connData = boxData["docsis"]
 			if connData["led"] == "led_green":
 				dslState = ['5', None, None]
-				dslState[1] = connData["down"].encode("utf-8") + " // " + connData["up"].encode("utf-8")
+				dslState[1] = connData["down"].encode("utf-8") + " / " + connData["up"].encode("utf-8")
 				dslState[1] = dslState[1].replace('\\', '').decode("utf-8").encode("utf-8")
 				dslState[2] = connData["title"].encode("utf-8")
 		self.info("dslState: " + repr(dslState))
@@ -3650,7 +3649,7 @@ class FritzCallFBF_upnp():
 
 		if "internet" in boxData and "down" in boxData["internet"] and "up" in boxData["internet"]:
 			connData = boxData["internet"]
-			internetSpeed = connData["down"].encode("utf-8") + " // " + connData["up"].encode("utf-8")
+			internetSpeed = connData["down"].encode("utf-8") + " / " + connData["up"].encode("utf-8")
 			internetSpeed = internetSpeed.replace('\\', '').decode("utf-8").encode("utf-8")
 		else:
 			internetSpeed = None
@@ -3754,7 +3753,7 @@ class FritzCallFBF_upnp():
 				connData = boxData["docsis"]
 			if connData["led"] == "led_green":
 				dslState = ['5', None, None]
-				dslState[1] = connData["down"].encode("utf-8") + " // " + connData["up"].encode("utf-8")
+				dslState[1] = connData["down"].encode("utf-8") + " / " + connData["up"].encode("utf-8")
 				dslState[1] = dslState[1].replace('\\', '').decode("utf-8").encode("utf-8")
 				dslState[2] = connData["title"].encode("utf-8")
 				if internetSpeed:
@@ -4333,7 +4332,7 @@ class FritzCallFBF_dummy(object):
 		self.password = decode(config.plugins.FritzCall.password.value)
 		# self.information contains basic information about the (FBF) device:
 		# (boxInfo, upTime, ipAddress, wlanState, dslState, tamActive, dectActive)
-		# ('FRITZ!Box Fon WLAN 7390, FRITZ!OS 06.01', '21.01.2014, 05:02 Uhr', '87.185.104.85', ['0', '0', '0'], ['5', '6,7 Mbit/s // 667 kbit/s', None], None, '2', True, None)
+		# ('FRITZ!Box Fon WLAN 7390, FRITZ!OS 06.01', '21.01.2014, 05:02 Uhr', '87.185.104.85', ['0', '0', '0'], ['5', '6,7 Mbit/s / 667 kbit/s', None], None, '2', True, None)
 		# boxinfo: basic information like type, fw version
 		# uptime: up since when
 		# ipAddress: external ip address

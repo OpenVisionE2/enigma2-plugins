@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import division, print_function
+from __future__ import print_function
 from __init__ import _
 import urllib, datetime, re, os, shutil
 from Screens.MessageBox import MessageBox
@@ -355,7 +355,7 @@ class TheTVDBMain(Screen, InfoLoadChoice):
         if movie:
             if movie['EpisodeName']:
                 name = movie['EpisodeName'].encode('utf-8', 'ignore')
-                self.setTitle(_('Episode details for: %s') % (name + ' // ' + self.searchTitle))
+                self.setTitle(_('Episode details for: %s') % (name + ' / ' + self.searchTitle))
             else:
                 self.setTitle(_('Sorry, no episode titel available!'))
             try:
@@ -368,7 +368,7 @@ class TheTVDBMain(Screen, InfoLoadChoice):
                 director = movie['Director']
                 if director:
                     director = director.replace('|', ', ')
-                    extended = _('Regie: %s') % director.encode('utf-8', 'ignore') + ' // '
+                    extended = _('Regie: %s') % director.encode('utf-8', 'ignore') + ' / '
                 writer = movie['Writer']
                 if writer:
                     writer = writer.replace('|', ', ')
@@ -421,21 +421,21 @@ class TheTVDBMain(Screen, InfoLoadChoice):
             extended = ''
             first_aired = TheTVDBMain.convert_date(serie['FirstAired'])
             if first_aired:
-                extended = _('First Aired: %s') % first_aired + ' // '
+                extended = _('First Aired: %s') % first_aired + ' / '
             airs_day = serie['Airs_DayOfWeek']
             if airs_day:
-                extended += _('Air Day: %s') % airs_day.encode('utf-8', 'ignore') + ' // '
+                extended += _('Air Day: %s') % airs_day.encode('utf-8', 'ignore') + ' / '
             else:
                 extended += ''
             airs_time = TheTVDBMain.convert_time(serie['Airs_Time'])
             if airs_time:
-                extended += _('Air Time: %s') % airs_time + ' // '
+                extended += _('Air Time: %s') % airs_time + ' / '
             runtime = serie['Runtime']
             if runtime:
                 extended += _('Runtime: %s minutes\n') % runtime.encode('utf-8', 'ignore')
             network = serie['Network']
             if network:
-                extended += _('Broadcast TV network: %s') % network.encode('utf-8', 'ignore') + ' // '
+                extended += _('Broadcast TV network: %s') % network.encode('utf-8', 'ignore') + ' / '
             else:
                 extended += ''
             if serie['Genre']:
@@ -443,7 +443,7 @@ class TheTVDBMain(Screen, InfoLoadChoice):
                 extended += _('Genre: %s\n') % str(genre).encode('utf-8', 'ignore')
             content_rating = serie['ContentRating']
             if content_rating:
-                extended += _('Certification: %s') % content_rating.encode('utf-8', 'ignore') + ' // '
+                extended += _('Certification: %s') % content_rating.encode('utf-8', 'ignore') + ' / '
             rating = serie['Rating']
             if rating:
                 rating = rating.encode('utf-8', 'ignore')

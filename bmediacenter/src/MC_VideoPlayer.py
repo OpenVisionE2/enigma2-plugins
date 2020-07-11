@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import division, print_function
+from __future__ import print_function
 from Screens.Screen import Screen
 from Screens.ServiceInfo import ServiceInfoList, ServiceInfoListEntry
 from enigma import iPlayableService, eRect, eServiceReference, iServiceInformation
@@ -56,7 +56,7 @@ class MC_VideoPlayer(Screen, HelpableScreen):
 				"right": (self.rightDown, "List Bottom"),
 				"up": (self.up, "List up"),
 				"down": (self.down, "List down"),
-				"menu": (self.KeyMenu, "File // Folder Options"),
+				"menu": (self.KeyMenu, "File / Folder Options"),
 				"info": (self.showFileInfo, "Show File Info"),
 				"nextBouquet": (self.NextFavFolder, "Next Favorite Folder"),
 				"prevBouquet": (self.PrevFavFolder, "Previous Favorite Folder"),

@@ -1,6 +1,5 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import division
 from . import _
 from enigma import eTimer, eDVBLocalTimeHandler, eEPGCache, getDesktop
 try:
@@ -171,7 +170,7 @@ class SystemTimeSetupScreen(Screen, ConfigListScreen):
 				cmd = '/usr/sbin/ntpd -dnqp %s' % self.ST.ip.value
 				self.session.open(SystemTimeConsole, _("Syncing with NTP server..."), [cmd])
 			else:
-				self.session.open(MessageBox, "'ntpd' // " + _("'ntpdate' is not installed!"), MessageBox.TYPE_ERROR, timeout=3)
+				self.session.open(MessageBox, "'ntpd' / " + _("'ntpdate' is not installed!"), MessageBox.TYPE_ERROR, timeout=3)
 		elif sel == self.ST.syncDVBtime:
 			try:
 				if not self.syncTimer.isActive():
@@ -234,7 +233,7 @@ class SystemTimeSetupScreen(Screen, ConfigListScreen):
 				else:
 					self.ST.syncNTPcoldstart.value = False
 		else:
-			self.session.open(MessageBox, "'ntpd' // " + _("'ntpdate' is not installed!"), MessageBox.TYPE_ERROR, timeout=3)
+			self.session.open(MessageBox, "'ntpd' / " + _("'ntpdate' is not installed!"), MessageBox.TYPE_ERROR, timeout=3)
 			self.ST.syncNTPcoldstart.value = False
 
 	def removeNTPcoldstart(self):

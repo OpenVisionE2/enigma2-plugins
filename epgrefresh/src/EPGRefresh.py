@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import division, print_function
+from __future__ import print_function
 
 # To check if in Standby
 import Screens.Standby
@@ -391,7 +391,7 @@ class EPGRefresh:
 					and config.plugins.epgrefresh.parse_autotimer.value == "bg_only":
 					self._nextTodo()
 				else:
-					# config.parse_autotimer = always // bg_only
+					# config.parse_autotimer = always / bg_only
 					self._ToDoCallAutotimerCB(parseAT=True)
 		else:
 			self._nextTodo()

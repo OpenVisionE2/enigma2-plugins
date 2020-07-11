@@ -1,6 +1,5 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import division
 from __init__ import _
 
 import sys, os, base64, re, time, shutil, datetime, codecs, urllib2
@@ -239,14 +238,14 @@ class ChannelEditor(Screen, HelpableScreen, ChannelsBase, WebChannels):
 		return ""
 	
 	def showChannels(self):
-		self.setTitle(_("STB- // Web-Channel for bouquet:") + " " + self.bouquet )
+		self.setTitle(_("STB- / Web-Channel for bouquet:") + " " + self.bouquet )
 		if len(self.stbChlist) != 0:
 			for servicename,serviceref,uservicename in self.stbChlist:
 				#log.debug("servicename", servicename, uservicename)
 				
 				webSender = lookupChannelByReference(serviceref)
 				if webSender is not False:
-					self.stbToWebChlist.append((servicename, ' // '.join(webSender), serviceref, "1"))
+					self.stbToWebChlist.append((servicename, ' / '.join(webSender), serviceref, "1"))
 					
 				else:
 					self.stbToWebChlist.append((servicename, "", serviceref, "0"))
@@ -268,7 +267,7 @@ class ChannelEditor(Screen, HelpableScreen, ChannelsBase, WebChannels):
 				
 				webSender = lookupChannelByReference(serviceref)
 				if webSender is not False:
-					self.stbToWebChlist.append((servicename, ' // '.join(webSender), serviceref, "1"))
+					self.stbToWebChlist.append((servicename, ' / '.join(webSender), serviceref, "1"))
 					
 				else:
 					if len(self.webChlist) != 0:
@@ -356,7 +355,7 @@ class ChannelEditor(Screen, HelpableScreen, ChannelsBase, WebChannels):
 			log.debug("add", servicename, serviceref, remote, webSender)
 			self.setTitle(_("Channel '- %(servicename)s - %(remote)s -' added.") % {'servicename': servicename, 'remote':remote } )
 			self.addChannel(serviceref, servicename, remote)
-			self.stbToWebChlist[idx] = (servicename, webSender+" // "+remote, serviceref, "1")
+			self.stbToWebChlist[idx] = (servicename, webSender+" / "+remote, serviceref, "1")
 			
 		else:
 			log.debug("replace", servicename, serviceref, remote, webSender)

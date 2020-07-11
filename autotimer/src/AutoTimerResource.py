@@ -1,6 +1,5 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import division
 from AutoTimer import AutoTimer
 from AutoTimerConfiguration import CURRENT_CONFIG_VERSION
 from RecordTimer import AFTEREVENT
@@ -40,7 +39,7 @@ class AutoTimerDoParseResource(AutoTimerBaseResource):
 		self.req.finish()
 	def render(self, req):
 		self.req = req
-		# todo timeout // error handling
+		# todo timeout / error handling
 		autotimer.parseEPG(callback = self.parsecallback)
 		return server.NOT_DONE_YET
 	def renderBackground(self, req ,ret):
@@ -54,7 +53,7 @@ class AutoTimerSimulateResource(AutoTimerBaseResource):
 		self.req.finish()
 	def render(self, req):
 		self.req = req
-		# todo timeout // error handling
+		# todo timeout / error handling
 		autotimer.parseEPG(simulateOnly=True, callback = self.parsecallback)
 		return server.NOT_DONE_YET
 	def renderBackground(self, req ,timers):
@@ -88,7 +87,7 @@ class AutoTimerTestResource(AutoTimerBaseResource):
 		self.req.finish()
 	def render(self, req):
 		self.req = req
-		# todo timeout // error handling
+		# todo timeout / error handling
 		autotimer.parseEPG(simulateOnly=True, callback = self.parsecallback)
 		return server.NOT_DONE_YET
 	def renderBackground(self, req ,timers, skipped):
