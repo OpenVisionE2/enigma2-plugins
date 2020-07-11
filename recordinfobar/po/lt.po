@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RecInfobar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-11 12:34+0200\n"
+"POT-Creation-Date: 2020-07-12 02:04+0430\n"
 "PO-Revision-Date: 2016-06-25 12:15+0300\n"
 "Last-Translator: \n"
 "Language-Team: Vytenis P. <vyteniu@gmail.com>\n"
@@ -27,8 +27,8 @@ msgstr " (% d min.)\n"
 msgid "%s...%s (%d mins)"
 msgstr "%s...%s (%d min.)"
 
-#, python-format
-msgid "+%d min / %s"
+#, fuzzy, python-format
+msgid "+%d min // %s"
 msgstr "+%d min. / %s"
 
 msgid "<<Only when zap to service at start timer>>"

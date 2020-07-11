@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-05 03:21+0430\n"
+"POT-Creation-Date: 2020-07-12 02:04+0430\n"
 "PO-Revision-Date: 2017-07-11 07:41+0300\n"
 "Last-Translator: Vytenis P. <vyteniui@gmail.com>\n"
 "Language-Team: \n"
@@ -177,8 +177,8 @@ msgstr "Atleiskite, nieko netasta."
 msgid "Open unrar Manager"
 msgstr "Atverti unRAR valdymą"
 
-#, python-format
-msgid "Page %d / %d. Push < > to switch the page..."
+#, fuzzy, python-format
+msgid "Page %d // %d. Push < > to switch the page..."
 msgstr "Psl. %d / %d. Puslapiui perjungti, spauskite '< >'..."
 
 msgid "Password (netload.in):"

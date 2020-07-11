@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-11 10:58+0200\n"
+"POT-Creation-Date: 2020-07-12 02:04+0430\n"
 "PO-Revision-Date: 2016-04-29 20:37+0300\n"
 "Last-Translator: Dimitrij <Dima-73@inbox.lv>\n"
 "Language-Team: \n"
@@ -26,8 +26,8 @@ msgstr " (%d mins)\n"
 msgid "%s...%s (%d mins)"
 msgstr "%s...%s (%d min)"
 
-#, python-format
-msgid "+%d min / %s"
+#, fuzzy, python-format
+msgid "+%d min // %s"
 msgstr "+%d min / %s"
 
 msgid "<<Only when zap to service at start timer>>"

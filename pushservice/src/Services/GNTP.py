@@ -33,7 +33,7 @@ import gntp.notifier
 APP_NAME = _("{box:s} {name:s}")
 NOTIFICATION_TYPE = _("{name:s}")
 GROWL_SUBJECT_TEMPLATE = _("{box:s}: {subject:s}")
-GROWL_BODY_TEMPLATE = _("{body:s}\n\n")
+GROWL_BODY_TEMPLATE = _("{body:s}")
 
 
 class GNTP(ServiceBase):

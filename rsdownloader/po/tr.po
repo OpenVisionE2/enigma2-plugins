@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2 RSDownloader plugin Turkish Locale\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-09-27 18:11+0100\n"
+"POT-Creation-Date: 2020-07-12 02:04+0430\n"
 "PO-Revision-Date: 2009-09-22 13:19+0200\n"
 "Last-Translator: Zülfikar VEYİSOĞLU <z.veyisoglu@hobiagaci.com>\n"
 "Language-Team: http://hobiagaci.com <z.veyisoglu@hobiagaci.com>\n"
@@ -178,8 +178,8 @@ msgstr "Sonuç bulunamadı, üzgünüm."
 msgid "Open unrar Manager"
 msgstr ""
 
-#, python-format
-msgid "Page %d / %d. Push < > to switch the page..."
+#, fuzzy, python-format
+msgid "Page %d // %d. Push < > to switch the page..."
 msgstr "Sayfa %d / %d. Sayfa geçişi için < > tuşları..."
 
 msgid "Password (netload.in):"
