@@ -101,7 +101,6 @@ def sessionstart(reason, **kwargs):
 			# webgui
 			session = kwargs["session"]
 			root = File(util.sibpath(__file__, "web-data"))
-			root.putChild("web", ScreenPage(session, util.sibpath(__file__, "web"), True) )
 			root.putChild('tmp', File('/tmp'))
 			root.putChild("uploadfile", UploadResource(session))
 			addExternalChild( ("autotimereditor", root, "AutoTimer", "1", True) )
