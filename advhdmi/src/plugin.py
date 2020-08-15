@@ -33,13 +33,8 @@ except ImportError as e:
 
 # overwrite functions
 from Plugins.SystemPlugins.HdmiCec.plugin import Cec
-try:
-	from Plugins.Extensions.WebInterface.WebComponents.Sources.RemoteControl import RemoteControl
-	from Plugins.Extensions.WebInterface.WebComponents.Sources.PowerState import PowerState
-	g_AdvHdmi_webif_available = True
-except ImportError as e:
-	_print("No Webinterface-Plugin installed")
-	g_AdvHdmi_webif_available = False
+_print("No Webinterface-Plugin installed")
+g_AdvHdmi_webif_available = False
 
 WEEKDAYS = [
 	_("Monday"),

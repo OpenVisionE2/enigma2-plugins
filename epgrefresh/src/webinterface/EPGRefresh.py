@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from Plugins.Extensions.WebInterface.WebChilds.Toplevel import addExternalChild
+from Plugins.Extensions.OpenWebif.WebChilds.Toplevel import addExternalChild
 from Plugins.Extensions.EPGRefresh.EPGRefreshResource import \
 		EPGRefreshStartRefreshResource, \
 		EPGRefreshAddRemoveServiceResource, \

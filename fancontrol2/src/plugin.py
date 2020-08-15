@@ -1244,8 +1244,8 @@ class FanControl2(Screen):
 def autostart(reason, **kwargs):
 	global session
 	if reason == 0 and kwargs.has_key("session"):
-		if os.path.exists(resolveFilename(SCOPE_PLUGINS, "Extensions/WebInterface/__init__.pyo")):
-			from Plugins.Extensions.WebInterface.WebChilds.Toplevel import addExternalChild
+		if os.path.exists(resolveFilename(SCOPE_PLUGINS, "Extensions/OpenWebif/__init__.pyo")):
+			from Plugins.Extensions.OpenWebif.WebChilds.Toplevel import addExternalChild
 			from FC2webSite import FC2web, FC2webLog, FC2webChart
 			from twisted.web import static
 			root = static.File(resolveFilename(SCOPE_PLUGINS, "Extensions/FanControl2/data"))
@@ -1253,19 +1253,11 @@ def autostart(reason, **kwargs):
 			root.putChild("", FC2web())
 			root.putChild("log", FC2webLog())
 			root.putChild("chart", FC2webChart())
-			if os.path.exists(resolveFilename(SCOPE_PLUGINS, "Extensions/WebInterface/web/external.xml")):
-				try:
-					addExternalChild( ("fancontrol", root, "Fan Control 2", Version, True) )
-					FClog("use new WebIF")
-				except:
-					addExternalChild( ("fancontrol", root) )
-					FClog("use old WebIF")
-			if os.path.exists(resolveFilename(SCOPE_PLUGINS, "Extensions/OpenWebif/pluginshook.src")):
-				try:
-					addExternalChild( ("fancontrol", root, "Fan Control 2", Version) )
-					FClog("use new OpenWebIF")
-				except:
-					pass
+			try:
+				addExternalChild( ("fancontrol", root, "Fan Control 2", Version) )
+				FClog("use new OpenWebIF")
+			except:
+				pass
 		if not os.path.exists("/proc/stb/fp/fan_vlt"):
 			Notifications.AddNotification(MessageBox, _("Box has no fancontrol hardware -> FC2 deactivated"), type=MessageBox.TYPE_INFO, timeout=10)
 			FClog("not supported, exit")

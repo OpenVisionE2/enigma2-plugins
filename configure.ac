@@ -249,6 +249,7 @@ epgrefresh/Makefile
 epgrefresh/meta/Makefile
 epgrefresh/po/Makefile
 epgrefresh/src/localehelp/Makefile
+epgrefresh/src/webinterface/Makefile
 epgrefresh/src/Makefile
 
 epgsearchpli/Makefile

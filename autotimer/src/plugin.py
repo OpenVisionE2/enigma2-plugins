@@ -65,8 +65,7 @@ def autostart(reason, **kwargs):
 def sessionstart(reason, **kwargs):
 	if reason == 0 and "session" in kwargs:
 		try:
-			from Plugins.Extensions.WebInterface.WebChilds.Toplevel import addExternalChild
-			from Plugins.Extensions.WebInterface.WebChilds.Screenpage import ScreenPage
+			from Plugins.Extensions.OpenWebif.WebChilds.Toplevel import addExternalChild
 			from twisted.web import static
 			from twisted.python import util
 			from WebChilds.UploadResource import UploadResource
