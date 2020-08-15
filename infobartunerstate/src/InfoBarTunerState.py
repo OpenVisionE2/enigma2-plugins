@@ -69,10 +69,7 @@ from skin import parseColor, parseFont
 from netstat import netstat
 
 # Extenal plugins: WebInterface
-try:
-	from Plugins.Extensions.WebInterface.WebScreens import StreamingWebScreen 
-except:
-	StreamingWebScreen = None
+StreamingWebScreen = None
 
 # Globals
 InfoBarShow = None
@@ -247,29 +244,12 @@ class InfoBarTunerState(object):
 		# If we append our function, we will never see the timer state StateEnded for repeating timer
 		if self.__onRecordingEvent not in self.session.nav.RecordTimer.on_state_change:
 			self.session.nav.RecordTimer.on_state_change.insert(0, self.__onRecordingEvent)
-		# Streaming Events
-		if config.infobartunerstate.show_streams.value:
-			if StreamingWebScreen:
-				try:
-					from Plugins.Extensions.WebInterface.WebScreens import streamingEvents
-					if self.__onStreamingEvent not in streamingEvents:
-						streamingEvents.append(self.__onStreamingEvent)
-				except:
-					pass
 
 	def removeEvents(self):
 		# Recording Events
 		# If we append our function, we will never see the timer state StateEnded for repeating timer
 		if self.__onRecordingEvent in self.session.nav.RecordTimer.on_state_change:
 			self.session.nav.RecordTimer.on_state_change.remove(self.__onRecordingEvent)
-		# Streaming Events
-		if StreamingWebScreen:
-			try:
-				from Plugins.Extensions.WebInterface.WebScreens import streamingEvents
-				if self.__onStreamingEvent in streamingEvents:
-					streamingEvents.remove(self.__onStreamingEvent)
-			except:
-				pass
 
 	def bindInfoBar(self):
 		# Reimport InfoBar to force update of the class instance variable
@@ -374,11 +354,8 @@ class InfoBarTunerState(object):
 		if StreamingWebScreen and stream:
 			print("IBTS Stream Event")
 			if event == StreamingWebScreen.EVENT_START:
-				
-				try:
-					from Plugins.Extensions.WebInterface.WebScreens import streamingScreens
-				except:
-					streamingScreens = []
+
+				streamingScreens = []
 				
 				# Extract parameters
 				tuner, tunertype = getTuner( stream.getRecordService() ) 
@@ -465,10 +442,7 @@ class InfoBarTunerState(object):
 
 	def updateStreams(self):
 		#TODO updateStreams but retrieving IP is not possible
-		try:
-			from Plugins.Extensions.WebInterface.WebScreens import streamingScreens
-		except:
-			streamingScreens = []
+		streamingScreens = []
 		
 		#TODO file streaming actually not supported
 		for stream in streamingScreens:
@@ -1298,10 +1272,7 @@ def getStreamID(stream):
 	return str(stream.screenIndex) + str(stream.clientIP)
 
 def getStream(id):
-	try:
-		from Plugins.Extensions.WebInterface.WebScreens import streamingScreens 
-	except:
-		streamingScreens = []
+	streamingScreens = []
 	
 	for stream in streamingScreens:
 		if stream:
