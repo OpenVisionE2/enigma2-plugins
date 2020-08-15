@@ -1,8 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 from __future__ import print_function
-
-from Plugins.Extensions.WebInterface.WebComponents.Sources.Timer import Timer
+from Plugins.Extensions.OpenWebif.WebComponents.Sources.Timer import Timer
 from Plugins.SystemPlugins.vps.Vps import vps_timers
 import time
 

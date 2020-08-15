@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from Plugins.Extensions.WebInterface.WebScreens import WebScreen
+from Plugins.Extensions.OpenWebif.WebScreens import WebScreen
 
 class VpsWebScreen(WebScreen):
 	def __init__(self, session, request):
