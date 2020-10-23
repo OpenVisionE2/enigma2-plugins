@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: network browser Persian Translation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-29 00:28+0100\n"
+"POT-Creation-Date: 2020-10-23 15:06+0330\n"
 "PO-Revision-Date: 2012-07-26 00:20+0330\n"
 "Last-Translator: mehdi <mehdi_ar_yekta@yahoo.com>\n"
 "Language-Team: Persian Professionals <persianpros@yahoo.com>\n"
@@ -60,6 +60,7 @@ msgstr ""
 msgid "Change hostname"
 msgstr "تغییر نام میزبان"
 
+#, fuzzy
 msgid "Change the hostname of your Receiver."
 msgstr "تغییر نام میزبان در دستگاه شما"
 
@@ -82,6 +83,7 @@ msgstr ""
 msgid "Enter IP to scan..."
 msgstr ""
 
+#, fuzzy
 msgid "Enter new hostname for your Receiver"
 msgstr "وارد کردن نام جدید میزبان در دستگاه شما"
 
@@ -244,6 +246,7 @@ msgstr "مدیر کاربر"
 msgid "Username"
 msgstr "نام کاربری"
 
+#, fuzzy
 msgid "View, edit or delete mountpoints on your Receiver."
 msgstr "نمایش - ویرایش یا پاک کردن مونت پوینت دستگاه رسیور شما"
 

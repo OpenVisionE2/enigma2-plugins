@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma 2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-29 00:28+0100\n"
-"PO-Revision-Date: 2018-12-29 11:14+0100\n"
+"POT-Creation-Date: 2020-10-23 15:06+0330\n"
+"PO-Revision-Date: 2012-12-16 12:35+0100\n"
 "Last-Translator: thelexia <thelexia@hotmail.fr>\n"
 "Language-Team: french\n"
 "Language: fr\n"
@@ -11,7 +11,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 2.2\n"
 
 msgid ""
 "A mount entry with this name already exists!\n"
@@ -30,6 +29,7 @@ msgstr ""
 "Actif/\n"
 "Inactif"
 
+#, fuzzy
 msgid "Add a new NFS or CIFS mount point to your Receiver."
 msgstr "Ajouter un nouveau point de montage NFS ou CIFS à votre récepteur."
 
@@ -61,6 +61,7 @@ msgstr "Annuler"
 msgid "Change hostname"
 msgstr "Changer le nom d'hôte"
 
+#, fuzzy
 msgid "Change the hostname of your Receiver."
 msgstr "Changer le nom d'hôte de votre récepteur."
 
@@ -82,6 +83,7 @@ msgstr "Voulez-vous entrer un nom d'utilisateur et mot de passe pour cet hôte ?
 msgid "Enter IP to scan..."
 msgstr "Entrer l'adresse IP à scanner ..."
 
+#, fuzzy
 msgid "Enter new hostname for your Receiver"
 msgstr "Saisisser nouveau nom d'hôte pour votre récepteur"
 
@@ -89,7 +91,7 @@ msgid "Enter password:"
 msgstr "Entrer mot de passe :"
 
 msgid "Enter user and password for host: "
-msgstr "Entrer utilisateur et mot de passe pour l'hôte:"
+msgstr "Entrer utilisateur et mot de passe pour l'hôte :"
 
 msgid "Enter username:"
 msgstr "Entrer le nom d'utilisateur :"
@@ -101,10 +103,10 @@ msgid "Finished restarting your network"
 msgstr "Terminé le redémarrage de votre réseau"
 
 msgid "Host name"
-msgstr "Nom de l’hôte"
+msgstr ""
 
 msgid "Host:"
-msgstr "Hôte:"
+msgstr ""
 
 msgid "IP Address"
 msgstr "Adresse IP"
@@ -113,7 +115,7 @@ msgid "IP:"
 msgstr "IP :"
 
 msgid "Local mountpoint"
-msgstr "Point de montage local"
+msgstr ""
 
 msgid "Manage network shares"
 msgstr "Gérer les partages réseau"
@@ -133,8 +135,9 @@ msgstr "Options de montage"
 msgid "Mount type"
 msgstr "Type de montage"
 
+#, fuzzy
 msgid "Mount view"
-msgstr "Afficher montage"
+msgstr "Type de montage"
 
 msgid "MountManager"
 msgstr "Gestionnaire de montage"
@@ -239,6 +242,7 @@ msgstr "Gestionnaire utilisateur"
 msgid "Username"
 msgstr "Nom d'utilisateur"
 
+#, fuzzy
 msgid "View, edit or delete mountpoints on your Receiver."
 msgstr "Afficher, modifier ou supprimer des points de montage sur votre récepteur."
 
@@ -255,4 +259,4 @@ msgid "Your network mount has been updated."
 msgstr "Votre montage réseau a été mis à jour."
 
 msgid "use as HDD replacement"
-msgstr "Utiliser en remplacement du disque dur"
+msgstr "Utiliser comme remplacement du disque dur"

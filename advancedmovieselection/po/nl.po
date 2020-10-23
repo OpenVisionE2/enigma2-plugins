@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AdvancedMovieSelection\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-16 14:25+0330\n"
+"POT-Creation-Date: 2020-10-23 15:06+0330\n"
 "PO-Revision-Date: 2013-10-11 14:04+0100\n"
 "Last-Translator: cmikula\n"
 "Language-Team: IhaD <JackDaniel@i-have-a-dreambox.com>\n"
@@ -50,6 +50,8 @@ msgid ""
 "\n"
 "Last modified at TheTVDB.com: %s"
 msgstr ""
+"\n"
+"Laatste wijziging bij TheTVDB.com: %s"
 
 #, python-format
 msgid "%s is currently recording!"
@@ -109,7 +111,7 @@ msgstr "Over de Geavanceerde Filmselectie"
 
 #, python-format
 msgid "Actors: %s\n"
-msgstr ""
+msgstr "Acteurs: %s\n"
 
 msgid "Add Tag(s) for Recordings/Timer or AutoTimer"
 msgstr "Label(s) toevoegen voor opnames/Timer of AutoTimer"
@@ -149,11 +151,11 @@ msgstr "Menu Geavanceerde Filmselectie"
 
 #, python-format
 msgid "Air Day: %s"
-msgstr ""
+msgstr "Dag uitzending: %s"
 
 #, python-format
 msgid "Air Time: %s"
-msgstr ""
+msgstr "Uur uitzending: %s"
 
 msgid "All directorys below '/media'"
 msgstr "Alle mappen onder '/media'"
@@ -180,7 +182,7 @@ msgstr "Bijkomende %s zijn vereist om de gegevens te verplaatsen."
 
 #, python-format
 msgid "Appeared: %s"
-msgstr ""
+msgstr "Verschenen: %s"
 
 #, python-format
 msgid "Around %d minute"
@@ -345,7 +347,7 @@ msgstr "Branch:"
 
 #, python-format
 msgid "Broadcast TV network: %s"
-msgstr ""
+msgstr "Uitgezonden via: %s"
 
 msgid "Button caption"
 msgstr "Knopbenaming:"
@@ -359,9 +361,9 @@ msgstr "Annuleren"
 msgid "Cancelled"
 msgstr "Geannuleerd"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Certification: %s"
-msgstr "Filmpad: %s"
+msgstr "Leeftijd: %s"
 
 msgid "Change Bookmarkname"
 msgstr "Editeer Bookmark-naam"
@@ -446,7 +448,7 @@ msgid "Daily"
 msgstr "Dagelijks"
 
 msgid "Data already exists! Should anything be updated?"
-msgstr ""
+msgstr "Gegevens bestaan reeds! Actualiseren?"
 
 msgid "Default movie location"
 msgstr "Standaard Filmmap:"
@@ -499,9 +501,9 @@ msgstr "Beschrijving:"
 msgid "Destination carrier"
 msgstr "Doelmedium"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Details for: %s"
-msgstr "Editeer Label(s) voor: %s"
+msgstr "Details voor: %s"
 
 msgid ""
 "Developer:\n"
@@ -510,9 +512,9 @@ msgstr ""
 "Ontwikkelaarr:\n"
 " JackDaniel, cmikula"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Director: %s"
-msgstr "Mappen"
+msgstr "Producent: %s"
 
 msgid "Directories"
 msgstr "Mappen"
@@ -774,9 +776,8 @@ msgstr "Benaming Favoriet7-knop:"
 msgid "Enter Home button descrition:"
 msgstr "Benaming HOME-knop:"
 
-#, fuzzy
 msgid "Enter new movie name for search:"
-msgstr "Geleive de filmnaam in te geven voor het zoeken"
+msgstr "Geleive de filmnaam in te geven voor het zoeken:"
 
 msgid "Enter new moviename to search for"
 msgstr "Geleive de filmnaam in te geven voor het zoeken"
@@ -784,17 +785,17 @@ msgstr "Geleive de filmnaam in te geven voor het zoeken"
 msgid "Enter text to search for"
 msgstr "Zoektekst ingeven a.u.b."
 
-#, fuzzy, python-format
+#, python-format
 msgid "Episode details for: %s"
-msgstr "Editeer Label(s) voor: %s"
+msgstr "Details aflevering voor: %s"
 
 #, python-format
 msgid "Episode: %s"
-msgstr ""
+msgstr "Aflevering: %s"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Episodes for: %s"
-msgstr "Info voor: %s"
+msgstr "Afleveringen voor: %s"
 
 msgid "Error"
 msgstr "Fout"
@@ -808,11 +809,13 @@ msgstr "Fout bij laden van ISO-image!"
 msgid "Error occurred during unmounting device!"
 msgstr "Fout opgetreden tijdens het unmounten van het medium!"
 
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Error!\n"
 "%s"
-msgstr "Fout"
+msgstr ""
+"Fout!\n"
+"%s"
 
 msgid "Error:"
 msgstr "Fout:"
@@ -850,7 +853,7 @@ msgstr "Voltooid"
 
 #, python-format
 msgid "First Aired: %s"
-msgstr ""
+msgstr "Eerste uitzending: %s"
 
 msgid "Foldername:"
 msgstr "Mapnaam:"
@@ -864,9 +867,9 @@ msgstr "Vrij:"
 msgid "From:"
 msgstr "Van:"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Genre: %s\n"
-msgstr "Bestandsnaam: %s"
+msgstr "Categorie: %s\n"
 
 msgid "German (with Starttime)"
 msgstr "Duits (met starttijd)"
@@ -877,21 +880,21 @@ msgstr "Duits (met jaar)"
 msgid "German (without Year)"
 msgstr "Duits (zonder jaar)"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Getting episodes details for ' %s ', please wait ..."
-msgstr "Zoeken naar %s, eventjes geduld ..."
+msgstr "Zoeken naar episode-details van %s, eventjes geduld ..."
 
-#, fuzzy, python-format
+#, python-format
 msgid "Getting episodes list for ' %s ', please wait ..."
-msgstr "Zoeken naar clients, eventjes geduld ..."
+msgstr "Zoeken naar episode-lijst van ' %s ', eventjes geduld ..."
 
-#, fuzzy, python-format
+#, python-format
 msgid "Getting search result for ' %s ', please wit ..."
-msgstr "Zoeken naar %s, eventjes geduld ..."
+msgstr "Zoeken naar ' %s , eventjes geduld ..."
 
-#, fuzzy, python-format
+#, python-format
 msgid "Getting show details for ' %s ', please wait ..."
-msgstr "Zoeken naar %s, eventjes geduld ..."
+msgstr "Zoeken details naar voor ' %s ', eventjes geduld ..."
 
 msgid "Go manual to position (OK for seek):"
 msgstr "Ga manueel naar positie (OK voor zoeken):"
@@ -904,7 +907,7 @@ msgstr "Grijs"
 
 #, python-format
 msgid "Guest Stars: %s\n"
-msgstr ""
+msgstr "Gastrol: %s\n"
 
 msgid "Here you can adjust the manually jump length relative to the film length in percent."
 msgstr "Hier kan ingesteld worden met welke afstand manueel gesprongen wordt. Percentage t.o.v. de filmlengte. "
@@ -1026,7 +1029,7 @@ msgstr "Hoe verderzetten ' %s '"
 
 #, python-format
 msgid "ID: %s"
-msgstr ""
+msgstr "ID: %s"
 
 msgid "IMDB search"
 msgstr "Zoeken via IMDB"
@@ -1113,7 +1116,7 @@ msgid "If you enable this function, your recorded movies will be marked in epg l
 msgstr "Indien geactiveerd worden opgenomen filmen in de EPG gemarkeerd."
 
 msgid "Info/Cover save"
-msgstr ""
+msgstr "Info/Cover bewaren"
 
 #, python-format
 msgid "Infos for: %s"
@@ -1121,6 +1124,9 @@ msgstr "Info voor: %s"
 
 msgid "Initial location in new timers"
 msgstr "Initiële map voor nieuwe timers"
+
+msgid "Input"
+msgstr ""
 
 #, fuzzy
 msgid "Instant record location"
@@ -1253,16 +1259,14 @@ msgstr "Verplaatsen"
 msgid "Move Copy Progress"
 msgstr "Verplaatsen/Kopiëren voortgang"
 
-#, fuzzy
 msgid "Move down"
-msgstr "Verplaatsen van"
+msgstr "Omlaag"
 
 msgid "Move of"
 msgstr "Verplaatsen van"
 
-#, fuzzy
 msgid "Move up"
-msgstr "Verplaatsen"
+msgstr "Omhoog"
 
 msgid "Move-Copy"
 msgstr "Verplaatsen/Kopiëren"
@@ -1392,17 +1396,19 @@ msgstr "Geen hulptekst beschikbaar!"
 
 #, python-format
 msgid "No data found for ' %s ' at themoviedb.org!"
-msgstr ""
+msgstr "Geen gegevens gevonden voor ' %s ' via themoviedb.org!"
 
 #, python-format
 msgid ""
 "No data found for ' %s ' at themoviedb.org!\n"
 "Do you want to edit the search name?"
 msgstr ""
+"Geen gegevens gevonden voor ' %s ' via themoviedb.org!\n"
+"Wilt u de zoeknaam editeren en manueel zoeken?"
 
 #, python-format
 msgid "No description for ' %s ' at themoviedb.org found!"
-msgstr ""
+msgstr "Geen gegevens voor ' %s ' gevonden via themoviedb.org!"
 
 msgid "No internet connection available!"
 msgstr "Geen internetverbinding beschikbaar!"
@@ -1423,7 +1429,7 @@ msgid "No tags are set on these movies."
 msgstr "Geen labels op deze films.."
 
 msgid "No user voted!"
-msgstr ""
+msgstr "Geen stemmen!"
 
 msgid "No, but restart from begin"
 msgstr "Nee, van begin herstarten"
@@ -1476,7 +1482,7 @@ msgid "Only last three digits from the IP must be set."
 msgstr "Enkel de laatste drie cijfers van de IP moeten ingesteld worden."
 
 msgid "Only those, which are not available!"
-msgstr ""
+msgstr "Enkel de ontbrekende gegevens aanvullen!"
 
 msgid "Open servicelist"
 msgstr "open servicelijst"
@@ -1491,15 +1497,13 @@ msgid "Original (1400x2100)"
 msgstr "Origineel (1400x2100)"
 
 msgid "Overwrite both (description & cover)"
-msgstr ""
+msgstr "Beide overschrijven (beschrijving & cover)"
 
-#, fuzzy
 msgid "Overwrite movie cover"
-msgstr "Filminfo en Cover verwijderen"
+msgstr "Filmcover overschrijven"
 
-#, fuzzy
 msgid "Overwrite movie description"
-msgstr "Selecteer film volgens beschrijving:"
+msgstr "Filminfo overschrijven"
 
 msgid "Own button description"
 msgstr "Eigen Knopbeschrijving"
@@ -1574,9 +1578,9 @@ msgstr "Preview start op laatste markeerpunt."
 msgid "Processing: %s"
 msgstr "Verwerken: %s"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Production: %s\n"
-msgstr "Verwerken: %s"
+msgstr "Productie: %s\n"
 
 msgid "Provider Logo path:"
 msgstr "Pad kanaallogo's:"
@@ -1592,7 +1596,7 @@ msgstr "Radio-knop"
 
 #, python-format
 msgid "Rating: %s\n"
-msgstr ""
+msgstr "Beoordeling: %s\n"
 
 msgid "Really close without saving settings?"
 msgstr "Sluiten zonder de instellingen te bewaren?"
@@ -1638,7 +1642,7 @@ msgstr "Rood"
 
 #, python-format
 msgid "Regie: %s"
-msgstr ""
+msgstr "Regie: %s"
 
 msgid "Remaining elements:"
 msgstr "Resterende elementen:"
@@ -1687,22 +1691,21 @@ msgstr "Terug naar de filmselectie"
 msgid "Return to previous service"
 msgstr "Terug naar het TV-kanaal"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Runtime: %s minutes"
-msgstr "Ongeveer %d minuten"
+msgstr "Lengte: %s minuten"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Runtime: %s minutes\n"
-msgstr "Ongeveer %d minuten"
+msgstr "Lengte: %s minuten\n"
 
 msgid "Save"
 msgstr "Bewaren"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Save Info/Cover for ' %s ', please wait ..."
-msgstr "Zoeken naar %s, eventjes geduld ..."
+msgstr "Info/Cover voor ' %s ' bewaren, eventjes geduld ..."
 
-#, fuzzy
 msgid "Save info/cover"
 msgstr "Info/Cover bewaren"
 
@@ -1719,7 +1722,7 @@ msgstr "Trailer zoeken op web"
 msgid "Search for %s, please wait..."
 msgstr "Zoeken naar %s, eventjes geduld ..."
 
-#, fuzzy, python-format
+#, python-format
 msgid "Search result for: %s"
 msgstr "Resultaten voor: %s"
 
@@ -1727,20 +1730,20 @@ msgstr "Resultaten voor: %s"
 msgid "Search result(s) for %s"
 msgstr "Resultaten voor: %s"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Search trailer for ' %s ', please wait ..."
-msgstr "Zoeken naar %s, eventjes geduld ..."
+msgstr "Zoeken naar trailer voor ' %s , eventjes geduld ..."
 
 msgid "Search:"
 msgstr "Zoeken:"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Searching for ' %s ' on TMDb, please wait ..."
-msgstr "Zoeken naar %s, eventjes geduld ..."
+msgstr "Zoeken naar %s op TMDb, eventjes geduld ..."
 
-#, fuzzy, python-format
+#, python-format
 msgid "Searching for ' %s ' on TheTVDB.com, please wait ..."
-msgstr "Zoeken naar %s, eventjes geduld ..."
+msgstr "Zoeken naar %s op TheTVDB.com, eventjes geduld ..."
 
 msgid "Searching for clients, please wait ..."
 msgstr "Zoeken naar clients, eventjes geduld ..."
@@ -1751,7 +1754,7 @@ msgstr "Gezochte titel: %s"
 
 #, python-format
 msgid "Season: %s"
-msgstr ""
+msgstr "Reeks: %s"
 
 msgid "Second"
 msgstr "Seconden"
@@ -1913,13 +1916,11 @@ msgstr "Mapgrootte weergeven:"
 msgid "Show disk usage in description:"
 msgstr "Gebruik medium in filmbeschrijving weergeven:"
 
-#, fuzzy
 msgid "Show episode detail"
-msgstr "details weergeven"
+msgstr "Episode details weergeven"
 
-#, fuzzy
 msgid "Show episodes overview"
-msgstr "Alle films weergeven"
+msgstr "Overzicht episodes weergeven"
 
 msgid "Show event details"
 msgstr "details weergeven"
@@ -1966,9 +1967,8 @@ msgstr "Actieve verplaats/kopieer weergeven bij start/einde:"
 msgid "Show movie color status in movielist"
 msgstr "Kleurenstatus in filmselectie weergeven"
 
-#, fuzzy
 msgid "Show movie detail"
-msgstr "details weergeven"
+msgstr "Film details weergeven"
 
 msgid "Show movie library symbol in movielist:"
 msgstr "Bibliotheeksymbool in selectie weergeven:"
@@ -1988,9 +1988,8 @@ msgstr "Labels in menu weergeven:"
 msgid "Show new recordings icon:"
 msgstr "Icoon voor nieuwe opname weergeven:"
 
-#, fuzzy
 msgid "Show next cover"
-msgstr "Alle films weergeven"
+msgstr "Volgende cover"
 
 msgid "Show path marker within movie library movies:"
 msgstr "Mappaden weergeven voor films uit de bibliotheek:"
@@ -2004,9 +2003,8 @@ msgstr "Percentage in filmselectie weergeven"
 msgid "Show plugin config in extensions menu from movielist:"
 msgstr "Instellingen in menu weergeven:"
 
-#, fuzzy
 msgid "Show previous cover"
-msgstr "Naar vorige markeerpunt"
+msgstr "Vorige cover"
 
 msgid "Show progress of move or copy job"
 msgstr "Voortgang kopie of verplaatsen weergeven"
@@ -2023,9 +2021,8 @@ msgstr "Hernoemen in menu weergeven:"
 msgid "Show runtime entry in movielist"
 msgstr "Duur in filmselectie weergeven:"
 
-#, fuzzy
 msgid "Show search result"
-msgstr "Resultaten voor: %s"
+msgstr "Resultaten weergeven"
 
 msgid "Show search trailer on web in extensions menu from movielist:"
 msgstr "Trailer zoeken op het web in menu weergeven:"
@@ -2033,9 +2030,8 @@ msgstr "Trailer zoeken op het web in menu weergeven:"
 msgid "Show seen movies"
 msgstr "Alle films weergeven"
 
-#, fuzzy
 msgid "Show serie detail"
-msgstr "details weergeven"
+msgstr "Serie details weergeven"
 
 msgid "Show sort options in extensions menu from movielist:"
 msgstr "Sorteeropties in menu weergeven:"
@@ -2096,25 +2092,24 @@ msgid "Some settings changes require close/reopen the movielist to take effect."
 msgstr "Sommige aanpassingen vereisen het stoppen/starten van de filmselectie."
 
 msgid "Sorry, no data found at TheTVDB.com!"
-msgstr ""
+msgstr "Geen gegevens gevonden via TheTVDB.com!"
 
 #, python-format
 msgid "Sorry, no description for ' %s ' at TheTVDB.com found!"
-msgstr ""
+msgstr "Geen gegevens voor ' %s ' gevonden via TheTVDB.com!"
 
 msgid "Sorry, no description for this episode at TheTVDB.com available!"
-msgstr ""
+msgstr "Geen gegevens gevonden voor deze aflevering via TheTVDB.com!"
 
 msgid "Sorry, no description found at www.thetvdb.com!"
-msgstr ""
+msgstr "Geen gegevens gevonden via TheTVDB.com!"
 
-#, fuzzy
 msgid "Sorry, no episode titel available!"
-msgstr "Geen volgende lediging beschikbaar!"
+msgstr "Sorry, geen episode titel beschikbaar!"
 
 #, python-format
 msgid "Sorry, no info/cover found for title: %s"
-msgstr ""
+msgstr "Sorry geen Filminfo/Cover voor %s gevonden."
 
 msgid "Sort"
 msgstr "Sorteren"
@@ -2184,7 +2179,7 @@ msgstr "Stop zoeken IP:"
 
 #, python-format
 msgid "Studio: %s"
-msgstr ""
+msgstr "Filmstudio: %s"
 
 msgid "Switch library/movielist"
 msgstr "Wisselen bibliotheek/filmlijst"
@@ -2303,7 +2298,7 @@ msgid "To:"
 msgstr "naar:"
 
 msgid "Toggle detail and list view"
-msgstr ""
+msgstr "Wissel detail en lijstweergave"
 
 msgid "Toggle seen"
 msgstr "Gezien/Ongezien"
@@ -2311,9 +2306,9 @@ msgstr "Gezien/Ongezien"
 msgid "Toggle selected"
 msgstr "Selectie wisselen"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Total %s"
-msgstr "Totale grootte:"
+msgstr "Totaal %s"
 
 msgid "Total size:"
 msgstr "Totale grootte:"
@@ -2347,7 +2342,6 @@ msgstr "Ongekend"
 msgid "Unknown error!"
 msgstr "Ongekende fout!"
 
-#, fuzzy
 msgid "Unknown error!!"
 msgstr "Ongekende fout!"
 
@@ -2450,12 +2444,16 @@ msgstr "Video-knop"
 msgid "Virtual"
 msgstr "Virtueel"
 
+#, fuzzy
+msgid "Virtual KeyBoard"
+msgstr "Virtueel"
+
 msgid "Virtual and Numerical"
 msgstr "Virtueel en numerisch"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Voted: %s"
-msgstr "Sortering:"
+msgstr "Gestemd: %s"
 
 msgid "Waiting"
 msgstr "Wachten"
@@ -2530,9 +2528,9 @@ msgstr "Met deze optie kan u de mapnaam gebruiken i.p.v. folder.jpg voor het wee
 msgid "Would you really abort current job?"
 msgstr "Wilt u de actie annuleren?"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Writer: %s\n"
-msgstr "Gezochte titel: %s"
+msgstr "Auteur: %s\n"
 
 msgid "YTTrailer plugin NOT installed. Search for trailers on the Web is NOT possible."
 msgstr "YTTrailer Plugin is NIET geïnstalleerd. Zoeken naar trailers op het web is NIET mogelijk."
@@ -2571,10 +2569,10 @@ msgid "be moved/copied?"
 msgstr "verplaatsen/kopiëren?"
 
 msgid "episode found"
-msgstr ""
+msgstr "aflevering gevonden"
 
 msgid "episodes found"
-msgstr ""
+msgstr "afleveringen gevonden"
 
 #, python-format
 msgid "from %s"
@@ -2586,29 +2584,26 @@ msgstr "interne HDD"
 msgid "movie"
 msgstr "film"
 
-#, fuzzy
 msgid "movie found"
-msgstr "film"
+msgstr "gevonden film"
 
 msgid "movies"
 msgstr "films"
 
-#, fuzzy
 msgid "movies found"
-msgstr "films"
+msgstr "gevonden films"
 
-#, fuzzy
 msgid "show found"
-msgstr "Mappen weergeven"
+msgstr "Resultaat weergeven"
 
 msgid "shows found"
-msgstr ""
+msgstr "Resultaten weergeven"
 
 msgid "this recording"
 msgstr "deze opname"
 
 msgid "times"
-msgstr ""
+msgstr "maal"
 
 #, python-format
 msgid "to %s"

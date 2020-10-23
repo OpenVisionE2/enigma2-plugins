@@ -1,0 +1,281 @@
+# German translations for enigma package.
+# Copyright (C) 2008 THE enigma'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the enigma package.
+# Alex <info@laetsch.de>, 2008.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: enigma2.plugins.vlcplayer\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-10-23 15:06+0330\n"
+"PO-Revision-Date: 2012-12-15 15:31+0100\n"
+"Last-Translator: andy1 <dmm8000pvr@gmail.com>\n"
+"Language-Team: German <de@li.org>\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "1 minute"
+msgstr ""
+
+msgid "10 minutes"
+msgstr ""
+
+msgid "15 minutes"
+msgstr ""
+
+msgid "20 minutes"
+msgstr ""
+
+msgid "3 minutes"
+msgstr ""
+
+msgid "30 minutes"
+msgstr ""
+
+msgid "5 minutes"
+msgstr ""
+
+msgid "A video streaming solution based on VLC"
+msgstr "En bilde strømmings løsning basert på VLC"
+
+#, fuzzy
+msgid "Audio"
+msgstr "Lyd codec"
+
+msgid "Audio Bitrate"
+msgstr "Lyd bitrate"
+
+msgid "Audio Channels"
+msgstr "Lyd kanaler"
+
+msgid "Audio Codec"
+msgstr "Lyd codec"
+
+msgid "Audio Samplerate"
+msgstr "Lyd samplingshastighet"
+
+#, fuzzy
+msgid "Cache Directory"
+msgstr "Filmkatalog"
+
+msgid "Cancel"
+msgstr "Avbryt"
+
+msgid "Choice of minutes to jump"
+msgstr ""
+
+msgid "Choose an action:"
+msgstr ""
+
+msgid "DVD Device (leave empty for default)"
+msgstr "DVD spiller (la stå tom som standard)"
+
+msgid "Direct play"
+msgstr ""
+
+#, fuzzy
+msgid "Edit VLC Server"
+msgstr "innstille server"
+
+msgid "Enter VLC-Server as FQDN or IP-Address"
+msgstr "Oppgi VLC-server i FQDN eller IP adresse"
+
+msgid "Enter subtitles as Track or Language"
+msgstr ""
+
+#, python-format
+msgid ""
+"Error loading filelist into server %(server)s:\n"
+"%(error)s"
+msgstr "Feil ved lasting av fil liste til server %(server)s:`n%(error)s"
+
+#, python-format
+msgid ""
+"Error loading playlist %(media)s into server %(server)s:\n"
+"%(error)s"
+msgstr ""
+"Feil ved lastining av spilliste %(media)s til server %(server)s:\n"
+"%(error)s"
+
+#, python-format
+msgid ""
+"Error loading playlist into server %(server)s:\n"
+"%(error)s"
+msgstr ""
+"Feil ved lasting av spilliste till server %(server)s:\n"
+"%(error)s"
+
+#, python-format
+msgid ""
+"Error updating filelist from server %(server)s:\n"
+"%(error)s"
+msgstr ""
+"Feil ved oppdatering av fil liste fra server %(server)s:\n"
+"%(error)s"
+
+#, python-format
+msgid ""
+"Error with VLC server:\n"
+"%s"
+msgstr ""
+"Feil med VLC server:\n"
+"%s"
+
+msgid "FQDN"
+msgstr ""
+
+msgid "Filelist"
+msgstr "Filliste"
+
+msgid "HTTP Port"
+msgstr "HTTP port"
+
+msgid "IP-Address"
+msgstr ""
+
+msgid ""
+"Latest compatible version VLC 2.0.7\n"
+"Setup VLC for PC:\n"
+"Tools -> Preferences -> All -> Interface -> Main Interface -> Select Web\n"
+"Find file c:/Program Files/VideoLAN/VLC/Lua/http/.hosts and insert your box ip (without #).\n"
+"Add shortcut to the startup of the background start VLC 'C:\\Program Files\\VideoLAN\\VLC\vlc.exe --intf telnet --extraintf http'"
+msgstr ""
+
+msgid "List of known profiles. Note: key info - help"
+msgstr ""
+
+msgid "Movie Directory"
+msgstr "Filmkatalog"
+
+msgid "No more files in this directory"
+msgstr "Ikke flere filer i denne katalogen"
+
+#, python-format
+msgid ""
+"No ping from Server:\n"
+"%s\n"
+"%s"
+msgstr ""
+
+msgid "No previous file in this directory"
+msgstr "Ingen tidligere filer i denne katalogen"
+
+msgid ""
+"No valid Enigma-Service to play a VLC-Stream\n"
+"Check your installation and try again!"
+msgstr ""
+"Ingen godkjent Enigma service for spilling av VLC-strøm\n"
+"Kontrollér din installasjon og prøv igjen!"
+
+msgid "OK"
+msgstr "OK"
+
+#, python-format
+msgid "Overscan Correction [in %(percentsign)s of Video width]"
+msgstr "Feilkorreksjon [på %(percentsign)s av bilde bredde]"
+
+msgid "Ping IP-Address when open Server"
+msgstr ""
+
+msgid "Playlist"
+msgstr "Spilleliste"
+
+msgid "Really delete this Server?"
+msgstr "Fjerne denne server?"
+
+#, fuzzy
+msgid "Reset default"
+msgstr "sett som standard"
+
+msgid "Save as .ts and play"
+msgstr ""
+
+#, fuzzy
+msgid "Select VLC-Server profile"
+msgstr "Liste over kjente VLC serverprofiler"
+
+msgid "Select method?"
+msgstr ""
+
+msgid "Server Address"
+msgstr "Server adresse"
+
+msgid "Server Profile Name"
+msgstr "Server profilnavn"
+
+msgid "Serverlist"
+msgstr "Serverliste"
+
+#, fuzzy
+msgid "Set as default"
+msgstr "sett som standard"
+
+msgid "Subtitle overlay"
+msgstr "Teksting overlegg"
+
+#, fuzzy
+msgid "Subtitles"
+msgstr "Teksting overlegg"
+
+msgid "Transcode MPEG/DVD Audio"
+msgstr "Transkode MPEG/DVD lyd"
+
+msgid "Transcode MPEG/DVD Video"
+msgstr "Transkode MPEG/DVD bilde"
+
+msgid "Use saving to Cache Directory"
+msgstr ""
+
+msgid "VLC < 2.x"
+msgstr ""
+
+msgid "VLC Media List"
+msgstr ""
+
+msgid "VLC Video Player"
+msgstr ""
+
+msgid "Video Bitrate"
+msgstr "Video bitrate"
+
+msgid "Video Codec"
+msgstr "Bilde codec"
+
+msgid "Video Norm"
+msgstr "Bildestandard"
+
+msgid "Yellow subtitles"
+msgstr ""
+
+msgid "add server"
+msgstr "legg til server"
+
+msgid "delete server"
+msgstr "ta bort server"
+
+msgid "edit server"
+msgstr "innstille server"
+
+msgid "filter off"
+msgstr "filter av"
+
+msgid "filter on"
+msgstr "filter på"
+
+msgid "languages"
+msgstr ""
+
+msgid "play DVD"
+msgstr "spelle DVD"
+
+msgid "refresh"
+msgstr "oppdatere"
+
+msgid "set default"
+msgstr "sett som standard"
+
+msgid "tracks"
+msgstr ""

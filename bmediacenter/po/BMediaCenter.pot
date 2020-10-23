@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-16 14:25+0330\n"
+"POT-Creation-Date: 2020-10-23 15:06+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -534,4 +534,37 @@ msgid "textcolor"
 msgstr ""
 
 msgid "yellow"
+msgstr ""
+
+msgid "Audio Player"
+msgstr ""
+
+msgid "Audioplayer Settings"
+msgstr ""
+
+msgid "Favorite Folders"
+msgstr ""
+
+msgid "Home"
+msgstr ""
+
+msgid "InfoBar"
+msgstr ""
+
+msgid "Media Center - VLC Favorites"
+msgstr ""
+
+msgid "Media Center - VLC Player - Serverlist"
+msgstr ""
+
+msgid "Music Playlist"
+msgstr ""
+
+msgid "Pic Viewer"
+msgstr ""
+
+msgid "VLC Player - Medialist"
+msgstr ""
+
+msgid "Video Player"
 msgstr ""

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Enigma2 plugin - Networkbrowser serbian\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-29 00:28+0100\n"
+"POT-Creation-Date: 2020-10-23 15:06+0330\n"
 "PO-Revision-Date: 2009-09-10 20:32+0100\n"
 "Last-Translator: maja <jovanovic@gmx.ch>\n"
 "Language-Team: veselin & majevica CRNABERZA <jovanovic@gmx.ch>\n"
@@ -36,6 +36,7 @@ msgstr ""
 "Aktivan/\n"
 "Neaktivan"
 
+#, fuzzy
 msgid "Add a new NFS or CIFS mount point to your Receiver."
 msgstr "Dodaj novu CIFS ili  NFS maunt tačku tvom drimboksu."
 
@@ -67,6 +68,7 @@ msgstr ""
 msgid "Change hostname"
 msgstr "Promeni ime hosta"
 
+#, fuzzy
 msgid "Change the hostname of your Receiver."
 msgstr "Promeni ime hosta svog drimboksa."
 
@@ -88,6 +90,7 @@ msgstr "Želite li da postavite korisničko ime i lozinku za ovaj host?\n"
 msgid "Enter IP to scan..."
 msgstr ""
 
+#, fuzzy
 msgid "Enter new hostname for your Receiver"
 msgstr "Unesi novo ime hosta za svoj drimboks"
 
@@ -246,6 +249,7 @@ msgstr "Korisnički menadžer"
 msgid "Username"
 msgstr "Korisn. ime"
 
+#, fuzzy
 msgid "View, edit or delete mountpoints on your Receiver."
 msgstr "Vidi, uredi ili obriši maunt tačke na svom drimboksu."
 

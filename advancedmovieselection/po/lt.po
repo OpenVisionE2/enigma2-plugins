@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AdvancedMovieSelection\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-16 14:25+0330\n"
+"POT-Creation-Date: 2020-10-23 15:06+0330\n"
 "PO-Revision-Date: 2017-07-22 07:31+0300\n"
 "Last-Translator: Vytenis P. <vyteniui@gmail.com>\n"
 "Language-Team: Vytenis P. <vyteniui@gmail.com>\n"
@@ -50,6 +50,8 @@ msgid ""
 "\n"
 "Last modified at TheTVDB.com: %s"
 msgstr ""
+"\n"
+"Paskutinis pakeitimas TheTVDB.com: %s"
 
 #, python-format
 msgid "%s is currently recording!"
@@ -112,7 +114,7 @@ msgstr "Apie 'išplėstinę filmų atranką'"
 
 #, python-format
 msgid "Actors: %s\n"
-msgstr ""
+msgstr "Aktoriai: %s\n"
 
 msgid "Add Tag(s) for Recordings/Timer or AutoTimer"
 msgstr "Įkelti žymes įrašymui, laikmačiui, autolaikmačiui"
@@ -152,11 +154,11 @@ msgstr "Išplėstinio filmų sąrašo meniu"
 
 #, python-format
 msgid "Air Day: %s"
-msgstr ""
+msgstr "Rodymo diena: %s"
 
 #, python-format
 msgid "Air Time: %s"
-msgstr ""
+msgstr "Rodymo laikas: %s"
 
 msgid "All directorys below '/media'"
 msgstr "Visi katalogai, žemiau /media"
@@ -183,7 +185,7 @@ msgstr "Duomenims perkelti reikia kito %s."
 
 #, python-format
 msgid "Appeared: %s"
-msgstr ""
+msgstr "Išleistas: %s"
 
 #, python-format
 msgid "Around %d minute"
@@ -348,7 +350,7 @@ msgstr "Atšaka:"
 
 #, python-format
 msgid "Broadcast TV network: %s"
-msgstr ""
+msgstr "Transliacijos TV tinklas: %s"
 
 msgid "Button caption"
 msgstr "Mygtuko antraštė"
@@ -362,9 +364,9 @@ msgstr "Atšaukti"
 msgid "Cancelled"
 msgstr "Atšaukta"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Certification: %s"
-msgstr "Filmo vieta: %s"
+msgstr "Sertifikatai: %s"
 
 msgid "Change Bookmarkname"
 msgstr "Pervadinti žymelę"
@@ -449,7 +451,7 @@ msgid "Daily"
 msgstr "Kasdien"
 
 msgid "Data already exists! Should anything be updated?"
-msgstr ""
+msgstr "Duomenys jau yra! Reikėtų ką nors atnaujinti?"
 
 #, fuzzy
 msgid "Default movie location"
@@ -503,9 +505,9 @@ msgstr "Aprašymas:"
 msgid "Destination carrier"
 msgstr "Paskirties laikmena"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Details for: %s"
-msgstr "Redaguoti %s žymes"
+msgstr "Išsamiau apie: %s"
 
 msgid ""
 "Developer:\n"
@@ -514,9 +516,9 @@ msgstr ""
 "Kūrėjas:\n"
 "  JackDaniel, cmikula"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Director: %s"
-msgstr "Katalogai"
+msgstr "Režisierius: %s"
 
 msgid "Directories"
 msgstr "Katalogai"
@@ -778,9 +780,8 @@ msgstr "Aprašykite 7 žymelės spartųjį mygtuką:"
 msgid "Enter Home button descrition:"
 msgstr "Aprašykite pradinio katalogo spartųjį mygtuką:"
 
-#, fuzzy
 msgid "Enter new movie name for search:"
-msgstr "Įrašykite naują ieškomo filmo pavadinimą"
+msgstr "Įrašykite naują ieškomo filmo pavadinimą:"
 
 msgid "Enter new moviename to search for"
 msgstr "Įrašykite naują ieškomo filmo pavadinimą"
@@ -788,17 +789,17 @@ msgstr "Įrašykite naują ieškomo filmo pavadinimą"
 msgid "Enter text to search for"
 msgstr "Įrašykite ieškomą tekstą"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Episode details for: %s"
-msgstr "Redaguoti %s žymes"
+msgstr "Epizodo %s aprašymas"
 
 #, python-format
 msgid "Episode: %s"
-msgstr ""
+msgstr "Epizodas: %s"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Episodes for: %s"
-msgstr "Informacija apie: %s"
+msgstr "Epizodai: %s"
 
 msgid "Error"
 msgstr "Klaida"
@@ -812,11 +813,13 @@ msgstr "Klaida, įkeliant ISO atvaizdą!"
 msgid "Error occurred during unmounting device!"
 msgstr "Atjungiant įrenginį, įvyko klaida!"
 
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Error!\n"
 "%s"
-msgstr "Klaida"
+msgstr ""
+"Klaida!\n"
+"%s"
 
 msgid "Error:"
 msgstr "Klaida:"
@@ -854,7 +857,7 @@ msgstr "Baigta"
 
 #, python-format
 msgid "First Aired: %s"
-msgstr ""
+msgstr "Pirmąkart: %s"
 
 msgid "Foldername:"
 msgstr "Katalogo pavadinimas:"
@@ -868,9 +871,9 @@ msgstr "Laisva:"
 msgid "From:"
 msgstr "Nuo:"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Genre: %s\n"
-msgstr "Failo pavadinimas: %s"
+msgstr "Žanras: %s\n"
 
 msgid "German (with Starttime)"
 msgstr "Vokiečių (su pradžios laiku)"
@@ -881,21 +884,21 @@ msgstr "Vokiečių (su metais)"
 msgid "German (without Year)"
 msgstr "Vokiečių (be metų)"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Getting episodes details for ' %s ', please wait ..."
-msgstr "Palaukite, ieškoma %s..."
+msgstr "Palaukite, įkeliami '%s' serijų aprašymai..."
 
-#, fuzzy, python-format
+#, python-format
 msgid "Getting episodes list for ' %s ', please wait ..."
-msgstr "Palaukite. Vyksta klientų paieška..."
+msgstr "Palaukite, įkeliamas '%s' serijų sąrašas..."
 
-#, fuzzy, python-format
+#, python-format
 msgid "Getting search result for ' %s ', please wit ..."
-msgstr "Palaukite, ieškoma %s..."
+msgstr "Palaukite, įkeliama '%s' paieškos informacija..."
 
-#, fuzzy, python-format
+#, python-format
 msgid "Getting show details for ' %s ', please wait ..."
-msgstr "Palaukite, ieškoma %s..."
+msgstr "Palaukite, įkeliama '%s' išsami informacija..."
 
 msgid "Go manual to position (OK for seek):"
 msgstr "Rankiniu būdu nurodyti poziciją ('OK' - paieška):"
@@ -908,7 +911,7 @@ msgstr "Pilka"
 
 #, python-format
 msgid "Guest Stars: %s\n"
-msgstr ""
+msgstr "Vaidina: %s\n"
 
 msgid "Here you can adjust the manually jump length relative to the film length in percent."
 msgstr "Čia galite nustatyti rankinio peršokimo dydį, palyginus su filmo dydžiu (procentais)."
@@ -1030,7 +1033,7 @@ msgstr "Kaip elgtis su '%s'"
 
 #, python-format
 msgid "ID: %s"
-msgstr ""
+msgstr "ID: %s"
 
 msgid "IMDB search"
 msgstr "IMDb paieška"
@@ -1117,13 +1120,16 @@ msgid "If you enable this function, your recorded movies will be marked in epg l
 msgstr "Įjungus šią funkciją, Jūsų įrašyti įvykiai bus pažymeti EPG sąraše."
 
 msgid "Info/Cover save"
-msgstr ""
+msgstr "Išsaugoti Info/viršelį"
 
 #, python-format
 msgid "Infos for: %s"
 msgstr "Informacija apie: %s"
 
 msgid "Initial location in new timers"
+msgstr ""
+
+msgid "Input"
 msgstr ""
 
 msgid "Instant record location"
@@ -1257,16 +1263,14 @@ msgstr "Perkelti"
 msgid "Move Copy Progress"
 msgstr "Perkėlimo/kopijavimo eiga"
 
-#, fuzzy
 msgid "Move down"
-msgstr "Perkėlimas"
+msgstr "Perkelti žemyn"
 
 msgid "Move of"
 msgstr "Perkėlimas"
 
-#, fuzzy
 msgid "Move up"
-msgstr "Perkelti"
+msgstr "Perkelti aukštyn"
 
 msgid "Move-Copy"
 msgstr "Perkelti - kopijuoti"
@@ -1396,17 +1400,19 @@ msgstr "Pagalbos aprašymų nėra!"
 
 #, python-format
 msgid "No data found for ' %s ' at themoviedb.org!"
-msgstr ""
+msgstr "\"%s\" tarp themoviedb.org duomenų nėra!"
 
 #, python-format
 msgid ""
 "No data found for ' %s ' at themoviedb.org!\n"
 "Do you want to edit the search name?"
 msgstr ""
+"\"%s\" tarp themoviedb.org duomenų nėra!\n"
+"Ar norite redaguoti paieškos frazę?"
 
 #, python-format
 msgid "No description for ' %s ' at themoviedb.org found!"
-msgstr ""
+msgstr "\"%s\" aprašymo tarp themoviedb.org duomenų nėra!"
 
 msgid "No internet connection available!"
 msgstr "Nėra interneto ryšio!"
@@ -1427,7 +1433,7 @@ msgid "No tags are set on these movies."
 msgstr "Šiuose filmuose žymių nenustatyta."
 
 msgid "No user voted!"
-msgstr ""
+msgstr "Nebalsuota!"
 
 msgid "No, but restart from begin"
 msgstr "Ne. Bet pradėti filmą iš pradžių"
@@ -1480,7 +1486,7 @@ msgid "Only last three digits from the IP must be set."
 msgstr "Nustatykite paskutinius tris IP adreso skaičius."
 
 msgid "Only those, which are not available!"
-msgstr ""
+msgstr "Tik tuos, kurie neprieinami!"
 
 msgid "Open servicelist"
 msgstr "Atidaryti kanalų sąrašą"
@@ -1495,15 +1501,13 @@ msgid "Original (1400x2100)"
 msgstr "Originalus (1400x2100)"
 
 msgid "Overwrite both (description & cover)"
-msgstr ""
+msgstr "Perrašyti abu (aprašymą ir viršelį)"
 
-#, fuzzy
 msgid "Overwrite movie cover"
-msgstr "Šalinti informaciją apie filmą ir viršelį"
+msgstr "Perrašyti filmo viršelį"
 
-#, fuzzy
 msgid "Overwrite movie description"
-msgstr "Pasirinkite filmą pagal aprašymą:"
+msgstr "Perrašyti filmo aprašymą"
 
 msgid "Own button description"
 msgstr "Kiekvieno mygtuko aprašymas"
@@ -1578,9 +1582,9 @@ msgstr "Peržiūra prasidės ties vėliausio sustabdymo atžyma."
 msgid "Processing: %s"
 msgstr "Apdorojama: %s"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Production: %s\n"
-msgstr "Apdorojama: %s"
+msgstr "Gamyba: %s\n"
 
 msgid "Provider Logo path:"
 msgstr "Kelias į tiekėjo logotipą:"
@@ -1596,7 +1600,7 @@ msgstr "'RADIO' mygtukas"
 
 #, python-format
 msgid "Rating: %s\n"
-msgstr ""
+msgstr "Reitingas: %s\n"
 
 msgid "Really close without saving settings?"
 msgstr "Ar tikrai užverti be nustatymų išsaugojimo ?"
@@ -1642,7 +1646,7 @@ msgstr "Raudonas"
 
 #, python-format
 msgid "Regie: %s"
-msgstr ""
+msgstr "Režisūra: %s"
 
 msgid "Remaining elements:"
 msgstr "Liko elementų:"
@@ -1691,24 +1695,23 @@ msgstr "Grįžti į filmų sąrašą"
 msgid "Return to previous service"
 msgstr "Grįžti į ankstesnį kanalą"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Runtime: %s minutes"
-msgstr "Maždaug %d min."
+msgstr "Trukmė: %s min."
 
-#, fuzzy, python-format
+#, python-format
 msgid "Runtime: %s minutes\n"
-msgstr "Maždaug %d min."
+msgstr "Trukmė: %s minučių\n"
 
 msgid "Save"
 msgstr "Saugoti"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Save Info/Cover for ' %s ', please wait ..."
-msgstr "Palaukite, ieškoma %s..."
+msgstr "Palaukite, įkeliama '%s' informacija, viršeliai..."
 
-#, fuzzy
 msgid "Save info/cover"
-msgstr "Išsaugoti info/viršelį"
+msgstr "Išsaugoti informaciją/viršelį"
 
 msgid "Save infos/cover"
 msgstr "Išsaugoti info/viršelį"
@@ -1723,7 +1726,7 @@ msgstr "Ieškoti anonso internete"
 msgid "Search for %s, please wait..."
 msgstr "Palaukite, ieškoma %s..."
 
-#, fuzzy, python-format
+#, python-format
 msgid "Search result for: %s"
 msgstr "%s paieškos rezultatai"
 
@@ -1731,20 +1734,20 @@ msgstr "%s paieškos rezultatai"
 msgid "Search result(s) for %s"
 msgstr "%s paieškos rezultatai"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Search trailer for ' %s ', please wait ..."
-msgstr "Palaukite, ieškoma %s..."
+msgstr "Palaukite, ieškomas '%s' anonsas..."
 
 msgid "Search:"
 msgstr "Paieška:"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Searching for ' %s ' on TMDb, please wait ..."
-msgstr "Palaukite, ieškoma %s..."
+msgstr "Palaukite, TVDB iešoma '%s'..."
 
-#, fuzzy, python-format
+#, python-format
 msgid "Searching for ' %s ' on TheTVDB.com, please wait ..."
-msgstr "Palaukite, ieškoma %s..."
+msgstr "TheTVDB.com iešoma '%s', prašome palaukti ..."
 
 msgid "Searching for clients, please wait ..."
 msgstr "Palaukite. Vyksta klientų paieška..."
@@ -1755,7 +1758,7 @@ msgstr "Ieškomas pavadinimas: %s"
 
 #, python-format
 msgid "Season: %s"
-msgstr ""
+msgstr "Sezonas: %s"
 
 msgid "Second"
 msgstr "Skundė"
@@ -1917,13 +1920,11 @@ msgstr "Filmų sąraše rodyti katalogų dydžius:"
 msgid "Show disk usage in description:"
 msgstr "Aprašyme rodyti disko naudojimą:"
 
-#, fuzzy
 msgid "Show episode detail"
-msgstr "Išsamiai apie įvykį"
+msgstr "Rodyti epizodo aprašymą"
 
-#, fuzzy
 msgid "Show episodes overview"
-msgstr "Rodyti žiūrėtus filmus"
+msgstr "Rodyti epizodų apžvalgą"
 
 msgid "Show event details"
 msgstr "Išsamiai apie įvykį"
@@ -1970,9 +1971,8 @@ msgstr "Rodyti perkėlimo/kopijavimo eigos pradžią ir pabaigą:"
 msgid "Show movie color status in movielist"
 msgstr "Filmų sąraše rodyti filmo būklės spalvą"
 
-#, fuzzy
 msgid "Show movie detail"
-msgstr "Išsamiai apie įvykį"
+msgstr "Rodyti filmo aprašymą"
 
 msgid "Show movie library symbol in movielist:"
 msgstr "Filmų sąraše rodyti filmų bibliotekos simbolį:"
@@ -1992,9 +1992,8 @@ msgstr "Filmų sąrašo meniu rodyti filmo žymes:"
 msgid "Show new recordings icon:"
 msgstr "Naujus įrašus pažymėti ženkliuku:"
 
-#, fuzzy
 msgid "Show next cover"
-msgstr "Rodyti žiūrėtus filmus"
+msgstr "Rodyti sekantį viršelį"
 
 msgid "Show path marker within movie library movies:"
 msgstr "Filmų bibliotekos filmus rodyti su jų kelio žymekliais:"
@@ -2008,9 +2007,8 @@ msgstr "Filmų sąraše rodyti procentus"
 msgid "Show plugin config in extensions menu from movielist:"
 msgstr "Filmų sąrašo meniu rodyti nustatymus:"
 
-#, fuzzy
 msgid "Show previous cover"
-msgstr "Peršokti į ankstesnę pažymėtą vietą"
+msgstr "Rodyti ankstesnį viršelį"
 
 msgid "Show progress of move or copy job"
 msgstr "Rodyti perkėlimo/kopijavimo eigą"
@@ -2027,9 +2025,8 @@ msgstr "Filmų sąrašo meniu rodyti pervadinimą:"
 msgid "Show runtime entry in movielist"
 msgstr "Filmų sąraše rodyti trukmę"
 
-#, fuzzy
 msgid "Show search result"
-msgstr "%s paieškos rezultatai"
+msgstr "Rodyti paieškos rezultatus"
 
 msgid "Show search trailer on web in extensions menu from movielist:"
 msgstr "Filmų sąrašo meniu rodyti anonsų paiešką internete:"
@@ -2037,9 +2034,8 @@ msgstr "Filmų sąrašo meniu rodyti anonsų paiešką internete:"
 msgid "Show seen movies"
 msgstr "Rodyti žiūrėtus filmus"
 
-#, fuzzy
 msgid "Show serie detail"
-msgstr "Išsamiai apie įvykį"
+msgstr "Rodyti serijos aprašymą"
 
 msgid "Show sort options in extensions menu from movielist:"
 msgstr "Filmų sąrašo meniu rodyti rūšiavimo parinktį:"
@@ -2100,25 +2096,24 @@ msgid "Some settings changes require close/reopen the movielist to take effect."
 msgstr "Kad įsigaliotų parametrų pakeitimai, reikia užverti ir vėl atverti filmų sąrašą."
 
 msgid "Sorry, no data found at TheTVDB.com!"
-msgstr ""
+msgstr "TheTVDB.com nieko nerasta!"
 
 #, python-format
 msgid "Sorry, no description for ' %s ' at TheTVDB.com found!"
-msgstr ""
+msgstr "TheTVDB.com ' %s ' aprašymo nerasta!"
 
 msgid "Sorry, no description for this episode at TheTVDB.com available!"
-msgstr ""
+msgstr "TheTVDB.com šio epizodo aprašymo nerasta!"
 
 msgid "Sorry, no description found at www.thetvdb.com!"
-msgstr ""
+msgstr "www.thetvdb.com aprašymo nerasta!"
 
-#, fuzzy
 msgid "Sorry, no episode titel available!"
-msgstr "Sekančui tuštinimo stovis neprieinamas!"
+msgstr "Epizodo pavadinimas nerastas!"
 
 #, python-format
 msgid "Sorry, no info/cover found for title: %s"
-msgstr ""
+msgstr "Atleiskite, pavadinimui: %s nerasta nei informacijos, nei viršelių"
 
 msgid "Sort"
 msgstr "Rūšiuoti"
@@ -2188,7 +2183,7 @@ msgstr "IP paieška iki:"
 
 #, python-format
 msgid "Studio: %s"
-msgstr ""
+msgstr "Studija: %s"
 
 msgid "Switch library/movielist"
 msgstr "Perjungti biblioteka/filmų sąrašas"
@@ -2303,7 +2298,7 @@ msgid "To:"
 msgstr "Į:"
 
 msgid "Toggle detail and list view"
-msgstr ""
+msgstr "Perjungti išsamų ir sąrašo režimą"
 
 msgid "Toggle seen"
 msgstr "Žymėti peržiūrėtu"
@@ -2311,9 +2306,9 @@ msgstr "Žymėti peržiūrėtu"
 msgid "Toggle selected"
 msgstr "Sukeisti pasirinktus"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Total %s"
-msgstr "Bendras dydis:"
+msgstr "Iš viso %s"
 
 msgid "Total size:"
 msgstr "Bendras dydis:"
@@ -2347,7 +2342,6 @@ msgstr "Nežinoma"
 msgid "Unknown error!"
 msgstr "Nežinoma klaida!"
 
-#, fuzzy
 msgid "Unknown error!!"
 msgstr "Nežinoma klaida!"
 
@@ -2450,12 +2444,16 @@ msgstr "'VIDEO' mygtukas"
 msgid "Virtual"
 msgstr "Virtualus"
 
+#, fuzzy
+msgid "Virtual KeyBoard"
+msgstr "Virtualus"
+
 msgid "Virtual and Numerical"
 msgstr "Virtualus ir skaitmenimis"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Voted: %s"
-msgstr "Surūšiuota:"
+msgstr "Balsavo: %s"
 
 msgid "Waiting"
 msgstr "Laukiama"
@@ -2530,9 +2528,9 @@ msgstr "Čia galite nustatyti viršelių atvaizdavimui kataloguose naudoti katal
 msgid "Would you really abort current job?"
 msgstr "Ar tikrai atšaukti užduoties vykdymą?"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Writer: %s\n"
-msgstr "Ieškomas pavadinimas: %s"
+msgstr "Autorius: %s\n"
 
 msgid "YTTrailer plugin NOT installed. Search for trailers on the Web is NOT possible."
 msgstr "YTTrailer įskiepis neįdiegtas. Be jo ieškoti anonsų internete neįmanoma."
@@ -2571,10 +2569,10 @@ msgid "be moved/copied?"
 msgstr "reikia perkelti/kopijuoti?"
 
 msgid "episode found"
-msgstr ""
+msgstr "Rastas epizodas"
 
 msgid "episodes found"
-msgstr ""
+msgstr "Rasti epizodai"
 
 #, python-format
 msgid "from %s"
@@ -2586,29 +2584,26 @@ msgstr "vidinis HDD"
 msgid "movie"
 msgstr "filmas"
 
-#, fuzzy
 msgid "movie found"
-msgstr "filmas"
+msgstr "rastas filmas"
 
 msgid "movies"
 msgstr "filmai"
 
-#, fuzzy
 msgid "movies found"
-msgstr "filmai"
+msgstr "rasti filmai"
 
-#, fuzzy
 msgid "show found"
-msgstr "Rodyti katalogus"
+msgstr "Rastas šou"
 
 msgid "shows found"
-msgstr ""
+msgstr "Rasta šou"
 
 msgid "this recording"
 msgstr "šis įrašas"
 
 msgid "times"
-msgstr ""
+msgstr "kartai(-ų)"
 
 #, python-format
 msgid "to %s"
