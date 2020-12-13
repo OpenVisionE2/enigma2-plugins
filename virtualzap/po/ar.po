@@ -1,0 +1,67 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: virtualzap\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-12-13 19:19+0330\n"
+"PO-Revision-Date: \n"
+"Last-Translator: mosad - مساعد الجعيد <abo-mishal@hotmail.com>\n"
+"Language-Team: mosad - مساعد الجعيد\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5);\n"
+"X-Generator: Poedit 2.4.1\n"
+
+msgid "Cancel"
+msgstr "إلغاء"
+
+msgid "Could not open Picture in Picture"
+msgstr "لا يمكن فتح صوره داخل صوره"
+
+msgid ""
+"GUI needs a restart to apply the new settings.\n"
+"Do you want to Restart the GUI now?"
+msgstr ""
+"واجهة المستخدم تحتاج إلى إعادة تشغيل لتطبيق الإعدادات الجديدة.\n"
+"هل تريد إعادة تشغيل واجهة المستخدم الآن؟"
+
+msgid "OK"
+msgstr ""
+
+msgid "Remember last service"
+msgstr "تذكر آخر قناة"
+
+#, fuzzy
+msgid "Restart GUI now?"
+msgstr "إعادة تشغيل الاينجما"
+
+#, fuzzy
+msgid "Show PiP in Infobar"
+msgstr "إظهار صورة داخل صورة في شريط معلومات النافذة"
+
+msgid "Start standard PiP after x secs (0 = disabled)"
+msgstr "بدء تشغيل صورة داخل صورة القياسي بعد x ثانية (0 = معطل)"
+
+msgid "Usage"
+msgstr "الاستخدام"
+
+msgid "Use PiP"
+msgstr "استخدام خاصية صورة داخل صورة"
+
+msgid "Virtual (PiP) Zap"
+msgstr ""
+
+#, fuzzy
+msgid "Virtual Zap Setup"
+msgstr "ضبط التنقل الافتراضي المطول"
+
+#, fuzzy
+msgid "as plugin in extended bar"
+msgstr "كما البلجن في القائمة الموسعة"
+
+msgid "with exit button"
+msgstr "مع زر الخروج"
+
+msgid "with long OK press"
+msgstr "مع الضغط المطول على زر موافق"
