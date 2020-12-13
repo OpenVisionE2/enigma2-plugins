@@ -1,3 +1,3 @@
 PLUGIN = ReconstructApSc
-LANGS = cs de fr lt nl pl ru 
+CATEGORY = "Extensions" 
 include $(top_srcdir)/Rules-po.mak

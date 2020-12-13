@@ -1,3 +1,3 @@
 PLUGIN = Filebrowser
-LANGS = cs de fr nl ru 
+CATEGORY = "Extensions"
 include $(top_srcdir)/Rules-po.mak

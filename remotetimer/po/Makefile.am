@@ -1,4 +1,3 @@
 PLUGIN = remoteTimer
-
-LANGS = fr lt ru 
+CATEGORY = "Extensions"
 include $(top_srcdir)/Rules-po.mak
