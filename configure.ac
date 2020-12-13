@@ -185,6 +185,7 @@ curlytx/src/Makefile
 
 dreamexplorer/Makefile
 dreamexplorer/meta/Makefile
+dreamexplorer/po/Makefile
 dreamexplorer/src/Makefile
 dreamexplorer/src/res/Makefile
 
@@ -277,6 +278,7 @@ fancontrol2/src/Makefile
 filebrowser/Makefile
 filebrowser/meta/Makefile
 filebrowser/src/Makefile
+filebrowser/po/Makefile
 
 flashexpander/Makefile
 flashexpander/meta/Makefile
@@ -340,6 +342,7 @@ letterbox/src/Makefile
 logomanager/logodir_hdd/Makefile
 logomanager/Makefile
 logomanager/meta/Makefile
+logomanager/po/Makefile
 logomanager/src/Makefile
 
 mediadownloader/Makefile
@@ -515,6 +518,7 @@ quickbutton/src/Makefile
 reconstructapsc/Makefile
 reconstructapsc/meta/Makefile
 reconstructapsc/src/Makefile
+reconstructapsc/po/Makefile
 
 recordinfobar/Makefile
 recordinfobar/meta/Makefile
@@ -526,6 +530,7 @@ reftopiconname/src/Makefile
 
 remotetimer/Makefile
 remotetimer/meta/Makefile
+remotetimer/po/Makefile
 remotetimer/src/Makefile
 
 satloader/Makefile

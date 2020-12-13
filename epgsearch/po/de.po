@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Enigma 2 EPGSearch Plugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-23 15:06+0330\n"
+"POT-Creation-Date: 2020-12-13 19:18+0330\n"
 "PO-Revision-Date: 2013-11-30 07:36+0100\n"
 "Last-Translator: koivo <koivo@hdfreaks.cc>\n"
 "Language-Team: none\n"
@@ -106,10 +106,10 @@ msgid "EPGSearch"
 msgstr "EPG-Suche"
 
 msgid "EPGSearch Setup"
-msgstr "EPG-Suche-Einstellungen"
+msgstr "EPG-Suche Einstellungen"
 
 msgid "Enable this to allow access to EPG Search from within the plugin browser."
-msgstr "EPG Suche in Erweiterungen aufführen"
+msgstr "EPG-Suche in Erweiterungen aufführen"
 
 msgid "Enter new search"
 msgstr "Neue Suche eingeben"
@@ -121,13 +121,13 @@ msgid "Exclude results from"
 msgstr ""
 
 msgid "Exit EPG Search"
-msgstr "Beende EPG Suche"
+msgstr "Beende EPG-Suche"
 
 msgid "Filter results by source"
 msgstr ""
 
 msgid "IMDB search for highlighted event"
-msgstr "IMBD Suche für ausgewählte Sendung"
+msgstr "IMDb Suche für ausgewählte Sendung"
 
 msgid "IMDb Search"
 msgstr "IMDb Suche"
@@ -154,7 +154,7 @@ msgid "Include/exclude sources"
 msgstr ""
 
 msgid "Is the search case-sensitive or case-insensitive?"
-msgstr "In der Suche Groß- und Kleinschreibung beachten ?"
+msgstr "In der Suche Groß- und Kleinschreibung beachten?"
 
 msgid "Length of history"
 msgstr "Limit des Suchverlaufs"
