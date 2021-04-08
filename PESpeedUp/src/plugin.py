@@ -164,7 +164,7 @@ class PESpeedUp(Screen, ConfigListScreen):
         if pathExists(resolveFilename(SCOPE_PLUGINS, 'Extensions/HistoryZapSelector')):
             self.packagelist.append(['HistoryZapSelector', 'enigma2-plugin-extensions-historyzapselector'])
         if pathExists(resolveFilename(SCOPE_PLUGINS, 'Extensions/IPTVPlayer')):
-            self.packagelist.append(['IPTVPlayer', 'enigma2-plugin-extensions-iptvplayer])
+            self.packagelist.append(['IPTVPlayer', 'enigma2-plugin-extensions-iptvplayer'])
         if pathExists(resolveFilename(SCOPE_PLUGINS, 'Extensions/KeyAdder')):
             self.packagelist.append(['KeyAdder', 'enigma2-plugin-extensions-keyadder'])
         if pathExists(resolveFilename(SCOPE_PLUGINS, 'Extensions/LCD4linux')):
