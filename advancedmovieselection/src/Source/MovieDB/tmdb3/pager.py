@@ -6,7 +6,11 @@
 # Author: Raymond Wagner
 #-----------------------
 
-from collections import Sequence, Iterator
+try:
+	#Python >= 3.10
+	from collections.abc import Sequence, Iterator
+except ImportError:
+	from collections import Sequence, Iterator
 
 
 class PagedIterator(Iterator):
