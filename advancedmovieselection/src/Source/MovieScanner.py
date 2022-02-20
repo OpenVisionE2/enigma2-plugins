@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 #  Advanced Movie Selection for Dreambox-Enigma2
 #
 #  Coded by cmikula & JackDaniel (c)2012
@@ -117,7 +117,7 @@ class MovieScanner():
         if self.isWorking:
             print("[AdvancedMovieSelection] MovieScanner action canceled! reload in progress")
             return
-        from thread import start_new_thread
+        from _thread import start_new_thread
         start_new_thread(self.updateMovieList, (dir_list, delay))
         self.isWorking = True
 

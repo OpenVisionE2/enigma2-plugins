@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 #! /usr/bin/python2.7
 
 # Copyright 1994 by Lance Ellinghouse
@@ -51,7 +51,7 @@ def encode(in_file, out_file, name=None, mode=None):
     #
     if in_file == '-':
         in_file = sys.stdin
-    elif isinstance(in_file, basestring):
+    elif isinstance(in_file, str):
         if name is None:
             name = os.path.basename(in_file)
         if mode is None:
@@ -65,7 +65,7 @@ def encode(in_file, out_file, name=None, mode=None):
     #
     if out_file == '-':
         out_file = sys.stdout
-    elif isinstance(out_file, basestring):
+    elif isinstance(out_file, str):
         out_file = open(out_file, 'w')
     #
     # Set defaults for name and mode
@@ -73,11 +73,11 @@ def encode(in_file, out_file, name=None, mode=None):
     if name is None:
         name = '-'
     if mode is None:
-        mode = 0666
+        mode = 0o666
     #
     # Write the data
     #
-    out_file.write('begin %o %s\n' % ((mode & 0777), name))
+    out_file.write('begin %o %s\n' % ((mode & 0o777), name))
     data = in_file.read(45)
     while len(data) > 0:
         out_file.write(binascii.b2a_uu(data))
@@ -92,7 +92,7 @@ def decode(in_file, out_file=None, mode=None, quiet=0):
     #
     if in_file == '-':
         in_file = sys.stdin
-    elif isinstance(in_file, basestring):
+    elif isinstance(in_file, str):
         in_file = open(in_file)
     #
     # Read until a begin is encountered or we've exhausted the file
@@ -122,7 +122,7 @@ def decode(in_file, out_file=None, mode=None, quiet=0):
     opened = False
     if out_file == '-':
         out_file = sys.stdout
-    elif isinstance(out_file, basestring):
+    elif isinstance(out_file, str):
         fp = open(out_file, 'wb')
         try:
             os.path.chmod(out_file, mode) #@UndefinedVariable
@@ -173,7 +173,7 @@ def test():
 
     if options.decode:
         if options.text:
-            if isinstance(output, basestring):
+            if isinstance(output, str):
                 output = open(output, 'w')
             else:
                 print(sys.argv[0], ': cannot do -t to stdout')
@@ -181,7 +181,7 @@ def test():
         decode(input, output)
     else:
         if options.text:
-            if isinstance(input, basestring):
+            if isinstance(input, str):
                 input = open(input, 'r')
             else:
                 print(sys.argv[0], ': cannot do -t from stdin')

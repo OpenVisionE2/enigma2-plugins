@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 from Components.Language import language
 from Tools.Directories import resolveFilename, SCOPE_PLUGINS, SCOPE_LANGUAGE
 import os
@@ -86,11 +86,11 @@ config.plugins.autotimer.skip_during_epgrefresh = ConfigYesNo(default=False)
 
 try:
 	xrange = xrange
-	iteritems = lambda d: d.iteritems()
-	itervalues = lambda d: d.itervalues()
+	iteritems = lambda d: iter(d.items())
+	itervalues = lambda d: iter(d.values())
 except NameError:
 	xrange = range
-	iteritems = lambda d: d.items()
-	itervalues = lambda d: d.values()
+	iteritems = lambda d: list(d.items())
+	itervalues = lambda d: list(d.values())
 
 __all__ = ['_', 'config', 'iteritems', 'itervalues', 'xrange']

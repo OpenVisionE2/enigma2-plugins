@@ -4,7 +4,7 @@ from twisted.web.client import getPage
 from twisted.internet.defer import Deferred
 from twisted.internet import reactor
 try:
-	from urllib import urlencode
+	from urllib.parse import urlencode
 except ImportError as ie:
 	from urllib.parse import urlencode
 

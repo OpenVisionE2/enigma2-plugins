@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 from Plugins.Extensions.SubsDownloader2.SourceCode.MediaInfoDLL import *
 
 """

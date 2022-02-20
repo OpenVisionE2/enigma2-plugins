@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 
 from twisted.internet.protocol import DatagramProtocol
 from twisted.internet import reactor
@@ -31,9 +31,9 @@ SEVERITY = {
 
 try:
 	dict.iteritems
-	reverse = lambda map: dict((v, k) for k, v in map.iteritems())
-except AttributeError:
 	reverse = lambda map: dict((v, k) for k, v in map.items())
+except AttributeError:
+	reverse = lambda map: dict((v, k) for k, v in list(map.items()))
 
 SEVERITYMAP = {
 	-1: SEVERITY['info'],

@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 #  Advanced Movie Selection for Dreambox-Enigma2
 #
 #  The plugin is developed on the basis from a lot of single plugins (thx for the code @ all)
@@ -124,7 +124,7 @@ config.AdvancedMovieSelection.showcoveroptions = ConfigYesNo(default=True)
 config.AdvancedMovieSelection.showpreview = ConfigYesNo(default=True)
 config.AdvancedMovieSelection.showrename = ConfigYesNo(default=True)
 config.AdvancedMovieSelection.description = ConfigYesNo(default=True)
-poster_sizes = (u'w92', u'w154', u'w185', u'w342', u'w500', u'original')
+poster_sizes = ('w92', 'w154', 'w185', 'w342', 'w500', 'original')
 from .MovieDB.tmdb import poster_sizes, setPosterSize
 poster_choices = [
                   (poster_sizes[0], _("Thumb (92x138)")),
@@ -155,7 +155,7 @@ config.AdvancedMovieSelection.empty_wastebasket_time = ConfigClock(default=10800
 config.AdvancedMovieSelection.empty_wastebasket_min_age = ConfigInteger(default=0, limits=(0, 999))
 config.AdvancedMovieSelection.last_auto_empty_wastebasket = ConfigInteger(default=0)
 config.AdvancedMovieSelection.next_auto_empty_wastebasket = ConfigInteger(default=0)
-config.AdvancedMovieSelection.next_empty_check = ConfigInteger(default=30, limits=(01, 60))
+config.AdvancedMovieSelection.next_empty_check = ConfigInteger(default=30, limits=(0o1, 60))
 config.AdvancedMovieSelection.show_update_genre = ConfigYesNo(default=False)
 config.AdvancedMovieSelection.show_begintime = ConfigYesNo(default=False)
 config.AdvancedMovieSelection.show_date_shortdesc = ConfigYesNo(default=False)

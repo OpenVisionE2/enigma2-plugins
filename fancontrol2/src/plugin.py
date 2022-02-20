@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 # FanControl2
 # joergm6 IHAD
 # PID-controller by Lukasz S.
@@ -43,8 +43,8 @@ from Components.ActionMap import NumberActionMap
 from Components.Harddisk import harddiskmanager
 from Tools.Directories import resolveFilename, SCOPE_PLUGINS
 from threading import Thread, Lock
-import Queue
-Briefkasten = Queue.Queue()
+import queue
+Briefkasten = queue.Queue()
 
 
 def main(session, **kwargs):

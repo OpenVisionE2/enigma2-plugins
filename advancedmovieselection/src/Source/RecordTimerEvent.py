@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 
 
 '''
@@ -74,7 +74,7 @@ class CoverLoader():
         from timer import TimerEntry
         print("[AdvancedMovieSelection] RecordTimerEvent:", str(timer.state), str(timer.cancelled), timer.Filename)
         if timer.state == TimerEntry.StateEnded and not timer.cancelled:
-            from thread import start_new_thread
+            from _thread import start_new_thread
             start_new_thread(self.downloadMovieInfo, (timer.name, timer.Filename + ".ts"))
 
     def downloadMovieInfo(self, name, filename=None):

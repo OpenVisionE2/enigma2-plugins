@@ -20,7 +20,7 @@ $Id: plugin.py 1591 2021-04-29 14:52:10Z michael $
 # E501 line too long (85 > 79 characters)
 # pylint: disable=C0111,C0103,C0301,W0603,C0302
 
-from __future__ import division, absolute_import
+
 import re
 import time
 import os
@@ -1508,7 +1508,7 @@ class FritzCallPhonebook(object):
 				debug("[FritzCallPhonebook] read %s", phonebookFilename)
 
 				try:
-					for k, v in json.loads(six.ensure_text(open(phonebookFilename).read())).items():
+					for k, v in list(json.loads(six.ensure_text(open(phonebookFilename).read())).items()):
 						# TODO if we change the value to a list of lines, we have to adapt this here
 						self.phonebook[k] = v
 				except (ValueError, UnicodeError, IOError) as e:
@@ -1585,7 +1585,7 @@ class FritzCallPhonebook(object):
 						info("[FritzCallPhonebook] empty Phonebook.json created")
 
 					phonebookTmp = {}
-					for k, v in json.loads(six.ensure_text(open(phonebookFilename).read())).items():
+					for k, v in list(json.loads(six.ensure_text(open(phonebookFilename).read())).items()):
 						phonebookTmp[k] = v
 					phonebookTmp[number] = name
 					json.dump(phonebookTmp, open(phonebookFilename, "w"), ensure_ascii=False, indent=0, separators=(',', ': '), sort_keys=True)
@@ -1623,7 +1623,7 @@ class FritzCallPhonebook(object):
 						return True
 
 					phonebookTmp = {}
-					for k, v in json.loads(six.ensure_text(open(phonebookFilename).read())).items():
+					for k, v in list(json.loads(six.ensure_text(open(phonebookFilename).read())).items()):
 						phonebookTmp[k] = v
 					if number in phonebookTmp:
 						del phonebookTmp[number]

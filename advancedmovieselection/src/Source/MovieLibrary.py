@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 #  Advanced Movie Selection for Dreambox-Enigma2
 #
 #  Coded by cmikula & JackDaniel (c)2012
@@ -130,7 +130,7 @@ class MovieLibrary(dict, SortProvider):
             file_name = isinstance(file_service_list, str) and service or service.getPath()
             file_name = os.path.realpath(file_name)
             print("try remove from movielibrary:", file_name)
-            for key, item in self["db"].iteritems():
+            for key, item in self["db"].items():
                 if not file_name.startswith(key):
                     continue
                 for index, movie_info in enumerate(item["movies"]):
@@ -233,7 +233,7 @@ class MovieLibrary(dict, SortProvider):
 
     def getDirectoryList(self, sort=False):
         if not sort:
-            return self["db"].keys()
+            return list(self["db"].keys())
         return sorted(self["db"].keys())
 
     def getMissingLocations(self, dir_list):
@@ -250,14 +250,14 @@ class MovieLibrary(dict, SortProvider):
         l = []
         if location not in self["db"]:
             return l
-        for key, item in self["db"].iteritems():
+        for key, item in self["db"].items():
             if key.startswith(location):
                 l.append(key)
         return sorted(l)
 
     def findMovies(self, name):
         l = []
-        for key, item in self["db"].iteritems():
+        for key, item in self["db"].items():
             for index, movie_info in enumerate(item["movies"]):
                 if movie_info.name == name:
                     l.append(movie_info)
@@ -267,7 +267,7 @@ class MovieLibrary(dict, SortProvider):
         if not serviceref:
             return
         movie_path = serviceref.getPath()
-        for key, item in self["db"].iteritems():
+        for key, item in self["db"].items():
             if not movie_path.startswith(key):
                 continue
             for index, movie_info in enumerate(item["movies"]):
@@ -295,7 +295,7 @@ class MovieLibrary(dict, SortProvider):
         directories = 0
         movies = 0
         try:
-            for km in self["db"].iteritems():
+            for km in self["db"].items():
                 directories += 1
                 movies += len(km[1]["movies"])
         except:
@@ -314,7 +314,7 @@ class MovieLibrary(dict, SortProvider):
             if cnt == 0:
                 return -1
             return size
-        for km in self["db"].iteritems():
+        for km in self["db"].items():
             cnt += 1
             size += km[1]["dir_size"]
         if cnt == 0:
@@ -329,7 +329,7 @@ class dict2xml(object):
     def __init__(self, structure):
         if len(structure) == 1:
             self.doc = Document()
-            rootName = str(structure.keys()[0])
+            rootName = str(list(structure.keys())[0])
             self.root = self.doc.createElement(rootName)
 
             self.doc.appendChild(self.root)
@@ -383,6 +383,6 @@ class dict2xml(object):
 
 
 if __name__ == '__main__':
-    example = {'auftrag': {"kommiauftragsnr": 2103839, "anliefertermin": "2009-11-25", "prioritaet": 7, "ort": u"Huecksenwagen", "positionen": [{"menge": 12, "artnr": "14640/XL", "posnr": 1}, ], "versandeinweisungen": [{"guid": "2103839-XalE", "bezeichner": "avisierung48h", "anweisung": "48h vor Anlieferung unter 0900-LOGISTIK avisieren"}, ]}}
+    example = {'auftrag': {"kommiauftragsnr": 2103839, "anliefertermin": "2009-11-25", "prioritaet": 7, "ort": "Huecksenwagen", "positionen": [{"menge": 12, "artnr": "14640/XL", "posnr": 1}, ], "versandeinweisungen": [{"guid": "2103839-XalE", "bezeichner": "avisierung48h", "anweisung": "48h vor Anlieferung unter 0900-LOGISTIK avisieren"}, ]}}
     xml = dict2xml(example)
     xml.display()

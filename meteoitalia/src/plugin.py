@@ -18,8 +18,8 @@ from Components.Sources.List import List
 from Components.Label import Label
 from Components.Pixmap import Pixmap
 from Tools.Directories import fileExists, resolveFilename, SCOPE_PLUGINS
-
-from urllib2 import Request, urlopen, URLError, HTTPError
+from urllib.request import Request, urlopen
+from urllib.error import URLError, HTTPError
 from xml.dom import minidom, Node
 from enigma import loadPic, eTimer
 
@@ -112,7 +112,7 @@ class meteoitMain(Screen):
 					'forecast_information': ('postal_code', 'current_date_time'),
 					'current_conditions': ('condition', 'temp_c', 'humidity', 'wind_condition', 'icon')
 				}
-				for (tag, list_of_tags2) in data_structure.iteritems():
+				for (tag, list_of_tags2) in data_structure.items():
 					tmp_conditions = {}
 					for tag2 in list_of_tags2:
 						try:

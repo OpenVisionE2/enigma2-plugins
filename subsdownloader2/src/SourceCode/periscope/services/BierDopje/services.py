@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 
 #   This file is part of periscope.
 #
@@ -18,8 +18,8 @@ from __future__ import print_function
 #    along with periscope; if not, write to the Free Software
 #    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
-import urllib
-import urllib2
+import urllib.request, urllib.parse, urllib.error
+import urllib.request, urllib.error, urllib.parse
 import logging
 import os
 import pickle
@@ -135,9 +135,9 @@ class BierDopje(SubtitleDatabase.SubtitleDB):
         elif showName in self.cache['showids']:
             show_id = self.cache['showids'].get(showName)
         else:
-            getShowId_url = "%sGetShowByName/%s" % (self.api, urllib.quote(showName))
+            getShowId_url = "%sGetShowByName/%s" % (self.api, urllib.parse.quote(showName))
             log.debug("Looking for show Id @ %s" % getShowId_url)
-            page = urllib2.urlopen(getShowId_url)
+            page = urllib.request.urlopen(getShowId_url)
             dom = minidom.parse(page)
             if not dom or len(dom.getElementsByTagName('showid')) == 0:
                 page.close()
@@ -153,7 +153,7 @@ class BierDopje(SubtitleDatabase.SubtitleDB):
         for lang in availableLangs:
             getAllSubs_url = "%sGetAllSubsFor/%s/%s/%s/%s" % (self.api, show_id, guessedData['season'], guessedData['episode'], lang)
             log.debug("Looking for subs @ %s" % getAllSubs_url)
-            page = urllib2.urlopen(getAllSubs_url)
+            page = urllib.request.urlopen(getAllSubs_url)
             dom = minidom.parse(page)
             page.close()
             for sub in dom.getElementsByTagName('result'):

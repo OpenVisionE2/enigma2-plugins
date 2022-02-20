@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 
 
 '''
@@ -26,7 +26,7 @@ must pass on to the recipients the same freedoms that you received. You must mak
 that they, too, receive or can get the source code. And you must show them these terms so they know their rights.
 '''
 
-import SocketServer
+import socketserver
 import socket
 
 serverInstance = None
@@ -53,7 +53,7 @@ def getIpAddress(iface):
     return None
 
 
-class TCPHandler(SocketServer.BaseRequestHandler):
+class TCPHandler(socketserver.BaseRequestHandler):
     """
     The RequestHandler class for our server.
 
@@ -92,7 +92,7 @@ class MessageServer():
             return
         import threading
         self.shutdown()
-        self.server = SocketServer.TCPServer((self.host, self.port), TCPHandler)
+        self.server = socketserver.TCPServer((self.host, self.port), TCPHandler)
         self.t = threading.Thread(target=self.server.serve_forever)
         self.t.setDaemon(True) # don't hang on exit
         self.t.start()

@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 import os
 from struct import unpack
 if __name__ == '__main__':
@@ -99,7 +99,7 @@ class ISORead:
 
 
 try:
-	import commands
+	import subprocess
 except:
 	import subprocess as commands
 
@@ -149,7 +149,7 @@ class ISOInfo:
                 os.mkdir(self.MOUNT_PATH)
             cmd = 'mount -r -o loop "%s" "%s"' % (iso, self.MOUNT_PATH)
             print('exec command:', cmd)
-            out = commands.getoutput(cmd)
+            out = subprocess.getoutput(cmd)
             if out:
                 print('error:', out)
             return not out
@@ -162,7 +162,7 @@ class ISOInfo:
         try:
             cmd = 'umount -df "%s"' % ISOInfo.MOUNT_PATH
             print('exec command:', cmd)
-            out = commands.getoutput(cmd)
+            out = subprocess.getoutput(cmd)
             if out:
                 print('error:', out)
             return not out

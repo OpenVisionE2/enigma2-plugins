@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 #
 #  SHOUTcast E2
 #
@@ -25,7 +25,7 @@ from __future__ import print_function
 
 from Plugins.Plugin import PluginDescriptor
 try:
-	from urlparse import urlparse
+	from urllib.parse import urlparse
 except:
 	from urllib.parse import urlparse
 from Screens.Screen import Screen
@@ -51,7 +51,7 @@ from Components.ConfigList import ConfigListScreen
 from Screens.MessageBox import MessageBox
 from Components.GUIComponent import GUIComponent
 from Components.Sources.StaticText import StaticText
-from urllib import quote
+from urllib.parse import quote
 from twisted.web.client import downloadPage
 from Screens.ChoiceBox import ChoiceBox
 from Screens.VirtualKeyBoard import VirtualKeyBoard

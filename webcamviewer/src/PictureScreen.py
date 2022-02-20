@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 
 from enigma import ePicLoad, eTimer, getDesktop
 
@@ -14,7 +14,7 @@ from .FTPDownloader import FTPDownloader
 from twisted.web.client import HTTPDownloader
 from twisted.internet import reactor
 try:
-	from urlparse import urlparse, urlunparse
+	from urllib.parse import urlparse, urlunparse
 except:
 	from urllib.parse import urlparse, urlunparse
 
@@ -143,7 +143,7 @@ class PictureScreen(Screen):
 			 "green": self.AutoReloaderSwitch,
 			 "yellow": self.pause,
 			 "red": self.prev,
-			 "blue": self.next,
+			 "blue": self.__next__,
 			 }, -1)
 
 		self.onLayoutFinish.append(self.do)
@@ -242,7 +242,7 @@ class PictureScreen(Screen):
 			self.paused = True
 		self.slideshowcallback(prev=True)
 
-	def next(self):
+	def __next__(self):
 		if not self.slideshowcallback:
 			return
 		if not self.paused:

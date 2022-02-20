@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 ############################################################################
 #    Copyright (C) 2008 by Volker Christian                                #
 #    Volker.Christian@fh-hagenberg.at                                      #
@@ -29,14 +29,13 @@ from gdata.service import BadAuthentication
 from Tools.LoadPixmap import LoadPixmap
 
 from twisted.web.client import downloadPage
+from urllib.request import urlopen, Request
+from urllib.error import URLError, HTTPError
+from urllib.parse import quote, unquote_plus, unquote
 
-from urllib2 import urlopen, Request, URLError, HTTPError
-#, quote, unquote, unquote_plus
-from urllib import quote, unquote_plus, unquote
+from http.client import HTTPConnection, HTTPException
 
-from httplib import HTTPConnection, HTTPException
-
-from urlparse import parse_qs
+from urllib.parse import parse_qs
 
 from socket import gaierror, error
 

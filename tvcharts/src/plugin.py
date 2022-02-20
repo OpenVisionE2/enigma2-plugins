@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 #####################################################
 # TVCharts Plugin for Enigma2 Dreamboxes
 # Coded by Homey (c) 2011
@@ -37,7 +37,7 @@ from random import randint
 from time import time, gmtime, strftime
 from twisted.web.client import getPage
 from xml.dom.minidom import parse, parseString
-from urllib import urlencode
+from urllib.parse import urlencode
 import timer
 import xml.etree.cElementTree
 import Screens.Standby

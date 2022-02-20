@@ -23,7 +23,7 @@ from Components.config import config, ConfigInteger, ConfigSubsection, \
 
 # For new and improved _parse
 try:
-	from urlparse import urlparse, urlunparse
+	from urllib.parse import urlparse, urlunparse
 except ImportError as ie:
 	from urllib.parse import urlparse, urlunparse
 

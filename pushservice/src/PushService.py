@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 #######################################################################
 #
 #    Push Service for Enigma-2
@@ -35,7 +35,7 @@ from .PushServiceBase import PushServiceBase
 
 
 # States
-(PSBOOT, PSBOOTRUN, PSFIRST, PSFIRSTRUN, PSCYCLE) = range(5)
+(PSBOOT, PSBOOTRUN, PSFIRST, PSFIRSTRUN, PSCYCLE) = list(range(5))
 #MABE use an enum http://stackoverflow.com/questions/36932/whats-the-best-way-to-implement-an-enum-in-python
 
 
@@ -64,7 +64,7 @@ class PushService(PushServiceBase):
 		self.stopTimer()
 
 		self.begin()
-		self.next()
+		next(self)
 
 	def stop(self):
 		print("PushService stop")
@@ -98,7 +98,7 @@ class PushService(PushServiceBase):
 
 	def do(self):
 		self.run()
-		self.next()
+		next(self)
 
 	def startTimer(self, seconds, state=None):
 		if state:

@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 from enigma import eTimer, iServiceInformation, iPlayableService, ePicLoad, RT_VALIGN_CENTER, RT_HALIGN_LEFT, RT_HALIGN_RIGHT, RT_HALIGN_CENTER, gFont, eListbox, ePoint, eListboxPythonMultiContent, eServiceCenter
 from Components.MenuList import MenuList
 from Screens.Screen import Screen
@@ -1430,7 +1430,7 @@ class Lyrics(Screen):
 				titlely = curPlay.info().getName().split('/')[-1]
 			if artistly == "":
 				artistly = titlely
-		from urllib import quote
+		from urllib.parse import quote
 		url = "http://api.chartlyrics.com/apiv1.asmx/SearchLyricDirect?artist=%s&song=%s" % (quote(artistly), quote(titlely))
 		sendUrlCommand(url, None, 10).addCallback(self.gotLyrics).addErrback(self.urlError)
 		return "No lyrics found in id3-tag, trying api.chartlyrics.com..."

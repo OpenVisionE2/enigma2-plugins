@@ -1,6 +1,6 @@
 # -*- coding: UTF-8 -*-
 # for localized messages
-from __future__ import print_function
+
 from . import _
 
 from Plugins.Plugin import PluginDescriptor
@@ -30,10 +30,10 @@ import six
 from six.moves.urllib.parse import quote_plus
 
 try:
-	import htmlentitydefs
+	import html.entities
 except ImportError as ie:
 	from html import entities as htmlentitydefs
-	unichr = chr
+	chr = chr
 
 
 # Configuration
@@ -55,7 +55,7 @@ config.plugins.imdb.showepisodeinfo = ConfigYesNo(default=False)
 def quoteEventName(eventName, safe="/()" + ''.join(map(chr, list(range(192, 255))))):
 	# BBC uses '\x86' markers in program names, remove them
 	try:
-		text = eventName.decode('utf8').replace(u'\x86', u'').replace(u'\x87', u'').encode('utf8')
+		text = eventName.decode('utf8').replace('\x86', '').replace('\x87', '').encode('utf8')
 	except:
 		text = eventName
 	# IMDb doesn't seem to like urlencoded characters at all, hence the big "safe" list
@@ -87,9 +87,9 @@ class IMDB(Screen, HelpableScreen):
 		</screen>"""
 
 	# Some HTML entities as utf-8
-	NBSP = six.unichr(htmlentitydefs.name2codepoint['nbsp'])
-	RAQUO = six.unichr(htmlentitydefs.name2codepoint['raquo'])
-	HELLIP = six.unichr(htmlentitydefs.name2codepoint['hellip'])
+	NBSP = six.chr(html.entities.name2codepoint['nbsp'])
+	RAQUO = six.chr(html.entities.name2codepoint['raquo'])
+	HELLIP = six.chr(html.entities.name2codepoint['hellip'])
 	if six.PY2:
 		NBSP = NBSP.encode("utf8")
 		RAQUO = RAQUO.encode("utf8")
@@ -634,8 +634,8 @@ class IMDB(Screen, HelpableScreen):
 			key = x.group(0)
 			if key not in entitydict:
 				if x.group(1):
-					if x.group(1) in htmlentitydefs.name2codepoint:
-						entitydict[key] = htmlentitydefs.name2codepoint[x.group(1)]
+					if x.group(1) in html.entities.name2codepoint:
+						entitydict[key] = html.entities.name2codepoint[x.group(1)]
 				elif x.group(2):
 					entitydict[key] = str(int(x.group(2), 16))
 				else:  # x.group(3)
@@ -643,14 +643,14 @@ class IMDB(Screen, HelpableScreen):
 
 		if utf8:
 			for key, codepoint in six.iteritems(entitydict):
-				cp = six.unichr(int(codepoint))
+				cp = six.chr(int(codepoint))
 				if six.PY2:
 					cp = cp.encode('utf8')
 				in_html = in_html.replace(key, cp)
 			self.inhtml = in_html
 		else:
 			for key, codepoint in six.iteritems(entitydict):
-				cp = six.unichr(int(codepoint))
+				cp = six.chr(int(codepoint))
 				if six.PY2:
 					cp = cp.encode('latin-1', 'ignore')
 				in_html = in_html.replace(key, cp)

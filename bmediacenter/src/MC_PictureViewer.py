@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 from enigma import ePicLoad, eTimer, getDesktop, iPlayableService, eServiceReference
 from Screens.Screen import Screen
 from Screens.ServiceInfo import ServiceInfoList, ServiceInfoListEntry
@@ -485,7 +485,7 @@ class MC_PicView(Screen, InfoBarBase, InfoBarSeek, InfoBarNotifications, Helpabl
 			self.lastindex = self.currPic[1]
 			self["pic"].instance.setPixmap(self.currPic[2].__deref__())
 			self.currPic = []
-			self.next()
+			next(self)
 			self.start_decode()
 
 	def finish_decode(self, picInfo=""):
@@ -508,7 +508,7 @@ class MC_PicView(Screen, InfoBarBase, InfoBarSeek, InfoBarNotifications, Helpabl
 		self.picload.startDecode(self.filelist[self.index])
 		self["point"].show()
 
-	def next(self):
+	def __next__(self):
 		self.index += 1
 		if self.index > self.maxentry:
 			self.index = 0

@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 #===============================================================================
 # VLC Player Plugin by A. Latsch 2007
 #                   modified by Volker Christian 2008
@@ -13,11 +13,11 @@ from __future__ import print_function
 
 import re
 import posixpath
-import urllib
-from sys import maxint
+import urllib.request, urllib.parse, urllib.error
+from sys import maxsize
 from random import randint, seed
-from urllib import urlencode, quote_plus
-from urllib2 import urlopen
+from urllib.parse import urlencode, quote_plus
+from urllib.request import urlopen
 from xml.dom.minidom import parse
 from .VlcPlayer import VlcPlayer, isDvdUrl
 
@@ -297,7 +297,7 @@ class VlcServer:
 
 		# Fix for nat. chars in path/filename
 		if not re.match("dvd", filename):
-			filename = urllib.pathname2url(filename)
+			filename = urllib.request.pathname2url(filename)
 
 		if re.match("[a-zA-Z]:", filename):
 			# Fix for subtitles with VLC on Windows.

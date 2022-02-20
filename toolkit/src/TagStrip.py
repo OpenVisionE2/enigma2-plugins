@@ -3,12 +3,12 @@
 from re import sub, finditer
 
 try:
-	import htmlentitydefs
-	iteritems = lambda d: d.iteritems()
+	import html.entities
+	iteritems = lambda d: iter(d.items())
 except ImportError as ie:
 	from html import entities as htmlentitydefs
-	iteritems = lambda d: d.items()
-	unichr = chr
+	iteritems = lambda d: list(d.items())
+	chr = chr
 
 
 def strip_readable(html):
@@ -46,7 +46,7 @@ def strip(html):
 	for x in entities:
 		key = x.group(0)
 		if key not in entitydict:
-			entitydict[key] = htmlentitydefs.name2codepoint[x.group(1)]
+			entitydict[key] = html.entities.name2codepoint[x.group(1)]
 
 	entities = finditer('&#x([0-9A-Fa-f]{2,2}?);', html)
 	for x in entities:
@@ -61,7 +61,7 @@ def strip(html):
 			entitydict[key] = x.group(1)
 
 	for key, codepoint in iteritems(entitydict):
-		html = html.replace(key, unichr(int(codepoint)))
+		html = html.replace(key, chr(int(codepoint)))
 
 	# Return result with leading/trailing whitespaces removed
 	return html.strip()

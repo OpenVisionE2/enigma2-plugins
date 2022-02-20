@@ -196,7 +196,7 @@ class AC3LipSync(Screen, HelpableScreen, MovableScreen):
     def keyCancel(self):
         for sAudio in AC3PCM:
             iSliderValue = self.currentValue[sAudio]
-            if iSliderValue <> self.savedValue[sAudio]:
+            if iSliderValue != self.savedValue[sAudio]:
                 self.AC3delay.whichAudio = sAudio
                 self.AC3delay.setSystemDelay(sAudio, self.savedValue[sAudio], False)
         self.close()
@@ -249,7 +249,7 @@ class AC3SetCustomValue:
 
     def getKeyList(self):
         keyList = []
-        for i, iValue in self.keyStep.iteritems():
+        for i, iValue in self.keyStep.items():
             if i != "0":
                 keyList.append((_("Key %(key)s (current value: %(value)i ms)") % dict(key=i, value=iValue), i))
         return keyList

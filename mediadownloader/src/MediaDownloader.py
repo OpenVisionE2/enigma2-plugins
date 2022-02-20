@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 
 # for localized messages
 from . import _
@@ -18,7 +18,7 @@ from .VariableProgressSource import VariableProgressSource
 
 from Components.config import config
 try:
-	from urlparse import urlparse, urlunparse
+	from urllib.parse import urlparse, urlunparse
 except ImportError as ie:
 	from urllib.parse import urlparse, urlunparse
 

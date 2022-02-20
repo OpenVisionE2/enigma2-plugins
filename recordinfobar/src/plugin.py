@@ -338,7 +338,7 @@ class RecInfoBar(Screen):
 	def updateInfo(self):
 		cnt = 0
 		fields = ["", "", "", "", "", "", "", "", ""] # [numbers,names,timelens,providers,bouquets,recnames,tuner,remaining,snrvalue]
-		for (key, value) in self.reclist.items():
+		for (key, value) in list(self.reclist.items()):
 			r = int(math.floor(value[7][0] - Time()))
 			cnt += 1
 			if cnt > 1:
@@ -453,7 +453,7 @@ class RecInfoBar(Screen):
 					else:
 						self.RecIndicator.show()
 			elif event == iRecordableService.evEnd:
-				for (k, val) in self.reclist.items():
+				for (k, val) in list(self.reclist.items()):
 					if k.__deref__() == key:
 						del self.reclist[k]
 						break
@@ -664,7 +664,7 @@ class RecInfoBar(Screen):
 			self.hide()
 			try:
 				if len(self.reclist) > 0 and self.session.nav.getRecordings():
-					for (k, val) in self.reclist.items():
+					for (k, val) in list(self.reclist.items()):
 						for timer in NavigationInstance.instance.RecordTimer.timer_list + NavigationInstance.instance.RecordTimer.processed_timers:
 							if timer.record_service and timer.record_service.__deref__() == k.__deref__():
 								if timer.end != val[7][0]:

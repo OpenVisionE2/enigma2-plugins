@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 
 from . import _
 
@@ -106,9 +106,9 @@ del pdict
 
 try:
 	dict.iteritems
-	iteritems = lambda d: d.iteritems()
+	iteritems = lambda d: iter(d.items())
 except AttributeError:
-	iteritems = lambda d: d.items()
+	iteritems = lambda d: list(d.items())
 reverse = lambda map: dict((v, k) for k, v in iteritems(map))
 
 
@@ -157,7 +157,7 @@ class PluginWeights:
 		extend = lst.extend
 
 		idmap = reverse(WHEREMAP)
-		for key in self.plugins.keys():
+		for key in list(self.plugins.keys()):
 			whereplugins = self.plugins.get(key, None)
 			if not whereplugins:
 				continue

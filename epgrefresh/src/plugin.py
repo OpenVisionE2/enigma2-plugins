@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 
 # for localized messages
 from . import _, NOTIFICATIONDOMAIN
@@ -23,7 +23,7 @@ from sys import stdout
 from time import time, localtime, mktime
 now = localtime()
 begin = mktime((
-	now.tm_year, now.tm_mon, now.tm_mday, 07, 30,
+	now.tm_year, now.tm_mon, now.tm_mday, 0o7, 30,
 	0, now.tm_wday, now.tm_yday, now.tm_isdst)
 )
 end = mktime((

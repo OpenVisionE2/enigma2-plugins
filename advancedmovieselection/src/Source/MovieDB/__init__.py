@@ -1,8 +1,8 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 import os
-import urllib
+import urllib.request, urllib.parse, urllib.error
 #from ..StopWatch import clockit
 
 #@clockit
@@ -12,7 +12,7 @@ def downloadCover(url, filename, overwrite=False):
     try:
         if not os.path.exists(filename) or overwrite:
             print("Try loading: ", str(url), "->", str(filename))
-            urllib.urlretrieve(url, filename)
+            urllib.request.urlretrieve(url, filename)
         else:
             print("Download skipped:", str(url), "->", str(filename))
     except:

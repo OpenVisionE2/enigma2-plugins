@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 def my_import(name):
 #	print("[SF-Plugin]: my_import(%s)" % (name))
 	if name == "Components.Converter.ServiceTime":

@@ -136,7 +136,7 @@ class AdvHdmiCecSetup(Screen, ConfigListScreen):
 		infoMsg = _("Version: ") + ADVHDMI_VERSION + "\n\n"
 		if advhdmiHooks:
 			infoMsg += _("Registered HDMI-Cec-Hooks:") + "\n"
-			for hookKey, hook in advhdmiHooks.iteritems():
+			for hookKey, hook in advhdmiHooks.items():
 				infoMsg += _("Hook") + " '" + str(hookKey) + "':\n"
 				infoMsg += str(hook.hookDescription) + "\n\n"
 		else:

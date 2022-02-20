@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 
 from Components.ActionMap import ActionMap
 from Components.Sensors import sensors
@@ -212,7 +212,7 @@ class EIBObjects(object):
 
 	def EIBreadAll(self):
 		persist_request_cmd = '<read><objects>'
-		for EIBObject in self.ids.itervalues():
+		for EIBObject in self.ids.values():
 			if EIBObject.object_type != EIB_GOTO:
 				persist_request_cmd += '<object id="%s"/>' % EIBObject.object_id
 		persist_request_cmd += '</objects></read>\n\x04'
@@ -295,7 +295,7 @@ class EIBObjects(object):
 			print("[parseMultiRead] XML parser error")
 
 	def __iter__(self):
-		list = self.ids.itervalues()
+		list = iter(self.ids.values())
 		return iter(sorted(list, key=lambda EIBObject: EIBObject.order))
 
 

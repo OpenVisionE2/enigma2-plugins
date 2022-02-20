@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
-from urllib import unquote_plus
+
+from urllib.parse import unquote_plus
 from twisted.web.client import getPage
 from md5 import md5 # to encode password
 from string import split, rstrip

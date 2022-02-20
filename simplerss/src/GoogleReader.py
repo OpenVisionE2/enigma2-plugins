@@ -1,8 +1,8 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 try:
-	from urllib import urlencode
+	from urllib.parse import urlencode
 except ImportError as ie:
 	from urllib.parse import urlencode
 

@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 # by 3c5x9@2007
 from enigma import eTimer, getDesktop
 from Screens.Screen import Screen

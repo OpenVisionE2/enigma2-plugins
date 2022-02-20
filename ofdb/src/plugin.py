@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 from Plugins.Plugin import PluginDescriptor
 from twisted.web.client import downloadPage
 from enigma import ePicLoad, eServiceReference
@@ -18,8 +18,8 @@ from Components.Language import language
 from Components.ProgressBar import ProgressBar
 from Tools.Directories import resolveFilename, SCOPE_PLUGINS
 import re
-import htmlentitydefs
-import urllib
+import html.entities
+import urllib.request, urllib.parse, urllib.error
 import os
 import gettext
 
@@ -314,9 +314,9 @@ class OFDB(Screen):
 
 			self["statusbar"].setText(_("Query OFDb: %s...") % (self.eventName))
 			try:
-				self.eventName = urllib.quote(self.eventName)
+				self.eventName = urllib.parse.quote(self.eventName)
 			except:
-				self.eventName = urllib.quote(self.eventName.decode('utf8').encode('ascii', 'ignore'))
+				self.eventName = urllib.parse.quote(self.eventName.decode('utf8').encode('ascii', 'ignore'))
 			localfile = "/tmp/ofdbquery.html"
 			fetchurl = "http://www.ofdb.de/view.php?page=suchergebnis&Kat=DTitel&SText=" + self.eventName
 			print("[OFDb] Downloading Query " + fetchurl + " to " + localfile)
@@ -338,16 +338,16 @@ class OFDB(Screen):
 		for x in entities:
 			entitydict[x.group(1)] = x.group(2)
 
-		for key, name in entitydict.items():
-			entitydict[key] = htmlentitydefs.name2codepoint[name]
+		for key, name in list(entitydict.items()):
+			entitydict[key] = html.entities.name2codepoint[name]
 
 		entities = htmlentitynumbermask.finditer(in_html)
 
 		for x in entities:
 			entitydict[x.group(1)] = x.group(2)
 
-		for key, codepoint in entitydict.items():
-			in_html = in_html.replace(key, (unichr(int(codepoint)).encode('utf8')))
+		for key, codepoint in list(entitydict.items()):
+			in_html = in_html.replace(key, (chr(int(codepoint)).encode('utf8')))
 
 		self.inhtml = in_html
 

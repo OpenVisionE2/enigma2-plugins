@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 import NavigationInstance
 from time import localtime, mktime, gmtime
 from ServiceReference import ServiceReference

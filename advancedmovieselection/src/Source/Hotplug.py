@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 #  Advanced Movie Selection for Dreambox-Enigma2
 #
 #  Coded by cmikula (c)2013
@@ -68,11 +68,11 @@ class Hotplug():
         try:
             from Components.Harddisk import Harddisk
             try:
-                import commands
+                import subprocess
             except:
                 import subprocess as commands
             movieConfig = MovieConfig()
-            lines = commands.getoutput('mount | grep /dev/sd').split('\n')
+            lines = subprocess.getoutput('mount | grep /dev/sd').split('\n')
             print(lines)
             for mount in lines:
                 if len(mount) < 2:
@@ -80,7 +80,7 @@ class Hotplug():
                 m = mount.split(' type')[0].split(' on ')
                 m_dev, m_path = m[0], m[1]
                 label = os.path.split(m_path)[-1]
-                blkid = commands.getoutput('blkid ' + m_dev).split("\"")
+                blkid = subprocess.getoutput('blkid ' + m_dev).split("\"")
                 if len(blkid) > 2 and blkid[1]:
                     label = blkid[1]
                 if os.path.normpath(m_path) == "/media/hdd" or label in ("DUMBO", "TIMOTHY"):

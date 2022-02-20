@@ -44,7 +44,7 @@ def bareGetEpisode(service_ref, name, begin, end, description, path, future=True
 			log.info("Bare: Success", name, description, path)
 			return (name, description, path, log.get())
 
-		elif data and isinstance(data, basestring):
+		elif data and isinstance(data, str):
 			global loop_data
 			msg = _("Failed: %s." % (str(data)))
 			log.debug(msg)

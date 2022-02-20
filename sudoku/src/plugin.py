@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 #===============================================================================
 # Sudoku Plugin by DarkVolli 2009
 # class board by Robert Wohleb

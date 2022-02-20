@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 #
 # WeatherPlugin E2
 #
@@ -35,7 +35,7 @@ from Components.ConfigList import ConfigList, ConfigListScreen
 from Components.config import ConfigSubsection, ConfigText, ConfigSelection, getConfigListEntry, config, configfile
 from xml.etree.cElementTree import fromstring as cet_fromstring
 from twisted.web.client import getPage
-from urllib import quote as urllib_quote
+from urllib.parse import quote as urllib_quote
 
 from enigma import RT_HALIGN_RIGHT
 from skin import parameters as skinparameter

@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 
 """
 Copyright (C) 2012 cmikula
@@ -45,8 +45,8 @@ def getLocale():
     return config['locale']
 
 
-import urllib
-import urllib2
+import urllib.request, urllib.parse, urllib.error
+import urllib.request, urllib.error, urllib.parse
 import xml.etree.cElementTree as ElementTree
 
 
@@ -74,7 +74,7 @@ class XmlHandler:
 
     def _grabUrl(self, url):
         try:
-            urlhandle = urllib2.urlopen(url)
+            urlhandle = urllib.request.urlopen(url)
         except IOError as errormsg:
             raise TvdHttpError(errormsg)
 
@@ -190,7 +190,7 @@ class MovieDb:
         """Searches for a film by its title.
         Returns SearchResults (a list) containing all matches (Movie instances)
         """
-        title = urllib.quote(title.encode('utf-8'))
+        title = urllib.parse.quote(title.encode('utf-8'))
         url = config['urls']['movie.search'] % title
         etree = XmlHandler(url).getEt()
         search_results = SearchResults()

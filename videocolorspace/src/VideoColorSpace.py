@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 #  VideoColorSpace for Dreambox-Enigma2
 #
 #  Coded by cmikula (c)2012
@@ -20,7 +20,7 @@ from __future__ import print_function
 #  distributed other than under the conditions noted above.
 #
 try:
-	import commands
+	import subprocess
 except:
 	import subprocess as commands
 from os import system
@@ -34,7 +34,7 @@ from Components.Console import Console
 
 
 def getColorSpace():
-    mode = commands.getoutput('cat /proc/stb/video/hdmi_colorspace')
+    mode = subprocess.getoutput('cat /proc/stb/video/hdmi_colorspace')
     print("[VideoColorSpace] current hdmi_colorspace:", mode)
     return mode
 
@@ -48,7 +48,7 @@ def setColorSpace(mode):
 
 
 def initializeConfig():
-    modes = commands.getoutput('cat /proc/stb/video/hdmi_colorspace_choices').split()
+    modes = subprocess.getoutput('cat /proc/stb/video/hdmi_colorspace_choices').split()
     config.VideoColorSpace = ConfigSubsection()
     config.VideoColorSpace.color_space = ConfigSelection(modes, "None")
     value = config.VideoColorSpace.color_space.value

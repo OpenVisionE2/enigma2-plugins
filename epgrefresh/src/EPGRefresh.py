@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 
 # To check if in Standby
 import Screens.Standby
@@ -438,7 +438,7 @@ class EPGRefresh:
 		self._nextTodo()
 
 	def _callFinishNotifiers(self, *args, **kwargs):
-		for notifier in self.finishNotifiers.keys():
+		for notifier in list(self.finishNotifiers.keys()):
 			print("[EPGRefresh] Debug: call " + str(notifier))
 			self.finishNotifiers[notifier]()
 		self._nextTodo()

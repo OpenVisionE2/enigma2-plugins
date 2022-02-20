@@ -96,18 +96,18 @@ def getMountedDevices():
 	mountedDevs = [(resolveFilename(SCOPE_CONFIG), _("Flash")),
 				   (resolveFilename(SCOPE_MEDIA, "cf"), _("Compact Flash")),
 				   (resolveFilename(SCOPE_MEDIA, "usb"), _("USB Device"))]
-	mountedDevs += map(lambda p: (p.mountpoint, (_(p.description) if p.description else "")), harddiskmanager.getMountedPartitions(True))
+	mountedDevs += [(p.mountpoint, (_(p.description) if p.description else "")) for p in harddiskmanager.getMountedPartitions(True)]
 	mediaDir = resolveFilename(SCOPE_MEDIA)
 	for p in os.listdir(mediaDir):
 		if os.path.join(mediaDir, p) not in [path[0] for path in mountedDevs]:
 			mountedDevs.append((os.path.join(mediaDir, p), _("Media directory")))
 	debug("[NcidClient] getMountedDevices1: %s" % repr(mountedDevs))
-	mountedDevs = filter(lambda path: os.path.isdir(path[0]) and os.access(path[0], os.W_OK | os.X_OK), mountedDevs)
+	mountedDevs = [path for path in mountedDevs if os.path.isdir(path[0]) and os.access(path[0], os.W_OK | os.X_OK)]
 	# put this after the write/executable check, that is far too slow...
 	netDir = resolveFilename(SCOPE_MEDIA, "net")
 	if os.path.isdir(netDir):
-		mountedDevs += map(lambda p: (os.path.join(netDir, p), _("Network mount")), os.listdir(netDir))
-	mountedDevs = map(handleMountpoint, mountedDevs)
+		mountedDevs += [(os.path.join(netDir, p), _("Network mount")) for p in os.listdir(netDir)]
+	mountedDevs = list(map(handleMountpoint, mountedDevs))
 	return mountedDevs
 
 
@@ -168,7 +168,7 @@ def resolveNumberWithAvon(number, countrycode):
 		return ""
 
 	# debug('normNumer: ' + normNumber)
-	for i in reversed(range(min(10, len(number)))):
+	for i in reversed(list(range(min(10, len(number))))):
 		if normNumber[:i] in avon:
 			return '[' + avon[normNumber[:i]].strip() + ']'
 	return ""
@@ -312,7 +312,7 @@ class NcidClientPhonebook:
 					os.rename(phonebookFilename, phonebookFilename + ".bck")
 					fNew = open(phonebookFilename, 'w')
 					# Beware: strings in phonebook.phonebook are utf-8!
-					for (number, name) in self.phonebook.iteritems():
+					for (number, name) in self.phonebook.items():
 						# Beware: strings in PhoneBook.txt have to be in utf-8!
 						fNew.write(number + "#" + name.encode("utf-8"))
 					fNew.close()
@@ -489,7 +489,7 @@ class NcidClientPhonebook:
 			debug("[NcidClientPhonebook] displayPhonebook/display")
 			self.sortlist = []
 			# Beware: strings in phonebook.phonebook are utf-8!
-			sortlistHelp = sorted((name.lower(), name, number) for (number, name) in phonebook.phonebook.iteritems())
+			sortlistHelp = sorted((name.lower(), name, number) for (number, name) in phonebook.phonebook.items())
 			for (low, name, number) in sortlistHelp:
 				if number == "01234567890":
 					continue

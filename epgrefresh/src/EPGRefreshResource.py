@@ -11,11 +11,11 @@ from .OrderedSet import OrderedSet
 from ServiceReference import ServiceReference
 from Tools.XMLTools import stringToXML
 try:
-	from urllib import unquote
-	iteritems = lambda d: d.iteritems()
+	from urllib.parse import unquote
+	iteritems = lambda d: iter(d.items())
 except ImportError as ie:
 	from urllib.parse import unquote
-	iteritems = lambda d: d.items()
+	iteritems = lambda d: list(d.items())
 
 API_VERSION = "1.4"
 

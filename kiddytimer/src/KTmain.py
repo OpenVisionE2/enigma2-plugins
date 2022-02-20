@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 from Components.Label import Label
 from Components.ProgressBar import ProgressBar
 from .KTMultiPixmap import KTmultiPixmap
@@ -186,7 +186,7 @@ class KiddyTimer():
         self.dialog = None
 
     def resetTimer(self, **kwargs):
-        if "setTime" in kwargs.keys():
+        if "setTime" in list(kwargs.keys()):
             self.setCurrentDayTime(kwargs["setTime"])
         else:
             self.setCurrentDayTime()

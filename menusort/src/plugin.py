@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 
 # Plugin definition
 from Plugins.Plugin import PluginDescriptor
@@ -29,9 +29,9 @@ from Tools.XMLTools import stringToXML
 
 try:
 	dict.iteritems
-	iteritems = lambda d: d.iteritems()
+	iteritems = lambda d: iter(d.items())
 except AttributeError:
-	iteritems = lambda d: d.items()
+	iteritems = lambda d: list(d.items())
 
 from operator import itemgetter
 from shutil import copyfile, Error

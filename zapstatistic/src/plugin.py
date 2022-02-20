@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 # Zap Statistic by AliAbdul
 from Components.ActionMap import ActionMap
 from Components.config import config
@@ -47,7 +47,7 @@ language.addCallback(localeInit)
 
 def decode_charset(str, charset):
 	try:
-		uni = unicode(str, charset, 'strict')
+		uni = str(str, charset, 'strict')
 	except:
 		uni = str
 	return uni

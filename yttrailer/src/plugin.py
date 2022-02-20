@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 #  YTTrailer
 #
 #  Coded by Dr.Best (c) 2011
@@ -33,10 +33,11 @@ from enigma import eServiceReference, RT_WRAP, RT_VALIGN_CENTER, RT_HALIGN_LEFT,
 import gdata.youtube
 import gdata.youtube.service
 from socket import gaierror, error as sorcket_error
-from urllib2 import Request, URLError, urlopen as urlopen2
-from urllib import unquote_plus
-from httplib import HTTPException
-from urlparse import parse_qs
+from urllib.request import Request, urlopen as urlopen2
+from urllib.error import URLError
+from urllib.parse import unquote_plus
+from http.client import HTTPException
+from urllib.parse import parse_qs
 
 from Components.config import config, ConfigSubsection, ConfigSelection, getConfigListEntry, configfile, ConfigText, ConfigInteger, ConfigYesNo
 from Components.ConfigList import ConfigListScreen
@@ -287,10 +288,10 @@ class YTTrailer:
 			if fmtid in VIDEO_FMT_PRIORITY_MAP and fmtid != "":
 				video_fmt_map[VIDEO_FMT_PRIORITY_MAP[fmtid]] = {'fmtid': fmtid, 'fmturl': unquote_plus(fmturl)}
 				fmt_infomap[int(fmtid)] = unquote_plus(fmturl)
-		print("[YTTrailer] got", sorted(fmt_infomap.iterkeys()))
+		print("[YTTrailer] got", sorted(fmt_infomap.keys()))
 		if video_fmt_map and len(video_fmt_map):
-			print("[YTTrailer] found best available video format:", video_fmt_map[sorted(video_fmt_map.iterkeys())[0]]['fmtid'])
-			best_video = video_fmt_map[sorted(video_fmt_map.iterkeys())[0]]
+			print("[YTTrailer] found best available video format:", video_fmt_map[sorted(video_fmt_map.keys())[0]]['fmtid'])
+			best_video = video_fmt_map[sorted(video_fmt_map.keys())[0]]
 			video_url = "%s" % (best_video['fmturl'].split(';')[0])
 			print("[YTTrailer] found best available video url:", video_url)
 

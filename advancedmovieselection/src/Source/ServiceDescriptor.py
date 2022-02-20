@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 #  Advanced Movie Selection for Dreambox-Enigma2
 #
 #  Coded by cmikula (c)2012

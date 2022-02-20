@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 
 # for localized messages
 from . import _x
@@ -101,7 +101,7 @@ def autostart(reason, **kwargs):
 					gLeavePlayerConfirmed = MoviePlayer.leavePlayerConfirmed
 				MoviePlayer.leavePlayerConfirmed = leavePlayerConfirmedMP
 
-				Session.doInstantiateDialog.im_class.doInstantiateDialog = doInstantiateDialogSF
+				Session.doInstantiateDialog.__self__.__class__.doInstantiateDialog = doInstantiateDialogSF
 				modname = Session.doInstantiateDialog.__module__
 				print("[SF-Plugin] mytest.Session.doInstantiateDialog modname = %s = %s" % (str(type(modname)), str(modname)))
 

@@ -20,13 +20,13 @@ $Date: 2021-04-23 12:19:26 +0200 (Fri, 23 Apr 2021) $
 # C0410 multiple-imports
 # pylint: disable=C0111,C0103,C0301,W0603,C0302
 
-from __future__ import print_function
+
 import re
 import sys
 import os
 import six
 from xml.dom.minidom import parse
-from six import unichr
+from six import chr
 from six.moves import html_entities
 
 try:
@@ -85,7 +85,7 @@ def html2unicode(in_html):
 	for x in entities:
 		# debug("mask: found %s" %repr(x.group(2)))
 		entitydict[x.group(1)] = x.group(2)
-	for key, name in entitydict.items():
+	for key, name in list(entitydict.items()):
 		try:
 			entitydict[key] = html_entities.name2codepoint[str(name)]
 		except KeyError:
@@ -96,9 +96,9 @@ def html2unicode(in_html):
 	for x in entities:
 		# debug("found %s" %x.group(1))
 		entitydict[x.group(1)] = x.group(2)
-	for key, codepoint in entitydict.items():
+	for key, codepoint in list(entitydict.items()):
 		try:
-			uml = unichr(int(codepoint))
+			uml = chr(int(codepoint))
 			debug("replace %s with %s in %s", repr(key), repr(uml), repr(in_html[0:20] + '...'))
 			in_html = in_html.replace(key, uml)
 		except ValueError as e:

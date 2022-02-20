@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 
 #pragma mark - Flickr API
 
@@ -101,7 +101,7 @@ class PictureGenerator:
 		self.len = len(self) - 1
 		return self
 
-	def next(self):
+	def __next__(self):
 		idx = self.idx
 		if idx > self.len:
 			raise StopIteration
@@ -152,7 +152,7 @@ class FlickrApi(PictureApi):
 
 	def getAlbum(self, album):
 		# workaround to allow displaying the photostream without changes to the gui. we use it as a virtual album (or 'set' in flickr) and use the nsid as album object
-		if isinstance(album, types.StringType):
+		if isinstance(album, bytes):
 			photos = self.flickr_api.people_getPublicPhotos(user_id=album, per_page='500', total='500', extras='url_l,url_o,url_m,url_s,url_t,description')
 			pset = photos.find('photos')
 		else:

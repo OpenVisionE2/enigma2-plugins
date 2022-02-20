@@ -3,7 +3,7 @@
 import re
 import hashlib
 import time
-import StringIO
+import io
 
 __version__ = '0.7'
 
@@ -46,7 +46,7 @@ class UnsupportedError(BaseError):
 	errordesc = 'Currently unsupported by gntp.py'
 
 
-class _GNTPBuffer(StringIO.StringIO):
+class _GNTPBuffer(io.StringIO):
 	"""GNTP Buffer class"""
 
 	def writefmt(self, str="", *args):
@@ -112,7 +112,7 @@ class _GNTPBase(object):
 			self.info['encryptionAlgorithmID'] = None
 			self.info['keyHashAlgorithm'] = None
 			return
-		if not self.encryptAlgo in hash.keys():
+		if not self.encryptAlgo in list(hash.keys()):
 			raise UnsupportedError('INVALID HASH "%s"' % self.encryptAlgo)
 
 		hashfunction = hash.get(self.encryptAlgo)
@@ -186,7 +186,7 @@ class _GNTPBase(object):
 
 		:return string:
 		"""
-		info = u'GNTP/%s %s' % (
+		info = 'GNTP/%s %s' % (
 			self.info.get('version'),
 			self.info.get('messagetype'),
 		)
@@ -219,16 +219,16 @@ class _GNTPBase(object):
 			if not match:
 				continue
 
-			key = unicode(match.group(1).strip(), 'utf8', 'replace')
-			val = unicode(match.group(2).strip(), 'utf8', 'replace')
+			key = str(match.group(1).strip(), 'utf8', 'replace')
+			val = str(match.group(2).strip(), 'utf8', 'replace')
 			dict[key] = val
 		return dict
 
 	def add_header(self, key, value):
-		if isinstance(value, unicode):
+		if isinstance(value, str):
 			self.headers[key] = value
 		else:
-			self.headers[key] = unicode('%s' % value, 'utf8', 'replace')
+			self.headers[key] = str('%s' % value, 'utf8', 'replace')
 
 	def add_resource(self, data):
 		"""Add binary resource
@@ -261,12 +261,12 @@ class _GNTPBase(object):
 		buffer.writefmt(self._format_info())
 
 		#Headers
-		for k, v in self.headers.iteritems():
+		for k, v in self.headers.items():
 			buffer.writefmt('%s: %s', k, v)
 		buffer.writefmt()
 
 		#Resources
-		for resource, data in self.resources.iteritems():
+		for resource, data in self.resources.items():
 			buffer.writefmt('Identifier: %s', resource)
 			buffer.writefmt('Length: %d', len(data))
 			buffer.writefmt()
@@ -340,8 +340,8 @@ class GNTPRegister(_GNTPBase):
 		:param boolean enabled: Enable this notification by default
 		"""
 		notice = {}
-		notice['Notification-Name'] = u'%s' % name
-		notice['Notification-Enabled'] = u'%s' % enabled
+		notice['Notification-Name'] = '%s' % name
+		notice['Notification-Enabled'] = '%s' % enabled
 
 		self.notifications.append(notice)
 		self.add_header('Notifications-Count', len(self.notifications))
@@ -357,19 +357,19 @@ class GNTPRegister(_GNTPBase):
 		buffer.writefmt(self._format_info())
 
 		#Headers
-		for k, v in self.headers.iteritems():
+		for k, v in self.headers.items():
 			buffer.writefmt('%s: %s', k, v)
 		buffer.writefmt()
 
 		#Notifications
 		if len(self.notifications) > 0:
 			for notice in self.notifications:
-				for k, v in notice.iteritems():
+				for k, v in notice.items():
 					buffer.writefmt('%s: %s', k, v)
 				buffer.writefmt()
 
 		#Resources
-		for resource, data in self.resources.iteritems():
+		for resource, data in self.resources.items():
 			buffer.writefmt('Identifier: %s', resource)
 			buffer.writefmt('Length: %d', len(data))
 			buffer.writefmt()

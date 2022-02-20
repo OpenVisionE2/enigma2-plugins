@@ -1,12 +1,12 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 import os
 import re
 import sys
 import hashlib
 #import shutil
-import urllib
+import urllib.request, urllib.parse, urllib.error
 import codecs
 #from Screens.MessageBox import MessageBox
 

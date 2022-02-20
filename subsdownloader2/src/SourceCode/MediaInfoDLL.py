@@ -54,19 +54,19 @@ else:
 
 
 class Stream:
-	General, Video, Audio, Text, Chapters, Image, Menu, Max = range(8)
+	General, Video, Audio, Text, Chapters, Image, Menu, Max = list(range(8))
 
 
 class Info:
-	Name, Text, Measure, Options, Name_Text, Measure_Text, Info, HowTo, Max = range(9)
+	Name, Text, Measure, Options, Name_Text, Measure_Text, Info, HowTo, Max = list(range(9))
 
 
 class InfoOption:
-	ShowInInform, Reserved, ShowInSupported, TypeOfValue, Max = range(5)
+	ShowInInform, Reserved, ShowInSupported, TypeOfValue, Max = list(range(5))
 
 
 class FileOptions:
-	Nothing, Recursive, CloseAll, xxNonexx_3, Max = range(5)
+	Nothing, Recursive, CloseAll, xxNonexx_3, Max = list(range(5))
 
 
 class MediaInfo:
@@ -215,28 +215,28 @@ class MediaInfo:
 	#General information
 	def Inform(self):
 		if MustUseAnsi:
-			return unicode(self.MediaInfoA_Inform(self.Handle, 0), "utf_8")
+			return str(self.MediaInfoA_Inform(self.Handle, 0), "utf_8")
 		else:
 			return self.MediaInfo_Inform(self.Handle, 0)
 
 	def Get(self, StreamKind, StreamNumber, Parameter, InfoKind=Info.Text, SearchKind=Info.Name):
 		if isinstance(Parameter, str):
-			return unicode(self.MediaInfoA_Get(self.Handle, StreamKind, StreamNumber, Parameter, InfoKind, SearchKind), "utf_8")
+			return str(self.MediaInfoA_Get(self.Handle, StreamKind, StreamNumber, Parameter, InfoKind, SearchKind), "utf_8")
 		elif MustUseAnsi:
-			return unicode(self.MediaInfoA_Get(self.Handle, StreamKind, StreamNumber, Parameter.encode("utf-8"), InfoKind, SearchKind), "utf_8")
+			return str(self.MediaInfoA_Get(self.Handle, StreamKind, StreamNumber, Parameter.encode("utf-8"), InfoKind, SearchKind), "utf_8")
 		else:
 			return self.MediaInfo_Get(self.Handle, StreamKind, StreamNumber, Parameter, InfoKind, SearchKind)
 
 	def GetI(self, StreamKind, StreamNumber, Parameter, InfoKind=Info.Text):
 		if MustUseAnsi:
-			return unicode(self.MediaInfoA_GetI(self.Handle, StreamKind, StreamNumber, Parameter, InfoKind), "utf_8")
+			return str(self.MediaInfoA_GetI(self.Handle, StreamKind, StreamNumber, Parameter, InfoKind), "utf_8")
 		else:
 			return self.MediaInfo_GetI(self.Handle, StreamKind, StreamNumber, Parameter, InfoKind)
 
-	def Set(self, ToSet, StreamKind, StreamNumber, Parameter, OldParameter=u""):
-		if isinstance(Parameter, str) and isinstance(OldParameter, unicode):
+	def Set(self, ToSet, StreamKind, StreamNumber, Parameter, OldParameter=""):
+		if isinstance(Parameter, str) and isinstance(OldParameter, str):
 			Parameter = Parameter.decode("utf-8")
-		if isinstance(Parameter, unicode) and isinstance(OldParameter, str):
+		if isinstance(Parameter, str) and isinstance(OldParameter, str):
 			OldParameter = OldParameter.decode("utf-8")
 		if isinstance(Parameter, str):
 			return self.MediaInfoA_Set(self.Handle, ToSet, StreamKind, StreamNumber, Parameter, OldParameter)
@@ -252,27 +252,27 @@ class MediaInfo:
 			return self.MediaInfo_SetI(self.Handle, ToSet, StreamKind, StreamNumber, Parameter, OldValue)
 
 	#Options
-	def Option(self, Option, Value=u""):
-		if isinstance(Option, str) and isinstance(Value, unicode):
+	def Option(self, Option, Value=""):
+		if isinstance(Option, str) and isinstance(Value, str):
 			Option = Option.decode("utf-8")
-		if isinstance(Option, unicode) and isinstance(Value, str):
+		if isinstance(Option, str) and isinstance(Value, str):
 			Value = Value.decode("utf-8")
 		if isinstance(Option, str):
-			return unicode(self.MediaInfoA_Option(self.Handle, Option.encode("utf-8"), Value.encode("utf-8")), "utf_8")
+			return str(self.MediaInfoA_Option(self.Handle, Option.encode("utf-8"), Value.encode("utf-8")), "utf_8")
 		elif MustUseAnsi:
-			return unicode(self.MediaInfoA_Option(self.Handle, Option.encode("utf-8"), Value.encode("utf-8")), "utf_8")
+			return str(self.MediaInfoA_Option(self.Handle, Option.encode("utf-8"), Value.encode("utf-8")), "utf_8")
 		else:
 			return self.MediaInfo_Option(self.Handle, Option, Value)
 
-	def Option_Static(self, Option, Value=u""):
-		if isinstance(Option, str) and isinstance(Value, unicode):
+	def Option_Static(self, Option, Value=""):
+		if isinstance(Option, str) and isinstance(Value, str):
 			Option = Option.decode("utf-8")
-		if isinstance(Option, unicode) and isinstance(Value, str):
+		if isinstance(Option, str) and isinstance(Value, str):
 			Value = Value.decode("utf-8")
 		if isinstance(Option, str):
-			return unicode(self.MediaInfoA_Option(None, Option, Value), "utf_8")
+			return str(self.MediaInfoA_Option(None, Option, Value), "utf_8")
 		elif MustUseAnsi:
-			return unicode(self.MediaInfoA_Option(None, Option.encode("utf-8"), Value.encode("utf-8")), "utf_8")
+			return str(self.MediaInfoA_Option(None, Option.encode("utf-8"), Value.encode("utf-8")), "utf_8")
 		else:
 			return self.MediaInfo_Option(None, Option, Value)
 
@@ -409,17 +409,17 @@ class MediaInfoList:
 	def Get(self, FilePos, StreamKind, StreamNumber, Parameter, InfoKind=Info.Text, SearchKind=Info.Name):
 		return MediaInfoList_Get(self.Handle, FilePos, StreamKind, StreamNumber, (Parameter), InfoKind, SearchKind)
 
-	def SetI(self, ToSet, FilePos, StreamKind, StreamNumber, Parameter, OldParameter=u""):
+	def SetI(self, ToSet, FilePos, StreamKind, StreamNumber, Parameter, OldParameter=""):
 		return MediaInfoList_SetI(self, Handle, ToSet, FilePos, StreamKind, StreamNumber, Parameter, OldParameter)
 
-	def Set(self, ToSet, FilePos, StreamKind, StreamNumber, Parameter, OldParameter=u""):
+	def Set(self, ToSet, FilePos, StreamKind, StreamNumber, Parameter, OldParameter=""):
 		return MediaInfoList_Set(self.Handle, ToSet, FilePos, StreamKind, StreamNumber, Parameter, OldParameter)
 
 	#Options
-	def Option(self, Option, Value=u""):
+	def Option(self, Option, Value=""):
 		return MediaInfoList_Option(self.Handle, Option, Value)
 
-	def Option_Static(self, Option, Value=u""):
+	def Option_Static(self, Option, Value=""):
 		return MediaInfoList_Option(None, Option, Value)
 
 	def State_Get(self):

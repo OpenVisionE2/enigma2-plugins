@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 """
 Copyright (C) 2012 cmikula
 
@@ -192,7 +192,7 @@ class Job:
     def StartAsync(self, do_move=False):
         self.do_move = do_move
         self.abort = False
-        from thread import start_new_thread
+        from _thread import start_new_thread
         start_new_thread(self.Run, (do_move,))
 
     def Run(self, do_move=False):
@@ -394,7 +394,7 @@ class ServiceUtil:
         print('Job finished:')
 
     def cleanup(self):
-        self.proc = filter(lambda job: not job.isFinished(), self.proc)
+        self.proc = [job for job in self.proc if not job.isFinished()]
 
     def removeJob(self, job):
         if job in self.proc:
@@ -451,7 +451,7 @@ class eServiceReference:
 class JobMonitor:
 
     def __init__(self, monitor):
-        from thread import start_new_thread
+        from _thread import start_new_thread
         start_new_thread(self.Run, (monitor,))
 
     def Run(self, monitor):

@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 from Screens.Screen import Screen
 from Components.Sources.List import List
 from Components.Button import Button
@@ -26,7 +26,7 @@ from os import remove as os_remove
 from os.path import exists as os_path_exists
 from datetime import datetime
 
-from urllib import quote as urllib_quote
+from urllib.parse import quote as urllib_quote
 #########################################
 
 

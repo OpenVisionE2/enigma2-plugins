@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 
 """
 Copyright (C) 2013 cmikula
@@ -80,7 +80,7 @@ def poster_url(poster):
     if size in sizes:
         return poster.geturl(size)
     p_index = poster_sizes.index(size)
-    p_range = range(p_index, len(poster_sizes) - 1)
+    p_range = list(range(p_index, len(poster_sizes) - 1))
     for x in p_range:
         size = poster_sizes[x]
         if size in sizes:

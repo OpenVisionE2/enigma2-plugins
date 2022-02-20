@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 
 from twisted.internet.protocol import Protocol, ReconnectingClientFactory, ServerFactory
 from twisted.internet.defer import Deferred
@@ -28,9 +28,9 @@ GNTP_TCP_PORT = 23053
 
 try:
 	dict.iteritems
-	iteritems = lambda d: d.iteritems()
+	iteritems = lambda d: iter(d.items())
 except AttributeError:
-	iteritems = lambda d: d.items()
+	iteritems = lambda d: list(d.items())
 
 
 class GNTPPacket:
@@ -41,17 +41,17 @@ class GNTPPacket:
 
 	def encode(self):
 		# TODO: add encryption support
-		message = u'GNTP/%s %s ' % (self.version, self.messageType)
+		message = 'GNTP/%s %s ' % (self.version, self.messageType)
 
 		if self.encryptionAlgorithm is None:
-			message += u'NONE'
+			message += 'NONE'
 		else:
-			message += u'%s:%s' % (self.encryptionAlgorithm, self.ivValue)
+			message += '%s:%s' % (self.encryptionAlgorithm, self.ivValue)
 
 		if self.hashAlgorithm is not None:
-			message += u' %s:%s.%s' % (self.hashAlgorithm, self.keyHash, self.salt)
+			message += ' %s:%s.%s' % (self.hashAlgorithm, self.keyHash, self.salt)
 
-		message += u'\r\n'
+		message += '\r\n'
 		return message
 
 	def set_password(self, password, hashAlgorithm='MD5', encryptionAlgorithm=None):
@@ -108,14 +108,14 @@ class GNTPRegister(GNTPPacket):
 	def encode(self):
 		assert self.notifications, "At least one notification needs to be registered"
 		base = GNTPPacket.encode(self)
-		base += u"Application-Name: %s\r\n" % self.applicationName
-		base += u"Notifications-Count: %d\r\n" % len(self.notifications)
+		base += "Application-Name: %s\r\n" % self.applicationName
+		base += "Notifications-Count: %d\r\n" % len(self.notifications)
 
 		for note in self.notifications:
-			base += u'\r\n'
+			base += '\r\n'
 			for key, value in iteritems(note):
-				base += u'%s: %s\r\n' % (key, value)
-		base += u'\r\n'
+				base += '%s: %s\r\n' % (key, value)
+		base += '\r\n'
 		return base.encode('utf8', 'replace')
 
 
@@ -134,14 +134,14 @@ class GNTPNotice(GNTPPacket):
 
 	def encode(self):
 		base = GNTPPacket.encode(self)
-		base += u"Application-Name: %s\r\n" % self.applicationName
-		base += u"Notification-Name: %s\r\n" % self.name
-		base += u"Notification-Text: %s\r\n" % self.text.replace('\r\n', '\n') # NOTE: just in case replace CRLF by LF so we don't break protocol
-		base += u"Notification-Title: %s\r\n" % self.title
-		base += u"Notification-Sticky: %s\r\n" % self.sticky
-		base += u"Notification-Priority: %s\r\n" % self.priority
-		base += u"Notifications-Count: 1\r\n"
-		base += u'\r\n'
+		base += "Application-Name: %s\r\n" % self.applicationName
+		base += "Notification-Name: %s\r\n" % self.name
+		base += "Notification-Text: %s\r\n" % self.text.replace('\r\n', '\n') # NOTE: just in case replace CRLF by LF so we don't break protocol
+		base += "Notification-Title: %s\r\n" % self.title
+		base += "Notification-Sticky: %s\r\n" % self.sticky
+		base += "Notification-Priority: %s\r\n" % self.priority
+		base += "Notifications-Count: 1\r\n"
+		base += '\r\n'
 		return base.encode('utf8', 'replace')
 
 

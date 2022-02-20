@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 '''
 $Id$
 $Author$
@@ -12,7 +12,7 @@ $Modified: sreichholf
 import re
 import sys
 import os
-import htmlentitydefs
+import html.entities
 from xml.dom.minidom import parse
 from twisted.web.client import getPage #@UnresolvedImport
 from twisted.internet import reactor #@UnresolvedImport
@@ -32,9 +32,9 @@ def html2unicode(in_html, charset):
 	for x in entities:
 		# debug("[Callhtml2utf8] mask: found %s" %repr(x.group(2)))
 		entitydict[x.group(1)] = x.group(2)
-	for key, name in entitydict.items():
+	for key, name in list(entitydict.items()):
 		try:
-			entitydict[key] = htmlentitydefs.name2codepoint[str(name)]
+			entitydict[key] = html.entities.name2codepoint[str(name)]
 		except KeyError:
 			debug("[Callhtml2utf8] KeyError " + key + "/" + name)
 
@@ -43,9 +43,9 @@ def html2unicode(in_html, charset):
 	for x in entities:
 		# debug("[Callhtml2utf8] number: found %s" %x.group(1))
 		entitydict[x.group(1)] = x.group(2)
-	for key, codepoint in entitydict.items():
+	for key, codepoint in list(entitydict.items()):
 		try:
-			uml = unichr(int(codepoint))
+			uml = chr(int(codepoint))
 			debug("[nrzuname] html2utf8: replace %s with %s in %s" % (repr(key), repr(uml), repr(in_html[0:20] + '...')))
 			in_html = in_html.replace(key, uml)
 		except ValueError as e:

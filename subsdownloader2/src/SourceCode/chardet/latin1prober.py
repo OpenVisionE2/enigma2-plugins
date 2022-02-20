@@ -31,6 +31,7 @@
 from .charsetprober import CharSetProber
 from . import constants
 import operator
+from functools import reduce
 
 FREQ_CAT_NUM = 4
 

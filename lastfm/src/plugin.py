@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 from enigma import eTimer, loadPic, getDesktop
 from Screens.Screen import Screen
 from Screens.HelpMenu import HelpableScreen
@@ -14,7 +14,7 @@ from Plugins.Plugin import PluginDescriptor
 from .StreamPlayer import StreamPlayer
 from .LastFMConfig import LastFMConfigScreen
 from .LastFM import LastFM
-from urllib2 import quote as urllib2_qoute
+from urllib.parse import quote as urllib2_qoute
 from twisted.web.client import downloadPage
 from os import remove as os_remove
 from random import randrange

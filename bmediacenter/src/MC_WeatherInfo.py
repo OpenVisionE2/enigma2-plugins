@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 # for localized messages
 from .__init__ import _
 from Plugins.Plugin import PluginDescriptor
@@ -12,8 +12,8 @@ from Components.Sources.StaticText import StaticText
 from xml.etree.cElementTree import fromstring as cet_fromstring
 from twisted.internet import defer
 from twisted.web.client import getPage, downloadPage
-from urllib import quote
-from urllib import quote as urllib_quote
+from urllib.parse import quote
+from urllib.parse import quote as urllib_quote
 from Components.Pixmap import Pixmap
 from .GlobalFunctions import Showiframe
 from enigma import eListboxPythonMultiContent, gFont, RT_HALIGN_LEFT, RT_VALIGN_CENTER, ePicLoad, eEnv
@@ -24,7 +24,7 @@ from Components.ConfigList import ConfigList, ConfigListScreen
 import time
 import os
 try:
-	import commands
+	import subprocess
 except:
 	import subprocess as commands
 from Components.Console import Console
@@ -135,7 +135,7 @@ class MC_WeatherInfo(Screen):
 		downloadPage(downlink, downname).addCallback(self.jpgdown, stadd).addErrback(self.error)
 
 	def jpgdown(self, value, stadd):
-		downlink = commands.getoutput("cat /tmp/.stadtindex | grep \"background-image:url('http://mytown.de/\" | cut -d \"'\" -f2")
+		downlink = subprocess.getoutput("cat /tmp/.stadtindex | grep \"background-image:url('http://mytown.de/\" | cut -d \"'\" -f2")
 		stadt = stadd
 		downname = "/tmp/" + stadt + ".jpg"
 		downloadPage(downlink, downname).addCallback(self.makemvi, stadt).addErrback(self.error)
@@ -202,7 +202,7 @@ class MC_WeatherInfo(Screen):
 			self.showIcon(item.index, item.filename)
 
 	def showIcon(self, index, filename):
-		if index <> -1:
+		if index != -1:
 			self["weekday%s_icon" % index].updateIcon(filename)
 			self["weekday%s_icon" % index].show()
 		else:

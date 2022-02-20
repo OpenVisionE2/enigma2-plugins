@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 from . import _
 from Screens.Screen import Screen
 from Screens.ChoiceBox import ChoiceBox

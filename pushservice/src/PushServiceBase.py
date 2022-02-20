@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 #######################################################################
 #
 #    Push Service for Enigma-2
@@ -84,7 +84,7 @@ class PushServiceBase(Modules, ConfigFile):
 		slist = []
 		if self.servicemodules:
 			serviceclasses = [service.getClass() for service in self.services] if self.services else []
-			for name, module in self.servicemodules.iteritems():
+			for name, module in self.servicemodules.items():
 				if module.forceSingle():
 					# We have to check if there is already a plugin instance
 					if name in serviceclasses:
@@ -124,7 +124,7 @@ class PushServiceBase(Modules, ConfigFile):
 		plist = []
 		if self.controllermodules:
 			controllerclasses = [controller.getClass() for controller in self.controllers] if self.controllers else []
-			for name, module in self.controllermodules.iteritems():
+			for name, module in self.controllermodules.items():
 				if module.forceSingle():
 					# We have to check if there is already a controller instance
 					if name in controllerclasses:

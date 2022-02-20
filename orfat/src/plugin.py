@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 ##
 ## ORF.at IPTV
 ## by AliAbdul
@@ -20,7 +20,7 @@ from Tools.Directories import fileExists, resolveFilename, SCOPE_PLUGINS
 from Tools.LoadPixmap import LoadPixmap
 from twisted.web.client import downloadPage, getPage
 import re
-import urllib2
+import urllib.request, urllib.error, urllib.parse
 
 ##########################################################
 
@@ -146,7 +146,7 @@ class ORFMain(Screen):
 
 	def getVideoUrl(self, url):
 		try:
-			f = urllib2.urlopen(url)
+			f = urllib.request.urlopen(url)
 			txt = f.read()
 			f.close()
 		except:

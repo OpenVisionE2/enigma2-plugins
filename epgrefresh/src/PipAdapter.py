@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 
 from Screens.PictureInPicture import PictureInPicture
 from Components.SystemInfo import BoxInfo

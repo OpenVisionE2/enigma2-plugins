@@ -4,7 +4,7 @@
 
 from collections import defaultdict
 
-from thread import start_new_thread
+from _thread import start_new_thread
 
 #TODO Implement Twisted handler
 #Twisted 12.x

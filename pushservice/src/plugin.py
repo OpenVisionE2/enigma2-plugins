@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 #######################################################################
 #
 #    Push Service for Enigma-2
@@ -35,6 +35,7 @@ from Components.config import config, ConfigSubsection, ConfigNothing, ConfigEna
 # Plugin internal
 from .__init__ import _
 from .PushService import PushService
+import importlib
 #from ConfigScreen import ConfigScreen
 
 
@@ -70,7 +71,7 @@ def setup(session, **kwargs):
 	try:
 		### For testing only
 		from . import ConfigScreen
-		reload(ConfigScreen)
+		importlib.reload(ConfigScreen)
 		###
 		session.open(ConfigScreen.ConfigScreen)
 	except Exception as e:

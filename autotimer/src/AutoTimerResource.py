@@ -7,7 +7,7 @@ from twisted.internet import reactor
 from twisted.web import http, resource, server
 import threading
 try:
-	from urllib import unquote
+	from urllib.parse import unquote
 except ImportError as ie:
 	from urllib.parse import unquote
 from ServiceReference import ServiceReference

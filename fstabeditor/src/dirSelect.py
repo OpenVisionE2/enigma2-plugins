@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 #===============================================================================
 # dirSelectDlg 0.1 by DarkVolli 2009
 # extensions by Dre 2011

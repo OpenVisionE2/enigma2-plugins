@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 
 ###############################################################################
 # Quick'n'easy switching of aspect ratio setting via configurable remote control keys (Enigma2)
@@ -140,7 +140,7 @@ class AspectRatioSwitchSetup(ConfigListScreen, Screen):
 	def save(self):
 		global aspect_ratio_switch
 
-		if len([modeconf for modeconf in config.plugins.AspectRatioSwitch.modes.values() if modeconf.value]) < 2:
+		if len([modeconf for modeconf in list(config.plugins.AspectRatioSwitch.modes.values()) if modeconf.value]) < 2:
 			self.session.open(MessageBox, _("You need to include at least %d aspect ratio modes!") % 2, MessageBox.TYPE_ERROR)
 			return
 
@@ -184,7 +184,7 @@ class AspectRatioSwitch:
 		globalActionMap.actions['switchAspectDown'] = self.switchAspectRatioDown
 
 	def unload_keymap(self):
-		for keymap in KEYMAPPINGS.values():
+		for keymap in list(KEYMAPPINGS.values()):
 			ActionMap.removeKeymap(keymap)
 
 		global globalActionMap

@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 from enigma import eConsoleAppContainer, eTimer
 from xml.etree.cElementTree import parse as cet_parse
 from xml.etree.ElementTree import ParseError
@@ -30,7 +30,7 @@ class Bonjour:
 				]
 		text = service.get('text', None)
 		if text:
-			if isinstance(text, (basestring)):
+			if isinstance(text, (str)):
 				lines.append('\t\t<txt-record>%s</txt-record>\n' % (text))
 			else:
 				for txt in text:
@@ -46,7 +46,7 @@ class Bonjour:
 		if not dict:
 			return '\0'
 		parts = []
-		for name, value in dict.iteritems():
+		for name, value in dict.items():
 			if value is None:
 				item = name
 			else:
@@ -119,7 +119,7 @@ class Bonjour:
 		self.files = {}
 		if path.exists(self.AVAHI_SERVICES_DIR):
 			print("[Bonjour.reloadConfig] reloading config")
-			service_files = filter(lambda x: x.endswith('.service'), listdir(self.AVAHI_SERVICES_DIR))
+			service_files = [x for x in listdir(self.AVAHI_SERVICES_DIR) if x.endswith('.service')]
 			for file in service_files:
 				self.__parse(file)
 

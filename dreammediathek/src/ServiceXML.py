@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 from re import compile as re_compile
 from os import path as os_path, symlink, listdir, unlink, readlink, remove
 
@@ -43,7 +43,7 @@ class WebTVStations():
 				print("[WebTVStations] Error reading Stations:", e)
 
 	def getWebTVStationsList(self):
-		return sorted(self.webtv_stations.iterkeys())
+		return sorted(self.webtv_stations.keys())
 
 
 iWebTVStations = WebTVStations()

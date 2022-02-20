@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 ##
 ## Podcast
 ## by AliAbdul
@@ -29,7 +29,7 @@ from xml.etree.cElementTree import parse
 from xml.dom.minidom import parseString as xmlparseString, parse as xmlparse
 import gettext
 import re
-import urllib2
+import urllib.request, urllib.error, urllib.parse
 
 ###################################################
 
@@ -418,7 +418,7 @@ class PodcastXML(Screen):
 				print("open url")
 				file.close
 				try:
-					source = urllib2.urlopen(head)
+					source = urllib.request.urlopen(head)
 				except:
 					pass
 			else:
@@ -480,7 +480,7 @@ class PodcastFeedly(Screen):
 			try:
 				if head.startswith("http"):
 					file.close
-					source = urllib2.urlopen(head)
+					source = urllib.request.urlopen(head)
 				else:
 					file.close
 					source = open(fileName)

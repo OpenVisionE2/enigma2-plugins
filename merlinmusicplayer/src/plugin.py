@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 #
 #  Merlin Music Player E2
 #
@@ -42,7 +42,7 @@ from Screens.InfoBar import InfoBar
 from Components.GUIComponent import GUIComponent
 from enigma import ePicLoad
 from xml.etree.cElementTree import fromstring as cet_fromstring
-from urllib import quote
+from urllib.parse import quote
 from Components.ScrollLabel import ScrollLabel
 from Components.AVSwitch import AVSwitch
 from Tools.Directories import fileExists, resolveFilename, SCOPE_GUISKIN
@@ -1589,7 +1589,7 @@ class MerlinMusicPlayerLyrics(Screen):
 
 	def getLyricsFromID3Tag(self, tag):
 		if tag:
-			for frame in tag.values():
+			for frame in list(tag.values()):
 				if frame.FrameID == "USLT":
 					return frame.text
 		url = "http://api.chartlyrics.com/apiv1.asmx/SearchLyricDirect?artist=%s&song=%s" % (quote(self.currentSong.artist), quote(self.currentSong.title))

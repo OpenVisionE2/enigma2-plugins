@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 
 from Plugins.SystemPlugins.AdvHdmi.plugin import advhdmiHooks, _print
 from Components.config import config

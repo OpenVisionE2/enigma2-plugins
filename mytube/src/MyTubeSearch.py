@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 from enigma import eTimer, ePythonMessagePump
 from .MyTubeService import GoogleSuggestions
 from Screens.Screen import Screen
@@ -19,9 +19,9 @@ from Tools.Directories import resolveFilename, SCOPE_PLUGINS, SCOPE_HDD
 from threading import Thread
 from .ThreadQueue import ThreadQueue
 from xml.etree.cElementTree import fromstring as cet_fromstring
-from StringIO import StringIO
+from io import StringIO
 #import urllib
-from urllib import FancyURLopener
+from urllib.request import FancyURLopener
 import json
 
 
@@ -216,7 +216,7 @@ class MyTubeSuggestionsListScreen(Screen):
 					for suggest in suggested:
 						name = None
 						numresults = None
-						if suggesttype[count] == u'NAVIGATION':
+						if suggesttype[count] == 'NAVIGATION':
 							count += 1
 							continue
 						name = str(suggest)

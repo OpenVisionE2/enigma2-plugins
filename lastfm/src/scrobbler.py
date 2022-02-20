@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 from re import sub
 from datetime import datetime
 from md5 import md5
@@ -9,7 +9,7 @@ from enigma import iServiceInformation, iPlayableService
 from Components.config import config
 from twisted.web.client import getPage
 
-from urllib import urlencode as urllib_urlencode
+from urllib.parse import urlencode as urllib_urlencode
 
 # for localized messages
 from . import _
@@ -90,7 +90,7 @@ class LastFMScrobbler(object):
 
     def encode(self, postdict):
         result = []
-        for key, value in postdict.items():
+        for key, value in list(postdict.items()):
             result.append(key + "=" + value)
         return "&".join(result)
 

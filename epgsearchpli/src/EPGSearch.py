@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 
 from . import _
 from enigma import eEPGCache, eServiceReference, eServiceCenter, RT_HALIGN_LEFT, RT_HALIGN_RIGHT, eRect, getDesktop, \
@@ -529,14 +529,14 @@ class EPGSearchList(EPGList):
 			self.tw = int(value)
 
 		def setColWidths(value):
-			self.col = map(int, value.split(','))
+			self.col = list(map(int, value.split(',')))
 			if len(self.col) == 2:
 				self.skinColumns = True
 			else:
 				warningWrongSkinParameter(attrib)
 
 		def setPiconSize(value):
-			self.piconSize = map(int, value.split(','))
+			self.piconSize = list(map(int, value.split(',')))
 			if len(self.piconSize) == 2:
 				self.skinColumns = True
 			else:

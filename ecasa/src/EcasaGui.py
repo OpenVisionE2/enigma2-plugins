@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 
 #pragma mark - GUI
 
@@ -111,7 +111,7 @@ class EcasaPictureWall(Screen, HelpableScreen, InfoBarNotifications):
 		self["key_green"] = StaticText(_("Albums"))
 		self["key_yellow"] = StaticText()
 		self["key_blue"] = StaticText(_("Search"))
-		for i in xrange(self.PICS_PER_PAGE):
+		for i in range(self.PICS_PER_PAGE):
 			self['image%d' % i] = Pixmap()
 			self['title%d' % i] = StaticText()
 		self["highlight"] = MovingPixmap()
@@ -212,7 +212,7 @@ class EcasaPictureWall(Screen, HelpableScreen, InfoBarNotifications):
 		self["highlight"].show()
 		self.queue.clear()
 		pictures = self.pictures
-		for i in xrange(self.PICS_PER_PAGE):
+		for i in range(self.PICS_PER_PAGE):
 			try:
 				our_print("trying to initiate download of idx", i + self.offset)
 				picture = pictures[i + self.offset]
@@ -462,7 +462,7 @@ class EcasaOverview(EcasaPictureWall):
 		if api != self.api:
 			self.pictures = ()
 			self["highlight"].hide()
-			for i in xrange(self.PICS_PER_PAGE):
+			for i in range(self.PICS_PER_PAGE):
 				self['image%d' % i].instance.setPixmap(None)
 			self["waitingtext"].show()
 
@@ -659,7 +659,7 @@ class EcasaPicture(Screen, HelpableScreen, InfoBarNotifications):
 		if prevFunc and nextFunc:
 			self["directionActions"] = HelpableActionMap(self, "DirectionActions", {
 				"left": self.previous,
-				"right": self.next,
+				"right": self.__next__,
 				}, -2)
 
 		self.picload = ePicLoad()
@@ -826,7 +826,7 @@ class EcasaPicture(Screen, HelpableScreen, InfoBarNotifications):
 			self.reloadData(self.prevFunc())
 		self['pixmap'].instance.setPixmap(None)
 
-	def next(self):
+	def __next__(self):
 		if self.nextFunc:
 			self.reloadData(self.nextFunc())
 		self['pixmap'].instance.setPixmap(None)

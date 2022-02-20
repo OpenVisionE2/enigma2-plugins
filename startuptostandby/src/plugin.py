@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 from Plugins.Plugin import PluginDescriptor
 from Components.config import config, ConfigSubsection, ConfigEnableDisable
 from Screens.Standby import Standby, inStandby

@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 '''
 $Author$
 $Revision$
@@ -573,7 +573,7 @@ class CheckMail:
 			debug('[CheckMail] %s: _filterNewUnseen: init' % (self._name))
 			# Notifications.AddNotification(MessageBox, str(len(newUnseenList)) + ' ' + _("unread messages in mailbox %s") %self._name, type=MessageBox.TYPE_INFO, timeout=config.plugins.emailimap.timeout.value)
 		else:
-			newMessages = filter(lambda x: x not in self._unseenList, newUnseenList)
+			newMessages = [x for x in newUnseenList if x not in self._unseenList]
 			if newMessages:
 				debug("[CheckMail] %s: _filterNewUnseen: new message(s): %s" % (self._name, repr(newMessages)))
 				# construct MessageSet from list of message numbers
@@ -935,7 +935,7 @@ class EmailAccount():
 		# debug("[EmailAccount] %s: onMailboxList:\n%s" %(self._name, str(mylist)))
 		mylist.sort()
 		try:
-			self.inboxPos = map(lambda x: x.lower(), mylist).index('inbox') + 1
+			self.inboxPos = [x.lower() for x in mylist].index('inbox') + 1
 		except ValueError:
 			debug("[EmailAccount] onMailboxList: no inbox?!?!")
 			mylist = ['INBOX']

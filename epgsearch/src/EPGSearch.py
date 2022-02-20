@@ -37,6 +37,7 @@ from operator import itemgetter
 from collections import defaultdict
 
 from skin import parameters as skinparameter
+from functools import reduce
 
 # Partnerbox installed and icons in epglist enabled?
 try:
@@ -571,7 +572,7 @@ class EPGSearch(EPGSelection):
 			self.searchEPG(ret[1])
 
 	def searchEPG(self, searchString=None, searchSave=True, lastAsk=None):
-		if isinstance(searchString, basestring) and searchString:
+		if isinstance(searchString, str) and searchString:
 			if searchSave:
 				# Maintain history
 				history = config.plugins.epgsearch.history.value
@@ -708,7 +709,7 @@ class EPGSearch(EPGSelection):
 		if titleEntry < 0:
 			return []
 
-		searchFilter = reduce(lambda acc, val: acc.union(val), searchFilter.itervalues(), set())
+		searchFilter = reduce(lambda acc, val: acc.union(val), iter(searchFilter.values()), set())
 
 		partialMatchFunc = lambda s: searchString in s
 		matchFunc = {
@@ -736,14 +737,14 @@ class EPGSearch(EPGSelection):
 	def _processBouquetServiceRefMap(self, tempServiceRefMap):
 		serviceHandler = eServiceCenter.getInstance()
 		bouquetServiceRefMap = defaultdict(set)
-		for srefId, srefDict in tempServiceRefMap.iteritems():
+		for srefId, srefDict in tempServiceRefMap.items():
 			if len(srefDict) > 1 and "" in srefDict:
 				noName = srefDict[""]
 				info = serviceHandler.info(noName)
 				name = info and info.getName(noName) or ""
 				if name and name in srefDict:
 					del srefDict[""]
-			bouquetServiceRefMap[srefId[2:5]].update(sref.toString() for sref in srefDict.itervalues())
+			bouquetServiceRefMap[srefId[2:5]].update(sref.toString() for sref in srefDict.values())
 		return bouquetServiceRefMap
 
 	def _addBouquetTempServiceRefMap(self, bouquet, tempServiceRefMap):

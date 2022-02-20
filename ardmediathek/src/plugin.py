@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 # ARD Mediathek by AliAbdul
 from Components.ActionMap import ActionMap
 from Components.AVSwitch import AVSwitch
@@ -22,7 +22,7 @@ from Tools.Directories import resolveFilename, SCOPE_PLUGINS
 from Tools.LoadPixmap import LoadPixmap
 from twisted.web.client import downloadPage, getPage
 import re
-import urllib2
+import urllib.request, urllib.error, urllib.parse
 
 ###################################################
 
@@ -154,7 +154,7 @@ def getMovies(html):
 
 def getMovieUrls(url):
 	try:
-		f = urllib2.urlopen(url)
+		f = urllib.request.urlopen(url)
 		html = f.read()
 		f.close()
 	except:
@@ -372,8 +372,8 @@ class ARDMediathek(Screen):
 			movie = self.movies[0]
 			thumbUrl = movie[4]
 			try:
-				req = urllib2.Request(thumbUrl)
-				url_handle = urllib2.urlopen(req)
+				req = urllib.request.Request(thumbUrl)
+				url_handle = urllib.request.urlopen(req)
 				headers = url_handle.info()
 				contentType = headers.getheader("content-type")
 			except:

@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 from enigma import ePythonMessagePump
 
 from .ThreadQueue import ThreadQueue
@@ -10,19 +10,20 @@ from gdata.service import BadAuthentication
 
 from twisted.web import client
 from twisted.internet import reactor
-from urllib2 import Request, URLError, urlopen as urlopen2
+from urllib.request import Request, urlopen as urlopen2
+from urllib.error import URLError
 from socket import gaierror, error
 import os
 import socket
-import httplib
-import urllib
-import urllib2
+import http.client
+import urllib.request, urllib.parse, urllib.error
+import urllib.request, urllib.error, urllib.parse
 import re
 import json
-from urllib import quote, unquote_plus, unquote, urlencode
-from httplib import HTTPConnection, CannotSendRequest, BadStatusLine, HTTPException
+from urllib.parse import quote, unquote_plus, unquote, urlencode
+from http.client import HTTPConnection, CannotSendRequest, BadStatusLine, HTTPException
 
-from urlparse import parse_qs, parse_qsl
+from urllib.parse import parse_qs, parse_qsl
 from threading import Thread
 
 HTTPConnection.debuglevel = 1
@@ -117,9 +118,9 @@ class CVevoSignAlgoExtractor:
         # use algoCache
         if playerUrl not in self.algoCache:
             # get player HTML 5 sript
-            request = urllib2.Request(playerUrl)
+            request = urllib.request.Request(playerUrl)
             try:
-                self.playerData = urllib2.urlopen(request).read()
+                self.playerData = urllib.request.urlopen(request).read()
                 self.playerData = self.playerData.decode('utf-8', 'ignore')
             except:
                 printDBG('Unable to download playerUrl webpage')
@@ -493,10 +494,10 @@ class MyTubeFeedEntry():
 			if fmtid in VIDEO_FMT_PRIORITY_MAP and fmtid != "":
 				video_fmt_map[VIDEO_FMT_PRIORITY_MAP[fmtid]] = {'fmtid': fmtid, 'fmturl': unquote_plus(fmturl)}
 				fmt_infomap[int(fmtid)] = unquote_plus(fmturl)
-		print("[MyTube] got", sorted(fmt_infomap.iterkeys()))
+		print("[MyTube] got", sorted(fmt_infomap.keys()))
 		if video_fmt_map and len(video_fmt_map):
-			print("[MyTube] found best available video format:", video_fmt_map[sorted(video_fmt_map.iterkeys())[0]]['fmtid'])
-			best_video = video_fmt_map[sorted(video_fmt_map.iterkeys())[0]]
+			print("[MyTube] found best available video format:", video_fmt_map[sorted(video_fmt_map.keys())[0]]['fmtid'])
+			best_video = video_fmt_map[sorted(video_fmt_map.keys())[0]]
 			video_url = "%s" % (best_video['fmturl'].split(';')[0])
 			print("[MyTube] found best available video url:", video_url)
 

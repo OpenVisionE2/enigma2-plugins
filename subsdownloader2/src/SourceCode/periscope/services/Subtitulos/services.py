@@ -19,11 +19,11 @@
 
 import zipfile
 import os
-import urllib2
-import urllib
+import urllib.request, urllib.error, urllib.parse
+import urllib.request, urllib.parse, urllib.error
 import logging
 import traceback
-import httplib
+import http.client
 import re
 from Plugins.Extensions.SubsDownloader2.SourceCode.BeautifulSoup import BeautifulSoup
 from Plugins.Extensions.SubsDownloader2.SourceCode.periscope import SubtitleDatabase
@@ -158,9 +158,9 @@ class Subtitulos(SubtitleDatabase.SubtitleDB):
 
     def downloadFile(self, url, filename):
         ''' Downloads the given url to the given filename '''
-        req = urllib2.Request(url, headers={'Referer': url, 'User-Agent': 'Mozilla/5.0 (X11; U; Linux x86_64; en-US; rv:1.9.1.3)'})
+        req = urllib.request.Request(url, headers={'Referer': url, 'User-Agent': 'Mozilla/5.0 (X11; U; Linux x86_64; en-US; rv:1.9.1.3)'})
 
-        f = urllib2.urlopen(req)
+        f = urllib.request.urlopen(req)
         dump = open(filename, "wb")
         dump.write(f.read())
         dump.close()

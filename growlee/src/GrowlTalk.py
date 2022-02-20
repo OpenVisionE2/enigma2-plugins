@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 
 from twisted.internet.protocol import DatagramProtocol
 from twisted.internet import reactor

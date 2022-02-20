@@ -1,8 +1,8 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 import sys
-import urllib
+import urllib.request, urllib.parse, urllib.error
 import tempfile
 import time
 import os
@@ -47,7 +47,7 @@ class NapiProjekt():
         add = [0, 0xd, 0x10, 0xb, 0x5]
 
         b = []
-        for i in xrange(len(idx)):
+        for i in range(len(idx)):
             a = add[i]
             m = mul[i]
             i = idx[i]
@@ -76,7 +76,7 @@ class NapiProjekt():
         while repeat > 0:
             repeat = repeat - 1
             try:
-                self.sub = urllib.urlopen(self.url)
+                self.sub = urllib.request.urlopen(self.url)
                 if hasattr(self.sub, 'getcode'):
                     http_code = self.sub.getcode()
                     self.sub = self.sub.read()

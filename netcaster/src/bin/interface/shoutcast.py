@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 from Plugins.Extensions.NETcaster.StreamInterface import StreamInterface
 from Plugins.Extensions.NETcaster.StreamInterface import Stream
 from Screens.ChoiceBox import ChoiceBox
@@ -55,10 +55,10 @@ class Interface(StreamInterface):
 
 
 try:
-	import cPickle as pickle
+	import pickle as pickle
 except:
 	import pickle
-from urllib import FancyURLopener
+from urllib.request import FancyURLopener
 from xml.sax import parseString
 from xml.sax.handler import ContentHandler
 from os import stat, mkdir

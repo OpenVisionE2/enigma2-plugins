@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 from Components.ActionMap import ActionMap
 from Components.Sources.List import List
 from Components.Sources.StaticText import StaticText
@@ -15,7 +15,7 @@ from Tools.Directories import pathExists, fileExists, resolveFilename, SCOPE_PLU
 from .__init__ import _
 import os
 try:
-	import commands
+	import subprocess
 except:
 	import subprocess as commands
 from Components.Console import Console
@@ -73,12 +73,12 @@ class DMC_MainMenu(Screen):
 		{
 			"cancel": self.Exit,
 			"ok": self.okbuttonClick,
-			"right": self.next,
+			"right": self.__next__,
 			"upRepeated": self.prev,
-			"down": self.next,
-			"downRepeated": self.next,
+			"down": self.__next__,
+			"downRepeated": self.__next__,
 			"leftRepeated": self.prev,
-			"rightRepeated": self.next,
+			"rightRepeated": self.__next__,
 			"up": self.prev,
 			"left": self.prev
 		}, -1)
@@ -89,7 +89,7 @@ class DMC_MainMenu(Screen):
 				os.mkdir("/media/upnp")
 			Console().ePopen('djmount /media/upnp &')
 
-	def next(self):
+	def __next__(self):
 		self["menu"].selectNext()
 		if self["menu"].getIndex() == 1:
 			self["menu"].setIndex(2)
@@ -187,9 +187,9 @@ class DMC_MainMenu(Screen):
 		if self.can_osd_alpha:
 			try:
 				if config.plugins.mc_global.vfd.value == "on":
-					trans = commands.getoutput('cat /etc/enigma2/settings | grep config.av.osd_alpha | cut -d "=" -f2')
+					trans = subprocess.getoutput('cat /etc/enigma2/settings | grep config.av.osd_alpha | cut -d "=" -f2')
 				else:
-					trans = commands.getoutput('cat /etc/enigma2/settings | grep config.osd.alpha | cut -d "=" -f2')
+					trans = subprocess.getoutput('cat /etc/enigma2/settings | grep config.osd.alpha | cut -d "=" -f2')
 				open("/proc/stb/video/alpha", "w").write(str(trans))
 			except:
 				print("Set OSD Transparacy failed")

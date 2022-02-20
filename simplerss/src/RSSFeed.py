@@ -89,9 +89,9 @@ class RSSWrapper(ElementWrapper):
 		return self
 
 	def __next__(self):
-		return self.next()
+		return next(self)
 
-	def next(self):
+	def __next__(self):
 		idx = self.idx
 		if idx > self.len:
 			raise StopIteration

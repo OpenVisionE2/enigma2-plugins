@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 #===============================================================================
 # Battleship Plugin by DarkVolli 2011
 #

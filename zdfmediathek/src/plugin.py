@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 # ZDF Mediathek by AliAbdul
 from Components.ActionMap import HelpableActionMap
 from Components.AVSwitch import AVSwitch
@@ -24,12 +24,13 @@ from Tools.BoundFunction import boundFunction
 from Tools.Directories import resolveFilename, SCOPE_PLUGINS, SCOPE_PLUGIN
 from Tools.LoadPixmap import LoadPixmap
 from twisted.web.client import downloadPage, getPage
-import htmlentitydefs
+import html.entities
 import re
-import urllib2
-from urllib2 import Request, URLError, urlopen as urlopen2
+import urllib.request, urllib.error, urllib.parse
+from urllib.request import Request, urlopen as urlopen2
+from urllib.error import URLError
 from socket import error
-from httplib import HTTPConnection, HTTPException
+from http.client import HTTPConnection, HTTPException
 from Components.SystemInfo import BoxInfo
 
 HTTPConnection.debuglevel = 1
@@ -83,23 +84,23 @@ def decode(line):
 	pat = re.compile(r'\\u(....)')
 
 	def sub(mo):
-		return unichr(fromHex(mo.group(1)))
-	return pat.sub(sub, unicode(line))
+		return chr(fromHex(mo.group(1)))
+	return pat.sub(sub, str(line))
 
 
 def decode2(line):
 	pat = re.compile(r'&#(\d+);')
 
 	def sub(mo):
-		return unichr(int(mo.group(1)))
-	return decode3(pat.sub(sub, unicode(line)))
+		return chr(int(mo.group(1)))
+	return decode3(pat.sub(sub, str(line)))
 
 
 def decode3(line):
-	dic = htmlentitydefs.name2codepoint
-	for key in dic.keys():
+	dic = html.entities.name2codepoint
+	for key in list(dic.keys()):
 		entity = "&" + key + ";"
-		line = line.replace(entity, unichr(dic[key]))
+		line = line.replace(entity, chr(dic[key]))
 	return line
 
 
@@ -454,7 +455,7 @@ class LeftMenuList(MenuList):
 		if len(self.menu):
 			self.select(self.current - 1)
 
-	def next(self):
+	def __next__(self):
 		if len(self.menu):
 			self.select(self.current + 1)
 
@@ -541,8 +542,8 @@ class RightMenuList(List):
 			if not thumbUrl.startswith("http://"):
 				thumbUrl = "%s%s" % (MAIN_PAGE, thumbUrl)
 			try:
-				req = urllib2.Request(thumbUrl)
-				url_handle = urllib2.urlopen(req)
+				req = urllib.request.Request(thumbUrl)
+				url_handle = urllib.request.urlopen(req)
 				headers = url_handle.info()
 				contentType = headers.getheader("content-type")
 			except:
@@ -1033,7 +1034,7 @@ class ZDFMediathek(Screen, HelpableScreen):
 	def down(self):
 		if not self.working:
 			if self.currentList == LIST_LEFT:
-				self["leftList"].next()
+				next(self["leftList"])
 			elif self.currentList == LIST_RIGHT and self["rightList"].active:
 				self["rightList"].selectNext()
 

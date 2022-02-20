@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 
 from traceback import print_exc
 from sys import stdout, exc_info
@@ -129,7 +129,7 @@ def callHook(advhdmi_event):
 	if config.plugins.AdvHdmiCec.debug.value:
 		_print("Debug: call Hooks for Event '" + str(advhdmi_event) + "'")
 	if advhdmiHooks:
-		for hookKey, hook in advhdmiHooks.iteritems():
+		for hookKey, hook in advhdmiHooks.items():
 			if config.plugins.AdvHdmiCec.debug.value:
 				_print("Debug: call Hook '" + str(hookKey) + "'")
 			try:

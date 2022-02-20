@@ -1,12 +1,12 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
-import httplib
+
+import http.client
 import xml.dom.minidom
 import time
 import re
 import os
-from urllib import quote
+from urllib.parse import quote
 from operator import itemgetter#, attrgetter
 from Plugins.Extensions.SubsDownloader2.SourceCode.archives_extractor import zip_extractor
 from Plugins.Extensions.SubsDownloader2.SourceCode.periscope import SubtitleDatabase
@@ -121,7 +121,7 @@ class Napisy24_pl(XML_to_Dict, zip_extractor):
 		self.XML_String = None
 		self.zip_string = None
 		try:
-			conn = httplib.HTTPConnection(self.NAPISY24_url)
+			conn = http.client.HTTPConnection(self.NAPISY24_url)
 			conn.request("GET", get_operatoin)
 			r1 = conn.getresponse()
 			print(r1.status, r1.reason)

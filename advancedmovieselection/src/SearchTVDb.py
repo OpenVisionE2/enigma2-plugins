@@ -1,8 +1,8 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 from .__init__ import _
-import urllib
+import urllib.request, urllib.parse, urllib.error
 import datetime
 import re
 import os
@@ -544,7 +544,7 @@ class TheTVDBMain(Screen, InfoLoadChoice):
         """Convert a thetvdb date string into a datetime.date object."""
         first_aired = None
         try:
-            first_aired = datetime.date(*map(int, date_string.encode('utf-8', 'ignore').split('-')))
+            first_aired = datetime.date(*list(map(int, date_string.encode('utf-8', 'ignore').split('-'))))
         except Exception as e:
             print(str(e))
 

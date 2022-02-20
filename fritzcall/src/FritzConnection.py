@@ -153,7 +153,7 @@ class FritzAction(object):
 			# self.debug(repr(kwargs))
 			arguments = [
 				self.argument_template % {'name': k, 'value': v}
-				for k, v in kwargs.items()
+				for k, v in list(kwargs.items())
 			]
 			p['arguments'] = ''.join(arguments)
 		body = self.body_template.strip() % p
@@ -260,7 +260,7 @@ class FritzAction(object):
 				self.error("ErrorCode: %s, errorDescription: %s", repr(errorCode.text), repr(errorDescription.text))
 			else:
 				self.error("ErrorCode: %s, no errorDescription", repr(errorCode.text))
-		for argument in self.arguments.values():
+		for argument in list(self.arguments.values()):
 			# self.debug("Argument: " + argument.name)
 			try:
 				value = root.find('.//%s' % argument.name).text

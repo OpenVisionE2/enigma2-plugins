@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 # Copyright (c) 2001-2004 Twisted Matrix Laboratories.
 # See LICENSE for details.
 
@@ -281,7 +281,7 @@ class IRCAccount(e2support.AbstractAccount):
 
     def __init__(self, accountName, autoLogin, username, password, host, port, channels=''):
         e2support.AbstractAccount.__init__(self, accountName, autoLogin, username, password, host, port)
-        self.channels = map(string.strip, string.split(channels, ','))
+        self.channels = list(map(string.strip, string.split(channels, ',')))
         if self.channels == ['']:
             self.channels = []
 

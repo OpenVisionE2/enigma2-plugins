@@ -55,10 +55,10 @@ import socket
 from os import path
 
 NUL = chr(0)
-CR = chr(015)
-NL = chr(012)
+CR = chr(0o15)
+NL = chr(0o12)
 LF = NL
-SPC = chr(040)
+SPC = chr(0o40)
 
 CHANNEL_PREFIXES = '&#!+'
 
@@ -129,7 +129,7 @@ class IRC(protocol.Protocol):
 
     def sendLine(self, line):
         if self.encoding is not None:
-            if isinstance(line, unicode):
+            if isinstance(line, str):
                 line = line.encode(self.encoding)
         self.transport.write("%s%s%s" % (line, CR, LF))
 
@@ -876,8 +876,8 @@ class IRCClient(basic.LineReceiver):
                 raise ValueError("Maximum length must exceed %d for message "
                                  "to %s" % (minimumLength, user))
             lines = split(message, length - minimumLength)
-            map(lambda line, self=self, fmt=fmt: self.sendLine(fmt % line),
-                lines)
+            list(map(lambda line, self=self, fmt=fmt: self.sendLine(fmt % line),
+                lines))
 
     def notice(self, user, message):
         self.sendLine("NOTICE %s :%s" % (user, message))
@@ -928,13 +928,13 @@ class IRCClient(basic.LineReceiver):
 
         if len(self._pings) > self._MAX_PINGRING:
             # Remove some of the oldest entries.
-            byValue = sorted([(v, k) for (k, v) in self._pings.items()])
+            byValue = sorted([(v, k) for (k, v) in list(self._pings.items())])
             excess = self._MAX_PINGRING - len(self._pings)
-            for i in xrange(excess):
+            for i in range(excess):
                 del self._pings[byValue[i][1]]
 
     def dccSend(self, user, file):
-        if isinstance(file, types.StringType):
+        if isinstance(file, bytes):
             file = open(file, 'r')
 
         size = fileSize(file)
@@ -1551,7 +1551,7 @@ class DccSendProtocol(protocol.Protocol, styles.Ephemeral):
     connected = 0
 
     def __init__(self, file):
-        if isinstance(file, types.StringType):
+        if isinstance(file, bytes):
             self.file = open(file, 'r')
 
     def connectionMade(self):
@@ -1742,7 +1742,7 @@ def dccDescribe(data):
                 )
             # The mapping to 'int' is to get rid of those accursed
             # "L"s which python 1.5.2 puts on the end of longs.
-            address = string.join(map(str, map(int, address)), ".")
+            address = string.join(list(map(str, list(map(int, address)))), ".")
 
     if dcctype == 'SEND':
         filename = arg
@@ -1898,7 +1898,7 @@ class DccFileReceive(DccFileReceiveBasic):
 
 # CTCP constants and helper functions
 
-X_DELIM = chr(001)
+X_DELIM = chr(0o01)
 
 
 def ctcpExtract(message):
@@ -1926,11 +1926,11 @@ def ctcpExtract(message):
             normal_messages.append(messages.pop(0))
         odd = not odd
 
-    extended_messages[:] = filter(None, extended_messages)
-    normal_messages[:] = filter(None, normal_messages)
+    extended_messages[:] = [_f for _f in extended_messages if _f]
+    normal_messages[:] = [_f for _f in normal_messages if _f]
 
-    extended_messages[:] = map(ctcpDequote, extended_messages)
-    for i in xrange(len(extended_messages)):
+    extended_messages[:] = list(map(ctcpDequote, extended_messages))
+    for i in range(len(extended_messages)):
         m = string.split(extended_messages[i], SPC, 1)
         tag = m[0]
         if len(m) > 1:
@@ -1945,7 +1945,7 @@ def ctcpExtract(message):
 # CTCP escaping
 
 
-M_QUOTE = chr(020)
+M_QUOTE = chr(0o20)
 
 mQuoteTable = {
     NUL: M_QUOTE + '0',
@@ -1955,7 +1955,7 @@ mQuoteTable = {
     }
 
 mDequoteTable = {}
-for k, v in mQuoteTable.items():
+for k, v in list(mQuoteTable.items()):
     mDequoteTable[v[-1]] = k
 del k, v
 
@@ -1989,7 +1989,7 @@ xQuoteTable = {
 
 xDequoteTable = {}
 
-for k, v in xQuoteTable.items():
+for k, v in list(xQuoteTable.items()):
     xDequoteTable[v[-1]] = k
 
 xEscape_re = re.compile('%s.' % (re.escape(X_QUOTE),), re.DOTALL)
@@ -2024,7 +2024,7 @@ def ctcpStringify(messages):
     coded_messages = []
     for (tag, data) in messages:
         if data:
-            if not isinstance(data, types.StringType):
+            if not isinstance(data, bytes):
                 try:
                     # data as list-of-strings
                     data = " ".join(map(str, data))
@@ -2325,5 +2325,5 @@ symbolic_to_numeric = {
 }
 
 numeric_to_symbolic = {}
-for k, v in symbolic_to_numeric.items():
+for k, v in list(symbolic_to_numeric.items()):
     numeric_to_symbolic[v] = k

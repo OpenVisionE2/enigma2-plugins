@@ -1,11 +1,11 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 # Python OrderedSet implementation
 # taken from http://code.activestate.com/recipes/576694-orderedset/
 import collections
 
-KEY, PREV, NEXT = range(3)
+KEY, PREV, NEXT = list(range(3))
 
 
 class OrderedSet(collections.MutableSet):

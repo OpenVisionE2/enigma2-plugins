@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
+
 # CurlyTx translation initialization
 # Copyright (C) 2011 Christian Weiske <cweiske@cweiske.de>
 # License: GPLv3 or later
