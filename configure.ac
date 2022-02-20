@@ -564,7 +564,6 @@ subsdownloader2/src/pic/buttons/HD/Makefile
 subsdownloader2/src/pic/buttons/Makefile
 subsdownloader2/src/pic/Makefile
 subsdownloader2/src/pic/res/Makefile
-subsdownloader2/src/SourceCode/chardet/Makefile
 subsdownloader2/src/SourceCode/Makefile
 subsdownloader2/src/SourceCode/periscope/Makefile
 subsdownloader2/src/SourceCode/periscope/services/BierDopje/Makefile
