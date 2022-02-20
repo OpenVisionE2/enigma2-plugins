@@ -192,7 +192,7 @@ class WeatherPluginEntryList(MenuList):
 			if skinwidth == 1280:
 				x1, y1, w1, h1 = skinparameter.get("WeatherPluginCity", (5, 0, 400, 20))
 				x2, y2, w2, h2 = skinparameter.get("WeatherPluginDegreetype", (410, 0, 80, 20))
-		    	else:
+			else:
 				x1, y1, w1, h1 = skinparameter.get("WeatherPluginCity", (5, 0, 400, 32))
 				x2, y2, w2, h2 = skinparameter.get("WeatherPluginDegreetype", (410, 0, 80, 32))
 			res = [
