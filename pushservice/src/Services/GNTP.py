@@ -27,7 +27,7 @@ from Plugins.Extensions.PushService.ServiceBase import ServiceBase
 
 # Plugin specific
 import sys
-import gntp.notifier
+from .gntp import notifier
 
 # Constants
 APP_NAME = _("{box:s} {name:s}")
