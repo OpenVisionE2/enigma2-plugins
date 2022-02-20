@@ -20,7 +20,7 @@ sz_w = getDesktop(0).size().width()
 
 class PESpeedUp(Screen, ConfigListScreen):
     if sz_w == 1280:
-	skin = '''
+        skin = '''
 		<screen position="center,center" size="902,570" title="PE Speed Up" backgroundColor="#16000000" flags="wfNoBorder">
 			<widget name="lab1" position="10,10" size="882,60" font="Regular;20" valign="top" transparent="1" backgroundColor="#16000000"/>
 			<widget name="config" position="30,70" size="840,450" scrollbarMode="showOnDemand" backgroundColor="#16000000"/>
@@ -31,7 +31,7 @@ class PESpeedUp(Screen, ConfigListScreen):
 		</screen>
 	'''
     else:
-	skin = '''
+        skin = '''
 		<screen position="center,center" size="1376,898" title="PE Speed Up" backgroundColor="#16000000" flags="wfNoBorder">
 			<widget name="lab1" position="8,10" size="1359,80" font="Regular;30" valign="top" transparent="1" backgroundColor="#16000000"/>
 			<widget name="config" position="28,95" size="1321,745" font="Regular;35" itemHeight="50" scrollbarMode="showOnDemand" backgroundColor="#16000000"/>
