@@ -11,8 +11,10 @@ from Screens.MessageBox import MessageBox
 from Tools.Notifications import AddPopup
 
 # Plugin internal
-from SeriesPluginTimer import SeriesPluginTimer
-from Logger import log
+from .SeriesPluginTimer import SeriesPluginTimer
+from .Logger import log
+
+import six
 
 
 loop_data = []
@@ -27,13 +29,14 @@ def bareGetEpisode(service_ref, name, begin, end, description, path, future=True
 
 		log.info("Bare:", service_ref, name, begin, end, description, path, future, today, elapsed)
 
-		from SeriesPlugin import getInstance, refactorTitle, refactorDescription, refactorDirectory
+		from .SeriesPlugin import getInstance, refactorTitle, refactorDescription, refactorDirectory
 		seriesPlugin = getInstance()
 		data = seriesPlugin.getEpisode(
 			None,
 			name, begin, end, service_ref, future, today, elapsed, block=True
 		)
 
+		global loop_data
 		global loop_counter
 		loop_counter += 1
 
@@ -44,14 +47,12 @@ def bareGetEpisode(service_ref, name, begin, end, description, path, future=True
 			log.info("Bare: Success", name, description, path)
 			return (name, description, path, log.get())
 
-		elif data and isinstance(data, basestring):
-			global loop_data
+		elif data and isinstance(data, six.string_types):
 			msg = _("Failed: %s." % (str(data)))
 			log.debug(msg)
 			loop_data.append(name + ": " + msg)
 
 		else:
-			global loop_data
 			msg = _("No data available")
 			log.debug(msg)
 			loop_data.append(name + ": " + msg)
