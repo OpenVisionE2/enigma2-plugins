@@ -3,7 +3,7 @@
 # for localized messages
 from . import _
 
-from AC3utils import PLUGIN_BASE, PLUGIN_VERSION
+from .AC3utils import PLUGIN_BASE, PLUGIN_VERSION
 from Components.ActionMap import ActionMap, NumberActionMap
 from Components.Sources.StaticText import StaticText
 from Components.Sources.Boolean import Boolean

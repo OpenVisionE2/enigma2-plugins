@@ -18,7 +18,7 @@ from Components.Sources.StaticText import StaticText
 from Components.Sources.List import List
 from Plugins.Plugin import PluginDescriptor
 
-from __init__ import _
+from .__init__ import _
 
 import string
 import sys

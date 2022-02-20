@@ -25,7 +25,7 @@ try:
 	#Python >= 2.7
 	from collections import OrderedDict
 except:
-	from OrderedDict import OrderedDict
+	from .OrderedDict import OrderedDict
 
 
 # Module base class

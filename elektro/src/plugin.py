@@ -26,7 +26,7 @@ from __future__ import print_function
 #
 #
 
-from __init__ import _
+from .__init__ import _
 from Screens.InfoBarGenerics import *
 import calendar
 # Plugin
@@ -48,7 +48,7 @@ from Components.config import configfile, getConfigListEntry, ConfigEnableDisabl
 	config, ConfigSubsection, ConfigSubDict, ConfigIP
 # Startup/shutdown notification
 from Tools import Notifications
-import ping
+from . import ping
 import os
 # Timer, etc
 from time import localtime, time, gmtime, sleep

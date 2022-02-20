@@ -19,15 +19,15 @@
 #  modify it (if you keep the license), but it may not be commercially
 #  distributed other than under the conditions noted above.
 #
-from __init__ import _
+from .__init__ import _
 from Screens.Screen import Screen
 from Components.ActionMap import ActionMap
 from Components.Label import Label
 from Components.config import config
-from Source.ServiceProvider import ServiceCenter, ServiceEvent
+from .Source.ServiceProvider import ServiceCenter, ServiceEvent
 from Components.ScrollLabel import ScrollLabel
-from MoviePreview import MoviePreview
-from Source.Globals import SkinTools, pluginPresent
+from .MoviePreview import MoviePreview
+from .Source.Globals import SkinTools, pluginPresent
 from Components.Sources.StaticText import StaticText
 from Components.Pixmap import Pixmap
 import os
@@ -129,13 +129,13 @@ class EventViewBase:
     def red_button(self):
         name = self.getEventName()
         if name:
-            from SearchTVDb import TheTVDBMain
+            from .SearchTVDb import TheTVDBMain
             self.session.open(TheTVDBMain, self.currentService)
 
     def green_button(self):
         name = self.getEventName()
         if name:
-            from SearchTMDb import TMDbMain
+            from .SearchTMDb import TMDbMain
             self.session.open(TMDbMain, name, self.currentService)
 
     def yellow_button(self):

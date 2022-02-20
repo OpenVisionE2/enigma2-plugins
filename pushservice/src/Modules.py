@@ -29,9 +29,9 @@ import inspect
 
 # Plugin internal
 from . import _
-from ModuleBase import ModuleBase
-from ServiceBase import ServiceBase
-from ControllerBase import ControllerBase
+from .ModuleBase import ModuleBase
+from .ServiceBase import ServiceBase
+from .ControllerBase import ControllerBase
 
 
 class Modules(object):

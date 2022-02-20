@@ -26,8 +26,8 @@ from enigma import ePicLoad, gPixmapPtr, eTimer
 from Tools.Directories import fileExists
 import os
 from Components.config import config
-from Source.ServiceProvider import eServiceReferenceDvd, getServiceInfoValue, ServiceCenter, eServiceReferenceBludisc
-from Source.ISOInfo import ISOInfo
+from .Source.ServiceProvider import eServiceReferenceDvd, getServiceInfoValue, ServiceCenter, eServiceReferenceBludisc
+from .Source.ISOInfo import ISOInfo
 from enigma import iServiceInformation, eServiceReference
 from os import environ
 from Tools.Directories import resolveFilename, SCOPE_PLUGIN
@@ -130,7 +130,7 @@ class DVDOverlay(Screen):
 
 from ServiceReference import ServiceReference
 from Screens.InfoBarGenerics import InfoBarCueSheetSupport
-from Source.ServiceProvider import CueSheet
+from .Source.ServiceProvider import CueSheet
 
 
 class VideoPreview():
@@ -209,7 +209,7 @@ class VideoPreview():
                 print("Skipping video preview")
                 self.__playLastService()
                 return
-            from MoviePlayer import playerChoice
+            from .MoviePlayer import playerChoice
             if playerChoice and playerChoice.isPlaying():
                 print("Skipping video preview")
                 return

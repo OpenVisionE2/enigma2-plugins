@@ -19,7 +19,7 @@
 #######################################################################
 
 
-from ModuleBase import ModuleBase
+from .ModuleBase import ModuleBase
 
 
 # Plugin base class

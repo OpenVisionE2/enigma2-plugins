@@ -28,8 +28,8 @@
 # 02110-1301  USA
 ######################### END LICENSE BLOCK #########################
 
-from charsetprober import CharSetProber
-import constants
+from .charsetprober import CharSetProber
+from . import constants
 import operator
 
 FREQ_CAT_NUM = 4

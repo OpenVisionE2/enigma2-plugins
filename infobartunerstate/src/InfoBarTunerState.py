@@ -63,10 +63,10 @@ from enigma import eTimer
 from enigma import iPlayableService, iRecordableService
 from enigma import eDVBResourceManager, eActionMap, eListboxPythonMultiContent, eListboxPythonStringContent, eListbox, gFont, RT_HALIGN_LEFT, RT_HALIGN_RIGHT, RT_HALIGN_CENTER, eEPGCache, eServiceCenter, eServiceReference
 
-from skin import parseColor, parseFont
+from .skin import parseColor, parseFont
 
 # Plugin internal
-from netstat import netstat
+from .netstat import netstat
 
 # Extenal plugins: WebInterface
 StreamingWebScreen = None
@@ -775,7 +775,7 @@ class TunerStateBase(Screen):
 
 	def __init__(self, session):
 		Screen.__init__(self, session)
-		from skin import *
+		from .skin import *
 		self.skin_path = resolveFilename(SCOPE_PLUGINS, "Extensions/InfoBarTunerState")
 		self.skinName = "TunerState"
 

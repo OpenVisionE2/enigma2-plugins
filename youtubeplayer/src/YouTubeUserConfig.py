@@ -31,7 +31,7 @@ from Components.config import ConfigText
 from Components.config import config
 from Components.config import getConfigListEntry
 from Screens.Screen import Screen
-from YouTubeInterface import YouTubeUser
+from .YouTubeInterface import YouTubeUser
 
 from . import _
 

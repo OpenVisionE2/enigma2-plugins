@@ -29,8 +29,8 @@ import NavigationInstance
 from ServiceReference import ServiceReference
 
 # OWN IMPORTS
-from EpgCenterList import EpgCenterList, TIMERLIST
-from MerlinEPGCenter import LIST_MODE_AUTOTIMER
+from .EpgCenterList import EpgCenterList, TIMERLIST
+from .MerlinEPGCenter import LIST_MODE_AUTOTIMER
 
 
 ############################################################################################

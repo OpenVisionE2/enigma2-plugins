@@ -10,7 +10,7 @@ from Tools import Notifications
 from Screens.TextBox import TextBox
 from . import _
 # Error-print
-from EPGBackupTools import debugOut, _getLogFilename, EPGBACKUP_NOTIFICATIONDOMAIN
+from .EPGBackupTools import debugOut, _getLogFilename, EPGBACKUP_NOTIFICATIONDOMAIN
 from traceback import format_exc
 # SH-Script
 from Tools.Directories import SCOPE_PLUGINS, resolveFilename

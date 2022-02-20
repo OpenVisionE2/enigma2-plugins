@@ -9,7 +9,7 @@ from enigma import eServiceCenter
 from Components.config import config
 
 # Plugin
-from EPGSearch import EPGSearch, EPGSearchEPGSelection
+from .EPGSearch import EPGSearch, EPGSearchEPGSelection
 
 # Plugin definition
 from Plugins.Plugin import PluginDescriptor

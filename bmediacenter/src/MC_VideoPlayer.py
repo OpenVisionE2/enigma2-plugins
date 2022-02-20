@@ -13,8 +13,8 @@ from Components.ConfigList import ConfigList, ConfigListScreen
 from Components.config import *
 from Screens.InfoBar import MoviePlayer as OrgMoviePlayer
 from Tools.Directories import resolveFilename, pathExists, fileExists, SCOPE_MEDIA
-from MC_Filelist import FileList
-from GlobalFunctions import shortname, MC_VideoInfoView, Showiframe
+from .MC_Filelist import FileList
+from .GlobalFunctions import shortname, MC_VideoInfoView, Showiframe
 import re
 import os
 from Components.Console import Console

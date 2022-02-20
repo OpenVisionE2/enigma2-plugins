@@ -116,7 +116,7 @@ class PictureGenerator:
 		return self.__list.index(obj.obj)
 
 
-from PictureApi import PictureApi
+from .PictureApi import PictureApi
 
 
 class FlickrApi(PictureApi):

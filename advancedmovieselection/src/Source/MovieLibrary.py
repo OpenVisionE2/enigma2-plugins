@@ -21,13 +21,13 @@ from __future__ import print_function
 #
 
 import os
-from ServiceProvider import ServiceCenter, eServiceReferenceMarker
-from ServiceDescriptor import MovieInfo
+from .ServiceProvider import ServiceCenter, eServiceReferenceMarker
+from .ServiceDescriptor import MovieInfo
 from enigma import iServiceInformation
-from AccessRestriction import accessRestriction
-from Globals import printStackTrace
+from .AccessRestriction import accessRestriction
+from .Globals import printStackTrace
 from Components.config import config
-from CueSheetSupport import hasLastPosition
+from .CueSheetSupport import hasLastPosition
 
 
 class SortProvider():

@@ -9,7 +9,7 @@ from Tools.Directories import resolveFilename, SCOPE_GUISKIN, fileExists, SCOPE_
 from Tools.LoadPixmap import LoadPixmap
 from Tools.Alternatives import GetWithAlternative
 from ServiceReference import ServiceReference
-from EPGSearchSetup import EPGSearchSetup
+from .EPGSearchSetup import EPGSearchSetup
 from Screens.ChannelSelection import SimpleChannelSelection
 from Screens.ChoiceBox import ChoiceBox
 from Screens.EpgSelection import EPGSelection

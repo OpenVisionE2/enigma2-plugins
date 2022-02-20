@@ -12,7 +12,7 @@ from Components.MenuList import MenuList
 from Components.ConfigList import ConfigList, ConfigListScreen
 from Components.config import *
 from Components.Console import Console
-from __init__ import _
+from .__init__ import _
 from os import mkdir
 from Tools.Directories import resolveFilename, SCOPE_PLUGINS
 

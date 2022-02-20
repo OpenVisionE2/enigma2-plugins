@@ -11,9 +11,9 @@ from Screens.InputBox import InputBox
 from Components.ActionMap import ActionMap
 from Components.config import config, ConfigSubsection, ConfigInteger, ConfigYesNo, ConfigText, ConfigSelection, ConfigPassword
 from Plugins.Plugin import PluginDescriptor
-from StreamPlayer import StreamPlayer
-from LastFMConfig import LastFMConfigScreen
-from LastFM import LastFM
+from .StreamPlayer import StreamPlayer
+from .LastFMConfig import LastFMConfigScreen
+from .LastFM import LastFM
 from urllib2 import quote as urllib2_qoute
 from twisted.web.client import downloadPage
 from os import remove as os_remove
@@ -78,7 +78,7 @@ def startScrobbler(reason, **kwargs):
         else:
             streamplayer.setSession(kwargs["session"])
 
-        from scrobbler import EventListener
+        from .scrobbler import EventListener
         evl = EventListener(kwargs["session"], streamplayer)
         evl.startListenToEvents()
 

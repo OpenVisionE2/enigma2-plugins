@@ -20,14 +20,14 @@ from __future__ import print_function
 #  modify it (if you keep the license), but it may not be commercially
 #  distributed other than under the conditions noted above.
 #
-from __init__ import _
+from .__init__ import _
 from Components.PluginComponent import plugins
 from Screens.Screen import Screen
 from Components.ActionMap import HelpableActionMap, ActionMap, NumberActionMap
 from Components.MenuList import MenuList
 from Components.Sources.StaticText import StaticText
 from Screens.HelpMenu import HelpableScreen
-from MovieList import MovieList
+from .MovieList import MovieList
 from Components.DiskInfo import DiskInfo
 from Components.Pixmap import Pixmap
 from Components.Label import Label
@@ -37,41 +37,41 @@ from Plugins.Plugin import PluginDescriptor
 from Screens.MessageBox import MessageBox
 from Screens.ChoiceBox import ChoiceBox
 from Screens.LocationBox import MovieLocationBox
-from AdvancedMovieSelectionSetup import AdvancedMovieSelectionSetup, AdvancedMovieSelectionButtonSetup
+from .AdvancedMovieSelectionSetup import AdvancedMovieSelectionSetup, AdvancedMovieSelectionButtonSetup
 from Tools.BoundFunction import boundFunction
 from Tools.Directories import resolveFilename, fileExists, SCOPE_HDD, SCOPE_GUISKIN
 from enigma import eServiceReference, eSize, ePoint, eTimer, iServiceInformation
 from Screens.Console import eConsoleAppContainer
-from MoveCopy import MovieMove
-from Rename import MovieRetitle
-from SearchTMDb import TMDbMain as TMDbMainsave
-from MoviePreview import MoviePreview, VideoPreview
-from DownloadMovies import DownloadMovies
-from Source.ServiceProvider import eServiceReferenceDvd
-from QuickButton import QuickButton
+from .MoveCopy import MovieMove
+from .Rename import MovieRetitle
+from .SearchTMDb import TMDbMain as TMDbMainsave
+from .MoviePreview import MoviePreview, VideoPreview
+from .DownloadMovies import DownloadMovies
+from .Source.ServiceProvider import eServiceReferenceDvd
+from .QuickButton import QuickButton
 from os import path
 import os
 import NavigationInstance
 from timer import TimerEntry
-from Source.Trashcan import Trashcan, AsynchTrash
+from .Source.Trashcan import Trashcan, AsynchTrash
 from RecordTimer import AFTEREVENT
-from ClientSetup import ClientSetup
+from .ClientSetup import ClientSetup
 from time import localtime, strftime
 from datetime import datetime
 from Tools.FuzzyDate import FuzzyTime
-from MovieSearch import MovieSearch
-from Source.Globals import pluginPresent, SkinTools, printStackTrace
-from Source.ServiceProvider import ServiceEvent, ServiceCenter
-from Source.ServiceProvider import eServiceReferenceHotplug, eServiceReferenceBackDir, eServiceReferenceListAll
-from Source.AutoNetwork import autoNetwork
-from Source.MovieScanner import movieScanner
-from Source.ServiceDescriptor import DirectoryInfo
-from Source.StopWatch import StopWatch, clockit
+from .MovieSearch import MovieSearch
+from .Source.Globals import pluginPresent, SkinTools, printStackTrace
+from .Source.ServiceProvider import ServiceEvent, ServiceCenter
+from .Source.ServiceProvider import eServiceReferenceHotplug, eServiceReferenceBackDir, eServiceReferenceListAll
+from .Source.AutoNetwork import autoNetwork
+from .Source.MovieScanner import movieScanner
+from .Source.ServiceDescriptor import DirectoryInfo
+from .Source.StopWatch import StopWatch, clockit
 
 try:
     from Screens.TagEditor import TagEditor
 except ImportError:
-    from TagEditor import MovieTagEditor as TagEditor
+    from .TagEditor import MovieTagEditor as TagEditor
 
 if pluginPresent.IMDb:
     from Plugins.Extensions.IMDb.plugin import IMDB
@@ -309,7 +309,7 @@ class MovieContextMenu(Screen):
         self.setTitle(_("Advanced Movie Selection Menu"))
 
     def openBackupRestore(self):
-        from AdvancedMovieSelectionSetup import BackupRestore
+        from .AdvancedMovieSelectionSetup import BackupRestore
         self.session.open(BackupRestore)
         self.close()
 
@@ -322,7 +322,7 @@ class MovieContextMenu(Screen):
         self.close()
 
     def thetvdbsearch(self):
-        from SearchTVDb import TheTVDBMain
+        from .SearchTVDb import TheTVDBMain
         self.session.openWithCallback(self.closeafterfinish, TheTVDBMain, self.service)
 
     def updateMetaFromEit(self):
@@ -343,7 +343,7 @@ class MovieContextMenu(Screen):
         self.session.open(ClientSetup)
 
     def waste(self):
-        from Wastebasket import Wastebasket
+        from .Wastebasket import Wastebasket
         self.session.openWithCallback(self.closeafterfinish, Wastebasket)
 
     def showTrailer(self):
@@ -420,7 +420,7 @@ class MovieContextMenu(Screen):
         self.close()
 
     def searchmovie(self):
-        from AdvancedKeyboard import AdvancedKeyBoard
+        from .AdvancedKeyboard import AdvancedKeyBoard
         self.session.openWithCallback(self.searchCallback, AdvancedKeyBoard, _("Enter text to search for"))
 
     def searchCallback(self, retval):
@@ -1035,7 +1035,7 @@ class MovieSelection(Screen, HelpableScreen, SelectionEventInfo, MoviePreview, Q
         answer = answer and answer[1]
         if answer == "Ei":
             if event is not None:
-                from AdvancedMovieSelectionEventView import EventViewSimple
+                from .AdvancedMovieSelectionEventView import EventViewSimple
                 from ServiceReference import ServiceReference
                 serviceref = self.getCurrent()
                 evt = self["list"].getCurrentEvent()
@@ -1201,7 +1201,7 @@ class MovieSelection(Screen, HelpableScreen, SelectionEventInfo, MoviePreview, Q
             pass
 
     def getTagDescription(self, tag):
-        from Source.AccessRestriction import accessRestriction
+        from .Source.AccessRestriction import accessRestriction
         if tag.startswith("VSR"):
             vsr = _("VSR") + "-%d" % (accessRestriction.decodeAccess(tag))
             return vsr, tag

@@ -17,7 +17,7 @@ try:
 	from Screens.MessageBox import MessageBox
 	from Tools import Notifications
 
-	from GrowleeConnection import emergencyDisable
+	from .GrowleeConnection import emergencyDisable
 	from . import NOTIFICATIONID
 except ImportError as e:
 	def emergencyDisable():

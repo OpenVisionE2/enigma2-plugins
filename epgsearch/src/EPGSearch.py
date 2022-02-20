@@ -11,7 +11,7 @@ from Tools.Directories import fileExists, resolveFilename, SCOPE_PLUGINS
 from Tools.Alternatives import GetWithAlternative
 from ServiceReference import ServiceReference
 
-from EPGSearchSetup import EPGSearchSetup
+from .EPGSearchSetup import EPGSearchSetup
 from Screens.InfoBar import MoviePlayer
 from Screens.ChannelSelection import ChannelSelection, SimpleChannelSelection, MODE_RADIO
 from Screens.ChoiceBox import ChoiceBox

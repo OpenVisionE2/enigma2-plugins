@@ -5,8 +5,8 @@ from . import _
 from Plugins.Plugin import PluginDescriptor
 from Components.config import config
 from Components.ActionMap import ActionMap
-from PrimeTimeManager import PrimeTimeManager
-from PrimeTimeSettings import PrimeTimeSettings
+from .PrimeTimeManager import PrimeTimeManager
+from .PrimeTimeSettings import PrimeTimeSettings
 
 baseTimerEditList__init__ = None
 
@@ -30,7 +30,7 @@ def autostart(reason, **kwargs):
 		try:
 			from Screens.TimerEdit import TimerEditList
 			baseTimerEditList__init__ = TimerEditList.__init__
-			from PrimeTimeTimerEdit import PMTimerEditList__init__, openExtendedSetup, updateList
+			from .PrimeTimeTimerEdit import PMTimerEditList__init__, openExtendedSetup, updateList
 			TimerEditList.__init__ = PMTimerEditList__init__
 			TimerEditList.openExtendedSetup = openExtendedSetup
 			TimerEditList.updateList = updateList

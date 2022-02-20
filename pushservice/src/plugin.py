@@ -33,8 +33,8 @@ from Components.config import config, ConfigSubsection, ConfigNothing, ConfigEna
 #from Components.Language import language
 
 # Plugin internal
-from __init__ import _
-from PushService import PushService
+from .__init__ import _
+from .PushService import PushService
 #from ConfigScreen import ConfigScreen
 
 
@@ -69,7 +69,7 @@ config.pushservice.period = ConfigSelectionNumber(0, 1000, 1, default=24)
 def setup(session, **kwargs):
 	try:
 		### For testing only
-		import ConfigScreen
+		from . import ConfigScreen
 		reload(ConfigScreen)
 		###
 		session.open(ConfigScreen.ConfigScreen)

@@ -35,7 +35,7 @@ import time
 import urllib
 from struct import unpack, pack
 from calendar import timegm
-from MovieDB import tmdb, tvdb, downloadCover
+from .MovieDB import tmdb, tvdb, downloadCover
 
 
 def printStackTrace():
@@ -356,7 +356,7 @@ def setTmdbCertificationtion(movie, file_name):
     try:
         cert = tmdb.decodeCertification(movie.releases)
         if cert:
-            from AccessRestriction import accessRestriction
+            from .AccessRestriction import accessRestriction
             accessRestriction.setToService(file_name, cert)
     except Exception as e:
         print(str(e))

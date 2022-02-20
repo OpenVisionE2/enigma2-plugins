@@ -17,7 +17,7 @@ from twisted.web.client import downloadPage
 #_PicasaApi__returnPhotos = lambda photos: [(photo.title.text, photo) for photo in photos.entry]
 _PicasaApi__returnPhotos = lambda photos: photos.entry
 
-from PictureApi import PictureApi
+from .PictureApi import PictureApi
 
 
 class PicasaApi(PictureApi):

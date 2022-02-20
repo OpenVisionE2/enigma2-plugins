@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function
 from enigma import eTimer, ePythonMessagePump
-from MyTubeService import GoogleSuggestions
+from .MyTubeService import GoogleSuggestions
 from Screens.Screen import Screen
 from Screens.LocationBox import MovieLocationBox
 from Components.config import config, ConfigText, getConfigListEntry
@@ -17,7 +17,7 @@ from Components.Task import job_manager
 from Tools.Directories import resolveFilename, SCOPE_PLUGINS, SCOPE_HDD
 
 from threading import Thread
-from ThreadQueue import ThreadQueue
+from .ThreadQueue import ThreadQueue
 from xml.etree.cElementTree import fromstring as cet_fromstring
 from StringIO import StringIO
 #import urllib

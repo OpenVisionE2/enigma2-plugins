@@ -21,9 +21,9 @@ from __future__ import print_function
 #
 
 import os
-from Globals import printStackTrace
-from MovieConfig import MovieConfig
-from ServiceProvider import eServiceReferenceHotplug
+from .Globals import printStackTrace
+from .MovieConfig import MovieConfig
+from .ServiceProvider import eServiceReferenceHotplug
 from enigma import eTimer
 
 

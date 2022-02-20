@@ -19,10 +19,10 @@ from __future__ import print_function
 #  modify it (if you keep the license), but it may not be commercially
 #  distributed other than under the conditions noted above.
 #
-from __init__ import _
+from .__init__ import _
 from Components.config import config
 from Plugins.Plugin import PluginDescriptor
-from VideoColorSpace import VideoColorSpace, initializeConfig
+from .VideoColorSpace import VideoColorSpace, initializeConfig
 
 
 def autostart(reason, **kwargs):

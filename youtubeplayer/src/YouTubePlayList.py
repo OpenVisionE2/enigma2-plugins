@@ -20,8 +20,8 @@
 #    59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             #
 ############################################################################
 
-from YouTubeInterface import interface
-from YouTubeAddPlayList import YouTubeAddPlaylistDialog
+from .YouTubeInterface import interface
+from .YouTubeAddPlayList import YouTubeAddPlaylistDialog
 from Components.ActionMap import ActionMap
 from Components.MenuList import MenuList
 from Components.Label import Label

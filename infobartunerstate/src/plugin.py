@@ -33,8 +33,8 @@ from Plugins.Plugin import PluginDescriptor
 from Screens.MessageBox import MessageBox
 
 # Plugin internal
-from IBTSConfiguration import InfoBarTunerStateConfiguration
-from InfoBarTunerState import InfoBarTunerState, TunerStateInfo
+from .IBTSConfiguration import InfoBarTunerStateConfiguration
+from .InfoBarTunerState import InfoBarTunerState, TunerStateInfo
 
 
 # Contants

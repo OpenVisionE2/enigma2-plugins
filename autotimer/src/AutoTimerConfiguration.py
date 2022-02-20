@@ -5,7 +5,7 @@ from __future__ import print_function
 # for localized messages
 from . import _
 
-from AutoTimerComponent import preferredAutoTimerComponent, getDefaultEncoding
+from .AutoTimerComponent import preferredAutoTimerComponent, getDefaultEncoding
 from RecordTimer import AFTEREVENT
 from Tools.XMLTools import stringToXML
 from ServiceReference import ServiceReference
@@ -845,7 +845,7 @@ def buildConfig(defaultTimer, timers, webif=False):
 	# End of Configuration
 	append('</autotimer>\n')
 
-	from plugin import autotimer
+	from .plugin import autotimer
 	list[3] = str(autotimer.nextTimerId)
 
 	return list

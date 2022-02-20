@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __init__ import _
+from .__init__ import _
 
 import sys
 import os
@@ -39,9 +39,9 @@ except:
 from difflib import SequenceMatcher
 
 #Internal
-from Channels import ChannelsBase, buildSTBchannellist, unifyChannel, getTVBouquets, lookupChannelByReference
-from Logger import log
-from WebChannels import WebChannels
+from .Channels import ChannelsBase, buildSTBchannellist, unifyChannel, getTVBouquets, lookupChannelByReference
+from .Logger import log
+from .WebChannels import WebChannels
 
 # Constants
 PIXMAP_PATH = resolveFilename(SCOPE_PLUGIN, "Extensions/SeriesPlugin/Images/")
@@ -149,7 +149,7 @@ class ChannelEditor(Screen, HelpableScreen, ChannelsBase, WebChannels):
 
 		log.debug("ChannelEditor")
 
-		from plugin import NAME, VERSION
+		from .plugin import NAME, VERSION
 		self.setup_title = NAME + " " + _("Channel Editor") + " " + VERSION
 
 		# Buttons

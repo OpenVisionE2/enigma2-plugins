@@ -11,7 +11,7 @@ from Screens.Standby import TryQuitMainloop
 from Tools.BoundFunction import boundFunction
 
 # Error-print
-from EPGBackupTools import debugOut, PLUGIN_VERSION
+from .EPGBackupTools import debugOut, PLUGIN_VERSION
 from traceback import format_exc
 
 extPrefix = _("EXTENSIONMENU_PREFIX")
@@ -88,7 +88,7 @@ def autostart(reason, **kwargs):
 	if reason == 0 and "session" in kwargs:
 		session = kwargs["session"]
 
-		from EPGBackupSupport import EPGBackupSupport
+		from .EPGBackupSupport import EPGBackupSupport
 		try:
 			epgbackup = EPGBackupSupport(session)
 		except:
@@ -104,7 +104,7 @@ def autostart(reason, **kwargs):
 
 def openconfig(session, **kwargs):
 	try:
-		from EPGBackupConfig import EPGBackupConfig
+		from .EPGBackupConfig import EPGBackupConfig
 		session.openWithCallback(doneConfiguring, EPGBackupConfig)
 	except:
 		debugOut("Config-Import-Error:\n" + str(format_exc()), forced=True)

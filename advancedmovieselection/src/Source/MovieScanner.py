@@ -22,21 +22,21 @@ from __future__ import print_function
 
 import os
 from datetime import datetime
-from ServiceProvider import ServiceCenter, eServiceReferenceDvd, eServiceReferenceBludisc
-from ServiceProvider import detectDVDStructure, detectBludiscStructure
-from ServiceDescriptor import MovieInfo
-from ServiceUtils import serviceUtil, diskUsage, getDirSize
-from AutoNetwork import autoNetwork
-from MovieConfig import MovieConfig
-from Globals import printStackTrace
-from Trashcan import TRASH_NAME
+from .ServiceProvider import ServiceCenter, eServiceReferenceDvd, eServiceReferenceBludisc
+from .ServiceProvider import detectDVDStructure, detectBludiscStructure
+from .ServiceDescriptor import MovieInfo
+from .ServiceUtils import serviceUtil, diskUsage, getDirSize
+from .AutoNetwork import autoNetwork
+from .MovieConfig import MovieConfig
+from .Globals import printStackTrace
+from .Trashcan import TRASH_NAME
 from enigma import eServiceReference, iServiceInformation
-from ISOInfo import ISOInfo
+from .ISOInfo import ISOInfo
 from Components.config import config
-from StopWatch import clockit
-from RecordTimerEvent import recordTimerEvent
-from MovieLibrary import MovieLibrary
-from Hotplug import hotplug
+from .StopWatch import clockit
+from .RecordTimerEvent import recordTimerEvent
+from .MovieLibrary import MovieLibrary
+from .Hotplug import hotplug
 
 SCAN_EXCLUDE = (ISOInfo.MOUNT_PATH, "DUMBO", "TIMOTHY", "/media/swap", "/media/ram", "/media/ba")
 AUDIO_EXCLUDE = ("mp3", "ogg", "wav", "m4a")

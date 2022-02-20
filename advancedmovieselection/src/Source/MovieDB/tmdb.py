@@ -114,7 +114,7 @@ def __searchMovie(title):
     return res
 
 
-import tmdb3
+from . import tmdb3
 original_search = tmdb3.searchMovie
 tmdb3.searchMovie = __searchMovie
 

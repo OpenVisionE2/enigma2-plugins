@@ -7,10 +7,10 @@
 
 #
 import string
-import ircsupport
-import e2chat
-import dreamIRCTools
-import dreamIRCSetup
+from . import ircsupport
+from . import e2chat
+from . import dreamIRCTools
+from . import dreamIRCSetup
 
 
 class AccountManager:

@@ -1,8 +1,8 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from HelpableNumberActionMap import HelpableNumberActionMap
+from .HelpableNumberActionMap import HelpableNumberActionMap
 from Components.config import config
-from __init__ import _
+from .__init__ import _
 from enigma import ePoint, eTimer, getDesktop
 
 

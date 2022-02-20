@@ -108,7 +108,7 @@ def updateInfo(path):
     if os.path.isfile(path):
         trash_size += os.path.getsize(path)
     else:
-        from ServiceUtils import getFolderSize
+        from .ServiceUtils import getFolderSize
         trash_size += getFolderSize(os.path.dirname(path))
 
 
@@ -212,7 +212,7 @@ class Trashcan:
             if os.path.isfile(filename):
                 os.rename(filename, original_name)
                 filename = original_name
-                from ServiceProvider import ServiceCenter, eServiceReference
+                from .ServiceProvider import ServiceCenter, eServiceReference
                 service = eServiceReference(eServiceReference.idDVB, 0, filename)
                 print("[erase file]", filename)
                 serviceHandler = ServiceCenter.getInstance()

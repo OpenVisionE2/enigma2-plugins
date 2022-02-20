@@ -17,7 +17,7 @@ from Screens.InfoBarGenerics import InfoBarNumberZap, InfoBarEPG, InfoBarChannel
 from Screens.PictureInPicture import PictureInPicture
 from Screens.Screen import Screen
 from Screens.MessageBox import MessageBox
-from PipzapSetup import PipzapSetup
+from .PipzapSetup import PipzapSetup
 from Components.PluginComponent import plugins
 
 

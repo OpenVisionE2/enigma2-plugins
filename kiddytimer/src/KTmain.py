@@ -3,7 +3,7 @@
 from __future__ import print_function
 from Components.Label import Label
 from Components.ProgressBar import ProgressBar
-from KTMultiPixmap import KTmultiPixmap
+from .KTMultiPixmap import KTmultiPixmap
 from Components.config import config, configfile
 from Components.Pixmap import Pixmap
 from Screens.ChoiceBox import ChoiceBox
@@ -17,8 +17,8 @@ from Tools import Notifications
 from Tools.Directories import resolveFilename, SCOPE_CONFIG
 from enigma import ePoint, eTimer, eDVBLocalTimeHandler
 
-from __init__ import _
-import KTglob
+from .__init__ import _
+from . import KTglob
 import NavigationInstance
 import time
 

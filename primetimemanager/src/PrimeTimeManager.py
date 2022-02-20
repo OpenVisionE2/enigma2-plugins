@@ -77,8 +77,8 @@ from Tools.Notifications import AddPopup
 from Tools.Directories import resolveFilename, SCOPE_GUISKIN, SCOPE_PLUGIN, fileExists, SCOPE_PLUGINS
 from Tools.LoadPixmap import LoadPixmap
 import NavigationInstance
-from ResultScreen import ResultScreen
-from PrimeTimeSettings import PrimeTimeSettings
+from .ResultScreen import ResultScreen
+from .PrimeTimeSettings import PrimeTimeSettings
 try:
 	from Plugins.Extensions.AutoTimer.AutoTimerEditor import addAutotimerFromEvent
 	AUTOTIMER = True

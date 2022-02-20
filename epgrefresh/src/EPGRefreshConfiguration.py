@@ -11,7 +11,7 @@ from Screens.ChoiceBox import ChoiceBox
 from Components.ConfigList import ConfigListScreen
 from Components.config import KEY_OK
 from Screens.LocationBox import LocationBox
-from EPGRefreshChannelEditor import EPGRefreshServiceEditor
+from .EPGRefreshChannelEditor import EPGRefreshServiceEditor
 
 # GUI (Summary)
 from Screens.Setup import SetupSummary
@@ -26,7 +26,7 @@ from Components.config import config, getConfigListEntry, configfile, NoSave, Co
 from Screens.FixedMenu import FixedMenu
 from Tools.BoundFunction import boundFunction
 
-from EPGRefresh import epgrefresh
+from .EPGRefresh import epgrefresh
 from Components.NimManager import nimmanager
 from Screens.MessageBox import MessageBox
 
@@ -192,7 +192,7 @@ class EPGRefreshConfiguration(Screen, HelpableScreen, ConfigListScreen):
 		self["config"].setList(self.list)
 
 	def firstExec(self):
-		from plugin import epgrefreshHelp
+		from .plugin import epgrefreshHelp
 		if config.plugins.epgrefresh.show_help.value and epgrefreshHelp:
 			config.plugins.epgrefresh.show_help.value = False
 			config.plugins.epgrefresh.show_help.save()
@@ -240,7 +240,7 @@ class EPGRefreshConfiguration(Screen, HelpableScreen, ConfigListScreen):
 			self._showKeyhelp()
 
 	def _showMainHelp(self):
-		from plugin import epgrefreshHelp
+		from .plugin import epgrefreshHelp
 		if epgrefreshHelp:
 			epgrefreshHelp.open(self.session)
 

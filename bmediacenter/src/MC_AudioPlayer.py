@@ -23,11 +23,11 @@ from Components.Playlist import PlaylistIOInternal, PlaylistIOM3U, PlaylistIOPLS
 from Components.ConfigList import ConfigList, ConfigListScreen
 from Components.config import *
 from Tools.Directories import resolveFilename, fileExists, pathExists, createDir, SCOPE_MEDIA, SCOPE_PLAYLIST, SCOPE_GUISKIN, SCOPE_PLUGINS
-from MC_Filelist import FileList
+from .MC_Filelist import FileList
 from Screens.InfoBarGenerics import InfoBarSeek
 import os
 from os import path as os_path, remove as os_remove, listdir as os_listdir
-from __init__ import _
+from .__init__ import _
 from Components.Console import Console
 
 config.plugins.mc_ap = ConfigSubsection()

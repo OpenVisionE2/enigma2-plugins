@@ -64,7 +64,7 @@ class TCPHandler(SocketServer.BaseRequestHandler):
 
     def handle(self):
         try:
-            from Client import MessageQueue
+            from .Client import MessageQueue
             # self.request is the TCP socket connected to the client
             data = self.request.recv(1024).strip()
             #print(str(self.client_address[0]), "wrote")
@@ -120,7 +120,7 @@ class MessageServer():
         self.port = port
 
     def findClients(self):
-        from Client import Client
+        from .Client import Client
         self.active_clients = []
         ip = self.host.split(".")
         ip = "%s.%s.%s" % (ip[0], ip[1], ip[2])

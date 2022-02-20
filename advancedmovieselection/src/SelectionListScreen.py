@@ -25,13 +25,13 @@ For example, if you distribute copies of such a program, whether gratis or for a
 must pass on to the recipients the same freedoms that you received. You must make sure
 that they, too, receive or can get the source code. And you must show them these terms so they know their rights.
 '''
-from __init__ import _
+from .__init__ import _
 from Screens.Screen import Screen
 from Components.ActionMap import HelpableActionMap
 from Components.Sources.StaticText import StaticText
 from Components.SelectionList import SelectionList
 from Screens.HelpMenu import HelpableScreen
-from Source.Globals import SkinResolutionHelper
+from .Source.Globals import SkinResolutionHelper
 
 
 class SelectionListScreen(Screen, HelpableScreen, SkinResolutionHelper):

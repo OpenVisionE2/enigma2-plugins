@@ -1,11 +1,11 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 from Plugins.Plugin import PluginDescriptor
-from locale import _
+from .locale import _
 
 
 def main(session, **kwargs):
-	from eparted import Ceparted
+	from .eparted import Ceparted
 	session.open(Ceparted)
 
 

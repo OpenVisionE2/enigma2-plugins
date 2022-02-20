@@ -7,7 +7,7 @@ from Components.config import config
 from Screens.InfoBarGenerics import InfoBarCueSheetSupport
 from shutil import copyfile
 from bisect import insort
-from Globals import printStackTrace
+from .Globals import printStackTrace
 
 
 def hasLastPosition(service):
@@ -259,7 +259,7 @@ class CutListSupportBase:
                 last_pos = pts / 90000
 
         if length == 0:
-            from ServiceProvider import ServiceCenter
+            from .ServiceProvider import ServiceCenter
             info = ServiceCenter.getInstance().info(self.currentService)
             if info:
                 length = info.getLength(self.currentService)

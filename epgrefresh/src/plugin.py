@@ -115,8 +115,8 @@ except Exception as e:
 	#print("[EPGRefresh] Error registering Notification-Domain:", e)
 
 # Plugin
-from EPGRefresh import epgrefresh
-from EPGRefreshService import EPGRefreshService
+from .EPGRefresh import epgrefresh
+from .EPGRefreshService import EPGRefreshService
 
 # Plugins
 from Components.PluginComponent import plugins
@@ -195,7 +195,7 @@ def setConfigWakeupTime(value):
 
 def main(session, **kwargs):
 	try:
-		from EPGRefreshConfiguration import EPGRefreshConfiguration
+		from .EPGRefreshConfiguration import EPGRefreshConfiguration
 		session.openWithCallback(
 			doneConfiguring,
 			EPGRefreshConfiguration

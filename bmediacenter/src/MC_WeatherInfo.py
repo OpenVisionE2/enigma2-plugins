@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function
 # for localized messages
-from __init__ import _
+from .__init__ import _
 from Plugins.Plugin import PluginDescriptor
 from Screens.Screen import Screen
 from Screens.MessageBox import MessageBox
@@ -15,7 +15,7 @@ from twisted.web.client import getPage, downloadPage
 from urllib import quote
 from urllib import quote as urllib_quote
 from Components.Pixmap import Pixmap
-from GlobalFunctions import Showiframe
+from .GlobalFunctions import Showiframe
 from enigma import eListboxPythonMultiContent, gFont, RT_HALIGN_LEFT, RT_VALIGN_CENTER, ePicLoad, eEnv
 from Tools.Directories import fileExists, pathExists, resolveFilename, SCOPE_PLUGINS
 from Components.AVSwitch import AVSwitch

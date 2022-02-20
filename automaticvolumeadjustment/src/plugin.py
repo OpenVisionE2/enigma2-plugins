@@ -25,9 +25,9 @@
 from . import _
 
 from Plugins.Plugin import PluginDescriptor
-from AutomaticVolumeAdjustmentSetup import AutomaticVolumeAdjustmentConfigScreen
-from AutomaticVolumeAdjustment import AutomaticVolumeAdjustment
-from AutomaticVolumeAdjustmentConfig import saveVolumeDict
+from .AutomaticVolumeAdjustmentSetup import AutomaticVolumeAdjustmentConfigScreen
+from .AutomaticVolumeAdjustment import AutomaticVolumeAdjustment
+from .AutomaticVolumeAdjustmentConfig import saveVolumeDict
 
 
 def autostart(reason, **kwargs):

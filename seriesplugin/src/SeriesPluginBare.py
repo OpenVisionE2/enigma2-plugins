@@ -11,8 +11,8 @@ from Screens.MessageBox import MessageBox
 from Tools.Notifications import AddPopup
 
 # Plugin internal
-from SeriesPluginTimer import SeriesPluginTimer
-from Logger import log
+from .SeriesPluginTimer import SeriesPluginTimer
+from .Logger import log
 
 
 loop_data = []
@@ -27,7 +27,7 @@ def bareGetEpisode(service_ref, name, begin, end, description, path, future=True
 
 		log.info("Bare:", service_ref, name, begin, end, description, path, future, today, elapsed)
 
-		from SeriesPlugin import getInstance, refactorTitle, refactorDescription, refactorDirectory
+		from .SeriesPlugin import getInstance, refactorTitle, refactorDescription, refactorDirectory
 		seriesPlugin = getInstance()
 		data = seriesPlugin.getEpisode(
 			None,

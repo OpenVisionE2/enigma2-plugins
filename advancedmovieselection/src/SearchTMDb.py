@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 from __future__ import print_function
-from __init__ import _
+from .__init__ import _
 import urllib
 import shutil
 import os
@@ -21,11 +21,11 @@ from Screens.MessageBox import MessageBox
 from Components.config import config
 from Components.ProgressBar import ProgressBar
 from os import environ
-from Source.PicLoader import PicLoader
+from .Source.PicLoader import PicLoader
 from Tools.Directories import resolveFilename, SCOPE_PLUGIN
 from Screens.ChoiceBox import ChoiceBox
-from Source.Globals import pluginPresent, SkinTools
-from Source.MovieDB import tmdb, downloadCover
+from .Source.Globals import pluginPresent, SkinTools
+from .Source.MovieDB import tmdb, downloadCover
 import datetime
 IMAGE_TEMPFILE = '/tmp/TMDb_temp'
 if environ['LANGUAGE'] == 'de' or environ['LANGUAGE'] == 'de_DE':
@@ -145,7 +145,7 @@ class TMDbList(GUIComponent, object):
             res.append((eListboxPythonMultiContent.TYPE_TEXT, width - 140, 5, 130, 20, 1, RT_HALIGN_RIGHT | RT_VALIGN_CENTER, '%s' % released_text))
             res.append((eListboxPythonMultiContent.TYPE_TEXT, 100, 30, width - 100, 100, 1, RT_WRAP, '%s' % overview))
         except:
-            from Source.Globals import printStackTrace
+            from .Source.Globals import printStackTrace
             printStackTrace()
 
         return res
@@ -315,7 +315,7 @@ class TMDbMain(Screen, HelpableScreen, InfoLoadChoice):
             self['list'].setList(self.movies)
             self.showMovieList()
         except Exception as e:
-            from Source.Globals import printStackTrace
+            from .Source.Globals import printStackTrace
             printStackTrace()
             self['status'].setText(_('Error!\n%s' % e))
             self['status'].show()
@@ -418,7 +418,7 @@ class TMDbMain(Screen, HelpableScreen, InfoLoadChoice):
             self.updateView(self.SHOW_MOVIE_DETAIL)
             self.updateCover(movie)
         except Exception as e:
-            from Source.Globals import printStackTrace
+            from .Source.Globals import printStackTrace
             printStackTrace()
             self['status'].setText(_('Error!\n%s' % e))
             self['status'].show()
@@ -518,7 +518,7 @@ class TMDbMain(Screen, HelpableScreen, InfoLoadChoice):
         if self.checkConnection() == False or not self['list'].getCurrent():
             return
         overwrite_eit, overwrite_jpg = answer and answer[1] or (False, False)
-        from Source.EventInformationTable import createEIT
+        from .Source.EventInformationTable import createEIT
         current_movie = self['list'].getCurrent()[0]
         title = current_movie.title.encode('utf-8')
         if self.service is not None:
@@ -529,7 +529,7 @@ class TMDbMain(Screen, HelpableScreen, InfoLoadChoice):
         return
 
     def yellow_pressed(self):
-        from AdvancedKeyboard import AdvancedKeyBoard
+        from .AdvancedKeyboard import AdvancedKeyBoard
         self.session.openWithCallback(self.newSearchFinished, AdvancedKeyBoard, title=_('Enter new moviename to search for'), text=self.searchTitle)
 
     def blue_pressed(self):

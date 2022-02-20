@@ -7,16 +7,16 @@ from Components.Label import Label
 from Components.Pixmap import Pixmap
 from Components.ProgressBar import ProgressBar
 from Components.config import config, configfile, getConfigListEntry
-from KTmain import kiddyTimer
-from KTMultiPixmap import KTmultiPixmap
-from MovableScreen import MovableScreen
+from .KTmain import kiddyTimer
+from .KTMultiPixmap import KTmultiPixmap
+from .MovableScreen import MovableScreen
 from Screens.InputBox import PinInput
 from Screens.MessageBox import MessageBox
 from Screens.ParentalControlSetup import ProtectedScreen
 from Screens.Screen import Screen
 from Tools import Notifications
-from __init__ import _
-import KTglob
+from .__init__ import _
+from . import KTglob
 import time
 
 

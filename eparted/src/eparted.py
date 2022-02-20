@@ -21,7 +21,7 @@ SkinDefaultPath = resolveFilename(SCOPE_SKINS, "")
 from Components.ConfigList import ConfigListScreen
 from Components.config import config, getConfigListEntry, ConfigSubsection, ConfigInteger, ConfigYesNo, ConfigText, ConfigSelection, NoSave
 config.plugins.eparted = ConfigSubsection()
-from locale import _
+from .locale import _
 from os import path as os_path, listdir
 
 

@@ -1760,7 +1760,7 @@ class SimplifyingSOAPParser(BeautifulSOAP):
 # Autodetects character encodings.
 # Download from http://chardet.feedparser.org/
 try:
-    import chardet
+    from . import chardet
 #    import chardet.constants
 #    chardet.constants._debug = 1
 except ImportError as e:

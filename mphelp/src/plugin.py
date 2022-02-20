@@ -4,7 +4,7 @@
 from . import _
 
 #from Plugins.Plugin import PluginDescriptor
-from MPHelp import MPHelp
+from .MPHelp import MPHelp
 
 from collections import Callable
 

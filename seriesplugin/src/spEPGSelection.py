@@ -11,7 +11,7 @@ from . import _
 from Components.config import config
 
 # Plugin internal
-from Logger import log
+from .Logger import log
 
 
 #######################################################

@@ -32,8 +32,8 @@ from time import localtime
 #from ServiceReference import ServiceReference
 
 # Plugin internal
-from SeriesPluginTimer import SeriesPluginTimer
-from Logger import log
+from .SeriesPluginTimer import SeriesPluginTimer
+from .Logger import log
 
 
 # Globals

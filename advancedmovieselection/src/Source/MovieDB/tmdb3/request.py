@@ -9,9 +9,9 @@ from __future__ import print_function
 #          TMDb v3 API
 #-----------------------
 
-from tmdb_exceptions import *
-from locales import get_locale
-from cache import Cache
+from .tmdb_exceptions import *
+from .locales import get_locale
+from .cache import Cache
 
 from urllib import urlencode
 import urllib2

@@ -8,7 +8,7 @@ try:
 except ImportError as ie:
 	from urllib.parse import urlencode
 
-from GrowleeConnection import emergencyDisable
+from .GrowleeConnection import emergencyDisable
 from . import NOTIFICATIONID
 
 

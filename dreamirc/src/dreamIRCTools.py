@@ -32,10 +32,10 @@ import time
 import datetime
 import sys
 
-import plugin
-from plugin import *
+from . import plugin
+from .plugin import *
 
-import ircsupport
+from . import ircsupport
 import xml.dom.minidom
 from xml.dom.minidom import Node
 from Tools import XMLTools

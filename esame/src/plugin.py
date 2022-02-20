@@ -19,7 +19,7 @@ from Components.ActionMap import ActionMap
 from Components.Label import Label
 from Components.Button import Button
 from Tools.LoadPixmap import LoadPixmap
-from stonefield import StoneField
+from .stonefield import StoneField
 import time
 from Tools.Directories import resolveFilename, SCOPE_PLUGINS
 

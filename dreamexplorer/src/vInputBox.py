@@ -27,7 +27,7 @@ from Components.ActionMap import NumberActionMap
 from Components.Label import Label
 from Components.Input import Input
 from Tools.BoundFunction import boundFunction
-from myNumericalTextInput import myNumericalTextInput
+from .myNumericalTextInput import myNumericalTextInput
 from enigma import eRCInput, getPrevAsciiCode, getDesktop
 
 

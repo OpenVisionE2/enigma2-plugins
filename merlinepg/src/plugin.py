@@ -37,7 +37,7 @@ from Tools.LoadPixmap import LoadPixmap
 from enigma import eServiceReference, eServiceCenter, getDesktop, eTimer, gFont, eListboxPythonMultiContent, RT_HALIGN_LEFT, RT_WRAP, eEPGCache
 from RecordTimer import RecordTimerEntry, parseEvent, AFTEREVENT
 from ServiceReference import ServiceReference
-from ShowMe import ShowMe
+from .ShowMe import ShowMe
 from time import localtime, strftime
 if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/AutoTimer/AutoTimerEditor.pyo")):
 	from Plugins.Extensions.AutoTimer.AutoTimerEditor import addAutotimerFromEvent

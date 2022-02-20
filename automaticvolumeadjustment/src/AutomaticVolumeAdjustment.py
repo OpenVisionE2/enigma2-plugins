@@ -30,7 +30,7 @@ from Components.ServiceEventTracker import ServiceEventTracker
 from enigma import iPlayableService, iServiceInformation, eDVBVolumecontrol, eServiceCenter, eServiceReference
 from ServiceReference import ServiceReference
 from Components.VolumeControl import VolumeControl
-from AutomaticVolumeAdjustmentConfig import AutomaticVolumeAdjustmentConfig, getVolumeDict
+from .AutomaticVolumeAdjustmentConfig import AutomaticVolumeAdjustmentConfig, getVolumeDict
 
 
 class AutomaticVolumeAdjustment(Screen):

@@ -6,7 +6,7 @@ from enigma import eTimer
 
 # Config
 from Components.config import config
-from plugin import autotimer
+from .plugin import autotimer
 
 # Notifications
 import NavigationInstance

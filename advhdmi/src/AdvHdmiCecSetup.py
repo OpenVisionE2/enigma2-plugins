@@ -292,7 +292,7 @@ class TimeSpanConfigScreen(Screen, ConfigListScreen):
 		</screen>"""
 
 	def __init__(self, session, entry, callbackfnc=None):
-		from plugin import TimeSpanEntryInit
+		from .plugin import TimeSpanEntryInit
 		self.session = session
 		Screen.__init__(self, session)
 

@@ -25,7 +25,7 @@ For example, if you distribute copies of such a program, whether gratis or for a
 must pass on to the recipients the same freedoms that you received. You must make sure
 that they, too, receive or can get the source code. And you must show them these terms so they know their rights.
 '''
-from Globals import printStackTrace
+from .Globals import printStackTrace
 
 
 class RecordTimerEvent():
@@ -79,7 +79,7 @@ class CoverLoader():
 
     def downloadMovieInfo(self, name, filename=None):
         try:
-            from EventInformationTable import createEIT
+            from .EventInformationTable import createEIT
             print("[AdvancedMovieSelection] RecordTimerEvent, loading info from tmdb:", name)
             createEIT(filename, name)
         except:

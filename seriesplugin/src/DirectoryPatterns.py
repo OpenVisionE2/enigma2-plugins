@@ -28,7 +28,7 @@ from . import _
 from Components.config import *
 
 # Plugin internal
-from Logger import log
+from .Logger import log
 
 
 scheme_fallback = [

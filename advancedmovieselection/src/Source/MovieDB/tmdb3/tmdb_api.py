@@ -62,12 +62,12 @@ __version__ = "v0.6.17"
 # 0.6.17 Add userrating/votes to Image, add overview to Collection, remove
 #           releasedate sorting from Collection Movies
 
-from request import set_key, Request
-from util import Datapoint, Datalist, Datadict, Element, NameRepr, SearchRepr
-from pager import PagedRequest
-from locales import get_locale, set_locale
-from tmdb_auth import get_session, set_session
-from tmdb_exceptions import *
+from .request import set_key, Request
+from .util import Datapoint, Datalist, Datadict, Element, NameRepr, SearchRepr
+from .pager import PagedRequest
+from .locales import get_locale, set_locale
+from .tmdb_auth import get_session, set_session
+from .tmdb_exceptions import *
 
 import json
 import urllib

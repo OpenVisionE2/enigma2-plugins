@@ -27,9 +27,9 @@
 # 02110-1301  USA
 ######################### END LICENSE BLOCK #########################
 
-import constants
+from . import constants
 import sys
-from charsetprober import CharSetProber
+from .charsetprober import CharSetProber
 
 
 class CharSetGroupProber(CharSetProber):

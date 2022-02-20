@@ -7,7 +7,7 @@ Stability: incendiary, work in progress.
 """
 from zope.interface import Interface
 
-import locals
+from . import locals
 #from locals import *
 #from twisted.words.im import locals
 

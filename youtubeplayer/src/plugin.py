@@ -24,14 +24,14 @@ from __future__ import print_function
 
 from Plugins.Plugin import PluginDescriptor
 
-from YouTubeList import YouTubeListScreen
-from YouTubePlayList import YouTubePlaylistScreen
-from YouTubeSearchDialog import YouTubeSearchDialog, SEARCH, STDFEEDS, PLAYLISTS, FAVORITES, CANCEL
-from YouTubeUserList import YouTubeUserListScreen
-from YouTubeUserConfig import youTubeUserConfig
-from YouTubeStdFeedSelection import YouTubeStdFeedSelectionScreen
-from YouTubeInterface import interface, YouTubeInterface
-from SkinLoader import loadPluginSkin
+from .YouTubeList import YouTubeListScreen
+from .YouTubePlayList import YouTubePlaylistScreen
+from .YouTubeSearchDialog import YouTubeSearchDialog, SEARCH, STDFEEDS, PLAYLISTS, FAVORITES, CANCEL
+from .YouTubeUserList import YouTubeUserListScreen
+from .YouTubeUserConfig import youTubeUserConfig
+from .YouTubeStdFeedSelection import YouTubeStdFeedSelectionScreen
+from .YouTubeInterface import interface, YouTubeInterface
+from .SkinLoader import loadPluginSkin
 from Screens.MessageBox import MessageBox
 
 import os

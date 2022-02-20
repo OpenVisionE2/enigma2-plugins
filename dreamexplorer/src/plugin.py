@@ -40,7 +40,7 @@ from Components.config import config, ConfigSubsection, ConfigText
 from Components.Sources.StaticText import StaticText
 from Tools.Directories import fileExists, pathExists, resolveFilename, SCOPE_PLUGINS
 from ServiceReference import ServiceReference
-from myFileList import FileList as myFileList
+from .myFileList import FileList as myFileList
 #from vInputBox import vInputBox
 from Screens.InputBox import InputBox
 if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/PicturePlayer/plugin.pyo")):

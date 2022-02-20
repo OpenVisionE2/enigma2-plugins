@@ -38,8 +38,8 @@ from enigma import eServiceCenter, iServiceInformation, eServiceReference
 from ServiceReference import ServiceReference
 
 # Plugin internal
-from SeriesPlugin import getInstance, refactorTitle, refactorDescription, refactorDirectory
-from Logger import log
+from .SeriesPlugin import getInstance, refactorTitle, refactorDescription, refactorDirectory
+from .Logger import log
 
 CompiledRegexpGlobEscape = re.compile('([\[\]\?*])')  # "[\\1]"
 
@@ -307,7 +307,7 @@ class SeriesPluginRenamer(object):
 		self.counter = self.counter + 1
 
 		# Maybe there is a better way to avoid multiple Popups
-		from SeriesPlugin import getInstance
+		from .SeriesPlugin import getInstance
 
 		instance = getInstance()
 

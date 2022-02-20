@@ -20,7 +20,7 @@
 #    59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             #
 ############################################################################
 
-from GoogleSuggestions import GoogleSuggestions
+from .GoogleSuggestions import GoogleSuggestions
 
 from Screens.Screen import Screen
 from Components.config import ConfigText

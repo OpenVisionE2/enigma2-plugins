@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 from __future__ import print_function
-from __init__ import _
+from .__init__ import _
 import urllib
 import datetime
 import re
@@ -22,13 +22,13 @@ from enigma import ePicLoad
 from Components.AVSwitch import AVSwitch
 from Components.ProgressBar import ProgressBar
 from os import environ
-from Source.ServiceProvider import ServiceCenter
-from Source.EventInformationTable import createEITtvdb
+from .Source.ServiceProvider import ServiceCenter
+from .Source.EventInformationTable import createEITtvdb
 from Tools.Directories import resolveFilename, SCOPE_PLUGIN
-from SearchTMDb import InfoLoadChoice
-from Source.Globals import pluginPresent, SkinTools
-from Source.MovieDB import tvdb, downloadCover
-from Source.PicLoader import PicLoader
+from .SearchTMDb import InfoLoadChoice
+from .Source.Globals import pluginPresent, SkinTools
+from .Source.MovieDB import tvdb, downloadCover
+from .Source.PicLoader import PicLoader
 temp_dir = '/tmp/TheTVDB_temp/'
 if environ['LANGUAGE'] == 'de' or environ['LANGUAGE'] == 'de_DE':
     nocover = resolveFilename(SCOPE_PLUGIN, 'Extensions/AdvancedMovieSelection/images/nocover_de.png')
@@ -403,7 +403,7 @@ class TheTVDBMain(Screen, InfoLoadChoice):
                 self.updateView(self.SHOW_EPISODE_NO_RESULT)
 
     def searchManual(self):
-        from AdvancedKeyboard import AdvancedKeyBoard
+        from .AdvancedKeyboard import AdvancedKeyBoard
         self.session.openWithCallback(self.newSearchCallback, AdvancedKeyBoard, title=_('Enter new movie name for search:'), text=self.searchTitle)
 
     def newSearchCallback(self, text=None):

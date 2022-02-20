@@ -19,7 +19,7 @@ from random import randint, seed
 from urllib import urlencode, quote_plus
 from urllib2 import urlopen
 from xml.dom.minidom import parse
-from VlcPlayer import VlcPlayer, isDvdUrl
+from .VlcPlayer import VlcPlayer, isDvdUrl
 
 seed()
 

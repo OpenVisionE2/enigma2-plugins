@@ -27,10 +27,10 @@
 # 02110-1301  USA
 ######################### END LICENSE BLOCK #########################
 
-from mbcharsetprober import MultiByteCharSetProber
-from codingstatemachine import CodingStateMachine
-from chardistribution import EUCKRDistributionAnalysis
-from mbcssm import EUCKRSMModel
+from .mbcharsetprober import MultiByteCharSetProber
+from .codingstatemachine import CodingStateMachine
+from .chardistribution import EUCKRDistributionAnalysis
+from .mbcssm import EUCKRSMModel
 
 
 class EUCKRProber(MultiByteCharSetProber):

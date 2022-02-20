@@ -29,9 +29,9 @@ from __future__ import print_function
 # 02110-1301  USA
 ######################### END LICENSE BLOCK #########################
 
-import constants
+from . import constants
 import sys
-from charsetprober import CharSetProber
+from .charsetprober import CharSetProber
 
 SAMPLE_SIZE = 64
 SB_ENOUGH_REL_THRESHOLD = 1024

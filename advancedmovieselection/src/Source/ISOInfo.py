@@ -10,8 +10,8 @@ if __name__ == '__main__':
 
 
 else:
-    from ServiceProvider import eServiceReferenceBludisc
-    from Globals import printStackTrace
+    from .ServiceProvider import eServiceReferenceBludisc
+    from .Globals import printStackTrace
 
 
 def LB16(data):

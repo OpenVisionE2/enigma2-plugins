@@ -3,7 +3,7 @@
 from __future__ import print_function
 from enigma import ePythonMessagePump
 
-from ThreadQueue import ThreadQueue
+from .ThreadQueue import ThreadQueue
 import gdata.youtube
 import gdata.youtube.service
 from gdata.service import BadAuthentication

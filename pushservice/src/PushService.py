@@ -31,7 +31,7 @@ from Tools.BoundFunction import boundFunction
 
 # Plugin internal
 from . import _
-from PushServiceBase import PushServiceBase
+from .PushServiceBase import PushServiceBase
 
 
 # States

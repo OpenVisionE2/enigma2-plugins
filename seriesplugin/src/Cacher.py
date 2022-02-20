@@ -23,7 +23,7 @@ from time import time
 
 from Components.config import *
 
-from Logger import log
+from .Logger import log
 
 
 # Global cache

@@ -27,8 +27,8 @@ from Components.ActionMap import ActionMap, NumberActionMap
 from Tools.BoundFunction import boundFunction
 
 # OWN IMPORTS
-from ConfigTabs import KEEP_OUTDATED_TIME
-from EpgCenterList import MULTI_EPG_NOW, MULTI_EPG_NEXT, SINGLE_EPG, MULTI_EPG_PRIMETIME, TIMERLIST, EPGSEARCH_HISTORY, EPGSEARCH_RESULT, EPGSEARCH_MANUAL
+from .ConfigTabs import KEEP_OUTDATED_TIME
+from .EpgCenterList import MULTI_EPG_NOW, MULTI_EPG_NEXT, SINGLE_EPG, MULTI_EPG_PRIMETIME, TIMERLIST, EPGSEARCH_HISTORY, EPGSEARCH_RESULT, EPGSEARCH_MANUAL
 
 
 class MerlinEPGActions():
@@ -173,7 +173,7 @@ class MerlinEPGActions():
 		self["toggleConfigActions"].setEnabled(True)
 
 	def setActions(self):
-		from MerlinEPGCenter import IMDB_INSTALLED
+		from .MerlinEPGCenter import IMDB_INSTALLED
 
 		# unset action map
 		if self.oldMode == MULTI_EPG_NOW or self.oldMode == MULTI_EPG_NEXT or self.oldMode == MULTI_EPG_PRIMETIME or self.oldMode == EPGSEARCH_RESULT:

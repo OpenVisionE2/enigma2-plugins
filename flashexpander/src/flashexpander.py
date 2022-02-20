@@ -12,7 +12,7 @@ from Components.Harddisk import harddiskmanager, Harddisk
 from Components.Console import Console
 from Tools.Directories import createDir
 from Tools.BoundFunction import boundFunction
-from locale import _
+from .locale import _
 from enigma import quitMainloop
 from os import system, listdir, path, statvfs, remove, popen as os_popen
 import re

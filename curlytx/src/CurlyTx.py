@@ -215,7 +215,7 @@ class CurlyTx(Screen, HelpableScreen):
             self.showingHeaders = True
 
     def showSettings(self):
-        from CurlyTxSettings import CurlyTxSettings
+        from .CurlyTxSettings import CurlyTxSettings
         self.session.openWithCallback(self.onSettingsChanged, CurlyTxSettings)
 
     def onSettingsChanged(self):

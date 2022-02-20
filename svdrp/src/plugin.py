@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 from Plugins.Plugin import PluginDescriptor
 
-from SVDRP import SimpleVDRProtocolAbstraction
+from .SVDRP import SimpleVDRProtocolAbstraction
 
 connection = None
 

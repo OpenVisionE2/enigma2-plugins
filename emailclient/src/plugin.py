@@ -27,12 +27,12 @@ import re
 import os
 from email.header import decode_header
 import time
-from TagStrip import strip_readable
-from protocol import createFactory
+from .TagStrip import strip_readable
+from .protocol import createFactory
 from Tools.Directories import resolveFilename, SCOPE_SYSETC, SCOPE_CONFIG, SCOPE_PLUGINS, SCOPE_LIBDIR
 from . import _, initLog, debug, scaleH, scaleV, DESKTOP_WIDTH, DESKTOP_HEIGHT #@UnresolvedImport # pylint: disable-msg=F0401
 mailAccounts = [] # contains all EmailAccount objects
-from EmailConfig import EmailConfigOptions, EmailConfigAccount
+from .EmailConfig import EmailConfigOptions, EmailConfigAccount
 
 config.plugins.emailimap = ConfigSubsection()
 config.plugins.emailimap.showDeleted = ConfigEnableDisable(default=False)

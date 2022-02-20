@@ -37,10 +37,10 @@ from Tools.BoundFunction import boundFunction
 
 # Plugin internal
 from . import _
-from Modules import Modules
-from ConfigFile import ConfigFile
-from ServiceBase import ServiceBase
-from ControllerBase import ControllerBase
+from .Modules import Modules
+from .ConfigFile import ConfigFile
+from .ServiceBase import ServiceBase
+from .ControllerBase import ControllerBase
 
 
 # Constants
@@ -220,7 +220,7 @@ class PushServiceBase(Modules, ConfigFile):
 		controllers = self.controllers
 
 		# Build Header
-		from plugin import NAME, VERSION
+		from .plugin import NAME, VERSION
 		root = Element(NAME)
 		root.set('version', VERSION)
 		root.append(Comment(_("Don't edit this manually unless you really know what you are doing")))

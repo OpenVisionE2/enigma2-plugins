@@ -7,7 +7,7 @@ from . import _
 # GUI (Screens)
 from Screens.WizardLanguage import WizardLanguage
 from Screens.HelpMenu import ShowRemoteControl
-from AutoTimerEditor import AutoTimerEditorBase, AutoTimerServiceEditor, \
+from .AutoTimerEditor import AutoTimerEditorBase, AutoTimerServiceEditor, \
 		AutoTimerFilterEditor
 
 # GUI (Components)

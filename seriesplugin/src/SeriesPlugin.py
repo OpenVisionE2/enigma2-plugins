@@ -22,7 +22,7 @@ from enigma import eServiceReference, iServiceInformation, eServiceCenter, ePyth
 from ServiceReference import ServiceReference
 
 # Plugin framework
-from Modules import Modules
+from .Modules import Modules
 
 # Tools
 from Tools.BoundFunction import boundFunction
@@ -31,10 +31,10 @@ from Tools.Notifications import AddPopup
 from Screens.MessageBox import MessageBox
 
 # Plugin internal
-from Logger import log
-from Channels import ChannelsBase
-from XMLTVBase import XMLTVBase
-from ThreadQueue import ThreadQueue
+from .Logger import log
+from .Channels import ChannelsBase
+from .XMLTVBase import XMLTVBase
+from .ThreadQueue import ThreadQueue
 from threading import Thread, currentThread, _get_ident
 #from enigma import ePythonMessagePump
 
@@ -71,7 +71,7 @@ def getInstance():
 
 		log.reinit()
 
-		from plugin import VERSION
+		from .plugin import VERSION
 
 		log.debug(" SERIESPLUGIN NEW INSTANCE " + VERSION)
 		log.debug(" ", strftime("%a, %d %b %Y %H:%M:%S", localtime()))
@@ -160,7 +160,7 @@ def resetInstance():
 		instance.stop()
 		instance = None
 
-	from Cacher import clearCache
+	from .Cacher import clearCache
 	clearCache()
 
 
@@ -490,7 +490,7 @@ class SeriesPlugin(Modules, ChannelsBase):
 		if (config.plugins.seriesplugin.lookup_counter.value == 10) \
 			or (config.plugins.seriesplugin.lookup_counter.value == 100) \
 			or (config.plugins.seriesplugin.lookup_counter.value % 1000 == 0):
-			from plugin import ABOUT
+			from .plugin import ABOUT
 			about = ABOUT.format(**{'lookups': config.plugins.seriesplugin.lookup_counter.value})
 			AddPopup(
 				about,

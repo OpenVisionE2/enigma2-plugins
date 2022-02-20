@@ -22,7 +22,7 @@ from twisted.web import client
 from twisted.internet import reactor
 from time import time
 from Screens.InfoBarGenerics import InfoBarShowHide, InfoBarSeek, InfoBarNotifications, InfoBarServiceNotifications
-from ServiceXML import iWebTVStations
+from .ServiceXML import iWebTVStations
 
 config.plugins.dreamMediathek = ConfigSubsection()
 config.plugins.dreamMediathek.general = ConfigSubsection()

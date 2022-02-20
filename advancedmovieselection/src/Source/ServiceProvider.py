@@ -6,11 +6,11 @@ from Components.Element import cached
 from Components.Sources.ServiceEvent import ServiceEvent as eServiceEvent
 from enigma import eServiceCenter, iServiceInformation, eServiceReference
 from Tools.Directories import fileExists
-from EventInformationTable import EventInformationTable
-from ServiceUtils import getFolderSize
-from CueSheetSupport import CueSheet
-from ServiceDescriptor import DirectoryEvent
-from Globals import printStackTrace
+from .EventInformationTable import EventInformationTable
+from .ServiceUtils import getFolderSize
+from .CueSheetSupport import CueSheet
+from .ServiceDescriptor import DirectoryEvent
+from .Globals import printStackTrace
 instance = None
 
 

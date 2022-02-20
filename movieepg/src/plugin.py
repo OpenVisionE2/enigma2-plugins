@@ -149,7 +149,7 @@ MoviePlayer.close = MoviePlayer_close
 
 
 def main(session):
-	from MovieEpgSetup import MovieEpgSetup
+	from .MovieEpgSetup import MovieEpgSetup
 	session.open(MovieEpgSetup)
 
 

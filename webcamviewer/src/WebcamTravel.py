@@ -15,7 +15,7 @@ from Tools.BoundFunction import boundFunction
 
 from enigma import eListboxPythonMultiContent, RT_HALIGN_LEFT, RT_HALIGN_RIGHT, ePicLoad, eTimer
 
-from PictureScreen import PictureScreen
+from .PictureScreen import PictureScreen
 
 from twisted.web.client import getPage, downloadPage
 #from twisted.internet import reactor

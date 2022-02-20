@@ -10,12 +10,12 @@ from __future__ import print_function
 
 import string
 
-from protocols import irc
+from .protocols import irc
 from twisted.internet import defer, reactor, protocol
 from twisted.internet.defer import succeed
-import e2support
-import interfaces
-import dreamIRCTools
+from . import e2support
+from . import interfaces
+from . import dreamIRCTools
 from zope.interface import implements
 
 

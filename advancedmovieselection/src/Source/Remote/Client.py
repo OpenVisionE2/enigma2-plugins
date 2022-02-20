@@ -26,7 +26,7 @@ must pass on to the recipients the same freedoms that you received. You must mak
 that they, too, receive or can get the source code. And you must show them these terms so they know their rights.
 '''
 
-from MessageServer import serverInstance
+from .MessageServer import serverInstance
 import socket
 
 

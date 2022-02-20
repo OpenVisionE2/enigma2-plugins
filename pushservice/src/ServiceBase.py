@@ -18,7 +18,7 @@
 #
 #######################################################################
 
-from ModuleBase import ModuleBase
+from .ModuleBase import ModuleBase
 
 
 # Service base class

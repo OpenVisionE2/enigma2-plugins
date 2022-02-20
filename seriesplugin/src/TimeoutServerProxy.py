@@ -10,7 +10,7 @@ from time import time
 from Components.config import config
 
 # Internal
-from Logger import log
+from .Logger import log
 
 
 skip_expiration = 5.0 * 60 	# in seconds

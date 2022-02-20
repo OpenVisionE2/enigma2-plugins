@@ -15,8 +15,8 @@ from enigma import getDesktop, eSize, ePoint, eEnv
 from skin import applyAllAttributes, dom_skins
 
 
-from Widget import Widget
-from widgets import importWidgets, importSingleWidget
+from .Widget import Widget
+from .widgets import importWidgets, importSingleWidget
 
 
 SIBbase__init__ = None
