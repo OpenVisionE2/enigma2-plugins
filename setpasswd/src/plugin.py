@@ -118,7 +118,7 @@ class ChangePasswdScreen(Screen):
 		self.session.openWithCallback(self.VirtualKeyBoardTextEntry, VirtualKeyBoard, title=(_("Enter your password here:")), text=self.password)
 
 	def VirtualKeyBoardTextEntry(self, callback=None):
-		if callback is not None and len(callback):
+		if callback != None and len(callback):
 			self.buildList(callback)
 
 

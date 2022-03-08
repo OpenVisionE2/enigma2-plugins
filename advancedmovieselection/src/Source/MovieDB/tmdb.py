@@ -91,7 +91,7 @@ def poster_url(poster):
 
 def __collect_poster_urls(movie):
     l = []
-    if movie.poster is not None:
+    if movie.poster != None:
         l.append(poster_url(movie.poster))
     for p in movie.posters:
         url = poster_url(p)

@@ -489,12 +489,12 @@ class SeriesPluginInfoScreen(Screen):
 		if answer[0]:
 			entry = answer[1]
 			simulTimerList = self.session.nav.RecordTimer.record(entry)
-			if simulTimerList is not None:
+			if simulTimerList != None:
 				for x in simulTimerList:
 					if x.setAutoincreaseEnd(entry):
 						self.session.nav.RecordTimer.timeChanged(x)
 				simulTimerList = self.session.nav.RecordTimer.record(entry)
-				if simulTimerList is not None:
+				if simulTimerList != None:
 					self.session.openWithCallback(self.finishSanityCorrection, TimerSanityConflict, simulTimerList)
 			#self["key_green"].setText(_("Remove timer"))
 			#self.key_green_choice = self.REMOVE_TIMER

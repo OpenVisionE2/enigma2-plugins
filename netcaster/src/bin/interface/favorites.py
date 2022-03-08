@@ -27,10 +27,10 @@ class Interface(StreamInterface):
     def getMenuItems(self, selectedStream, generic=False):
         self.selectedStream = selectedStream
         list = []
-        if generic is True and selectedStream is not None:
+        if generic is True and selectedStream != None:
             if selectedStream.isFavorite() is False:
                 list.append((_("add stream to favorites"), self.addStream))
-        elif generic is False and selectedStream is not None:
+        elif generic is False and selectedStream != None:
             if selectedStream.isFavorite() is False:
                 list.append((_("add stream to favorites"), self.addStream))
             if selectedStream.isFavorite() is True:
@@ -39,13 +39,13 @@ class Interface(StreamInterface):
 
     def deleteStream(self):
         print("favorites deleteStream")
-        if self.selectedStream is not None:
+        if self.selectedStream != None:
             SHOUTcasterFavorites().deleteStreamWithName(self.selectedStream.getName())
         self.getList()
 
     def addStream(self):
         print("favorites addStream")
-        if self.selectedStream is not None:
+        if self.selectedStream != None:
             SHOUTcasterFavorites().addStream(self.selectedStream)
         #self.getList()
 ###############################################################################

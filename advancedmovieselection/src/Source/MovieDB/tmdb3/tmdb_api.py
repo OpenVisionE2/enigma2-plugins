@@ -120,7 +120,7 @@ class Account(NameRepr, Element):
 
 def searchMovie(query, locale=None, adult=False, year=None):
     kwargs = {'query': query, 'include_adult': adult}
-    if year is not None:
+    if year != None:
         try:
             kwargs['year'] = year.year
         except AttributeError:
@@ -682,9 +682,9 @@ class Movie(Element):
         return res
 
     def _printable_name(self):
-        if self.title is not None:
+        if self.title != None:
             s = u"'{0}'".format(self.title)
-        elif self.originaltitle is not None:
+        elif self.originaltitle != None:
             s = u"'{0}'".format(self.originaltitle)
         else:
             s = u"'No Title'"

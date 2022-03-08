@@ -124,12 +124,12 @@ class Track(object):
         return "'" + self.name + "' by '" + self.artist + "' from '" + self.album + "'"
 
     def urlencoded(self, encodedict, num):
-        if self.length is not None:
+        if self.length != None:
             encodedict["l[" + str(num) + "]"] = str(self.length)
         else:
             encodedict["l[" + str(num) + "]"] = ''
 
-        if self.mbid is not None:
+        if self.mbid != None:
             encodedic["m[" + str(num) + "]"] = self.mbid
         else:
             encodedict["m[" + str(num) + "]"] = ''
@@ -187,7 +187,7 @@ class EventListener:
             trdata = self.streamplayer.playlist.getTrack(self.streamplayer.currentplaylistitemnumber)
             track = self.getTrack(artist=trdata['creator'], title=trdata['title'], album=trdata['album'], length=(trdata["duration"] / 1000))
             return track
-        elif currPlay is not None:
+        elif currPlay != None:
             tracklength = -1
             seek = currPlay and currPlay.seek()
             if seek != None:

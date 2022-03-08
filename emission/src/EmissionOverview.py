@@ -172,7 +172,7 @@ class EmissionOverview(Screen, HelpableScreen):
 		self.timer.start(0, 1)
 
 	def bandwidthCallback(self, ret=None):
-		if self.transmission is not None and ret:
+		if self.transmission != None and ret:
 			try:
 				self.transmission.set_session(**ret)
 			except TransmissionError as te:
@@ -188,7 +188,7 @@ class EmissionOverview(Screen, HelpableScreen):
 		ret and ret[1]()
 
 	def newDlCallback(self, ret=None):
-		if self.transmission is not None and ret:
+		if self.transmission != None and ret:
 			try:
 				res = self.transmission.add_url(ret)
 			except TransmissionError as te:
@@ -216,7 +216,7 @@ class EmissionOverview(Screen, HelpableScreen):
 		)
 
 	def sortCallback(self, ret=None):
-		if ret is not None:
+		if ret != None:
 			self.sort_type = config.plugins.emission.last_sort.value = ret[1]
 			config.plugins.emission.last_sort.save()
 		self.updateList()
@@ -234,11 +234,11 @@ class EmissionOverview(Screen, HelpableScreen):
 		)
 
 	def pauseShown(self):
-		if self.transmission is not None:
+		if self.transmission != None:
 			self.transmission.stop([x[0].id for x in self.list])
 
 	def unpauseShown(self):
-		if self.transmission is not None:
+		if self.transmission != None:
 			self.transmission.start([x[0].id for x in self.list])
 
 	def pauseAll(self):
@@ -464,7 +464,7 @@ class EmissionOverview(Screen, HelpableScreen):
 
 	def ok(self):
 		cur = self['list'].getCurrent()
-		if self.transmission is not None and cur:
+		if self.transmission != None and cur:
 			#reload(EmissionDetailview)
 			self.timer.stop()
 			self.session.openWithCallback(

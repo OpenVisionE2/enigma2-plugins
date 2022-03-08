@@ -100,7 +100,7 @@ class NETcasterScreenBrowser(Screen):
 
     def connectToMetadataUpdates(self):
         global streamplayer
-        if streamplayer is not None:
+        if streamplayer != None:
              streamplayer.metadatachangelisteners.append(self.onMetadataChanged)
              streamplayer.onStop.append(self._onStop)
 
@@ -144,7 +144,7 @@ class NETcasterScreenBrowser(Screen):
         self.session.openWithCallback(self.selectedPlugin, ChoiceBox, _("select Plugin"), glist)
 
     def selectedPlugin(self, splugin):
-        if splugin is not None:
+        if splugin != None:
             self.setCurrentPlugin(splugin[1])
             self.updateTitle()
 
@@ -178,7 +178,7 @@ class NETcasterScreenBrowser(Screen):
 
     def stream_start(self):
         global streamplayer
-        if self["streamlist"].l.getCurrentSelection() is not None:
+        if self["streamlist"].l.getCurrentSelection() != None:
             stream = self["streamlist"].l.getCurrentSelection()[0]
             self.connectToMetadataUpdates()
             streamplayer.play(stream)
@@ -190,7 +190,7 @@ class NETcasterScreenBrowser(Screen):
 
     def showMainMenu(self):
         menu = []
-        if self["streamlist"].l.getCurrentSelection() is not None:
+        if self["streamlist"].l.getCurrentSelection() != None:
              selectedStream = self["streamlist"].l.getCurrentSelection()[0]
         else:
              selectedStream = None
@@ -200,7 +200,7 @@ class NETcasterScreenBrowser(Screen):
                 menu.append((i[0], i[1]))
 
         # non generic menuitems
-        if self.currentPlugin is not None:
+        if self.currentPlugin != None:
             for i in self.currentPlugin.getMenuItems(selectedStream):
                 menu.append((i[0], i[1]))
 
@@ -211,7 +211,7 @@ class NETcasterScreenBrowser(Screen):
         self.session.openWithCallback(self.menuCallback, ChoiceBox, title=_("Menu"), list=menu)
 
     def menuCallback(self, choice):
-        if choice is not None:
+        if choice != None:
             choice[1]()
 
     def showAbout(self):
@@ -285,7 +285,7 @@ class NETcasterScreenStreamDelete(Screen):
         self.session.openWithCallback(self.stream2deleteSelected, ChoiceBox, _("select stream to delete"), streamlist)
 
     def stream2deleteSelected(self, selectedstreamname):
-        if selectedstreamname is not None:
+        if selectedstreamname != None:
             self.stream2delete = selectedstreamname[1]
             self.session.openWithCallback(self.userIsSure, MessageBox, _("are you shure to delete the stream?\n\n%s" % self.stream2delete), MessageBox.TYPE_YESNO)
 

@@ -89,7 +89,7 @@ class MSNWeather:
 				filename = os_listdir(path)[0]
 			except:
 				filename = None
-		if filename is not None:
+		if filename != None:
 			try:
 				extension = os_path.splitext(filename)[1].lower()
 			except:
@@ -144,9 +144,9 @@ class MSNWeather:
 
 	def error(self, error=None):
 		errormessage = ""
-		if error is not None:
+		if error != None:
 			errormessage = str(error.getErrorMessage())
-		if self.callback is not None:
+		if self.callback != None:
 			self.callback(self.ERROR, errormessage)
 
 	def errorIconDownload(self, error=None, item=None):
@@ -159,11 +159,11 @@ class MSNWeather:
 			self.showIcon(item.index, item.filename)
 
 	def showIcon(self, index, filename):
-		if self.callbackShowIcon is not None:
+		if self.callbackShowIcon != None:
 			self.callbackShowIcon(index, filename)
 
 	def finishedAllDownloadFiles(self, result):
-		if self.callbackAllIconsDownloaded is not None:
+		if self.callbackAllIconsDownloaded != None:
 			self.callbackAllIconsDownloaded()
 
 	def xmlCallback(self, xmlstring):
@@ -176,7 +176,7 @@ class MSNWeather:
 			if childs.tag == "weather":
 				errormessage = childs.attrib.get("errormessage")
 				if errormessage:
-					if self.callback is not None:
+					if self.callback != None:
 						self.callback(self.ERROR, errormessage.encode("utf-8", 'ignore'))
 					break
 				self.degreetype = childs.attrib.get("degreetype").encode("utf-8", 'ignore')
@@ -229,7 +229,7 @@ class MSNWeather:
 		else:
 			self.finishedAllDownloadFiles(None)
 
-		if self.callback is not None:
+		if self.callback != None:
 			self.callback(self.OK, None)
 
 

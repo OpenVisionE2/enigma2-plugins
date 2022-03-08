@@ -136,12 +136,12 @@ class dreamMediathekPlayer(Screen, InfoBarNotifications):
 	def showVideoInfo(self):
 		if self.shown:
 			self.hideInfobar()
-		if self.infoCallback is not None:
+		if self.infoCallback != None:
 			self.infoCallback()
 
 	def playNextFile(self):
 		print("playNextFile")
-		if self.nextCallback() is not None:
+		if self.nextCallback() != None:
 			nextservice, error = self.nextCallback()
 			print("nextservice--->", nextservice)
 			if nextservice is None:
@@ -152,7 +152,7 @@ class dreamMediathekPlayer(Screen, InfoBarNotifications):
 
 	def playPrevFile(self):
 		print("playPrevFile")
-		if self.prevCallback() is not None:
+		if self.prevCallback() != None:
 			prevservice, error = self.prevCallback()
 			if prevservice is None:
 				self.handleLeave(config.plugins.dreamMediathek.general.on_movie_stop.value, error)
@@ -246,7 +246,7 @@ class dreamMediathekPlayer(Screen, InfoBarNotifications):
 			print("not pauseable.")
 			self.state = self.STATE_PLAYING
 
-		if pauseable is not None:
+		if pauseable != None:
 			print("service is pausable")
 			if wantstate == self.STATE_PAUSED:
 				print("WANT TO PAUSE")

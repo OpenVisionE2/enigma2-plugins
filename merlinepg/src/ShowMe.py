@@ -64,11 +64,11 @@ class ShowMe(Screen):
 		self.onLayoutFinish.append(self.Show_Picture)
 
 	def Show_Picture(self):
-		if self.whatPic is not None:
+		if self.whatPic != None:
 			self.EXpicload.setPara([self["Picture"].instance.size().width(), self["Picture"].instance.size().height(), self.EXscale[0], self.EXscale[1], 0, 1, "#121214"])
 			self.EXpicload.startDecode(self.whatPic)
 
 	def DecodeAction(self, pictureInfo=" "):
-		if self.whatPic is not None:
+		if self.whatPic != None:
 			ptr = self.EXpicload.getData()
 			self["Picture"].instance.setPixmap(ptr)

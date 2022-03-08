@@ -133,7 +133,7 @@ class LogoManagerScreen(Screen):
     def showSelected(self):
         """ show the currently selected MVI of the list """
         sel = self["filelist"].getCurrent()
-        if sel is not None:
+        if sel != None:
           self.showMVI(sel[1])
 
     def openMenu(self):
@@ -150,7 +150,7 @@ class LogoManagerScreen(Screen):
         self.session.open(LogoManagerConfigScreen)
 
     def selectedMenu(self, choice):
-        if choice is not None:
+        if choice != None:
             choice[1]()
 
     def setlist_to_current(self):
@@ -175,7 +175,7 @@ class LogoManagerScreen(Screen):
         self.session.openWithCallback(self.selectedTarget, ChoiceBox, _("select Target for logo"), self.targets)
 
     def selectedTarget(self, choice):
-        if choice is not None:
+        if choice != None:
             self.installMVI(choice, self["filelist"].getCurrent()[1])
 
     def reloadPictures(self, filelist):

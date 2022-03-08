@@ -237,7 +237,7 @@ class AutoTimerAddOrEditAutoTimerResource(AutoTimerBaseResource):
 
 			# Enabled
 			enabled = get("enabled")
-			if enabled is not None:
+			if enabled != None:
 				try:
 					enabled = int(enabled)
 				except ValueError:
@@ -264,14 +264,14 @@ class AutoTimerAddOrEditAutoTimerResource(AutoTimerBaseResource):
 
 		# Justplay
 		justplay = get("justplay")
-		if justplay is not None:
+		if justplay != None:
 			try:
 				justplay = int(justplay)
 			except ValueError:
 				justplay = justplay == "zap"
 			timer.justplay = justplay
 		setEndtime = get("setEndtime")
-		if setEndtime is not None:
+		if setEndtime != None:
 			timer.setEndtime = int(setEndtime)
 
 		# Timespan
@@ -286,7 +286,7 @@ class AutoTimerAddOrEditAutoTimerResource(AutoTimerBaseResource):
 
 		# Services
 		servicelist = get("services")
-		if servicelist is not None:
+		if servicelist != None:
 			servicelist = unquote(servicelist).split(',')
 			appendlist = []
 			for value in servicelist:
@@ -305,7 +305,7 @@ class AutoTimerAddOrEditAutoTimerResource(AutoTimerBaseResource):
 
 		# Bouquets
 		servicelist = get("bouquets")
-		if servicelist is not None:
+		if servicelist != None:
 			servicelist = unquote(servicelist).split(',')
 			while '' in servicelist:
 				servicelist.remove('')
@@ -417,14 +417,14 @@ class AutoTimerAddOrEditAutoTimerResource(AutoTimerBaseResource):
 
 		# vps
 		enabled = get("vps_enabled")
-		if enabled is not None:
+		if enabled != None:
 			try:
 				enabled = int(enabled)
 			except ValueError:
 				enabled = enabled == "yes"
 			timer.vps_enabled = enabled
 		vps_overwrite = get("vps_overwrite")
-		if vps_overwrite is not None:
+		if vps_overwrite != None:
 			try:
 				vps_overwrite = int(vps_overwrite)
 			except ValueError:
@@ -435,7 +435,7 @@ class AutoTimerAddOrEditAutoTimerResource(AutoTimerBaseResource):
 
 		# SeriesPlugin
 		series_labeling = get("series_labeling")
-		if series_labeling is not None:
+		if series_labeling != None:
 			try:
 				series_labeling = int(series_labeling)
 			except ValueError:
@@ -466,7 +466,7 @@ class AutoTimerChangeResource(AutoTimerBaseResource):
 
 		id = get("id")
 		timer = None
-		if id is not None:
+		if id != None:
 			id = int(id)
 			for possibleMatch in autotimer.getTimerList():
 				if possibleMatch.id == id:
@@ -478,12 +478,12 @@ class AutoTimerChangeResource(AutoTimerBaseResource):
 
 		# Name
 		name = get("name")
-		if name is not None:
+		if name != None:
 			timer.name = unquote(name).strip()
 
 		# Enabled
 		enabled = get("enabled")
-		if enabled is not None:
+		if enabled != None:
 			try:
 				enabled = int(enabled)
 			except ValueError:
@@ -559,7 +559,7 @@ class AutoTimerChangeSettingsResource(AutoTimerBaseResource):
 				plugin.autopoller = AutoPoller()
 			plugin.autopoller.start()
 		else:
-			if plugin.autopoller is not None:
+			if plugin.autopoller != None:
 				plugin.autopoller.stop()
 				plugin.autopoller = None
 

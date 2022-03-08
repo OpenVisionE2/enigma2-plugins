@@ -74,7 +74,7 @@ class RecordPathsSettings(eRecordPathsSettings):
 
     def dirnameSelected(self, res):
         eRecordPathsSettings.dirnameSelected(self, res)
-        if res is not None:
+        if res != None:
             if config.AdvancedMovieSelection.movecopydirs.value != res:
                 tmp = config.movielist.videodirs.value
                 default = config.AdvancedMovieSelection.movecopydirs.value

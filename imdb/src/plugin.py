@@ -180,7 +180,7 @@ class IMDB(Screen, HelpableScreen):
 
 		self.getIMDB()
 
-		if self.localpath is not None:                                # otherwise the stars are not correctly shown if we call details directly
+		if self.localpath != None:                                # otherwise the stars are not correctly shown if we call details directly
 			self.onLayoutFinish.append(self._layoutFinished)
 
 	def _layoutFinished(self):
@@ -379,7 +379,7 @@ class IMDB(Screen, HelpableScreen):
 		]
 
 		if self.saving:
-			if self.savingpath is not None:
+			if self.savingpath != None:
 				# TODO: save Poster also as option for .html
 				list.extend((
 					(_("Save current Details as .html for offline use"), self.saveHtmlDetails),
@@ -405,9 +405,9 @@ class IMDB(Screen, HelpableScreen):
 
 	def saveHtmlDetails(self):
 		try:
-			if self.savingpath is not None:
+			if self.savingpath != None:
 				isave = self.savingpath + ".imdbquery2.html"
-				if self.fetchurl is not None:
+				if self.fetchurl != None:
 					download = downloadWithProgress(self.fetchurl, isave)
 					download.start().addCallback(self.IMDBsave).addErrback(self.http_failed)
 		except Exception as e:
@@ -415,9 +415,9 @@ class IMDB(Screen, HelpableScreen):
 
 	def saveTxtDetails(self):
 		try:
-			if self.savingpath is not None:
+			if self.savingpath != None:
 				getTXT = self.IMDBsavetxt()
-				if getTXT is not None:
+				if getTXT != None:
 					open(self.savingpath + ".txt", 'w').write(getTXT)
 				else:
 					from Screens.MessageBox import MessageBox
@@ -427,9 +427,9 @@ class IMDB(Screen, HelpableScreen):
 
 	def savePosterTxtDetails(self):
 		try:
-			if self.savingpath is not None:
+			if self.savingpath != None:
 				getTXT = self.IMDBsavetxt(True)
-				if getTXT is not None:
+				if getTXT != None:
 					open(self.savingpath + ".txt", 'w').write(getTXT)
 				else:
 					from Screens.MessageBox import MessageBox
@@ -592,7 +592,7 @@ class IMDB(Screen, HelpableScreen):
 				if self.eventName.endswith(' '):
 					self.eventName = self.eventName[:-1]
 
-		if self.localpath is not None and not search:
+		if self.localpath != None and not search:
 			if os.path.exists(self.localpath):
 				self.getLocalDetails()
 
@@ -706,7 +706,7 @@ class IMDB(Screen, HelpableScreen):
 
 	def http_failed(self, failure_instance=None, error_message=""):
 		text = _("IMDb Download failed")
-		if error_message == "" and failure_instance is not None:
+		if error_message == "" and failure_instance != None:
 			error_message = failure_instance.getErrorMessage()
 			text += ": " + error_message
 #		print("[IMDB] ", text)
@@ -992,14 +992,14 @@ class IMDbSetup(Screen, ConfigListScreen):
 		self["config"].l.setList(self.list)
 
 	def handleInputHelpers(self):
-		if self["config"].getCurrent() is not None:
+		if self["config"].getCurrent() != None:
 			try:
 				if isinstance(self["config"].getCurrent()[1], ConfigText) or isinstance(self["config"].getCurrent()[1], ConfigPassword):
 					if "VKeyIcon" in self:
 						self["VirtualKB"].setEnabled(True)
 						self["VKeyIcon"].boolean = True
 					if "HelpWindow" in self:
-						if self["config"].getCurrent()[1].help_window.instance is not None:
+						if self["config"].getCurrent()[1].help_window.instance != None:
 							helpwindowpos = self["HelpWindow"].getPosition()
 							from enigma import ePoint
 							self["config"].getCurrent()[1].help_window.instance.move(ePoint(helpwindowpos[0], helpwindowpos[1]))
@@ -1019,19 +1019,19 @@ class IMDbSetup(Screen, ConfigListScreen):
 	def HideHelp(self):
 		try:
 			if isinstance(self["config"].getCurrent()[1], ConfigText):
-				if self["config"].getCurrent()[1].help_window.instance is not None:
+				if self["config"].getCurrent()[1].help_window.instance != None:
 					self["config"].getCurrent()[1].help_window.hide()
 		except:
 			pass
 
 	def KeyText(self):
 		if isinstance(self["config"].getCurrent()[1], ConfigText):
-			if self["config"].getCurrent()[1].help_window.instance is not None:
+			if self["config"].getCurrent()[1].help_window.instance != None:
 				self["config"].getCurrent()[1].help_window.hide()
 		self.session.openWithCallback(self.VirtualKeyBoardCallback, VirtualKeyBoard, title=self["config"].getCurrent()[0], text=self["config"].getCurrent()[1].getValue())
 
 	def VirtualKeyBoardCallback(self, callback=None):
-		if callback is not None and len(callback):
+		if callback != None and len(callback):
 			self["config"].getCurrent()[1].setValue(callback)
 			self["config"].invalidate(self["config"].getCurrent())
 

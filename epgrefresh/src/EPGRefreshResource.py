@@ -176,7 +176,7 @@ class EPGRefreshPreviewServicesResource(resource.Resource):
 					epgservice = EPGRefreshService(sref, None)
 					if epgservice not in services:
 						services.add(epgservice)
-			if services is not None and bouquets is not None:
+			if services != None and bouquets != None:
 				scanServices = epgrefresh.generateServicelist(services, bouquets)
 			else:
 				scanServices = []

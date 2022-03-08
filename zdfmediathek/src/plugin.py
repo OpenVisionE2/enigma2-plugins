@@ -517,7 +517,7 @@ class RightMenuList(List):
 		#print("[ZDF Mediathek - buildEntry ] --> ", txt1, title, txt2, thumbid)
 		menupng = None
 		if self.png_cache.get(thumbid, None) is None:
-			if thumbid is not None:
+			if thumbid != None:
 				self.pixmaps_to_load.append(thumbid)
 				self.downloadThumbnail(turl)
 			else:
@@ -535,7 +535,7 @@ class RightMenuList(List):
 		return None
 
 	def downloadThumbnail(self, thumbUrl):
-		if thumbUrl is not None:
+		if thumbUrl != None:
 			thumbID = thumbUrl.rsplit("/", 1)[1]
 			thumbFile = None
 			if not thumbUrl.startswith("http://"):
@@ -558,7 +558,7 @@ class RightMenuList(List):
 					thumbFile = "/tmp/" + thumbID + ".png"
 				else:
 					print("[ZDF Mediathek] Unknown thumbnail content-type:", contentType)
-			if thumbFile is not None:
+			if thumbFile != None:
 				if (os_path.exists(thumbFile) == True): #already downloaded
 					self.downloadThumbnailCallback(None, thumbFile, thumbID)
 				else:
@@ -591,7 +591,7 @@ class RightMenuList(List):
 		if (os_path.exists(thumbFile) == True):
 			os_remove(thumbFile)
 		idx = self.getMovieCategoryIndexByThumbID(thumbID)
-		if idx is not None:
+		if idx != None:
 			print("[ZDF Mediathek] updateEntry", thumbID, thumbFile, idx)
 			self.entry_changed(idx)
 
@@ -855,7 +855,7 @@ class ZDFMediathek(Screen, HelpableScreen):
 
 	def play(self, callback):
 		self.working = False
-		if callback is not None:
+		if callback != None:
 			url = callback[1]
 			if url.endswith(".mov") or url.endswith(".asx"):
 				url = getMovieUrl(url)
@@ -878,7 +878,7 @@ class ZDFMediathek(Screen, HelpableScreen):
 					ref = eServiceReference(4097, 0, url)
 					self.session.open(ChangedMoviePlayer, ref)
 				else: # Die Hardware kann das Format nicht direkt abspielen, mit Stream2Dream oder vlc Server probieren...
-					if self.transcodeServer is not None:
+					if self.transcodeServer != None:
 						if self.transcodeServer == "LT Stream2Dream":
 							r = streamplayer.play(url)
 							if r == "ok":

@@ -264,12 +264,12 @@ class RemoteTimerEntry(Screen, ConfigListScreen):
 		self["config"].invalidate(self.entryStartTime)
 
 	def incrementEnd(self):
-		if self.entryEndTime is not None:
+		if self.entryEndTime != None:
 			self.timerentry_endtime.increment()
 			self["config"].invalidate(self.entryEndTime)
 
 	def decrementEnd(self):
-		if self.entryEndTime is not None:
+		if self.entryEndTime != None:
 			self.timerentry_endtime.decrement()
 			self["config"].invalidate(self.entryEndTime)
 

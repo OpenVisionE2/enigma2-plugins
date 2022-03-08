@@ -120,13 +120,13 @@ class MC_VLCServerlist(Screen):
 
 	def keyDVD(self):
 		server = self.serverlist.getSelection()
-		if server is not None:
+		if server != None:
 			dlg = self.session.open(VlcPlayer, server, self.serverlist)
 			dlg.playfile("dvdsimple://" + server.getDvdPath(), "DVD")
 
 	def keyEditServer(self):
 		server = self.serverlist.getSelection()
-		if server is not None:
+		if server != None:
 			self.session.openWithCallback(self.editCallback, VlcServerConfigScreen, server)
 
 	def editCallback(self, result, server):
@@ -151,7 +151,7 @@ class MC_VLCServerlist(Screen):
 		self.serverlist.pageDown()
 
 	def ok(self):
-		if self.serverlist.getSelection() is not None:
+		if self.serverlist.getSelection() != None:
 			self.session.open(MC_VLCMedialist, self.serverlist.getSelection()).update()
 
 	def Exit(self):
@@ -282,7 +282,7 @@ class MC_VLCMedialist(Screen):
 					), MessageBox.TYPE_ERROR)
 
 	def KeyMenu(self):
-		if self.filelist.getCurrent() is not None:
+		if self.filelist.getCurrent() != None:
 			# Folder Options
 			if self.filelist.getCurrent()[0][1]:
 				self.currentDirectory = self.filelist.getCurrent()[0][0]
@@ -312,14 +312,14 @@ class MC_VLCMedialist(Screen):
 
 	def ok(self):
 		media, name = self.currentList.activate()
-		if media is not None:
+		if media != None:
 			medianame = media.split('/')
 			medianame = medianame[-1]
 			self["currentmedia"].setText(("%s") % (medianame))
 			if media.lower().endswith(".m3u") or media.lower().endswith(".pls") or media.lower().endswith(".xspf"):
 				try:
 					id = self.server.loadPlaylist(media)
-					if id is not None:
+					if id != None:
 						self.playlistIds.append(id)
 						self.updatePlaylist()
 				except Exception as e:
@@ -331,7 +331,7 @@ class MC_VLCMedialist(Screen):
 				self.play("dvdsimple://" + media, "DVD")
 			else:
 				self.play(media, name)
-		elif name is not None:
+		elif name != None:
 			self.setLabel(name)
 			self["currentdir"].setText("Folder: " + name)
 
@@ -352,7 +352,7 @@ class MC_VLCMedialist(Screen):
 		except Exception as e:
 			self.session.open(MessageBox, _("Error with VLC server:\n%s" % e), MessageBox.TYPE_ERROR)
 
-		if url is not None:
+		if url != None:
 			#self.session.open(MessageBox, _("OPEN URL:\n%s" % url), MessageBox.TYPE_INFO)
 			sref = eServiceReference(ENIGMA_SERVICE_ID, 0, url)
 			print("sref valid=", sref.valid())
@@ -362,7 +362,7 @@ class MC_VLCMedialist(Screen):
 			self.session.nav.playService(sref)
 
 			media, name = self.currentList.activate()
-			if media is not None:
+			if media != None:
 				medianame = media.split('/')
 				medianame = medianame[-1]
 				self["currentmedia"].setText(("%s") % (medianame))
@@ -530,7 +530,7 @@ class MC_VLCFavoriteFolders(Screen):
 	def JumpToFolder(self):
 		configfile.save()
 		selection = self["favoritelist"].getCurrent()
-		if selection is not None:
+		if selection != None:
 			self.close(selection[2])
 
 	def FavoriteFolderEdit(self):
@@ -711,7 +711,7 @@ class FolderOptions(Screen):
 	def okbuttonClick(self):
 		print("okbuttonClick")
 		selection = self["menu"].getCurrent()
-		if selection is not None:
+		if selection != None:
 			if selection[1] == "addtofav":
 				self.session.openWithCallback(self.FolderAdded, FavoriteFolderAdd, self.directory, self.name)
 			else:

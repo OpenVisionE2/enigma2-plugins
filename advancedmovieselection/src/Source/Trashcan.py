@@ -218,7 +218,7 @@ class Trashcan:
                 serviceHandler = ServiceCenter.getInstance()
                 offline = serviceHandler.offlineOperations(service)
                 result = False
-                if offline is not None:
+                if offline != None:
                     # really delete!
                     if not offline.deleteFromDisk(0):
                         result = True

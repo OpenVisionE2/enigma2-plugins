@@ -401,7 +401,7 @@ if __name__ == "__main__":
 
     if zoomlevel == None or lat == None or lon == None:
         Usage("ERROR: Specify at least 'zoomlevel', 'lat' and 'lon'.")
-    if latmax is not None and lonmax is None:
+    if latmax != None and lonmax is None:
         Usage("ERROR: Both 'latmax' and 'lonmax' must be given.")
 
     if latmax != None and lonmax != None:

@@ -94,7 +94,7 @@ class ConfigFile(object):
 		except Exception as e:
 			print(_("PushService Exception in writeXML: ") + str(e))
 		finally:
-			if f is not None:
+			if f != None:
 				f.close()
 
 		# Save time and cache file content

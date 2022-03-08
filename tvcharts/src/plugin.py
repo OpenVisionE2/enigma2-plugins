@@ -172,7 +172,7 @@ class TVChartsMain(Screen):
 			serviceref = ServiceReference(current[0][0])
 			eventid = int(current[0][1])
 			event = self.getEventFromId(serviceref, eventid)
-			if event is not None:
+			if event != None:
 				newEntry = RecordTimerEntry(serviceref, *parseEvent(event), checkOldTimers=True, dirname=preferredTimerPath())
 				self.session.openWithCallback(self.addTimerCallback, TimerEntry, newEntry)
 			else:
@@ -185,12 +185,12 @@ class TVChartsMain(Screen):
 		if answer[0]:
 			entry = answer[1]
 			simulTimerList = self.session.nav.RecordTimer.record(entry)
-			if simulTimerList is not None:
+			if simulTimerList != None:
 				for x in simulTimerList:
 					if x.setAutoincreaseEnd(entry):
 						self.session.nav.RecordTimer.timeChanged(x)
 				simulTimerList = self.session.nav.RecordTimer.record(entry)
-				if simulTimerList is not None:
+				if simulTimerList != None:
 					self.session.openWithCallback(self.finishSanityCorrection, TimerSanityConflict, simulTimerList)
 		else:
 			print("Timeredit aborted")
@@ -212,12 +212,12 @@ class TVChartsMain(Screen):
 		service = ServiceReference(serviceref)
 		event = self.getEventFromId(service, eventid)
 
-		if event is not None:
+		if event != None:
 			self.session.open(EventViewSimple, event, service)
 
 	def getEventFromId(self, service, eventid):
 		event = None
-		if self.epgcache is not None and eventid is not None:
+		if self.epgcache != None and eventid != None:
 			event = self.epgcache.lookupEventId(service.ref, eventid)
 		return event
 
@@ -493,7 +493,7 @@ class DBUpdateStatus(Screen):
 			iNetwork.checkNetworkState(self.checkNetworkCB)
 
 	def checkNetworkCB(self, data):
-		if data is not None:
+		if data != None:
 			if data <= 2:
 				self.NetworkConnectionAvailable = True
 				self.restartTimer()
@@ -510,7 +510,7 @@ class DBUpdateStatus(Screen):
 
 		# Get Channelname
 		sref = self.session.nav.getCurrentlyPlayingServiceReference()
-		if sref is not None:
+		if sref != None:
 			ref = eServiceReference(sref.toString())
 			ref.setName("")
 			serviceHandler = eServiceCenter.getInstance()
@@ -529,7 +529,7 @@ class DBUpdateStatus(Screen):
 		event_description = ""
 		event_begin = 0
 
-		if event is not None:
+		if event != None:
 			curEvent = parseEvent(event)
 			event_begin = int(curEvent[0]) + (config.recording.margin_before.getValue() * 60)
 			event_description = event.getExtendedDescription()

@@ -65,7 +65,7 @@ class MovieList(GUIComponent):
 		self.MovieSelectionSelf = MovieSelectionSelf
 		self.MselTitle = ""
 
-		if root is not None:
+		if root != None:
 			self.reload(root)
 
 		self.pdirIcon = LoadPixmap(cached=True, path=eEnv.resolve('${libdir}/enigma2/python/Plugins/Extensions/SerienFilm/icons/folder_20.png'))
@@ -171,7 +171,7 @@ class MovieList(GUIComponent):
 
 		if isinstance(pixmap, str):
 			pixmap = MultiContentEntryText(pos=(0, 0), size=(25, 20), font=0, flags=RT_HALIGN_LEFT, text=pixmap)
-		if pixmap is not None:
+		if pixmap != None:
 			res.append(pixmap)
 
 		XPOS = 25
@@ -257,7 +257,7 @@ class MovieList(GUIComponent):
 		instance.selectionChanged.get().remove(self.selectionChanged)
 
 	def reload(self, root=None, filter_tags=None):
-		if root is not None:
+		if root != None:
 			self.load(root, filter_tags)
 		else:
 			self.load(self.root, filter_tags)
@@ -326,7 +326,7 @@ class MovieList(GUIComponent):
 			parentdir = pwd[:pwd.rfind("/", 0, -1)] + "/"
 			parent = eServiceReference("2:0:1:0:0:0:0:0:0:0:" + parentdir)
 			info = self.serviceHandler.info(parent)
-			if info is not None:
+			if info != None:
 				txt = info.getName(parent)																# Titel
 				service = ServiceReference(info.getInfoString(parent, iServiceInformation.sServiceref)).getServiceName()	# Sender
 				description = info.getInfoString(parent, iServiceInformation.sDescription)				# Beschreibung
@@ -380,7 +380,7 @@ class MovieList(GUIComponent):
 			# filter_tags is either None (which means no filter at all), or
 			# a set. In this case, all elements of filter_tags must be present,
 			# otherwise the entry will be dropped.
-			if filter_tags is not None and not this_tags.issuperset(filter_tags):
+			if filter_tags != None and not this_tags.issuperset(filter_tags):
 				continue
 
 			txt = info.getName(serviceref)

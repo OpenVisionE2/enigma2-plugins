@@ -46,7 +46,7 @@ class WebPixmap(Pixmap):
 		if os_isfile(tmpfile):
 			self.tmpfile = tmpfile
 			self.onLoadFinished(None)
-		elif url is not None:
+		elif url != None:
 			self.tmpfile = tmpfile
 			head = {
 				"Accept": "image/png,image/*;q=0.8,*/*;q=0.5",

@@ -452,7 +452,7 @@ class MovielistPreviewAutoCreator(Screen):
 		service = self.session.nav.getCurrentService()
 		if service:
 			cue = service and service.cueSheet()
-			if cue is not None:
+			if cue != None:
 				cue.setCutListEnable(0)
 			seek = service.seek()
 			if seek:

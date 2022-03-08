@@ -62,7 +62,7 @@ def FTPFileEntryComponent(file, directory):
 			png = LoadPixmap(resolveFilename(SCOPE_GUISKIN, "extensions/" + EXTENSIONS[extension] + ".png"))
 		else:
 			png = None
-	if png is not None:
+	if png != None:
 		res.append((eListboxPythonMultiContent.TYPE_PIXMAP_ALPHATEST, 10, 2, 20, 20, png))
 
 	return res
@@ -112,7 +112,7 @@ class FTPFileList(FileList):
 		self.list = list
 
 		select = self.select
-		if select is not None:
+		if select != None:
 			i = 0
 			self.moveToIndex(0)
 			for x in list:
@@ -465,7 +465,7 @@ class FTPBrowser(Screen, Protocol, InfoBarNotifications, HelpableScreen):
 				self.getFile(*top[1:])
 			else:
 				self.putFile(*top[1:])
-		elif self.queue is not None:
+		elif self.queue != None:
 			self.queue = None
 			self["eta"].text = ""
 			self["speed"].text = ""
@@ -649,7 +649,7 @@ class FTPBrowser(Screen, Protocol, InfoBarNotifications, HelpableScreen):
 		self.file = None
 
 	def putComplete(self, *args):
-		if self.queue is not None:
+		if self.queue != None:
 			self.file.close()
 			self.file = None
 
@@ -669,11 +669,11 @@ class FTPBrowser(Screen, Protocol, InfoBarNotifications, HelpableScreen):
 			MessageBox.TYPE_ERROR,
 			"remote"
 		)
-		if self.queue is not None:
+		if self.queue != None:
 			self.nextQueue()
 
 	def getFinished(self, *args):
-		if self.queue is not None:
+		if self.queue != None:
 			self.file.close()
 			self.file = None
 
@@ -693,7 +693,7 @@ class FTPBrowser(Screen, Protocol, InfoBarNotifications, HelpableScreen):
 			MessageBox.TYPE_ERROR,
 			"local"
 		)
-		if self.queue is not None:
+		if self.queue != None:
 			self.nextQueue()
 
 	def putProgress(self, chunk):
@@ -746,7 +746,7 @@ class FTPBrowser(Screen, Protocol, InfoBarNotifications, HelpableScreen):
 			self.close()
 
 	def cancel(self):
-		if self.file is not None:
+		if self.file != None:
 			self.session.openWithCallback(
 				self.cancelQuestion,
 				ChoiceBox,

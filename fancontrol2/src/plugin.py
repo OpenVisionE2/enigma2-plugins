@@ -581,7 +581,7 @@ class FanControl2SpezialSetup(Screen, ConfigListScreen):
 			self.session.open(MessageBox, "Error:\n" + str(e), MessageBox.TYPE_ERROR)
 
 	def dirSelected(self, dir):
-		if dir is not None and dir != "?":
+		if dir != None and dir != "?":
 			if dir[-1:] != "/":
 				dir += "/"
 			config.plugins.FanControl.LogPath.value = dir

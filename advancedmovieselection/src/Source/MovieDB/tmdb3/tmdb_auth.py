@@ -47,7 +47,7 @@ class datetime(_pydatetime):
                                 % isotime)
 
         dt = [int(a) for a in match.groups()[:5]]
-        if match.group('sec') is not None:
+        if match.group('sec') != None:
             dt.append(int(match.group('sec')))
         else:
             dt.append(0)
@@ -78,7 +78,7 @@ def get_session(sessionid=None):
     global syssession
     if sessionid:
         return Session(sessionid)
-    elif syssession is not None:
+    elif syssession != None:
         return syssession
     else:
         return Session.new()

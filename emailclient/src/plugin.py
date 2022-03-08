@@ -236,7 +236,7 @@ class EmailScreen(Screen):
 	def _onMessageSelected(self):
 		self["infolabel"].setText(_("getting message ..."))
 		c = self["messagelist"].getCurrent()
-		if c is not None:
+		if c != None:
 			if not self._account.getMessage(c[0], self._onMessageLoaded, self._ebNotify):
 				self["infolabel"] = Label(_("account not connected"))
 
@@ -419,7 +419,7 @@ class ScreenMailView(Screen):
 			self.session.openWithCallback(self._selectBodyCB, ChoiceBox, _("select Body"), mylist)
 
 	def _selectBodyCB(self, choice):
-		if choice is not None:
+		if choice != None:
 			self["body"].setText(choice[1].getData())
 
 	def _selectAttachment(self):
@@ -673,7 +673,7 @@ class EmailAccount():
 		self._proto = None
 
 	def isConnected(self):
-		return self._proto is not None and self.mailboxList is not None
+		return self._proto != None and self.mailboxList != None
 
 	def forceRetry(self, connectCallback):
 		'''

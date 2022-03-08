@@ -193,11 +193,11 @@ class SatloaderBouquet(Screen):
 		self.close(None)
 
 	def btnOK(self):
-		if self["list"].l.getCurrentSelection() is not None:
+		if self["list"].l.getCurrentSelection() != None:
 			self.list.toggleSelection()
 
 	def btnGreen(self):
-		if self["list"].l.getCurrentSelection() is not None:
+		if self["list"].l.getCurrentSelection() != None:
 			list = self.list.getSelectionsList()
 			if len(list) is not 0:
 				for item in list:
@@ -238,7 +238,7 @@ class SatloaderBouquet(Screen):
 				idx += 1
 			f.close()
 
-			if self.list is not None:
+			if self.list != None:
 				self["info"].setText("%s" % (_("Press ok button to select bouquet")))
 
 		except Exception as e:
@@ -317,11 +317,11 @@ class SatloaderMultiSat(Screen):
 		self.close(None)
 
 	def btnOK(self):
-		if self["list"].l.getCurrentSelection() is not None:
+		if self["list"].l.getCurrentSelection() != None:
 			self.list.toggleSelection()
 
 	def btnGreen(self):
-		if self["list"].l.getCurrentSelection() is not None:
+		if self["list"].l.getCurrentSelection() != None:
 			list = self.list.getSelectionsList()
 			if len(list) is not 0:
 				f = open('/etc/tuxbox/satellites.xml', 'w+')
@@ -341,7 +341,7 @@ class SatloaderMultiSat(Screen):
 				self["info"].setText("%s" % (_("Please select at least one satellite")))
 
 	def btnYellow(self):
-		if self["list"].l.getCurrentSelection() is not None:
+		if self["list"].l.getCurrentSelection() != None:
 			satname = self["list"].l.getCurrentSelection()[0][0]
 			satfile = self["list"].l.getCurrentSelection()[0][1]
 			self.session.open(TransponderSelection, satname, satfile)
@@ -369,7 +369,7 @@ class SatloaderMultiSat(Screen):
 				idx += 1
 			f.close()
 
-			if self.list is not None:
+			if self.list != None:
 				self["info"].setText("%s" % (_("Press ok button to select satellite")))
 
 		except Exception as e:
@@ -461,7 +461,7 @@ class TransponderSelection(Screen):
 		self.close(None)
 
 	def btnOK(self):
-		if self["list"].l.getCurrentSelection() is not None:
+		if self["list"].l.getCurrentSelection() != None:
 			self.list.toggleSelection()
 
 	def btnGreen(self):

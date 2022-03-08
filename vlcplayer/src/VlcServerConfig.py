@@ -373,7 +373,7 @@ class __VlcServerConfig():
 		return self.getServerByName(config.plugins.vlcplayer.defaultserver.value)
 
 	def setAsDefault(self, defaultServer):
-		if defaultServer is not None:
+		if defaultServer != None:
 			config.plugins.vlcplayer.defaultserver.value = defaultServer.getName()
 		else:
 			config.plugins.vlcplayer.defaultserver.value = ''

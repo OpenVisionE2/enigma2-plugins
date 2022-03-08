@@ -72,10 +72,10 @@ class Message(object):
         Encoders.encode_base64(part)
         part.add_header("Content-Disposition", "attachment; filename=\"%s\"" % base)
 
-        if mime is not None:
+        if mime != None:
             part.set_type(mime)
 
-        if charset is not None:
+        if charset != None:
             part.set_charset(charset)
 
         if self.msg is None:

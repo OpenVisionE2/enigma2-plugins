@@ -110,7 +110,7 @@ class AutomaticVolumeAdjustmentConfigScreen(ConfigListScreen, Screen):
 		for x in self["config"].list:
 			x[1].save()
 		self.configVA.save()
-		if self.automaticVolumeAdjustmentInstance is not None:
+		if self.automaticVolumeAdjustmentInstance != None:
 			self.automaticVolumeAdjustmentInstance.initializeConfigValues(self.configVA, True) # submit config values
 		self.close()
 
@@ -196,7 +196,7 @@ class AutomaticVolumeAdjustmentEntriesListConfigScreen(Screen):
 			return
 		sel = self["entrylist"].l.getCurrentSelection()[0]
 		self["entrylist"].configVA.remove(sel)
-		if self.automaticVolumeAdjustmentInstance is not None:
+		if self.automaticVolumeAdjustmentInstance != None:
 			self.automaticVolumeAdjustmentInstance.initializeConfigValues(self["entrylist"].configVA, True) # submit config values
 		self.updateList()
 
@@ -296,7 +296,7 @@ class AutomaticVolumeAdjustmentEntryConfigScreen(ConfigListScreen, Screen):
 			for x in self["config"].list:
 				x[1].save()
 			self.configVA.save()
-			if self.automaticVolumeAdjustmentInstance is not None:
+			if self.automaticVolumeAdjustmentInstance != None:
 				self.automaticVolumeAdjustmentInstance.initializeConfigValues(self.configVA, True) # submit config values
 			self.close()
 		else:

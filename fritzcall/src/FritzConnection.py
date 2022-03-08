@@ -255,8 +255,8 @@ class FritzAction(object):
 		errorCode = root.find(".//{urn:dslforum-org:control-1-0}errorCode")
 		errorDescription = root.find(".//{urn:dslforum-org:control-1-0}errorDescription")
 		# self.debug("errorCode: %s, errorDescription; %s", repr(errorCode), repr(errorDescription))
-		if errorCode is not None:
-			if errorDescription is not None:
+		if errorCode != None:
+			if errorDescription != None:
 				self.error("ErrorCode: %s, errorDescription: %s", repr(errorCode.text), repr(errorDescription.text))
 			else:
 				self.error("ErrorCode: %s, no errorDescription", repr(errorCode.text))

@@ -401,14 +401,14 @@ class MoviePlayerExtended(CutListSupport, MoviePlayer, PlayerBase):
             Trashcan.delete(service.getPath())
 
     def standby(self, answer):
-        if answer is not None:
+        if answer != None:
             if answer and not Screens.Standby.inStandby:
                 Notifications.AddNotification(Screens.Standby.Standby)
             else:
                 self.close()
 
     def shutdown(self, answer):
-        if answer is not None:
+        if answer != None:
             if answer and not Screens.Standby.inTryQuitMainloop:
                 Notifications.AddNotification(Screens.Standby.TryQuitMainloop, 1)
             else:
@@ -436,7 +436,7 @@ if pluginPresent.DVDPlayer:
                 eDVDPlayer.askLeavePlayer(self)
 
         def exitCB(self, answer):
-            if answer is not None:
+            if answer != None:
                 if answer[1] == "browser":
                     #TODO check here if a paused dvd playback is already running... then re-start it...
                     #else
@@ -542,7 +542,7 @@ class PlayerChoice():
 
     def getPlayerForService(self, service):
         player = None
-        if service is not None:
+        if service != None:
             if isinstance(service, eServiceReferenceDvd):
                 if pluginPresent.DVDPlayer:
                     player = DVDPlayer
@@ -558,7 +558,7 @@ class PlayerChoice():
         return player
 
     def playService(self, service):
-        if service is not None:
+        if service != None:
             service = self.getBestPlayableService(service)
             player = self.getPlayerForService(service)
             if player:

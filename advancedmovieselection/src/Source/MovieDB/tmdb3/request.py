@@ -60,7 +60,7 @@ class Request(urllib2.Request):
         kwargs['api_key'] = self.api_key
         self._url = url.lstrip('/')
         self._kwargs = dict([(kwa, kwv) for kwa, kwv in kwargs.items()
-                                        if kwv is not None])
+                                        if kwv != None])
 
         locale = get_locale()
         kwargs = {}
@@ -158,7 +158,7 @@ status_handlers = {
 
 def handle_status(data, query):
     status = status_handlers[data.get('status_code', 1)]
-    if status is not None:
+    if status != None:
         status.tmdberrno = data['status_code']
         status.query = query
         raise status

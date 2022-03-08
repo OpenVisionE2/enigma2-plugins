@@ -71,7 +71,7 @@ class PEAEntryWrapper(ElementWrapper):
 			if not text:
 				# NOTE: if we don't have a summary we use the full content instead
 				elem = self._element.find(self._ns + 'content')
-				if elem is not None and elem.get('type') == "html":
+				if elem != None and elem.get('type') == "html":
 					text = elem.text
 			return text
 
@@ -224,7 +224,7 @@ class UniversalFeed(BaseFeed):
 		return self.history[:idx]
 
 	def gotFeed(self, feed):
-		if self.wrapper is not None:
+		if self.wrapper != None:
 			wrapper = self.wrapper(feed, self.ns)
 		else:
 			if feed.tag == "rss":

@@ -87,7 +87,7 @@ class StreamInterface:
 
     def OnListLoaded(self):
         # called from the interface, if list was loaded
-        if self.cbListLoaded is not None:
+        if self.cbListLoaded != None:
             self.cbListLoaded(self.list)
 
 ###############################################################################

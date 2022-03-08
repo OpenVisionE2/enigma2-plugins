@@ -24,7 +24,7 @@ class Interface(StreamInterface):
         self.session.openWithCallback(self.GenreSelected, ChoiceBox, _("select Genre to search for streams"), glist)
 
     def GenreSelected(self, selectedGenre):
-        if selectedGenre is not None:
+        if selectedGenre != None:
             feed = ShoutcastFeed(selectedGenre[1])
             #feed.fetch_stations()
             feed.parse_stations()

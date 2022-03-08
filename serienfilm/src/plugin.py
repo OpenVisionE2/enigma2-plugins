@@ -74,7 +74,7 @@ def doInstantiateDialogSF(self, screen, arguments, kwargs, desktop):
 	readSkin(dlg, None, dlg.skinName, desktop)
 
 	# create GUI view of this dialog
-	assert desktop is not None
+	assert desktop != None
 
 	dlg.setDesktop(desktop)
 	dlg.applySkin()

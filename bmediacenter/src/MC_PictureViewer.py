@@ -693,7 +693,7 @@ class Selectmusic(Screen):
 	def KeyOk(self):
 		self.filename = self.filelist.getFilename()
 		self["currentfolder"].setText(str(self.filelist.getCurrentDirectory()))
-		if self.filelist.getFilename() is not None:
+		if self.filelist.getFilename() != None:
 			if self.filelist.canDescent():
 				self.filelist.descent()
 			else:

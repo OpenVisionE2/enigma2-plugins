@@ -320,7 +320,7 @@ class YTTrailerList(Screen, YTTrailer):
 
 	def startRun(self):
 		feeds = self.getYTFeeds(self.eventName, config.plugins.yttrailer.max_results.value)
-		if feeds is not None:
+		if feeds != None:
 			entryList = []
 			for entry in feeds.entry:
 				entryList.append(((entry),))

@@ -61,7 +61,7 @@ class EventList(Converter, object):
 				i = 1
 				while i <= (self.eventcount):
 					event = self.epgcache.getNextTimeEntry()
-					if event is not None:
+					if event != None:
 						contentList.append(self.getEventTuple(event),)
 					i += 1
 				if self.primetime == 1:

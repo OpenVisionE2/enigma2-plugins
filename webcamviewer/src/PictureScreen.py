@@ -205,14 +205,14 @@ class PictureScreen(Screen):
 
 	def setPictureCB(self, picInfo=None):
 		ptr = self.picload.getData()
-		if ptr is not None:
+		if ptr != None:
 			self["pixmap"].instance.setPixmap(ptr)
 		self.processing = False
 
 		if self.autoreload is True:
 				self.cleanUP()
 				self.do()
-		elif self.slideshowcallback is not None:
+		elif self.slideshowcallback != None:
 				self.closetimer = eTimer()
 				self.closetimer.timeout.get().append(self.slideshowcallback)
 				print("waiting", config.plugins.pictureviewer.slideshowtime.value, "seconds for next picture")

@@ -81,9 +81,9 @@ class FreeSpace(ControllerBase):
 			# User specified to avoid HDD wakeup if it is sleeping
 			from Components.Harddisk import harddiskmanager
 			dev = getDevicebyMountpoint(harddiskmanager, mountpoint(path))
-			if dev is not None:
+			if dev != None:
 				hdd = getHDD(harddiskmanager, dev)
-				if hdd is not None:
+				if hdd != None:
 					if hdd.isSleeping():
 						# Don't wake up HDD
 						print(_("[FreeSpace] HDD is idle: ") + str(path))

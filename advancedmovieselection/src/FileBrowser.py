@@ -35,7 +35,7 @@ class FileBrowser(Screen):
         global lastpath
         if current_path:
             lastpath = current_path
-        if lastpath is not None:
+        if lastpath != None:
             currDir = lastpath
         else:
             currDir = "/media/"

@@ -128,7 +128,7 @@ class IRC(protocol.Protocol):
             self.hostname = socket.getfqdn()
 
     def sendLine(self, line):
-        if self.encoding is not None:
+        if self.encoding != None:
             if isinstance(line, unicode):
                 line = line.encode(self.encoding)
         self.transport.write("%s%s%s" % (line, CR, LF))
@@ -189,7 +189,7 @@ class IRC(protocol.Protocol):
         """
         method = getattr(self, "irc_%s" % command, None)
         try:
-            if method is not None:
+            if method != None:
                 method(prefix, params)
             else:
                 self.irc_unknown(prefix, command, params)
@@ -831,11 +831,11 @@ class IRCClient(basic.LineReceiver):
             line = 'MODE %s +%s' % (chan, modes)
         else:
             line = 'MODE %s -%s' % (chan, modes)
-        if limit is not None:
+        if limit != None:
             line = '%s %d' % (line, limit)
-        elif user is not None:
+        elif user != None:
             line = '%s %s' % (line, user)
-        elif mask is not None:
+        elif mask != None:
             line = '%s %s' % (line, mask)
         self.sendLine(line)
 
@@ -886,7 +886,7 @@ class IRCClient(basic.LineReceiver):
         self.sendLine("AWAY :%s" % message)
 
     def register(self, nickname, hostname='foo', servername='bar'):
-        if self.password is not None:
+        if self.password != None:
             self.sendLine("PASS %s" % self.password)
         self.setNick(nickname)
         if self.username is None:
@@ -1166,7 +1166,7 @@ class IRCClient(basic.LineReceiver):
         self.ctcpMakeReply(nick, [("PING", data)])
 
     def ctcpQuery_FINGER(self, user, channel, data):
-        if data is not None:
+        if data != None:
             self.quirkyMessage("Why did %s send '%s' with a FINGER query?"
                                % (user, data))
         if not self.fingerReply:
@@ -1181,7 +1181,7 @@ class IRCClient(basic.LineReceiver):
         self.ctcpMakeReply(nick, [('FINGER', reply)])
 
     def ctcpQuery_VERSION(self, user, channel, data):
-        if data is not None:
+        if data != None:
             self.quirkyMessage("Why did %s send '%s' with a VERSION query?"
                                % (user, data))
 
@@ -1193,7 +1193,7 @@ class IRCClient(basic.LineReceiver):
                                         self.versionEnv))])
 
     def ctcpQuery_SOURCE(self, user, channel, data):
-        if data is not None:
+        if data != None:
             self.quirkyMessage("Why did %s send '%s' with a SOURCE query?"
                                % (user, data))
         if self.sourceURL:
@@ -1206,7 +1206,7 @@ class IRCClient(basic.LineReceiver):
                                       ('SOURCE', None)])
 
     def ctcpQuery_USERINFO(self, user, channel, data):
-        if data is not None:
+        if data != None:
             self.quirkyMessage("Why did %s send '%s' with a USERINFO query?"
                                % (user, data))
         if self.userinfo:
@@ -1251,7 +1251,7 @@ class IRCClient(basic.LineReceiver):
                                    "%s :No error has occoured." % data)])
 
     def ctcpQuery_TIME(self, user, channel, data):
-        if data is not None:
+        if data != None:
             self.quirkyMessage("Why did %s send '%s' with a TIME query?"
                                % (user, data))
         nick = string.split(user, "!")[0]
@@ -1483,7 +1483,7 @@ class IRCClient(basic.LineReceiver):
         """
         method = getattr(self, "irc_%s" % command, None)
         try:
-            if method is not None:
+            if method != None:
                 method(prefix, params)
             else:
                 self.irc_unknown(prefix, command, params)

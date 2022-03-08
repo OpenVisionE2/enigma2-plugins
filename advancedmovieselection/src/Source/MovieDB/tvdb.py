@@ -235,7 +235,7 @@ def getMovieInfo(series_id):
 
 
 def printKey(item, key):
-    if item[key] is not None:
+    if item[key] != None:
         print(key + ':', item[key])
     return
 

@@ -476,7 +476,7 @@ class MC_AudioPlayer(Screen, HelpableScreen, InfoBarSeek):
 
 	def updateFileInfo(self):
 		currPlay = self.session.nav.getCurrentService()
-		if currPlay is not None:
+		if currPlay != None:
 			sTitle = currPlay.info().getInfoString(iServiceInformation.sTagTitle)
 			sArtist = currPlay.info().getInfoString(iServiceInformation.sTagArtist)
 			sAlbum = currPlay.info().getInfoString(iServiceInformation.sTagAlbum)
@@ -522,7 +522,7 @@ class MC_AudioPlayer(Screen, HelpableScreen, InfoBarSeek):
 
 	def deleteFile(self):
 		self.service = self.filelist.getServiceRef()
-		if self.service.type != 4098 and self.session.nav.getCurrentlyPlayingServiceOrGroup() is not None:
+		if self.service.type != 4098 and self.session.nav.getCurrentlyPlayingServiceOrGroup() != None:
 			if self.service == self.session.nav.getCurrentlyPlayingServiceOrGroup():
 				self.StopPlayback()
 		self.session.openWithCallback(self.deleteFileConfirmed, MessageBox, _("Do you really want to delete this file ?"))
@@ -674,7 +674,7 @@ class MC_AudioPlayer(Screen, HelpableScreen, InfoBarSeek):
 			config.av.downmix_ac3.save()
 			os.remove("/tmp/.ac3on")
 		config.plugins.mc_ap.save()
-		if self.session.nav.getCurrentService() is not None:
+		if self.session.nav.getCurrentService() != None:
 			self.session.nav.stopService()
 		MC_AudioPlayer.STATE = "NONE"
 #		if config.plugins.mc_global.vfd.value == "on":
@@ -874,7 +874,7 @@ class MC_WebRadio(Screen, HelpableScreen):
 
 	def updateFileInfo(self):
 		currPlay = self.session.nav.getCurrentService()
-		if currPlay is not None:
+		if currPlay != None:
 			sTitle = currPlay.info().getInfoString(iServiceInformation.sTagTitle)
 			sArtist = currPlay.info().getInfoString(iServiceInformation.sTagArtist)
 			sAlbum = currPlay.info().getInfoString(iServiceInformation.sTagAlbum)
@@ -888,7 +888,7 @@ class MC_WebRadio(Screen, HelpableScreen):
 
 	def deleteFile(self):
 		self.service = self.filelist.getServiceRef()
-		if self.service.type != 4098 and self.session.nav.getCurrentlyPlayingServiceOrGroup() is not None:
+		if self.service.type != 4098 and self.session.nav.getCurrentlyPlayingServiceOrGroup() != None:
 			if self.service == self.session.nav.getCurrentlyPlayingServiceOrGroup():
 				self.StopPlayback()
 		self.session.openWithCallback(self.deleteFileConfirmed, MessageBox, _("Do you really want to delete this file ?"))
@@ -960,7 +960,7 @@ class MC_WebRadio(Screen, HelpableScreen):
 			config.av.downmix_ac3.value = False
 			config.av.downmix_ac3.save()
 			os.remove("/tmp/.ac3on")
-		if self.session.nav.getCurrentService() is not None:
+		if self.session.nav.getCurrentService() != None:
 			self.session.nav.stopService()
 		MC_AudioPlayer.STATE = "NONE"
 		self.close()
@@ -1024,7 +1024,7 @@ class MC_WebDown(Screen):
 
 	def okbuttonClick(self):
 		selection = self["menu"].getCurrent()
-		if selection is not None:
+		if selection != None:
 			gen = open("/tmp/.webselect").read().split('\n')
 			Consile().ePopen("wget -O '$sradio/%s' '$s%s%s'" % (mcpath, selection[1], radirl, gen[0], selection[1].replace(" ", "%20")))
 			os.remove("/tmp/index.html")
@@ -1230,7 +1230,7 @@ class MC_AudioPlaylist(Screen, InfoBarSeek):
 
 	def updateFileInfo(self):
 		currPlay = self.session.nav.getCurrentService()
-		if currPlay is not None:
+		if currPlay != None:
 			sTitle = currPlay.info().getInfoString(iServiceInformation.sTagTitle)
 			sArtist = currPlay.info().getInfoString(iServiceInformation.sTagArtist)
 			sAlbum = currPlay.info().getInfoString(iServiceInformation.sTagAlbum)
@@ -1246,7 +1246,7 @@ class MC_AudioPlaylist(Screen, InfoBarSeek):
 		self.session.openWithCallback(self.save_pls, InputBox, title=_("Please enter filename (empty = use current date)"), windowTitle=_("Save Playlist"))
 
 	def save_pls(self, name):
-		if name is not None:
+		if name != None:
 			name = name.strip()
 			if name == "":
 				name = strftime("%y%m%d_%H%M%S")
@@ -1267,7 +1267,7 @@ class MC_AudioPlaylist(Screen, InfoBarSeek):
 		self.session.openWithCallback(self.load_pls, ChoiceBox, title=_("Please select a playlist..."), list=listpath)
 
 	def load_pls(self, path):
-		if path is not None:
+		if path != None:
 			self.playlist.clear()
 			extension = path[0].rsplit('.', 1)[-1]
 			if extension in self.playlistparsers:
@@ -1288,7 +1288,7 @@ class MC_AudioPlaylist(Screen, InfoBarSeek):
 		self.session.openWithCallback(self.delete_saved_pls, ChoiceBox, title=_("Please select a playlist to delete..."), list=listpath)
 
 	def delete_saved_pls(self, path):
-		if path is not None:
+		if path != None:
 			self.delname = path[1]
 			self.session.openWithCallback(self.delete_saved_pls_conf, MessageBox, _("Do you really want to delete %s?") % (path[1]))
 
@@ -1380,7 +1380,7 @@ class Lyrics(Screen):
 		self["resulttext"] = Label()
 		self["coverly"] = MediaPixmap()
 		curPlay = self.session.nav.getCurrentService()
-		if curPlay is not None:
+		if curPlay != None:
 			title = curPlay.info().getInfoString(iServiceInformation.sTagTitle)
 			Console().ePopen("echo '%s' >/tmp/.oldplaying | echo '%s' >/tmp/.curplaying" % (str(title), str(title)))
 		self.RFTimer = eTimer()
@@ -1423,7 +1423,7 @@ class Lyrics(Screen):
 
 	def getLyricsFromID3Tag(self):
 		curPlay = self.session.nav.getCurrentService()
-		if curPlay is not None:
+		if curPlay != None:
 			titlely = curPlay.info().getInfoString(iServiceInformation.sTagTitle)
 			artistly = curPlay.info().getInfoString(iServiceInformation.sTagArtist)
 			if titlely == "":
@@ -1436,7 +1436,7 @@ class Lyrics(Screen):
 		return "No lyrics found in id3-tag, trying api.chartlyrics.com..."
 
 	def urlError(self, error=None):
-		if error is not None:
+		if error != None:
 			self["resulttext"].setText(str(error.getErrorMessage()))
 			self["lyric_text"].setText("")
 
@@ -1485,7 +1485,7 @@ class MediaPixmap(Pixmap):
 	def applySkin(self, desktop, screen):
 		from Tools.LoadPixmap import LoadPixmap
 		noCoverFile = None
-		if self.skinAttributes is not None:
+		if self.skinAttributes != None:
 			for (attrib, value) in self.skinAttributes:
 				if attrib == "pixmap":
 					noCoverFile = value

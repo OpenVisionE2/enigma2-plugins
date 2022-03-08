@@ -276,7 +276,7 @@ class AutoTimerEditorBase:
 			("auto", _("auto"))], default=default))
 
 		# AfterEvent (Timespan)
-		if timer.hasAfterEvent() and timer.afterevent[0][1][0] is not None:
+		if timer.hasAfterEvent() and timer.afterevent[0][1][0] != None:
 			default = True
 			now[3] = timer.afterevent[0][1][0][0]
 			now[4] = timer.afterevent[0][1][0][1]
@@ -374,7 +374,7 @@ class AutoTimerEditorBase:
 		self.isActive_otherfilters_value = _("unknown")
 
 	def pathSelected(self, res):
-		if res is not None:
+		if res != None:
 			# I'm pretty sure this will always fail
 			if config.movielist.videodirs.value != self.destination.choices:
 					self.destination.setChoices(config.movielist.videodirs.value, default=res)
@@ -392,12 +392,12 @@ class AutoTimerEditorBase:
 		)
 
 	def tagEditFinished(self, ret):
-		if ret is not None:
+		if ret != None:
 			self.timerentry_tags = ret
 			self.tags.setChoices([len(ret) == 0 and _("None") or ' '.join(ret)])
 
 	def chooseTags(self):
-		if TagEditor is not None:
+		if TagEditor != None:
 			self.session.openWithCallback(
 				self.tagEditFinished,
 				TagEditor,
@@ -829,7 +829,7 @@ class AutoTimerEditor(Screen, ConfigListScreen, AutoTimerEditorBase):
 			self.save()
 
 	def saveCallback(self, ret):
-		if ret is not None:
+		if ret != None:
 			if ret:
 				self.match.value = self.match.value.rstrip()
 			self.save()
@@ -1265,7 +1265,7 @@ class AutoTimerFilterEditor(Screen, ConfigListScreen):
 		)
 
 	def typeSelected(self, ret):
-		if ret is not None:
+		if ret != None:
 			list = self["config"].getList()
 
 			if ret[1] == 0:
@@ -1287,7 +1287,7 @@ class AutoTimerFilterEditor(Screen, ConfigListScreen):
 	def cancel(self):
 		self.show_hw = False
 		if self["config"].isChanged():
-			if isinstance(self["config"].getCurrent()[1], ConfigText) and self["config"].getCurrent()[1].help_window.instance is not None:
+			if isinstance(self["config"].getCurrent()[1], ConfigText) and self["config"].getCurrent()[1].help_window.instance != None:
 				self.show_hw = True
 				self["config"].getCurrent()[1].help_window.hide()
 			self.session.openWithCallback(
@@ -1524,7 +1524,7 @@ def addAutotimerFromEvent(session, evt=None, service=None):
 	match = evt and evt.getEventName() or ""
 	name = match or "New AutoTimer"
 	sref = None
-	if service is not None:
+	if service != None:
 		service = str(service)
 		myref = eServiceReference(service)
 		if not (myref.flags & eServiceReference.isGroup):
@@ -1693,7 +1693,7 @@ def addAutotimerFromEventSilent(session, evt=None, service=None):
 
 	match = evt and evt.getEventName() or ""
 	name = match or "New AutoTimer"
-	if service is not None:
+	if service != None:
 		service = str(service)
 		myref = eServiceReference(service)
 		if not (myref.flags & eServiceReference.isGroup):

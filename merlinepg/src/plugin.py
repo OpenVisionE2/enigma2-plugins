@@ -182,7 +182,7 @@ class MerlinEPGList(EPGList):
 	def foudPrimetime(self):
 		for OneLine in range(0, self.evCnt):
 			evBgTime, evBgMin = self.getBgTime()
-			if evBgTime is not None:
+			if evBgTime != None:
 				if (evBgTime == config.plugins.MerlinEPG.Primetime.value) and (evBgMin >= config.plugins.MerlinEPG.PTlow.value) and (evBgMin < config.plugins.MerlinEPG.PThi.value):
 					break
 				self.moveDown()
@@ -347,7 +347,7 @@ class Merlin_PGII(Screen):
 	def onLayoutReady(self):
 		#service = self.session.nav.getCurrentService()
 		#info = service and service.info()
-		#if (info is not None) and not(config.plugins.MerlinEPG.StartFirst.value):
+		#if (info != None) and not(config.plugins.MerlinEPG.StartFirst.value):
 			#nameROH = info.getName().replace('\xc2\x86', '').replace('\xc2\x87', '')
 		if self.srvList:
 			service = ServiceReference(self.srvList.getCurrentSelection())
@@ -357,7 +357,7 @@ class Merlin_PGII(Screen):
 			service = self.session.nav.getCurrentService()
 			info = service and service.info()
 			nameROH = info and info.getName().replace('\xc2\x86', '').replace('\xc2\x87', '')
-		if (nameROH is not None) and not(config.plugins.MerlinEPG.StartFirst.value):
+		if (nameROH != None) and not(config.plugins.MerlinEPG.StartFirst.value):
 		#
 			for idx in range(1, len(self.list)):
 				name = str(idx) + ". " + nameROH
@@ -551,10 +551,10 @@ class Merlin_PGII(Screen):
 		service = curEV[1]
 		answer = answer and answer[1]
 		if answer == "Ei":
-			if event is not None:
+			if event != None:
 				self.session.open(EventViewSimple, event, service)
 		if answer == "Ii":
-			if event is not None:
+			if event != None:
 				IeventName = event.getEventName()
 				self.session.open(IMDB, IeventName)
 
@@ -595,12 +595,12 @@ class Merlin_PGII(Screen):
 		if answer[0]:
 			entry = answer[1]
 			simulTimerList = self.session.nav.RecordTimer.record(entry)
-			if simulTimerList is not None:
+			if simulTimerList != None:
 				for x in simulTimerList:
 					if x.setAutoincreaseEnd(entry):
 						self.session.nav.RecordTimer.timeChanged(x)
 				simulTimerList = self.session.nav.RecordTimer.record(entry)
-				if simulTimerList is not None:
+				if simulTimerList != None:
 					self.session.openWithCallback(self.finishSanityCorrection, TimerSanityConflict, simulTimerList)
 
 	def finishSanityCorrection(self, answer):
@@ -777,7 +777,7 @@ class Merlin_PGd(Screen):
 	def onLayoutReady(self):
 		#service = self.session.nav.getCurrentService()
 		#info = service and service.info()
-		#if (info is not None) and not(config.plugins.MerlinEPG.StartFirst.value):
+		#if (info != None) and not(config.plugins.MerlinEPG.StartFirst.value):
 			#nameROH = info.getName().replace('\xc2\x86', '').replace('\xc2\x87', '')
 		if self.srvList:
 			service = ServiceReference(self.srvList.getCurrentSelection())
@@ -787,7 +787,7 @@ class Merlin_PGd(Screen):
 			service = self.session.nav.getCurrentService()
 			info = service and service.info()
 			nameROH = info and info.getName().replace('\xc2\x86', '').replace('\xc2\x87', '')
-		if (nameROH is not None) and not(config.plugins.MerlinEPG.StartFirst.value):
+		if (nameROH != None) and not(config.plugins.MerlinEPG.StartFirst.value):
 		#
 			for idx in range(1, len(self.list)):
 				name = str(idx) + ". " + nameROH
@@ -848,7 +848,7 @@ class Merlin_PGd(Screen):
 		curEV = self["epg_list"].getCurrent()
 		event = curEV[0]
 		service = curEV[1]
-		if event is not None:
+		if event != None:
 			self.session.open(EventViewSimple, event, service)
 
 	def ZapTo(self):
@@ -915,12 +915,12 @@ class Merlin_PGd(Screen):
 		if answer[0]:
 			entry = answer[1]
 			simulTimerList = self.session.nav.RecordTimer.record(entry)
-			if simulTimerList is not None:
+			if simulTimerList != None:
 				for x in simulTimerList:
 					if x.setAutoincreaseEnd(entry):
 						self.session.nav.RecordTimer.timeChanged(x)
 				simulTimerList = self.session.nav.RecordTimer.record(entry)
-				if simulTimerList is not None:
+				if simulTimerList != None:
 					self.session.openWithCallback(self.finishSanityCorrection, TimerSanityConflict, simulTimerList)
 
 	def finishSanityCorrection(self, answer):

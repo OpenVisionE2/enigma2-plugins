@@ -57,7 +57,7 @@ class VlcFileList(MenuList):
 
 	def applySkin(self, desktop, parent):
 		attribs = []
-		if self.skinAttributes is not None:
+		if self.skinAttributes != None:
 			for (attrib, value) in self.skinAttributes:
 				if attrib == "font":
 					self.font = parseFont(value, ((1, 1), (1, 1)))
@@ -89,7 +89,7 @@ class VlcFileList(MenuList):
 			else:
 				png = None
 
-		if png is not None:
+		if png != None:
 			res.append((eListboxPythonMultiContent.TYPE_PIXMAP_ALPHATEST, 10, 0, height, height, png))
 
 		return res
@@ -99,7 +99,7 @@ class VlcFileList(MenuList):
 		filelistEntries = self.getFilesAndDirsCB(self.currentDirectory, self.regex)
 		fileEntries = []
 		directoryEntries = []
-		if filelistEntries is not None:
+		if filelistEntries != None:
 			files, directories = filelistEntries
 			for file in files:
 				name, path = file
@@ -144,7 +144,7 @@ class VlcFileList(MenuList):
 
 	def activate(self):
 		cur = self.getCurrent()
-		if cur is not None:
+		if cur != None:
 			if cur[1]:
 				ret = self.changeDirectory(cur[0])
 			else:
@@ -154,7 +154,7 @@ class VlcFileList(MenuList):
 		return ret
 
 	def changeRegex(self, matchingPattern):
-		if matchingPattern is not None:
+		if matchingPattern != None:
 			self.regex = re.compile(matchingPattern)
 		else:
 			self.regex = None

@@ -130,7 +130,7 @@ class MovieList(GUIComponent):
         self.tags = set()
         self.filter_description = None
 
-        if root is not None:
+        if root != None:
             self.reload(root)
 
         self.redrawList()
@@ -443,7 +443,7 @@ class MovieList(GUIComponent):
                     if isinstance(serviceref, eServiceReferenceDvd) or isinstance(serviceref, eServiceReferenceBludisc):
                         png = LoadPixmap(resolveFilename(SCOPE_PLUGIN, IMAGE_PATH + "dvd_watching.png"))
 
-            if info is not None:
+            if info != None:
                 if _len < 0:  # recalc _len when not already done
                     cur_idx = self.l.getCurrentSelectionIndex()
                     if config.usage.load_length_of_movies_in_moviellist.value:
@@ -466,7 +466,7 @@ class MovieList(GUIComponent):
             else:
                 _len = ""
 
-            if info is not None:
+            if info != None:
                 # service_name = info.getName(serviceref)
                 if not isinstance(info, Info):
                     service = ServiceReference(info.getInfoString(serviceref, iServiceInformation.sServiceref))
@@ -515,7 +515,7 @@ class MovieList(GUIComponent):
                             length = pts / 90000
                         if what == 3:
                             last = pts
-                elif cue is not None:
+                elif cue != None:
                     cut_list = cue.getCutList()
                     for (pts, what) in cut_list:
                         if what == 1 and length == 0:
@@ -523,7 +523,7 @@ class MovieList(GUIComponent):
                         if what == 3:
                             last = pts
                 perc = 0
-                if last is not None and length > 0:
+                if last != None and length > 0:
                     perc = int((float(last) / 90000 / float(length)) * 100)
                     if perc > 100:
                         perc = 100
@@ -629,15 +629,15 @@ class MovieList(GUIComponent):
                 res.append(MultiContentEntryText(pos=(width - 105, 55), size=(100, 20), font=1, flags=RT_HALIGN_RIGHT, text=_len, color=color, color_sel=color)) #Topfi: added color_sel
 
             elif self.list_type == MovieList.LISTTYPE_ORIGINAL:
-                if png is not None: # self.show_folders:
+                if png != None: # self.show_folders:
                     res.append((eListboxPythonMultiContent.TYPE_PIXMAP_ALPHATEST, 0, 29, 20, 20, png))
                 res.append(MultiContentEntryText(pos=(0 + offset, 0), size=(width - 265, 30), font=0, flags=RT_HALIGN_LEFT, text=txt, color=color, color_sel=color)) #Topfi: added color_sel
                 if tags and self.show_tags == MovieList.SHOW_TAGS:
                     res.append(MultiContentEntryText(pos=(width - 255, 0), size=(250, 30), font=2, flags=RT_HALIGN_RIGHT, text=self.arrangeTags(tags), color=color, color_sel=color)) #Topfi: added color_sel
-                    if service is not None:
+                    if service != None:
                         res.append(MultiContentEntryText(pos=(300, 55), size=(200, 25), font=1, flags=RT_HALIGN_LEFT, text=service.getServiceName(), color=color, color_sel=color)) #Topfi: added color_sel
                 else:
-                    if service is not None:
+                    if service != None:
                         res.append(MultiContentEntryText(pos=(width - 185, 0), size=(180, 30), font=2, flags=RT_HALIGN_RIGHT, text=service.getServiceName(), color=color, color_sel=color)) #Topfi: added color_sel
                     res.append(MultiContentEntryText(pos=(0 + offset, 28), size=(width, 25), font=1, flags=RT_HALIGN_LEFT, text=description, color=color, color_sel=color)) #Topfi: added color_sel
                 if self.show_date == MovieList.SHOW_DATE:
@@ -646,7 +646,7 @@ class MovieList(GUIComponent):
                     res.append(MultiContentEntryText(pos=(width - 205, 55), size=(200, 20), font=1, flags=RT_HALIGN_RIGHT, text=_len, color=color, color_sel=color)) #Topfi: added color_sel
 
             elif self.list_type == MovieList.LISTTYPE_COMPACT_DESCRIPTION:
-                if png is not None: # self.show_folders:
+                if png != None: # self.show_folders:
                     res.append((eListboxPythonMultiContent.TYPE_PIXMAP_ALPHATEST, 0, 9, 20, 20, png))
                 res.append(MultiContentEntryText(pos=(0 + offset, 0), size=(width, 23), font=0, flags=RT_HALIGN_LEFT, text=txt, color=color, color_sel=color)) #Topfi: added color_sel
                 res.append(MultiContentEntryText(pos=(0 + offset, 22), size=(width - 212, 17), font=1, flags=RT_HALIGN_LEFT, text=description, color=color, color_sel=color))
@@ -659,7 +659,7 @@ class MovieList(GUIComponent):
                     res.append(MultiContentEntryText(pos=(width - 155, 22), size=(150, 17), font=1, flags=RT_HALIGN_RIGHT, text=service.getServiceName(), color=color, color_sel=color)) #Topfi: added color_sel
 
             elif self.list_type == MovieList.LISTTYPE_COMPACT:
-                if png is not None: # self.show_folders:
+                if png != None: # self.show_folders:
                     res.append((eListboxPythonMultiContent.TYPE_PIXMAP_ALPHATEST, 0, 9, 20, 20, png))
                 res.append(MultiContentEntryText(pos=(offset, 0), size=(width, 25), font=0, flags=RT_HALIGN_LEFT, text=txt, color=color, color_sel=color)) #Topfi: added color_sel
                 if self.show_date == MovieList.SHOW_DATE:
@@ -668,10 +668,10 @@ class MovieList(GUIComponent):
                     res.append(MultiContentEntryText(pos=(width - 80, 0), size=(75, 20), font=0, flags=RT_HALIGN_RIGHT, text=_len, color=color, color_sel=color)) #Topfi: added color_sel
                 if tags and self.show_tags == MovieList.SHOW_TAGS:
                     res.append(MultiContentEntryText(pos=(width - 205, 22), size=(200, 17), font=1, flags=RT_HALIGN_RIGHT, text=self.arrangeTags(tags), color=color, color_sel=color)) #Topfi: added color_sel
-                    if service is not None:
+                    if service != None:
                         res.append(MultiContentEntryText(pos=(250, 22), size=(200, 17), font=1, flags=RT_HALIGN_LEFT, text=service.getServiceName(), color=color, color_sel=color)) #Topfi: added color_sel
                 else:
-                    if service is not None:
+                    if service != None:
                         res.append(MultiContentEntryText(pos=(width - 205, 22), size=(200, 17), font=1, flags=RT_HALIGN_RIGHT, text=service.getServiceName(), color=color, color_sel=color)) #Topfi: added color_sel
 
             elif self.list_type == MovieList.LISTTYPE_MINIMAL_AdvancedMovieSelection:
@@ -692,7 +692,7 @@ class MovieList(GUIComponent):
                 if _len and self.show_time == MovieList.SHOW_TIME:
                     displaytext = displaytext + ' ' + "(" + _len + ")"
 
-                if png is not None: # self.show_folders:
+                if png != None: # self.show_folders:
                     res.append((eListboxPythonMultiContent.TYPE_PIXMAP_ALPHATEST, 0, 3, 20, 20, png))
                 offsetServiceName = 0
                 if self.show_service == MovieList.SHOW_SERVICE:
@@ -709,7 +709,7 @@ class MovieList(GUIComponent):
                 res.append(MultiContentEntryText(pos=(0 + offset, 2), size=(width - (0 + offset + offsetServiceName), 25), font=0, flags=RT_HALIGN_LEFT, text=displaytext, color=color, color_sel=color)) #Topfi: added color_sel
             else:
                 assert(self.list_type == MovieList.LISTTYPE_MINIMAL)
-                if png is not None: # self.show_folders:
+                if png != None: # self.show_folders:
                     res.append((eListboxPythonMultiContent.TYPE_PIXMAP_ALPHATEST, 0, 3, 20, 20, png))
 
                 w = 0
@@ -795,7 +795,7 @@ class MovieList(GUIComponent):
 
     def reload(self, root=None, filter_tags=None):
         self.movieConfig.readDMconf()
-        if root is not None:
+        if root != None:
             self.load(root, filter_tags)
         else:
             self.load(self.root, filter_tags)
@@ -870,12 +870,12 @@ class MovieList(GUIComponent):
             # dvd structure
             if serviceref.flags & eServiceReference.mustDescent:
                 dvd = detectDVDStructure(serviceref.getPath())
-                if dvd is not None:
+                if dvd != None:
                     if serviceref.getPath()[:-1].endswith(TRASH_NAME):
                         continue
                     serviceref = eServiceReferenceDvd(serviceref, True)
                 bludisc = detectBludiscStructure(serviceref.getPath())
-                if bludisc is not None:
+                if bludisc != None:
                     if serviceref.getPath()[:-1].endswith(TRASH_NAME):
                         continue
                     serviceref = eServiceReferenceBludisc(serviceref, True)
@@ -915,7 +915,7 @@ class MovieList(GUIComponent):
 
             info = self.serviceHandler.info(serviceref)
 
-            if dvd is not None:
+            if dvd != None:
                 begin = int(os.stat(dvd).st_mtime)
             else:
                 begin = info.getInfo(serviceref, iServiceInformation.sTimeCreate)
@@ -937,7 +937,7 @@ class MovieList(GUIComponent):
             # filter_tags is either None (which means no filter at all), or
             # a set. In this case, all elements of filter_tags must be present,
             # otherwise the entry will be dropped.
-            if filter_tags is not None and not this_tags.issuperset(filter_tags):
+            if filter_tags != None and not this_tags.issuperset(filter_tags):
                 continue
 
             service_name = info.getName(serviceref)
@@ -1142,7 +1142,7 @@ class MovieList(GUIComponent):
                 return
             cur_idx = self.findIndex(serviceref)
             cue = info.cueSheet()
-            if cue is not None and cur_idx is not None:
+            if cue != None and cur_idx != None:
                 cutList = cue.getCutList()
                 for l in cutList:
                     if l[1] == 3:
@@ -1154,7 +1154,7 @@ class MovieList(GUIComponent):
                     cutList.append(new)
                 result = cue.setCutList(cutList)
                 self.l.invalidateEntry(cur_idx)
-                if result is not None:
+                if result != None:
                     # return error as string
                     return str(result)
                 if len(service_list) == 1:
@@ -1170,7 +1170,7 @@ class MovieList(GUIComponent):
         cue = x.info.cueSheet()
         length = x.info.getLength(x.serviceref)
         last = 1
-        if cue is not None:
+        if cue != None:
             cutList = cue.getCutList()
             for (pts, what) in cutList:
                 if what == 3:

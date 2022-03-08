@@ -164,13 +164,13 @@ class MSNWeatherPlugin(Screen):
 		self.onClose.append(self.__onClose)
 
 	def __onClose(self):
-		if self.weatherData is not None:
+		if self.weatherData != None:
 			self.weatherData.cancel()
 
 	def startRun(self):
-		if self.weatherPluginEntry is not None:
+		if self.weatherPluginEntry != None:
 			self["statustext"].text = _("Getting weather information...")
-			if self.weatherData is not None:
+			if self.weatherData != None:
 				self.weatherData.cancel()
 				self.weatherData = None
 			self.weatherData = MSNWeather()
@@ -251,7 +251,7 @@ class MSNWeatherPlugin(Screen):
 					highTemp = item.high
 					self["weekday%s_temp" % index].text = "%s°%s|%s°%s\n%s" % (highTemp, self.weatherData.degreetype, lowTemp, self.weatherData.degreetype, item.skytextday)
 
-		if self.weatherPluginEntryIndex == 1 and WeatherMSNComp is not None:
+		if self.weatherPluginEntryIndex == 1 and WeatherMSNComp != None:
 			WeatherMSNComp.updateWeather(self.weatherData, result, errortext)
 
 	def config(self):
@@ -260,7 +260,7 @@ class MSNWeatherPlugin(Screen):
 	def setupFinished(self, index, entry=None):
 		self.weatherPluginEntryCount = config.plugins.WeatherPlugin.entrycount.value
 		if self.weatherPluginEntryCount >= 1:
-			if entry is not None:
+			if entry != None:
 				self.weatherPluginEntry = entry
 				self.weatherPluginEntryIndex = index + 1
 			if self.weatherPluginEntry is None:
@@ -302,7 +302,7 @@ class WeatherIcon(Pixmap):
 
 	def paintIconPixmapCB(self, picInfo=None):
 		ptr = self.picload.getData()
-		if ptr is not None:
+		if ptr != None:
 			pic_scale_size = eSize()
 			# To be added in the future:
 			if 'scale' in eSize.__dict__ and self._scaleSize.isValid() and self._aspectRatio.isValid():

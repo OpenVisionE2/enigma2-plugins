@@ -534,7 +534,7 @@ class BirthdayList(List):
 	list = property(getList, setList)
 
 	def getIndexForEntry(self, entry):
-		if self.master is not None:
+		if self.master != None:
 			return self.__list.index(entry)
 		else:
 			return None
@@ -701,7 +701,7 @@ class BirthdayReminderSettings(Screen, ConfigListScreen, HelpableScreen):
 			pass
 
 	def pathSelected(self, res):
-		if res is not None:
+		if res != None:
 			self.path.value = res
 
 	# VirtualKeyBoard callback
@@ -809,7 +809,7 @@ class PathSelectionScreen(Screen):
 
 	def updateTarget(self):
 		currFolder = self["filelist"].getSelection()[0]
-		if currFolder is not None:
+		if currFolder != None:
 			self["target"].setText(currFolder)
 		else:
 			self["target"].setText(_("Invalid Location"))

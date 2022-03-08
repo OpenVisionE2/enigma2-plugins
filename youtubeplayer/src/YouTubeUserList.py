@@ -39,11 +39,11 @@ def YouTubeUserListEntry(youTubeUser, defaultUser):
 	res = [youTubeUser]
 	res.append((eListboxPythonMultiContent.TYPE_TEXT, 35, 1, 470, 20, 0, RT_HALIGN_LEFT, youTubeUser.getName()))
 
-	if defaultUser is not None and defaultUser.getName() == youTubeUser.getName():
+	if defaultUser != None and defaultUser.getName() == youTubeUser.getName():
 		png = LoadPixmap(resolveFilename(SCOPE_PLUGINS, "Extensions/YouTubePlayer/user_default.png"))
 	else:
 		png = LoadPixmap(resolveFilename(SCOPE_PLUGINS, "Extensions/YouTubePlayer/user.png"))
-	if png is not None:
+	if png != None:
 		res.append((eListboxPythonMultiContent.TYPE_PIXMAP_ALPHATEST, 10, 2, 20, 20, png))
 
 	return res
@@ -108,7 +108,7 @@ class YouTubeUserListScreen(Screen):
 
 	def initialUserlistUpdate(self):
 		self.updateUserlist()
-		if self.defaultUser is not None:
+		if self.defaultUser != None:
 			defaultIndex = youTubeUserConfig.getUserlist().index(self.defaultUser)
 			self.userlist.moveToIndex(defaultIndex)
 
@@ -117,7 +117,7 @@ class YouTubeUserListScreen(Screen):
 
 	def keyDelete(self):
 		user = self.userlist.getSelection()
-		if user is not None:
+		if user != None:
 			self.session.openWithCallback(self.deleteCallback, MessageBox, _("Really delete %(user)s?") % {"user": user.getName()})
 
 	def deleteCallback(self, result):
@@ -138,7 +138,7 @@ class YouTubeUserListScreen(Screen):
 
 	def keyEditUser(self):
 		user = self.userlist.getSelection()
-		if user is not None:
+		if user != None:
 			self.session.openWithCallback(self.editCallback, YouTubeUserConfigScreen, user)
 
 	def editCallback(self, result, user):

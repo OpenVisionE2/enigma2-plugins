@@ -122,7 +122,7 @@ class RSSEntryView(RSSBaseView):
 		self.cur_idx = cur_idx
 		self.entries = entries
 
-		if cur_idx is not None and entries is not None:
+		if cur_idx != None and entries != None:
 			self["info"] = StaticText(_("Entry %s/%s") % (cur_idx + 1, entries))
 		else:
 			self["info"] = StaticText()
@@ -169,18 +169,18 @@ class RSSEntryView(RSSBaseView):
 		self["content"].pageDown()
 
 	def next(self):
-		if self.parent is not None:
+		if self.parent != None:
 			(self.data, self.cur_idx, self.entries) = self.parent.nextEntry()
 			self.setContent()
 
 	def previous(self):
-		if self.parent is not None:
+		if self.parent != None:
 			(self.data, self.cur_idx, self.entries) = self.parent.previousEntry()
 			self.setContent()
 
 	def nextFeed(self):
 		# Show next Feed
-		if self.parent is not None:
+		if self.parent != None:
 			result = self.parent.next()
 			self.feedTitle = result[0]
 			self.entries = len(result[1])
@@ -195,7 +195,7 @@ class RSSEntryView(RSSBaseView):
 
 	def previousFeed(self):
 		# Show previous Feed
-		if self.parent is not None:
+		if self.parent != None:
 			result = self.parent.previous()
 			self.feedTitle = result[0]
 			self.entries = len(result[1])
@@ -209,7 +209,7 @@ class RSSEntryView(RSSBaseView):
 			self.setContent()
 
 	def setContent(self):
-		if self.cur_idx is not None and self.entries is not None:
+		if self.cur_idx != None and self.entries != None:
 			self["info"].text = _("Entry %s/%s") % (self.cur_idx + 1, self.entries)
 		else:
 			self["info"].text = ""
@@ -221,7 +221,7 @@ class RSSEntryView(RSSBaseView):
 		self.updateInfo()
 
 	def selectEnclosure(self):
-		if self.data is not None:
+		if self.data != None:
 			RSSBaseView.selectEnclosure(self, self.data[3])
 
 
@@ -297,7 +297,7 @@ class RSSFeedView(RSSBaseView):
 		self.rssPoller.addCallback(self.pollCallback)
 
 	def __close(self):
-		if self.timer is not None:
+		if self.timer != None:
 			self.timer.callback.remove(self.timerTick)
 			self.timer = None
 		self.rssPoller.removeCallback(self.pollCallback)
@@ -346,7 +346,7 @@ class RSSFeedView(RSSBaseView):
 
 	def next(self):
 		# Show next Feed
-		if self.parent is not None:
+		if self.parent != None:
 			(self.feed, self.id) = self.parent.nextFeed()
 			self["content"].list = self.feed.history
 			self["content"].index = 0
@@ -357,7 +357,7 @@ class RSSFeedView(RSSBaseView):
 
 	def previous(self):
 		# Show previous Feed
-		if self.parent is not None:
+		if self.parent != None:
 			(self.feed, self.id) = self.parent.previousFeed()
 			self["content"].list = self.feed.history
 			self["content"].index = 0

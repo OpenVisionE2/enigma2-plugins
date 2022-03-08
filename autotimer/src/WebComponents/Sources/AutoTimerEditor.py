@@ -72,7 +72,7 @@ class AutoTimerEditor(Source):
 				lines = popen('tar xvf %s -C /' % backupFilename).readlines()
 
 				from Plugins.Extensions.AutoTimer.plugin import autotimer
-				if autotimer is not None:
+				if autotimer != None:
 					try:
 						# Force config reload
 						autotimer.configMtime = -1

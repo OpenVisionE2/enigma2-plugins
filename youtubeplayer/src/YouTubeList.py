@@ -245,7 +245,7 @@ class YouTubeListScreen(Screen, NumericalTextInput):
 		self["list"].pageUp()
 
 	def keyRight(self):
-		if self["list"].getSelectionIndex() == len(self.list) - 1 and self.feed.getNextFeed() is not None:
+		if self["list"].getSelectionIndex() == len(self.list) - 1 and self.feed.getNextFeed() != None:
 			dlg = self.session.openWithCallback(self.loadNextFeed, MessageBox, _("Load further entries of current Feed?"))
 		else:
 			self["list"].pageDown()
@@ -254,7 +254,7 @@ class YouTubeListScreen(Screen, NumericalTextInput):
 		self["list"].up()
 
 	def keyDown(self):
-		if self["list"].getSelectionIndex() == len(self.list) - 1 and self.feed.getNextFeed() is not None:
+		if self["list"].getSelectionIndex() == len(self.list) - 1 and self.feed.getNextFeed() != None:
 			dlg = self.session.openWithCallback(self.loadNextFeed, MessageBox, _("Load further entries of current Feed?"))
 		else:
 			self["list"].down()
@@ -274,7 +274,7 @@ class YouTubeListScreen(Screen, NumericalTextInput):
 		self["list"].setList(self.list)
 
 	def showFeed(self, feed, append):
-		if feed is not None:
+		if feed != None:
 			self.feed = feed
 			self.setTitle(feed.getTitle())
 			self["total_results"].setText(feed.getTotalResults())
@@ -287,7 +287,7 @@ class YouTubeListScreen(Screen, NumericalTextInput):
 		self.delay_timer.start(100, 1)
 
 	def addToHistory(self, feed):
-		if feed is not None:
+		if feed != None:
 			del self.history[self.historyIndex: len(self.history)]
 			self.history.insert(self.historyIndex, feed.getSelfFeed())
 			self.historyIndex = self.historyIndex + 1
@@ -367,7 +367,7 @@ class YouTubeListScreen(Screen, NumericalTextInput):
 		if not result:
 			return
 		prevUrl = self.feed.getPreviousFeed()
-		if prevUrl is not None:
+		if prevUrl != None:
 			self.loadFeed(_("Loading additional videos, be patient ..."), prevUrl, _("additional videos"),
 			True, True)
 
@@ -375,7 +375,7 @@ class YouTubeListScreen(Screen, NumericalTextInput):
 		if not result:
 			return
 		nextUrl = self.feed.getNextFeed()
-		if nextUrl is not None:
+		if nextUrl != None:
 			self.loadFeed(_("Loading additional videos, be patient ..."), nextUrl, _("additional videos"),
 			True, True)
 
@@ -423,11 +423,11 @@ class YouTubeListScreen(Screen, NumericalTextInput):
 		self.session.openWithCallback(callback, VlcServerListScreen, currentServer)
 
 	def serverSelectedCB(self, selectedServer, defaultServer):
-		if selectedServer is not None:
+		if selectedServer != None:
 			self.currentServer = selectedServer
-		elif defaultServer is not None:
+		elif defaultServer != None:
 				self.currentServer = defaultServer
-		if defaultServer is not None:
+		if defaultServer != None:
 			config.plugins.youtubeplayer.serverprofile.value = defaultServer.getName()
 			config.plugins.youtubeplayer.serverprofile.save()
 
@@ -506,7 +506,7 @@ class YouTubeListScreen(Screen, NumericalTextInput):
 			self.removeFromPlaylistReal()
 
 	def playlistChoosen(self, playlist):
-		if playlist is not None:
+		if playlist != None:
 			try:
 				interface.addToPlaylist(playlist, self["list"].getCurrent()[0])
 			except Exception as e:
@@ -541,7 +541,7 @@ class YouTubeListScreen(Screen, NumericalTextInput):
 		if BoxInfo.getItem("model") in ("dm8000", "dm800"):
 			self.playDirect()
 		else:
-			if self.currentServer is not None:
+			if self.currentServer != None:
 				self.play()
 			else:
 				self.selectServer(self.selectAndPlayCB, None)
@@ -568,7 +568,7 @@ class YouTubeListScreen(Screen, NumericalTextInput):
 		print("[YTB] Play()")
 		youTubeEntry = self["list"].getCurrent()[0]
 		mrl = self.getVideoUrl(youTubeEntry, config.plugins.youtubeplayer.quality.value)
-		if mrl is not None:
+		if mrl != None:
 			entries = []
 			entries.append((_("Show video detail info"), [self.showVideoInfo, False]))
 			if self["list"].getCurrent()[0].belongsToFavorites():
@@ -592,7 +592,7 @@ class YouTubeListScreen(Screen, NumericalTextInput):
 		print("[YTB] PlayDirect()")
 		youTubeEntry = self["list"].getCurrent()[0]
 		mrl = self.getVideoUrl(youTubeEntry, config.plugins.youtubeplayer.quality.value)
-		if mrl is not None:
+		if mrl != None:
 			entries = []
 			entries.append((_("Show video detail info"), [self.showVideoInfo, False]))
 			if self["list"].getCurrent()[0].belongsToFavorites():
@@ -645,7 +645,7 @@ class YouTubeListScreen(Screen, NumericalTextInput):
 		self.session.openWithCallback(self.menuActionCoosen, YouTubeEntryContextMenu, contextMenuList, self["list"].getCurrent()[0].getTitle())
 
 	def menuActionCoosen(self, function):
-		if function is not None:
+		if function != None:
 			function()
 
 	def searchAgain(self):

@@ -66,7 +66,7 @@ class DownloadMovies(Screen):
         self["key_green"] = Button("")
         self["key_yellow"] = Button("")
         self["key_yellow"] = Label(_("Manual search"))
-        if self.service is not None:
+        if self.service != None:
             self["key_green"] = Label(_("Save infos/cover"))
         else:
             self["key_green"] = Label(_("Background"))
@@ -95,7 +95,7 @@ class DownloadMovies(Screen):
 
         self.tmdb3 = tmdb.init_tmdb3()
 
-        if self.service is not None:
+        if self.service != None:
             global movie_title
             movie_title = ServiceCenter.getInstance().info(self.service).getName(self.service).encode("utf-8").split(" - ")[0].strip()
             self.refreshTimer.start(1, True)
@@ -130,7 +130,7 @@ class DownloadMovies(Screen):
 
     def __cancel(self):
         global fetchingMovies
-        if fetchingMovies is not None:
+        if fetchingMovies != None:
             fetchingMovies.cancel = True
         self.close()
 
@@ -143,7 +143,7 @@ class DownloadMovies(Screen):
         self.setTitle(_("Automatic search and save, please wait..."))
         global current, movie_title, total, fetchingMovies
         self["info"].setText(_("Processing: %s") % current + ' ' + (_("/ %s") % total))
-        if fetchingMovies is not None:
+        if fetchingMovies != None:
             self["title"].setText(_("Current Movie: %s") % movie_title)
         else:
             self.setTitle(_("Automatic search and save"))
@@ -188,7 +188,7 @@ class DownloadMovies(Screen):
     def titleSelected(self):
         global movie_title
         current = self["list"].l.getCurrentSelection()
-        if self.service is not None and current:
+        if self.service != None and current:
             createEIT(self.service.getPath(), movie_title, movie=current[1])
         self.__hide()
 
@@ -201,7 +201,7 @@ class DownloadMovies(Screen):
                 self["description"].setText("%s - %s\n\n%s" % (str(movie.title.encode('utf-8', 'ignore')), str(movie.releasedate), movie.overview.encode('utf-8', 'ignore')))
                 jpg_file = "/tmp/preview.jpg"
                 cover_url = movie.poster_url
-                if cover_url is not None:
+                if cover_url != None:
                     downloadCover(cover_url, jpg_file, True)
                 else:
                     jpg_file = resolveFilename(SCOPE_PLUGIN, "Extensions/AdvancedMovieSelection/images/nocover_de.png")
@@ -223,7 +223,7 @@ class DownloadMovies(Screen):
         #self.session.openWithCallback(self.newTitle, InputBox, title=_("Enter the new Movie title!"), text=movie_title+" "*80, maxSize=55, type=Input.TEXT)
 
     def newTitle(self, newTitle):
-        if newTitle is not None:
+        if newTitle != None:
             self.setTitle(_("Search for %s, please wait...") % (newTitle))
             global movie_title
             movie_title = newTitle.strip()

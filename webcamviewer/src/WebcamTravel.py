@@ -135,7 +135,7 @@ class TravelWebcamviewer(Screen):
 		self.session.openWithCallback(self.onSearchkeyEntered, InputBox, title=_("Please enter a searchkey:"), text="Search Webcams", maxSize=False, type=Input.TEXT)
 
 	def onSearchkeyEntered(self, value):
-		if value is not None and self.finish_loading != False:
+		if value != None and self.finish_loading != False:
  			self.timer_status.start(1)
  			WebcamTravelerAPI().search(self.onDataLoaded, value)
  			self.finish_loading = False

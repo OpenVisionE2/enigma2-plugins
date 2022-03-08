@@ -38,7 +38,7 @@ class VlcServerList(MenuList):
 
 	def applySkin(self, desktop, parent):
 		attribs = []
-		if self.skinAttributes is not None:
+		if self.skinAttributes != None:
 			for (attrib, value) in self.skinAttributes:
 				if attrib == "font":
 					self.font = parseFont(value, ((1, 1), (1, 1)))
@@ -58,12 +58,12 @@ class VlcServerList(MenuList):
 			(eListboxPythonMultiContent.TYPE_TEXT, height + 15, 0, size.width() - height - 15, height, 0, RT_HALIGN_LEFT, vlcServer.getName())
 		]
 
-		if defaultServer is not None and defaultServer.getName() == vlcServer.getName():
+		if defaultServer != None and defaultServer.getName() == vlcServer.getName():
 			png = LoadPixmap(resolveFilename(SCOPE_PLUGINS, "Extensions/VlcPlayer/vlc_default.png"))
 		else:
 			png = LoadPixmap(resolveFilename(SCOPE_PLUGINS, "Extensions/VlcPlayer/vlc.png"))
 
-		if png is not None:
+		if png != None:
 			res.append((eListboxPythonMultiContent.TYPE_PIXMAP_ALPHATEST, 10, 0, height, height, png))
 
 		return res
@@ -127,7 +127,7 @@ class VlcServerListScreen(Screen):
 
 	def initialServerlistUpdate(self):
 		self.updateServerlist()
-		if self.defaultServer is not None:
+		if self.defaultServer != None:
 			defaultIndex = vlcServerConfig.getServerlist().index(self.defaultServer)
 			self.serverlist.moveToIndex(defaultIndex)
 
@@ -153,7 +153,7 @@ class VlcServerListScreen(Screen):
 
 	def keyDelete(self):
 		server = self.serverlist.getSelection()
-		if server is not None:
+		if server != None:
 			self.session.openWithCallback(self.deleteCallback, MessageBox, _("Really delete this Server?"))
 
 	def deleteCallback(self, result):
@@ -163,7 +163,7 @@ class VlcServerListScreen(Screen):
 
 	def keyEditServer(self):
 		server = self.serverlist.getSelection()
-		if server is not None:
+		if server != None:
 			self.session.openWithCallback(self.editCallback, VlcServerConfigScreen, server)
 
 	def editCallback(self, result, server):
@@ -178,10 +178,10 @@ class VlcServerListScreen(Screen):
 	def keyGetDefault(self):
 		server = self.serverlist.getSelection()
 		if config.plugins.vlcplayer.defaultserver.value != '':
-			if server is not None:
+			if server != None:
 				self.session.openWithCallback(self.actionCallback, ChoiceBox, title=_("Choose an action:"), list=[(_("Set as default"), "set"), (_("Reset default"), "reset")])
 		else:
-			if server is not None:
+			if server != None:
 				self.keySetAsDefault()
 
 	def actionCallback(self, answer):

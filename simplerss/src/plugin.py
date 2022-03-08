@@ -96,7 +96,7 @@ def autostart(reason, **kwargs):
 		from RSSPoller import RSSPoller
 		rssPoller = RSSPoller()
 	elif reason == 1:
-		if rssPoller is not None:
+		if rssPoller != None:
 			rssPoller.shutdown()
 			rssPoller = None
 

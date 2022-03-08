@@ -187,12 +187,12 @@ def Partnerbox_SingleEntry(self, service, eventId, beginTime, duration, EventNam
 	if self.listSizeWidth != self.l.getItemSize().width(): #recalc size if scrollbar is shown
 		self.recalcEntrySize()
 
-	if (beginTime is not None) and (beginTime + duration < time()):
+	if (beginTime != None) and (beginTime + duration < time()):
 		foreColor = self.foreColorPast
 		backColor = self.backColorPast
 		foreColorSel = self.foreColorPastSelected
 		backColorSel = self.backColorPastSelected
-	elif (beginTime is not None) and (beginTime < time()):
+	elif (beginTime != None) and (beginTime < time()):
 		foreColor = self.foreColorNow
 		backColor = self.backColorNow
 		foreColorSel = self.foreColorNowSelected
@@ -280,7 +280,7 @@ def Partnerbox_MultiEntry(self, changecount, service, eventId, beginTime, durati
 	fact4 = 90 * sf
 	borderw = 1 * sf
 	res = [None, (eListboxPythonMultiContent.TYPE_TEXT, r1.x, r1.y, r1.w, r1.h, 0, RT_HALIGN_LEFT | RT_VALIGN_CENTER, service_name)] # no private data needed
-	if beginTime is not None:
+	if beginTime != None:
 		clock_types = self.getPixmapForEntry(service, eventId, beginTime, duration)
 		if nowTime < beginTime:
 			begin = localtime(beginTime)
@@ -321,7 +321,7 @@ def getClockTypesEntry(self, service, eventId, beginTime, duration):
 	if not beginTime:
 		return None
 	rec = self.isInTimer(eventId, beginTime, duration, service)
-	if rec is not None:
+	if rec != None:
 		return rec[1]
 	else:
 		return None

@@ -657,7 +657,7 @@ class SelectionEventInfo:
         if self.execing and config.movielist.description.value == MovieList.SHOW_DESCRIPTION or config.AdvancedMovieSelection.showpreview.value or config.AdvancedMovieSelection.video_preview.value:
             evt = self["list"].getCurrentEvent()
             serviceref = self.getCurrent()
-            if serviceref is not None and isinstance(self["list"].root, eServiceReferenceListAll):
+            if serviceref != None and isinstance(self["list"].root, eServiceReferenceListAll):
                 self.updateTitle(os.path.dirname(serviceref.getPath()))
             if config.movielist.description.value == MovieList.SHOW_DESCRIPTION:
                 if evt:
@@ -1034,7 +1034,7 @@ class MovieSelection(Screen, HelpableScreen, SelectionEventInfo, MoviePreview, Q
         event = self["list"].getCurrentEvent()
         answer = answer and answer[1]
         if answer == "Ei":
-            if event is not None:
+            if event != None:
                 from AdvancedMovieSelectionEventView import EventViewSimple
                 from ServiceReference import ServiceReference
                 serviceref = self.getCurrent()
@@ -1042,15 +1042,15 @@ class MovieSelection(Screen, HelpableScreen, SelectionEventInfo, MoviePreview, Q
                 if evt:
                     self.session.open(EventViewSimple, evt, serviceref, self.eventViewCallback)
         if answer == "Ii":
-            if event is not None:
+            if event != None:
                 IeventName = event.getEventName()
                 self.session.open(IMDB, IeventName)
         if answer == "Oi":
-            if event is not None:
+            if event != None:
                 IeventName = event.getEventName()
                 self.session.open(OFDB, IeventName)
         if answer == "Ti":
-            if event is not None:
+            if event != None:
                 eventName = event.getEventName()
                 self.session.open(TMDbMain, eventName)
 
@@ -1131,7 +1131,7 @@ class MovieSelection(Screen, HelpableScreen, SelectionEventInfo, MoviePreview, Q
 
     def setMovieStatus(self, status):
         current = self.getCurrent()
-        if current is not None:
+        if current != None:
             cut_list = self["list"].setMovieStatus(current, status)
             if isinstance(cut_list, str):
                 self.session.open(MessageBox, _("Error") + "\n" + cut_list, MessageBox.TYPE_ERROR)
@@ -1141,7 +1141,7 @@ class MovieSelection(Screen, HelpableScreen, SelectionEventInfo, MoviePreview, Q
 
     def movieSelected(self):
         current = self.getCurrent()
-        if current is not None:
+        if current != None:
             if current.flags & eServiceReference.mustDescent:
                 self.gotFilename(current.getPath())
             else:
@@ -1153,7 +1153,7 @@ class MovieSelection(Screen, HelpableScreen, SelectionEventInfo, MoviePreview, Q
         if not current:
             # create dummy service
             current = eServiceReferenceBackDir("..")
-        if current is not None:
+        if current != None:
             if not config.usage.load_length_of_movies_in_moviellist.value:
                 self.session.open(MovieContextMenu, self, current)
             else:
@@ -1183,7 +1183,7 @@ class MovieSelection(Screen, HelpableScreen, SelectionEventInfo, MoviePreview, Q
         config.AdvancedMovieSelection.movielibrary_show.save()
         config.AdvancedMovieSelection.movielibrary_sort.save()
         service = self.getCurrent()
-        if service is not None:
+        if service != None:
             config.AdvancedMovieSelection.last_selected_service.value = service.toString()
         else:
             config.AdvancedMovieSelection.last_selected_service.value = ""
@@ -1192,7 +1192,7 @@ class MovieSelection(Screen, HelpableScreen, SelectionEventInfo, MoviePreview, Q
     def showTrailer(self):
         if pluginPresent.YTTrailer == True:
             event = self["list"].getCurrentEvent()
-            if event is not None:
+            if event != None:
                 eventname = event.getEventName()
                 self.session.open(YTTrailerList, eventname)
             else:
@@ -1316,7 +1316,7 @@ class MovieSelection(Screen, HelpableScreen, SelectionEventInfo, MoviePreview, Q
         extra_info = []
         if self.selected_tags:
             extra_info.append(self["list"].arrangeTags(" ".join(self.selected_tags)))
-        if self.list.filter_description is not None:
+        if self.list.filter_description != None:
             extra_info.append(self.list.filter_description)
 
         if len(extra_info) > 0:
@@ -1354,11 +1354,11 @@ class MovieSelection(Screen, HelpableScreen, SelectionEventInfo, MoviePreview, Q
         )
 
     def gotFilename(self, res):
-        if res is not None:# and res is not config.movielist.last_videodir.value:
+        if res != None:# and res is not config.movielist.last_videodir.value:
             if fileExists(res):
                 selection = None
                 current = self.getCurrent()
-                if current is not None:
+                if current != None:
                     if current.flags & eServiceReference.mustDescent:
                         if current.getName() == "..":
                             selection = eServiceReference("2:47:1:0:0:0:0:0:0:0:" + self["list"].root.getPath())
@@ -1411,7 +1411,7 @@ class MovieSelection(Screen, HelpableScreen, SelectionEventInfo, MoviePreview, Q
         if tag and tag[0] == _(SHOW_ALL_MOVIES):
             self.showAll()
             return
-        if tag is not None:
+        if tag != None:
             self.selected_tags = set([tag[1]])
             if self.selected_tags_ele:
                 self.selected_tags_ele.value = tag[1]

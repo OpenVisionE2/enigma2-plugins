@@ -112,7 +112,7 @@ class GrowleeConnection:
 		self.pending = 0
 		for connection, host in self.connections:
 			d = connection.stop()
-			if d is not None:
+			if d != None:
 				self.pending += 1
 				d.addBoth(self.maybeClose, defer=defer)
 		del self.connections[:]

@@ -72,7 +72,7 @@ class AutoTimerImportSelector(Screen):
 
 	def importerClosed(self, ret):
 		ret = ret and ret[0]
-		if ret is not None:
+		if ret != None:
 			ret.name = ret.match
 		self.close(ret)
 
@@ -146,7 +146,7 @@ class AutoTimerImporter(Screen):
 		append = entries.append
 		self["list"] = SelectionList()
 
-		if disabled is not None:
+		if disabled != None:
 			append(
 				SelectionEntryComponent(
 					': '.join((_("Enabled"), {True: _("disable"), False: _("enable")}[bool(disabled)])),
@@ -198,7 +198,7 @@ class AutoTimerImporter(Screen):
 					True
 			))
 
-		if afterEvent is not None:
+		if afterEvent != None:
 			append(
 				SelectionEntryComponent(
 					': '.join((_("After event"), afterevent[afterEvent])),
@@ -207,7 +207,7 @@ class AutoTimerImporter(Screen):
 					True
 			))
 
-		if justplay is not None:
+		if justplay != None:
 			append(
 				SelectionEntryComponent(
 					': '.join((_("Timer type"), {0: _("record"), 1: _("zap")}[int(justplay)])),
@@ -216,7 +216,7 @@ class AutoTimerImporter(Screen):
 					True
 			))
 
-		if dirname is not None:
+		if dirname != None:
 			append(
 				SelectionEntryComponent(
 					': '.join((_("Location"), dirname or "/hdd/movie/")),
@@ -279,7 +279,7 @@ class AutoTimerImporter(Screen):
 			))
 
 	def trailingWhitespaceRemoval(self, ret):
-		if ret is not None:
+		if ret != None:
 			if ret:
 				self.autotimer.match = self.autotimer.match.rstrip()
 			self.close((

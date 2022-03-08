@@ -84,7 +84,7 @@ class MovieRetitle(Screen, ConfigListScreen):
 		self.setTitle(_("Name and Description Input"))
 
 	def pathSelected(self, res):
-		if res is not None:
+		if res != None:
 			videodirs = config.movielist.videodirs.value
 			if videodirs != self.input_dir.choices:
 				self.input_dir.setChoices(videodirs, default=res)

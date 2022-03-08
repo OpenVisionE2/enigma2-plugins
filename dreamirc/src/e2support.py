@@ -209,7 +209,7 @@ class AbstractAccount(styles.Versioned):
             d = self._startLogOn(chatui)
             d.addErrback(self._loginFailed)
             d.addCallback(self._cb_logOn)
-            # if chatui is not None:
+            # if chatui != None:
             # (I don't particularly like having to pass chatUI to this function,
             # but we haven't factored it out yet.)
             d.addCallback(chatui.registerAccountClient)

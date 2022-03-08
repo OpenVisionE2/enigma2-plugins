@@ -197,7 +197,7 @@ class PageElement(object):
             newChild = NavigableString(newChild)
 
         position = min(position, len(self.contents))
-        if hasattr(newChild, 'parent') and newChild.parent is not None:
+        if hasattr(newChild, 'parent') and newChild.parent != None:
             # We're 'inserting' an element that's already one
             # of this object's children.
             if newChild.parent is self:
@@ -375,31 +375,31 @@ class PageElement(object):
     #NavigableStrings and Tags.
     def nextGenerator(self):
         i = self
-        while i is not None:
+        while i != None:
             i = i.next
             yield i
 
     def nextSiblingGenerator(self):
         i = self
-        while i is not None:
+        while i != None:
             i = i.nextSibling
             yield i
 
     def previousGenerator(self):
         i = self
-        while i is not None:
+        while i != None:
             i = i.previous
             yield i
 
     def previousSiblingGenerator(self):
         i = self
-        while i is not None:
+        while i != None:
             i = i.previousSibling
             yield i
 
     def parentGenerator(self):
         i = self
-        while i is not None:
+        while i != None:
             i = i.parent
             yield i
 
@@ -792,7 +792,7 @@ class Tag(PageElement):
         if len(self.contents) == 0:
             return
         current = self.contents[0]
-        while current is not None:
+        while current != None:
             next = current.next
             if isinstance(current, Tag):
                 del current.contents[:]
@@ -986,7 +986,7 @@ class SoupStrainer:
         #print("Matching %s against %s" % (markup, matchAgainst))
         result = False
         if matchAgainst is True:
-            result = markup is not None
+            result = markup != None
         elif callable(matchAgainst):
             result = matchAgainst(markup)
         else:
@@ -1320,7 +1320,7 @@ class BeautifulStoneSoup(Tag, SGMLParser):
                 #last occurance.
                 popTo = name
                 break
-            if (nestingResetTriggers is not None
+            if (nestingResetTriggers != None
                 and p.name in nestingResetTriggers) \
                 or (nestingResetTriggers is None and isResetNesting
                     and p.name in self.RESET_NESTING_TAGS):
@@ -1604,7 +1604,7 @@ class BeautifulSoup(BeautifulStoneSoup):
         if httpEquiv and contentType: # It's an interesting meta tag.
             match = self.CHARSET_RE.search(contentType)
             if match:
-                if (self.declaredHTMLEncoding is not None or
+                if (self.declaredHTMLEncoding != None or
                     self.originalEncoding == self.fromEncoding):
                     # An HTML encoding was sniffed while converting
                     # the document to Unicode, or an HTML encoding was
@@ -1948,7 +1948,7 @@ class UnicodeDammit:
         if not xml_encoding_match and isHTML:
             regexp = re.compile('<\s*meta[^>]+charset=([^>]*?)[;\'">]', re.I)
             xml_encoding_match = regexp.search(xml_data)
-        if xml_encoding_match is not None:
+        if xml_encoding_match != None:
             xml_encoding = xml_encoding_match.groups()[0].lower()
             if isHTML:
                 self.declaredHTMLEncoding = xml_encoding

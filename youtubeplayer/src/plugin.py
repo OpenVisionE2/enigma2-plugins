@@ -77,7 +77,7 @@ class YouTubeManager():
 		self.session.openWithCallback(self.standardFeedSelected, YouTubeStdFeedSelectionScreen)
 
 	def standardFeedSelected(self, stdFeedUrl):
-		if stdFeedUrl is not None:
+		if stdFeedUrl != None:
 			dlg = self.session.openWithCallback(self.youTubeListScreenClosed, YouTubeListScreen)
 			dlg.loadStandardFeed(stdFeedUrl)
 		else:
@@ -95,7 +95,7 @@ class YouTubeManager():
 			self.backToSearchDialog()
 
 	def playlistChoosen(self, playlist):
-		if playlist is not None:
+		if playlist != None:
 			dlg = self.session.openWithCallback(self.youTubeListScreenClosed, YouTubeListScreen)
 			dlg.loadPlaylistFeed(playlist)
 		else:

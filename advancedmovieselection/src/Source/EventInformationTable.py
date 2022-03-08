@@ -403,7 +403,7 @@ def writeEIT(file_name, eit_file, name, overview, genre, extended_info, released
         _file.close()
         return True
     except:
-        if _file is not None:
+        if _file != None:
             _file.close()
         printStackTrace()
         return False
@@ -935,7 +935,7 @@ if __name__ == '__main__':
                     continue
             serviceref = eServiceReference(None, '4097:0:0:0:0:0:0:0:0:0:' + file_name)
             dvd = detectDVDStructure(serviceref.getPath())
-            if dvd is not None:
+            if dvd != None:
                 serviceref = eServiceReferenceDvd(serviceref, True)
             if ext == 'iso':
                 serviceref = eServiceReferenceDvd(serviceref)

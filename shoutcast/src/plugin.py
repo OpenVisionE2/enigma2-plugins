@@ -287,7 +287,7 @@ class SHOUTcastWidget(Screen):
 			self.currentStreamingStation = _("Recording stream station")
 			self.playServiceStream("http://localhost:9191")
 
-		if InfoBar.instance is not None:
+		if InfoBar.instance != None:
 			self.servicelist = InfoBar.instance.servicelist
 		else:
 			self.servicelist = None
@@ -310,7 +310,7 @@ class SHOUTcastWidget(Screen):
 		if self.pipZapAvailable is None:
 			return
 		if BoxInfo.getItem("NumVideoDecoders", 1) > 1:
-			if InfoBar.instance is not None:
+			if InfoBar.instance != None:
 				modeslist = []
 				keyslist = []
 				if InfoBar.pipShown(InfoBar.instance):
@@ -349,10 +349,10 @@ class SHOUTcastWidget(Screen):
 			except:
 				pass
 		elif answer == "move":
-			if InfoBar.instance is not None:
+			if InfoBar.instance != None:
 				InfoBar.movePiP(InfoBar.instance)
 		elif answer == "stop":
-			if InfoBar.instance is not None:
+			if InfoBar.instance != None:
 				if InfoBar.pipShown(InfoBar.instance):
 					slist = self.servicelist
 					try:
@@ -497,7 +497,7 @@ class SHOUTcastWidget(Screen):
 				else:
 					self.session.open(MessageBox, _("Only running streamings can be recorded!"), type=MessageBox.TYPE_INFO, timeout=20)
 		else:
-			if self.pipZapAvailable is not None and BoxInfo.getItem("NumVideoDecoders", 1) > 1:
+			if self.pipZapAvailable != None and BoxInfo.getItem("NumVideoDecoders", 1) > 1:
 				self.activatePiP()
 			else:
 				self.showWindow()
@@ -535,7 +535,7 @@ class SHOUTcastWidget(Screen):
 				self.stopReloadStationListTimer()
 				self.getFavoriteList(self.favoriteListIndex)
 		else:
-			if self.pipZapAvailable is not None and BoxInfo.getItem("NumVideoDecoders", 1) > 1:
+			if self.pipZapAvailable != None and BoxInfo.getItem("NumVideoDecoders", 1) > 1:
 				self.openServiceList()
 			else:
 				self.showWindow()
@@ -576,7 +576,7 @@ class SHOUTcastWidget(Screen):
 			self.showGenreList()
 
 	def callbackGenreListError(self, error=None):
-		if error is not None:
+		if error != None:
 			try:
 				self["list"].hide()
 				self["statustext"].setText(_("%s\nPress green-button to try again...") % str(error.getErrorMessage()))
@@ -760,17 +760,17 @@ class SHOUTcastWidget(Screen):
 		if not self.visible:
 			self.showWindow()
 		options = [(_("Config"), self.config), (_("Search"), self.search), ]
-		if self.mode == self.FAVORITELIST and self.getSelectedItem() is not None:
+		if self.mode == self.FAVORITELIST and self.getSelectedItem() != None:
 			options.extend(((_("rename current selected favorite"), self.renameFavorite),))
 			options.extend(((_("remove current selected favorite"), self.removeFavorite),))
-		elif self.mode == self.GENRELIST and self.getSelectedItem() is not None:
+		elif self.mode == self.GENRELIST and self.getSelectedItem() != None:
 			options.extend(((_("Add current selected genre to favorite"), self.addGenreToFavorite),))
-		elif self.mode == self.STATIONLIST and self.getSelectedItem() is not None:
+		elif self.mode == self.STATIONLIST and self.getSelectedItem() != None:
 			options.extend(((_("Add current selected station to favorite"), self.addStationToFavorite),))
 		if len(self.currentStreamingURL) != 0:
 			options.extend(((_("Add current playing stream to favorite"), self.addCurrentStreamToFavorite),))
 		options.extend(((_("Hide"), self.hideWindow),))
-		if self.pipZapAvailable is not None and BoxInfo.getItem("NumVideoDecoders", 1) > 1:
+		if self.pipZapAvailable != None and BoxInfo.getItem("NumVideoDecoders", 1) > 1:
 			options.extend(((_("Menu PiP"), self.activatePiP),))
 		self.session.openWithCallback(self.menuCallback, ChoiceBox, list=options)
 
@@ -787,12 +787,12 @@ class SHOUTcastWidget(Screen):
 
 	def addGenreToFavorite(self):
 		sel = self.getSelectedItem()
-		if sel is not None:
+		if sel != None:
 			self.addFavorite(name=sel.name, text=sel.name, favoritetype="genre")
 
 	def addStationToFavorite(self):
 		sel = self.getSelectedItem()
-		if sel is not None:
+		if sel != None:
 			self.addFavorite(name=sel.name, text=self.SCY + "/sbin/tunein-station.pls?id=%s" % (sel.id), favoritetype="pls", audio=sel.mt, bitrate=sel.br)
 
 	def addCurrentStreamToFavorite(self):
@@ -812,7 +812,7 @@ class SHOUTcastWidget(Screen):
 
 	def renameFavorite(self):
 		sel = self.getSelectedItem()
-		if sel is not None:
+		if sel != None:
 			self.session.openWithCallback(self.renameFavoriteFinished, VirtualKeyBoard, title=_("Enter new name for favorite item"), text=sel.configItem.name.value)
 
 	def renameFavoriteFinished(self, text=None):
@@ -826,7 +826,7 @@ class SHOUTcastWidget(Screen):
 
 	def removeFavorite(self):
 		sel = self.getSelectedItem()
-		if sel is not None:
+		if sel != None:
 			self.favoriteConfig.entriescount.value = self.favoriteConfig.entriescount.value - 1
 			self.favoriteConfig.entriescount.save()
 			self.favoriteConfig.Entries.remove(sel.configItem)
@@ -871,7 +871,7 @@ class SHOUTcastWidget(Screen):
 				self.callbackStationList(self.stationListXML)
 
 	def callbackStationListError(self, error=None):
-		if error is not None:
+		if error != None:
 			try:
 				self["list"].hide()
 				self["statustext"].setText(_("%s\nPress OK to try again...") % str(error.getErrorMessage()))
@@ -879,7 +879,7 @@ class SHOUTcastWidget(Screen):
 				pass
 
 	def Error(self, error=None):
-		if error is not None:
+		if error != None:
 			# print("[SHOUTcast] Error: %s\n" % error)
 			try:
 				self["list"].hide()
@@ -1098,7 +1098,7 @@ class Cover(Pixmap):
 			self.instance.setPixmap(ptr.__deref__())
 			if self.visible:
 				self.doShow()
-		if self.decodeNext is not None:
+		if self.decodeNext != None:
 			self.decoding = self.decodeNext
 			self.decodeNext = None
 			if self.picload.startDecode(self.decoding) != 0:
@@ -1108,7 +1108,7 @@ class Cover(Pixmap):
 			self.decoding = None
 
 	def updateIcon(self, filename):
-		if self.decoding is not None:
+		if self.decoding != None:
 			self.decodeNext = filename
 		else:
 			if self.picload.startDecode(filename) == 0:
@@ -1280,7 +1280,7 @@ class SHOUTcastSetup(Screen, ConfigListScreen):
 			self.session.openWithCallback(self.pathSelected, SHOUTcastStreamripperRecordingPath, config.plugins.shoutcast.dirname.value)
 
 	def pathSelected(self, res):
-		if res is not None:
+		if res != None:
 			config.plugins.shoutcast.dirname.value = res
 
 	def keySave(self):
@@ -1360,7 +1360,7 @@ class SHOUTcastStreamripperRecordingPath(Screen):
 
 	def updateTarget(self):
 		currFolder = self["filelist"].getSelection()[0]
-		if currFolder is not None:
+		if currFolder != None:
 			self["target"].setText(currFolder)
 		else:
 			self["target"].setText(_("Invalid Location"))
@@ -1388,7 +1388,7 @@ class SHOUTcastStreamripperRecordingPath(Screen):
 
 	def updateTarget(self):
 		currFolder = self["filelist"].getSelection()[0]
-		if currFolder is not None:
+		if currFolder != None:
 			self["target"].setText(currFolder)
 		else:
 			self["target"].setText(_("Invalid Location"))

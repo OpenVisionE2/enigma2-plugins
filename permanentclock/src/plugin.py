@@ -385,7 +385,7 @@ class PermanentClockPositioner(Screen):
 		menu = [(_("Save"), "save"), (_("Set slider"), "slider")]
 
 		def extraAction(choice):
-			if choice is not None:
+			if choice != None:
 				if choice[1] == "slider":
 					self.session.openWithCallback(self.setSliderStep, InputBox, title=_("Set slider step (1 - 20):"), text=str(self.slider), type=Input.NUMBER)
 				elif choice[1] == "save":
@@ -462,19 +462,19 @@ class PermanentClockMenu(Screen):
 			pClock.dialog.hide()
 			self.session.openWithCallback(self.positionerCallback, PermanentClockPositioner)
 		if sel == _("Show analog clock") or sel == _("Show digital clock"):
-			if pClock.dialog is not None:
+			if pClock.dialog != None:
 				pClock.dialog.hide()
 				pClock.changeAnalog()
 				self.showMenu()
 				if pClock.dialog is None:
 					pClock.gotSession(self.session)
 		if sel == _("Disable key 'long EXIT' show/hide"):
-			if pClock.dialog is not None:
+			if pClock.dialog != None:
 				pClock.changeKey()
 				self.showMenu()
 				pClock.unload_key()
 		if sel == _("Enable key 'long EXIT' show/hide"):
-			if pClock.dialog is not None:
+			if pClock.dialog != None:
 				pClock.changeKey()
 				self.showMenu()
 				pClock.start_key()

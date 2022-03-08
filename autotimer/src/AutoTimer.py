@@ -61,7 +61,7 @@ SIMILARNOTIFICATIONID = 'AutoTimerSimilarUsedNotification'
 
 def timeSimilarityPercent(rtimer, evtBegin, evtEnd, timer=None):
 	#print("rtimer [",rtimer.begin,",",rtimer.end,"] (",rtimer.end-rtimer.begin," s) - evt [",evtBegin,",",evtEnd,"] (",evtEnd-evtBegin," s)")
-	if (timer is not None) and (timer.offset is not None):
+	if (timer != None) and (timer.offset != None):
 		# remove custom offset from rtimer using timer.offset as RecordTimerEntry doesn't store the offset
 		# ('evtBegin' and 'evtEnd' are also without offset)
 		rtimerBegin = rtimer.begin + timer.offset[0]
@@ -660,7 +660,7 @@ class AutoTimer:
 				afterEvent = timer.getAfterEventTimespan(localtime(end))
 				if afterEvent is None:
 					afterEvent = timer.getAfterEvent()
-				if afterEvent is not None:
+				if afterEvent != None:
 					newEntry.afterEvent = afterEvent
 
 			newEntry.dirname = timer.destination
@@ -686,7 +686,7 @@ class AutoTimer:
 				# XXX: this won't perform a sanity check, but do we actually want to do so?
 				recordHandler.timeChanged(newEntry)
 
-				if renameTimer is not None and timer.series_labeling:
+				if renameTimer != None and timer.series_labeling:
 					renameTimer(newEntry, name, evtBegin, evtEnd)
 
 			else:
@@ -756,7 +756,7 @@ class AutoTimer:
 					newEntry.extdesc = extdesc
 					timerdict[serviceref].append(newEntry)
 
-					if renameTimer is not None and timer.series_labeling:
+					if renameTimer != None and timer.series_labeling:
 						renameTimer(newEntry, name, evtBegin, evtEnd)
 
 					# Similar timers are in new timers list and additionally in similar timers list
@@ -780,7 +780,7 @@ class AutoTimer:
 		sleep(0.5)
 
 	def JobMessage(self):
-		if self.callback is not None:
+		if self.callback != None:
 			if self.simulateOnly == True:
 				self.callback(self.autotimers, self.skipped)
 			else:
@@ -816,7 +816,7 @@ class AutoTimer:
 #		remove = []
 		for timer in chain(recordHandler.timer_list, recordHandler.processed_timers):
 			if timer and timer.service_ref:
-				if timer.eit is not None:
+				if timer.eit != None:
 					event = epgcache.lookupEventId(timer.service_ref.ref, timer.eit)
 					if event:
 						timer.extdesc = event.getExtendedDescription() or ''

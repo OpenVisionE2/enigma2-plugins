@@ -515,9 +515,9 @@ class ARDMediathek(Screen):
 							self.playCachedFile()
 
 	def play(self, callback):
-		if callback is not None:
+		if callback != None:
 			url = callback[1]
-			if self.transcodeServer is not None:
+			if self.transcodeServer != None:
 				if self.transcodeServer == "LT Stream2Dream":
 					r = streamplayer.play(url)
 					if r == "ok":

@@ -157,7 +157,7 @@ class ServiceCenter:
 
     def info(self, serviceref):
         info = eServiceCenter.getInstance().info(serviceref)
-        if info is not None:
+        if info != None:
             if serviceref.getPath().endswith('.ts'):
                 info.cueSheet = CueSheet(serviceref)
                 return info
@@ -223,7 +223,7 @@ class ServiceInfo:
                     self.name = serviceref.getName()
                 return
 
-            if meta_path is not None and os.path.exists(meta_path):
+            if meta_path != None and os.path.exists(meta_path):
                 meta_file = open(meta_path, 'r')
                 meta_file.readline()
                 self.name = meta_file.readline().rstrip('\r\n')

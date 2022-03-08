@@ -59,7 +59,7 @@ class TrashMovieList(GUIComponent):
     def __init__(self, root):
         GUIComponent.__init__(self)
         self.l = eListboxPythonMultiContent()
-        if root is not None:
+        if root != None:
             self.reload(root)
         self.l.setFont(0, gFont("Regular", 20))
         self.l.setFont(1, gFont("Regular", 18))
@@ -245,7 +245,7 @@ class Wastebasket(Screen, HelpableScreen):
         else:
             if self.staticIP:
                 for client in getClients():
-                    if client is not None:
+                    if client != None:
                         lastEmptyEvent = client.lastTrashEvent()
                         if lastEmptyEvent != -1:
                             t = localtime(lastEmptyEvent)

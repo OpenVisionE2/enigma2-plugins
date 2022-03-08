@@ -29,7 +29,7 @@ from os import system
 def isValidServiceId(id):
 	testSRef = eServiceReference(id, 0, "Just a TestReference")
 	info = eServiceCenter.getInstance().info(testSRef)
-	return info is not None
+	return info != None
 
 
 ENIGMA_SERVICEGS_ID = eServiceReference.idServiceMP3
@@ -376,7 +376,7 @@ class VlcPlayer(Screen, InfoBarNotifications, InfoBarAudioSelection, InfoBarSubt
 			)
 			self.close()
 			return
-		if url is not None:
+		if url != None:
 			self.url = url
 			if self.server.getUseCachedir():
 				self.session.openWithCallback(self.actions, ChoiceBox, title=_("Select method?"), list=[(_("Direct play"), "dirplay"), (_("Save as .ts and play"), "cache"), ])
@@ -443,7 +443,7 @@ class VlcPlayer(Screen, InfoBarNotifications, InfoBarAudioSelection, InfoBarSubt
 	def subtitleSelection(self):
 		service = self.session.nav.getCurrentService()
 		subtitle = service and service.subtitle()
-		if subtitle is not None:
+		if subtitle != None:
 			from Screens.AudioSelection import SubtitleSelection
 			try:
 				self.session.open(SubtitleSelection, self)
@@ -553,7 +553,7 @@ class VlcPlayer(Screen, InfoBarNotifications, InfoBarAudioSelection, InfoBarSubt
 				track = 1
 			else:
 				track = int(track)
-			if chapter is not None and int(chapter) > 1:
+			if chapter != None and int(chapter) > 1:
 				chapter = int(chapter) - 1
 			else:
 				chapter = 1
@@ -604,7 +604,7 @@ class VlcPlayer(Screen, InfoBarNotifications, InfoBarAudioSelection, InfoBarSubt
 	def seekBack(self):
 		if isDvdUrl(self.filename):
 			url, track, chapter = splitDvdUrl(self.filename)
-			if track is not None and int(track) > 2:
+			if track != None and int(track) > 2:
 				track = int(track) - 1
 				url = "%s@%d" % (url, track)
 			else:

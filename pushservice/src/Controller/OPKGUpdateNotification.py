@@ -53,7 +53,7 @@ class OPKGUpdateNotification(ControllerBase):
 		# At the end a plugin has to call one of the functions: callback or errback
 		# Callback should return with at least one of the parameter: Header, Body, Attachment
 		# If empty or none is returned, nothing will be sent
-		if iSoftwareTools.lastDownloadDate is not None and iSoftwareTools.lastDownloadDate > (time() - (24 * 60 * 60)):
+		if iSoftwareTools.lastDownloadDate != None and iSoftwareTools.lastDownloadDate > (time() - (24 * 60 * 60)):
 			# Last refresh was within one day
 			return self.buildList(callback, errback)
 		else:
@@ -65,7 +65,7 @@ class OPKGUpdateNotification(ControllerBase):
 		callback()
 
 	def getUpdateInfosCB(self, callback, errback, retval=None):
-		if retval is not None:
+		if retval != None:
 			if retval is True:
 				if iSoftwareTools.available_updates is not 0:
 					# _("There are at least ") + str(iSoftwareTools.available_updates) + _(" updates available.")

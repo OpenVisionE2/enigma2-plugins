@@ -29,7 +29,7 @@ def hasLastPosition(service):
         except:
             pass
         finally:
-            if cuts_file is not None:
+            if cuts_file != None:
                 cuts_file.close()
 
         return False
@@ -66,7 +66,7 @@ def checkDVDCuts(fileName):
         except:
             printStackTrace()
         finally:
-            if cuts_file is not None:
+            if cuts_file != None:
                 cuts_file.close()
 
         return False
@@ -101,7 +101,7 @@ class CueSheet:
                 print('ERROR reading cutlist', file_name)
                 printStackTrace()
             finally:
-                if cuts is not None:
+                if cuts != None:
                     cuts.close()
 
             return cut_list
@@ -122,7 +122,7 @@ class CueSheet:
             printStackTrace()
             return e
         finally:
-            if cuts is not None:
+            if cuts != None:
                 cuts.close()
 
         return
@@ -204,7 +204,7 @@ class CutListSupportBase:
             if cue is None:
                 print('download failed, no cuesheet interface! Try to load from cuts')
                 self.cut_list = []
-                if self.currentService is not None:
+                if self.currentService != None:
                     self.cut_list = CueSheet(self.currentService).getCutList()
             else:
                 self.cut_list = cue.getCutList()
@@ -225,7 +225,7 @@ class CutListSupportBase:
             length = seek.getLength()[1]
             if stopPosition > length:
                 stopPosition = 0
-            if self.cut_list is not None:
+            if self.cut_list != None:
                 inList = False
                 endInList = False
                 for index, item in enumerate(self.cut_list):

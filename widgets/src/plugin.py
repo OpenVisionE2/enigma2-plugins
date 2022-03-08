@@ -224,7 +224,7 @@ class WidgetDesktop(Screen):
 		y2 = int(pos1[1]) + y1
 		pos2 = "%i,%i" % (x2, y2)
 		element.set("position", pos2)
-		if element.get("name") is not None:
+		if element.get("name") != None:
 			element.set("name", wname + "_e_" + element.get("name"))
 		return element
 
@@ -345,7 +345,7 @@ class WidgetPositionConfigScreen(Screen):
 				             				             	  }, -1)
 
 	def ok(self):
-		if self["list"].getCurrent() is not None:
+		if self["list"].getCurrent() != None:
 			self.setValue(self["list"].getCurrent()[1][3])
 
 	def up(self):
@@ -365,7 +365,7 @@ class WidgetPositionConfigScreen(Screen):
 		self.update()
 
 	def update(self):
-		if self["list"].getCurrent() is not None:
+		if self["list"].getCurrent() != None:
 			value = self["list"].getCurrent()[1]
 			print("update", value)
 			if value == "remove":

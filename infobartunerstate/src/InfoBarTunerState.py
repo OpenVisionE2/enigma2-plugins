@@ -800,7 +800,7 @@ class TunerStateBase(Screen):
 
 	def applySkin(self):
 		attribs = []
-		if self.skinAttributes is not None:
+		if self.skinAttributes != None:
 			for (attrib, value) in self.skinAttributes:
 				if attrib == "padding":
 					self.padding = int(value)
@@ -1074,10 +1074,10 @@ class TunerState(TunerStateBase):
 			else:
 				progress = None
 
-		self.duration = duration and duration is not None and math.ceil((duration) / 60.0)
-		self.timeleft = timeleft and timeleft is not None and math.ceil((timeleft) / 60.0)
-		self.timeelapsed = timeelapsed and timeelapsed is not None and math.ceil((timeelapsed) / 60.0)
-		self.progress = progress and progress is not None and int(progress)
+		self.duration = duration and duration != None and math.ceil((duration) / 60.0)
+		self.timeleft = timeleft and timeleft != None and math.ceil((timeleft) / 60.0)
+		self.timeelapsed = timeelapsed and timeelapsed != None and math.ceil((timeelapsed) / 60.0)
+		self.progress = progress and progress != None and int(progress)
 		#print("IBTS duration, timeleft, timeelapsed, progress", self.duration, self.timeleft, self.timeelapsed, self.progress)
 
 		# File site and free disk space
@@ -1147,7 +1147,7 @@ class TunerState(TunerStateBase):
 					text = self.tunertype
 
 			elif field == "Number":
-				if self.number is not None:
+				if self.number != None:
 					text = _("%d") % (self.number)
 
 			elif field == "Channel":
@@ -1159,7 +1159,7 @@ class TunerState(TunerStateBase):
 
 			elif field == "TimeLeft":
 				if not self.endless:
-					if self.timeleft is not None:
+					if self.timeleft != None:
 						# Show timeleft recording time
 						text = _("%d Min") % (self.timeleft)
 				else:
@@ -1167,17 +1167,17 @@ class TunerState(TunerStateBase):
 					text = INFINITY
 
 			elif field == "TimeElapsed":
-				if self.timeelapsed is not None:
+				if self.timeelapsed != None:
 					text = _("%d Min") % (self.timeelapsed)
 
 			elif field == "TimeLeftDuration":
 				# Calculate timeleft minutes
 				if not self.endless:
-					if self.type is not FINISHED and self.timeleft is not None:
-					#if self.timeleft is not None:
+					if self.type is not FINISHED and self.timeleft != None:
+					#if self.timeleft != None:
 						# Show timeleft recording time
 						text = _("%d Min") % (self.timeleft)
-					elif self.duration is not None:
+					elif self.duration != None:
 						# Fallback show recording length
 						text = _("%d Min") % (self.duration)
 				else:
@@ -1193,15 +1193,15 @@ class TunerState(TunerStateBase):
 				text = lend and strftime(config.infobartunerstate.time_format_end.value, lend)
 
 			elif field == "Duration":
-				if self.duration is not None:
+				if self.duration != None:
 					text = _("%d Min") % (self.duration)
 
 			elif field == "TimerProgressText":
-				if self.progress is not None:
+				if self.progress != None:
 					text = _("%d %%") % (self.progress)
 
 			elif field == "TimerProgressGraphical":
-				if self.progress is not None:
+				if self.progress != None:
 					self["Progress"].setValue(self.progress)
 					self["Progress"].show()
 					# No resize necessary
@@ -1228,11 +1228,11 @@ class TunerState(TunerStateBase):
 				text = self.destination or self.client or self.ip
 
 			elif field == "FileSize":
-				if self.filesize is not None:
+				if self.filesize != None:
 					text = _("%d MB") % (self.filesize)
 
 			elif field == "FreeSpace":
-				if self.freespace is not None:
+				if self.freespace != None:
 					text = _("%d GB") % (self.freespace)
 
 			elif field == "None":
@@ -1306,7 +1306,7 @@ def getTuner(service):
 	if data:
 		number = data.get("tuner_number", -1)
 		type = data.get("tuner_type", "")
-		if number is not None and number > -1:
+		if number != None and number > -1:
 			return (chr(int(number) + ord('A')), type)
 	return "", ""
 
@@ -1317,7 +1317,7 @@ def readBouquetList(self):
 	bouquetroot = eServiceReference(refstr)
 	self.bouquetlist = {}
 	list = serviceHandler.list(bouquetroot)
-	if list is not None:
+	if list != None:
 		self.bouquetlist = list.getContent("CN", True)
 
 

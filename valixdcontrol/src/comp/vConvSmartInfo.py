@@ -53,14 +53,14 @@ class vConvSmartInfo(Poll, Converter, object):
 			xresol = info.getInfo(iServiceInformation.sVideoWidth)
 			yresol = info.getInfo(iServiceInformation.sVideoHeight)
 			feinfo = (service and service.frontendInfo())
-			if (feinfo is not None) and (xresol > 0):
+			if (feinfo != None) and (xresol > 0):
 				#Ret_Text = str(xresol) + "x" + str(yresol) + "   "
 				if (yresol > 580):
 					Ret_Text = "HD     "
 				else:
 					Ret_Text = "SD     "
 				frontendData = (feinfo and feinfo.getAll(True))
-				if (frontendData is not None):
+				if (frontendData != None):
 					if ((frontendData.get("tuner_type") == "DVB-S") or (frontendData.get("tuner_type") == "DVB-C")):
 						frequency = (str((frontendData.get("frequency") / 1000)) + " MHz")
 						symbolrate = (str((float(frontendData.get("symbol_rate")) / float(1000000))) + " MS/s")

@@ -71,7 +71,7 @@ class CacheObject(object):
         self.key = key
         self.data = data
         self.lifetime = lifetime
-        self.creation = creation if creation is not None else time.time()
+        self.creation = creation if creation != None else time.time()
 
     def __len__(self):
         return len(self.data)

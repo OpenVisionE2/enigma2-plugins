@@ -142,7 +142,7 @@ class RSSSetup(ConfigListScreen, Screen):
 				print("[SimpleRSS] Ticker instantiated on startup")
 				tv.tickerView = self.session.instantiateDialog(tv.RSSTickerView)
 		else:
-			if tv.tickerView is not None:
+			if tv.tickerView != None:
 				self.session.deleteDialog(tv.tickerView)
 				tv.tickerView = None
 
@@ -197,7 +197,7 @@ class RSSSetup(ConfigListScreen, Screen):
 
 	def keySave(self):
 		# Tell Poller to recreate List if present
-		if self.rssPoller is not None:
+		if self.rssPoller != None:
 			self.rssPoller.triggerReload()
 		ConfigListScreen.keySave(self)
 

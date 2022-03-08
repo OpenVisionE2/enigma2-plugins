@@ -167,7 +167,7 @@ class DirectYouTubePlayer(Screen, InfoBarNotifications):
 	def showVideoInfo(self):
 		if self.shown:
 			self.hideInfobar()
-		if self.infoCallback is not None:
+		if self.infoCallback != None:
 			self.infoCallback()
 
 	def playService(self, mrl, name):
@@ -277,7 +277,7 @@ class DirectYouTubePlayer(Screen, InfoBarNotifications):
 			print("not pauseable.")
 			self.state = self.STATE_PLAYING
 
-		if pauseable is not None:
+		if pauseable != None:
 			print("service is pausable")
 			if wantstate == self.STATE_PAUSED:
 				print("WANT TO PAUSE")
@@ -334,7 +334,7 @@ class DirectYouTubePlayer(Screen, InfoBarNotifications):
 		self.session.openWithCallback(self.menuActionCoosen, YouTubeEntryContextMenu, contextMenuList, self.name)
 
 	def menuActionCoosen(self, cookie):
-		if cookie is not None:
+		if cookie != None:
 			if cookie[1]:
 				self.close()
 			cookie[0]()

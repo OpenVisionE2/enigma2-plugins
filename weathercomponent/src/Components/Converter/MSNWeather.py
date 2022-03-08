@@ -88,7 +88,7 @@ class MSNWeather(Converter, object):
 				self.mode = self.WEEKSHORTDAY
 			elif type.find("date") != -1:
 				self.mode = self.DATE
-			if self.mode is not None:
+			if self.mode != None:
 				dd = type.split(",")
 				if len(dd) >= 2:
 					self.index = self.getIndex(dd[1])
@@ -128,19 +128,19 @@ class MSNWeather(Converter, object):
 			return self.source.getHumidity()
 		elif self.mode == self.WINDDISPLAY:
 			return self.source.getWinddisplay()
-		elif self.mode == self.TEMPERATURE_HEIGH and self.index is not None:
+		elif self.mode == self.TEMPERATURE_HEIGH and self.index != None:
 			return self.source.getTemperature_Heigh(self.index)
-		elif self.mode == self.TEMPERATURE_LOW and self.index is not None:
+		elif self.mode == self.TEMPERATURE_LOW and self.index != None:
 			return self.source.getTemperature_Low(self.index)
-		elif self.mode == self.TEMPERATURE_HEIGH_LOW and self.index is not None:
+		elif self.mode == self.TEMPERATURE_HEIGH_LOW and self.index != None:
 			return self.source.getTemperature_Heigh_Low(self.index)
-		elif self.mode == self.TEMPERATURE_TEXT and self.index is not None:
+		elif self.mode == self.TEMPERATURE_TEXT and self.index != None:
 			return self.source.getTemperature_Text(self.index)
-		elif self.mode == self.WEEKDAY and self.index is not None:
+		elif self.mode == self.WEEKDAY and self.index != None:
 			return self.source.getWeekday(self.index, False)
-		elif self.mode == self.WEEKSHORTDAY and self.index is not None:
+		elif self.mode == self.WEEKSHORTDAY and self.index != None:
 			return self.source.getWeekday(self.index, True)
-		elif self.mode == self.DATE and self.index is not None:
+		elif self.mode == self.DATE and self.index != None:
 			return self.source.getDate(self.index)
 		else:
 			return ""
@@ -150,7 +150,7 @@ class MSNWeather(Converter, object):
 	@cached
 	def getIconFilename(self):
 		if self.mode == self.ICON and self.index in (self.CURRENT, self.DAY1, self.DAY2, self.DAY3, self.DAY4, self.DAY5):
-			if self.path is not None and self.extension is not None:
+			if self.path != None and self.extension != None:
 				return self.path + self.source.getCode(self.index) + "." + self.extension
 			else:
 				return self.source.getWeatherIconFilename(self.index)

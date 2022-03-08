@@ -14,7 +14,7 @@ class OrderedSet(collections.MutableSet):
         self.end = end = []
         end += [None, end, end]         # sentinel node for doubly linked list
         self.map = {}                   # key --> [key, prev, next]
-        if iterable is not None:
+        if iterable != None:
             self |= iterable
 
     def __len__(self):

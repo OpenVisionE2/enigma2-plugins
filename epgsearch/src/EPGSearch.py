@@ -324,7 +324,7 @@ class EPGSearch(EPGSelection):
 		except ImportError as ie:
 			pass
 		else:
-			if baseEPGSelection__init__ is not None:
+			if baseEPGSelection__init__ != None:
 				self["trailerActions"] = ActionMap(["InfobarActions", "InfobarTeletextActions"], {
 					"showTv": self.showTrailer,
 					"showRadio": self.showTrailerList,
@@ -399,7 +399,7 @@ class EPGSearch(EPGSelection):
 	def zap(self):
 		def serviceInBouquet(bouquet, serviceHandler, ref):
 			servicelist = serviceHandler.list(bouquet)
-			if servicelist is not None:
+			if servicelist != None:
 				serviceIterator = servicelist.getNext()
 				while serviceIterator.valid():
 					if ref == serviceIterator:
@@ -422,7 +422,7 @@ class EPGSearch(EPGSelection):
 				for searchCurrent in (True, False):
 					bouquet = eServiceReference(bqrootstr)
 					bouquetlist = serviceHandler.list(bouquet)
-					if bouquetlist is not None:
+					if bouquetlist != None:
 						bouquet = bouquetlist.getNext()
 						while bouquet.valid():
 							if bouquet.flags & (eServiceReference.isDirectory | eServiceReference.isInvisible) == eServiceReference.isDirectory and (currentBouquet is None or (currentBouquet == bouquet) == searchCurrent):
@@ -593,7 +593,7 @@ class EPGSearch(EPGSelection):
 				selection = next((i for i, sel in enumerate(list) if sel[1] == config.plugins.epgsearch.defaultscope.value), 0)
 				self.session.openWithCallback(boundFunction(self.searchEPGAskCallback, searchString), ChoiceBox, title=_("Search in..."), list=list, selection=selection)
 			else:
-				self.startSearchEPG(searchString, lastAsk if lastAsk is not None else config.plugins.epgsearch.scope.value)
+				self.startSearchEPG(searchString, lastAsk if lastAsk != None else config.plugins.epgsearch.scope.value)
 
 	def searchEPGAskCallback(self, searchString, ret):
 		if ret:
@@ -749,7 +749,7 @@ class EPGSearch(EPGSelection):
 	def _addBouquetTempServiceRefMap(self, bouquet, tempServiceRefMap):
 		serviceHandler = eServiceCenter.getInstance()
 		servicelist = serviceHandler.list(bouquet)
-		if servicelist is not None:
+		if servicelist != None:
 			for sref in servicelist.getContent("R"):
 				if sref.flags & eServiceReference.isGroup:
 					sref = getBestPlayableServiceReference(sref, eServiceReference())
@@ -768,7 +768,7 @@ class EPGSearch(EPGSelection):
 			bqrootstr = rootbouquet_tv
 		rootbouquet = eServiceReference(bqrootstr)
 		bouquetlist = serviceHandler.list(rootbouquet)
-		if bouquetlist is not None:
+		if bouquetlist != None:
 			bouquet = bouquetlist.getNext()
 			while bouquet.valid():
 				if bouquet.flags & (eServiceReference.isDirectory | eServiceReference.isInvisible) == eServiceReference.isDirectory:

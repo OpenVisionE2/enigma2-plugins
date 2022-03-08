@@ -407,19 +407,19 @@ class FritzMenu(Screen, HelpableScreen):
 			width = max(DESKTOP_WIDTH - scaleH(500, 250), noButtons * 140 + (noButtons + 1) * 10)
 			# boxInfo 2 lines, gap, internet 2 lines, gap, dsl/wlan each 1 line, gap, buttons
 			height = 5 + 2 * fontSize + 10 + 2 * fontSize + 10 + 2 * fontSize + 10 + 40 + 5
-			if fritzbox.information[FBF_tamActive] is not None:
+			if fritzbox.information[FBF_tamActive] != None:
 				height += fontSize
-			if fritzbox.information[FBF_dectActive] is not None:
+			if fritzbox.information[FBF_dectActive] != None:
 				height += fontSize
-			if fritzbox.information[FBF_faxActive] is not None:
+			if fritzbox.information[FBF_faxActive] != None:
 				height += fontSize
-			if fritzbox.information[FBF_rufumlActive] is not None:
+			if fritzbox.information[FBF_rufumlActive] != None:
 				height += fontSize
 			buttonsGap = (width - noButtons * 140) // (noButtons + 1)
 			buttonsVPos = height - 40 - 5
 
 			varLinePos = 4
-			if fritzbox.information[FBF_tamActive] is not None:
+			if fritzbox.information[FBF_tamActive] != None:
 				mailboxLine = """
 					<widget name="FBFMailbox" position="%d,%d" size="%d,%d" font="Regular;%d" />
 					<widget name="mailbox_inactive" pixmap="%s" position="%d,%d" size="15,16" transparent="1" alphatest="blend"/>
@@ -441,7 +441,7 @@ class FritzMenu(Screen, HelpableScreen):
 			else:
 				mailboxLine = ""
 
-			if fritzbox.information[FBF_dectActive] is not None:
+			if fritzbox.information[FBF_dectActive] != None:
 				dectLine = """
 					<widget name="FBFDect" position="%d,%d" size="%d,%d" font="Regular;%d" />
 					<widget name="dect_inactive" pixmap="%s" position="%d,%d" size="15,16" transparent="1" alphatest="blend"/>
@@ -459,7 +459,7 @@ class FritzMenu(Screen, HelpableScreen):
 			else:
 				dectLine = ""
 
-			if fritzbox.information[FBF_faxActive] is not None:
+			if fritzbox.information[FBF_faxActive] != None:
 				faxLine = """
 					<widget name="FBFFax" position="%d,%d" size="%d,%d" font="Regular;%d" />
 					<widget name="fax_inactive" pixmap="%s" position="%d,%d" size="15,16" transparent="1" alphatest="blend"/>
@@ -477,7 +477,7 @@ class FritzMenu(Screen, HelpableScreen):
 			else:
 				faxLine = ""
 
-			if fritzbox.information[FBF_rufumlActive] is not None:
+			if fritzbox.information[FBF_rufumlActive] != None:
 				rufumlLine = """
 					<widget name="FBFRufuml" position="%d,%d" size="%d,%d" font="Regular;%d" />
 					<widget name="rufuml_inactive" pixmap="%s" position="%d,%d" size="15,16" transparent="1" alphatest="blend"/>
@@ -556,7 +556,7 @@ class FritzMenu(Screen, HelpableScreen):
 			# TRANSLATORS: keep it short, this is a button
 			self["key_green"] = Button(_("Toggle WLAN"))
 			self._mailboxActive = False
-			if fritzbox.information[FBF_tamActive] is not None:
+			if fritzbox.information[FBF_tamActive] != None:
 				# TRANSLATORS: keep it short, this is a button
 				self["key_yellow"] = Button(_("Toggle Mailbox"))
 				self["menuActions"] = ActionMap(["OkCancelActions", "ColorActions", "NumberActions", "EPGSelectActions"],
@@ -630,19 +630,19 @@ class FritzMenu(Screen, HelpableScreen):
 			self["wlan_active"].hide()
 			self._wlanActive = False
 
-			if fritzbox.information[FBF_dectActive] is not None:
+			if fritzbox.information[FBF_dectActive] != None:
 				self["FBFDect"] = Label('DECT')
 				self["dect_inactive"] = Pixmap()
 				self["dect_active"] = Pixmap()
 				self["dect_active"].hide()
 
-			if fritzbox.information[FBF_faxActive] is not None:
+			if fritzbox.information[FBF_faxActive] != None:
 				self["FBFFax"] = Label('Fax')
 				self["fax_inactive"] = Pixmap()
 				self["fax_active"] = Pixmap()
 				self["fax_active"].hide()
 
-			if fritzbox.information[FBF_rufumlActive] is not None:
+			if fritzbox.information[FBF_rufumlActive] != None:
 				self["FBFRufuml"] = Label(_('Call diversion'))
 				self["rufuml_inactive"] = Pixmap()
 				self["rufuml_active"] = Pixmap()
@@ -2196,7 +2196,7 @@ class FritzCallSetup(Screen, ConfigListScreen, HelpableScreen):
 			# else:
 			self.list.append(getConfigListEntry(_("Countrycode (e.g. 0044 for UK, 0034 for Spain, etc.)"), config.plugins.FritzCall.countrycode))
 
-			if config.plugins.FritzCall.fwVersion.value is not None:
+			if config.plugins.FritzCall.fwVersion.value != None:
 				if config.plugins.FritzCall.fwVersion.value == "05.50" or config.plugins.FritzCall.fwVersion.value == "06.35" or config.plugins.FritzCall.fwVersion.value == "upnp":
 					self.list.append(getConfigListEntry(_("User name Accessing FRITZ!Box"), config.plugins.FritzCall.username))
 				self.list.append(getConfigListEntry(_("Password Accessing FRITZ!Box"), config.plugins.FritzCall.password))
@@ -2286,7 +2286,7 @@ class FritzCallSetup(Screen, ConfigListScreen, HelpableScreen):
 		self.close()
 
 	def LocationBoxClosed(self, path):
-		if path is not None:
+		if path != None:
 			config.plugins.FritzCall.phonebookLocation.setValue(path)
 
 	def cancel(self):
@@ -2976,7 +2976,7 @@ class FritzCall(object):
 		self.abort()
 
 	def abort(self):
-		if self.desc is not None:
+		if self.desc != None:
 			self.desc[0].hangup_ok = True
 			self.desc[0].stopTrying()
 			self.desc[1].disconnect()

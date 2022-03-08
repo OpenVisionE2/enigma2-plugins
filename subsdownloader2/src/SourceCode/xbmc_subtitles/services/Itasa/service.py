@@ -57,7 +57,7 @@ def geturl(url):
 def login(username, password):
     log(__name__, " Logging in with username '%s' ..." % (username))
     content = geturl(main_url + 'index.php')
-    if content is not None:
+    if content != None:
         match = re.search('logouticon.png', content, re.IGNORECASE | re.DOTALL)
         if match:
             return 1
@@ -98,7 +98,7 @@ def search_subtitles(file_original_path, title, tvshow, year, season, episode, s
             if login(username, password):
                 log(__name__, " Login successful")
                 content = geturl(main_url + 'index.php?option=com_remository&Itemid=6')
-                if content is not None:
+                if content != None:
                     match = re.search(show_pattern % tvshow, content, re.IGNORECASE | re.DOTALL)
                     if match is None and tvshow[-1] == ")":
                         tvshow = tvshow[:-7]
@@ -106,14 +106,14 @@ def search_subtitles(file_original_path, title, tvshow, year, season, episode, s
                     if match:
                         log(__name__, " Tv show '%s' found" % tvshow)
                         content = geturl(main_url + match.group(1))
-                        if content is not None:
+                        if content != None:
                             match = re.search(season_pattern % season, content, re.IGNORECASE | re.DOTALL)
                             if match:
                                 log(__name__, " Season %s of tv show '%s' found" % (season, tvshow))
                                 category = 'normal'
                                 categorypage = match.group(1)
                                 content = geturl(main_url + categorypage)
-                                if content is not None:
+                                if content != None:
                                     for matches in re.finditer(subtitle_pattern % (tvshow, int(season), int(episode)), content, re.IGNORECASE | re.DOTALL):
                                         filename = matches.group(3)
                                         id = matches.group(2)
@@ -124,7 +124,7 @@ def search_subtitles(file_original_path, title, tvshow, year, season, episode, s
                                         category = matches.group(2)
                                         log(__name__, " Page for category '%s' found" % category)
                                         content = geturl(main_url + categorypage)
-                                        if content is not None:
+                                        if content != None:
                                             for matches in re.finditer(subtitle_pattern % (tvshow, int(season), int(episode)), content, re.IGNORECASE | re.DOTALL):
                                                 id = matches.group(2)
                                                 filename = matches.group(3)
@@ -167,7 +167,7 @@ def download_subtitles(subtitles_list, pos, zip_subs, tmp_sub_dir, sub_folder, s
             language = subtitles_list[pos]["language_name"]
             log(__name__, " Fetching subtitles using url %s" % (main_url + match.group(1)))
             content = geturl(main_url + match.group(1))
-            if content is not None:
+            if content != None:
                 header = content[:4]
                 if header == 'Rar!':
                     local_tmp_file = os.path.join(tmp_sub_dir, "undertexter.rar")

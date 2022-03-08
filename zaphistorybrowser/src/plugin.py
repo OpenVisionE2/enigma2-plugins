@@ -62,7 +62,7 @@ def addToHistory(instance, ref):
 	if config.ParentalControl.servicepinactive.value and config.plugins.ZapHistoryConfigurator.enable_zap_history.value == "parental_lock":
 		if parentalControl.getProtectionLevel(ref.toCompareString()) != -1:
 			return
-	if instance.servicePath is not None:
+	if instance.servicePath != None:
 		tmp = instance.servicePath[:]
 		tmp.append(ref)
 		try:
@@ -243,7 +243,7 @@ class ZapHistoryBrowser(Screen, ProtectedScreen):
 			if info:
 				name = info.getName(ref).replace('\xc2\x86', '').replace('\xc2\x87', '')
 				event = info.getEvent(ref)
-				if event is not None:
+				if event != None:
 					eventName = event.getEventName()
 					if eventName is None:
 						eventName = ""

@@ -186,7 +186,7 @@ class CurlyTx(Screen, HelpableScreen):
         self.getPageWebClient(url).addCallback(self.urlLoaded).addErrback(self.urlFailed, url)
 
     def setTextFont(self):
-        if self["text"].long_text is not None:
+        if self["text"].long_text != None:
             self["text"].long_text.setFont(gFont("Console", self.currentFontSize))
 
     def urlLoaded(self, html):

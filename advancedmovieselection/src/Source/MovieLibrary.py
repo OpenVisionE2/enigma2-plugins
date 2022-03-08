@@ -174,7 +174,7 @@ class MovieLibrary(dict, SortProvider):
                     this_tags = i.getTags()
                     if not accessRestriction.isAccessible(this_tags):
                         continue
-                    if filter_tags is not None and not set(this_tags).issuperset(filter_tags):
+                    if filter_tags != None and not set(this_tags).issuperset(filter_tags):
                         continue
                     if filter_description:
                         descr = i.info.getInfoString(i.serviceref, iServiceInformation.sDescription)
@@ -211,7 +211,7 @@ class MovieLibrary(dict, SortProvider):
                 this_tags = i.getTags()
                 if not accessRestriction.isAccessible(this_tags):
                     continue
-                if filter_tags is not None and not set(this_tags).issuperset(filter_tags):
+                if filter_tags != None and not set(this_tags).issuperset(filter_tags):
                     continue
                 if filter_description:
                     descr = i.info.getInfoString(i.serviceref, iServiceInformation.sDescription)

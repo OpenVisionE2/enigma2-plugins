@@ -40,7 +40,7 @@ class StreamPlayer:
         self.session = session
 
     def setPlaylist(self, playlist):
-        if self.playlist is not None:
+        if self.playlist != None:
             self.currentplaylistitemnumber = 0
         self.playlist = playlist
 

@@ -87,7 +87,7 @@ class myNumericalTextInput:
 				self.nextChar()
 			self.lastKey = num
 			self.pos = -1
-		if self.timer is not None:
+		if self.timer != None:
 			self.timer.start(1000, True)
 		while True:
 			self.pos += 1
@@ -105,7 +105,7 @@ class myNumericalTextInput:
 		return self.mapping[num][self.pos]
 
 	def nextKey(self):
-		if self.timer is not None:
+		if self.timer != None:
 			self.timer.stop()
 		self.lastKey = -1
 
