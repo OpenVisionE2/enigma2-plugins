@@ -152,7 +152,7 @@ class ConfigScreen(Screen, ConfigListScreen, HelpableScreen, PushServiceBase):
 		select = self.build(uniqueid)
 		self["config"].setList(self.list)
 
-		if select != None:
+		if select is not None:
 			self["config"].instance.moveSelectionTo(select)
 
 	def build(self, uniqueid=None):

@@ -152,11 +152,11 @@ class VlcMediaListScreen(Screen):
 
 	def ok(self):
 		media, name = self.currentList.activate()
-		if media != None:
+		if media is not None:
 			if media.lower().endswith(".m3u") or media.lower().endswith(".pls") or media.lower().endswith(".xspf"):
 				try:
 					id = self.server.loadPlaylist(media)
-					if id != None:
+					if id is not None:
 						self.playlistIds.append(id)
 						self.updatePlaylist()
 						self.switchToPlayList()
@@ -169,7 +169,7 @@ class VlcMediaListScreen(Screen):
 				self.play("dvdsimple://" + media, "DVD")
 			else:
 				self.play(media, name)
-		elif name != None:
+		elif name is not None:
 			self.setTitle("vlc://" + (self.server.getName() or self.server.getHost()) + "/" + name)
 			self["current_dir"].setText(name)
 

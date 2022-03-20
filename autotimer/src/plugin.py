@@ -50,7 +50,7 @@ def autostart(reason, **kwargs):
 	# Shutdown
 	elif reason == 1:
 		# Stop Poller
-		if autopoller != None:
+		if autopoller is not None:
 			autopoller.stop()
 			autopoller = None
 
@@ -127,7 +127,7 @@ def main(session, **kwargs):
 		return
 
 	# Do not run in background while editing, this might screw things up
-	if autopoller != None:
+	if autopoller is not None:
 		autopoller.stop()
 
 	from AutoTimerOverview import AutoTimerOverview
@@ -144,7 +144,7 @@ def editCallback(session):
 	# XXX: canceling of GUI (Overview) won't affect config values which might have been changed - is this intended?
 
 	# Don't parse EPG if editing was canceled
-	if session != None:
+	if session is not None:
 		# Save xml
 		if config.plugins.autotimer.always_write_config.value:
 			autotimer.writeXml()
@@ -197,7 +197,7 @@ def housekeepingExtensionsmenu(el):
 def timezoneChanged(self):
 	global autopoller
 	global autotimer
-	if config.plugins.autotimer.autopoll.value and autopoller != None:
+	if config.plugins.autotimer.autopoll.value and autopoller is not None:
 		print("[AutoTimer] Timezone change detected.")
 		autopoller.stop()
 		autotimer.parseEPG(autoPoll=True)

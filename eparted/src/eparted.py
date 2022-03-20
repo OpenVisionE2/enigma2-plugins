@@ -97,7 +97,7 @@ def myExecute(cmd, session, test=False):
 		res = Console().ePopen(cmd)
 		result = (res >> 8)
 	print("[eParted]", result, cmd)
-	if result != 0 and session != None:
+	if result != 0 and session is not None:
 		session.open(MessageBox, _("Error command '%s'") % cmd, MessageBox.TYPE_ERROR, timeout=8)
 	return result
 
@@ -453,7 +453,7 @@ class Cpart(Screen):
 		partnr = val[PA_NR]
 		dev = "%s%s" % (self.__devpath, partnr)
 		mp = ismounted(dev)
-		if mp != None:
+		if mp is not None:
 			if myExecute("umount %s" % mp, self.session):
 				return
 		list.insert(0, ("parted -s -a none %s rm %s" % (self.__devpath, partnr), _("delete partition %s") % partnr, None))
@@ -530,7 +530,7 @@ class Cpartexe(Screen):
 		for x in comlist:
 			print(x)
 			list.append((x[1], None, x[0]))
-			if x[2] != None:
+			if x[2] is not None:
 				self.mountlist.append(x[2])
 		self["list"] = List(list)
 
@@ -555,7 +555,7 @@ class Cpartexe(Screen):
 	def __mountDevice(self):
 		for x in self.mountlist:
 			dev = self.__getPartitionUUID(x)
-			if dev != None:
+			if dev is not None:
 				if os_path.exists("/media/" + dev[1]) == False:
 					createDir("/media/" + dev[1], True)
 				cmd = "mount %s /media/%s" % (dev[0], dev[1])

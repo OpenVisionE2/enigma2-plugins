@@ -98,7 +98,7 @@ class MovieRetitle(Screen, ConfigListScreen):
         current = self["config"].getCurrent()
         helpwindowpos = self["HelpWindow"].getPosition()
         if hasattr(current[1], 'help_window'):
-            if current[1].help_window.instance != None:
+            if current[1].help_window.instance is not None:
                 current[1].help_window.instance.show()
                 current[1].help_window.instance.move(ePoint(helpwindowpos[0], helpwindowpos[1]))
 

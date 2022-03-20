@@ -1109,7 +1109,7 @@ class NcidClient:
 		self.abort()
 
 	def abort(self):
-		if self.desc != None:
+		if self.desc is not None:
 			self.desc[0].hangup_ok = True
 			self.desc[0].stopTrying()
 			self.desc[1].disconnect()

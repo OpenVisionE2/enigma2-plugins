@@ -55,7 +55,7 @@ class AudioRestart():
         service = NavigationInstance.instance.getCurrentService()
         audioTracks = service and service.audioTracks()
         blnReturn = False
-        if audioTracks != None:
+        if audioTracks is not None:
             n = audioTracks and audioTracks.getNumberOfTracks() or 0
             if n >= 0:
                 selectedAudioIndex = audioTracks.getCurrentTrack()

@@ -199,13 +199,13 @@ class RecInfoBar(Screen):
 					ret = 3
 				else:
 					ret = 4
-			if ret != None and config.plugins.RecInfobar.after_event.value == "0":
+			if ret is not None and config.plugins.RecInfobar.after_event.value == "0":
 				if ret == 3:
 					if Standby.inStandby is None:
 						Notifications.AddNotification(Standby.Standby)
 				else:
 					self.checkStandby()
-			elif ret != None and ret != 4 and config.plugins.RecInfobar.after_event.value == "5":
+			elif ret is not None and ret != 4 and config.plugins.RecInfobar.after_event.value == "5":
 				if ret == 3:
 					if Standby.inStandby is None:
 						Notifications.AddNotification(Standby.Standby)
@@ -237,7 +237,7 @@ class RecInfoBar(Screen):
 
 	def stateRecIndicator(self, cfgElem):
 		if not cfgElem.value:
-			if self.RecIndicator != None:
+			if self.RecIndicator is not None:
 				self.RecIndicator.hide()
 				self.RecIndicator = None
 
@@ -289,13 +289,13 @@ class RecInfoBar(Screen):
 							self.session.openWithCallback(self.callbackYesNo, MessageBox, _("Recording starts!\n") + _("duration:  %s ... ") % (begintimestr) + "%s " % (begintimeendstr) + _(" (%d mins)\n") % (begintime) + _("channel: %s   prov: %s\n %s\n") % (name, prov, rec_name) + "\n" + _("Switch to a recordable channel?"), MessageBox.TYPE_YESNO, timeout=timeout, default=default)
 
 	def GozapPosition(self):
-		if self.SetPosition and self.zap_ref != None:
+		if self.SetPosition and self.zap_ref is not None:
 			self.setZapPosition(self.zap_ref)
 			self.zap_ref = None
 			self.SetPosition = False
 
 	def callbackYesNo(self, answer):
-		if answer == True and self.rec_ref != None:
+		if answer == True and self.rec_ref is not None:
 			if config.plugins.RecInfobar.set_position.value and self.SetPosition:
 				self.setZapPosition(self.rec_ref)
 				self.SetPosition = False
@@ -375,7 +375,7 @@ class RecInfoBar(Screen):
 			data = feinfo and feinfo.getFrontendStatus()
 			if data:
 				snr = data.get("tuner_signal_quality")
-				if snr != None:
+				if snr is not None:
 					return "SNR:  %d %%" % (snr * 100 / 65536)
 		return ''
 
@@ -448,7 +448,7 @@ class RecInfoBar(Screen):
 				if config.plugins.RecInfobar.rec_indicator.value:
 					if self.RecIndicator is None:
 						self.RecIndicator = self.session.instantiateDialog(RecIndicator)
-						if self.RecIndicator != None:
+						if self.RecIndicator is not None:
 							self.RecIndicator.show()
 					else:
 						self.RecIndicator.show()
@@ -458,7 +458,7 @@ class RecInfoBar(Screen):
 						del self.reclist[k]
 						break
 					if len(self.reclist) == 0:
-						if self.RecIndicator != None:
+						if self.RecIndicator is not None:
 							self.RecIndicator.hide()
 			self.reSize()
 
@@ -485,7 +485,7 @@ class RecInfoBar(Screen):
 						currentService = self.session.nav.getCurrentlyPlayingServiceOrGroup()
 					except:
 						currentService = self.session.nav.getCurrentlyPlayingServiceReference()
-					if currentService != None and ref == currentService:
+					if currentService is not None and ref == currentService:
 						if 'FROM PROVIDERS' in lastpath:
 							return 'P', _('Provider')
 						if 'FROM SATELLITES' in lastpath:
@@ -529,7 +529,7 @@ class RecInfoBar(Screen):
 						InfoBarInstance = InfoBar.instance
 					except:
 						InfoBarInstance = None
-					if InfoBarInstance != None:
+					if InfoBarInstance is not None:
 						InfoBarInstance.servicelist.clearPath()
 						InfoBarInstance.servicelist.setRoot(bouquet)
 						InfoBarInstance.servicelist.enterPath(rootbouquet)
@@ -562,7 +562,7 @@ class RecInfoBar(Screen):
 					currentService = self.session.nav.getCurrentlyPlayingServiceOrGroup()
 				except:
 					currentService = self.session.nav.getCurrentlyPlayingServiceReference()
-				if currentService != None and ref == currentService:
+				if currentService is not None and ref == currentService:
 					if 'FROM PROVIDERS' in lastpath:
 						return 'P', _('Provider')
 					if 'FROM SATELLITES' in lastpath:
@@ -714,7 +714,7 @@ class setDefaultFrontendPriority:
 
 	def savingDefaultFrontend(self):
 		global PrevFrontendPriority
-		if PrevFrontendPriority != None:
+		if PrevFrontendPriority is not None:
 			config.usage.frontend_priority.value = PrevFrontendPriority
 			config.usage.frontend_priority.save()
 			PrevFrontendPriority = None

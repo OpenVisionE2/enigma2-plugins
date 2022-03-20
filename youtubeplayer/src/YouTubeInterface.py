@@ -197,7 +197,7 @@ class YouTubeEntry():
 	def loadThumbnail(self, index, callback):
 		print("[YTB] YouTubeEntry::loadThumbnail()")
 		thumbnailUrl = self.getThumbnailUrl(index)
-		if thumbnailUrl != None and self.getYouTubeId() != None:
+		if thumbnailUrl is not None and self.getYouTubeId() is not None:
 			thumbnailFile = "/tmp/" + self.getYouTubeId() + "_" + str(index) + ".jpg"
 			self.thumbnail[str(index)] = None
 			cookie = {"entry": self, "file": thumbnailFile, "callback": callback, "index": index}
@@ -259,37 +259,37 @@ class YouTubeEntry():
 			return video_real_url #, 'OK'
 
 	def getDuration(self):
-		if self.entry.media != None and self.entry.media.duration != None:
+		if self.entry.media is not None and self.entry.media.duration is not None:
 			return self.entry.media.duration.seconds
 		return "not available"
 
 	def getRatingAverage(self):
-		if self.entry.rating != None:
+		if self.entry.rating is not None:
 			return self.entry.rating.average
 		return "not available"
 
 	def getNumRaters(self):
-		if self.entry.rating != None:
+		if self.entry.rating is not None:
 			return self.entry.rating.num_raters
 		return ""
 
 	def getRatingMax(self):
-		if self.entry.rating != None:
+		if self.entry.rating is not None:
 			return self.entry.rating.max
 		return "not available"
 
 	def getRatingMin(self):
-		if self.entry.rating != None:
+		if self.entry.rating is not None:
 			return self.entry.rating.min
 		return "not available"
 
 	def getFavoriteCount(self):
-		if self.entry.statistics != None:
+		if self.entry.statistics is not None:
 			return self.entry.statistics.favorite_count
 		return "not available"
 
 	def getViewCount(self):
-		if self.entry.statistics != None:
+		if self.entry.statistics is not None:
 			return self.entry.statistics.view_count
 		return "not available"
 
@@ -301,7 +301,7 @@ class YouTubeEntry():
 		return authors
 
 	def getPublishedOn(self):
-		if self.entry.published != None:
+		if self.entry.published is not None:
 			return self.entry.published.text
 		return "unknown"
 
@@ -309,7 +309,7 @@ class YouTubeEntry():
 		return self.entry.GetYouTubeCategoryAsString()
 
 	def getTags(self):
-		if self.entry.media != None and self.entry.media.keywords != None:
+		if self.entry.media is not None and self.entry.media.keywords is not None:
 			return self.entry.media.keywords.text
 		return "not available"
 
@@ -431,7 +431,7 @@ class YouTubeInterface():
 	def login(self, user):
 		print("[YTB] YouTubeInterface::login()")
 		ret = False
-		if user != None:
+		if user is not None:
 			# http://code.google.com/apis/youtube/developers_guide_python.html#ClientLogin
 			self.ytService.email = user.getEmail()
 			self.ytService.password = user.getPassword()
@@ -459,9 +459,9 @@ class YouTubeInterface():
 		query.orderby = orderby
 		query.racy = racy
 		query.sortorder = sortOrder
-		if lr != None:
+		if lr is not None:
 			query.lr = lr
-		if categories[0] != None:
+		if categories[0] is not None:
 			query.categories = categories
 #		query.time = time
 		query.start_index = startIndex

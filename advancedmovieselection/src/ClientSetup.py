@@ -214,7 +214,7 @@ class ClientSetup(ConfigListScreen, Screen):
 
     def showHelp(self):
         current = self["config"].getCurrent()
-        if len(current) > 2 and current[2] != None:
+        if len(current) > 2 and current[2] is not None:
             self["help"].setText(current[2])
         else:
             self["help"].setText(_("No Helptext available!"))

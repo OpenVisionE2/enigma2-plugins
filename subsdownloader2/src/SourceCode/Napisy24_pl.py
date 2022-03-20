@@ -45,7 +45,7 @@ class XML_to_Dict():
 			return child.nodeValue
 
 		d = {}
-		while child != None:
+		while child is not None:
 			if (child.nodeType == xml.dom.minidom.Node.ELEMENT_NODE):
 				try:
 					d[child.tagName]

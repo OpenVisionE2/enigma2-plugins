@@ -221,7 +221,7 @@ class GoogleSuggestions():
 		#GET /complete/search?output=toolbar&client=youtube-psuggest&xml=true&ds=yt&hl=en&jsonp=self.gotSuggestions&q=s
 		#self.prepQuerry = "/complete/search?output=toolbar&client=youtube&xml=true&ds=yt&"
 		self.prepQuerry = "/complete/search?output=chrome&client=chrome&"
-		if self.hl != None:
+		if self.hl is not None:
 			self.prepQuerry = self.prepQuerry + "hl=" + self.hl + "&"
 		self.prepQuerry = self.prepQuerry + "jsonp=self.gotSuggestions&q="
 		print("[MyTube - GoogleSuggestions] prepareQuery:", self.prepQuerry)
@@ -303,7 +303,7 @@ class MyTubeFeedEntry():
 
 	def getDescription(self):
 		#print("[MyTubeFeedEntry] getDescription")
-		if self.entry.media != None and self.entry.media.description != None:
+		if self.entry.media is not None and self.entry.media.description is not None:
 			return self.entry.media.description.text
 		return "not vailable"
 
@@ -314,28 +314,28 @@ class MyTubeFeedEntry():
 		return None
 
 	def getPublishedDate(self):
-		if self.entry.published != None:
+		if self.entry.published is not None:
 			return self.entry.published.text
 		return "unknown"
 
 	def getViews(self):
-		if self.entry.statistics != None:
+		if self.entry.statistics is not None:
 			return self.entry.statistics.view_count
 		return "not available"
 
 	def getDuration(self):
-		if self.entry.media != None and self.entry.media.duration != None:
+		if self.entry.media is not None and self.entry.media.duration is not None:
 			return self.entry.media.duration.seconds
 		else:
 			return 0
 
 	def getRatingAverage(self):
-		if self.entry.rating != None:
+		if self.entry.rating is not None:
 			return self.entry.rating.average
 		return 0
 
 	def getNumRaters(self):
-		if self.entry.rating != None:
+		if self.entry.rating is not None:
 			return self.entry.rating.num_raters
 		return ""
 
@@ -553,7 +553,7 @@ class MyTubePlayerService():
 		self.yt_service.client_id = 'ytapi-dream-MyTubePlayer-i0kqrebg-0'
 
 		# yt_service is reinit on every feed build; cache here to not reauth. remove init every time?
-		if self.current_auth_token != None:
+		if self.current_auth_token is not None:
 			print("[MyTube] MyTubePlayerService - auth_cached")
 			self.yt_service.SetClientLoginToken(self.current_auth_token)
 
@@ -591,7 +591,7 @@ class MyTubePlayerService():
 
 	def getAuthedUsername(self):
 		# on external curl we can get real username
-		if self.cached_auth_request.get('YouTubeUser') != None:
+		if self.cached_auth_request.get('YouTubeUser') is not None:
 			return self.cached_auth_request.get('YouTubeUser')
 
 		if self.is_auth() is False:
@@ -606,7 +606,7 @@ class MyTubePlayerService():
 		if self.yt_service is None:
 			self.startService()
 
-		if self.current_auth_token != None:
+		if self.current_auth_token is not None:
 			print("[MyTube] MyTubePlayerService - auth_cached")
 			self.yt_service.SetClientLoginToken(self.current_auth_token)
 			return
@@ -645,7 +645,7 @@ class MyTubePlayerService():
 		self.yt_service.token_store.remove_all_tokens()
 
 	def is_auth(self):
-		if self.current_auth_token != None:
+		if self.current_auth_token is not None:
 			return True
 
 		if self.yt_service.current_token is None:
@@ -717,9 +717,9 @@ class MyTubePlayerService():
 		query.time = time
 		query.racy = racy
 		query.sortorder = sortOrder
-		if lr != None:
+		if lr is not None:
 			query.lr = lr
-		if categories[0] != None:
+		if categories[0] is not None:
 			query.categories = categories
 		query.start_index = startIndex
 		query.max_results = maxResults
@@ -728,16 +728,16 @@ class MyTubePlayerService():
 		return queryThread
 
 	def gotFeed(self, feed, callback):
-		if feed != None:
+		if feed is not None:
 			self.feed = feed
 			for entry in self.feed.entry:
 				MyFeedEntry = MyTubeFeedEntry(self, entry)
 				self.feedentries.append(MyFeedEntry)
-		if callback != None:
+		if callback is not None:
 			callback(self.feed)
 
 	def gotFeedError(self, exception, errorback):
-		if errorback != None:
+		if errorback is not None:
 			errorback(exception)
 
 	def SubscribeToUser(self, username):

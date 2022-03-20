@@ -171,7 +171,7 @@ def RedCallback(self, ret):
 				pass
 		elif ret == "partnerboxremotetimer":
 			try:
-				if hasattr(self, 'partnerboxentry') and self.partnerboxentry != None:
+				if hasattr(self, 'partnerboxentry') and self.partnerboxentry is not None:
 					from plugin import RemoteTimer
 					self.session.openWithCallback(self.DeleteTimerCallback, RemoteTimer, self.partnerboxentry, not_epg=True)
 			except:
@@ -187,7 +187,7 @@ def RedCallback(self, ret):
 
 def NewPartnerBoxSelected(self, session, what, partnerboxentry=None):
 	try:
-		if partnerboxentry != None:
+		if partnerboxentry is not None:
 			self.partnerboxentry = partnerboxentry
 			curService = None
 			if self.type == EPG_TYPE_SINGLE and self.filterRef:
@@ -229,9 +229,9 @@ def Partnerbox_timerAdd(self):
 				return
 			event = cur[0]
 			serviceref = cur[1]
-			if event != None:
+			if event is not None:
 				timerentry = isInTimerList(event.getBeginTime(), event.getDuration(), serviceref.ref.toString(), event.getEventId(), partnerboxfunctions.remote_timer_list)
-				if timerentry != None:
+				if timerentry is not None:
 					proceed = False
 					if int(self.partnerboxentry.enigma.value) == 0:
 						name = timerentry.name
@@ -260,7 +260,7 @@ def Partnerbox_timerAdd(self):
 					buttons = ["red", "green"]
 
 					def timerAction(choice):
-						if choice != None:
+						if choice is not None:
 							if choice[1] == "remote":
 								self.remoteTimerMenu(timerentry)
 							elif choice[1] == "internal":
@@ -279,11 +279,11 @@ def remoteTimerMenu(self, timerentry):
 		title_text = timerentry.repeated and _("Attention, this is repeated timer!\n") or ""
 
 		def remoteTimerAction(choice):
-			if choice != None:
+			if choice is not None:
 				if choice[1] == "delete":
 					self.session.openWithCallback(boundFunction(self.DeleteTimerConfirmed, timerentry), MessageBox, _("Do you really want to delete the timer \n%s ?") % timerentry.name)
 				elif choice[1] == "timerlist":
-					if hasattr(self, 'partnerboxentry') and self.partnerboxentry != None:
+					if hasattr(self, 'partnerboxentry') and self.partnerboxentry is not None:
 						from plugin import RemoteTimer
 						self.session.openWithCallback(self.DeleteTimerCallback, RemoteTimer, self.partnerboxentry, not_epg=True)
 		self.session.openWithCallback(remoteTimerAction, ChoiceBox, title=title_text + _("Select action for remote timer '%s':") % timerentry.name, list=menu, keys=buttons)
@@ -312,7 +312,7 @@ def Partnerbox_onCreate(self):
 
 def GetPartnerboxTimerlist(self):
 	try:
-		if self.partnerboxentry != None:
+		if self.partnerboxentry is not None:
 			ip = "%d.%d.%d.%d" % tuple(self.partnerboxentry.ip.value)
 			port = self.partnerboxentry.port.value
 			http = "http://%s:%d" % (ip, port)
@@ -327,7 +327,7 @@ def GetPartnerboxTimerlist(self):
 
 def GetPartnerboxTimerlistCallback(self, sxml=None):
 	try:
-		if sxml != None:
+		if sxml is not None:
 			curService = None
 			if self.type == EPG_TYPE_SINGLE and self.filterRef:
 				curService = self.currentService.ref.toString()
@@ -345,7 +345,7 @@ def GetPartnerboxTimerlistCallback(self, sxml=None):
 
 def GetPartnerboxTimerlistCallbackError(self, error=None):
 	try:
-		if error != None:
+		if error is not None:
 			print(str(error.getErrorMessage()))
 	except:
 		pass
@@ -359,9 +359,9 @@ def CheckRemoteTimer(self):
 				return
 			event = cur[0]
 			serviceref = cur[1]
-			if event != None:
+			if event is not None:
 				timerentry = isInTimerList(event.getBeginTime(), event.getDuration(), serviceref.ref.toString(), event.getEventId(), partnerboxfunctions.remote_timer_list)
-				if timerentry != None:
+				if timerentry is not None:
 					self["key_green"].setText(_("Timer menu"))
 					self.key_green_choice = self.REMOVE_TIMER
 	except:
@@ -398,7 +398,7 @@ def DeleteTimerCallback(self, callback=None):
 
 def DeleteTimerCallbackError(self, error=None):
 	try:
-		if error != None:
+		if error is not None:
 			self.session.open(MessageBox, str(_(error.getErrorMessage())), MessageBox.TYPE_INFO)
 	except:
 		pass

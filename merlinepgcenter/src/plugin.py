@@ -168,7 +168,7 @@ def getBouquetInformation():
 	# get current bouquet and bouquetlist from channelselection
 	from Screens.InfoBar import InfoBar # if installed, nasty PTS Plugin overides Infobar class, so global import may not working to get instance, because maybe this plugin was imported from enigma2 before PTS ...import InfoBar now (just to be sure...) to get the correct instance member
 	infoBarInstance = InfoBar.instance
-	if infoBarInstance != None:
+	if infoBarInstance is not None:
 		servicelist = infoBarInstance.servicelist
 		currentBouquet = servicelist.getRoot()
 		bouquetList = servicelist.getBouquetList()

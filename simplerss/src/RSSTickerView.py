@@ -22,7 +22,7 @@ class MovingLabel(Label):
 		self.moveTimer.callback.append(self.doMove)
 
 	def applySkin(self, desktop, screen):
-		if self.skinAttributes != None:
+		if self.skinAttributes is not None:
 			attribs = []
 			append = attribs.append
 			for attrib, value in self.skinAttributes:

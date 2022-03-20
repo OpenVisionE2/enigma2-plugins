@@ -70,7 +70,7 @@ class ConfigTextWithGoogleSuggestions(ConfigText):
 
 	def prepareSuggestionsThread(self):
 		self.suggestions.hl = "en"
-		if config.plugins.mytube.search.lr.value != None:
+		if config.plugins.mytube.search.lr.value is not None:
 			self.suggestions.hl = config.plugins.mytube.search.lr.value
 
 	def suggestionsThreadStarted(self):
@@ -82,7 +82,7 @@ class ConfigTextWithGoogleSuggestions(ConfigText):
 		self.suggestionsThreadRunning = False
 
 	def cancelSuggestionsThread(self):
-		if self.suggestionsThread != None:
+		if self.suggestionsThread is not None:
 			self.suggestionsThread.cancel()
 		self.suggestionsThreadFinished()
 
@@ -109,7 +109,7 @@ class ConfigTextWithGoogleSuggestions(ConfigText):
 
 	def onSelect(self, session):
 		ConfigText.onSelect(self, session)
-		if session != None:
+		if session is not None:
 			self.suggestionsWindow = session.instantiateDialog(MyTubeSuggestionsListScreen, self)
 			self.suggestionsWindow.deactivate()
 			self.suggestionsWindow.hide()
@@ -140,7 +140,7 @@ class ConfigTextWithGoogleSuggestions(ConfigText):
 
 	def activateSuggestionList(self):
 		ret = False
-		if self.suggestionsWindow != None and self.suggestionsWindow.shown:
+		if self.suggestionsWindow is not None and self.suggestionsWindow.shown:
 			self.tmpValue = self.value
 			self.value = self.suggestionsWindow.activate()
 			self.allmarked = False
@@ -150,7 +150,7 @@ class ConfigTextWithGoogleSuggestions(ConfigText):
 
 	def deactivateSuggestionList(self):
 		ret = False
-		if self.suggestionsWindow != None:
+		if self.suggestionsWindow is not None:
 			self.suggestionsWindow.deactivate()
 			self.getSuggestions()
 			self.allmarked = True
@@ -163,7 +163,7 @@ class ConfigTextWithGoogleSuggestions(ConfigText):
 		return self.deactivateSuggestionList()
 
 	def enableSuggestionSelection(self, value):
-		if self.suggestionsWindow != None:
+		if self.suggestionsWindow is not None:
 			self.suggestionsWindow.enableSelection(value)
 
 
@@ -395,7 +395,7 @@ class MyTubeSettingsScreen(Screen, ConfigListScreen):
 			self.keySave()
 
 	def pathSelected(self, res):
-		if res != None:
+		if res is not None:
 			if config.movielist.videodirs.value != config.plugins.mytube.general.videodir.choices:
 				config.plugins.mytube.general.videodir.setChoices(config.movielist.videodirs.value, default=res)
 			config.plugins.mytube.general.videodir.value = res

@@ -109,7 +109,7 @@ class __YouTubeUserConfig():
 		return self.getUserByName(config.plugins.youtubeplayer.defaultuser.value)
 
 	def setAsDefault(self, defaultUser):
-		if defaultUser != None:
+		if defaultUser is not None:
 			config.plugins.youtubeplayer.defaultuser.value = defaultUser.getName()
 			config.plugins.youtubeplayer.defaultuser.save()
 

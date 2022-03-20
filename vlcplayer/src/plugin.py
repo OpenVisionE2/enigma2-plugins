@@ -55,7 +55,7 @@ class __VlcManager():
 
 	def openMedialist(self, selectedServer):
 		print("[VLC] openMedialist")
-		if selectedServer != None:
+		if selectedServer is not None:
 			if selectedServer.getPingIp():
 				global testOK
 				testOK = False

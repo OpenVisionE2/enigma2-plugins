@@ -55,7 +55,7 @@ def parseConfig(configuration, list, version=None, uniqueTimerId=0, defaultTimer
 		parseConfigOld(configuration, list, uniqueTimerId)
 		return
 
-	if defaultTimer != None:
+	if defaultTimer is not None:
 		# Read in defaults for a new timer
 		for defaults in configuration.findall("defaults"):
 			parseEntry(defaults, defaultTimer, True)
@@ -489,7 +489,7 @@ def parseConfigOld(configuration, list, uniqueTimerId=0):
 			elements = timer.findall("maxduration")
 			if elements:
 				maxlen = getValue(elements, None)
-				if maxlen != None:
+				if maxlen is not None:
 					maxlen = int(maxlen) * 60
 			else:
 				maxlen = None
@@ -649,7 +649,7 @@ def buildConfig(defaultTimer, timers, webif=False):
 		for afterevent in defaultTimer.afterevent:
 			action, timespan = afterevent
 			append('  <afterevent')
-			if timespan[0] != None:
+			if timespan[0] is not None:
 				append(' from="%02d:%02d" to="%02d:%02d"' % (timespan[0][0], timespan[0][1], timespan[1][0], timespan[1][1]))
 			extend(('>', idx[action], '</afterevent>\n'))
 
@@ -806,7 +806,7 @@ def buildConfig(defaultTimer, timers, webif=False):
 			for afterevent in timer.afterevent:
 				action, timespan = afterevent
 				append('  <afterevent')
-				if timespan[0] != None:
+				if timespan[0] is not None:
 					append(' from="%02d:%02d" to="%02d:%02d"' % (timespan[0][0], timespan[0][1], timespan[1][0], timespan[1][1]))
 				extend(('>', idx[action], '</afterevent>\n'))
 

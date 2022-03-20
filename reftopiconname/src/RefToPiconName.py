@@ -33,7 +33,7 @@ class RefToPiconName(Converter, object):
 	@cached
 	def getText(self):
 		ref = self.source.service
-		if ref != None:
+		if ref is not None:
 			#bouquet or marker
 			if ref.flags & (eServiceReference.isDirectory | eServiceReference.isMarker):
 				info = eServiceCenter.getInstance().info(ref)

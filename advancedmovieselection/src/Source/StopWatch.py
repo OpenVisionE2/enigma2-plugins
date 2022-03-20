@@ -76,7 +76,7 @@ class StopWatch(object):
         """Return the current time or the time at which stop() was call,
         if called at all.
         """
-        if self.__stopped != None:
+        if self.__stopped is not None:
             return self.__stopped
         return self.__time()
 

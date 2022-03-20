@@ -54,7 +54,7 @@ def getNamespaces(namespaces):
 		return hasNamespaces
 	serviceHandler = eServiceCenter.getInstance()
 	servicelist = serviceHandler.list(lamedbServices)
-	if servicelist != None:
+	if servicelist is not None:
 		serviceIterator = servicelist.getNext()
 		while serviceIterator.valid():
 			ns = serviceIterator.getUnsignedData(4)
@@ -116,7 +116,7 @@ def initOrbposConfigs():
 	choiceList = orbposChoicelist()
 	maxEntries = len(choiceList)
 	oldVal = config.plugins.epgsearch.getSavedValue().get('numorbpos')
-	listShrank = oldVal != None and int(oldVal) > maxEntries
+	listShrank = oldVal is not None and int(oldVal) > maxEntries
 	choices = [str(i) for i in range(maxEntries + 1)]
 	config.plugins.epgsearch.numorbpos = ConfigSelection(choices, default="1")
 	if listShrank:

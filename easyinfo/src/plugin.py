@@ -162,7 +162,7 @@ def info(self):
 def tvbut(self):
 	myService = self.session.nav.getCurrentService()
 	myTS = myService and myService.timeshift()
-	if myTS != None:
+	if myTS is not None:
 		if myTS.isTimeshiftActive():
 			InfoBar_instance.stopTimeshift()
 			return
@@ -199,10 +199,10 @@ def getPluginByName(sstr):
 def EINPanelEntryComponent(key, text):
 	res = [text]
 	bpng = LoadPixmap(EasyInfo.EINiconspath + "key-" + text[0] + ".png")
-	if bpng != None:
+	if bpng is not None:
 		res.append((eListboxPythonMultiContent.TYPE_PIXMAP_ALPHATEST, 0, 5, 5, 50, bpng))
 	png = LoadPixmap(EasyInfo.EINiconspath + key + ".png")
-	if png != None:
+	if png is not None:
 		res.append((eListboxPythonMultiContent.TYPE_PIXMAP_ALPHATEST, 5, 5, 100, 50, png))
 	if config.plugins.EasyInfo.EvInStart.value == "yes" or SKINTYPE == 1:
 		res.append((eListboxPythonMultiContent.TYPE_TEXT, 115, 17, 300, 35, 0, RT_HALIGN_LEFT, getPluginByName(text[1])))
@@ -759,13 +759,13 @@ class EvNewList(EPGList):
 		res = [None]
 		sref = str(service)[:-1].replace(':', '_')
 		Spixmap = LoadPixmap(path=(config.plugins.EasyInfo.myPicons.value + sref + '.png'))
-		if Spixmap != None:
+		if Spixmap is not None:
 			res.append((eListboxPythonMultiContent.TYPE_PIXMAP_ALPHABLEND, 5, 4, 70, 42, Spixmap))
 		else:
 			res.append((eListboxPythonMultiContent.TYPE_TEXT, 0, 0, 77, 50, 1, RT_HALIGN_CENTER | RT_VALIGN_CENTER | RT_WRAP, service_name))
 		if rec:
 			res.append((eListboxPythonMultiContent.TYPE_PIXMAP_ALPHATEST, 80, 16, 21, 21, clock_pic))
-		if beginTime != None and len(EventName) > 60:
+		if beginTime is not None and len(EventName) > 60:
 			if nowTime < beginTime:
 				begin = localtime(beginTime)
 				end = localtime(beginTime + duration)
@@ -782,7 +782,7 @@ class EvNewList(EPGList):
 					(eListboxPythonMultiContent.TYPE_TEXT, 110, 25, 60, 22, 1, RT_HALIGN_LEFT, "+%d:%02d" % (restzeit / 3600, (restzeit / 60) - ((restzeit / 3600) * 60))),
 					(eListboxPythonMultiContent.TYPE_TEXT, 180, 1, self.breite, 48, 0, RT_HALIGN_LEFT | RT_VALIGN_TOP | RT_WRAP, EventName)
 				))
-		elif beginTime != None:
+		elif beginTime is not None:
 			if nowTime < beginTime:
 				begin = localtime(beginTime)
 				end = localtime(beginTime + duration)
@@ -1061,7 +1061,7 @@ class ESListNext(EPGList):
 		res = [None]
 		if rec:
 			res.append((eListboxPythonMultiContent.TYPE_PIXMAP_ALPHATEST, 58, 16, 21, 21, clock_pic))
-		if beginTime != None and len(EventName) > 60:
+		if beginTime is not None and len(EventName) > 60:
 			if nowTime < beginTime:
 				begin = localtime(beginTime)
 				end = localtime(beginTime + duration)
@@ -1078,7 +1078,7 @@ class ESListNext(EPGList):
 					(eListboxPythonMultiContent.TYPE_TEXT, 10, 25, 60, 22, 1, RT_HALIGN_LEFT, "+%d:%02d" % (restzeit / 3600, (restzeit / 60) - ((restzeit / 3600) * 60))),
 					(eListboxPythonMultiContent.TYPE_TEXT, 80, 1, self.breite, 48, 0, RT_HALIGN_LEFT | RT_VALIGN_TOP | RT_WRAP, EventName)
 				))
-		elif beginTime != None:
+		elif beginTime is not None:
 			if nowTime < beginTime:
 				begin = localtime(beginTime)
 				end = localtime(beginTime + duration)

@@ -11,7 +11,7 @@ class HelpableNumberActionMap(HelpableActionMap):
         numbers = ("0", "1", "2", "3", "4", "5", "6", "7", "8", "9")
         if (action in numbers and action in self.actions):
             res = self.actions[action](int(action))
-            if res != None:
+            if res is not None:
                 return res
             return 1
         else:

@@ -96,7 +96,7 @@ class DirectoryInfo():
     def __parse_int(self, metafile):
         try:
             entry = metafile.readline().rstrip()
-            if entry != None:
+            if entry is not None:
                 return int(entry)
         except:
             pass
@@ -134,7 +134,7 @@ class DirectoryInfo():
             metafile.close()
         except:
             printStackTrace()
-            if metafile != None:
+            if metafile is not None:
                 metafile.close()
 
     def setSortType(self, sort_type):
@@ -173,9 +173,9 @@ class DirectoryInfo():
         try:
             if self.isDiskSpaceChanged():
                 self.updateFolderSize()
-                if dir_count != None:
+                if dir_count is not None:
                     self.dir_count = dir_count
-                if movie_count != None:
+                if movie_count is not None:
                     self.mov_count = movie_count
                 #self.write()
         except:
@@ -194,10 +194,10 @@ class DirectoryEvent(DirectoryInfo):
         from ServiceProvider import eServiceReferenceListAll
         if isinstance(serviceref, eServiceReferenceListAll):
             self.is_movielibrary = True
-        elif serviceref != None:
+        elif serviceref is not None:
             from MovieScanner import movieScanner
             dbinfo = movieScanner.movielibrary.getInfo(serviceref.getPath())
-            if dbinfo != None:
+            if dbinfo is not None:
                 self.mov_count = dbinfo[0]
                 self.dir_count = dbinfo[1]
                 self.dir_size = dbinfo[2]

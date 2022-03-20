@@ -143,7 +143,7 @@ class DMC_MainMenu(Screen):
 	def okbuttonClick(self):
 		from Screens.MessageBox import MessageBox
 		selection = self["menu"].getCurrent()
-		if selection != None:
+		if selection is not None:
 			if selection[1] == "MC_VideoPlayer":
 				from MC_VideoPlayer import MC_VideoPlayer
 				self.session.open(MC_VideoPlayer)

@@ -45,14 +45,14 @@ class RecordAdapter:
 			self.__service = self.navcore.recordService(service, False, pNavigation.isPseudoRecording | pNavigation.isFromEPGrefresh)
 		except:
 			self.__service = self.navcore.recordService(service)
-		if self.__service != None:
+		if self.__service is not None:
 			self.__service.prepareStreaming()
 			self.__service.start()
 			return True
 		return False
 
 	def stopStreaming(self):
-		if self.__service != None:
+		if self.__service is not None:
 			self.navcore.stopRecordService(self.__service)
 			self.__service = None
 

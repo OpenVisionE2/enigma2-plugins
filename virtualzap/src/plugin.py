@@ -446,7 +446,7 @@ class VirtualZap(Screen):
 
 	def getEPGNowNext(self, ref, modus):
 		# get now || next event
-		if self.epgcache != None:
+		if self.epgcache is not None:
 			event = self.epgcache.lookupEvent(['IBDCTSERNX', (ref.toString(), modus, -1)])
 			if event:
 				if event[0][4]:
@@ -577,7 +577,7 @@ class VirtualZap(Screen):
 		if parentalControl.getProtectionLevel(service.toCompareString()) == -1 or (parentalControl.configInitialized and parentalControl.sessionPinCached and parentalControl.sessionPinCachedValue): # check parentalControl, only play a protected service when Pin-Cache is activated and still valid
 			current_service = service
 			n_service = self.pipServiceRelation.get(service.toString(), None) # PiPServiceRelation
-			if n_service != None:
+			if n_service is not None:
 				service = eServiceReference(n_service)
 			if service and (service.flags & eServiceReference.isGroup):
 				ref = getBestPlayableServiceReference(service, eServiceReference())

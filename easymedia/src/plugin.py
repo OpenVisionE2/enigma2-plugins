@@ -109,14 +109,14 @@ def MPanelEntryComponent(key, text, cell):
 	res.append((eListboxPythonMultiContent.TYPE_TEXT, 150, 17, 300, 60, 0, RT_HALIGN_LEFT, text[0]))
 	if cell < 5:
 		bpng = LoadPixmap(resolveFilename(SCOPE_PLUGINS, 'Extensions/EasyMedia/key-' + str(cell) + ".png"))
-		if bpng != None:
+		if bpng is not None:
 			res.append((eListboxPythonMultiContent.TYPE_PIXMAP_ALPHATEST, 0, 5, 5, 50, bpng))
 	png = LoadPixmap(EasyMedia.EMiconspath + key + '.png')
-	if png != None:
+	if png is not None:
 		res.append((eListboxPythonMultiContent.TYPE_PIXMAP_ALPHATEST, 25, 5, 100, 50, png))
 	else:
 		png = LoadPixmap(EasyMedia.EMiconspath + 'default.png')
-		if png != None:
+		if png is not None:
 			res.append((eListboxPythonMultiContent.TYPE_PIXMAP_ALPHATEST, 25, 5, 100, 50, png))
 	return res
 
@@ -579,7 +579,7 @@ def MPcallbackFunc(answer):
 	elif answer == "TIMERS":
 		from Screens.TimerEdit import TimerEditList
 		EMsession.open(TimerEditList)
-	elif answer != None and "++++" in answer:
+	elif answer is not None and "++++" in answer:
 		plugToRun = answer[4:]
 		try:
 			inpf = open((resolveFilename(SCOPE_PLUGINS, "Extensions/EasyMedia/" + plugToRun + ".plug")), 'rb')

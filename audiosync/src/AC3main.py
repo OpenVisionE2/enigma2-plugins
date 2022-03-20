@@ -211,7 +211,7 @@ class AC3LipSync(Screen, HelpableScreen, MovableScreen):
         self.session.openWithCallback(self.DoShowMenu, ChoiceBox, _("Menu"), keyList)
 
     def DoShowMenu(self, answer):
-        if answer != None:
+        if answer is not None:
             if answer[1] == "1":
                 self.startMoving()
             else:

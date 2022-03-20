@@ -152,13 +152,13 @@ class EPGRefresh:
 			for service in self.services[0]:
 				ref = ServiceReference(service.sref)
 				list.extend((' <!--', stringToXML(ref.getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', '')), '-->\n', ' <service'))
-				if service.duration != None:
+				if service.duration is not None:
 					list.extend((' duration="', str(service.duration), '"'))
 				list.extend(('>', stringToXML(service.sref), '</service>\n'))
 			for bouquet in self.services[1]:
 				ref = ServiceReference(bouquet.sref)
 				list.extend((' <!--', stringToXML(ref.getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', '')), '-->\n', ' <bouquet'))
-				if bouquet.duration != None:
+				if bouquet.duration is not None:
 					list.extend((' duration="', str(bouquet.duration), '"'))
 				list.extend(('>', stringToXML(bouquet.sref), '</bouquet>\n'))
 
@@ -180,7 +180,7 @@ class EPGRefresh:
 	def forceRefresh(self, session=None):
 		print("[EPGRefresh] Forcing start of EPGRefresh")
 		if self.session is None:
-			if session != None:
+			if session is not None:
 				self.session = session
 			else:
 				return False
@@ -192,14 +192,14 @@ class EPGRefresh:
 	def stopRunningRefresh(self, session=None):
 		print("[EPGRefresh] Forcing stop of EPGRefresh")
 		if self.session is None:
-			if session != None:
+			if session is not None:
 				self.session = session
 			else:
 				return False
 		self.doStopRunningRefresh = True
 
 	def start(self, session=None):
-		if session != None:
+		if session is not None:
 			self.session = session
 
 		epgrefreshtimer.setRefreshTimer(self.createWaitTimer)
@@ -269,7 +269,7 @@ class EPGRefresh:
 		for bouquet in bouquets.union(additionalBouquets):
 			myref = eServiceReference(bouquet.sref)
 			list = serviceHandler.list(myref)
-			if list != None:
+			if list is not None:
 				while True:
 					s = list.getNext()
 					# TODO: I wonder if its sane to assume we get services here (and not just new lists)

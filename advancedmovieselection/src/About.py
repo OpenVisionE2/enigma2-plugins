@@ -162,7 +162,7 @@ class AboutDetails(Screen):
 
     def selectionChanged(self):
         cur = self["version_list"].getCurrent()
-        if cur != None:
+        if cur is not None:
             self["details"].setText(str(cur))
             self["details"].show()
 

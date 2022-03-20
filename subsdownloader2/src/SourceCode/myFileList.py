@@ -78,7 +78,7 @@ def FileEntryComponent(name, absolute=None, isDir=False):
 			png = LoadPixmap(esolveFilename(SCOPE_PLUGINS, "Extensions/SubsDownloader2/pic/res/" + EXTENSIONS[extension] + ".png"))
 		else:
 			png = None
-	if png != None:
+	if png is not None:
 		res.append((eListboxPythonMultiContent.TYPE_PIXMAP_ALPHATEST, 12, 3, 20, 20, png))
 	return res
 
@@ -200,7 +200,7 @@ class FileList(MenuList):
 					if os_path.isdir(directory + x):
 						directories.append(directory + x + "/")
 						files.remove(x)
-		if directory != None and self.showDirectories and not self.isTop:
+		if directory is not None and self.showDirectories and not self.isTop:
 			if directory == self.current_mountpoint and self.showMountpoints:
 				self.list.append(FileEntryComponent(name="<" + _("List of Storage Devices") + ">", absolute=None, isDir=True))
 			elif (directory != "/") and not (self.inhibitMounts and self.getMountpoint(directory) in self.inhibitMounts):
@@ -222,7 +222,7 @@ class FileList(MenuList):
 					if (config.plugins.subsdownloader.pathUseMediaPaternFilter.value == "on"):
 					#if (config.plugins.DreamExplorer.MediaFilter.value == "on"): #config.plugins.subsdownloader.pathUseMediaPaternFilter
 						nx = self.getTSInfo(path)
-						if nx != None:
+						if nx is not None:
 							name = nx
 				EXext = os_path.splitext(path)[1]
 				EXext = EXext.replace(".", "")
@@ -239,7 +239,7 @@ class FileList(MenuList):
 						res.append((eListboxPythonMultiContent.TYPE_PIXMAP_ALPHATEST, 12, 3, 20, 20, png))
 						self.list.append(res)
 		self.l.setList(self.list)
-		if select != None:
+		if select is not None:
 			i = 0
 			self.moveToIndex(0)
 			for x in self.list:
@@ -300,7 +300,7 @@ class FileList(MenuList):
 				return None
 			serviceHandler = eServiceCenter.getInstance()
 			info = serviceHandler.info(serviceref)
-			if info != None:
+			if info is not None:
 				txt = info.getName(serviceref)
 				description = info.getInfoString(serviceref, iServiceInformation.sDescription)
 				if not txt.endswith(".ts"):

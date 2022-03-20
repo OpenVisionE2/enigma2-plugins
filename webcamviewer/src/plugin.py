@@ -317,7 +317,7 @@ class PictureViewer(Screen):
 			)
 
 	def fileToLoadFilelistEntered(self, fileselection):
-		if fileselection != None:
+		if fileselection is not None:
 			   try:
 				   filename = fileselection[1]
 				   fp = open(config.plugins.pictureviewer.slideshowdir.value + filename)
@@ -337,7 +337,7 @@ class PictureViewer(Screen):
 				   print("[" + myname + "] error:", e)
 
 	def fileToSaveFilelistEntered(self, filename):
-		if filename != None:
+		if filename is not None:
 			print("[" + myname + "] saving list to ", config.plugins.pictureviewer.slideshowdir.value + filename + config.plugins.pictureviewer.slideshowext.value)
 			try:
 				if not os.path.exists(config.plugins.pictureviewer.slideshowdir.value):
@@ -446,7 +446,7 @@ class PictureViewer(Screen):
 
 	def updateInfoPanelCB(self, picInfo=None):
 		ptr = self.picload.getData()
-		if ptr != None:
+		if ptr is not None:
 			self["pixmap"].instance.setPixmap(ptr)
 		else:
 			pass
@@ -579,7 +579,7 @@ class PictureList(MenuList):
 			for x in files:
 				path = directory + x
 				name = x
-				if self.matchingPattern != None:
+				if self.matchingPattern is not None:
 					if compile(self.matchingPattern).search(path):
 						self.list.append(self.getPictureEntryComponent(name, path, False))
 				else:
@@ -616,7 +616,7 @@ class PictureList(MenuList):
 				png = loadPNG("/usr/share/enigma2/extensions/" + EXTENSIONS[extension] + ".png")
 			else:
 				png = None
-		if png != None:
+		if png is not None:
 			res.append((eListboxPythonMultiContent.TYPE_PIXMAP_ALPHATEST, 10, 2, 20, 20, png))
 		return res
 

@@ -201,7 +201,7 @@ class VlcServer:
 
 	def __xmlRequest(self, request, params, sout=""):
 		uri = "/requests/" + request + ".xml"
-		if params != None:
+		if params is not None:
 			uri = uri + "?" + urlencode(params).replace('+', '%20') + sout.replace('+', '%20')
 		location = "%s:%d" % (self.getHost(), self.getHttpPort())
 		try:
@@ -222,7 +222,7 @@ class VlcServer:
 			if element.hasAttribute("type"):
 				name = element.getAttribute("name").encode("utf8")
 				path = normpath(element.getAttribute("path").encode("utf8"))
-				if path != None:
+				if path is not None:
 					elementType = element.getAttribute("type")
 					if elementType == "directory" or elementType == "dir":
 						directories.append([name, path])
@@ -235,7 +235,7 @@ class VlcServer:
 		xml = self.__xmlRequest("playlist", None)
 		files = []
 		for e in xml.getElementsByTagName("leaf"):
-			if e.hasAttribute("uri") != None:
+			if e.hasAttribute("uri") is not None:
 				name = e.getAttribute("name").encode("utf8")
 				if len(name) >= 50:
 					name = "..." + name[-50:]
@@ -362,7 +362,7 @@ class VlcServer:
 		xml = self.__xmlRequest("status", [("command", "in_play"), ("input", input)], sout)
 
 		error = xml.getElementsByTagName("error")
-		if error != None and len(error) > 0:
+		if error is not None and len(error) > 0:
 			self.lastError = getText(error[0].childNodes).strip()
 			if len(self.lastError) == 0:
 				self.lastError = None
@@ -388,7 +388,7 @@ class VlcServer:
 	def deleteCurrentTree(self):
 		print("[VLC] delete current tree")
 		currentElement = self.getCurrentElement()
-		while currentElement != None and currentElement.parentNode.getAttribute("ro") != "ro":
+		while currentElement is not None and currentElement.parentNode.getAttribute("ro") != "ro":
 			currentElement = currentElement.parentNode
 		id = int(currentElement.getAttribute("id"))
 		self.delete(id)
@@ -421,7 +421,7 @@ class VlcServer:
 		xml = self.__xmlRequest("playlist", None)
 		id = None
 		for n in xml.getElementsByTagName("node"):
-			if n.hasAttribute("name") != None:
+			if n.hasAttribute("name") is not None:
 				if n.getAttribute("name").encode("utf8", "replace") == playlist:
 					if id is None:
 						id = n.getAttribute("id")

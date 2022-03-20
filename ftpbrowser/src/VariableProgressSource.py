@@ -25,7 +25,7 @@ class VariableProgressSource(Source):
 			self.range /= 500
 
 		# Only save range if not None
-		if max != None:
+		if max is not None:
 			self.range = max / self.factor
 
 		# Save pos

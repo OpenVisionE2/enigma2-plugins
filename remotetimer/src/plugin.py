@@ -298,7 +298,7 @@ def createNewnigma2Setup(self, widget="config"):
 
 
 def newnigma2SubserviceSelected(self, service):
-	if service != None:
+	if service is not None:
 		# ouch, this hurts a little
 		service_ref = timerentry_service_ref
 		self.timerentry_service_ref = ServiceReference(service[1])
@@ -316,7 +316,7 @@ def newnigma2KeyGo(self):
 		baseTimerEntryGo(self)
 	else:
 		service_ref = self.timerentry_service_ref
-		if self.timer.eit != None:
+		if self.timer.eit is not None:
 			event = eEPGCache.getInstance().lookupEventId(service_ref.ref, self.timer.eit)
 			if event:
 				n = event.getNumOfLinkageServices()

@@ -86,7 +86,7 @@ class YouTubePlaylistScreen(Screen):
 
 	def deletePlaylist(self):
 		playList = self["list"].getCurrent()[0]
-		if playList != None:
+		if playList is not None:
 			self.session.openWithCallback(self.deleteCallback, MessageBox, _("Really delete %(playlist)s?") % {"playlist": playList.getTitle()})
 
 	def deleteCallback(self, result):

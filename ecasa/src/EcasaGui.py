@@ -174,7 +174,7 @@ class EcasaPictureWall(Screen, HelpableScreen, InfoBarNotifications):
 		ptr = self.picload.getData()
 		idx = self.pictures.index(self.currentphoto)
 		realIdx = (idx - self.offset) % self.PICS_PER_PAGE
-		if ptr != None:
+		if ptr is not None:
 			self['image%d' % realIdx].instance.setPixmap(ptr)
 		else:
 			our_print("gotPicture got invalid results for idx", idx, "(" + str(realIdx) + ")")
@@ -185,7 +185,7 @@ class EcasaPictureWall(Screen, HelpableScreen, InfoBarNotifications):
 		self.maybeDecode()
 
 	def maybeDecode(self):
-		if self.currentphoto != None:
+		if self.currentphoto is not None:
 			return
 		try:
 			filename, self.currentphoto = self.queue.pop()
@@ -673,15 +673,15 @@ class EcasaPicture(Screen, HelpableScreen, InfoBarNotifications):
 		self.onClose.append(self.__onClose)
 
 	def __onClose(self):
-		if self.nextPhoto != None:
+		if self.nextPhoto is not None:
 			self.toggleSlideshow()
 
 	def gotPicture(self, picInfo=None):
 		our_print("picture decoded")
 		ptr = self.picload.getData()
-		if ptr != None:
+		if ptr is not None:
 			self['pixmap'].instance.setPixmap(ptr)
-			if self.nextPhoto != None:
+			if self.nextPhoto is not None:
 				self.timer.start(config.plugins.ecasa.slideshow_interval.value * 1000, True)
 
 	def cbDownload(self, tup):
@@ -759,7 +759,7 @@ class EcasaPicture(Screen, HelpableScreen, InfoBarNotifications):
 
 	def toggleSlideshow(self):
 		# is slideshow currently running?
-		if self.nextPhoto != None:
+		if self.nextPhoto is not None:
 			self.timer.stop()
 			self.previous() # we already moved forward in our parent view, so move back
 			self.nextPhoto = None

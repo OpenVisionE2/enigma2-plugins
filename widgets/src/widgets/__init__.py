@@ -37,7 +37,7 @@ def importWidgets(session,):
         if isdir(abs_path):
             if isfile(abs_path + "/widget.py"):
                 w = importSingleWidget(session, abs_path)
-                if w != None:
+                if w is not None:
                     widgets.append(w)
             else:
                 print("found NO widget.py", abs_path + "/widget.py")

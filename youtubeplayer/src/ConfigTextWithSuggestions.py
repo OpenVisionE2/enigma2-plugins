@@ -117,7 +117,7 @@ class ConfigTextWithSuggestions(ConfigText):
 				value = self.value
 				self.value = None
 				self.condition.release()
-				if value != None:
+				if value is not None:
 					self.suggestionsService.getSuggestions(value)
 
 		def stop(self):
@@ -145,7 +145,7 @@ class ConfigTextWithSuggestions(ConfigText):
 			self.suggestionsWindow.update(suggestionsList)
 
 	def getSuggestions(self):
-		if self.suggestionsThread != None:
+		if self.suggestionsThread is not None:
 			self.suggestionsThread.getSuggestions(self.value)
 		else:
 			self.suggestions.getSuggestions(self.value)
@@ -166,14 +166,14 @@ class ConfigTextWithSuggestions(ConfigText):
 		else:
 			self.suggestionsThread = None
 		ConfigText.onSelect(self, session)
-		if session != None:
+		if session is not None:
 			self.suggestionsWindow = session.instantiateDialog(SuggestionsListScreen, self)
 			self.suggestionsWindow.deactivate()
 			self.suggestionsWindow.hide()
 		self.suggestions.getSuggestions(self.value)
 
 	def onDeselect(self, session):
-		if self.suggestionsThread != None:
+		if self.suggestionsThread is not None:
 			self.suggestionsThread.stop()
 		ConfigText.onDeselect(self, session)
 		if self.suggestionsWindow:
@@ -194,7 +194,7 @@ class ConfigTextWithSuggestions(ConfigText):
 
 	def activateSuggestionList(self):
 		ret = False
-		if self.suggestionsWindow != None and self.suggestionsWindow.shown:
+		if self.suggestionsWindow is not None and self.suggestionsWindow.shown:
 			self.tmpValue = self.value
 			self.value = self.suggestionsWindow.activate()
 			self.allmarked = False
@@ -205,7 +205,7 @@ class ConfigTextWithSuggestions(ConfigText):
 
 	def deactivateSuggestionList(self):
 		ret = False
-		if self.suggestionsWindow != None:
+		if self.suggestionsWindow is not None:
 			self.suggestionsWindow.deactivate()
 			self.getSuggestions()
 			self.allmarked = True

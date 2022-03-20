@@ -119,7 +119,7 @@ except ImportError as e:
 
 class MerlinEPGCenter(TimerEditList, MerlinEPGActions, EmbeddedVolumeControl):
 	(skinFile, skinList) = SkinFinder.getSkinData(SKINLIST, SKINDIR, config.plugins.merlinEpgCenter.skin.value)
-	if skinFile != None:
+	if skinFile is not None:
 		if config.plugins.merlinEpgCenter.skin.value != skinFile:
 			config.plugins.merlinEpgCenter.skin.value = skinFile
 			config.plugins.merlinEpgCenter.skin.save()
@@ -382,7 +382,7 @@ class MerlinEPGCenter(TimerEditList, MerlinEPGActions, EmbeddedVolumeControl):
 			self.epgTabObjectList[self.oldMode].hide()
 			self.epgTabObjectList[self.currentMode].show()
 
-		if startTab != None:
+		if startTab is not None:
 			if self.currentMode != startTab:
 				self.oldMode = self.currentMode
 				self.currentMode = startTab
@@ -542,12 +542,12 @@ class MerlinEPGCenter(TimerEditList, MerlinEPGActions, EmbeddedVolumeControl):
 		if cur != None and cur[2] != "" and cur[1] != None:
 			serviceList = self.epgcache.search(('R', 100, eEPGCache.SIMILAR_BROADCASTINGS_SEARCH, cur[2], cur[1]))
 			knownSimilar = False
-			if serviceList != None and config.plugins.merlinEpgCenter.limitSearchToBouquetServices.value:
+			if serviceList is not None and config.plugins.merlinEpgCenter.limitSearchToBouquetServices.value:
 				for sRef in serviceList:
 					if sRef[0] in EpgCenterList.allServicesNameDict:
 						knownSimilar = True
 						break
-			elif serviceList != None:
+			elif serviceList is not None:
 				knownSimilar = True
 
 			if knownSimilar:
@@ -844,17 +844,17 @@ class MerlinEPGCenter(TimerEditList, MerlinEPGActions, EmbeddedVolumeControl):
 		if answer[0]:
 			entry = answer[1]
 			simulTimerList = self.session.nav.RecordTimer.record(entry)
-			if simulTimerList != None:
+			if simulTimerList is not None:
 				for x in simulTimerList:
 					if x.setAutoincreaseEnd(entry):
 						self.session.nav.RecordTimer.timeChanged(x)
 				simulTimerList = self.session.nav.RecordTimer.record(entry)
-				if simulTimerList != None:
+				if simulTimerList is not None:
 					self.session.openWithCallback(self.finishSanityCorrection, TimerSanityConflict, simulTimerList)
 			self.updateState()
 
 			cur = self["list"].getCurrent()
-			if cur != None:
+			if cur is not None:
 				self.key_green_choice = self.ADD_TIMER
 				self.setTimerButtonState(cur)
 				self.setButtonText(timerAdded=True)
@@ -915,9 +915,9 @@ class MerlinEPGCenter(TimerEditList, MerlinEPGActions, EmbeddedVolumeControl):
 
 	def getTimerListObjectFromAutoTimer(self, autoTimer):
 		now = localtime(time())
-		if autoTimer.timespan != None and autoTimer.timespan[0] != None:
+		if autoTimer.timespan is not None and autoTimer.timespan[0] is not None:
 			timeSpan = autoTimer.getTimespanBegin()
-			if timeSpan != None:
+			if timeSpan is not None:
 				parts = timeSpan.split(":")
 				dt = datetime(now.tm_year, now.tm_mon, now.tm_mday, int(parts[0]), int(parts[1]))
 				begin = int(mktime(dt.timetuple()))
@@ -925,7 +925,7 @@ class MerlinEPGCenter(TimerEditList, MerlinEPGActions, EmbeddedVolumeControl):
 				begin = 0
 
 			timeSpan = autoTimer.getTimespanEnd()
-			if timeSpan != None:
+			if timeSpan is not None:
 				parts = timeSpan.split(":")
 				dt = datetime(now.tm_year, now.tm_mon, now.tm_mday, int(parts[0]), int(parts[1]))
 				end = int(mktime(dt.timetuple()))
@@ -955,7 +955,7 @@ class MerlinEPGCenter(TimerEditList, MerlinEPGActions, EmbeddedVolumeControl):
 					t.disable()
 					print("Sanity check failed")
 					simulTimerList = timersanitycheck.getSimulTimerList()
-					if simulTimerList != None:
+					if simulTimerList is not None:
 						self.session.openWithCallback(self.finishedEdit, TimerSanityConflict, simulTimerList)
 				else:
 					print("Sanity check passed")
@@ -1360,9 +1360,9 @@ class MerlinEPGCenter(TimerEditList, MerlinEPGActions, EmbeddedVolumeControl):
 			idx = self["list"].instance.getCurrentIndex()
 			if config.plugins.merlinEpgCenter.blinkingPicon.value and self.blinkTimer.getIsInList(idx) and not self.blinkTimer.getBlinkState():
 				self["picon"].instance.setPixmap(gPixmapPtr())
-			elif cur != None:
+			elif cur is not None:
 				sRef = cur[2]
-				if self["picon"].instance != None:
+				if self["picon"].instance is not None:
 					fileName = findDefaultPicon(sRef)
 					if fileName is not "":
 						picon = LoadPixmap(fileName)
@@ -1541,9 +1541,9 @@ class MerlinEPGCenter(TimerEditList, MerlinEPGActions, EmbeddedVolumeControl):
 
 		if doSearch:
 			playingSref = NavigationInstance.instance.getCurrentlyPlayingServiceReference() # get the currently playing service
-			if playingSref != None:
+			if playingSref is not None:
 				event = self.epgcache.lookupEventTime(playingSref, -1, 0) # get the matching event
-				if event != None:
+				if event is not None:
 					searchString = event.getEventName() # set the event name as search string
 				else:
 					searchString = ""
@@ -2080,7 +2080,7 @@ class MerlinEPGCenter(TimerEditList, MerlinEPGActions, EmbeddedVolumeControl):
 
 			# reset the timer button text
 			cur = self["list"].getCurrent()
-			if cur != None:
+			if cur is not None:
 				self.setTimerButtonState(cur)
 		else: # show config tabs
 			self["upcoming"].hide()
@@ -2174,7 +2174,7 @@ class MerlinEPGCenter(TimerEditList, MerlinEPGActions, EmbeddedVolumeControl):
 			backgroundPixmap = LoadPixmap(cached=True, path=config.plugins.merlinEpgCenter.backgroundPixmapShort.value)
 		elif not config.plugins.merlinEpgCenter.showEventInfo.value and config.plugins.merlinEpgCenter.backgroundPixmapLong.value != "":
 			backgroundPixmap = LoadPixmap(cached=True, path=config.plugins.merlinEpgCenter.backgroundPixmapLong.value)
-		if backgroundPixmap != None:
+		if backgroundPixmap is not None:
 			self["timerlist"].instance.setBackgroundPicture(backgroundPixmap)
 			self["list"].instance.setBackgroundPicture(backgroundPixmap)
 			self["upcoming"].instance.setBackgroundPicture(backgroundPixmap)
@@ -2186,7 +2186,7 @@ class MerlinEPGCenter(TimerEditList, MerlinEPGActions, EmbeddedVolumeControl):
 			selectionPixmap = LoadPixmap(cached=True, path=config.plugins.merlinEpgCenter.selectionPixmapShort.value)
 		elif not config.plugins.merlinEpgCenter.showEventInfo.value and config.plugins.merlinEpgCenter.selectionPixmapLong.value != "":
 			selectionPixmap = LoadPixmap(cached=True, path=config.plugins.merlinEpgCenter.selectionPixmapLong.value)
-		if selectionPixmap != None:
+		if selectionPixmap is not None:
 			self["timerlist"].instance.setSelectionPicture(selectionPixmap)
 			self["list"].instance.setSelectionPicture(selectionPixmap)
 			self["history"].instance.setSelectionPicture(selectionPixmap)

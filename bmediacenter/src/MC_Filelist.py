@@ -65,7 +65,7 @@ def FileEntryComponent(name, absolute=None, isDir=False, directory="/", size=0, 
 			png = LoadPixmap(resolveFilename(SCOPE_GUISKIN, "extensions/" + EXTENSIONS[extension] + ".png"))
 		else:
 			png = None
-	if png != None:
+	if png is not None:
 		res.append((eListboxPythonMultiContent.TYPE_PIXMAP_ALPHATEST, 10, 2, 20, 20, png))
 	return res
 
@@ -195,7 +195,7 @@ class FileList(MenuList):
 					if os_path.isdir(directory + x):
 						directories.append(directory + x + "/")
 						files.remove(x)
-		if directory != None and self.showDirectories and not self.isTop:
+		if directory is not None and self.showDirectories and not self.isTop:
 			if directory == self.current_mountpoint and self.showMountpoints:
 				self.list.append(FileEntryComponent(name="<" + _("List of storage Devices") + ">", absolute=None, isDir=True, directory=directory))
 			elif (directory != "/") and not (self.inhibitMounts and self.getMountpoint(directory) in self.inhibitMounts):
@@ -290,7 +290,7 @@ class FileList(MenuList):
 		if self.showMountpoints and len(self.list) == 0:
 			self.list.append(FileEntryComponent(name=_("nothing connected"), absolute=None, isDir=False))
 		self.l.setList(self.list)
-		if select != None:
+		if select is not None:
 			i = 0
 			self.moveToIndex(0)
 			for x in self.list:
@@ -315,7 +315,7 @@ class FileList(MenuList):
 		self.changeDir(self.getSelection()[0], select=self.current_directory)
 
 	def gotoParent(self):
-		if self.current_directory != None:
+		if self.current_directory is not None:
 			if self.current_directory == self.current_mountpoint and self.showMountpoints:
 				absolute = None
 			else:
@@ -371,7 +371,7 @@ def MultiFileSelectEntryComponent(name, absolute=None, isDir=False, selected=Fal
 			png = LoadPixmap(resolveFilename(SCOPE_GUISKIN, "extensions/" + EXTENSIONS[extension] + ".png"))
 		else:
 			png = None
-	if png != None:
+	if png is not None:
 		res.append((eListboxPythonMultiContent.TYPE_PIXMAP_ALPHATEST, 30, 2, 20, 20, png))
 	if not name.startswith('<'):
 		if selected is False:
@@ -484,7 +484,7 @@ class MultiFileSelectList(FileList):
 					if os_path.isdir(directory + x):
 						directories.append(directory + x + "/")
 						files.remove(x)
-		if directory != None and self.showDirectories and not self.isTop:
+		if directory is not None and self.showDirectories and not self.isTop:
 			if directory == self.current_mountpoint and self.showMountpoints:
 				self.list.append(MultiFileSelectEntryComponent(name="<" + _("List of Storage Devices") + ">", absolute=None, isDir=True))
 			elif (directory != "/") and not (self.inhibitMounts and self.getMountpoint(directory) in self.inhibitMounts):
@@ -519,7 +519,7 @@ class MultiFileSelectList(FileList):
 					else:
 						self.list.append(MultiFileSelectEntryComponent(name=name, absolute=x, isDir=False, selected=False))
 		self.l.setList(self.list)
-		if select != None:
+		if select is not None:
 			i = 0
 			self.moveToIndex(0)
 			for x in self.list:

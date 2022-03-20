@@ -145,7 +145,7 @@ def getInstance():
 
 def stopWorker():
 	global instance
-	if instance != None:
+	if instance is not None:
 		log.debug(" SERIESPLUGIN STOP WORKER")
 		instance.stop()
 
@@ -155,7 +155,7 @@ def resetInstance():
 		config.plugins.seriesplugin.lookup_counter.save()
 
 	global instance
-	if instance != None:
+	if instance is not None:
 		log.debug(" SERIESPLUGIN INSTANCE STOP")
 		instance.stop()
 		instance = None

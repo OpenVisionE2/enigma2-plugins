@@ -30,7 +30,7 @@ class VlcPlayList(MenuList):
 
 	def applySkin(self, desktop, parent):
 		attribs = []
-		if self.skinAttributes != None:
+		if self.skinAttributes is not None:
 			for (attrib, value) in self.skinAttributes:
 				if attrib == "font":
 					self.font = parseFont(value, ((1, 1), (1, 1)))
@@ -52,7 +52,7 @@ class VlcPlayList(MenuList):
 
 		png = LoadPixmap(resolveFilename(SCOPE_GUISKIN, "extensions/movie.png"))
 
-		if png != None:
+		if png is not None:
 			res.append((eListboxPythonMultiContent.TYPE_PIXMAP_ALPHATEST, 10, 0, height, height, png))
 
 		return res
@@ -60,7 +60,7 @@ class VlcPlayList(MenuList):
 	def update(self):
 		files = self.getPlaylistEntriesCB()
 		fileEntries = []
-		if files != None:
+		if files is not None:
 			for file in files:
 				name, path = file
 				fileEntries.append((name, path))
@@ -71,7 +71,7 @@ class VlcPlayList(MenuList):
 
 	def activate(self):
 		cur = self.getCurrent()
-		if cur != None:
+		if cur is not None:
 			return cur
 		return None, None
 

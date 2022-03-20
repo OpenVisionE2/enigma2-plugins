@@ -619,7 +619,7 @@ class ZapStatisticScreen(Screen, ProtectedScreen):
 
 	def menuCallback(self, callback=None):
 
-		if callback != None:
+		if callback is not None:
 
 			callback[1]()
 

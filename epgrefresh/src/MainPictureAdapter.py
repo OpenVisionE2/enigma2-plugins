@@ -32,5 +32,5 @@ class MainPictureAdapter:
 		return self.navcore.playService(service)
 
 	def stop(self):
-		if self.previousService != None or Screens.Standby.inStandby:
+		if self.previousService is not None or Screens.Standby.inStandby:
 			self.navcore.playService(self.previousService)

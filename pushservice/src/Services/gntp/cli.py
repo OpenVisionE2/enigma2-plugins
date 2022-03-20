@@ -84,7 +84,7 @@ def main():
 
 	# This would likely be better placed within the growl notifier
 	# class but until I make _checkIcon smarter this is "easier"
-	if options.icon != None and not options.icon.startswith('http'):
+	if options.icon is not None and not options.icon.startswith('http'):
 		logging.info('Loading image %s', options.icon)
 		f = open(options.icon)
 		options.icon = f.read()

@@ -101,7 +101,7 @@ class MovieScanner():
         self.last_update = datetime.now()
 
     def getLastUpdate(self):
-        if self.last_update != None:
+        if self.last_update is not None:
             return self.last_update.strftime("%d.%m.%Y %H:%M")
 
     def isMovieRecorded(self, name):
@@ -160,7 +160,7 @@ class MovieScanner():
                 self.scanForMovies(p)
 
             # self.full_used_detect = self.getFullUsed()
-            if self.callback != None:
+            if self.callback is not None:
                 self.callback()
 
             # from MovieLibrary import dict2xml
@@ -192,12 +192,12 @@ class MovieScanner():
             # dvd structure
             if serviceref.flags & eServiceReference.mustDescent:
                 dvd = detectDVDStructure(serviceref.getPath())
-                if dvd != None:
+                if dvd is not None:
                     if serviceref.getPath()[:-1].endswith(TRASH_NAME):
                         continue
                     serviceref = eServiceReferenceDvd(serviceref, True)
                 bludisc = detectBludiscStructure(serviceref.getPath())
-                if bludisc != None:
+                if bludisc is not None:
                     if serviceref.getPath()[:-1].endswith(TRASH_NAME):
                         continue
                     serviceref = eServiceReferenceBludisc(serviceref, True)
@@ -238,7 +238,7 @@ class MovieScanner():
             info = self.serviceHandler.info(serviceref)
 
             # get begin time
-            if dvd != None:
+            if dvd is not None:
                 begin = int(os.stat(dvd).st_mtime)
             else:
                 begin = info.getInfo(serviceref, iServiceInformation.sTimeCreate)
@@ -339,7 +339,7 @@ class MovieScanner():
             return
         print("update service info", serviceref.toString())
         movie_info = self.movielibrary.findMoviePath(serviceref)
-        if movie_info != None:
+        if movie_info is not None:
             movie_info.info = self.serviceHandler.info(serviceref)
             movie_info.name = movie_info.info.getName(serviceref)
             print(movie_info)

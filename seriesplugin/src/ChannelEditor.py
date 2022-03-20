@@ -71,7 +71,7 @@ class MatchList(MenuList):
 		self.l.setBuildFunc(self.buildListboxEntry)
 
 		global TemplatedListFonts
-		if TemplatedListFonts != None:
+		if TemplatedListFonts is not None:
 			tlf = TemplatedListFonts()
 			self.l.setFont(0, gFont(tlf.face(tlf.MEDIUM), tlf.size(tlf.MEDIUM)))
 		else:
@@ -81,7 +81,7 @@ class MatchList(MenuList):
 		# This is a very bad way to get the skin attributes
 		# This function is called for every skin element, we should parse the attributes depending on the element name
 		attribs = []
-		if self.skinAttributes != None:
+		if self.skinAttributes is not None:
 			for (attrib, value) in self.skinAttributes:
 				if attrib == "font":
 					self.listFont = parseFont(value, ((1, 1), (1, 1)))

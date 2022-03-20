@@ -400,7 +400,7 @@ class QuickButton:
                     for p in plugins.getPlugins(where=[PluginDescriptor.WHERE_MOVIELIST]):
                         if pname == str(p.name):
                             plugin = p
-                    if plugin != None:
+                    if plugin is not None:
                         try:
                             plugin(self.session, service)
                         except:
@@ -457,10 +457,10 @@ class QuickButton:
                     break
                 if serviceref.flags & eServiceReference.mustDescent:
                     dvd = detectDVDStructure(serviceref.getPath())
-                    if dvd != None:
+                    if dvd is not None:
                         serviceref = eServiceReferenceDvd(serviceref, True)
                     bludisc = detectBludiscStructure(serviceref.getPath())
-                    if bludisc != None:
+                    if bludisc is not None:
                         serviceref = eServiceReferenceBludisc(serviceref, True)
                     if not dvd and not bludisc:
                         continue

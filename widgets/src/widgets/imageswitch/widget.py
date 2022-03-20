@@ -46,7 +46,7 @@ class WebPixmap(Pixmap):
         if os_isfile(tmpfile):
             self.tmpfile = tmpfile
             self.onLoadFinished(None)
-        elif url != None:
+        elif url is not None:
             self.tmpfile = tmpfile
             head = {}
             agt = "Mozilla/5.0 (Windows; U; Windows NT 5.1; de; rv:1.9.0.2) Gecko/2008091620 Firefox/3.0.2"

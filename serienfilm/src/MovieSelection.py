@@ -158,7 +158,7 @@ class MovieContextMenu(Screen):
 			return
 		dsc = info and info.getInfoString(self.service, iServiceInformation.sDescription)
 		result = False
-		if offline != None:
+		if offline is not None:
 			# simulate first
 			if not offline.deleteFromDisk(1):
 				result = True
@@ -185,7 +185,7 @@ class MovieContextMenu(Screen):
 		serviceHandler = eServiceCenter.getInstance()
 		offline = serviceHandler.offlineOperations(self.service)
 		result = False
-		if offline != None:
+		if offline is not None:
 			# really delete!
 			if not offline.deleteFromDisk(0):
 				result = True
@@ -363,7 +363,7 @@ class MovieSelection(Screen, HelpableScreen, SelectionEventInfo):
 
 	def movieSelected(self):
 		current = self.getCurrent()
-		if current != None:
+		if current is not None:
 			dirname = self["list"].playDirectory(current)	# dont feed dirs to MoviePlayer
 			if dirname is None:
 				self.saveconfig()
@@ -373,7 +373,7 @@ class MovieSelection(Screen, HelpableScreen, SelectionEventInfo):
 
 	def doContext(self):
 		current = self.getCurrent()
-		if current != None:
+		if current is not None:
 			self.session.open(MovieContextMenu, self, current)
 
 	def abort(self):
@@ -445,7 +445,7 @@ class MovieSelection(Screen, HelpableScreen, SelectionEventInfo):
 		title = _("Recorded files...")
 		if config.usage.setup_level.index >= 2: # expert+
 			title += "  " + config.movielist.last_videodir.value
-		if self.selected_tags != None:
+		if self.selected_tags is not None:
 			title += " - " + ','.join(self.selected_tags)
 		self.setTitle(title)
 		self["list"].saveTitle(title)
@@ -465,7 +465,7 @@ class MovieSelection(Screen, HelpableScreen, SelectionEventInfo):
 		)
 
 	def gotFilename(self, res):
-		if res != None and res is not config.movielist.last_videodir.value:
+		if res is not None and res is not config.movielist.last_videodir.value:
 			if fileExists(res):
 				config.movielist.last_videodir.value = res
 				config.movielist.last_videodir.save()
@@ -506,7 +506,7 @@ class MovieSelection(Screen, HelpableScreen, SelectionEventInfo):
 		self.showTagsN(None)
 
 	def tagChosen(self, tag):
-		if tag != None:
+		if tag is not None:
 			self.selected_tags = set([tag[0]])
 			if self.selected_tags_ele:
 				self.selected_tags_ele.value = tag[0]

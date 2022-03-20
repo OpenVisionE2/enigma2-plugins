@@ -66,7 +66,7 @@ class MyPluginList(PluginList):
 		self.__inst = None
 
 	def __instance(self):
-		if self.__inst != None:
+		if self.__inst is not None:
 			return self.__inst
 		for x in self.downstream_elements:
 			if isinstance(x, TemplatedMultiContent):
@@ -177,7 +177,7 @@ class PluginWeights:
 		for x in plugin.where:
 			whereplugins = self.plugins.get(x, None)
 			weight = whereplugins and whereplugins.get(plugin.name, None)
-			if weight != None:
+			if weight is not None:
 				return weight
 		return plugin.weight
 

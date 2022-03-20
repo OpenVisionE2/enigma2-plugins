@@ -81,7 +81,7 @@ def FileEntryComponent(name, absolute=None, isDir=False):
 			png = LoadPixmap(resolveFilename(SCOPE_PLUGINS, "Extensions/DreamExplorer/res/" + EXTENSIONS[extension] + ".png"))
 		else:
 			png = None
-	if png != None:
+	if png is not None:
 		x, y, w, h = skin.parameters.get("DreamexplorerIcon", (12, 3, 20, 20))
 		res.append(MultiContentEntryPixmapAlphaTest(pos=(x, y), size=(w, h), png=png, flags=BT_SCALE | BT_KEEP_ASPECT_RATIO))
 	return res
@@ -205,7 +205,7 @@ class FileList(MenuList):
 					if os_path.isdir(directory + x):
 						directories.append(directory + x + "/")
 						files.remove(x)
-		if directory != None and self.showDirectories and not self.isTop:
+		if directory is not None and self.showDirectories and not self.isTop:
 			if directory == self.current_mountpoint and self.showMountpoints:
 				self.list.append(FileEntryComponent(name="<" + _("List of Storage Devices") + ">", absolute=None, isDir=True))
 			elif (directory != "/") and not (self.inhibitMounts and self.getMountpoint(directory) in self.inhibitMounts):
@@ -226,7 +226,7 @@ class FileList(MenuList):
 					nx = None
 					if (config.plugins.DreamExplorer.MediaFilter.value == "on"):
 						nx = self.getTSInfo(path)
-						if nx != None:
+						if nx is not None:
 							name = nx
 				EXext = os_path.splitext(path)[1]
 				EXext = EXext.replace(".", "")
@@ -245,7 +245,7 @@ class FileList(MenuList):
 						res.append(MultiContentEntryPixmapAlphaTest(pos=(x, y), size=(w, h), png=png, flags=BT_SCALE | BT_KEEP_ASPECT_RATIO))
 						self.list.append(res)
 		self.l.setList(self.list)
-		if select != None:
+		if select is not None:
 			i = 0
 			self.moveToIndex(0)
 			for x in self.list:
@@ -306,7 +306,7 @@ class FileList(MenuList):
 				return None
 			serviceHandler = eServiceCenter.getInstance()
 			info = serviceHandler.info(serviceref)
-			if info != None:
+			if info is not None:
 				txt = info.getName(serviceref)
 				description = info.getInfoString(serviceref, iServiceInformation.sDescription)
 				if not txt.endswith(".ts"):

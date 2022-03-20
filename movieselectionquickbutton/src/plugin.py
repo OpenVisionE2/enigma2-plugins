@@ -124,7 +124,7 @@ def startPlugin(self, pname, index):
 	no_plugin = True
 	msgText = _("Unknown Error")
 	current = self.getCurrent()
-	if current != None:
+	if current is not None:
 		if pname != _("Nothing"):
 			if pname == _("Delete"):
 				MCM = MovieContextMenu(self.session, self, current)
@@ -156,7 +156,7 @@ def startPlugin(self, pname, index):
 				for p in plugins.getPlugins(where=[PluginDescriptor.WHERE_MOVIELIST]):
 					if pname == str(p.name):
 						plugin = p
-				if plugin != None:
+				if plugin is not None:
 					try:
 						plugin(self.session, current)
 						no_plugin = False

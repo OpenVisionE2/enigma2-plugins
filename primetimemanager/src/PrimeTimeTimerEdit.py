@@ -55,7 +55,7 @@ def openExtendedSetup(self):
 						break
 
 		def conflictAction(choice):
-			if choice != None:
+			if choice is not None:
 				if choice[1] == "current":
 					self.session.openWithCallback(self.updateList, PrimeTimeTimerSanityConflict, currentSimulTimerList, True)
 				if choice[1] == "any":
@@ -184,7 +184,7 @@ class PrimeTimeTimerSanityConflict(Screen):
 		success = False
 		if not timersanitycheck.check():
 			simulTimerList = timersanitycheck.getSimulTimerList()
-			if simulTimerList != None:
+			if simulTimerList is not None:
 				for x in simulTimerList:
 					if x.setAutoincreaseEnd(self.timer[0]):
 						self.session.nav.RecordTimer.timeChanged(x)
@@ -200,7 +200,7 @@ class PrimeTimeTimerSanityConflict(Screen):
 			menu.append((_("Show warning before set 'Ignore conflict'"), "blue_key_warning"))
 
 		def showAction(choice):
-			if choice != None:
+			if choice is not None:
 				if choice[1] == "blue_key_warning":
 					config.usage.show_timer_conflict_warning.value = True
 					config.usage.show_timer_conflict_warning.save()

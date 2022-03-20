@@ -399,7 +399,7 @@ class PrimeTimeManager(Screen, HelpableScreen):
 				check_on = True
 				simulTimerList = timersanitycheck.getSimulTimerList()
 				break
-		if check_on and simulTimerList != None:
+		if check_on and simulTimerList is not None:
 			self.session.openWithCallback(boundFunction(self.postEdit), PTMtimerSanityConflict, simulTimerList)
 		else:
 			if not onlyConflict:
@@ -504,7 +504,7 @@ class PrimeTimeManager(Screen, HelpableScreen):
 	def getNumTuners(self):
 		nimCount = 0
 		for slot in nimmanager.nim_slots:
-			if slot.type != None:
+			if slot.type is not None:
 				nimCount += 1
 		return nimCount
 
@@ -638,7 +638,7 @@ class PrimeTimeManager(Screen, HelpableScreen):
 							except:
 								pass
 						timerEntry = self.getIsInTimer(favorite)
-						if timerEntry != None:
+						if timerEntry is not None:
 							try:
 								if not timerEntry.isRunning():
 									self.recordTimer.timer_list.remove(timerEntry)
@@ -675,7 +675,7 @@ class PrimeTimeManager(Screen, HelpableScreen):
 					elif result[3] and result[6] is None: # view live event?
 						try:
 							timerEntry = self.getIsInTimer(favorite)
-							if timerEntry != None:
+							if timerEntry is not None:
 								if config.plugins.PrimeTimeManager.ViewLiveType.value == "zaprec":
 									timerEntry.justplay = False
 									timerEntry.always_zap = True
@@ -712,7 +712,7 @@ class PrimeTimeManager(Screen, HelpableScreen):
 						# we don't want duplicate timer entries
 						try:
 							timerEntry = self.getIsInTimer(favorite)
-							if timerEntry != None:
+							if timerEntry is not None:
 								try:
 									if not timerEntry.isRunning():
 										self.recordTimer.timer_list.remove(timerEntry)
@@ -782,7 +782,7 @@ class PrimeTimeManager(Screen, HelpableScreen):
 					else: # must be a simple favorite. turn it into a timer
 						try:
 							timerEntry = self.getIsInTimer(favorite)
-							if timerEntry != None:
+							if timerEntry is not None:
 								if result[3]:
 									if config.plugins.PrimeTimeManager.ViewLiveType.value == "zaprec":
 										timerEntry.justplay = False
@@ -1018,7 +1018,7 @@ class PrimeTimeManager(Screen, HelpableScreen):
 						if sRef == favorite[SERVICEREF]:
 							simObject = SimilarObject(sRef)
 							simObject.similarEvents = self.epgcache.search(('IRBDTSEN', 20, eEPGCache.SIMILAR_BROADCASTINGS_SEARCH, favorite[SERVICEREF], favorite[EVENTID]))
-							if simObject.similarEvents != None:
+							if simObject.similarEvents is not None:
 								# sort by time
 								simObject.similarEvents.sort(key=self.TimeSortFunc)
 								# sort the similar events, HD services first
@@ -1053,7 +1053,7 @@ class PrimeTimeManager(Screen, HelpableScreen):
 							# timer list. we already know there are conflicts so we need to compare
 							# every similar event with every timer one by one to get a reliable result
 							# for similar events.
-							if simObject.similarEvents != None:
+							if simObject.similarEvents is not None:
 								for similarEvent in simObject.similarEvents:
 									noConflict = False
 									for timer in self.recordTimer.timer_list:
@@ -1078,7 +1078,7 @@ class PrimeTimeManager(Screen, HelpableScreen):
 										if config.plugins.PrimeTimeManager.ViewLive.value:
 											if simObject.sRef == result[0][SERVICEREF] and not result[3]:
 												add_to_live = False
-												if view_live != None:
+												if view_live is not None:
 													ref = result[0][SERVICEREF]
 													if not self.getSimilarForViewLive(view_live, ref):
 														result[6] = similarTimer
@@ -1167,7 +1167,7 @@ class PrimeTimeManager(Screen, HelpableScreen):
 											# does the service ref match?
 											if config.plugins.PrimeTimeManager.ViewLive.value:
 												if simObject.sRef == result[0][SERVICEREF] and not result[3]:
-													if view_live != None:
+													if view_live is not None:
 														ref = result[0][SERVICEREF]
 														if not self.getSimilarForViewLive(view_live, ref):
 															result[6] = similarTimer
@@ -1234,7 +1234,7 @@ class PrimeTimeManager(Screen, HelpableScreen):
 			for result in resultList:
 				if result[6] is None and not result[5] and not result[3]:
 					if result[8] and result[7] is None:
-						if config.plugins.PrimeTimeManager.ViewLive.value and view_live != None:
+						if config.plugins.PrimeTimeManager.ViewLive.value and view_live is not None:
 							ref = result[0][SERVICEREF]
 							if not self.getSimilarForViewLive(view_live, ref):
 								result[5] = True
@@ -1242,7 +1242,7 @@ class PrimeTimeManager(Screen, HelpableScreen):
 						else:
 							result[5] = True
 							print("[PrimeTimeManager] Step 4.5 auto timer %s" % ServiceReference(result[0][SERVICEREF]).getServiceName())
-					elif result[7] != None:
+					elif result[7] is not None:
 						result[6] = result[7]
 						print("[PrimeTimeManager] Step 4.5 similar timer %s" % ServiceReference(result[0][SERVICEREF]).getServiceName())
 					if not self.getConflictListTimer(resultList):
@@ -1252,7 +1252,7 @@ class PrimeTimeManager(Screen, HelpableScreen):
 			if self.getConflictListTimer(resultList):
 				for result in resultList:
 					if result[6] is None and not result[5] and not result[3]:
-						if config.plugins.PrimeTimeManager.ViewLive.value and view_live != None:
+						if config.plugins.PrimeTimeManager.ViewLive.value and view_live is not None:
 							ref = result[0][SERVICEREF]
 							if not self.getSimilarForViewLive(view_live, ref):
 								result[5] = True
@@ -1427,7 +1427,7 @@ class PrimeTimeManager(Screen, HelpableScreen):
 	# get the event from a service ref
 	def getEventFromId(self, service, eventid):
 		event = None
-		if self.epgcache != None and eventid != None:
+		if self.epgcache is not None and eventid is not None:
 			event = self.epgcache.lookupEventId(service.ref, eventid)
 		return event
 
@@ -1495,7 +1495,7 @@ class PrimeTimeManager(Screen, HelpableScreen):
 		# try turning a record timer event into a view live event
 		timerServicesList = (serviceRef, eventId) in self.timerServices[self.dayOffset]
 		if timerServicesList:
-			if timerEntry != None and not timerEntry.isRunning():
+			if timerEntry is not None and not timerEntry.isRunning():
 				if timerEntry.repeated:
 					text = _("Prime Time Manager:\n\nSorry, but turning a repeated timer into a view live event isn't supported.")
 					self.session.open(MessageBox, text, MessageBox.TYPE_INFO)
@@ -1513,7 +1513,7 @@ class PrimeTimeManager(Screen, HelpableScreen):
 					# refresh prime time and favorite list
 					self.updateSubLists(PT_AND_FAV)
 					self.setSublistOffsets(PT_AND_FAV)
-		elif not timerServicesList and timerEntry != None and not timerEntry.isRunning() and self.viewLiveServices[self.dayOffset] == serviceRef:
+		elif not timerServicesList and timerEntry is not None and not timerEntry.isRunning() and self.viewLiveServices[self.dayOffset] == serviceRef:
 			if timerEntry.repeated:
 				text = _("Prime Time Manager:\n\nSorry, but turning a repeated timer into a view live event isn't supported.")
 				self.session.open(MessageBox, text, MessageBox.TYPE_INFO)
@@ -1634,7 +1634,7 @@ class PrimeTimeManager(Screen, HelpableScreen):
 					break
 			if check_on:
 				total = ""
-				if simulTimerList != None:
+				if simulTimerList is not None:
 					try:
 						total = _("\nTotal number of conflicts: %s") % (len(simulTimerList) - 1)
 					except:
@@ -1717,7 +1717,7 @@ class PrimeTimeManager(Screen, HelpableScreen):
 			if (sRef, eventId) in self.timerServices[self.dayOffset] or (ref_str, eventId) in self.timerServices[self.dayOffset]:
 				# check if it's a repeated timer
 				timerEntry = self.getIsInTimer(selected)
-				if timerEntry != None:
+				if timerEntry is not None:
 					if timerEntry.repeated:
 						# the user is trying to remove a repeated timer entry from the favorites
 						text = _('This is a repeated timer! Do you really want to delete the repeated timer for "%s"?') % selected[TITLE]
@@ -1731,7 +1731,7 @@ class PrimeTimeManager(Screen, HelpableScreen):
 			else:
 				self.removeEntryFromFavorites(selected, False)
 				timerEntry = self.getIsInTimer(selected)
-				if timerEntry != None and eventId == timerEntry.eit:
+				if timerEntry is not None and eventId == timerEntry.eit:
 					try:
 						self.recordTimer.removeEntry(timerEntry)
 					except:
@@ -1739,11 +1739,11 @@ class PrimeTimeManager(Screen, HelpableScreen):
 				self.setSetDayButton()
 
 	def zapToConfirmed(self, sRef, answer):
-		if answer and sRef != None:
+		if answer and sRef is not None:
 			try:
-				if self.servicelist != None:
+				if self.servicelist is not None:
 					self.root = self.servicelist.getRoot()
-					if self.root and self.bouquets != None:
+					if self.root and self.bouquets is not None:
 						if self.root != self.bouquets[self.currentBouquet][1]:
 							self.servicelist.clearPath()
 							if self.servicelist.bouquet_root != self.bouquets[self.currentBouquet][1]:
@@ -1801,7 +1801,7 @@ class PrimeTimeManager(Screen, HelpableScreen):
 		elif (sRef, eventId) in self.timerServices[self.dayOffset] or (ref_str, eventId) in self.timerServices[self.dayOffset]:
 			text = ""
 			timerEntry = self.getIsInTimer(selected)
-			if timerEntry != None and timerEntry.isRunning() and not timerEntry.justplay:
+			if timerEntry is not None and timerEntry.isRunning() and not timerEntry.justplay:
 				text = _('Recording is in progress.\n')
 			text += _('Do you really want to delete the timer for "%s"?') % selected[TITLE]
 			self.session.openWithCallback(boundFunction(self.deleteTimerConfirmed, selected), MessageBox, text, default=False)
@@ -1857,7 +1857,7 @@ class PrimeTimeManager(Screen, HelpableScreen):
 
 	# get a list of service refs for all HD services
 	def getHDServices(self):
-		if self.serviceRefsHD != None:
+		if self.serviceRefsHD is not None:
 			return
 		print("[PrimeTimeManager] Searching HD Services")
 		self.serviceRefsHD = []
@@ -1918,13 +1918,13 @@ class PrimeTimeManager(Screen, HelpableScreen):
 				if selected in self.favoriteEvents[self.dayOffset].services:
 					self.removeEntryFromFavorites(selected, False)
 					timer = self.getIsInTimer(selected)
-					if timer != None and selected[EVENTID] == timer.eit:
+					if timer is not None and selected[EVENTID] == timer.eit:
 						try:
 							self.recordTimer.removeEntry(timer)
 						except:
 							pass
 				self.recordTimer.addTimerEntry(timerEntry)
-				if timerEntry != None:
+				if timerEntry is not None:
 					timer_ref = GetWithAlternative(timerEntry.service_ref.ref.toString())
 					if timerEntry.isRunning():
 						if not timerEntry.justplay:
@@ -2004,11 +2004,11 @@ class PrimeTimeManager(Screen, HelpableScreen):
 		getEventName = selected[TITLE]
 		shortDescription = selected[SHORTDESC]
 		extDescription = selected[EXTDESC]
-		if getEventName != None and shortDescription != None and getEventName != shortDescription:
+		if getEventName is not None and shortDescription is not None and getEventName != shortDescription:
 			text = getEventName + "\n"
-		if shortDescription != None:
+		if shortDescription is not None:
 			text += shortDescription + "\n\n"
-		if extDescription != None:
+		if extDescription is not None:
 			text += extDescription
 
 		self["description"].setText(text)
@@ -2075,9 +2075,9 @@ class PrimeTimeManager(Screen, HelpableScreen):
 		i = 0
 		while i < self.bouquetCount:
 			for event in self.primeTimeEvents[i].services:
-				if (event[EVENTID] and event[BEGIN] and event[DURATION] and event[SERVICEREF]) != None:
+				if (event[EVENTID] and event[BEGIN] and event[DURATION] and event[SERVICEREF]) is not None:
 					timerEntry = self.getIsInTimer(event)
-					if timerEntry != None and (timerEntry.begin - config.recording.margin_before.value * 60 <= self.primeTime) and (timerEntry.end - config.recording.margin_after.value * 60 > self.primeTime): #and not timerEntry.isRunning():
+					if timerEntry is not None and (timerEntry.begin - config.recording.margin_before.value * 60 <= self.primeTime) and (timerEntry.end - config.recording.margin_after.value * 60 > self.primeTime): #and not timerEntry.isRunning():
 						try:
 							if timerEntry.primeTime:
 								continue
@@ -2107,7 +2107,7 @@ class PrimeTimeManager(Screen, HelpableScreen):
 	def deleteTimerConfirmed(self, selected, result):
 		if result:
 			timerEntry = self.getIsInTimer(selected)
-			if timerEntry != None:
+			if timerEntry is not None:
 				try:
 					if timerEntry.isRunning():
 						timerEntry.afterEvent = AFTEREVENT.NONE
@@ -2399,7 +2399,7 @@ class NoScrollBarLabel(ScrollLabel):
 
 	def applySkin(self, desktop, parent):
 		ret = False
-		if self.skinAttributes != None:
+		if self.skinAttributes is not None:
 			skin.applyAllAttributes(self.long_text, desktop, self.skinAttributes, parent.scale)
 			widget_attribs = []
 			for (attrib, value) in self.skinAttributes:
@@ -2422,7 +2422,7 @@ class NoScrollBarLabel(ScrollLabel):
 
 	def setText(self, text):
 		self.message = text
-		if self.long_text != None and self.pageHeight:
+		if self.long_text is not None and self.pageHeight:
 			self.long_text.move(ePoint(0, 0))
 			self.long_text.setText(self.message)
 			text_height = self.long_text.calculateSize().height()
@@ -2545,7 +2545,7 @@ class EventViewSuperSimple(Screen, EventViewBase):
 			except:
 				return
 			cur = self.event
-			if cur != None:
+			if cur is not None:
 				name2 = cur.getEventName()
 				name3 = name2.split("(")[0].strip()
 				eventname = name3.replace('"', '').replace('Х/Ф', '').replace('М/Ф', '').replace('Х/ф', '').replace('.', '')
@@ -2554,7 +2554,7 @@ class EventViewSuperSimple(Screen, EventViewBase):
 					tmbdsearch = config.plugins.tmbd.profile.value
 				except:
 					tmbdsearch = None
-				if tmbdsearch != None:
+				if tmbdsearch is not None:
 					if config.plugins.tmbd.profile.value == "0":
 						try:
 							self.session.open(TMBD, eventname, False)
@@ -2574,7 +2574,7 @@ class EventViewSuperSimple(Screen, EventViewBase):
 		else:
 			if (not self.TMBD and self.IMDb) or (not self.TMBD and not self.IMDb):
 				try:
-					if self.currentService != None and self.event != None:
+					if self.currentService is not None and self.event is not None:
 						ref = self.currentService.ref.toString()
 						id = self.event.getEventId()
 						self.session.open(PrimeTimeSingleSelection, ref, event_id=id)
@@ -2584,7 +2584,7 @@ class EventViewSuperSimple(Screen, EventViewBase):
 	def runIMDb(self):
 		if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/IMDb/plugin.pyo")):
 			cur = self.event
-			if cur != None:
+			if cur is not None:
 				try:
 					from Plugins.Extensions.IMDb.plugin import IMDB
 					self.session.open(IMDB, cur.getEventName())
@@ -2593,7 +2593,7 @@ class EventViewSuperSimple(Screen, EventViewBase):
 		else:
 			if not self.IMDb and self.TMBD:
 				try:
-					if self.currentService != None and self.event != None:
+					if self.currentService is not None and self.event is not None:
 						ref = self.currentService.ref.toString()
 						id = self.event.getEventId()
 						self.session.open(PrimeTimeSingleSelection, ref, event_id=id)
@@ -2682,7 +2682,7 @@ class PrimeTimeSelection(EPGSelection):
 	def __closed(self):
 		if config.plugins.PrimeTimeManager.CloseMultiEPG.value:
 			sref = self["list"].getCurrent() and self["list"].getCurrent()[1]
-			if sref != None:
+			if sref is not None:
 				count = 0
 				for x in self.services:
 					count += 1
@@ -2708,7 +2708,7 @@ class PrimeTimeSelection(EPGSelection):
 
 	def eventSelected(self):
 		sref = self["list"].getCurrent()[1]
-		if sref != None:
+		if sref is not None:
 			count = 0
 			for x in self.services:
 				count += 1
@@ -2742,7 +2742,7 @@ class PrimeTimeSingleSelection(EPGSelection):
 	def onCreate(self):
 		try:
 			EPGSelection.onCreate(self)
-			if self.event_id != None:
+			if self.event_id is not None:
 				self["list"].moveToEventId(self.event_id)
 		except:
 			pass
@@ -2773,7 +2773,7 @@ class PTMtimerSanityConflict(TimerSanityConflict):
 				simulTimerList = timersanitycheck.getSimulTimerList()
 				break
 		if check_on:
-			if simulTimerList != None:
+			if simulTimerList is not None:
 				total = _("\nTotal number of conflicts: %s") % (len(simulTimerList) - 1)
 		return total
 

@@ -182,7 +182,7 @@ def startPlugin(self, pname):
 			for p in plugins.getPlugins(where=[PluginDescriptor.WHERE_EXTENSIONSMENU, PluginDescriptor.WHERE_PLUGINMENU]):
 				if pname == str(p.name):
 					plugin = p
-			if plugin != None:
+			if plugin is not None:
 				try:
 					self.runPlugin(plugin)
 					no_plugin = False

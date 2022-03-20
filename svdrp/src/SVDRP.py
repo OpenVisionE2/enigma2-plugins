@@ -422,7 +422,7 @@ class SimpleVDRProtocol(LineReceiver):
 		serviceHandler = eServiceCenter.getInstance()
 		offline = serviceHandler.offlineOperations(sref)
 
-		if offline != None:
+		if offline is not None:
 			if not offline.deleteFromDisk(0):
 				payload = '%d Movie "%d" deleted' % (CODE_OK, movieId)
 				return self.sendLine(payload)

@@ -975,7 +975,7 @@ class TeleText(Screen):
       log("get favorites of service %s [%s]" % (service[1], service[0]))
       for i in range(10):
         text = self.favorites.getFavorite(service[0], i)
-        if text != None:
+        if text is not None:
           page = int(text[0])
           self.fav_list.append(page)
           if page == 100:

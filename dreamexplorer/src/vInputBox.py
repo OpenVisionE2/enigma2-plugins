@@ -45,7 +45,7 @@ class vInputBox(Screen, myNumericalTextInput):
 		self["text"] = Label(title)
 		self["input"] = Input(**kwargs)
 		self.onShown.append(boundFunction(self.setTitle, windowTitle))
-		if useableChars != None:
+		if useableChars is not None:
 			self["input"].setUseableChars(useableChars)
 		self["actions"] = NumberActionMap(["WizardActions", "InputBoxActions", "InputAsciiActions", "KeyboardInputActions"],
 		{

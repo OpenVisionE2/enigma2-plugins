@@ -60,7 +60,7 @@ class AC3delay:
     def seekAfterWait(self):
         self.timer.stop()
         self.initAudio()
-        if self.iSeek != None:
+        if self.iSeek is not None:
             self.iSeek.seekTo(self.lCurPosition)
         self.deleteAudio()
 
@@ -78,7 +78,7 @@ class AC3delay:
             self.initAudio()
             bInitialized = True
         iDelay = 0
-        if self.iAudioDelay != None:
+        if self.iAudioDelay is not None:
             if sAudio == AC3:
                 iDelay = self.iAudioDelay.getAC3Delay()
             elif sAudio == PCM:
@@ -98,7 +98,7 @@ class AC3delay:
         if self.iService == None:
             self.initAudio()
             bInitialized = True
-        if self.iAudioDelay != None:
+        if self.iAudioDelay is not None:
             iDelayLameDb = iDelay
             if iDelayLameDb == 0:
                 iDelayLameDb = -1
@@ -131,7 +131,7 @@ class AC3delay:
 
         # check if we are in a recording
         lCurPosition = self.cueGetCurrentPosition()
-        if lCurPosition != None:
+        if lCurPosition is not None:
             self.bIsRecording = True
 
         # check if downmix is enabled

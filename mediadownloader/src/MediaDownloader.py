@@ -167,7 +167,7 @@ class MediaDownloader(Screen):
 		self.onExecBegin.remove(self.getFilename)
 
 		# If we have a filename (downloadTo provided) start fetching
-		if self.filename != None:
+		if self.filename is not None:
 			self.fetchFile()
 		# Else open LocationBox to determine where to save
 		else:
@@ -186,7 +186,7 @@ class MediaDownloader(Screen):
 
 	def gotFilename(self, res):
 		# If we got a filename try to fetch file
-		if res != None:
+		if res is not None:
 			self.filename = res
 			self.fetchFile()
 		# Else close
@@ -240,7 +240,7 @@ class MediaDownloader(Screen):
 			)
 
 		# Calback with Filename on success
-		if self.callback != None:
+		if self.callback is not None:
 			self.callback(self.filename)
 
 		self.close()
@@ -257,7 +257,7 @@ class MediaDownloader(Screen):
 		# Otherwise callback and close
 		else:
 			# Calback with Filename on success
-			if self.callback != None:
+			if self.callback is not None:
 				self.callback(self.filename)
 
 			self.close()
@@ -274,7 +274,7 @@ class MediaDownloader(Screen):
 		)
 
 		# Calback with None on failure
-		if self.callback != None:
+		if self.callback is not None:
 			self.callback(None)
 
 		self.close()

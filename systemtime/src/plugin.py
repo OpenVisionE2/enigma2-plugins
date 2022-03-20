@@ -209,7 +209,7 @@ class SystemTimeSetupScreen(Screen, ConfigListScreen):
 		def setPrevValues(section, values):
 			for (key, val) in section.content.items.items():
 				value = values.get(key, None)
-				if value != None:
+				if value is not None:
 					if isinstance(val, ConfigSubsection):
 						setPrevValues(val, value)
 					else:

@@ -53,7 +53,7 @@ class YouTubePlayer(VlcPlayer):
 		self.session.openWithCallback(self.menuActionCoosen, YouTubeEntryContextMenu, contextMenuList, self.name)
 
 	def menuActionCoosen(self, cookie):
-		if cookie != None:
+		if cookie is not None:
 			if cookie[1]:
 				self.stop()
 			cookie[0]()

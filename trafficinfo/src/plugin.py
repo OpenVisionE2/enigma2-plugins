@@ -108,14 +108,14 @@ class TrafficInfoMain(Screen):
 
     def onSectionSelected(self):
         c = self["sectionlist"].getCurrent()
-        if c != None:
+        if c is not None:
             self.setTitle("Verkehrsinfo: " + c[1].name)
             self.getItemsOfSection(c[1])
 
     def onItemSelected(self):
-        if self["itemlist"].getCurrent() != None:
+        if self["itemlist"].getCurrent() is not None:
             c = self["itemlist"].getCurrent()[0]
-            if c != None:
+            if c is not None:
                 self["itemdetails"].setText(c.text)
 
     ###########

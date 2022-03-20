@@ -244,7 +244,7 @@ class PipServiceRelationEntryConfigScreen(ConfigListScreen, Screen):
 
 	def keySave(self):
 		if self.entry and self.entry[0] and self.entry[1]:
-			if self.currentKey != None:
+			if self.currentKey is not None:
 				del self.configPSR[self.currentKey]
 			self.configPSR[self.entry[0]] = self.entry[1]
 			saveRelationDict(self.configPSR)
@@ -270,7 +270,7 @@ def PictureInPicture__init__(self, session):
 def playService(self, service):
 	current_service = service
 	n_service = self.pipServiceRelation.get(service.toString(), None)
-	if n_service != None:
+	if n_service is not None:
 		service = eServiceReference(n_service)
 	if service and (service.flags & eServiceReference.isGroup):
 		ref = getBestPlayableServiceReference(service, eServiceReference())

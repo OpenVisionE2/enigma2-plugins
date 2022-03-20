@@ -105,7 +105,7 @@ class PluginIpkUpdate(Screen): #, IsNewVersionCheck):
 
 	def go(self):
 		returnValue = self["myMenu"].l.getCurrentSelection()[1]
-		if returnValue != None:
+		if returnValue is not None:
 			if returnValue is "install":
 				if self.new_wersion_url != False:
 					self.libmediaInfoInstallation = InstallDownloadableContent(self.session, [self.new_wersion_url])

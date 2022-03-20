@@ -182,7 +182,7 @@ class TheTVDBMain(Screen, InfoLoadChoice):
         self.ratingstars = -1
         self.searchTitle = eventName
         self.description = shortDescription
-        if service != None:
+        if service is not None:
             info = ServiceCenter.getInstance().info(service)
             self.searchTitle = info.getName(service)
             self.description = info.getInfoString(service, iServiceInformation.sDescription)
@@ -461,7 +461,7 @@ class TheTVDBMain(Screen, InfoLoadChoice):
                 genre = (' ,').join(serie['Actors']).encode('utf-8', 'ignore')
                 extended += _('Actors: %s\n') % genre
             last_updated = serie['lastupdated']
-            if last_updated != None:
+            if last_updated is not None:
                 last_updated = datetime.datetime.fromtimestamp(int(last_updated))
                 extended += _('\nLast modified at TheTVDB.com: %s') % last_updated
             if extended:
@@ -626,7 +626,7 @@ class TheTVDBMain(Screen, InfoLoadChoice):
         elif self.view_mode == self.SHOW_SERIE_LIST:
             self.serieListView()
             self['key_red'].setText(self.SHOW_DETAIL_TEXT)
-            self['key_green'].setText(self.INFO_SAVE_TEXT if self.service != None else '')
+            self['key_green'].setText(self.INFO_SAVE_TEXT if self.service is not None else '')
             self['key_yellow'].setText(self.MANUAL_SEARCH_TEXT)
             self['key_blue'].setText(self.SHOW_ALL_EPISODES_TEXT)
             self['button_red'].show()
@@ -641,7 +641,7 @@ class TheTVDBMain(Screen, InfoLoadChoice):
             else:
                 self['key_red'].setText('')
                 self['button_red'].hide()
-            self['key_green'].setText(self.INFO_SAVE_TEXT if self.service != None else '')
+            self['key_green'].setText(self.INFO_SAVE_TEXT if self.service is not None else '')
             self['key_yellow'].setText(self.MANUAL_SEARCH_TEXT)
             self['key_blue'].setText(self.SHOW_ALL_EPISODES_TEXT)
             self['button_green'].show()
@@ -650,7 +650,7 @@ class TheTVDBMain(Screen, InfoLoadChoice):
         elif self.view_mode == self.SHOW_EPISODE_LIST:
             self.episodeListView()
             self['key_red'].setText(self.SHOW_ALL_SERIES_TEXT)
-            self['key_green'].setText(self.INFO_SAVE_TEXT if self.service != None else '')
+            self['key_green'].setText(self.INFO_SAVE_TEXT if self.service is not None else '')
             self['key_yellow'].setText(self.MANUAL_SEARCH_TEXT)
             self['key_blue'].setText(self.SHOW_EPISODE_TEXT)
             self['button_red'].show()
@@ -660,7 +660,7 @@ class TheTVDBMain(Screen, InfoLoadChoice):
         elif self.view_mode == self.SHOW_EPISODE_DETAIL:
             self.episodeDetailView()
             self['key_red'].setText(self.SHOW_ALL_SERIES_TEXT)
-            self['key_green'].setText(self.INFO_SAVE_TEXT if self.service != None else '')
+            self['key_green'].setText(self.INFO_SAVE_TEXT if self.service is not None else '')
             self['key_yellow'].setText(self.MANUAL_SEARCH_TEXT)
             self['key_blue'].setText(self.SHOW_ALL_EPISODES_TEXT)
             self['button_red'].show()
@@ -728,7 +728,7 @@ class TheTVDBMain(Screen, InfoLoadChoice):
         cur_epi = self['episodes_list'].getCurrent()
         if cur_epi and (self.view_mode == self.SHOW_EPISODE_LIST or self.view_mode == self.SHOW_EPISODE_DETAIL):
             episode = cur_epi[0]
-        if self.service != None:
+        if self.service is not None:
             createEITtvdb(self.service.getPath(), title, serie=current_movie, episode=episode, overwrite_jpg=overwrite_jpg, overwrite_eit=overwrite_eit)
             self.close(False)
         return

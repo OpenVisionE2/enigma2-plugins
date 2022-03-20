@@ -135,11 +135,11 @@ class FTPProgressDownloader(Protocol):
 
 	def ftpFinish(self, code=0, message=None):
 		self.ftpclient.quit()
-		if self.file != None:
+		if self.file is not None:
 			self.file.close()
 		self.deferred.callback(code)
 
 	def connectionFailed(self, reason=None):
-		if self.file != None:
+		if self.file is not None:
 			self.file.close()
 		self.deferred.errback(reason)

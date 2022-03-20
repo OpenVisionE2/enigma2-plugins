@@ -345,7 +345,7 @@ class TimeSpanConfigScreen(Screen, ConfigListScreen):
 		ConfigListScreen.keySave(self)
 		config.plugins.AdvHdmiCec.save()
 		configfile.save()
-		if self.callbackfnc != None:
+		if self.callbackfnc is not None:
 			self.onClose.append(boundFunction(self.callbackfnc, entryselect))
 		self.close(entryselect)
 

@@ -371,8 +371,8 @@ class GoogleMapsMainScreen(Screen, HelpableScreen):
 
     def keyOk(self):
         listentry = self["placeslist"].getCurrent()
-        if listentry != None:
-            if listentry[1] != None:
+        if listentry is not None:
+            if listentry[1] is not None:
                 listentry[2](listentry[0], listentry[1])
 
     def key1(self):

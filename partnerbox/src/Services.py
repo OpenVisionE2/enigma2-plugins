@@ -68,17 +68,17 @@ class Services(Source):
 				epgref = item[0]
 				events = self.epgcache.lookupEvent(['IBDTSERNX', (epgref, 0, -1)])
 				if events:
-					if events[0][0] != None:
+					if events[0][0] is not None:
 						eventid = events[0][0]
-					if events[0][1] != None:
+					if events[0][1] is not None:
 						eventstart = events[0][1]
-					if events[0][2] != None:
+					if events[0][2] is not None:
 						eventduration = events[0][2]
-					if events[0][3] != None:
+					if events[0][3] is not None:
 						eventtitle = events[0][3]
-					if events[0][4] != None:
+					if events[0][4] is not None:
 						eventdescription = events[0][4]
-					if events[0][5] != None:
+					if events[0][5] is not None:
 						eventdescriptionextended = events[0][5]
 				E2List.append(E2EPGListAllData(servicereference=servicereference, servicename=servicename, eventstart=eventstart, eventduration=eventduration, eventtitle=eventtitle, eventid=eventid, eventdescription=eventdescription, eventdescriptionextended=eventdescriptionextended))
 			else:
@@ -98,21 +98,21 @@ class Services(Source):
 				eventid = 0
 				eventdescription = ""
 				eventdescriptionextended = ""
-				if item[6] != None:
+				if item[6] is not None:
 					servicereference = item[6]
-				if item[7] != None:
+				if item[7] is not None:
 					servicename = item[7]
-				if item[1] != None:
+				if item[1] is not None:
 					eventstart = item[1]
-				if item[2] != None:
+				if item[2] is not None:
 					eventduration = item[2]
-				if item[3] != None:
+				if item[3] is not None:
 					eventtitle = item[3]
-				if item[0] != None:
+				if item[0] is not None:
 					eventid = item[0]
-				if item[4] != None:
+				if item[4] is not None:
 					eventdescription = item[4]
-				if item[5] != None:
+				if item[5] is not None:
 					eventdescriptionextended = item[5]
 				if eventstart != 0:
 					E2List.append(E2EPGListAllData(servicereference=servicereference, servicename=servicename, eventstart=eventstart, eventduration=eventduration, eventtitle=eventtitle, eventid=eventid, eventdescription=eventdescription, eventdescriptionextended=eventdescriptionextended))

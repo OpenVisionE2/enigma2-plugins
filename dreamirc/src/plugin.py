@@ -262,7 +262,7 @@ class dreamIRCMainMenu(Screen):
 		self["input"].setText("")
 
 	def VirtualKeyBoardTextEntry(self, callback=None):
-		if callback != None and len(callback):
+		if callback is not None and len(callback):
 			print(" TEXT = %s   - laenge = %d  !!!!" % (callback, len(callback)))
 			self.pipe.addOutText(callback)
 

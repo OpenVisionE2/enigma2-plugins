@@ -14,7 +14,7 @@ class XMLHelpPage(HelpPage):
 
 	def getText(self):
 		node = self.node.find('text')
-		if node != None:
+		if node is not None:
 			text = _(node.get('value', ''))
 			return text.replace('/n', '\n')
 		return ""

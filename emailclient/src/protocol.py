@@ -16,7 +16,7 @@ class SimpleIMAP4Client(imap4.IMAP4Client):
 	def serverGreeting(self, caps):
 		debug("[SimpleIMAP4Client] serverGreeting: %s" % caps)
 		self.serverCapabilities = caps
-		if self.greetDeferred != None:
+		if self.greetDeferred is not None:
 			self.greetDeferred(self)
 
 

@@ -81,11 +81,11 @@ class EventViewBase:
         self.setEvent(self.event)
 
     def prevEvent(self):
-        if self.cbFunc != None:
+        if self.cbFunc is not None:
             self.cbFunc(self.setEvent, self.setService, -1)
 
     def nextEvent(self):
-        if self.cbFunc != None:
+        if self.cbFunc is not None:
             self.cbFunc(self.setEvent, self.setService, +1)
 
     def setService(self, service):
@@ -95,7 +95,7 @@ class EventViewBase:
             self["channel"].setText(_("Recording"))
         else:
             name = self.currentService.getServiceName()
-            if name != None:
+            if name is not None:
                 self["channel"].setText(name)
             else:
                 self["channel"].setText(_("Unknown service"))

@@ -31,11 +31,11 @@ class GoogleSuggestions():
 		self.callback = callback
 		self.conn = httplib.HTTPConnection("google.com")
 		self.prepQuerry = "/complete/search?"
-		if ds != None:
+		if ds is not None:
 			self.prepQuerry = self.prepQuerry + "ds=" + ds + "&"
-		if json != None:
+		if json is not None:
 			self.prepQuerry = self.prepQuerry + "json=" + json + "&"
-		if hl != None:
+		if hl is not None:
 			self.prepQuerry = self.prepQuerry + "hl=" + hl + "&"
 		self.prepQuerry = self.prepQuerry + "jsonp=self.gotSuggestions&q="
 
@@ -71,11 +71,11 @@ class GoogleSuggestions():
 #	def __init__(self, callback, ds = None, json = None, hl = None):
 #		self.callback = callback
 #		self.prepQuerry = "http://www.google.com/complete/search?"
-#		if ds != None:
+#		if ds is not None:
 #			self.prepQuerry = self.prepQuerry + "ds=" + ds + "&"
-#		if json != None:
+#		if json is not None:
 #			self.prepQuerry = self.prepQuerry + "json=" + json + "&"
-#		if hl != None:
+#		if hl is not None:
 #			self.prepQuerry = self.prepQuerry + "hl=" + hl + "&"
 #		self.prepQuerry = self.prepQuerry + "jsonp=self.gotSuggestions&q="
 #

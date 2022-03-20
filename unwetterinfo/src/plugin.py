@@ -221,7 +221,7 @@ class UnwetterMain(Screen):
 	def ok(self):
 		self.go()
 		c = self["hmenu"].getCurrent()
-		if c != None:
+		if c is not None:
 			x = self.menueintrag.index(c)
 			if x != 0:
 				self.session.open(PictureView)
@@ -230,7 +230,7 @@ class UnwetterMain(Screen):
 
 	def go(self):
 		c = self["hmenu"].getCurrent()
-		if c != None:
+		if c is not None:
 			x = self.menueintrag.index(c)
 			# Wetterlagebericht ist Index 0
 			if x != 0:
@@ -283,7 +283,7 @@ class UnwetterMain(Screen):
 			width = 142
 			height = 135
 		c = self["hmenu"].getCurrent()
-		if c != None:
+		if c is not None:
 			x = self.menueintrag.index(c)
 			if x != 0:
 				picture = self.picfile

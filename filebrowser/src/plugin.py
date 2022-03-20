@@ -180,7 +180,7 @@ class FilebrowserScreen(Screen):
         self.session.openWithCallback(self.doCopy, ChoiceBox, title=_("copy file") + "?\n%s\nfrom\n%s\n%s" % (filename, sourceDir, targetDir), list=[(_("yes"), True), (_("no"), False)])
 
     def doCopy(self, result):
-        if result != None:
+        if result is not None:
             if result[1]:
                 filename = self.SOURCELIST.getFilename()
                 sourceDir = self.SOURCELIST.getCurrentDirectory()
@@ -197,7 +197,7 @@ class FilebrowserScreen(Screen):
         self.session.openWithCallback(self.doDelete, ChoiceBox, title=_("delete file") + "?\n%s\nfrom dir\n%s" % (filename, sourceDir), list=[(_("yes"), True), (_("no"), False)])
 
     def doDelete(self, result):
-        if result != None:
+        if result is not None:
             if result[1]:
                 filename = self.SOURCELIST.getFilename()
                 sourceDir = self.SOURCELIST.getCurrentDirectory()
@@ -214,7 +214,7 @@ class FilebrowserScreen(Screen):
         self.session.openWithCallback(self.doMove, ChoiceBox, title=_("move file") + "?\n%s\nfrom dir\n%s\nto dir\n%s" % (filename, sourceDir, targetDir), list=[(_("yes"), True), (_("no"), False)])
 
     def doMove(self, result):
-        if result != None:
+        if result is not None:
             if result[1]:
                 filename = self.SOURCELIST.getFilename()
                 sourceDir = self.SOURCELIST.getCurrentDirectory()

@@ -93,7 +93,7 @@ def main(session, service, **kwargs):
 		print("[MovieSearch] Unknown current dialog of type", type(cur_dialog))
 		csel = None
 
-	if csel != None:
+	if csel is not None:
 		session.openWithCallback(
 				boundFunction(vkCallback, session.current_dialog),
 				NTIVirtualKeyBoard,

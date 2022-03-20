@@ -151,7 +151,7 @@ class RecordPathsSettings(Screen, ConfigListScreen):
 			)
 
 	def dirnameSelected(self, res):
-		if res != None:
+		if res is not None:
 			self.entrydirname.value = res
 			if config.movielist.videodirs.value != self.lastvideodirs:
 				styles_keys = [x[0] for x in self.styles]

@@ -1260,7 +1260,7 @@ class vEditor(Screen):
 			dei.setTitle(_("Error..."))
 
 	def callbackEditLine(self, newline):
-		if newline != None:
+		if newline is not None:
 			for x in self.list:
 				if x == self.oldLine:
 					self.isChanged = True
@@ -1332,10 +1332,10 @@ class PictureExplorerII(Screen):
 		self.onLayoutFinish.append(self.Show_Picture)
 
 	def Show_Picture(self):
-		if self.whatPic != None:
+		if self.whatPic is not None:
 			self.EXpicload.setPara([self["Picture"].instance.size().width(), self["Picture"].instance.size().height(), self.EXscale[0], self.EXscale[1], 0, 1, "#002C2C39"])
 			self.EXpicload.startDecode(self.whatPic)
-		if self.whatDir != None:
+		if self.whatDir is not None:
 			pidx = 0
 			for root, dirs, files in os_walk(self.whatDir):
 				for name in files:
@@ -1347,7 +1347,7 @@ class PictureExplorerII(Screen):
 			files.sort()
 
 	def DecodeAction(self, pictureInfo=""):
-		if self.whatPic != None:
+		if self.whatPic is not None:
 			self["State"].setText(_("ready..."))
 			self["State"].visible = False
 			ptr = self.EXpicload.getData()

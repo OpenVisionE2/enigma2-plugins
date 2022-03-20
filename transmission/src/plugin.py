@@ -48,7 +48,7 @@ class Transmission(Screen):
 
 	def run(self):
 		returnValue = self["menu"].l.getCurrentSelection() and self["menu"].l.getCurrentSelection()[1]
-		if returnValue != None:
+		if returnValue is not None:
 			cmd = "cp %s %s && chmod 755 %s" % (resolveFilename(SCOPE_PLUGINS, "Extensions/Transmission/transmission.sh"), transmission_sh, transmission_sh)
 			Console().ePopen(cmd)
 			if returnValue is "info":

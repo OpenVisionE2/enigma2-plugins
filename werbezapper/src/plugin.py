@@ -44,7 +44,7 @@ def startstop(session, servicelist, **kwargs):
 
 def cleanup():
 	global zapperInstance
-	if zapperInstance != None:
+	if zapperInstance is not None:
 		zapperInstance.shutdown()
 		zapperInstance.doClose()
 		zapperInstance = None

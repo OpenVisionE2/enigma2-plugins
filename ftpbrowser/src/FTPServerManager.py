@@ -356,7 +356,7 @@ class FTPServerManager(Screen):
 		ftpserverconfig = config.plugins.ftpbrowser
 		Len = ftpserverconfig.servercount.value
 
-		if idx != None and Len and idx < Len:
+		if idx is not None and Len and idx < Len:
 			self.session.openWithCallback(
 				self.editCallback,
 				FTPServerEditor,

@@ -302,7 +302,7 @@ class DreamExplorerII(Screen):
 			except:
 				dei = self.session.open(MessageBox, _("Error by reading bookmarks !!!"), MessageBox.TYPE_ERROR)
 				dei.setTitle(_("Dream-Explorer"))
-			if booklist != None:
+			if booklist is not None:
 				for oneline in booklist:
 					self.booklines.append(oneline)
 				booklist.close()
@@ -391,7 +391,7 @@ class DreamExplorerII(Screen):
 			except:
 				dei = self.session.open(MessageBox, _("Error by writing bookmarks !!!"), MessageBox.TYPE_ERROR)
 				dei.setTitle(_("Dream-Explorer"))
-			if newbooklist != None:
+			if newbooklist is not None:
 				self.booklines.append(self.selectedDir + "\n")
 				for one_line in self.booklines:
 					newbooklist.write(one_line)
@@ -408,7 +408,7 @@ class DreamExplorerII(Screen):
 			except:
 				dei = self.session.open(MessageBox, _("Error by writing bookmarks !!!"), MessageBox.TYPE_ERROR)
 				dei.setTitle(_("Dream-Explorer"))
-			if newbooklist != None:
+			if newbooklist is not None:
 				for one_line in self.booklines:
 					newbooklist.write(one_line)
 				newbooklist.close()
@@ -570,7 +570,7 @@ class DreamExplorerII(Screen):
 			self.session.openWithCallback(self.callbackRenDir, vInputBox, title=_("old:  " + RENDIR), windowTitle=_("Rename directory..."), text=RENDIR)
 
 	def callbackExecRename(self, answer):
-		if answer != None:
+		if answer is not None:
 			source = self["filelist"].getCurrentDirectory() + self["filelist"].getFilename()
 			dest = self["filelist"].getCurrentDirectory() + answer
 			try:
@@ -582,7 +582,7 @@ class DreamExplorerII(Screen):
 				self["filelist"].refresh()
 
 	def callbackRenDir(self, answer):
-		if answer != None:
+		if answer is not None:
 			source = self["filelist"].getSelection()[0]
 			dest = answer
 			try:
@@ -778,7 +778,7 @@ class vEditor(Screen):
 			dei.setTitle(_("Error..."))
 
 	def callbackEditLine(self, newline):
-		if newline != None:
+		if newline is not None:
 			for x in self.list:
 				if x == self.oldLine:
 					self.isChanged = True
@@ -868,10 +868,10 @@ class PictureExplorerII(Screen):
 		self.onLayoutFinish.append(self.Show_Picture)
 
 	def Show_Picture(self):
-		if self.whatPic != None:
+		if self.whatPic is not None:
 			self.EXpicload.setPara([self["Picture"].instance.size().width(), self["Picture"].instance.size().height(), self.EXscale[0], self.EXscale[1], 0, 1, "#002C2C39"])
 			self.EXpicload.startDecode(self.whatPic)
-		if self.whatDir != None:
+		if self.whatDir is not None:
 			pidx = 0
 			for root, dirs, files in os_walk(self.whatDir):
 				for name in files:
@@ -883,7 +883,7 @@ class PictureExplorerII(Screen):
 			files.sort()
 
 	def DecodeAction(self, pictureInfo=""):
-		if self.whatPic != None:
+		if self.whatPic is not None:
 			self["State"].setText(_("ready..."))
 			self["State"].visible = False
 			ptr = self.EXpicload.getData()

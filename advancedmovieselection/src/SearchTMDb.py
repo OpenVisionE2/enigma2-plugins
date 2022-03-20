@@ -309,7 +309,7 @@ class TMDbMain(Screen, HelpableScreen, InfoLoadChoice):
                 return
             self.movies = []
             for movie in results:
-                if movie != None:
+                if movie is not None:
                     self.movies.append((movie,))
 
             self['list'].setList(self.movies)
@@ -328,7 +328,7 @@ class TMDbMain(Screen, HelpableScreen, InfoLoadChoice):
         if count == 1:
             txt = _('Total %s') % count + ' ' + _('movie found')
             cur = self['list'].getCurrent()
-            if cur != None:
+            if cur is not None:
                 self.getMovieInfo(cur[0])
                 self.updateView(self.SHOW_MOVIE_DETAIL)
         else:
@@ -480,7 +480,7 @@ class TMDbMain(Screen, HelpableScreen, InfoLoadChoice):
     def buttonAction(self, text):
         if text == self.SHOW_DETAIL_TEXT:
             cur = self['list'].getCurrent()
-            if cur != None:
+            if cur is not None:
                 self.getMovieInfo(cur[0])
         elif text == self.SHOW_SEARCH_RESULT_TEXT:
             self.searchForMovies()
@@ -499,7 +499,7 @@ class TMDbMain(Screen, HelpableScreen, InfoLoadChoice):
     def ok_pressed(self):
         if self.view_mode == self.SHOW_RESULT_LIST:
             cur = self['list'].getCurrent()
-            if cur != None:
+            if cur is not None:
                 self.getMovieInfo(cur[0])
                 self.updateView(self.SHOW_MOVIE_DETAIL)
         else:
@@ -521,7 +521,7 @@ class TMDbMain(Screen, HelpableScreen, InfoLoadChoice):
         from Source.EventInformationTable import createEIT
         current_movie = self['list'].getCurrent()[0]
         title = current_movie.title.encode('utf-8')
-        if self.service != None:
+        if self.service is not None:
             createEIT(self.service.getPath(), title, movie=current_movie, overwrite_jpg=overwrite_jpg, overwrite_eit=overwrite_eit)
             self.close(False)
         else:
@@ -607,7 +607,7 @@ class TMDbMain(Screen, HelpableScreen, InfoLoadChoice):
         elif self.view_mode == self.SHOW_RESULT_LIST:
             self.movieListView()
             self['key_red'].setText(self.SHOW_DETAIL_TEXT)
-            self['key_green'].setText(self.INFO_SAVE_TEXT if self.service != None else '')
+            self['key_green'].setText(self.INFO_SAVE_TEXT if self.service is not None else '')
             self['key_yellow'].setText(self.MANUAL_SEARCH_TEXT)
             if pluginPresent.YTTrailer:
                 self['key_blue'].setText(self.TRAILER_SEARCH_TEXT)
@@ -616,13 +616,13 @@ class TMDbMain(Screen, HelpableScreen, InfoLoadChoice):
                 self['key_blue'].setText('')
                 self['button_blue'].hide()
             self['button_red'].show()
-            if self.service != None:
+            if self.service is not None:
                 self['button_green'].show()
             self['button_yellow'].show()
         elif self.view_mode == self.SHOW_MOVIE_DETAIL:
             self.movieDetailView()
             self['key_red'].setText(self.SHOW_SEARCH_RESULT_TEXT)
-            self['key_green'].setText(self.INFO_SAVE_TEXT if self.service != None else '')
+            self['key_green'].setText(self.INFO_SAVE_TEXT if self.service is not None else '')
             self['key_yellow'].setText(self.MANUAL_SEARCH_TEXT)
             if pluginPresent.YTTrailer:
                 self['key_blue'].setText(self.TRAILER_SEARCH_TEXT)
@@ -631,7 +631,7 @@ class TMDbMain(Screen, HelpableScreen, InfoLoadChoice):
                 self['key_blue'].setText('')
                 self['button_blue'].hide()
             self['button_red'].show()
-            if self.service != None:
+            if self.service is not None:
                 self['button_green'].show()
             self['button_yellow'].show()
         return

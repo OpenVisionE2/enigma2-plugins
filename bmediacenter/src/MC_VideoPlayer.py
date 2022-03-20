@@ -173,7 +173,7 @@ class MC_VideoPlayer(Screen, HelpableScreen):
 #		if self["filelist"].canDescent():
 #			if self.filelist.getCurrent()[0][1]:
 #				self.currentDirectory = self.filelist.getCurrent()[0][0]
-#				if self.currentDirectory != None:
+#				if self.currentDirectory is not None:
 #					foldername = self.currentDirectory.split('/')
 #					foldername = foldername[-2]
 #					self.session.open(MC_FolderOptions,self.currentDirectory, foldername)

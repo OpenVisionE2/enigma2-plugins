@@ -64,7 +64,7 @@ SKINLIST =	[ # order is important (HD, XD, SD)!
 
 class YourClass():
 	(skinFile, skinList) = SkinFinder.getSkinData(SKINLIST, SKINDIR, config.plugins.yourConfigText.skin.value)
-	if skinFile != None:
+	if skinFile is not None:
 		if config.plugins.yourConfigText.skin.value != skinFile:
 			config.plugins.yourConfigText.skin.value = skinFile
 			config.plugins.yourConfigText.skin.save()
@@ -111,7 +111,7 @@ class SkinFinder(object):
 			# get the index of the detected skin in our list of default skins
 			skinIndex = SkinFinder.getDefaultSkinEntry()
 
-		if skinIndex != None:
+		if skinIndex is not None:
 			skinFile = SkinFinder.skinList[skinIndex][0]
 			print('[SkinFinder] found skin file', skinFile)
 			return skinFile, SkinFinder.skinList
@@ -131,7 +131,7 @@ class SkinFinder(object):
 		else:
 			fileName = None
 
-		if fileName != None:
+		if fileName is not None:
 			try:
 				index = [x[0] for x in SkinFinder.skinList].index(fileName)
 				return index

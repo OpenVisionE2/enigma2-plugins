@@ -140,7 +140,7 @@ class EPGSearchList(EPGList):
 		if not beginTime:
 			return None
 		rec = self.isInTimer(eventId, beginTime, duration, service)
-		if rec != None:
+		if rec is not None:
 			return rec[1]
 		else:
 			return None
@@ -332,7 +332,7 @@ class EPGSearchList(EPGList):
 		dx = self.piconSize[0] + self.piconDistance
 		nowTime = int(time())
 		remaining = ""
-		if beginTime != None:
+		if beginTime is not None:
 			if nowTime < beginTime:
 				remaining = _(" (%d min)") % (duration / 60)
 			else:
@@ -498,7 +498,7 @@ class EPGSearchList(EPGList):
 				self.service_rect = Rect(width / 20 * 7, 0, width / 20 * 13, height)
 
 	def findPicon(self, service=None):
-		if service != None:
+		if service is not None:
 			sname = ':'.join(service.split(':')[:11])
 			pos = sname.rfind(':')
 			if pos != -1:
@@ -631,7 +631,7 @@ class EPGSearch(EPGSelection):
 		except ImportError as ie:
 			pass
 		else:
-			if baseEPGSelection__init__ != None:
+			if baseEPGSelection__init__ is not None:
 				self["trailerActions"] = ActionMap(["InfobarActions", "InfobarTeletextActions"],
 				{
 					"showTv": self.showTrailer,
@@ -680,7 +680,7 @@ class EPGSearch(EPGSelection):
 			self.hide_filter()
 
 	def show_filter(self):
-		if self.do_filter != None:
+		if self.do_filter is not None:
 			return
 		cur = self['list'].getCurrent()
 		event = cur[0]
@@ -713,12 +713,12 @@ class EPGSearch(EPGSelection):
 						l.instance.moveSelectionTo(0)
 
 	def hide_filter(self):
-		if self.do_filter != None:
+		if self.do_filter is not None:
 			l = self["list"]
 			l.recalcEntrySize()
 			l.list = self.do_filter
 			l.l.setList(self.do_filter)
-			if self.eventid != None:
+			if self.eventid is not None:
 				l.moveToEventId(self.eventid)
 			self.do_filter = None
 			self.eventid = None
@@ -765,7 +765,7 @@ class EPGSearch(EPGSelection):
 		if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/TMBD/plugin.pyo")):
 			from Plugins.Extensions.TMBD.plugin import TMBD
 			cur = self["list"].getCurrent()
-			if cur[0] != None:
+			if cur[0] is not None:
 				name2 = cur[0].getEventName() or ''
 				name3 = name2.split("(")[0].strip()
 				eventname = name3.replace('"', '').replace('Õ/Ô', '').replace('Ì/Ô', '').replace('Õ/ô', '').replace('.', '')
@@ -774,7 +774,7 @@ class EPGSearch(EPGSelection):
 					tmbdsearch = config.plugins.tmbd.profile.value
 				except:
 					tmbdsearch = None
-				if tmbdsearch != None:
+				if tmbdsearch is not None:
 					if config.plugins.tmbd.profile.value == "0":
 						self.session.open(TMBD, eventname, False)
 					else:
@@ -929,7 +929,7 @@ class EPGSearch(EPGSelection):
 			try:
 				from Screens.InfoBar import InfoBar
 				InfoBarInstance = InfoBar.instance
-				if InfoBarInstance != None:
+				if InfoBarInstance is not None:
 						InfoBarInstance.servicelist.clearPath()
 						InfoBarInstance.servicelist.setRoot(serviceref.ref)
 						InfoBarInstance.servicelist.enterPath(serviceref.ref)
@@ -1156,7 +1156,7 @@ class CurrentSearchSingleSelection(EPGSelection):
 	def onCreate(self):
 		try:
 			EPGSelection.onCreate(self)
-			if self.event_id != None:
+			if self.event_id is not None:
 				self["list"].moveToEventId(self.event_id)
 		except:
 			pass

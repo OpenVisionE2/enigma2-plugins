@@ -86,7 +86,7 @@ ChannelSelection.close = ChannelSelection_close
 
 def ChannelSelection_zap(self, *args, **kwargs):
 	if hasattr(self, 'secretMovieMode') and self.secretMovieMode:
-		if movieEpgMoviePlayerInstance != None:
+		if movieEpgMoviePlayerInstance is not None:
 			movieEpgMoviePlayerInstance.lastservice = self.getCurrentSelection()
 			movieEpgMoviePlayerInstance.leavePlayer()
 		return

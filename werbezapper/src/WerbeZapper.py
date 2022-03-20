@@ -216,7 +216,7 @@ class WerbeZapper(Screen):
 		self.cleanup()
 
 	def inputCallback(self, result):
-		if result != None:
+		if result is not None:
 			self.startTimer(int(result))
 		else:
 			# Clean up if possible
@@ -346,7 +346,7 @@ class WerbeZapper(Screen):
 		self.zap_time = None
 
 	def zap(self, notify=True):
-		if self.zap_service != None:
+		if self.zap_service is not None:
 			if self.root:
 				import ServiceReference
 				if not self.servicelist.preEnterPath(str(ServiceReference.ServiceReference(self.root))):

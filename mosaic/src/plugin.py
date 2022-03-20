@@ -220,7 +220,7 @@ class Mosaic(Screen):
 
 	def numberPressed(self, number):
 		ref = self.window_refs[number - 1]
-		if ref != None:
+		if ref is not None:
 			self.session.nav.playService(ref)
 			self.deleteConsoleCallbacks()
 			self.close()
@@ -337,7 +337,7 @@ class Mosaic(Screen):
 
 	def getEventName(self, info, ref):
 		event = info.getEvent(ref)
-		if event != None:
+		if event is not None:
 			eventName = event.getEventName()
 			if eventName is None:
 				eventName = ""
@@ -357,7 +357,7 @@ BouquetSelectorScreen = None
 def getBouquetServices(bouquet):
 	services = []
 	Servicelist = eServiceCenter.getInstance().list(bouquet)
-	if Servicelist != None:
+	if Servicelist is not None:
 		while True:
 			service = Servicelist.getNext()
 			if not service.valid():
@@ -369,12 +369,12 @@ def getBouquetServices(bouquet):
 
 
 def closeBouquetSelectorScreen(ret=None):
-	if BouquetSelectorScreen != None:
+	if BouquetSelectorScreen is not None:
 		BouquetSelectorScreen.close()
 
 
 def openMosaic(bouquet):
-	if bouquet != None:
+	if bouquet is not None:
 		services = getBouquetServices(bouquet)
 		if len(services):
 			Session.openWithCallback(closeBouquetSelectorScreen, Mosaic, services)
@@ -388,7 +388,7 @@ def main(session, servicelist, **kwargs):
 	global BouquetSelectorScreen
 
 	bouquets = Servicelist.getBouquetList()
-	if bouquets != None:
+	if bouquets is not None:
 		if len(bouquets) == 1:
 			openMosaic(bouquets[0][1])
 		elif len(bouquets) > 1:

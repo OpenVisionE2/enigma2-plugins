@@ -9,7 +9,7 @@ class KTmultiPixmap(MultiPixmap):
         self.pixmapFiles = []
 
     def applySkin(self, desktop, screen):
-        if self.skinAttributes != None:
+        if self.skinAttributes is not None:
             for (attrib, value) in self.skinAttributes:
                 if attrib == "pixmaps":
                     pixmaps = value.split(',')

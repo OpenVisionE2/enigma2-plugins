@@ -137,7 +137,7 @@ def set_locale(language=None, country=None, fallthrough=False):
 
     if (not language) or (not country):
         dat = None
-        if syslocale != None:
+        if syslocale is not None:
             dat = (str(syslocale.language), str(syslocale.country))
         else:
             if (sysloc is None) or ('_' not in sysloc):

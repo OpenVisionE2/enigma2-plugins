@@ -53,7 +53,7 @@ class MSNWeatherPixmap(Renderer):
 
 	def paintIconPixmapCB(self, picInfo=None):
 		ptr = self.picload.getData()
-		if ptr != None:
+		if ptr is not None:
 			pic_scale_size = eSize()
 			# To be added in the future:
 			if 'scale' in eSize.__dict__ and self._scaleSize.isValid() and self._aspectRatio.isValid():

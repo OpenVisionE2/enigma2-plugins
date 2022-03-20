@@ -33,7 +33,7 @@ def EPGSearchSelection__init__(self, session, service, zapFunc=None, eventid=Non
 		def bluePressed():
 			if config.plugins.epgsearch.type_button_blue.value == "0":
 				cur = self["list"].getCurrent()
-				if cur[0] != None:
+				if cur[0] is not None:
 					name = cur[0].getEventName()
 				else:
 					name = ''
@@ -62,7 +62,7 @@ def CallbackChoiceAction(self, ret):
 		if ret == "search" or ret == "custom":
 			try:
 				cur = self["list"].getCurrent()
-				if cur[0] != None:
+				if cur[0] is not None:
 					name = cur[0].getEventName()
 				else:
 					name = ''

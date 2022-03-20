@@ -87,7 +87,7 @@ class Poller(object):
         unfilled = False
         for k, v in self.lookup.items():
             if (k in data) and \
-                    ((data[k] != None) if callable(self.func) else True):
+                    ((data[k] is not None) if callable(self.func) else True):
                 # argument received data, populate it
                 setattr(self.inst, v, data[k])
             elif v in self.inst._data:
@@ -152,7 +152,7 @@ class Data(object):
         return inst._data[self.field]
 
     def __set__(self, inst, value):
-        if (value != None) and (value != ''):
+        if (value is not None) and (value != ''):
             value = self.handler(value)
         else:
             value = self.default
@@ -348,7 +348,7 @@ class ElementType(type):
 
     def __call__(cls, *args, **kwargs):
         obj = cls.__new__(cls)
-        if ('locale' in kwargs) and (kwargs['locale'] != None):
+        if ('locale' in kwargs) and (kwargs['locale'] is not None):
             obj._locale = kwargs['locale']
         else:
             obj._locale = get_locale()

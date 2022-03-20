@@ -20,7 +20,7 @@ class StreamPlayer:
 		print("[NETcaster.StreamPlayer] EVENT ==>", ev)
 		if ev == 5: # can we use a constant here instead of just 5?
 			currentServiceRef = self.session.nav.getCurrentService()
-			if currentServiceRef != None:
+			if currentServiceRef is not None:
 				#it seems, that only Title is avaible for now
 				sTagTitle = currentServiceRef.info().getInfoString(iServiceInformation.sTagTitle)
 				self._onMetadataChanged(sTagTitle)

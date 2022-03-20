@@ -48,7 +48,7 @@ class GNTPPacket:
 		else:
 			message += u'%s:%s' % (self.encryptionAlgorithm, self.ivValue)
 
-		if self.hashAlgorithm != None:
+		if self.hashAlgorithm is not None:
 			message += u' %s:%s.%s' % (self.hashAlgorithm, self.keyHash, self.salt)
 
 		message += u'\r\n'
@@ -70,7 +70,7 @@ class GNTPPacket:
 
 		if not hashAlgorithm in hashes:
 			raise Exception('Unsupported hash algorithm: %s' % hashAlgorithm)
-		if encryptionAlgorithm != None:
+		if encryptionAlgorithm is not None:
 			raise Exception('Unsupported encryption algorithm: %s' % encryptionAlgorithm)
 
 		hashfunction = hashes.get(hashAlgorithm)
@@ -101,7 +101,7 @@ class GNTPRegister(GNTPPacket):
 			'Notification-Name': name,
 			'Notification-Enabled': enabled,
 		}
-		if displayName != None:
+		if displayName is not None:
 			note['Notification-Display-Name'] = displayName
 		self.notifications.append(note)
 

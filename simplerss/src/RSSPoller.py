@@ -122,7 +122,7 @@ class RSSPoller:
 				self.doCallback(id)
 		except NotImplementedError as errmsg:
 			# Don't show this error when updating in background
-			if id != None:
+			if id is not None:
 				AddPopup(
 					_("Sorry, this type of feed is unsupported:\n%s") % (str(errmsg)),
 					MessageBox.TYPE_INFO,
@@ -136,7 +136,7 @@ class RSSPoller:
 			import sys
 			traceback.print_exc(file=sys.stdout)
 			# Errorback given, call it (asumme we don't need do restart timer!)
-			if errorback != None:
+			if errorback is not None:
 				errorback()
 				return
 			# Assume its just a temporary failure and jump over to next feed
@@ -146,7 +146,7 @@ class RSSPoller:
 		feed = cElementTree_fromstring(data)
 
 		# For Single-Polling
-		if id != None:
+		if id is not None:
 			self.feeds[id].gotFeed(feed)
 			print("[SimpleRSS] single feed parsed...")
 			return
@@ -156,7 +156,7 @@ class RSSPoller:
 		print("[SimpleRSS] feed parsed...")
 
 		# Append new items to locally bound ones
-		if new_items != None:
+		if new_items is not None:
 			self.newItemFeed.history.extend(new_items)
 
 		# Start Timer so we can either fetch next feed or show new_items

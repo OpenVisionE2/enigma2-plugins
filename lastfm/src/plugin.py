@@ -367,7 +367,7 @@ class LastFMScreenMain(Screen, HelpableScreen, LastFM):
 
     def onTextForCustomStationEntered(self, text):
         print("onTextForCustomStationEntered", text, self.customstationtype)
-        if text != None:
+        if text is not None:
             if self.customstationtype == "artist":
                 self.changeStation(urllib2_qoute("lastfm://artist/%s/similarartists" % text))
             elif self.customstationtype == "groupe":

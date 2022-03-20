@@ -148,9 +148,9 @@ class AspectRatioSwitchSetup(ConfigListScreen, Screen):
 			if config.plugins.AspectRatioSwitch.enabled.value:
 				aspect_ratio_switch = AspectRatioSwitch()
 				aspect_ratio_switch.enable()
-			elif aspect_ratio_switch != None:
+			elif aspect_ratio_switch is not None:
 				aspect_ratio_switch.disable()
-		elif aspect_ratio_switch != None:
+		elif aspect_ratio_switch is not None:
 			#TODO: if aspects changed (no isChanged() on ConfigSubDict?)
 			aspect_ratio_switch.reload_enabledaspects()
 			if config.plugins.AspectRatioSwitch.keymap.isChanged():
@@ -278,7 +278,7 @@ def autostart(reason, **kwargs):
 			aspect_ratio_switch.enable()
 	elif reason == 1:
 		print(pluginPrintname, "shutdown")
-		if aspect_ratio_switch != None:
+		if aspect_ratio_switch is not None:
 			aspect_ratio_switch.disable()
 
 

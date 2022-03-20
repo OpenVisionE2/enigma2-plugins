@@ -189,7 +189,7 @@ class AutoTimerComponent(object):
 
 	def hasAfterEventTimespan(self):
 		for afterevent in self.afterevent:
-			if afterevent[1][0] != None:
+			if afterevent[1][0] is not None:
 				return True
 		return False
 
@@ -200,22 +200,22 @@ class AutoTimerComponent(object):
 		return self.matchFormatString != ''
 
 	def hasDestination(self):
-		return self.destination != None
+		return self.destination is not None
 
 	def hasDuration(self):
-		return self.maxduration != None
+		return self.maxduration is not None
 
 	def hasTags(self):
 		return len(self.tags)
 
 	def hasTimespan(self):
-		return self.timespan[0] != None
+		return self.timespan[0] is not None
 
 	def hasOffset(self):
-		return self.offset != None
+		return self.offset is not None
 
 	def hasTimeframe(self):
-		return self.timeframe != None
+		return self.timeframe is not None
 
 ### Helper
 
@@ -290,7 +290,7 @@ class AutoTimerComponent(object):
 	getCounterLimit = lambda self: self.matchLimit
 
 	# XXX: as this function was not added by me (ritzMo) i'll leave it like this but i'm not really sure if this is right ;-)
-	getDestination = lambda self: self.destination != None
+	getDestination = lambda self: self.destination is not None
 
 	getDuration = lambda self: self.maxduration / 60
 
@@ -432,7 +432,7 @@ class AutoTimerComponent(object):
 			for bouquet in bouquets + addbouquets:
 				myref = eServiceReference(str(bouquet))
 				mylist = serviceHandler.list(myref)
-				if mylist != None:
+				if mylist is not None:
 					while True:
 						s = mylist.getNext()
 						# TODO: I wonder if its sane to assume we get services here (and not just new lists)
@@ -471,7 +471,7 @@ class AutoTimerComponent(object):
 				myref = eServiceReference(str(service))
 				if myref.flags & eServiceReference.isGroup:
 					mylist = serviceHandler.list(myref)
-					if mylist != None:
+					if mylist is not None:
 						while True:
 							s = mylist.getNext()
 							if s.valid():
@@ -509,7 +509,7 @@ class AutoTimerComponent(object):
 		return None
 
 	def checkTimeframe(self, begin):
-		if self.timeframe != None:
+		if self.timeframe is not None:
 			start, end = self.timeframe
 			if begin > start and begin < (end + 24 * 60 * 60):
 				return False
@@ -683,7 +683,7 @@ class AutoTimerFastscanComponent(AutoTimerComponent):
 			for bouquet in bouquets + addbouquets:
 				myref = eServiceReference(str(bouquet))
 				mylist = serviceHandler.list(myref)
-				if mylist != None:
+				if mylist is not None:
 					while True:
 						s = mylist.getNext()
 						# TODO: I wonder if its sane to assume we get services here (and not just new lists)
@@ -724,7 +724,7 @@ class AutoTimerFastscanComponent(AutoTimerComponent):
 				myref = eServiceReference(str(service))
 				if myref.flags & eServiceReference.isGroup:
 					mylist = serviceHandler.list(myref)
-					if mylist != None:
+					if mylist is not None:
 						while True:
 							s = mylist.getNext()
 							if s.valid():

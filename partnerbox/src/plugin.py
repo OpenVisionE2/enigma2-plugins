@@ -339,7 +339,7 @@ class RemoteTimer(Screen):
 		self.toggleButtonState()
 
 	def toggleButtonState(self):
-		if self["timerlist"].currentSelection != None:
+		if self["timerlist"].currentSelection is not None:
 			self["key_red"].setText(_("Delete timer"))
 			self["key_green"].setText(_("Toggle status (on/off)"))
 			if self.not_epg:
@@ -359,7 +359,7 @@ class RemoteTimer(Screen):
 			self["textok"].setText("")
 
 	def getLocations(self):
-		if self["timerlist"].currentSelection != None:
+		if self["timerlist"].currentSelection is not None:
 			if self.enigma_type == 0:
 				sCommand = self.http + "/web/getlocations"
 				sendPartnerBoxWebCommand(sCommand, None, 3, self.username, self.password).addCallback(self.getLocationsCallback).addErrback(self.deleteTimerError)
@@ -418,7 +418,7 @@ class RemoteTimer(Screen):
 		self.action()
 
 	def cleanupTimer(self):
-		if self["timerlist"].currentSelection != None:
+		if self["timerlist"].currentSelection is not None:
 			self["timerlist"].instance.hide()
 			self["text"].setText(_("Cleaning up finished timer entries..."))
 			if self.enigma_type == 0:
@@ -461,7 +461,7 @@ class RemoteTimer(Screen):
 		self.action()
 
 	def deleteTimerError(self, error=None):
-		if error != None:
+		if error is not None:
 			self["timerlist"].instance.hide()
 			self["text"].setText(str(_(error.getErrorMessage())))
 
@@ -471,7 +471,7 @@ class RemoteTimer(Screen):
 		self.toggleButtonState()
 
 	def downloadError(self, error=None):
-		if error != None:
+		if error is not None:
 			self["text"].setText(str(_(error.getErrorMessage())))
 
 	def action(self):
@@ -579,7 +579,7 @@ class RemoteTimerBouquetList(Screen):
 		self["bouquetlist"].instance.show()
 
 	def downloadError(self, error=None):
-		if error != None:
+		if error is not None:
 			self["text"].setText(str(_(error.getErrorMessage())))
 
 	def readXMLE1(self, xmlstring):
@@ -823,7 +823,7 @@ class RemoteTimerChannelList(Screen):
 		self["channellist"].instance.show()
 
 	def ChannelListDownloadError(self, error=None):
-		if error != None:
+		if error is not None:
 			self["text"].setText(str(_(error.getErrorMessage())))
 			self.mode = REMOTE_TIMER_MODE
 
@@ -1001,7 +1001,7 @@ class RemotePlayer(Screen, InfoBarAudioSelection):
 		self.parent = parent
 		self.Timer = eTimer()
 		self.Timer.timeout.get().append(self.TimerTimeout)
-		if InfoBar.instance != None:
+		if InfoBar.instance is not None:
 			self.servicelist = InfoBar.instance.servicelist
 		else:
 			self.servicelist = None
@@ -1022,7 +1022,7 @@ class RemotePlayer(Screen, InfoBarAudioSelection):
 		if self.pipZapAvailable is None:
 			return
 		if BoxInfo.getItem("NumVideoDecoders", 1) > 1:
-			if InfoBar.instance != None:
+			if InfoBar.instance is not None:
 				modeslist = []
 				keyslist = []
 				if InfoBar.pipShown(InfoBar.instance):
@@ -1056,10 +1056,10 @@ class RemotePlayer(Screen, InfoBarAudioSelection):
 			except:
 				pass
 		elif answer == "move":
-			if InfoBar.instance != None:
+			if InfoBar.instance is not None:
 				InfoBar.movePiP(InfoBar.instance)
 		elif answer == "stop":
-			if InfoBar.instance != None:
+			if InfoBar.instance is not None:
 				if InfoBar.pipShown(InfoBar.instance):
 					slist = self.servicelist
 					try:
@@ -1145,12 +1145,12 @@ class RemotePlayer(Screen, InfoBarAudioSelection):
 				pass
 
 	def nextChannel(self):
-		if self.parent != None:
+		if self.parent is not None:
 			self.parent.MoveItem(True)
 			self.close()
 
 	def previousChannel(self):
-		if self.parent != None:
+		if self.parent is not None:
 			self.parent.MoveItem(False)
 			self.close()
 
@@ -1392,7 +1392,7 @@ class RemoteTimerEPGList(Screen):
 		self["epglist"].instance.show()
 
 	def EPGListDownloadError(self, error=None):
-		if error != None:
+		if error is not None:
 			self["text"].setText(str(_(error.getErrorMessage())))
 
 	def readXMLEPGListE1(self, xmlstring):
@@ -1478,7 +1478,7 @@ class RemoteTimerEPGList(Screen):
 			self.deleteTimer()
 
 	def LocationsError(self, error=None):
-		if error != None:
+		if error is not None:
 			self["epglist"].instance.hide()
 			self["text"].setText(str(_(error.getErrorMessage())))
 
@@ -1571,7 +1571,7 @@ class RemoteTimerEPGList(Screen):
 		sendPartnerBoxWebCommand(url, None, 10, self.username, self.password).addCallback(self.readXML).addErrback(self.EPGListDownloadError)
 
 	def readXML(self, xmlstring=None):
-		if xmlstring != None:
+		if xmlstring is not None:
 			self["text"].setText(_("Getting timerlist data..."))
 			self.E2TimerList = []
 			if self.enigma_type == 0:
@@ -1820,7 +1820,7 @@ class E2ChannelList(MenuList):
 	def __init__(self, list, selChangedCB=None, enableWrapAround=True):
 		MenuList.__init__(self, list, enableWrapAround, eListboxPythonMultiContent)
 		self.onSelChanged = []
-		if selChangedCB != None:
+		if selChangedCB is not None:
 			self.onSelChanged.append(selChangedCB)
 		font = skin.fonts.get("PartnerBoxChannelList0", ("Regular", 20, 70))
 		self.l.setFont(0, gFont(font[0], font[1]))
@@ -1838,7 +1838,7 @@ class E2ChannelList(MenuList):
 
 	def selectionChanged(self):
 		for x in self.onSelChanged:
-			if x != None:
+			if x is not None:
 				x()
 
 	def getCurrentIndex(self):
@@ -1880,7 +1880,7 @@ class E2EPGList(MenuList):
 	def __init__(self, list, selChangedCB=None, enableWrapAround=True):
 		MenuList.__init__(self, list, enableWrapAround, eListboxPythonMultiContent)
 		self.onSelChanged = []
-		if selChangedCB != None:
+		if selChangedCB is not None:
 			self.onSelChanged.append(selChangedCB)
 		font = skin.fonts.get("PartnerBoxChannelEPGList0", ("Regular", 22, 30))
 		self.l.setFont(0, gFont(font[0], font[1]))
@@ -1927,7 +1927,7 @@ class E2EPGList(MenuList):
 
 	def selectionChanged(self):
 		for x in self.onSelChanged:
-			if x != None:
+			if x is not None:
 				x()
 
 	def buildList(self, listnew, timerlist):
@@ -2207,7 +2207,7 @@ def partnerboxChannelContextMenu__init__(self, session, csel):
 		current_root = csel.getRoot()
 		current = csel.getCurrentSelection()
 		inBouquetRootList = current_root and current_root.getPath().find('FROM BOUQUET "bouquets.') != -1 #FIXME HACK
-		inBouquet = csel.getMutableList() != None
+		inBouquet = csel.getMutableList() is not None
 		if csel.bouquet_mark_edit == OFF and not csel.movemode:
 			if not inBouquetRootList:
 				if inBouquet and current and current.valid():
@@ -2357,7 +2357,7 @@ class PartnerBouquetList(RemoteTimerBouquetList):
 		self.close((1, result, self.PartnerboxEntry))
 
 	def ChannelListDownloadError(self, error=None):
-		if error != None:
+		if error is not None:
 			self["text"].setText(str(_(error.getErrorMessage())))
 
 

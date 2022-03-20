@@ -378,7 +378,7 @@ class EpgCenterList(GUIComponent):
 			else: # don't show progress in lists
 				res.append((eListboxPythonMultiContent.TYPE_TEXT, offsetLeft, 0, width, self.itemHeight, 1, RT_HALIGN_CENTER | RT_VALIGN_CENTER, timeString))
 
-			if config.plugins.merlinEpgCenter.listProgressStyle.value == STYLE_MULTI_PIXMAP and progressPixmap != None:
+			if config.plugins.merlinEpgCenter.listProgressStyle.value == STYLE_MULTI_PIXMAP and progressPixmap is not None:
 				if width > self.progressPixmapWidth:
 					progressOffset = int((width - self.progressPixmapWidth) / 2)
 				else:
@@ -386,7 +386,7 @@ class EpgCenterList(GUIComponent):
 				res.append((eListboxPythonMultiContent.TYPE_PIXMAP_ALPHATEST, offsetLeft + progressOffset, self.halfItemHeight + (self.halfItemHeight - progressHeight) / 2 + self.singleLineBorder, width, progressHeight, progressPixmap))
 			elif config.plugins.merlinEpgCenter.listProgressStyle.value == STYLE_SIMPLE_BAR:
 				res.append((eListboxPythonMultiContent.TYPE_PROGRESS, offsetLeft, self.halfItemHeight + (self.halfItemHeight - progressHeight) / 2 + self.singleLineBorder, width, progressHeight, percent, 1, secondLineColor))
-			elif config.plugins.merlinEpgCenter.listProgressStyle.value == STYLE_PIXMAP_BAR and progressPixmap != None:
+			elif config.plugins.merlinEpgCenter.listProgressStyle.value == STYLE_PIXMAP_BAR and progressPixmap is not None:
 				if width > self.progressPixmapWidth:
 					progressOffset = int((width - self.progressPixmapWidth) / 2)
 				else:
@@ -587,11 +587,11 @@ class EpgCenterList(GUIComponent):
 		self.instance.moveSelection(self.instance.moveDown)
 
 	def pageUp(self):
-		if self.instance != None:
+		if self.instance is not None:
 			self.instance.moveSelection(self.instance.pageUp)
 
 	def pageDown(self):
-		if self.instance != None:
+		if self.instance is not None:
 			self.instance.moveSelection(self.instance.pageDown)
 
 	def getCurrent(self):
@@ -611,7 +611,7 @@ class EpgCenterList(GUIComponent):
 		self.l.setList(self.list)
 
 	def queryEPG(self, servicelist):
-		if self.epgcache != None:
+		if self.epgcache is not None:
 			return self.epgcache.lookupEvent(servicelist)
 		return []
 
@@ -673,7 +673,7 @@ class EpgCenterList(GUIComponent):
 
 		self.similarShown = True
 		self.list = self.epgcache.search(('0IRBDTSE', 1024, eEPGCache.SIMILAR_BROADCASTINGS_SEARCH, sRef, eventId))
-		if self.list != None:
+		if self.list is not None:
 			if config.plugins.merlinEpgCenter.limitSearchToBouquetServices.value:
 				for item in self.list[:]:
 					if not item[2] in EpgCenterList.allServicesNameDict:
@@ -771,7 +771,7 @@ class EpgCenterList(GUIComponent):
 			EpgCenterList.bouquetServices.append(EpgCenterList.getServiceList(bouquet[1], sRefOnly=True))
 
 	def selectionEnabled(self, enabled):
-		if self.instance != None:
+		if self.instance is not None:
 			self.instance.setSelectionEnable(enabled)
 
 	def getTimerPixmapsForEntry(self, sRef, eventId, begin, duration):

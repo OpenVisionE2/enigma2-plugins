@@ -153,6 +153,6 @@ def readFilePatterns():
 		except Exception as e:
 			log.exception(_("Your pattern file is corrupt") + "\n" + path + "\n\n" + str(e))
 		finally:
-			if f != None:
+			if f is not None:
 				f.close()
 	return patterns or scheme_fallback

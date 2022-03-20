@@ -142,14 +142,14 @@ class BufferThread():
 
 	def httpFinished(self, string=""):
 		self.downloading = False
-		if string != None:
+		if string is not None:
 			self.error = str(string)
 		else:
 			self.error = ""
 
 	def httpFailed(self, failure_instance=None, error_message=""):
 		self.downloading = False
-		if error_message == "" and failure_instance != None:
+		if error_message == "" and failure_instance is not None:
 			error_message = failure_instance.getErrorMessage()
 			self.error = str(error_message)
 
@@ -258,7 +258,7 @@ class PodcastMovies(Screen):
 					self.session.open(ChangedMoviePlayer, ref)
 
 	def bufferCallback(self, callback):
-		if callback != None:
+		if callback is not None:
 			ref = eServiceReference(4097, 0, self.file)
 			self.session.openWithCallback(self.delete, ChangedMoviePlayer, ref)
 
@@ -541,7 +541,7 @@ class LocationSelection(Screen):
 
 	def select(self):
 		dir = self["filelist"].getCurrentDirectory()
-		if dir != None:
+		if dir is not None:
 			self.close(dir)
 		else:
 			self.close(None)
@@ -595,7 +595,7 @@ class PodcastConfig(ConfigListScreen, Screen):
 			self.session.openWithCallback(self.locationSelected, LocationSelection, config.plugins.Podcast.bufferDevice.value)
 
 	def locationSelected(self, dir):
-		if dir != None and dir != "?":
+		if dir is not None and dir != "?":
 			config.plugins.Podcast.bufferDevice.value = dir
 			config.plugins.Podcast.bufferDevice.save()
 			self.createConfig()

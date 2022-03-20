@@ -351,7 +351,7 @@ class MSNWeatherPluginEntryConfigScreen(ConfigListScreen, Screen):
 				self.session.openWithCallback(self.searchCallback, MSNWeatherPluginSearch, xmlstring)
 
 	def error(self, error=None):
-		if error != None:
+		if error is not None:
 			print(error)
 
 	def searchCallback(self, result):

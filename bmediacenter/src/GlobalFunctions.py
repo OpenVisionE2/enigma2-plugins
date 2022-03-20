@@ -39,7 +39,7 @@ class MC_VideoInfoView(Screen):
 		tlist = []
 		self["infolist"] = ServiceInfoList(tlist)
 		currPlay = self.session.nav.getCurrentService()
-		if currPlay != None:
+		if currPlay is not None:
 			stitle = currPlay.info().getInfoString(iServiceInformation.sTitle)
 			if stitle == "":
 				stitle = currPlay.info().getName().split('/')[-1]

@@ -87,7 +87,7 @@ class AutomaticVolumeAdjustment(Screen):
 			else: # Remember channel volume mode
 					# save current volume in dict, but for valid ref only
 					ref = self.getPlayingServiceReference()
-# Check it != None before using it!
+# Check it is not None before using it!
 					if ref and ref.valid():
 						self.serviceList[ref.toString()] = self.volctrl.getVolume()
 
@@ -173,7 +173,7 @@ class AutomaticVolumeAdjustment(Screen):
 
 	def getPlayingServiceReference(self):
 		ref = self.session.nav.getCurrentlyPlayingServiceReference()
-# Check it != None before using it!
+# Check it is not None before using it!
 		if ref and ref.getPath(): # check if a movie is playing
 			# it is , get the eServicereference if available
 			self.serviceHandler = eServiceCenter.getInstance()
@@ -186,7 +186,7 @@ class AutomaticVolumeAdjustment(Screen):
 	def setVolume(self, value):
 		# set new volume
 		self.volctrl.setVolume(value, value)
-		if self.volumeControlInstance != None:
+		if self.volumeControlInstance is not None:
 			self.volumeControlInstance.volumeDialog.setValue(value) # update progressbar value
 			if self.showVolumeBar:
 				# show volume bar

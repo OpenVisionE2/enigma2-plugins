@@ -223,7 +223,7 @@ class EPGBackupConfig(Screen, HelpableScreen, ConfigListScreen):
 				config.plugins.epgbackup.backup_log_dir.value)
 
 	def directorySelected(self, res):
-		if res != None:
+		if res is not None:
 			config.plugins.epgbackup.backup_log_dir.value = res
 
 	def _onKeyChange(self):

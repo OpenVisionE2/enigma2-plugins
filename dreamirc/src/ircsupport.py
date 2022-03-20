@@ -132,7 +132,7 @@ class IRCProto(e2support.AbstractClientMixin, irc.IRCClient):
                 self.joinGroup(channel)
             self.account._isOnline = 1
             self.pipe.debug("uh, registering irc acct")
-            if self._logonDeferred != None:
+            if self._logonDeferred is not None:
                 self._logonDeferred.callback(self)
             self.chat.getContactsList()
         except:

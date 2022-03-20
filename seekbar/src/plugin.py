@@ -75,7 +75,7 @@ class Seekbar(ConfigListScreen, Screen):
 		if isinstance(session.current_dialog, MoviePlayer):
 			self.dvd = False
 			self.vdb = False
-		elif DVDPlayer != None and isinstance(session.current_dialog, DVDPlayer):
+		elif DVDPlayer is not None and isinstance(session.current_dialog, DVDPlayer):
 			self.dvd = True
 			self.vdb = False
 		else:

@@ -101,7 +101,7 @@ class ConfigListScreen(eConfigList.ConfigListScreen):
 
         self["config"] = ConfigList(list, session=session)
 
-        if on_change != None:
+        if on_change is not None:
             self.__changed = on_change
         else:
             self.__changed = lambda: None
@@ -495,7 +495,7 @@ class AdvancedMovieSelectionSetup(ConfigListScreen, Screen):
 
     def showHelp(self):
         current = self["config"].getCurrent()
-        if len(current) > 2 and current[2] != None:
+        if len(current) > 2 and current[2] is not None:
             self["help"].setText(current[2])
         else:
             self["help"].setText(_("No Helptext available!"))
@@ -930,12 +930,12 @@ class AdvancedMovieSelectionButtonSetup(Screen, ConfigListScreen):
             self.keySave()
 
     def sortTypeSelected(self, res):
-        if res != None:
+        if res is not None:
             config.AdvancedMovieSelection.sort_functions.value = " ".join(res)
             config.AdvancedMovieSelection.sort_functions.save()
 
     def dirnameSelected(self, res):
-        if res != None:
+        if res is not None:
             self.entrydirname.value = res
             if config.movielist.videodirs.value != self.lastvideodirs:
                 tmp = config.movielist.videodirs.value
@@ -1088,42 +1088,42 @@ class AdvancedMovieSelectionOwnButtonName(Screen, ConfigListScreen):
             self.session.openWithCallback(self.bookmark7buttonCallback, VirtualKeyBoard, title=(_("Enter Bookmark 7 button descrition:")), text=config.AdvancedMovieSelection.bookmark7owntext.value)
 
     def homebuttonCallback(self, callback=None):
-        if callback != None and len(callback):
+        if callback is not None and len(callback):
             config.AdvancedMovieSelection.homeowntext.setValue(callback)
             self["config"].invalidate(self.homebutton)
 
     def bookmark1buttonCallback(self, callback=None):
-        if callback != None and len(callback):
+        if callback is not None and len(callback):
             config.AdvancedMovieSelection.bookmark1owntext.setValue(callback)
             self["config"].invalidate(self.bookmark1button)
 
     def bookmark2buttonCallback(self, callback=None):
-        if callback != None and len(callback):
+        if callback is not None and len(callback):
             config.AdvancedMovieSelection.bookmark2owntext.setValue(callback)
             self["config"].invalidate(self.bookmark2button)
 
     def bookmark3buttonCallback(self, callback=None):
-        if callback != None and len(callback):
+        if callback is not None and len(callback):
             config.AdvancedMovieSelection.bookmark3owntext.setValue(callback)
             self["config"].invalidate(self.bookmark3button)
 
     def bookmark4buttonCallback(self, callback=None):
-        if callback != None and len(callback):
+        if callback is not None and len(callback):
             config.AdvancedMovieSelection.bookmark4owntext.setValue(callback)
             self["config"].invalidate(self.bookmark4button)
 
     def bookmark5buttonCallback(self, callback=None):
-        if callback != None and len(callback):
+        if callback is not None and len(callback):
             config.AdvancedMovieSelection.bookmark5owntext.setValue(callback)
             self["config"].invalidate(self.bookmark5button)
 
     def bookmark6buttonCallback(self, callback=None):
-        if callback != None and len(callback):
+        if callback is not None and len(callback):
             config.AdvancedMovieSelection.bookmark6owntext.setValue(callback)
             self["config"].invalidate(self.bookmark6button)
 
     def bookmark7buttonCallback(self, callback=None):
-        if callback != None and len(callback):
+        if callback is not None and len(callback):
             config.AdvancedMovieSelection.bookmark7owntext.setValue(callback)
             self["config"].invalidate(self.bookmark7button)
 
@@ -1197,14 +1197,14 @@ class AdvancedMovieSelectionOwnButtonName(Screen, ConfigListScreen):
         current = self["config"].getCurrent()
         helpwindowpos = self["HelpWindow"].getPosition()
         if hasattr(current[1], 'help_window'):
-            if current[1].help_window.instance != None:
+            if current[1].help_window.instance is not None:
                 current[1].help_window.instance.show()
                 current[1].help_window.instance.move(ePoint(helpwindowpos[0], helpwindowpos[1]))
 
     def hideKeypad(self):
         current = self["config"].getCurrent()
         if hasattr(current[1], 'help_window'):
-            if current[1].help_window.instance != None:
+            if current[1].help_window.instance is not None:
                 current[1].help_window.instance.hide()
 
     def cancelConfirm(self, result):

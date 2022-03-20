@@ -119,7 +119,7 @@ class MC_WeatherInfo(Screen):
 		self.close()
 
 	def startRun(self):
-		if self.weatherPluginEntry != None:
+		if self.weatherPluginEntry is not None:
 			self["statustext"].text = _("Loading information...")
 			url = "http://weather.service.msn.com/data.aspx?weadegreetype=%s&culture=%s&wealocations=%s" % (self.weatherPluginEntry.degreetype.value, self.language, self.weatherPluginEntry.weatherlocationcode.value)
 			getPage(url).addCallback(self.xmlCallback).addErrback(self.error)
@@ -295,7 +295,7 @@ class MC_WeatherInfo(Screen):
 	def setupFinished(self, index, entry=None):
 		self.weatherPluginEntryCount = config.plugins.mc_wi.entrycount.value
 		if self.weatherPluginEntryCount >= 1:
-			if entry != None:
+			if entry is not None:
 				self.weatherPluginEntry = entry
 				self.weatherPluginEntryIndex = index + 1
 			if self.weatherPluginEntry is None:
@@ -310,7 +310,7 @@ class MC_WeatherInfo(Screen):
 	def error(self, error=None):
 		self.mvion = False
 		self.showiframe.showStillpicture("/usr/share/enigma2/black.mvi")
-		if error != None:
+		if error is not None:
 			self.clearFields()
 			self["statustext"].text = str(error.getErrorMessage())
 
@@ -329,7 +329,7 @@ class WeatherIcon(Pixmap):
 
 	def paintIconPixmapCB(self, picInfo=None):
 		ptr = self.picload.getData()
-		if ptr != None:
+		if ptr is not None:
 			self.instance.setPixmap(ptr.__deref__())
 		else:
 			self.instance.setPixmap(None)
@@ -532,7 +532,7 @@ class MSNWeatherPluginEntryConfigScreen(ConfigListScreen, Screen):
 			self.session.openWithCallback(self.searchCallback, MSNWeatherPluginSearch, xmlstring)
 
 	def error(self, error=None):
-		if error != None:
+		if error is not None:
 			print(error)
 
 	def searchCallback(self, result):

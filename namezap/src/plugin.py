@@ -83,7 +83,7 @@ class NameZap(NumberZap):
 						break
 					if bouquet.flags & eServiceReference.isDirectory:
 						service, number = self.searchNumberHelper(serviceHandler, number, bouquet)
-		if service != None:
+		if service is not None:
 			info = serviceHandler.info(service)
 
 			sname = info.getName(service).replace('\xc2\x86', '').replace('\xc2\x87', '')
