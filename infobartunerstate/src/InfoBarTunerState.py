@@ -1,6 +1,4 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
 #######################################################################
 #
 #    InfoBar Tuner State for Enigma-2
@@ -19,21 +17,21 @@ from __future__ import print_function
 #
 #######################################################################
 
+from __future__ import print_function
 
 # for localized messages
 from . import _
-
-import math
-import os
-import NavigationInstance
-import socket
-import sys
-
+from math import ceil
+from six.moves import range
+from six import itervalues, PY2
+from os import path, statvfs, stat
+from socket import gethostbyaddr, herror
 from collections import defaultdict
 from operator import attrgetter, itemgetter
-try:
+import NavigationInstance
+if PY2:
 	from itertools import izip_longest as zip_longest # py2x
-except:
+else:
 	from itertools import zip_longest # py3k
 
 # Plugin
@@ -51,25 +49,21 @@ from Components.ServiceEventTracker import ServiceEventTracker
 from Screens.Screen import Screen
 from Screens.InfoBar import InfoBar
 from Screens.InfoBarGenerics import InfoBarShowHide
-from Screens.Screen import Screen
 from Tools.Directories import resolveFilename, SCOPE_PLUGINS
-
 from ServiceReference import ServiceReference
 from time import strftime, time, localtime, mktime
 from datetime import datetime, timedelta
-
-from enigma import iServiceInformation, ePoint, eSize, getDesktop, iFrontendInformation
-from enigma import eTimer
-from enigma import iPlayableService, iRecordableService
-from enigma import eDVBResourceManager, eActionMap, eListboxPythonMultiContent, eListboxPythonStringContent, eListbox, gFont, RT_HALIGN_LEFT, RT_HALIGN_RIGHT, RT_HALIGN_CENTER, eEPGCache, eServiceCenter, eServiceReference
-
-from skin import parseColor, parseFont
+from enigma import ePoint, eSize, getDesktop, eTimer, iPlayableService, iRecordableService, eEPGCache, eServiceCenter, eServiceReference
 
 # Plugin internal
-from netstat import netstat
+from .netstat import netstat
 
 # Extenal plugins: WebInterface
-StreamingWebScreen = None
+try:
+	from Plugins.Extensions.WebInterface.WebScreens import StreamingWebScreen
+except:
+	StreamingWebScreen = None
+
 
 # Globals
 InfoBarShow = None
@@ -77,11 +71,11 @@ InfoBarHide = None
 
 
 # Type Enum
-INFO, RECORD, STREAM, FINISHED = range(4)
+INFO, RECORD, STREAM, FINISHED = list(range(4))
 
 
 # Constants
-INFINITY = u"\u221E".encode("utf-8")
+INFINITY = '∞'
 
 
 #######################################################
@@ -173,9 +167,21 @@ def removeExtension():
 			if p.name == IBTSSETUP:
 				plugins.plugins[PluginDescriptor.WHERE_EXTENSIONSMENU].remove(p)
 				break
-
 #######################################################
 # Logical background task
+
+#######################################################
+# Skin handling
+
+
+def applySkinVars(skin, dict):
+	for key in dict.keys():
+		try:
+			skin = skin.replace('{' + key + '}', dict[key])
+		except Exception as e:
+			print(e, '@key=', key)
+	return skin
+#######################################################
 
 
 class InfoBarTunerState(object):
@@ -251,12 +257,29 @@ class InfoBarTunerState(object):
 		# If we append our function, we will never see the timer state StateEnded for repeating timer
 		if self.__onRecordingEvent not in self.session.nav.RecordTimer.on_state_change:
 			self.session.nav.RecordTimer.on_state_change.insert(0, self.__onRecordingEvent)
+		# Streaming Events
+		if config.infobartunerstate.show_streams.value:
+			if StreamingWebScreen:
+				try:
+					from Plugins.Extensions.WebInterface.WebScreens import streamingEvents
+					if self.__onStreamingEvent not in streamingEvents:
+						streamingEvents.append(self.__onStreamingEvent)
+				except:
+					pass
 
 	def removeEvents(self):
 		# Recording Events
 		# If we append our function, we will never see the timer state StateEnded for repeating timer
 		if self.__onRecordingEvent in self.session.nav.RecordTimer.on_state_change:
 			self.session.nav.RecordTimer.on_state_change.remove(self.__onRecordingEvent)
+		# Streaming Events
+		if StreamingWebScreen:
+			try:
+				from Plugins.Extensions.WebInterface.WebScreens import streamingEvents
+				if self.__onStreamingEvent in streamingEvents:
+					streamingEvents.remove(self.__onStreamingEvent)
+			except:
+				pass
 
 	def bindInfoBar(self):
 		# Reimport InfoBar to force update of the class instance variable
@@ -344,7 +367,7 @@ class InfoBarTunerState(object):
 				# The id of a finished repeated timer can be changed
 				#RecordTimerEntry(name=How I Met Your Mother, begin=Wed Jul 18 11:37:00 2012, serviceref=1:0:19:EF75:3F9:1:C00000:0:0:0:, justplay=False)
 				#RecordTimerEntry(name=How I Met Your Mother, begin=Thu Jul 19 11:37:00 2012, serviceref=1:0:19:EF75:3F9:1:C00000:0:0:0:, justplay=False)
-				#print("IBTS Timer finished ID", id, id in self.entries)
+				#print "IBTS Timer finished ID", id, id in self.entries
 				if id in self.entries:
 					win = self.entries[id]
 
@@ -365,7 +388,10 @@ class InfoBarTunerState(object):
 			print("IBTS Stream Event")
 			if event == StreamingWebScreen.EVENT_START:
 
-				streamingScreens = []
+				try:
+					from Plugins.Extensions.WebInterface.WebScreens import streamingScreens
+				except:
+					streamingScreens = []
 
 				# Extract parameters
 				tuner, tunertype = getTuner(stream.getRecordService())
@@ -380,7 +406,7 @@ class InfoBarTunerState(object):
 
 #				# Workaround to retrieve the client ip
 #				# Change later and use the WebScreens getActiveStreamingClients if implemented
-#				ipports = [ (win.ip, win.port) for win in self.entries.itervalues() ]
+#				ipports = [ (win.ip, win.port) for win in itervalues(self.entries) ]
 #				for conn in netstat(getstate='ESTABLISHED', getuid=False, getpid=False, readable=False):
 #					# Check if it is a streaming connection
 #					if conn[3] == '8001':
@@ -406,9 +432,9 @@ class InfoBarTunerState(object):
 				filename = "" #TODO file streaming - read meta eit
 
 				try:
-					host = ip and socket.gethostbyaddr(ip)
+					host = ip and gethostbyaddr(ip)
 					client = host and host[0].split('.')[0]
-				except socket.herror as x:
+				except herror as x:
 					pass
 
 				number = service_ref and getNumber(service_ref.ref)
@@ -452,7 +478,10 @@ class InfoBarTunerState(object):
 
 	def updateStreams(self):
 		#TODO updateStreams but retrieving IP is not possible
-		streamingScreens = []
+		try:
+			from Plugins.Extensions.WebInterface.WebScreens import streamingScreens
+		except:
+			streamingScreens = []
 
 		#TODO file streaming actually not supported
 		for stream in streamingScreens:
@@ -464,7 +493,7 @@ class InfoBarTunerState(object):
 		number_pending_records = int(config.infobartunerstate.number_pending_records.value)
 		print("IBTS updateNextTimer", number_pending_records)
 
-		nextwins = [id for id in self.entries.keys() if id.startswith('next')]
+		nextwins = [id for id in list(self.entries.keys()) if id.startswith('next')]
 
 		if number_pending_records:
 			timer_list = getNextPendingRecordTimers()[:number_pending_records]
@@ -572,7 +601,7 @@ class InfoBarTunerState(object):
 			#  if entry reached timeout
 			#  if number of entries is reached
 			numberfinished = 0
-			for id, win in sorted(self.entries.items(), key=lambda x: (x[1].end), reverse=True):
+			for id, win in sorted(list(self.entries.items()), key=lambda x: (x[1].end), reverse=True):
 				if win.type == FINISHED:
 					numberfinished += 1
 				if win.toberemoved == True \
@@ -583,12 +612,11 @@ class InfoBarTunerState(object):
 
 			# Update windows
 			# Dynamic column resizing and repositioning
-			widths = []
-			for id, win in self.entries.items():
+			for id, win in list(self.entries.items()):
 				if win.type == RECORD:
 					#TODO Avolid blocking - avoid using getTimer to update the timer times use timer.time_changed if possible
 					timer = getTimer(id)
-					#print(id, timer)
+					#print id, timer
 					if timer:
 						begin = timer.begin
 						end = timer.end
@@ -670,34 +698,35 @@ class InfoBarTunerState(object):
 					win.update()
 
 				# Calculate field width
-				widths = map(lambda (w1, w2): max(w1, w2), zip_longest(widths, win.widths))
+				widths = [0] * len(win.widths)
+				widths = [max(w1_w2[0], w1_w2[1]) for w1_w2 in zip_longest(widths, win.widths)]
 
 		#if self.entries:
 			# Get initial padding / offset position and apply user offset
 			padding = self.padding + int(config.infobartunerstate.offset_padding.value)
-			#print("IBTS px, self.padding, config.padding", px, self.padding, int(config.infobartunerstate.offset_padding.value))
+			#print "IBTS px, self.padding, config.padding", px, self.padding, int(config.infobartunerstate.offset_padding.value)
 
 			# Calculate field spacing
 			spacing = self.spacing + int(config.infobartunerstate.offset_spacing.value)
-			#print("IBTS spacing, self.spaceing, config.spacing", spacing, self.spacing, int(config.infobartunerstate.offset_spacing.value))
+			#print "IBTS spacing, self.spaceing, config.spacing", spacing, self.spacing, int(config.infobartunerstate.offset_spacing.value)
 			#widths = [ width+spacing if width>0 else 0 for width in widths ]
 
 			# Apply user offsets
 			posx = self.positionx + int(config.infobartunerstate.offset_horizontal.value)
-			#print("IBTS posx, self.positionx, config.offset_horizontal", posx, self.positionx, int(config.infobartunerstate.offset_horizontal.value))
+			#print "IBTS posx, self.positionx, config.offset_horizontal", posx, self.positionx, int(config.infobartunerstate.offset_horizontal.value)
 			posy = self.positiony + int(config.infobartunerstate.offset_vertical.value)
 			height = self.height
-			#print("IBTS widths", widths)
+			#print "IBTS widths", widths
 
 			# Handle maximum width
 			overwidth = posx + sum(widths) + len([w for w in widths if w]) * spacing + padding - self.desktopwidth + int(config.infobartunerstate.offset_rightside.value)
-			#print("IBTS overwidth", overwidth)
+			#print "IBTS overwidth", overwidth
 
 			# Order windows
-			#wins = sorted( self.entries.itervalues(), key=lambda x: (x.type, x.endless, x.timeleft, x.begin), reverse=False )
+			#wins = sorted( itervalues(self.entries), key=lambda x: (x.type, x.endless, x.timeleft, x.begin), reverse=False )
 
 			#TEST 1
-			#wins = sorted( self.entries.itervalues(), key=lambda x: (x.type, x.endless, x.timeleft, x.begin), reverse=config.infobartunerstate.list_goesup.value )
+			#wins = sorted( itervalues(self.entries), key=lambda x: (x.type, x.endless, x.timeleft, x.begin), reverse=config.infobartunerstate.list_goesup.value )
 
 			#TEST 2
 			#wins = []
@@ -709,7 +738,7 @@ class InfoBarTunerState(object):
 			#	wins.reverse()
 
 			#TEST 3
-			wins = sorted(self.entries.itervalues(), key=lambda x: (x.type, x.endless, x.begin), reverse=config.infobartunerstate.list_goesup.value)
+			wins = sorted(itervalues(self.entries), key=lambda x: (x.type, x.endless, x.begin), reverse=config.infobartunerstate.list_goesup.value)
 
 			# Resize, move and show windows
 			for win in wins:
@@ -731,7 +760,7 @@ class InfoBarTunerState(object):
 
 	def update(self):
 		print("IBTS updating")
-		#for win in self.entries.itervalues():
+		#for win in itervalues(self.entries):
 		#	#TODO Update also names, width, order, type ...
 		#	win.update()
 		self.tunerShow()
@@ -746,7 +775,7 @@ class InfoBarTunerState(object):
 
 	def tunerHide(self):
 		print("IBTS tunerHide")
-		for win in self.entries.itervalues():
+		for win in itervalues(self.entries):
 			win.hide()
 		if self.info:
 			self.info.hide()
@@ -758,7 +787,7 @@ class InfoBarTunerState(object):
 		self.unbindInfoBar()
 		self.removeEvents()
 		self.hide()
-		for id, win in self.entries.items():
+		for id, win in list(self.entries.items()):
 			self.session.deleteDialog(win)
 			del self.entries[id]
 		from Plugins.Extensions.InfoBarTunerState.plugin import gInfoBarTunerState
@@ -769,21 +798,25 @@ class InfoBarTunerState(object):
 #######################################################
 # Base screen class, contains all skin relevant parts
 class TunerStateBase(Screen):
-	# Skin will only be read once
-	#skinfile = os.path.join( resolveFilename(SCOPE_PLUGINS), "Extensions/InfoBarTunerState/skin.xml" )
-	#skin = open(skinfile).read()
 
 	def __init__(self, session):
+		pluginpath = path.join(resolveFilename(SCOPE_PLUGINS), "Extensions/InfoBarTunerState/")
+		if getDesktop(0).size().width() > 1280:
+			skinfile = pluginpath + "skin_FHD.xml"
+		else:
+			skinfile = pluginpath + "skin_HD.xml"
+		skin = open(skinfile).read()
 		Screen.__init__(self, session)
-		self.skin_path = resolveFilename(SCOPE_PLUGINS, "Extensions/InfoBarTunerState")
+		dic = {}
+		dic['picpath'] = pluginpath
+		self.skin = applySkinVars(skin, dic)
 		self.skinName = "TunerState"
-
 		self["Background"] = Pixmap()
 		self["Type"] = MultiPixmap()
 		self["Progress"] = ProgressBar()
 
-		for i in xrange(len(config.infobartunerstate.fields.dict())):
-		#for i, c in enumerate( config.infobartunerstate.fields.dict().itervalues() ):
+		for i in range(len(config.infobartunerstate.fields.dict())):
+		#for i, c in enumerate( itervalues(config.infobartunerstate.fields.dict()) ):
 			label = Label()
 			#fieldid = "Field"+str(i)
 			self["Field" + str(i)] = label
@@ -819,20 +852,20 @@ class TunerStateBase(Screen):
 	def reorder(self, widths, overwidth=0):
 		# Get initial padding / offset position and apply user offset
 		padding = self.padding + int(config.infobartunerstate.offset_padding.value)
-		#print("IBTS px, self.padding, config.padding", px, self.padding, int(config.infobartunerstate.offset_padding.value))
+		#print "IBTS px, self.padding, config.padding", px, self.padding, int(config.infobartunerstate.offset_padding.value)
 
 		# Calculate field spacing
 		spacing = self.spacing + int(config.infobartunerstate.offset_spacing.value)
-		#print("IBTS spacing, self.spaceing, config.spacing", spacing, self.spacing, int(config.infobartunerstate.offset_spacing.value))
+		#print "IBTS spacing, self.spaceing, config.spacing", spacing, self.spacing, int(config.infobartunerstate.offset_spacing.value)
 
 		px = padding
 		py = 0
 		sh = self.instance.size().height()
 		#print(self.widths)
 
-		fieldwidths = config.infobartunerstate.fieldswidth.dict().values()
+		fieldwidths = list(config.infobartunerstate.fieldswidth.dict().values())
 
-		for i, (c, width) in enumerate(zip(config.infobartunerstate.fields.dict().values(), widths)):
+		for i, (c, width) in enumerate(zip(list(config.infobartunerstate.fields.dict().values()), widths)):
 			fieldid = "Field" + str(i)
 			field = c.value
 			if field == "TypeIcon":
@@ -906,8 +939,8 @@ class TunerStateInfo(TunerStateBase):
 
 		self["Progress"].hide()
 
-		#for i, c in enumerate( config.infobartunerstate.fields.dict().itervalues() ):
-		for i in xrange(len(config.infobartunerstate.fields.dict())):
+		#for i, c in enumerate( itervalues(config.infobartunerstate.fields.dict()) ):
+		for i in range(len(config.infobartunerstate.fields.dict())):
 			fieldid = "Field" + str(i)
 
 			if fieldid == "Field0":
@@ -926,8 +959,8 @@ class TunerStateInfo(TunerStateBase):
 
 		height = self.instance.size().height()
 
-		#for i, c in enumerate( config.infobartunerstate.fields.dict().itervalues() ):
-		for i in xrange(len(config.infobartunerstate.fields.dict())):
+		#for i, c in enumerate( itervalues(config.infobartunerstate.fields.dict()) ):
+		for i in range(len(config.infobartunerstate.fields.dict())):
 			fieldid = "Field" + str(i)
 
 			#Workaround#1 Set default size
@@ -976,7 +1009,7 @@ class TunerState(TunerStateBase):
 		self.channel = channel
 
 		self.filename = filename + ".ts"
-		self.destination = filename and os.path.dirname(filename)
+		self.destination = filename and path.dirname(filename)
 
 		self.filesize = None
 		self.freespace = None
@@ -1062,7 +1095,7 @@ class TunerState(TunerStateBase):
 			if timeelapsed and duration:
 				# Adjust the watched movie length (98% of movie length)
 				# else we will never see the 100%
-				# Alternative using math.ceil but then we won't see 0
+				# Alternative using ceil but then we won't see 0
 				length = duration / 100.0 * 98.0
 				# Calculate progress and round up
 				progress = timeelapsed / length * 100.0
@@ -1074,22 +1107,22 @@ class TunerState(TunerStateBase):
 			else:
 				progress = None
 
-		self.duration = duration and duration is not None and math.ceil((duration) / 60.0)
-		self.timeleft = timeleft and timeleft is not None and math.ceil((timeleft) / 60.0)
-		self.timeelapsed = timeelapsed and timeelapsed is not None and math.ceil((timeelapsed) / 60.0)
+		self.duration = duration and duration is not None and ceil((duration) / 60.0)
+		self.timeleft = timeleft and timeleft is not None and ceil((timeleft) / 60.0)
+		self.timeelapsed = timeelapsed and timeelapsed is not None and ceil((timeelapsed) / 60.0)
 		self.progress = progress and progress is not None and int(progress)
-		#print("IBTS duration, timeleft, timeelapsed, progress", self.duration, self.timeleft, self.timeelapsed, self.progress)
+		#print "IBTS duration, timeleft, timeelapsed, progress", self.duration, self.timeleft, self.timeelapsed, self.progress
 
 		# File site and free disk space
 		filename = self.filename
-		if filename and os.path.exists(filename):
-			filesize = os.path.getsize(filename)
+		if filename and path.exists(filename):
+			filesize = path.getsize(filename)
 			self.filesize = filesize / (1024 * 1024)
 
 			try:
-				stat = os.statvfs(filename)
+				stat = statvfs(filename)
 				self.freespace = (stat.f_bfree / 1000 * stat.f_bsize / 1000) / 1024
-				#free = os.stat(path).st_size/1048576)
+				#free = stat(path).st_size/1048576)
 			except OSError:
 				pass
 
@@ -1108,7 +1141,7 @@ class TunerState(TunerStateBase):
 		self["Type"].hide()
 		self["Progress"].hide()
 
-		for i, c in enumerate(config.infobartunerstate.fields.dict().itervalues()):
+		for i, c in enumerate(itervalues(config.infobartunerstate.fields.dict())):
 			fieldid = "Field" + str(i)
 			field = c.value
 			text = ""
@@ -1275,7 +1308,7 @@ def getTimerID(timer):
 def getTimer(id):
 	#for timer in self.session.nav.RecordTimer.timer_list + self.session.nav.RecordTimer.processed_timers:
 	for timer in NavigationInstance.instance.RecordTimer.timer_list + NavigationInstance.instance.RecordTimer.processed_timers:
-		#print("timerlist:", getTimerID( timer ))
+		#print "timerlist:", getTimerID( timer )
 		if getTimerID(timer) == id:
 			return timer
 	return None
@@ -1289,7 +1322,10 @@ def getStreamID(stream):
 
 
 def getStream(id):
-	streamingScreens = []
+	try:
+		from Plugins.Extensions.WebInterface.WebScreens import streamingScreens
+	except:
+		streamingScreens = []
 
 	for stream in streamingScreens:
 		if stream:
