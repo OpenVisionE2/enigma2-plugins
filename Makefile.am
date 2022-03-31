@@ -86,6 +86,7 @@ SUBDIRS = \
 	shoutcast \
 	showclock \
 	simplerss \
+	startuptostandby \
 	subsdownloader2 \
 	sudoku \
 	svdrp \
