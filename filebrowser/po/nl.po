@@ -5,100 +5,93 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: enigma2 - Filebrowser Plugin\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-13 19:18+0330\n"
-"PO-Revision-Date: 2020-05-22 18:23+0200\n"
-"Last-Translator: Frenske <voorzitter@openpli.org>\n"
-"Language-Team: PLi\n"
-"Language: nl_NL\n"
+"POT-Creation-Date: 2022-04-16 18:40+0000\n"
+"PO-Revision-Date: 2022-04-18 16:04+0200\n"
+"Last-Translator: Rob van der Does <RobvanderDoes@Gmail.com>\n"
+"Language-Team: \n"
+"Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 3.0.1\n"
+
+msgid "Copy"
+msgstr "Kopieer"
+
+msgid "Delete"
+msgstr "Verwijder"
 
 msgid "Filebrowser"
 msgstr "Filebrowser"
 
+msgid "Filebrowser Settings"
+msgstr "Filebrowser instellingen"
+
 msgid "Filesystemposition list left"
-msgstr ""
+msgstr "Bestandssysteempositie linker lijst"
 
 msgid "Filesystemposition list right"
-msgstr ""
+msgstr "Bestandssysteempositie rechter lijst"
 
-msgid "Settings"
-msgstr "Instellingen"
+msgid "HELP"
+msgstr "HELP"
 
-#, fuzzy
+msgid "MENU"
+msgstr "MENU"
+
+msgid "Move"
+msgstr "Verplaats"
+
+msgid "Rename"
+msgstr "Hernoem"
+
 msgid "add Plugin to Extensionmenu"
-msgstr "Voeg de plug-in aan het applicatiemenu toe."
+msgstr "toon plugin in extensies"
 
-#, fuzzy
 msgid "add Plugin to Mainmenu"
-msgstr "Voeg de plug-in aan het Hoofdmenu toe"
+msgstr "toon plugin in hoofdmenu"
 
-#, fuzzy
-msgid "cancel"
-msgstr "Annuleren"
-
-msgid "copy"
-msgstr ""
-
-#, fuzzy
 msgid "copy file"
-msgstr "Kopieer het bestand"
+msgstr "kopieer bestand"
 
 msgid "copying file ..."
-msgstr "kopieer het bestand ..."
+msgstr "kopieert bestand..."
 
-#, fuzzy
-msgid "delete"
-msgstr "Verwijder"
-
-#, fuzzy
 msgid "delete file"
-msgstr "Verwijder het bestand"
+msgstr "verwijder bestand"
 
 msgid "deleting file ..."
-msgstr "verwijder het bestand ..."
+msgstr "verwijdert bestand..."
+
+msgid "filebrowser buttons"
+msgstr "filebrowser toetsen"
 
 msgid "manage local Files"
-msgstr "Beheer de locale bestanden"
+msgstr "beheer lokale bestanden"
 
-msgid "move"
-msgstr ""
-
-#, fuzzy
 msgid "move file"
-msgstr "Verplaats een bestand"
+msgstr "verlaats bestand"
 
 msgid "moving file ..."
-msgstr "verplaatsen van het bestand ..."
+msgstr "verplaatst bestand..."
 
 msgid "no"
-msgstr ""
+msgstr "nee"
 
 msgid "no Viewer installed for this mimetype!"
-msgstr "geen Viewer geïnstalleerd voor dit mimetype!"
+msgstr "geen viewer geïnstalleerd voor dit minetype!"
 
-msgid "ok"
-msgstr ""
-
-#, fuzzy
-msgid "rename"
-msgstr "Hernoemen"
-
-#, fuzzy
 msgid "rename file"
-msgstr "Hernoem het bestand"
+msgstr "hernoem bestand"
 
 msgid "renaming file ..."
-msgstr "hernoemd het bestand ..."
+msgstr "hernoemt bestand..."
 
-#, fuzzy
 msgid "save Filesystemposition on exit"
-msgstr "Sla de positie(s) op bij het beëindigen van het programma"
+msgstr "bewaar bestandssysteempositie bij afsluiten"
 
 msgid "yes"
-msgstr ""
+msgstr "ja"

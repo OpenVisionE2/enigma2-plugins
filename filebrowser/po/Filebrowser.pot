@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-22 13:32+0330\n"
+"POT-Creation-Date: 2022-04-16 18:40+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,16 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+msgid "Copy"
+msgstr ""
+
+msgid "Delete"
+msgstr ""
+
 msgid "Filebrowser"
+msgstr ""
+
+msgid "Filebrowser Settings"
 msgstr ""
 
 msgid "Filesystemposition list left"
@@ -26,7 +35,16 @@ msgstr ""
 msgid "Filesystemposition list right"
 msgstr ""
 
-msgid "Settings"
+msgid "HELP"
+msgstr ""
+
+msgid "MENU"
+msgstr ""
+
+msgid "Move"
+msgstr ""
+
+msgid "Rename"
 msgstr ""
 
 msgid "add Plugin to Extensionmenu"
@@ -35,19 +53,10 @@ msgstr ""
 msgid "add Plugin to Mainmenu"
 msgstr ""
 
-msgid "cancel"
-msgstr ""
-
-msgid "copy"
-msgstr ""
-
 msgid "copy file"
 msgstr ""
 
 msgid "copying file ..."
-msgstr ""
-
-msgid "delete"
 msgstr ""
 
 msgid "delete file"
@@ -56,10 +65,10 @@ msgstr ""
 msgid "deleting file ..."
 msgstr ""
 
-msgid "manage local Files"
+msgid "filebrowser buttons"
 msgstr ""
 
-msgid "move"
+msgid "manage local Files"
 msgstr ""
 
 msgid "move file"
@@ -72,12 +81,6 @@ msgid "no"
 msgstr ""
 
 msgid "no Viewer installed for this mimetype!"
-msgstr ""
-
-msgid "ok"
-msgstr ""
-
-msgid "rename"
 msgstr ""
 
 msgid "rename file"

@@ -447,8 +447,9 @@ orfteletext/src/Makefile
 partnerbox/Makefile
 partnerbox/meta/Makefile
 partnerbox/po/Makefile
-partnerbox/src/icons/Makefile
 partnerbox/src/Makefile
+partnerbox/src/icons/Makefile
+partnerbox/src/buttons/Makefile
 
 permanentclock/Makefile
 permanentclock/meta/Makefile
