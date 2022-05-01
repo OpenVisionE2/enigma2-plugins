@@ -1,5 +1,3 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
 # for localized messages
 from . import _
 
@@ -7,6 +5,8 @@ from . import _
 
 from Components.Label import Label
 from enigma import eTimer
+
+from six import PY2
 
 
 class MovingLabel(Label):
@@ -37,7 +37,10 @@ class MovingLabel(Label):
 		text = (self.displayLength * ' ') + text
 		self.longText = text
 		self.offset = 0
-		Label.setText(self, text[:self.displayLength].encode('utf-8', 'ignore'))
+		text = text[:self.displayLength]
+		if PY2:
+			text = text.encode('utf-8', 'ignore')
+		Label.setText(self, text)
 
 	def stopMoving(self):
 		self.moveTimer.stop()
@@ -56,7 +59,9 @@ class MovingLabel(Label):
 			self.stopMoving()
 
 		try:
-			Label.setText(self, text.encode('utf-8', 'ignore'))
+			if PY2:
+				text = text.encode('utf-8', 'ignore')
+			Label.setText(self, text)
 		except Exception:
 			self.stopMoving()
 

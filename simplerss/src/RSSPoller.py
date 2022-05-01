@@ -1,6 +1,5 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
 from __future__ import print_function
+from __future__ import absolute_import
 
 # for localized messages
 from . import _
@@ -9,14 +8,17 @@ from Components.config import config
 from enigma import eTimer
 
 from Tools.Notifications import AddPopup
+from Tools.BoundFunction import boundFunction
 from Screens.MessageBox import MessageBox
 
-from RSSFeed import BaseFeed, UniversalFeed
+from .RSSFeed import BaseFeed, UniversalFeed
 
-from twisted.web.client import getPage
+from twisted.web.client import Agent, readBody
+from twisted.internet import reactor
 from xml.etree.cElementTree import fromstring as cElementTree_fromstring
+from six import ensure_str, ensure_binary
 
-from GoogleReader import GoogleReader
+from .GoogleReader import GoogleReader
 
 NOTIFICATIONID = 'SimpleRSSUpdateNotification'
 
@@ -114,7 +116,7 @@ class RSSPoller:
 		# Assume its just a temporary failure and jump over to next feed
 		self.next_feed()
 
-	def _gotPage(self, data, id=None, callback=False, errorback=None):
+	def _gotPage(self, id=None, callback=False, errorback=None, data=None):
 		# workaround: exceptions in gotPage-callback were ignored
 		try:
 			self.gotPage(data, id)
@@ -143,6 +145,7 @@ class RSSPoller:
 			self.next_feed()
 
 	def gotPage(self, data, id=None):
+		data = ensure_str(data)
 		feed = cElementTree_fromstring(data)
 
 		# For Single-Polling
@@ -163,7 +166,15 @@ class RSSPoller:
 		self.next_feed()
 
 	def singlePoll(self, id, callback=False, errorback=None):
-		getPage(self.feeds[id].uri).addCallback(self._gotPage, id, callback, errorback).addErrback(errorback)
+		agent = Agent(reactor)
+		d = agent.request(b'GET', ensure_binary(self.feeds[id].uri))
+		d.addCallback(boundFunction(self._gotPage2, id, callback, errorback))
+		d.addErrback(errorback)
+
+	def _gotPage2(self, id=None, callback=False, errorback=None, response=None):
+		d = readBody(response)
+		d.addCallback(boundFunction(self._gotPage, id, callback, errorback))
+		return d
 
 	def poll(self):
 		# Reloading, reschedule
@@ -180,7 +191,7 @@ class RSSPoller:
 				# Inform User
 				update_notification_value = config.plugins.simpleRSS.update_notification.value
 				if update_notification_value == "preview":
-					from RSSScreens import RSSFeedView
+					from .RSSScreens import RSSFeedView
 
 					from Tools.Notifications import AddNotificationWithID, RemovePopup
 
@@ -200,7 +211,7 @@ class RSSPoller:
 						NOTIFICATIONID
 					)
 				elif update_notification_value == "ticker":
-					from RSSTickerView import tickerView
+					from .RSSTickerView import tickerView
 					if not tickerView:
 						print("[SimpleRSS] missing ticker instance, something with my code is wrong :-/")
 					else:
@@ -247,11 +258,19 @@ class RSSPoller:
 			feed = self.feeds[self.current_feed]
 
 			if feed.autoupdate:
-				getPage(feed.uri).addCallback(self._gotPage).addErrback(self.error)
+				agent = Agent(reactor)
+				d = agent.request(b'GET', ensure_binary(feed.uri))
+				d.addCallback(self._gotPage3)
+				d.addErrback(self.error)
 			# Go to next feed
 			else:
 				print("[SimpleRSS] passing feed")
 				self.next_feed()
+
+	def _gotPage3(self, response=None):
+		d = readBody(response)
+		d.addCallback(boundFunction(self._gotPage, None, False, None))
+		return d
 
 	def next_feed(self):
 		self.current_feed += 1
