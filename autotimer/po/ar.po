@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2-plugins 3.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-13 19:18+0330\n"
+"POT-Creation-Date: 2021-04-16 19:06+0430\n"
 "PO-Revision-Date: 2018-12-08 11:35+0300\n"
 "Last-Translator: mosad - مساعد الجعيد <abo-mishal@hotmail.com>\n"
 "Language-Team: mosad - مساعد الجعيد\n"
@@ -95,6 +95,10 @@ msgstr "ربط التسجيلات على اليسار"
 
 msgid "Any service/recording"
 msgstr "أي خدمة / التسجيل"
+
+#, fuzzy
+msgid "Auto Timer"
+msgstr "مؤقتات تلقائية"
 
 msgid "Auto Timers"
 msgstr "مؤقتات تلقائية"
@@ -953,10 +957,10 @@ msgid "When supporting \"Fast Scan\" the service type is ignored. You don't need
 msgstr "عندما يتم دعم \"البحث السريع\" يتم تجاهل نوع الخدمة. لاتحتاج لتمكين هذا مالم تدعم صورة الخاص بك داخل خاصية \"البحث السريع\" وتقوم بإستخدمها."
 
 #, fuzzy
-msgid "When supporting 'Fast Scan' the service type is ignored. You don't need to enable this unless your Image supports 'Fast Scan' and you are using it."
+msgid "When supporting 'Fast Scan' the service type is ignored. You dont need to enable this unless your Image supports 'Fast Scan' and you are using it."
 msgstr "عندما يتم دعم \"البحث السريع\" يتم تجاهل نوع الخدمة. لاتحتاج لتمكين هذا مالم تدعم صورة الخاص بك داخل خاصية \"البحث السريع\" وتقوم بإستخدمها."
 
-msgid "When this is enabled AutoTimer will ONLY check for new events whilst in stanadby."
+msgid "When this is enabled AutoTimer will ONLY check for new events whilst in standby."
 msgstr "عندما يتم تمكين هذه المؤقت التلقائي سوف تحقق فقط عن أحداث جديدة بينما الجهاز في وضع الإستعداد."
 
 msgid "When this option is enabled the AutoTimer won't match events where another timer with the same description already exists in the timer list."

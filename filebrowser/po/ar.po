@@ -1,0 +1,102 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Enigma 2 Filebrowser Plugin\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-12-13 19:18+0330\n"
+"PO-Revision-Date: 2020-10-15 15:22+0300\n"
+"Last-Translator: mosad - مساعد الجعيد <abo-mishal@hotmail.com>\n"
+"Language-Team: mosad - مساعد الجعيد\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5);\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 2.4.1\n"
+"X-Poedit-SearchPath-0: ../src\n"
+
+msgid "Filebrowser"
+msgstr "متصفح الملفات"
+
+msgid "Filesystemposition list left"
+msgstr ""
+
+msgid "Filesystemposition list right"
+msgstr ""
+
+msgid "Settings"
+msgstr "إعدادات"
+
+#, fuzzy
+msgid "add Plugin to Extensionmenu"
+msgstr "إضافة البلجن إلى ملحقات القائمة"
+
+#, fuzzy
+msgid "add Plugin to Mainmenu"
+msgstr "إضافة البلجن إلى القائمة الرئيسية"
+
+#, fuzzy
+msgid "cancel"
+msgstr "إلغاء"
+
+msgid "copy"
+msgstr ""
+
+#, fuzzy
+msgid "copy file"
+msgstr "نسخ الملف"
+
+msgid "copying file ..."
+msgstr "نسخ الملف ..."
+
+#, fuzzy
+msgid "delete"
+msgstr "حذف"
+
+#, fuzzy
+msgid "delete file"
+msgstr "حذف الملف"
+
+msgid "deleting file ..."
+msgstr "حذف الملف ..."
+
+msgid "manage local Files"
+msgstr "إدارة الملفات"
+
+msgid "move"
+msgstr ""
+
+#, fuzzy
+msgid "move file"
+msgstr "نقل الملف"
+
+msgid "moving file ..."
+msgstr "نقل الملف ..."
+
+msgid "no"
+msgstr ""
+
+msgid "no Viewer installed for this mimetype!"
+msgstr "لا يوجد شي مثبت لهذا النوع المحاكي!"
+
+msgid "ok"
+msgstr ""
+
+#, fuzzy
+msgid "rename"
+msgstr "إعادة التسميه"
+
+#, fuzzy
+msgid "rename file"
+msgstr "إعادة تسمية الملف"
+
+msgid "renaming file ..."
+msgstr "إعادة تسمية الملف ..."
+
+#, fuzzy
+msgid "save Filesystemposition on exit"
+msgstr "حفظ موقع المسار عند الخروج"
+
+msgid "yes"
+msgstr ""

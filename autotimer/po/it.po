@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Enigma2 translation Autotimer\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-09 10:53+0430\n"
+"POT-Creation-Date: 2021-04-16 19:06+0430\n"
 "PO-Revision-Date: 2019-03-04 10:44+0000\n"
 "Last-Translator: Alexwilmac\n"
 "Language-Team: Alexwilmac <vuplus-community.net>\n"
@@ -95,6 +95,9 @@ msgstr "Numero di registrazioni residue"
 
 msgid "Any service/recording"
 msgstr "Ogni canale/registrazione"
+
+msgid "Auto Timer"
+msgstr "Auto Timer"
 
 msgid "Auto Timers"
 msgstr "Timer automatici"
@@ -937,10 +940,10 @@ msgid "When supporting \"Fast Scan\" the service type is ignored. You don't need
 msgstr "Se 'Fast Scan' è abilitato il tipo di servizio viene ignorato. Non è necessario abilitare il parametro, a meno che l'immagine lo supporti e voi lo stiate utilizzando."
 
 #, fuzzy
-msgid "When supporting 'Fast Scan' the service type is ignored. You don't need to enable this unless your Image supports 'Fast Scan' and you are using it."
+msgid "When supporting 'Fast Scan' the service type is ignored. You dont need to enable this unless your Image supports 'Fast Scan' and you are using it."
 msgstr "Se 'Fast Scan' è abilitato il tipo di servizio viene ignorato. Non è necessario abilitare il parametro, a meno che l'immagine lo supporti e voi lo stiate utilizzando."
 
-msgid "When this is enabled AutoTimer will ONLY check for new events whilst in stanadby."
+msgid "When this is enabled AutoTimer will ONLY check for new events whilst in standby."
 msgstr "Quando questa opzione è attivata, AutoTimer controllerà solo eventuali nuovi eventi mentre in standby."
 
 msgid "When this option is enabled the AutoTimer won't match events where another timer with the same description already exists in the timer list."

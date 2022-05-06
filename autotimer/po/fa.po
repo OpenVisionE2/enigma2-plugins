@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: auto timer Persian Translation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-23 15:06+0330\n"
+"POT-Creation-Date: 2021-04-16 19:06+0430\n"
 "PO-Revision-Date: 2012-07-24 13:08+0330\n"
 "Last-Translator: mehdi <mehdi_ar_yekta@yahoo.com>\n"
 "Language-Team: Persian Professionals <persianpros@yahoo.com>\n"
@@ -99,6 +99,10 @@ msgstr ""
 
 msgid "Any service/recording"
 msgstr "هر سرویس / ضبط کردن"
+
+#, fuzzy
+msgid "Auto Timer"
+msgstr "ویرایش تایمر خودکار"
 
 msgid "Auto Timers"
 msgstr ""
@@ -923,10 +927,10 @@ msgstr ""
 msgid "When supporting \"Fast Scan\" the service type is ignored. You don't need to enable this unless your Image supports \"Fast Scan\" and you are using it."
 msgstr ""
 
-msgid "When supporting 'Fast Scan' the service type is ignored. You don't need to enable this unless your Image supports 'Fast Scan' and you are using it."
+msgid "When supporting 'Fast Scan' the service type is ignored. You dont need to enable this unless your Image supports 'Fast Scan' and you are using it."
 msgstr ""
 
-msgid "When this is enabled AutoTimer will ONLY check for new events whilst in stanadby."
+msgid "When this is enabled AutoTimer will ONLY check for new events whilst in standby."
 msgstr ""
 
 msgid "When this option is enabled the AutoTimer won't match events where another timer with the same description already exists in the timer list."

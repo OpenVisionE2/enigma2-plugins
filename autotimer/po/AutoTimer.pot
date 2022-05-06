@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-22 13:32+0330\n"
+"POT-Creation-Date: 2021-04-16 19:06+0430\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -89,6 +89,9 @@ msgid "Amount of recordings left"
 msgstr ""
 
 msgid "Any service/recording"
+msgstr ""
+
+msgid "Auto Timer"
 msgstr ""
 
 msgid "Auto Timers"
@@ -784,7 +787,7 @@ msgstr ""
 msgid "When supporting \"Fast Scan\" the service type is ignored. You don't need to enable this unless your Image supports \"Fast Scan\" and you are using it."
 msgstr ""
 
-msgid "When this is enabled AutoTimer will ONLY check for new events whilst in stanadby."
+msgid "When this is enabled AutoTimer will ONLY check for new events whilst in standby."
 msgstr ""
 
 msgid "When this option is enabled the AutoTimer won't match events where another timer with the same description already exists in the timer list."
@@ -952,7 +955,7 @@ msgstr ""
 msgid "Unless this is enabled AutoTimer will NOT automatically look for events matching your AutoTimers but only when you leave the GUI with the green button."
 msgstr ""
 
-msgid "When supporting 'Fast Scan' the service type is ignored. You don't need to enable this unless your Image supports 'Fast Scan' and you are using it."
+msgid "When supporting 'Fast Scan' the service type is ignored. You dont need to enable this unless your Image supports 'Fast Scan' and you are using it."
 msgstr ""
 
 msgid "AutoTimer Help"
