@@ -125,7 +125,7 @@ class board:
 	def checkSquare(self, square):
 		found = []
 		xoffset = (3 * (square % 3))
-		yoffset = int(square / 3) * 3
+		yoffset = int(square // 3) * 3
 		for j in range(0, 3):
 			for i in range(0, 3):
 				if not self.boardlist[xoffset + i][yoffset + j] == 0:
@@ -212,8 +212,8 @@ class Sudoku(Screen):
 		h = int(desk.size().height())
 
 		# display window in center...
-		x = (w - 520) / 2
-		y = (h - 390) / 2
+		x = (w - 520) // 2
+		y = (h - 390) // 2
 
 		# set skin...
 		# ToDo: change for HD Skins...
@@ -323,8 +323,8 @@ class Sudoku(Screen):
 			tmp = []
 			for i in range(9):
 				cell = SudokuCell(self["Canvas"],
-								  j * (CELL_SIZE + CELL_OFFSET) + (j / 3) * (GROUP_SIZE - 3 * CELL_SIZE),
-								  i * (CELL_SIZE + CELL_OFFSET) + (i / 3) * (GROUP_SIZE - 3 * CELL_SIZE),
+								  j * (CELL_SIZE + CELL_OFFSET) + (j // 3) * (GROUP_SIZE - 3 * CELL_SIZE),
+								  i * (CELL_SIZE + CELL_OFFSET) + (i // 3) * (GROUP_SIZE - 3 * CELL_SIZE),
 								  CELL_SIZE, CELL_SIZE)
 				tmp.append(cell)
 			self.board_cells.append(tmp)
