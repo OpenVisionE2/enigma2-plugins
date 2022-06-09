@@ -1,4 +1,3 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
 #
 #  AutomaticVolumeAdjustment E2
@@ -22,12 +21,14 @@
 #  distributed other than under the conditions noted above.
 #
 # for localized messages
+from __future__ import absolute_import
 from . import _
 
 from Plugins.Plugin import PluginDescriptor
-from AutomaticVolumeAdjustmentSetup import AutomaticVolumeAdjustmentConfigScreen
-from AutomaticVolumeAdjustment import AutomaticVolumeAdjustment
-from AutomaticVolumeAdjustmentConfig import saveVolumeDict
+from .AutomaticVolumeAdjustmentSetup import AutomaticVolumeAdjustmentConfigScreen
+from .AutomaticVolumeAdjustment import AutomaticVolumeAdjustment
+from .AutomaticVolumeAdjustmentConfig import saveVolumeDict
+from boxbranding import getImageDistro
 
 
 def autostart(reason, **kwargs):
@@ -44,14 +45,21 @@ def autoend(reason, **kwargs):
 				saveVolumeDict(AutomaticVolumeAdjustment.instance.serviceList)
 
 
-def setup(session, **kwargs):
+def setupAVA(session, **kwargs):
 	session.open(AutomaticVolumeAdjustmentConfigScreen) # start setup
 
 
 def startSetup(menuid):
-	if menuid != "system": # show setup only in system level menu
-		return []
-	return [(_("Automatic Volume Adjustment"), setup, "AutomaticVolumeAdjustment", 46)]
+	if getImageDistro() in ('openhdf', 'openatv'):
+		if menuid != "audio_menu":
+			return []
+	elif getImageDistro() in ('openvix',):
+		if menuid != "av":
+			return []
+	else:
+		if menuid != "system": # show setup only in system level menu
+			return []
+	return [(_("Automatic Volume Adjustment"), setupAVA, "AutomaticVolumeAdjustment", 46)]
 
 
 def Plugins(**kwargs):
