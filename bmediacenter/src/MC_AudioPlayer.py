@@ -1,6 +1,6 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
 from __future__ import print_function
+from __future__ import absolute_import
 from enigma import eTimer, iServiceInformation, iPlayableService, ePicLoad, RT_VALIGN_CENTER, RT_HALIGN_LEFT, RT_HALIGN_RIGHT, RT_HALIGN_CENTER, gFont, eListbox, ePoint, eListboxPythonMultiContent, eServiceCenter
 from Components.MenuList import MenuList
 from Screens.Screen import Screen
@@ -22,14 +22,12 @@ from Components.ServiceEventTracker import ServiceEventTracker
 from Components.Playlist import PlaylistIOInternal, PlaylistIOM3U, PlaylistIOPLS
 from Components.ConfigList import ConfigList, ConfigListScreen
 from Components.config import *
-from Tools.Directories import resolveFilename, fileExists, pathExists, createDir, SCOPE_MEDIA, SCOPE_PLAYLIST, SCOPE_GUISKIN, SCOPE_PLUGINS
-from MC_Filelist import FileList
+from Tools.Directories import resolveFilename, fileExists, pathExists, createDir, SCOPE_MEDIA, SCOPE_PLAYLIST, SCOPE_SKIN_IMAGE
+from .MC_Filelist import FileList
 from Screens.InfoBarGenerics import InfoBarSeek
 import os
 from os import path as os_path, remove as os_remove, listdir as os_listdir
-from __init__ import _
-from Components.Console import Console
-
+from .__init__ import _
 config.plugins.mc_ap = ConfigSubsection()
 sorts = [('default', _("default")), ('alpha', _("alphabet")), ('alphareverse', _("alphabet backward")), ('date', _("date")), ('datereverse', _("date backward")), ('size', _("size")), ('sizereverse', _("size backward"))]
 config.plugins.mc_ap_sortmode = ConfigSubsection()
@@ -85,7 +83,7 @@ def sendUrlCommand(url, contextFactory=None, timeout=50, *args, **kwargs):
 		# _URI class renamed to URI in 15.0.0
 		try:
 			from twisted.web.client import _URI as URI
-		except ImportError as e:
+		except ImportError:
 			from twisted.web.client import URI
 		uri = URI.fromBytes(url)
 		scheme = uri.scheme
@@ -97,13 +95,13 @@ def sendUrlCommand(url, contextFactory=None, timeout=50, *args, **kwargs):
 	return factory.deferred
 
 
-mcpath = resolveFilename(SCOPE_PLUGINS, "Extensions/BMediaCenter/")
+mcpath = "/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/"
 
 
 def PlaylistEntryComponent(serviceref):
 	res = [serviceref]
 	text = serviceref.getName()
-	if text is "":
+	if text == "":
 		text = os_path.split(serviceref.getPath().split('/')[-1])[1]
 	res.append((eListboxPythonMultiContent.TYPE_TEXT, 25, 1, 470, 22, 0, RT_VALIGN_CENTER, text))
 	return res
@@ -208,7 +206,7 @@ class MC_AudioPlayer(Screen, HelpableScreen, InfoBarSeek):
 			if config.av.downmix_ac3.value == False:
 				config.av.downmix_ac3.value = True
 				config.av.downmix_ac3.save()
-				Console().ePopen("touch /tmp/.ac3on")
+				os.system("touch /tmp/.ac3on")
 		except Exception as e:
 			print("Media Center: no ac3")
 		self["play"] = Pixmap()
@@ -706,7 +704,7 @@ class MC_WebRadio(Screen, HelpableScreen):
 			if config.av.downmix_ac3.value == False:
 				config.av.downmix_ac3.value = True
 				config.av.downmix_ac3.save()
-				Console().ePopen("touch /tmp/.ac3on")
+				os.system("touch /tmp/.ac3on")
 		except Exception as e:
 			print("Media Center: no ac3")
 		self["play"] = Pixmap()
@@ -1003,7 +1001,7 @@ class MC_WebRadio(Screen, HelpableScreen):
 	def menuCallback(self, choice):
 		if choice is None:
 			return
-		Console().ePopen("echo %s >/tmp/.webselect | wget -O /tmp/index.html %s%s" % (choice[1], radirl, choice[1]))
+		os.system("echo " + choice[1] + " > /tmp/.webselect | wget -O /tmp/index.html " + radirl + "" + choice[1])
 		self.session.openWithCallback(self.updd, MC_WebDown)
 
 
@@ -1026,7 +1024,7 @@ class MC_WebDown(Screen):
 		selection = self["menu"].getCurrent()
 		if selection is not None:
 			gen = open("/tmp/.webselect").read().split('\n')
-			Consile().ePopen("wget -O '$sradio/%s' '$s%s%s'" % (mcpath, selection[1], radirl, gen[0], selection[1].replace(" ", "%20")))
+			os.system("wget -O '" + mcpath + "radio/" + selection[1] + "' '" + radirl + "" + gen[0] + "" + selection[1].replace(" ", "%20") + "'")
 			os.remove("/tmp/index.html")
 			self.close()
 
@@ -1367,7 +1365,7 @@ class Lyrics(Screen):
 		<screen name="Lyrics" position="0,0" size="720,576" flags="wfNoBorder" backgroundColor="#00000000" title="Lyrics">
 		<eLabel backgroundColor="#999999" position="50,50" size="620,2" zPosition="1"/>
 		<widget name="headertext" position="50,73" zPosition="1" size="620,23" font="Regular;20" transparent="1"  foregroundColor="#fcc000" backgroundColor="#00000000"/>
-		<widget name="coverly" position="700,120" size="160,133" zPosition="9" valign="center" halign="center" pixmap="~/skins/defaultHD/images/no_coverArt.png" transparent="1" alphatest="blend" />
+		<widget name="coverly" position="700,120" size="160,133" zPosition="9" valign="center" halign="center" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/no_coverArt.png" transparent="1" alphatest="blend" />
 		<widget name="resulttext" position="50,100" zPosition="1" size="620,20" font="Regular;16" transparent="1"   backgroundColor="#00000000"/>
 		<widget name="lyric_text" position="50,150" zPosition="2" size="620,350" font="Regular;18" transparent="0"  backgroundColor="#00000000"/>
 		</screen>"""
@@ -1375,14 +1373,13 @@ class Lyrics(Screen):
 	def __init__(self, session):
 		self.session = session
 		Screen.__init__(self, session)
-		self.skin_path = resolveFilename(SCOPE_PLUGINS, "Extensions/BMediaCenter")
 		self["headertext"] = Label(_("Lyrics"))
 		self["resulttext"] = Label()
 		self["coverly"] = MediaPixmap()
 		curPlay = self.session.nav.getCurrentService()
 		if curPlay is not None:
 			title = curPlay.info().getInfoString(iServiceInformation.sTagTitle)
-			Console().ePopen("echo '%s' >/tmp/.oldplaying | echo '%s' >/tmp/.curplaying" % (str(title), str(title)))
+			os.system("echo '" + str(title) + "' > /tmp/.oldplaying | echo '" + str(title) + "' > /tmp/.curplaying ")
 		self.RFTimer = eTimer()
 		self.RFTimer.callback.append(self.refresh)
 		self.__event_tracker = ServiceEventTracker(screen=self, eventmap={
@@ -1405,7 +1402,7 @@ class Lyrics(Screen):
 		self.RFTimer.start(time, True)
 		curPlay = self.session.nav.getCurrentService()
 		title = curPlay.info().getInfoString(iServiceInformation.sTagTitle)
-		Console().ePopen("echo '%s' >/tmp/.curplaying" % str(title))
+		os.system("echo '" + str(title) + "' > /tmp/.curplaying")
 		old = open("/tmp/.oldplaying").read()
 		oldtitle = old.split('\r\n')
 		tit = open("/tmp/.curplaying").read()
@@ -1414,7 +1411,7 @@ class Lyrics(Screen):
 			return
 		else:
 			self.startRun()
-			Console().ePopen("echo '%s' >/tmp/.oldplaying" % str(title))
+			os.system("echo '" + str(title) + "' > /tmp/.oldplaying")
 
 	def startRun(self):
 		text = getEncodedString(self.getLyricsFromID3Tag()).replace("\r\n", "\n")
@@ -1430,7 +1427,7 @@ class Lyrics(Screen):
 				titlely = curPlay.info().getName().split('/')[-1]
 			if artistly == "":
 				artistly = titlely
-		from urllib import quote
+		from six.moves.urllib.parse import quote
 		url = "http://api.chartlyrics.com/apiv1.asmx/SearchLyricDirect?artist=%s&song=%s" % (quote(artistly), quote(titlely))
 		sendUrlCommand(url, None, 10).addCallback(self.gotLyrics).addErrback(self.urlError)
 		return "No lyrics found in id3-tag, trying api.chartlyrics.com..."
@@ -1449,7 +1446,7 @@ class Lyrics(Screen):
 		title = root.findtext("{http://api.chartlyrics.com/}LyricSong").encode("utf-8", 'ignore')
 		artist = root.findtext("{http://api.chartlyrics.com/}LyricArtist").encode("utf-8", 'ignore')
 		coverly = root.findtext("{http://api.chartlyrics.com/}LyricCovertArtUrl").encode("utf-8", 'ignore')
-		Console().ePopen("wget -O /tmp/.onlinecover %s" % coverly)
+		os.system("wget -O /tmp/.onlinecover " + coverly + "")
 		self["coverly"].coverlyrics()
 		result = _("Response -> lyrics for: %s (%s)") % (title, artist)
 		self["resulttext"].setText(result)
@@ -1469,7 +1466,7 @@ class Lyrics(Screen):
 		if fileExists("/tmp/.onlinecover"):
 			os.remove("/tmp/.onlinecover")
 		if fileExists("/tmp/.curplaying") and fileExists("/tmp/.oldplaying"):
-			Console().ePopen("rm -rf /tmp/.*playing")
+			os.system("rm -rf /tmp/.*playing")
 		self.RFTimer.stop()
 		self.close()
 
@@ -1491,7 +1488,7 @@ class MediaPixmap(Pixmap):
 					noCoverFile = value
 					break
 		if noCoverFile is None:
-			noCoverFile = resolveFilename(SCOPE_GUISKIN, "no_coverArt.png")
+			noCoverFile = resolveFilename(SCOPE_SKIN_IMAGE, "skin_default/no_coverArt.png")
 		self.noCoverPixmap = LoadPixmap(noCoverFile)
 		return Pixmap.applySkin(self, desktop, screen)
 

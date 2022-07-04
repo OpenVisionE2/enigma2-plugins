@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: BMediaCenter\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-06 16:06+0330\n"
+"POT-Creation-Date: 2021-04-16 19:06+0430\n"
 "PO-Revision-Date: 2013-01-26 22:29+0100\n"
 "Last-Translator: \n"
 "Language-Team: bonkel\n"
@@ -476,12 +476,13 @@ msgstr "Du musst die Wiedergabeliste schließen, bevor du den vorhergehenden Son
 msgid "You need to enter a valid city name before you can search for the location code."
 msgstr ""
 
-msgid "Your receiver is not connected to the internet, please check your network settings and try again."
+#, python-format
+msgid "Your %s %s is not connected to the internet, please check your network settings and try again."
 msgstr ""
 
 #, python-format
 msgid ""
-"Your receiver will be restarted after the installation of service\n"
+"Your %s %s will be restarted after the installation of service\n"
 "Ready to install %s ?"
 msgstr ""
 

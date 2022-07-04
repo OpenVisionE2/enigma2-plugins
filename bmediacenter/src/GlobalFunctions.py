@@ -1,5 +1,3 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
 from enigma import eRect, eServiceReference, iServiceInformation, iPlayableService
 from Screens.Screen import Screen
 from Screens.ServiceInfo import ServiceInfoList, ServiceInfoListEntry
@@ -7,7 +5,7 @@ from Components.ActionMap import ActionMap, NumberActionMap
 from Components.Pixmap import Pixmap
 from Components.Label import Label
 from Components.ScrollLabel import ScrollLabel
-from Tools.Directories import resolveFilename, pathExists, fileExists, SCOPE_MEDIA, SCOPE_LIBDIR
+from Tools.Directories import resolveFilename, pathExists, fileExists, SCOPE_MEDIA
 from Components.Sources.List import List
 from Components.ServicePosition import ServicePositionGauge
 from Components.ServiceEventTracker import ServiceEventTracker
@@ -54,7 +52,7 @@ class MC_VideoInfoView(Screen):
 
 class Showiframe():
 	def __init__(self):
-		lib = resolveFilename(SCOPE_LIBDIR)
+		lib = "/usr/lib/"
 		if fileExists(lib + "libshowiframe.so.0.0.0"):
 			self.showiframe = dlopen(lib + "libshowiframe.so.0.0.0")
 		try:
@@ -74,7 +72,7 @@ class Showiframe():
 def shortname(movie, showing=None):
 	movielist = movie.split('/')
 	for n in movielist:
-		if n is not "":
+		if n != "":
 			movie = n
 	movie = movie.upper()
 	movieback = movie
