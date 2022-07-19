@@ -1,7 +1,5 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
-from __future__ import print_function
-#===============================================================================
+# -*- coding: ISO-8859-1 -*-
+# ===============================================================================
 # Sudoku Plugin by DarkVolli 2009
 # class board by Robert Wohleb
 #
@@ -9,25 +7,33 @@ from __future__ import print_function
 # the terms of the GNU General Public License as published by the Free
 # Software Foundation; either version 2, or (at your option) any later
 # version.
-#===============================================================================
-
-from Plugins.Plugin import PluginDescriptor
-from Screens.Screen import Screen
-from Screens.MessageBox import MessageBox
-from Components.Sources.CanvasSource import CanvasSource
+# modded by Lululla to 20220713 - skin by MMark
+# ===============================================================================
+from Components.ActionMap import ActionMap
 from Components.Button import Button
 from Components.Label import Label
-from Components.ActionMap import ActionMap
-from Tools.Directories import fileExists, resolveFilename, SCOPE_GUISKIN, SCOPE_PLUGINS
+from Components.Sources.CanvasSource import CanvasSource
+from Plugins.Plugin import PluginDescriptor
+from Screens.MessageBox import MessageBox
+from Screens.Screen import Screen
+from Tools.Directories import fileExists, resolveFilename, SCOPE_CURRENT_SKIN, SCOPE_CURRENT_PLUGIN
 from enigma import eTimer, gFont, getDesktop, RT_HALIGN_CENTER, RT_VALIGN_CENTER
-import random
-import xml.etree.cElementTree
+from random import seed, randint
+from xml.etree.cElementTree import parse
+VERSION = "7.1r0"
+SAVEFILE = resolveFilename(SCOPE_CURRENT_PLUGIN, "Extensions/Sudoku/Sudoku.sav")
+helper = 'The playing strength can be changed with the "<" and ">"\nkeys, pressing the "0" the current field is deleted.\nUse CH + / CH- to change level. When you quit the game,\nthe game state is saved in the plugin directory and reloaded\nautomatically on next start ...good fun!\nDark Volli - by Robert Wohleb\nModded by Lululla - Skin by MMark at 20220714'
 
-SAVEFILE = resolveFilename(SCOPE_PLUGINS, "Extensions/Sudoku/Sudoku.sav")
+
+def getDesktopSize():
+	from enigma import getDesktop
+	s = getDesktop(0).size()
+	return (s.width(), s.height())
 
 
-def RGB(r, g, b):
-	return (r << 16) | (g << 8) | b
+def isFHD():
+	desktopSize = getDesktopSize()
+	return desktopSize[0] == 1920
 
 
 def main(session, **kwargs):
@@ -35,10 +41,16 @@ def main(session, **kwargs):
 
 
 def Plugins(**kwargs):
-	return [PluginDescriptor(name="Sudoku", description=_("Sudoku Game"), where=[PluginDescriptor.WHERE_PLUGINMENU], fnc=main)]
+	return [PluginDescriptor(name="Sudoku", description=_("Sudoku Game"), where=[PluginDescriptor.WHERE_PLUGINMENU],
+			icon="sudoku.png", fnc=main)]
 
+
+def RGB(r, g, b):
+	return (r << 16) | (g << 8) | b
 
 # thanks to Robert Wohleb for this class...
+
+
 class board:
 	boardlist = []
 	partialboardlist = []
@@ -47,7 +59,7 @@ class board:
 		slots = []
 		fillOrder = []
 
-		random.seed()
+		seed()
 
 		# setup board
 		row = [0, 0, 0, 0, 0, 0, 0, 0, 0]
@@ -61,7 +73,7 @@ class board:
 		self.search(slots, 0)
 
 		while len(slots) > 0:
-			i = random.randint(0, len(slots) - 1)
+			i = randint(0, len(slots) - 1)
 			fillOrder.append(slots[i])
 			del slots[i]
 
@@ -84,7 +96,7 @@ class board:
 			nums.append(i)
 
 		while len(nums) > 0:
-			i = random.randint(0, len(nums) - 1)
+			i = randint(0, len(nums) - 1)
 			fillOrder.append(nums[i])
 			del nums[i]
 
@@ -171,15 +183,14 @@ class SudokuCell:
 		self.bg_color = col
 
 	def paint(self):
-		fg = RGB(255, 255, 255) # foreground
-		black = RGB(0, 0, 0) # background readonly
-		focus = RGB(192, 192, 0) # background focus
-		grey = RGB(70, 70, 70) # background not readonly
-		green = RGB(0, 255, 0) # background solved
-		red = RGB(255, 0, 0) # background error
+		fg = RGB(255, 255, 255)  # foreground
+		black = RGB(0, 0, 0)  # background readonly
+		focus = RGB(150, 73, 7)  # background focus
+		grey = RGB(70, 70, 70)  # background not readonly
+		green = RGB(0, 255, 0)  # background solved
+		red = RGB(255, 0, 0)  # background error
 
 		b = 2
-
 		self.canvas.fill(self.x, self.y, self.w, self.h, fg)
 
 		if self.bg_color == 0:
@@ -198,44 +209,75 @@ class SudokuCell:
 
 		if self.value_ > 0:
 			self.canvas.writeText(self.x, self.y, self.w, self.h, fg, bg, gFont("Regular", 24), str(self.value_), RT_HALIGN_CENTER | RT_VALIGN_CENTER)
+			if isFHD():
+				self.canvas.writeText(self.x, self.y, self.w, self.h, fg, bg, gFont("Regular", 32), str(self.value_), RT_HALIGN_CENTER | RT_VALIGN_CENTER)
 
 		self.canvas.flush()
 
 
 # mainwindow...
 class Sudoku(Screen):
-
 	def __init__(self, session):
 		# get framebuffer resolution...
 		desk = getDesktop(0)
 		w = int(desk.size().width())
 		h = int(desk.size().height())
-
 		# display window in center...
-		x = (w - 520) // 2
-		y = (h - 390) // 2
-
+		if isFHD():
+			x = 60
+			y = 140
+		else:
+			x = 0
+			y = 0
+			# x = (w - 520) // 2
+			# y = (h - 390) // 2
 		# set skin...
-		# ToDo: change for HD Skins...
-		Sudoku.skin = """
-			<screen position="%d,%d" size="520,390" title="Sudoku 0.1" >
-				<widget source="Canvas" render="Canvas" position="10,20" size="354,354" />
-				<widget name="gamelevel" position="380,25" size="140,40" font="Regular;21"/>
-				<ePixmap name="green"    position="375,98"   zPosition="4" size="140,40" pixmap="buttons/green.png" transparent="1" alphatest="on" />
-				<ePixmap name="yellow"  position="375,178" zPosition="4" size="140,40" pixmap="buttons/yellow.png" transparent="1" alphatest="on" />
-				<ePixmap name="blue" position="375,258" zPosition="4" size="140,40" pixmap="buttons/blue.png" transparent="1" alphatest="on" />
-				<ePixmap name="red"   position="375,338" zPosition="4" size="140,40" pixmap="buttons/red.png" transparent="1" alphatest="on" />
-				<widget name="key_green"    position="375,98"   zPosition="5" size="140,40" valign="center" halign="center" font="Regular;21" transparent="1" foregroundColor="white" shadowColor="black" shadowOffset="-1,-1" />
-				<widget name="key_yellow"  position="375,178" zPosition="5" size="140,40" valign="center" halign="center" font="Regular;21" transparent="1" foregroundColor="white" shadowColor="black" shadowOffset="-1,-1" />
-				<widget name="key_blue" position="375,258" zPosition="5" size="140,40" valign="center" halign="center"  font="Regular;21" transparent="1" foregroundColor="white" shadowColor="black" shadowOffset="-1,-1" />
-				<widget name="key_red"   position="375,338" zPosition="5" size="140,40" valign="center" halign="center" font="Regular;21" transparent="1" foregroundColor="white" shadowColor="black" shadowOffset="-1,-1" />
-			</screen>""" % (x, y)
+		if isFHD():
+			Sudoku.skin = """
+					<screen name="Sudoku" position="60,140" size="1800,900" title="Sudoku" backgroundColor="#101010">
+						<ePixmap position="0,0" size="1800,900" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/Sudoku/pic/sudoku.jpg" />
+						<widget name="gamelevel" position="145,80" size="331,70" valign="center" halign="center" font="Regular;40" foregroundColor="yellow" backgroundColor="#000000" transparent="1" zPosition="1" />
+						<widget source="Canvas" render="Canvas" position="1025,99" size="696,661" backgroundColor="#60ffffff" transparent="1" alphatest="blend" zPosition="2" />
+						<ePixmap position="50,250" pixmap="buttons/key_green.png" size="80,40" alphatest="blend" zPosition="2" />
+						<widget name="key_green" font="Regular;30" position="132,250" size="450,40" halign="left" valign="center" backgroundColor="black" zPosition="1" transparent="1" />
+						<ePixmap position="50,300" pixmap="buttons/key_red.png" size="80,40" alphatest="blend" zPosition="2" />
+						<widget name="key_red" font="Regular;30" position="132,300" size="450,40" halign="left" valign="center" backgroundColor="black" zPosition="1" transparent="1" />
+						<ePixmap position="50,350" pixmap="buttons/key_blue.png" size="80,40" alphatest="blend" zPosition="2" />
+						<widget name="key_blue" font="Regular;30" position="132,350" size="450,40" halign="left" valign="center" backgroundColor="black" zPosition="1" transparent="1" />
+						<eLabel position="50,410" size="450,3" backgroundColor="#202020" zPosition="1" />
+						<ePixmap position="62,77" size="80,80" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/Sudoku/pic/rocket.png" alphatest="blend" zPosition="3" />
+						<widget name="result" render="Label" position="80,499" size="835,276" font="Regular; 32" halign="left" foregroundColor="#ffff00" backgroundColor="#000000" transparent="1" zPosition="3" />
+						<widget name="movex" render="Label" position="133,193" size="229,50" font="Regular; 34" halign="left" foregroundColor="yellow" backgroundColor="#000000" transparent="1" zPosition="3" />
+					</screen>"""
+			# % (x, y)
+
+		else:
+			Sudoku.skin = """
+						<screen name="Sudoku" position="0,0" size="1260,720" title="Sudoku" backgroundColor="#101010">
+						<ePixmap position="0,0" size="1259,720" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/Sudoku/pic/sudokuHD.jpg" />
+						<widget name="gamelevel" position="58,104" size="250,50" valign="center" halign="center" font="Regular; 34" foregroundColor="yellow" backgroundColor="#000000" transparent="1" zPosition="1" />
+						<widget source="Canvas" render="Canvas" position="534,28" size="696,661" backgroundColor="#60ffffff" transparent="1" alphatest="blend" zPosition="2" />
+						<widget name="key_green" font="Regular;30" position="135,165" size="450,40" halign="left" valign="center" backgroundColor="black" zPosition="1" transparent="1" />
+						<widget name="key_red" font="Regular;30" position="135,216" size="450,40" halign="left" valign="center" backgroundColor="black" zPosition="1" transparent="1" />
+						<widget name="key_blue" font="Regular;30" position="133,265" size="450,40" halign="left" valign="center" backgroundColor="black" zPosition="1" transparent="1" />
+						<eLabel position="50,315" size="300,3" backgroundColor="#202020" zPosition="1" />
+						<ePixmap position="50,7" size="80,80" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/Sudoku/pic/rocket.png" alphatest="blend" zPosition="3" />
+						<widget name="result" render="Label" position="12,316" size="510,370" font="Regular; 22" halign="left" foregroundColor="#ffff00" backgroundColor="#000000" transparent="1" zPosition="4" valign="top" />
+						<widget name="movex" render="Label" position="324,103" size="186,50" font="Regular; 34" halign="right" foregroundColor="yellow" backgroundColor="dark" transparent="1" zPosition="3" />
+						<eLabel name="" position="13,316" size="510,370" zPosition="2" />
+						<eLabel name="" position="134,164" size="385,138" />
+						<eLabel name="" position="57,211" size="70,40" backgroundColor="red" zPosition="3" />
+						<eLabel name="" position="56,261" size="70,40" backgroundColor="blue" zPosition="3" />
+						<eLabel name="" position="57,164" size="70,40" zPosition="3" backgroundColor="green" />
+						</screen>
+						"""
+			# % (x, y)
 
 		# i'm not really sure if this is the right way to get the background color from a skinned window?
 		# there must exist a better way? everything is taken from skin.py
 		# find xml for actual skin...
-		filename = resolveFilename(SCOPE_GUISKIN) + "skin.xml"
-		actualSkin = xml.etree.cElementTree.parse(filename).getroot()
+		filename = resolveFilename(SCOPE_CURRENT_SKIN) + "skin.xml"
+		actualSkin = parse(filename).getroot()
 
 		# get colors from skin and write to dictionary
 		colorNames = dict()
@@ -264,17 +306,20 @@ class Sudoku(Screen):
 					# at least get the background color...
 					if type == "Background":
 						bgcolor = int(color[1:], 0x10)
-		#if not bgcolor:
+		# if not bgcolor:
 		bgcolor = RGB(0, 0, 0)
 
 		self.skin = Sudoku.skin
 		Screen.__init__(self, session)
+		self.setTitle("Sudoku %s" % VERSION)
 		self["Canvas"] = CanvasSource()
 		self["gamelevel"] = Label(_(" <    easy    >"))
 		self["key_green"] = Button(_("new game"))
 		self["key_yellow"] = Button(_("check game"))
 		self["key_blue"] = Button(_("restart game"))
 		self["key_red"] = Button(_("solve game"))
+		self["result"] = Label(_(helper))
+		self["movex"] = Label(_(""))
 
 		self.cnt = 0
 		self.timer = eTimer()
@@ -286,7 +331,7 @@ class Sudoku(Screen):
 		self.gameLevel = 0
 
 		self["actions"] = ActionMap(["WizardActions", "ColorActions", "SetupActions"],
-		{
+									{
 			"0": self.bt_0_pressed,
 			"1": self.bt_1_pressed,
 			"2": self.bt_2_pressed,
@@ -310,13 +355,24 @@ class Sudoku(Screen):
 			"deleteBackward": self.previous_pressed,
 		})
 		# fill canvas with background color...
-		self["Canvas"].fill(0, 0, 354, 354, bgcolor)
+
+		# self["Canvas"].fill(0, 0, 354, 354, bgcolor)
+		# if isFHD():
+		self["Canvas"].fill(0, 0, 500, 500, bgcolor)
+		#
 
 		self.board_cells = []
 		self.board_values = []
 		# ToDo: change for HD Skins...
-		GROUP_SIZE = 108
-		CELL_SIZE = 35
+
+		# edit lululla original
+		# GROUP_SIZE = 108
+		# CELL_SIZE = 35
+		# CELL_OFFSET = 4
+
+		# if isFHD():
+		GROUP_SIZE = 208
+		CELL_SIZE = 70
 		CELL_OFFSET = 4
 
 		for j in range(9):
@@ -369,7 +425,7 @@ class Sudoku(Screen):
 		cell = self.board_cells[self.xFocus][self.yFocus]
 		if not cell.readonly():
 			cell.setValue(key)
-			cell.color(1) #grey
+			cell.color(1)  # grey
 			cell.paint()
 			self.check_game(False)
 
@@ -467,13 +523,12 @@ class Sudoku(Screen):
 
 	def timerHandler(self):
 		if self.cnt > 0:
-			self.instance.setTitle("Sudoku 0.1 %10d sec" % self.cnt)
+			self["movex"].setText("%10d sec" % self.cnt)
 			self.cnt += 1
 		else:
-			self.instance.setTitle("Sudoku 0.1")
+			self["movex"].setText("HELLO")
 
 	# look for wrong cells...
-
 	def check_game(self, highlight):
 		empty = False
 		correct = True
@@ -497,13 +552,13 @@ class Sudoku(Screen):
 
 					if err:
 						if highlight:
-							cell.color(3) #red
+							cell.color(3)  # red
 							cell.paint()
 
 						correct = False
 
 					elif highlight:
-						cell.color(1) #grey
+						cell.color(1)  # grey
 						cell.paint()
 
 		if not empty and correct:
@@ -511,7 +566,7 @@ class Sudoku(Screen):
 			for j in range(0, 9):
 				for i in range(0, 9):
 					cell = self.board_cells[i][j]
-					cell.color(2) #green
+					cell.color(2)  # green
 					cell.paint()
 					cell.setReadonly(True)
 
@@ -534,10 +589,10 @@ class Sudoku(Screen):
 				cell.setValue(b.partialboardlist[i][j])
 				if b.partialboardlist[i][j] == 0:
 					cell.setReadonly(False)
-					cell.color(1) #grey
+					cell.color(1)  # grey
 				else:
 					cell.setReadonly(True)
-					cell.color(0) #black
+					cell.color(0)  # black
 				cell.paint()
 
 		self.cnt = 1
@@ -554,7 +609,7 @@ class Sudoku(Screen):
 
 				if not cell.readonly():
 					solved = False
-					cell.color(1) #grey
+					cell.color(1)  # grey
 					cell.setValue(0)
 					cell.paint()
 
@@ -571,52 +626,51 @@ class Sudoku(Screen):
 
 				cell.setValue(self.board_values[i][j])
 				cell.setReadonly(True)
-				cell.color(0) #black
+				cell.color(0)  # black
 				cell.paint()
 
 	# save actual game to file...
 
 	def save_game(self):
-		sav = open(SAVEFILE, "w")
-		sav.write("%d %d\n" % (self.gameLevel, self.cnt))
+		try:
+			sav = open(SAVEFILE, "w")
+			sav.write("%d %d\n" % (self.gameLevel, self.cnt))
 
-		for j in range(0, 9):
-			for i in range(0, 9):
-				sav.write("%d %d %d\n" % (self.board_values[i][j], self.board_cells[i][j].value(), self.board_cells[i][j].readonly()))
-
-		sav.close()
+			for j in range(0, 9):
+				for i in range(0, 9):
+					sav.write("%d %d %d\n" % (self.board_values[i][j], self.board_cells[i][j].value(), self.board_cells[i][j].readonly()))
+			sav.close()
+		except IOError:
+			pass
 
 	# load game from file...
 
 	def load_game(self):
 		solved = True
-
 		if fileExists(SAVEFILE, "r"):
 			sav = open(SAVEFILE, "r")
-			inp = sav.readline()
+			inp = sav.readline().strip()
 			inplist = inp.split()
-
-			self.gameLevel = int(inplist[0])
-			self.cnt = int(inplist[1])
-
+			self.gameLevel = int(float(inplist[0]))
+			self.cnt = int(float(inplist[1]))
+			# self.gameLevel = int(inplist[0])
+			# self.cnt = int(inplist[1])
 			for j in range(0, 9):
 				for i in range(0, 9):
 					inp = sav.readline()
 					inp = inp.strip()
 					inplist = inp.split()
-					self.board_values[i][j] = int(inplist[0])
+					self.board_values[i][j] = int(float(inplist[0]))
 					cell = self.board_cells[i][j]
-					cell.setValue(int(inplist[1]))
-					cell.setReadonly(int(inplist[2]))
+					cell.setValue(int(float(inplist[1])))
+					cell.setReadonly(int(float(inplist[2])))
 					if cell.readonly():
-						cell.color(0) # black
+						cell.color(0)  # black
 					else:
-						cell.color(1) # grey
+						cell.color(1)  # grey
 						solved = False
 					cell.paint()
-
 			sav.close()
-
 		if solved:
 			self.new_game()
 		else:

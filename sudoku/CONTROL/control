@@ -1,5 +1,18 @@
 Package: enigma2-plugin-extensions-sudoku
+<<<<<<< HEAD
 Description: Sudoku game for enigma2
 Maintainer: DarkVolli
 Homepage: http://www.dreambox-tools.info
 
+=======
+Version: 7.1r0
+Section: extra
+Priority: optional
+Architecture: all
+Maintainer: DarkVolli
+Description: Sudoku Game FHD modded by Lululla
+Source: /
+Homepage: *
+OE: enigma2-plugin-extensions-sudoku
+License: *
+>>>>>>> 338937f74... [Schiffe] [Sudoku] [Tetris] updates (#534)

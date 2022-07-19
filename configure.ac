@@ -527,6 +527,7 @@ satloader/src/Makefile
 schiffe/Makefile
 schiffe/meta/Makefile
 schiffe/src/Makefile
+schiffe/src/pic/Makefile
 
 seriesplugin/etc/Makefile
 seriesplugin/Makefile
@@ -582,6 +583,7 @@ subsdownloader2/src/SourceCode/xbmc_subtitles/services/Makefile
 sudoku/Makefile
 sudoku/meta/Makefile
 sudoku/src/Makefile
+sodoku/src/pic/Makefile
 
 svdrp/Makefile
 svdrp/meta/Makefile
@@ -602,6 +604,11 @@ teletext/Makefile
 teletext/meta/Makefile
 teletext/po/Makefile
 teletext/src/Makefile
+
+tetris/Makefile
+tetris/meta/Makefile
+tetris/src/Makefile
+tetris/src/pic/Makefile
 
 toolkit/Makefile
 toolkit/src/Makefile

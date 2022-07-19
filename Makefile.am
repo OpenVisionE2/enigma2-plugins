@@ -93,6 +93,7 @@ SUBDIRS = \
 	systemtime \
 	tageditor \
 	teletext \
+	tetris \
 	toolkit \
 	transmission \
 	tvcharts \

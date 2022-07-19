@@ -1,5 +1,18 @@
 Package: enigma2-plugin-extensions-schiffe
+<<<<<<< HEAD
 Description: Battleship Game
 Maintainer: DarkVolli
 License: GPL
 Homepage: http://www.dreambox-tools.info
+=======
+Version: 7.1r0
+Section: extra
+Priority: optional
+Architecture: all
+Maintainer: DarkVolli
+Description: Schiffe Battleship Game FHD Modded by Lululla
+Source: /
+Homepage: *
+OE: enigma2-plugin-extensions-schiffe
+License: *
+>>>>>>> 338937f74... [Schiffe] [Sudoku] [Tetris] updates (#534)
