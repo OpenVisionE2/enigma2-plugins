@@ -84,8 +84,9 @@ def getInstance():
 
 		try:
 			from Components.About import about
+			from Components.SystemInfo import BoxInfo
 			log.debug(" EnigmaVersion " + about.getEnigmaVersionString().strip())
-			log.debug(" ImageVersion " + about.getVersionString().strip())
+			log.debug(" ImageVersion " + BoxInfo.getItem("imgversion"))
 		except:
 			sys.exc_clear()
 

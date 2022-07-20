@@ -543,7 +543,7 @@ class DBUpdateStatus(Screen):
 			self.ImageVersion = BoxInfo.getItem("imageversion") + '.' + BoxInfo.getItem("imagebuild")
 		except:
 			self.EnigmaVersion = about.getEnigmaVersionString()
-			self.ImageVersion = about.getVersionString()
+			self.ImageVersion = BoxInfo.getItem("imgversion")
 
 		# Get TimerList
 		self.timerlist = ""
