@@ -128,7 +128,7 @@ class MC_WeatherInfo(Screen):
 		downname = "/tmp/.stadtindex"
 		stadd = stadt
 		if fileExists(downname):
-			os.system("rm -rf " + downname)
+			Console().ePopen"rm -rf " + downname)
 		downloadPage(six.ensure_binary(downlink), downname).addCallback(self.jpgdown, stadd).addErrback(self.error)
 
 	def jpgdown(self, value, stadd):

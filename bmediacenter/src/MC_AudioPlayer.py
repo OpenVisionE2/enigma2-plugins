@@ -22,12 +22,14 @@ from Components.ServiceEventTracker import ServiceEventTracker
 from Components.Playlist import PlaylistIOInternal, PlaylistIOM3U, PlaylistIOPLS
 from Components.ConfigList import ConfigList, ConfigListScreen
 from Components.config import *
-from Tools.Directories import resolveFilename, fileExists, pathExists, createDir, SCOPE_MEDIA, SCOPE_PLAYLIST, SCOPE_GUISKIN
+from Tools.Directories import resolveFilename, fileExists, pathExists, createDir, SCOPE_MEDIA, SCOPE_PLAYLIST, SCOPE_GUISKIN, SCOPE_PLUGINS
 from .MC_Filelist import FileList
 from Screens.InfoBarGenerics import InfoBarSeek
 import os
 from os import path as os_path, remove as os_remove, listdir as os_listdir
 from .__init__ import _
+from Components.Console import Console
+
 config.plugins.mc_ap = ConfigSubsection()
 sorts = [('default', _("default")), ('alpha', _("alphabet")), ('alphareverse', _("alphabet backward")), ('date', _("date")), ('datereverse', _("date backward")), ('size', _("size")), ('sizereverse', _("size backward"))]
 config.plugins.mc_ap_sortmode = ConfigSubsection()
@@ -95,7 +97,7 @@ def sendUrlCommand(url, contextFactory=None, timeout=50, *args, **kwargs):
 	return factory.deferred
 
 
-mcpath = "/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/"
+mcpath = resolveFilename(SCOPE_PLUGINS, "Extensions/BMediaCenter/")
 
 
 def PlaylistEntryComponent(serviceref):
@@ -206,7 +208,7 @@ class MC_AudioPlayer(Screen, HelpableScreen, InfoBarSeek):
 			if config.av.downmix_ac3.value == False:
 				config.av.downmix_ac3.value = True
 				config.av.downmix_ac3.save()
-				os.system("touch /tmp/.ac3on")
+				Console().ePopen"touch /tmp/.ac3on")
 		except Exception as e:
 			print("Media Center: no ac3")
 		self["play"] = Pixmap()
@@ -704,7 +706,7 @@ class MC_WebRadio(Screen, HelpableScreen):
 			if config.av.downmix_ac3.value == False:
 				config.av.downmix_ac3.value = True
 				config.av.downmix_ac3.save()
-				os.system("touch /tmp/.ac3on")
+				Console().ePopen"touch /tmp/.ac3on")
 		except Exception as e:
 			print("Media Center: no ac3")
 		self["play"] = Pixmap()
@@ -1001,7 +1003,7 @@ class MC_WebRadio(Screen, HelpableScreen):
 	def menuCallback(self, choice):
 		if choice is None:
 			return
-		os.system("echo " + choice[1] + " > /tmp/.webselect | wget -O /tmp/index.html " + radirl + "" + choice[1])
+		Console().ePopen"echo " + choice[1] + " > /tmp/.webselect | wget -O /tmp/index.html " + radirl + "" + choice[1])
 		self.session.openWithCallback(self.updd, MC_WebDown)
 
 
@@ -1024,7 +1026,7 @@ class MC_WebDown(Screen):
 		selection = self["menu"].getCurrent()
 		if selection is not None:
 			gen = open("/tmp/.webselect").read().split('\n')
-			os.system("wget -O '" + mcpath + "radio/" + selection[1] + "' '" + radirl + "" + gen[0] + "" + selection[1].replace(" ", "%20") + "'")
+			Console().ePopen"wget -O '" + mcpath + "radio/" + selection[1] + "' '" + radirl + "" + gen[0] + "" + selection[1].replace(" ", "%20") + "'")
 			os.remove("/tmp/index.html")
 			self.close()
 
@@ -1379,7 +1381,7 @@ class Lyrics(Screen):
 		curPlay = self.session.nav.getCurrentService()
 		if curPlay is not None:
 			title = curPlay.info().getInfoString(iServiceInformation.sTagTitle)
-			os.system("echo '" + str(title) + "' > /tmp/.oldplaying | echo '" + str(title) + "' > /tmp/.curplaying ")
+			Console().ePopen"echo '" + str(title) + "' > /tmp/.oldplaying | echo '" + str(title) + "' > /tmp/.curplaying ")
 		self.RFTimer = eTimer()
 		self.RFTimer.callback.append(self.refresh)
 		self.__event_tracker = ServiceEventTracker(screen=self, eventmap={
@@ -1402,7 +1404,7 @@ class Lyrics(Screen):
 		self.RFTimer.start(time, True)
 		curPlay = self.session.nav.getCurrentService()
 		title = curPlay.info().getInfoString(iServiceInformation.sTagTitle)
-		os.system("echo '" + str(title) + "' > /tmp/.curplaying")
+		Console().ePopen"echo '" + str(title) + "' > /tmp/.curplaying")
 		old = open("/tmp/.oldplaying").read()
 		oldtitle = old.split('\r\n')
 		tit = open("/tmp/.curplaying").read()
@@ -1411,7 +1413,7 @@ class Lyrics(Screen):
 			return
 		else:
 			self.startRun()
-			os.system("echo '" + str(title) + "' > /tmp/.oldplaying")
+			Console().ePopen"echo '" + str(title) + "' > /tmp/.oldplaying")
 
 	def startRun(self):
 		text = getEncodedString(self.getLyricsFromID3Tag()).replace("\r\n", "\n")
@@ -1446,7 +1448,7 @@ class Lyrics(Screen):
 		title = root.findtext("{http://api.chartlyrics.com/}LyricSong").encode("utf-8", 'ignore')
 		artist = root.findtext("{http://api.chartlyrics.com/}LyricArtist").encode("utf-8", 'ignore')
 		coverly = root.findtext("{http://api.chartlyrics.com/}LyricCovertArtUrl").encode("utf-8", 'ignore')
-		os.system("wget -O /tmp/.onlinecover " + coverly + "")
+		Console().ePopen"wget -O /tmp/.onlinecover " + coverly + "")
 		self["coverly"].coverlyrics()
 		result = _("Response -> lyrics for: %s (%s)") % (title, artist)
 		self["resulttext"].setText(result)
@@ -1466,7 +1468,7 @@ class Lyrics(Screen):
 		if fileExists("/tmp/.onlinecover"):
 			os.remove("/tmp/.onlinecover")
 		if fileExists("/tmp/.curplaying") and fileExists("/tmp/.oldplaying"):
-			os.system("rm -rf /tmp/.*playing")
+			Console().ePopen"rm -rf /tmp/.*playing")
 		self.RFTimer.stop()
 		self.close()
 
