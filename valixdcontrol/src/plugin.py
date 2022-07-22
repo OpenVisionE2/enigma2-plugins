@@ -33,7 +33,9 @@ from Components.Label import Label
 from Tools.Directories import fileExists, resolveFilename, SCOPE_PLUGINS, SCOPE_LIBDIR
 from skin import parseColor
 from os import system
+from Tools.PyVerHelper import getPyExt
 
+PyExt = getPyExt()
 
 config.plugins.valiXDsetup = ConfigSubsection()
 config.plugins.valiXDsetup.ShowPicons = ConfigYesNo(default=False)
@@ -130,23 +132,23 @@ class XDsetup(ConfigListScreen, Screen):
 		self.onLayoutFinish.append(self.UpdateComponents)
 
 	def UpdateComponents(self):
-		system('cp ' + self.komponente + 'vRendVolumeText.py %s') % resolveFilename(SCOPE_LIBDIR, 'enigma2/python/Components/Renderer/vRendVolumeText.pyo')
-		system('cp ' + self.komponente + 'vRendMaxTemp.py %s') % resolveFilename(SCOPE_LIBDIR, 'enigma2/python/Components/Renderer/vRendMaxTemp.pyo')
-		system('cp ' + self.komponente + 'vRendChNumber.py %s') % resolveFilename(SCOPE_LIBDIR, 'enigma2/python/Components/Renderer/vRendChNumber.pyo')
-		system('cp ' + self.komponente + 'vRendVideoSize.py %s') % resolveFilename(SCOPE_LIBDIR, 'enigma2/python/Components/Renderer/vRendVideoSize.pyo')
-		system('cp ' + self.komponente + 'vRendMovieDirSize.py %s') % resolveFilename(SCOPE_LIBDIR, 'enigma2/python/Components/Renderer/vRendMovieDirSize.pyo')
-		system('cp ' + self.komponente + 'vConvSmartInfo.py %s') % resolveFilename(SCOPE_LIBDIR, 'enigma2/python/Components/Renderer/vConvSmartInfo.pyo')
-		system('cp ' + self.komponente + 'vConvClockToText.py %s') % resolveFilename(SCOPE_LIBDIR, 'enigma2/python/Components/Renderer/vConvClockToText.pyo')
+		system('cp ' + self.komponente + 'vRendVolumeText.py %s') % resolveFilename(SCOPE_LIBDIR, 'enigma2/python/Components/Renderer/vRendVolumeText.%s' % PyExt)
+		system('cp ' + self.komponente + 'vRendMaxTemp.py %s') % resolveFilename(SCOPE_LIBDIR, 'enigma2/python/Components/Renderer/vRendMaxTemp.%s' % PyExt)
+		system('cp ' + self.komponente + 'vRendChNumber.py %s') % resolveFilename(SCOPE_LIBDIR, 'enigma2/python/Components/Renderer/vRendChNumber.%s' % PyExt)
+		system('cp ' + self.komponente + 'vRendVideoSize.py %s') % resolveFilename(SCOPE_LIBDIR, 'enigma2/python/Components/Renderer/vRendVideoSize.%s' % PyExt)
+		system('cp ' + self.komponente + 'vRendMovieDirSize.py %s') % resolveFilename(SCOPE_LIBDIR, 'enigma2/python/Components/Renderer/vRendMovieDirSize.%s' % PyExt)
+		system('cp ' + self.komponente + 'vConvSmartInfo.py %s') % resolveFilename(SCOPE_LIBDIR, 'enigma2/python/Components/Renderer/vConvSmartInfo.%s' % PyExt)
+		system('cp ' + self.komponente + 'vConvClockToText.py %s') % resolveFilename(SCOPE_LIBDIR, 'enigma2/python/Components/Renderer/vConvClockToText.%s' % PyExt)
 
 	def save(self):
 		CompsAreOK = False
-		if fileExists(resolveFilename(SCOPE_LIBDIR, "enigma2/python/Components/Renderer/vRendChNumber.pyo")) \
-			and fileExists(resolveFilename(SCOPE_LIBDIR, "enigma2/python/Components/Renderer/vRendMaxTemp.pyo")) \
-			and fileExists(resolveFilename(SCOPE_LIBDIR, "enigma2/python/Components/Renderer/vRendVolumeText.pyo")) \
-			and fileExists(resolveFilename(SCOPE_LIBDIR, "enigma2/python/Components/Renderer/vRendVideoSize.pyo")) \
-			and fileExists(resolveFilename(SCOPE_LIBDIR, "enigma2/python/Components/Renderer/vRendMovieDirSize.pyo")) \
-			and fileExists(resolveFilename(SCOPE_LIBDIR, "enigma2/python/Components/Converter/vConvSmartInfo.pyo")) \
-			and fileExists(resolveFilename(SCOPE_LIBDIR, "enigma2/python/Components/Converter/vConvClockToText.pyo")):
+		if fileExists(resolveFilename(SCOPE_LIBDIR, "enigma2/python/Components/Renderer/vRendChNumber.%s" % PyExt)) \
+			and fileExists(resolveFilename(SCOPE_LIBDIR, "enigma2/python/Components/Renderer/vRendMaxTemp.%s" % PyExt)) \
+			and fileExists(resolveFilename(SCOPE_LIBDIR, "enigma2/python/Components/Renderer/vRendVolumeText.%s" % PyExt)) \
+			and fileExists(resolveFilename(SCOPE_LIBDIR, "enigma2/python/Components/Renderer/vRendVideoSize.%s" % PyExt)) \
+			and fileExists(resolveFilename(SCOPE_LIBDIR, "enigma2/python/Components/Renderer/vRendMovieDirSize.%s" % PyExt)) \
+			and fileExists(resolveFilename(SCOPE_LIBDIR, "enigma2/python/Components/Converter/vConvSmartInfo.%s" % PyExt)) \
+			and fileExists(resolveFilename(SCOPE_LIBDIR, "enigma2/python/Components/Converter/vConvClockToText.%s" % PyExt)):
 			CompsAreOK = True
 		if not(CompsAreOK):
 			self.session.open(MessageBox, _("Vali-XD converters and renderers are not installed!!!"), MessageBox.TYPE_ERROR)
