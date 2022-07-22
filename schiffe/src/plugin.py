@@ -8,6 +8,7 @@
 # version.
 # Adapted from Lululla for Py3 Enigma2 20220713 - SKIN by MMark
 #===============================================================================
+from __future__ import print_function
 from Plugins.Plugin import PluginDescriptor
 from Screens.Screen import Screen
 from Screens.MessageBox import MessageBox
@@ -466,7 +467,7 @@ class Schiffe(Screen):
             else:
                 self.new_game()
         except Exception as e:
-            print('error: ', str(e))
+            print(('error: ', str(e)))
             pass
 
     def quit_game(self):

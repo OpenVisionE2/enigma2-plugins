@@ -19,6 +19,7 @@
 #
 # for localized messages
 from __future__ import absolute_import
+from __future__ import print_function
 from . import _
 from Tools.BoundFunction import boundFunction
 from Components.ChoiceList import ChoiceEntryComponent
@@ -1089,7 +1090,7 @@ class RemotePlayer(Screen, InfoBarAudioSelection):
 		self["DateTime"].setText(e2eventservicename + tt)
 
 	def CurrentEPGCallbackError(self, error=None):
-		print("[RemotePlayer] Error: ", error.getErrorMessage())
+		print(("[RemotePlayer] Error: ", error.getErrorMessage()))
 
 #	def readXMSubChanelList(self, xmlstring):
 #		BouquetList = []
