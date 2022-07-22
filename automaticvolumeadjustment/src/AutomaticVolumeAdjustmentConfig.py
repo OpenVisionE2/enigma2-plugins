@@ -1,6 +1,4 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
 #
 #  AutomaticVolumeAdjustment E2
 #
@@ -23,6 +21,7 @@ from __future__ import print_function
 #  distributed other than under the conditions noted above.
 #
 # for localized messages
+from __future__ import print_function
 from . import _
 
 from Components.config import ConfigSubsection, ConfigText, \
@@ -78,6 +77,7 @@ class AutomaticVolumeAdjustmentConfig():
 		self.config.adustvalue = ConfigSelectionNumber(-50, 50, 5, default=25)
 		self.config.mpeg_max_volume = ConfigSelectionNumber(10, 100, 5, default=100)
 		self.config.show_volumebar = ConfigYesNo(default=False)
+		self.config.type_audio = ConfigYesNo(default=True)
 		self.initConfig()
 
 	def initConfig(self):

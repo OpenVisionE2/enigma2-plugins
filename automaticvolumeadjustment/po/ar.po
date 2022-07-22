@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2-plugins 3.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-13 19:18+0330\n"
+"POT-Creation-Date: 2022-07-22 17:52+0430\n"
 "PO-Revision-Date: 2020-10-01 19:47+0300\n"
 "Last-Translator: mosad - مساعد الجعيد <abo-mishal@hotmail.com>\n"
 "Language-Team: mosad - مساعد الجعيد\n"
@@ -68,6 +68,9 @@ msgstr "تسويه"
 
 msgid "OK"
 msgstr "موافق"
+
+msgid "Only AC3/DTS(HD)"
+msgstr ""
 
 msgid "Press OK to select a service"
 msgstr "اضغط على \"موافق\" لتحديد القناة"

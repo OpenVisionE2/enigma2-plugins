@@ -1,4 +1,3 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
 #
 #  AutomaticVolumeAdjustment E2
@@ -22,9 +21,11 @@
 #  distributed other than under the conditions noted above.
 #
 # for localized messages
+from __future__ import absolute_import
 from . import _
 
-from enigma import eListboxPythonMultiContent, gFont, RT_HALIGN_LEFT, RT_VALIGN_CENTER, eServiceReference
+from enigma import eListboxPythonMultiContent, gFont, RT_HALIGN_LEFT, RT_HALIGN_RIGHT, RT_VALIGN_CENTER, eServiceReference
+from skin import parameters, fonts
 from Screens.Screen import Screen
 from Screens.MessageBox import MessageBox
 from Screens.ChannelSelection import SimpleChannelSelection
@@ -34,8 +35,8 @@ from Components.ActionMap import ActionMap
 from Components.ConfigList import ConfigListScreen
 from Components.config import getConfigListEntry, config
 from ServiceReference import ServiceReference
-from AutomaticVolumeAdjustment import AutomaticVolumeAdjustment
-from AutomaticVolumeAdjustmentConfig import AutomaticVolumeAdjustmentConfig
+from .AutomaticVolumeAdjustment import AutomaticVolumeAdjustment
+from .AutomaticVolumeAdjustmentConfig import AutomaticVolumeAdjustmentConfig
 
 
 class AutomaticVolumeAdjustmentConfigScreen(ConfigListScreen, Screen):
@@ -75,15 +76,15 @@ class AutomaticVolumeAdjustmentConfigScreen(ConfigListScreen, Screen):
 		self.list = []
 		self.config_enable = getConfigListEntry(_("Enable"), self.configVA.config.enable)
 		self.list.append(self.config_enable)
+		self["key_blue"].text = ""
 		if self.configVA.config.enable.value:
 			self.config_modus = getConfigListEntry(_("Modus"), self.configVA.config.modus)
 			self.list.append(self.config_modus)
 			if self.configVA.config.modus.value == "0":
 				self.list.append(getConfigListEntry(_("Default volume adjustment value for AC3/DTS"), self.configVA.config.adustvalue))
 				self.list.append(getConfigListEntry(_("Max. volume for mpeg audio"), self.configVA.config.mpeg_max_volume))
+				self.list.append(getConfigListEntry(_("Only AC3/DTS(HD)"), self.configVA.config.type_audio))
 				self["key_blue"].text = _("Services")
-			else:
-				self["key_blue"].text = ""
 			self.list.append(getConfigListEntry(_("Show volumebar when volume-value was changed"), self.configVA.config.show_volumebar))
 		else:
 			self.config_modus = None
@@ -103,7 +104,7 @@ class AutomaticVolumeAdjustmentConfigScreen(ConfigListScreen, Screen):
 			self.newConfig()
 
 	def blue(self):
-		if self.configVA.config.modus.value == "0":
+		if self.configVA.config.enable.value and self.configVA.config.modus.value == "0":
 			self.session.open(AutomaticVolumeAdjustmentEntriesListConfigScreen, self.configVA)
 
 	def keySave(self):
@@ -203,9 +204,12 @@ class AutomaticVolumeAdjustmentEntriesListConfigScreen(Screen):
 
 class AutomaticVolumeAdjustmentEntryList(MenuList):
 	def __init__(self, list, enableWrapAround=True):
+		self.parameters = parameters.get("AutomaticVolumeAdjustmentList", (5, 0, 350, 20, 0, 355, 0, 200, 20, 1))
+		font0 = fonts.get("AutomaticVolumeAdjustmentListFont0", ("Regular", 20))
+		font1 = fonts.get("AutomaticVolumeAdjustmentListFont1", ("Regular", 18))
 		MenuList.__init__(self, list, enableWrapAround, eListboxPythonMultiContent)
-		self.l.setFont(0, gFont("Regular", 20))
-		self.l.setFont(1, gFont("Regular", 18))
+		self.l.setFont(0, gFont(font0[0], font0[1]))
+		self.l.setFont(1, gFont(font1[0], font1[1]))
 		self.configVA = None
 
 	def postWidgetCreate(self, instance):
@@ -224,8 +228,8 @@ class AutomaticVolumeAdjustmentEntryList(MenuList):
 			c.name.value = ServiceReference(eServiceReference(c.servicereference.value)).getServiceName()
 			res = [
 				c,
-				(eListboxPythonMultiContent.TYPE_TEXT, 5, 0, 350, 20, 1, RT_HALIGN_LEFT | RT_VALIGN_CENTER, c.name.value),
-				(eListboxPythonMultiContent.TYPE_TEXT, 355, 0, 200, 20, 1, RT_HALIGN_LEFT | RT_VALIGN_CENTER, str(c.adjustvalue.value)),
+				(eListboxPythonMultiContent.TYPE_TEXT, self.parameters[0], self.parameters[1], self.parameters[2], self.parameters[3], self.parameters[4], RT_HALIGN_LEFT | RT_VALIGN_CENTER, c.name.value),
+				(eListboxPythonMultiContent.TYPE_TEXT, self.parameters[5], self.parameters[6], self.parameters[7], self.parameters[8], self.parameters[9], RT_HALIGN_RIGHT | RT_VALIGN_CENTER, str(c.adjustvalue.value)),
 			]
 			list.append(res)
 		self.list = list
