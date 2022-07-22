@@ -1,30 +1,34 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: AutoTimer\n"
+"Project-Id-Version: Enigma2 AutoTimer Plugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-23 15:06+0330\n"
-"PO-Revision-Date: 2019-09-08 13:26+0100\n"
-"Last-Translator: pololoko\n"
-"Language-Team: \n"
-"Language: pl\n"
+"POT-Creation-Date: 2022-07-22 17:52+0430\n"
+"PO-Revision-Date: 2022-01-07 19:34+0100\n"
+"Last-Translator: HIUMAN\n"
+"Language-Team: none\n"
+"Language: pl_PL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 2.2\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"X-Poedit-SearchPath-0: ../src\n"
+"X-Poedit-SearchPath-1: ../src/webinterface\n"
 
 msgid "  Any time"
-msgstr "W dowolnym momencie"
+msgstr " W dowolnym momencie"
 
 msgid " (if services are enabled, bouquets are ignored.)."
 msgstr ""
 
 msgid " - Version: "
-msgstr "- Wersja:"
+msgstr "- Wersja: "
 
 #, fuzzy, python-format
 msgid " - Version: %s"
-msgstr "- Wersja:"
+msgstr "- Wersja: "
 
 #, python-format
 msgid ""
@@ -91,6 +95,9 @@ msgstr "Zawsze pisz config"
 msgid "Amount of recordings left"
 msgstr "Pozostała ilość nagrań"
 
+msgid "Any Day filter refers to the day of the timespan start, even if the timespan crosses midnight."
+msgstr ""
+
 msgid "Any service/recording"
 msgstr "Każda usługa/nagranie"
 
@@ -136,9 +143,8 @@ msgstr "AutoTimer został usunięty"
 msgid "AutoTimers"
 msgstr "AutoTimery"
 
-#, fuzzy
 msgid "AutoTimers were changed successfully."
-msgstr "AutoTimer został pomyślnie zmieniony"
+msgstr "AutoTimery zostały pomyślnie zmienione."
 
 #, fuzzy
 msgid "Autotimer Settings"
@@ -293,12 +299,11 @@ msgstr "Koniec okresu „po zdarzeniu”"
 msgid "End of timespan"
 msgstr "Koniec okresu"
 
-#, fuzzy
 msgid "Enter or edit description"
-msgstr "w krótkim Opisie"
+msgstr "Wpisz lub edytuj opis"
 
 msgid "Enter or edit match title"
-msgstr ""
+msgstr "Wpisz lub edytuj tytuł"
 
 msgid "Everyday"
 msgstr "Codziennie"
@@ -372,7 +377,7 @@ msgid "Here you can specify whether simultaneous timers of the same program can 
 msgstr "Tutaj możesz określić, czy mogą być tworzone jednoczesne timery tego samego programu. Umożliwia to jednoczesne nagrywanie programu o różnych rozdzielczościach. (np. usługa SD i usługa HD)"
 
 msgid "Hour"
-msgstr ""
+msgstr "Godzina"
 
 msgid "If 0, the popup will remain open."
 msgstr "Jeśli 0, wyskakujące okienko pozostanie otwarte."
@@ -395,13 +400,12 @@ msgstr "Jeśli określone usługi"
 msgid "If specified services or bouquets"
 msgstr "Jeśli określone usługi lub bukiety"
 
-#, fuzzy
 msgid "If this is disabled AutoTimer will NOT automatically look for events matching your AutoTimers but only when you leave the GUI with the green button."
-msgstr "O ile ta opcja nie jest włączona, AutoTimer NIE będzie automatycznie wyszukiwał zdarzeń pasujących do Twoich AutoTimerów, ale tylko wtedy, gdy wyjdziesz z GUI z zielonym przyciskiem."
+msgstr ""
 
-#, fuzzy, python-format
+#, python-format
 msgid "If this is enabled an existing timer will also be considered recording an event if it records at least 80% of the it."
-msgstr "Jeśli ta opcja jest włączona, istniejący timer będzie również uważany za rejestrujący zdarzenie, jeśli zarejestruje co najmniej 80 %% tego zdarzenia."
+msgstr ""
 
 msgid "If this is selected, the name of the respective AutoTimer will be added as a tag to timers created by this plugin."
 msgstr "Jeśli ta opcja jest zaznaczona, nazwa odpowiedniego AutoTimera zostanie dodana jako znacznik do timerów utworzonych przez tę wtyczkę."
@@ -488,7 +492,7 @@ msgstr ""
 "Czy na pewno chcesz usunąć %s?"
 
 msgid "Minute"
-msgstr ""
+msgstr "Minuta"
 
 msgid "Modify existing timers"
 msgstr "Zmodyfikuj istniejące timery"
@@ -569,7 +573,7 @@ msgstr "Podaj tekst do dopasowania"
 
 #, fuzzy, python-format
 msgid "Poll Interval (in %s)"
-msgstr "Interwał odpytywania (w godz.)"
+msgstr "Interwał odpytywania (w minutach)"
 
 msgid "Poll Interval (in mins)"
 msgstr "Interwał odpytywania (w minutach)"
@@ -578,7 +582,7 @@ msgid "Poll automatically"
 msgstr "Odpytuj automatycznie"
 
 msgid "Poll unit"
-msgstr ""
+msgstr "Jednostka odpytywania"
 
 msgid "Poll unit selects whether the poll interval should be interpreted in hours or minutes."
 msgstr ""
@@ -751,9 +755,8 @@ msgstr "Sortuj Czas"
 msgid "Startup delay (in min)"
 msgstr "Opóźnienie uruchomienia (w min)"
 
-#, fuzzy
 msgid "Startup delay is the number of minutes before polling after a reboot, so as to not delay enigma2 startup time."
-msgstr "Jest to opóźnienie w minutach, przez które AutoTimer będzie czekać przy pierwszym uruchomieniu, aby nie opóźniać czasu uruchamiania enigma2."
+msgstr ""
 
 msgid "Sun"
 msgstr "Nd"
@@ -831,15 +834,15 @@ msgstr "To jest nazwa, którą możesz nadać AutoTimer. Zostanie pokazany w prz
 msgid "This is mostly a matter of taste./nThe Wizard provides you with a reduced set of options and presents them in smaller sets at a time. It is mostly aimed at users not very experienced with this plugin or the 'expert' level features of enigma2./n/nYou can check out the 'classic' editor by opening an existing timer from the overview and if you prefer this view over the wizard you can change the default editor in the setup dialog."
 msgstr "Jest to głównie kwestia gustu./nKreator zapewnia ci ograniczony zestaw opcji i przedstawia je w mniejszych zestawach na raz. Jest przeznaczony głównie dla użytkowników niezbyt doświadczonych z tą wtyczką lub funkcjami enigma2./n/n na poziomie „eksperta”. Możesz sprawdzić „klasyczny” edytor, otwierając istniejący licznik z przeglądu i jeśli wolisz ten widok niż kreator Możesz zmienić domyślny edytor w oknie dialogowym instalacji."
 
-#, fuzzy, python-format
+#, python-format
 msgid "This is the delay in %s that the AutoTimer will wait after doing a search before searching the EPG again."
-msgstr "Jest to opóźnienie w godzinach, w którym AutoTimer będzie czekać po wyszukiwaniu, aby ponownie wyszukać EPG."
+msgstr ""
 
 msgid "This is the delay in minutes that the AutoTimer will wait after a search to search the EPG again."
-msgstr "Jest to opóźnienie w minutach, przez które AutoTimer będzie czekać po wyszukiwaniu, aby ponownie wyszukać EPG."
+msgstr ""
 
 msgid "This is the delay in minutes that the AutoTimer will wait on initial launch to not delay enigma2 startup time."
-msgstr "Jest to opóźnienie w minutach, przez które AutoTimer będzie czekać przy pierwszym uruchomieniu, aby nie opóźniać czasu uruchamiania enigma2."
+msgstr ""
 
 msgid "This is what will be looked for in event titles. Note that looking for e.g. german umlauts can be tricky as you have to know the encoding the channel uses."
 msgstr "Tego będzie szukać w tytułach wydarzeń. Pamiętaj, że szukasz np. niemieckie umlauty mogą być trudne, ponieważ musisz znać kodowanie używane przez kanał."
@@ -884,7 +887,7 @@ msgid "Tuesday"
 msgstr "Wtorek"
 
 msgid "Unless this is enabled AutoTimer will NOT automatically look for events matching your AutoTimers but only when you leave the GUI with the green button."
-msgstr "O ile ta opcja nie jest włączona, AutoTimer NIE będzie automatycznie wyszukiwał zdarzeń pasujących do Twoich AutoTimerów, ale tylko wtedy, gdy wyjdziesz z GUI z zielonym przyciskiem."
+msgstr ""
 
 msgid "Upper bound of timespan."
 msgstr "Górna granica okresu."
@@ -1083,7 +1086,7 @@ msgid "go to standby"
 msgstr "przejdź do trybu gotowości"
 
 msgid "hours"
-msgstr ""
+msgstr "godziny"
 
 msgid "in Description"
 msgstr "w Opisie"
@@ -1097,8 +1100,9 @@ msgstr "w Tytule"
 msgid "mins"
 msgstr "min"
 
+#, fuzzy
 msgid "minutes"
-msgstr ""
+msgstr "Minuta"
 
 msgid "missing parameter \"id\""
 msgstr "brak parametru „id”"
@@ -1126,7 +1130,7 @@ msgid "unknown"
 msgstr "nieznany"
 
 msgid "zap"
-msgstr "zap"
+msgstr "przełączyć"
 
 msgid "zap and record"
-msgstr "zap I nagrać"
+msgstr "przełączyć I nagrać"

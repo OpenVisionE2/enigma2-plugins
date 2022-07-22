@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Enigma2 AutoTimer Plugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-23 15:06+0330\n"
+"POT-Creation-Date: 2022-07-22 17:52+0430\n"
 "PO-Revision-Date: 2017-10-01 15:37+0300\n"
 "Last-Translator: rimas\n"
 "Language-Team: none\n"
@@ -93,6 +93,9 @@ msgstr "Salvesta seadistus alati"
 
 msgid "Amount of recordings left"
 msgstr "Järelejäänud salvestuste arv"
+
+msgid "Any Day filter refers to the day of the timespan start, even if the timespan crosses midnight."
+msgstr ""
 
 msgid "Any service/recording"
 msgstr "Iga kanal/salvestis"
@@ -946,6 +949,7 @@ msgstr "Olemasoleva \"Fast Scan\" toetuse puhul teenuse liiki ei kontrollita. Lu
 msgid "When supporting 'Fast Scan' the service type is ignored. You don't need to enable this unless your Image supports 'Fast Scan' and you are using it."
 msgstr "Olemasoleva \"Fast Scan\" toetuse puhul teenuse liiki ei kontrollita. Luba valik juhul kui \"Fast Scan\" on toetatud ja sa seda ka kasutad."
 
+#, fuzzy
 msgid "When this is enabled AutoTimer will ONLY check for new events whilst in stanadby."
 msgstr "Kui lubatud, otsib Autotaimer uusi saateid ainult ooteseisundis."
 

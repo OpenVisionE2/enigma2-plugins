@@ -175,6 +175,8 @@ class AutoTimerEditorBase:
 		else:
 			self.serviceRestriction = False
 
+		self.isIPTV = bool([service for service in timer.services if ":http" in service])
+
 		self.createSetup(timer)
 
 	def createSetup(self, timer):
@@ -525,7 +527,9 @@ class AutoTimerEditor(Screen, ConfigListScreen, AutoTimerEditorBase):
 		self.reloadList(True)
 
 	def renameServiceButton(self):
-		if self.serviceRestriction:
+		if self.isIPTV:
+			self["key_blue"].text = ""
+		elif self.serviceRestriction:
 			self["key_blue"].text = _("Edit services")
 		else:
 			self["key_blue"].text = _("Add services")
@@ -702,8 +706,9 @@ class AutoTimerEditor(Screen, ConfigListScreen, AutoTimerEditorBase):
 		self.isActive_bouquets = NoSave(ConfigSelection([("0", self.isActive_bouquets_value)], default="0"))
 		self.isActive_dayofweek = NoSave(ConfigSelection([("0", self.isActive_dayofweek_value)], default="0"))
 		self.isActive_otherfilters = NoSave(ConfigSelection([("0", self.isActive_otherfilters_value)], default="0"))
-		list.append(getConfigListEntry(_("Restrict to specific services"), self.isActive_services))
-		list.append(getConfigListEntry(_("Restrict to specific bouquets"), self.isActive_bouquets))
+		if not self.isIPTV:
+			list.append(getConfigListEntry(_("Restrict to specific services"), self.isActive_services))
+			list.append(getConfigListEntry(_("Restrict to specific bouquets"), self.isActive_bouquets))
 		list.append(getConfigListEntry(_("Restrict to days"), self.isActive_dayofweek))
 		list.append(getConfigListEntry(_("Use other filters"), self.isActive_otherfilters))
 
@@ -731,13 +736,14 @@ class AutoTimerEditor(Screen, ConfigListScreen, AutoTimerEditorBase):
 			self.renameFilterButton()
 
 	def editServices(self):
-		self.session.openWithCallback(
-			self.editServicesCallback,
-			AutoTimerServiceEditor,
-			self.serviceRestriction,
-			self.services,
-			self.bouquets
-		)
+		if not self.isIPTV:
+			self.session.openWithCallback(
+				self.editServicesCallback,
+				AutoTimerServiceEditor,
+				self.serviceRestriction,
+				self.services,
+				self.bouquets
+			)
 
 	def editServicesCallback(self, ret):
 		if ret:

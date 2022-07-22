@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Enigma2 translation Autotimer\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-09 10:53+0430\n"
+"POT-Creation-Date: 2022-07-22 17:52+0430\n"
 "PO-Revision-Date: 2019-03-04 10:44+0000\n"
 "Last-Translator: Alexwilmac\n"
 "Language-Team: Alexwilmac <vuplus-community.net>\n"
@@ -92,6 +92,9 @@ msgstr "Scrivi sempre la configurazione"
 
 msgid "Amount of recordings left"
 msgstr "Numero di registrazioni residue"
+
+msgid "Any Day filter refers to the day of the timespan start, even if the timespan crosses midnight."
+msgstr ""
 
 msgid "Any service/recording"
 msgstr "Ogni canale/registrazione"
@@ -940,6 +943,7 @@ msgstr "Se 'Fast Scan' è abilitato il tipo di servizio viene ignorato. Non è n
 msgid "When supporting 'Fast Scan' the service type is ignored. You don't need to enable this unless your Image supports 'Fast Scan' and you are using it."
 msgstr "Se 'Fast Scan' è abilitato il tipo di servizio viene ignorato. Non è necessario abilitare il parametro, a meno che l'immagine lo supporti e voi lo stiate utilizzando."
 
+#, fuzzy
 msgid "When this is enabled AutoTimer will ONLY check for new events whilst in stanadby."
 msgstr "Quando questa opzione è attivata, AutoTimer controllerà solo eventuali nuovi eventi mentre in standby."
 

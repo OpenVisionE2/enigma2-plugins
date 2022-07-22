@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2-plugins 3.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-23 15:06+0330\n"
+"POT-Creation-Date: 2022-07-22 17:52+0430\n"
 "PO-Revision-Date: 2012-02-21 11:57+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -97,6 +97,9 @@ msgstr ""
 
 msgid "Amount of recordings left"
 msgstr "Amount of recordings left"
+
+msgid "Any Day filter refers to the day of the timespan start, even if the timespan crosses midnight."
+msgstr ""
 
 msgid "Any service/recording"
 msgstr "Any service/recording"
@@ -950,8 +953,9 @@ msgstr "When supporting \"Fast Scan\" the service type is ignored. You don't nee
 msgid "When supporting 'Fast Scan' the service type is ignored. You don't need to enable this unless your Image supports 'Fast Scan' and you are using it."
 msgstr "When supporting \"Fast Scan\" the service type is ignored. You don't need to enable this unless your Image supports \"Fast Scan\" and you are using it."
 
+#, fuzzy
 msgid "When this is enabled AutoTimer will ONLY check for new events whilst in stanadby."
-msgstr "When this is enabled AutoTimer will ONLY check for new events whilst in stanadby."
+msgstr "When this is enabled AutoTimer will ONLY check for new events whilst in standby."
 
 msgid "When this option is enabled the AutoTimer won't match events where another timer with the same description already exists in the timer list."
 msgstr "When this option is enabled the AutoTimer won't match events where another timer with the same description already exists in the timer list."

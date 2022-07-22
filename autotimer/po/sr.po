@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Enigma2 - Plugin autotimer\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-23 15:06+0330\n"
+"POT-Creation-Date: 2022-07-22 17:52+0430\n"
 "PO-Revision-Date: 2009-09-27 17:46+0100\n"
 "Last-Translator: maja <jovanovic@gmx.ch>\n"
 "Language-Team: veselin & majevica CRNABERZA <jovanovic@gmx.ch>\n"
@@ -95,6 +95,9 @@ msgid "Always write config"
 msgstr ""
 
 msgid "Amount of recordings left"
+msgstr ""
+
+msgid "Any Day filter refers to the day of the timespan start, even if the timespan crosses midnight."
 msgstr ""
 
 msgid "Any service/recording"

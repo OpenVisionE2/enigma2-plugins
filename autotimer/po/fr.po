@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2-plugins 3.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-23 15:06+0330\n"
+"POT-Creation-Date: 2022-07-22 17:52+0430\n"
 "PO-Revision-Date: 2015-02-02 22:44+0100\n"
 "Last-Translator: mimi74\n"
 "Language-Team: french-EGAMI\n"
@@ -92,6 +92,9 @@ msgstr ""
 
 msgid "Amount of recordings left"
 msgstr "Nombre d'enregistrement restant"
+
+msgid "Any Day filter refers to the day of the timespan start, even if the timespan crosses midnight."
+msgstr ""
 
 msgid "Any service/recording"
 msgstr "N'importe quel service/enregistrement"
@@ -929,6 +932,7 @@ msgstr "Si \"Analyse rapide\" est supporté, le type de service est ignoré. Inu
 msgid "When supporting 'Fast Scan' the service type is ignored. You don't need to enable this unless your Image supports 'Fast Scan' and you are using it."
 msgstr "Si \"Analyse rapide\" est supporté, le type de service est ignoré. Inutile d'activer si votre image ne supporte pas \"Balayage rapide\" et que vous l'utilisiez."
 
+#, fuzzy
 msgid "When this is enabled AutoTimer will ONLY check for new events whilst in stanadby."
 msgstr "Quand ceci est activé, ProgAuto vérifiera SEULEMENT les nouveaux événements pendant la veille."
 

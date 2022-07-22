@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AutoTimer v1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-23 15:06+0330\n"
+"POT-Creation-Date: 2022-07-22 17:52+0430\n"
 "PO-Revision-Date: 2018-04-09 09:14+0200\n"
 "Last-Translator: Alec <alex1vagyok@gmail.com>\n"
 "Language-Team: alec <alex1vagyok@gmail.com>\n"
@@ -95,6 +95,9 @@ msgstr "Konfiguráció írása mindig"
 
 msgid "Amount of recordings left"
 msgstr "Az elmaradt felvételek mennyisége"
+
+msgid "Any Day filter refers to the day of the timespan start, even if the timespan crosses midnight."
+msgstr ""
 
 msgid "Any service/recording"
 msgstr "Bármely csatornánál/felvételnél"
@@ -948,6 +951,7 @@ msgstr "A \"Gyors keresés\" támogatásakor a szolgáltatás típusát figyelme
 msgid "When supporting 'Fast Scan' the service type is ignored. You don't need to enable this unless your Image supports 'Fast Scan' and you are using it."
 msgstr "A \"Gyors keresés\" támogatásakor a szolgáltatás típusát figyelmen kívül hagyja. Ezt nem szükséges engedélyezni, hacsak a lemezkép nem támogatja a \"Gyors keresés\" funkciót, és Ön nem használja azt."
 
+#, fuzzy
 msgid "When this is enabled AutoTimer will ONLY check for new events whilst in stanadby."
 msgstr "Ha ez engedélyezett, az AutoTimer CSAK új eseményeket keres, amíg a készenléti üzemmódban van."
 

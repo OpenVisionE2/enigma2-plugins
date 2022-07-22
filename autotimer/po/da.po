@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Enigma2 AutoTimer Plugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-06 16:06+0330\n"
+"POT-Creation-Date: 2022-07-22 17:52+0430\n"
 "PO-Revision-Date: 2021-02-14 22:20+0100\n"
 "Last-Translator: \n"
 "Language-Team: Danskholdet <dk-translation@pm.me>\n"
@@ -94,6 +94,9 @@ msgstr "Skriv altid konfiguration"
 
 msgid "Amount of recordings left"
 msgstr "Antal af optagelser tilbage"
+
+msgid "Any Day filter refers to the day of the timespan start, even if the timespan crosses midnight."
+msgstr ""
 
 msgid "Any service/recording"
 msgstr "Enhver kanal/optagelse"
@@ -945,6 +948,7 @@ msgstr "Kanaltype ignoreres når \"Hurtigsøgning\" understøttes. Du behøver i
 msgid "When supporting 'Fast Scan' the service type is ignored. You don't need to enable this unless your Image supports 'Fast Scan' and you are using it."
 msgstr "Kanaltype ignoreres når \"Hurtigsøgning\" understøttes. Du behøver ikke at aktivere dette, med mindre dit Image understøtter \"Hurtigsøgning\" og du bruger det."
 
+#, fuzzy
 msgid "When this is enabled AutoTimer will ONLY check for new events whilst in stanadby."
 msgstr "Når dette er aktiveret vil AutoTimer KUN kikke efter nye begivenheder mens i Standby."
 

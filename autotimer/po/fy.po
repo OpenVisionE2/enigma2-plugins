@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: autotimer_fy\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-23 15:06+0330\n"
+"POT-Creation-Date: 2022-07-22 17:52+0430\n"
 "PO-Revision-Date: 2009-01-09 20:55+0100\n"
 "Last-Translator: gerrit <gerrit@nedlinux.nl>\n"
 "Language-Team: gerrit <fy@li.org>\n"
@@ -92,6 +92,9 @@ msgid "Always write config"
 msgstr ""
 
 msgid "Amount of recordings left"
+msgstr ""
+
+msgid "Any Day filter refers to the day of the timespan start, even if the timespan crosses midnight."
 msgstr ""
 
 msgid "Any service/recording"

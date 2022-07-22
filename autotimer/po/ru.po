@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2-plugins 3.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-23 15:06+0330\n"
+"POT-Creation-Date: 2022-07-22 17:52+0430\n"
 "PO-Revision-Date: 2016-02-01 03:19+0400\n"
 "Last-Translator: ser6 <ser6@bk.ru>\n"
 "Language-Team: RU locale by Sowa\n"
@@ -91,6 +91,9 @@ msgstr ""
 
 msgid "Amount of recordings left"
 msgstr "Количество записей осталось"
+
+msgid "Any Day filter refers to the day of the timespan start, even if the timespan crosses midnight."
+msgstr ""
 
 msgid "Any service/recording"
 msgstr "Любые сервисы/записи"
@@ -948,6 +951,7 @@ msgstr "Когда поддержано \"Быстрое сканировани�
 msgid "When supporting 'Fast Scan' the service type is ignored. You don't need to enable this unless your Image supports 'Fast Scan' and you are using it."
 msgstr "Когда поддержано \"Быстрое сканирование\" тип сервиса игнорируется. Вам не нужно включать его, если Ваш имидж поддерживает \"Быстрое сканирование\" и Вы используете его"
 
+#, fuzzy
 msgid "When this is enabled AutoTimer will ONLY check for new events whilst in stanadby."
 msgstr "Если эта опция включена, автотаймер будет проверять только новые события в режиме ожидания"
 
