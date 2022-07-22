@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Enigma2 Filebrowser Plugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-13 19:18+0330\n"
+"POT-Creation-Date: 2022-07-22 17:52+0430\n"
 "PO-Revision-Date: 2020-05-22 18:22+0200\n"
 "Last-Translator: ims <ims21@users.sourceforge.net>\n"
 "Language-Team: PLi <ims21@users.sourceforge.net>\n"
@@ -13,7 +13,18 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Poedit 2.0.6\n"
 
+msgid "Copy"
+msgstr ""
+
+#, fuzzy
+msgid "Delete"
+msgstr "Smazat"
+
 msgid "Filebrowser"
+msgstr "Filebrowser"
+
+#, fuzzy
+msgid "Filebrowser Settings"
 msgstr "Filebrowser"
 
 msgid "Filesystemposition list left"
@@ -22,8 +33,18 @@ msgstr ""
 msgid "Filesystemposition list right"
 msgstr ""
 
-msgid "Settings"
-msgstr "Nastavení"
+msgid "HELP"
+msgstr ""
+
+msgid "MENU"
+msgstr ""
+
+msgid "Move"
+msgstr ""
+
+#, fuzzy
+msgid "Rename"
+msgstr "Přejmenovat"
 
 #, fuzzy
 msgid "add Plugin to Extensionmenu"
@@ -34,22 +55,11 @@ msgid "add Plugin to Mainmenu"
 msgstr "Přidat plugin do hlavního menu"
 
 #, fuzzy
-msgid "cancel"
-msgstr "Zavřít"
-
-msgid "copy"
-msgstr ""
-
-#, fuzzy
 msgid "copy file"
 msgstr "Kopírovat soubor"
 
 msgid "copying file ..."
 msgstr "Kopírování souboru ..."
-
-#, fuzzy
-msgid "delete"
-msgstr "Smazat"
 
 #, fuzzy
 msgid "delete file"
@@ -58,11 +68,12 @@ msgstr "Smazat soubor"
 msgid "deleting file ..."
 msgstr "Mazání souboru ..."
 
+#, fuzzy
+msgid "filebrowser buttons"
+msgstr "Filebrowser"
+
 msgid "manage local Files"
 msgstr "správa místních souborů"
-
-msgid "move"
-msgstr ""
 
 #, fuzzy
 msgid "move file"
@@ -76,13 +87,6 @@ msgstr "Ne"
 
 msgid "no Viewer installed for this mimetype!"
 msgstr "pro tento typ souboru není nainstalován žádný prohlížeč!"
-
-msgid "ok"
-msgstr ""
-
-#, fuzzy
-msgid "rename"
-msgstr "Přejmenovat"
 
 #, fuzzy
 msgid "rename file"

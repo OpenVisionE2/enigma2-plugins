@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-13 19:18+0330\n"
+"POT-Creation-Date: 2022-07-22 17:52+0430\n"
 "PO-Revision-Date: 2020-05-22 18:23+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -18,7 +18,18 @@ msgstr ""
 "X-Generator: Poedit 2.0.6\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
+msgid "Copy"
+msgstr ""
+
+#, fuzzy
+msgid "Delete"
+msgstr "Supprimer"
+
 msgid "Filebrowser"
+msgstr "Navigateur de fichiers"
+
+#, fuzzy
+msgid "Filebrowser Settings"
 msgstr "Navigateur de fichiers"
 
 msgid "Filesystemposition list left"
@@ -27,8 +38,18 @@ msgstr ""
 msgid "Filesystemposition list right"
 msgstr ""
 
-msgid "Settings"
-msgstr "Paramètres"
+msgid "HELP"
+msgstr ""
+
+msgid "MENU"
+msgstr ""
+
+msgid "Move"
+msgstr ""
+
+#, fuzzy
+msgid "Rename"
+msgstr "Renommer"
 
 #, fuzzy
 msgid "add Plugin to Extensionmenu"
@@ -39,22 +60,11 @@ msgid "add Plugin to Mainmenu"
 msgstr "Ajouter le plugin au menu principal"
 
 #, fuzzy
-msgid "cancel"
-msgstr "Annuler"
-
-msgid "copy"
-msgstr ""
-
-#, fuzzy
 msgid "copy file"
 msgstr "copier fichier"
 
 msgid "copying file ..."
 msgstr "copie du fichier …"
-
-#, fuzzy
-msgid "delete"
-msgstr "Supprimer"
 
 #, fuzzy
 msgid "delete file"
@@ -63,11 +73,12 @@ msgstr "supprimer le fichier"
 msgid "deleting file ..."
 msgstr "suppression fichier"
 
+#, fuzzy
+msgid "filebrowser buttons"
+msgstr "Navigateur de fichiers"
+
 msgid "manage local Files"
 msgstr "gérer les fichiers locaux"
-
-msgid "move"
-msgstr ""
 
 #, fuzzy
 msgid "move file"
@@ -81,13 +92,6 @@ msgstr "non"
 
 msgid "no Viewer installed for this mimetype!"
 msgstr "pas de visualiseur installé pour ce type mime!"
-
-msgid "ok"
-msgstr ""
-
-#, fuzzy
-msgid "rename"
-msgstr "Renommer"
 
 #, fuzzy
 msgid "rename file"

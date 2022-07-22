@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Enigma 2 Filebrowser Plugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-13 19:18+0330\n"
+"POT-Creation-Date: 2022-07-22 17:52+0430\n"
 "PO-Revision-Date: 2020-05-22 18:24+0200\n"
 "Last-Translator: ims <ims21@users.sourceforge.net>\n"
 "Language-Team: openPli\n"
@@ -13,7 +13,17 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Poedit 2.0.6\n"
 
+msgid "Copy"
+msgstr ""
+
+#, fuzzy
+msgid "Delete"
+msgstr "Удалить"
+
 msgid "Filebrowser"
+msgstr ""
+
+msgid "Filebrowser Settings"
 msgstr ""
 
 msgid "Filesystemposition list left"
@@ -22,21 +32,23 @@ msgstr ""
 msgid "Filesystemposition list right"
 msgstr ""
 
+msgid "HELP"
+msgstr ""
+
+msgid "MENU"
+msgstr ""
+
+msgid "Move"
+msgstr ""
+
 #, fuzzy
-msgid "Settings"
-msgstr "Установки"
+msgid "Rename"
+msgstr "Переименовать"
 
 msgid "add Plugin to Extensionmenu"
 msgstr ""
 
 msgid "add Plugin to Mainmenu"
-msgstr ""
-
-#, fuzzy
-msgid "cancel"
-msgstr "Отмена"
-
-msgid "copy"
 msgstr ""
 
 #, fuzzy
@@ -47,20 +59,16 @@ msgid "copying file ..."
 msgstr ""
 
 #, fuzzy
-msgid "delete"
-msgstr "Удалить"
-
-#, fuzzy
 msgid "delete file"
 msgstr "удалить файл"
 
 msgid "deleting file ..."
 msgstr ""
 
-msgid "manage local Files"
+msgid "filebrowser buttons"
 msgstr ""
 
-msgid "move"
+msgid "manage local Files"
 msgstr ""
 
 #, fuzzy
@@ -75,13 +83,6 @@ msgstr ""
 
 msgid "no Viewer installed for this mimetype!"
 msgstr ""
-
-msgid "ok"
-msgstr ""
-
-#, fuzzy
-msgid "rename"
-msgstr "Переименовать"
 
 #, fuzzy
 msgid "rename file"
