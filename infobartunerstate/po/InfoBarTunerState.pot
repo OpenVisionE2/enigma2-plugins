@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-22 13:32+0330\n"
+"POT-Creation-Date: 2022-07-22 17:52+0430\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,28 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "  (C) 2012 by betonme @ IHAD"
+msgid ""
+"  (C) 2012 by betonme @ IHAD \n"
+"\n"
+msgstr ""
+
+msgid "  If You like this plugin and want to support it,\n"
+msgstr ""
+
+msgid "  SUPPORT: "
+msgstr ""
+
+msgid ""
+"  Thanks a lot ! \n"
+"  PayPal: "
+msgstr ""
+
+msgid ""
+"  feel free to donate via PayPal. \n"
+"\n"
+msgstr ""
+
+msgid "  or if just want to say ''thanks'',\n"
 msgstr ""
 
 #, python-format
@@ -56,9 +77,6 @@ msgid "Background transparency"
 msgstr ""
 
 msgid "Begin"
-msgstr ""
-
-msgid "Cancel"
 msgstr ""
 
 msgid "Channel Name"
@@ -165,16 +183,13 @@ msgstr ""
 msgid "Nothing running"
 msgstr ""
 
-msgid "Number of finished records in list"
+msgid "Number of finished recordings in list"
 msgstr ""
 
-msgid "Number of pending records in list"
+msgid "Number of pending recordings in list"
 msgstr ""
 
-msgid "Number of seconds for displaying finished records"
-msgstr ""
-
-msgid "OK"
+msgid "Number of seconds for displaying finished recordings"
 msgstr ""
 
 msgid "Only one Graphical Progress field allowed:"
@@ -196,9 +211,6 @@ msgid "Prepare / Start / End record"
 msgstr ""
 
 msgid "Prepare record"
-msgstr ""
-
-msgid "Really close without saving settings?"
 msgstr ""
 
 msgid "Record"
@@ -292,4 +304,7 @@ msgid "YYYY/MM/DD HH:MM"
 msgstr ""
 
 msgid "configuration"
+msgstr ""
+
+msgid "Tuner State"
 msgstr ""
