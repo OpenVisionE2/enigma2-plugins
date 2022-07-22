@@ -1,6 +1,4 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
 #
 #  Partnerbox E2
 #
@@ -19,24 +17,55 @@ from __future__ import print_function
 #  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 #  GNU General Public License for more details.
 #
-
-import urllib
+from __future__ import print_function
 from time import localtime
 from timer import TimerEntry
 from twisted.internet import reactor
 from twisted.web import client
 from twisted.web.client import HTTPClientFactory
-from base64 import encodestring
-import xml.etree.cElementTree
-try:
-	from urlparse import urlparse
-except:
-	from urllib.parse import urlparse
-from urllib import unquote
+from base64 import b64encode
+from xml.etree.cElementTree import fromstring, tostring, parse
+from six.moves.urllib.request import urlopen
+from six.moves.urllib.parse import unquote, urlparse, urlunparse
+from enigma import getDesktop
+from Tools.Directories import resolveFilename, SCOPE_PLUGINS
+
 
 CurrentIP = None
 remote_timer_list = None
 oldIP = None
+PLUGINPATH = resolveFilename(SCOPE_PLUGINS, 'Extensions/Partnerbox/')  # /usr/lib/enigma2/python/Plugins/Extensions/Partnerbox
+if getDesktop(0).size().width() > 1280:
+	FHD = True
+	SCALE = 1.5
+	SKINFILE = PLUGINPATH + 'skin_FHD.xml'
+else:
+	FHD = False
+	SCALE = 1.0
+	SKINFILE = PLUGINPATH + 'skin_HD.xml'
+
+
+def readSkin(skin):
+	skintext = ""
+	try:
+		with open(SKINFILE, "r") as fd:
+			try:
+				domSkin = parse(fd).getroot()
+				for element in domSkin:
+					if element.tag == "screen" and element.attrib['name'] == skin:
+						skintext = tostring(element).decode('utf-8')
+						break
+			except Exception as err:
+				print("[Skin] Error: Unable to parse skin data in '%s' - '%s'!" % (SKINFILE, err))
+	except Exception as err:
+		print("[Skin] Error: Unexpected error opening skin file '%s'! (%s)" % (SKINFILE, err))
+	return skintext
+
+
+def applySkinVars(skin, dict):
+	for key in dict.keys():
+		skin = str(skin.replace('{' + key + '}', dict[key]))
+	return skin
 
 
 def getTimerType(refstr, beginTime, duration, eventId, timer_list):
@@ -227,7 +256,7 @@ class E2Timer:
 		self.description = description
 		self.type = type
 		self.flags = set()
-		if type != 0: # E1 Timerlist
+		if type != 0:  # E1 Timerlist
 			self.timeend = timebegin + duration
 			self.name = description
 			if type & PlaylistEntry.isRepeating:
@@ -237,10 +266,7 @@ class E2Timer:
 
 def FillE2TimerList(xmlstring, sreference=None):
 	E2TimerList = []
-	try:
-		root = xml.etree.cElementTree.fromstring(xmlstring)
-	except:
-		return E2TimerList
+	root = fromstring(xmlstring)
 	if sreference is None:
 		sreference = None
 	else:
@@ -257,7 +283,7 @@ def FillE2TimerList(xmlstring, sreference=None):
 			disabled = int(timer.findtext("e2disabled", 0))
 		except:
 			disabled = 0
-		servicereference = str(timer.findtext("e2servicereference", '').decode("utf-8").encode("utf-8", 'ignore'))
+		servicereference = timer.findtext('e2servicereference', '')
 		if sreference is None:
 			go = True
 		else:
@@ -306,50 +332,40 @@ def FillE2TimerList(xmlstring, sreference=None):
 				eventId = int(timer.findtext("e2eit", -1))
 			except:
 				eventId = -1
-			E2TimerList.append(E2Timer(
-				servicereference=servicereference,
-				servicename=unquote(str(timer.findtext("e2servicename", 'n/a').decode("utf-8").encode("utf-8", 'ignore'))),
-				name=str(timer.findtext("e2name", '').decode("utf-8").encode("utf-8", 'ignore')),
-				disabled=disabled,
-				timebegin=timebegin,
-				timeend=timeend,
-				duration=duration,
-				startprepare=startprepare,
-				state=state,
-				repeated=repeated,
-				justplay=justplay,
-				eventId=eventId,
-				afterevent=afterevent,
-				dirname=str(timer.findtext("e2location", '').decode("utf-8").encode("utf-8", 'ignore')),
-				description=unquote(str(timer.findtext("e2description", '').decode("utf-8").encode("utf-8", 'ignore'))),
-				type=0))
+			servicename = timer.findtext('e2servicename', 'n/a')
+			e2name = timer.findtext('e2name', '')
+			e2location = timer.findtext('e2location', '')
+			e2description = timer.findtext('e2description', '')
+			E2TimerList.append(E2Timer(servicereference=servicereference, servicename=unquote(servicename), name=e2name,
+									   disabled=disabled, timebegin=timebegin, timeend=timeend, duration=duration,
+									   startprepare=startprepare, state=state, repeated=repeated, justplay=justplay,
+									   eventId=eventId, afterevent=afterevent, dirname=e2location,
+									   description=unquote(e2description), type=0))
 	return E2TimerList
 
 
 def FillE1TimerList(xmlstring, sreference=None):
 	E1TimerList = []
-	try:
-		root = xml.etree.cElementTree.fromstring(xmlstring)
-	except:
-		return E1TimerList
+	root = fromstring(xmlstring)
 	for timer in root.findall("timer"):
 		try:
 			typedata = int(timer.findtext("typedata", 0))
 		except:
 			typedata = 0
 		for service in timer.findall("service"):
-			servicereference = str(service.findtext("reference", '').decode("utf-8").encode("utf-8", 'ignore'))
-			servicename = str(service.findtext("name", 'n/a').decode("utf-8").encode("utf-8", 'ignore'))
+			servicereference = str(service.findtext("reference", ''))
+			servicename = str(service.findtext("name", 'n/a'))
 		for event in timer.findall("event"):
 			try:
 				timebegin = int(event.findtext("start", 0))
 			except:
 				timebegin = 0
+
 			try:
 				duration = int(event.findtext("duration", 0))
 			except:
 				duration = 0
-			description = str(event.findtext("description", '').decode("utf-8").encode("utf-8", 'ignore'))
+			description = str(event.findtext("description", ''))
 		go = False
 		if sreference is None:
 			go = True
@@ -357,22 +373,20 @@ def FillE1TimerList(xmlstring, sreference=None):
 			if sreference.upper() == servicereference.upper() and ((typedata & PlaylistEntry.stateWaiting) or (typedata & PlaylistEntry.stateRunning)):
 				go = True
 		if go:
-			E1TimerList.append(E2Timer(servicereference=servicereference, servicename=servicename, name="", disabled=0, timebegin=timebegin, timeend=0, duration=duration, startprepare=0, state=0, repeated=0, justplay=0, eventId=-1, afterevent=0, dirname="", description=description, type=typedata))
+			E1TimerList.append(E2Timer(servicereference=servicereference, servicename=servicename, name="", disabled=0, timebegin=timebegin, timeend=0, duration=duration,
+							   startprepare=0, state=0, repeated=0, justplay=0, eventId=-1, afterevent=0, dirname="", description=description, type=typedata))
 	return E1TimerList
 
 
 class myHTTPClientFactory(HTTPClientFactory):
-	def __init__(self, url, method='GET', postdata=None, headers=None,
-	agent="Twisted Remotetimer", timeout=0, cookies=None,
-	followRedirect=1, lastModified=None, etag=None):
-		HTTPClientFactory.__init__(self, url, method=method, postdata=postdata,
-		headers=headers, agent=agent, timeout=timeout, cookies=cookies, followRedirect=followRedirect)
+	def __init__(self, url, method='GET', postdata=None, headers=None, agent="Twisted Remotetimer", timeout=0, cookies=None, followRedirect=1, lastModified=None, etag=None):
+		HTTPClientFactory.__init__(self, url, postdata=postdata, agent=agent, followRedirect=followRedirect, timeout=timeout, cookies=cookies)
 
 
 def url_parse(url, defaultPort=None):
-	parsed = urlparse.urlparse(url)
+	parsed = urlparse(url.encode('utf-8'))
 	scheme = parsed[0]
-	path = urlparse.urlunparse(('', '') + parsed[2:])
+	path = urlunparse(('', '') + parsed[2:])
 	if defaultPort is None:
 		if scheme == 'https':
 			defaultPort = 443
@@ -388,50 +402,53 @@ def url_parse(url, defaultPort=None):
 def sendPartnerBoxWebCommand(url, contextFactory=None, timeout=60, username="root", password="", *args, **kwargs):
 	#scheme, host, port, path = client._parse(url)
 	#scheme, host, port, path = url_parse(url)
-	parsed = urlparse(url)
+	parsed = urlparse(url.encode('utf-8'))
 	scheme = parsed.scheme
 	host = parsed.hostname
 	port = parsed.port or (443 if scheme == 'https' else 80)
-	basicAuth = encodestring(("%s:%s") % (username, password))
-	authHeader = "Basic " + basicAuth.strip()
-	AuthHeaders = {"Authorization": authHeader}
+	base64string = "%s:%s" % (username, password)
+	base64string = b64encode(base64string.encode('utf-8'))
+	AuthHeaders = {"Authorization": "Basic %s" % base64string}
 	if "headers" in kwargs:
 		kwargs["headers"].update(AuthHeaders)
 	else:
 		kwargs["headers"] = AuthHeaders
-	factory = myHTTPClientFactory(url, *args, **kwargs)
-	reactor.connectTCP(host, port, factory, timeout=timeout)
-	return factory.deferred
+	try:
+		factory = myHTTPClientFactory(url.encode('utf-8'), *args, **kwargs)
+		reactor.connectTCP(host, port, factory, timeout=timeout)
+		return factory.deferred
+	except:
+		return None
 
 
 class PlaylistEntry:
 
 	PlaylistEntry = 1			# normal PlaylistEntry (no Timerlist entry)
-	SwitchTimerEntry = 2		#simple service switch timer
-	RecTimerEntry = 4			#timer do recording
+	SwitchTimerEntry = 2  # simple service switch timer
+	RecTimerEntry = 4  # timer do recording
 
-	recDVR = 8				#timer do DVR recording
-	recVCR = 16				#timer do VCR recording (LIRC) not used yet
-	recNgrab = 131072			#timer do record via Ngrab Server
+	recDVR = 8  # timer do DVR recording
+	recVCR = 16  # timer do VCR recording (LIRC) not used yet
+	recNgrab = 131072  # timer do record via Ngrab Server
 
-	stateWaiting = 32			#timer is waiting
-	stateRunning = 64			#timer is running
-	statePaused = 128			#timer is paused
-	stateFinished = 256		#timer is finished
-	stateError = 512			#timer has error state(s)
+	stateWaiting = 32  # timer is waiting
+	stateRunning = 64  # timer is running
+	statePaused = 128  # timer is paused
+	stateFinished = 256  # timer is finished
+	stateError = 512  # timer has error state(s)
 
-	errorNoSpaceLeft = 1024	#HDD no space Left ( recDVR )
-	errorUserAborted = 2048	#User Action aborts this event
-	errorZapFailed = 4096		#Zap to service failed
-	errorOutdated = 8192		#Outdated event
+	errorNoSpaceLeft = 1024  # HDD no space Left ( recDVR )
+	errorUserAborted = 2048  # User Action aborts this event
+	errorZapFailed = 4096  # Zap to service failed
+	errorOutdated = 8192  # Outdated event
 
-	boundFile = 16384			#Playlistentry have an bounded file
-	isSmartTimer = 32768		#this is a smart timer (EIT related) not uses Yet
-	isRepeating = 262144		#this timer is repeating
-	doFinishOnly = 65536		#Finish an running event/action
+	boundFile = 16384  # Playlistentry have an bounded file
+	isSmartTimer = 32768  # this is a smart timer (EIT related) not uses Yet
+	isRepeating = 262144  # this timer is repeating
+	doFinishOnly = 65536  # Finish an running event/action
 
-	doShutdown = 67108864		#timer shutdown the box
-	doGoSleep = 134217728		#timer set box to standby
+	doShutdown = 67108864  # timer shutdown the box
+	doGoSleep = 134217728  # timer set box to standby
 
 	Su = 524288
 	Mo = 1048576
@@ -447,32 +464,29 @@ def SetPartnerboxTimerlist(partnerboxentry=None, sreference=None):
 	global CurrentIP
 	if partnerboxentry is None:
 		return
-	try:
-		password = partnerboxentry.password.value
-		username = "root"
-		CurrentIP = partnerboxentry.ip.value
-		ip = "%d.%d.%d.%d" % tuple(partnerboxentry.ip.value)
-		port = partnerboxentry.port.value
-		if int(partnerboxentry.enigma.value) == 0:
-			sCommand = "http://%s:%s@%s:%d/web/timerlist" % (username, password, ip, port)
-		else:
-			sCommand = "http://%s:%s@%s:%d/xml/timers" % (username, password, ip, port)
-		print("[RemoteEPGList] Getting timerlist data from %s..." % ip)
-		f = urllib.urlopen(sCommand)
-		sxml = f.read()
-		if int(partnerboxentry.enigma.value) == 0:
-			remote_timer_list = FillE2TimerList(sxml, sreference)
-		else:
-			remote_timer_list = FillE1TimerList(sxml, sreference)
-	except:
-		pass
+	password = partnerboxentry.password.value
+	username = "root"
+	CurrentIP = partnerboxentry.ip.value
+	ip = "%d.%d.%d.%d" % tuple(partnerboxentry.ip.value)
+	port = partnerboxentry.port.value
+	if int(partnerboxentry.enigma.value) == 0:
+		sCommand = "http://%s:%s@%s:%d/web/timerlist" % (username, password, ip, port)
+	else:
+		sCommand = "http://%s:%s@%s:%d/xml/timers" % (username, password, ip, port)
+	print("[RemoteEPGList] Getting timerlist data from %s..." % ip)
+	f = urlopen(sCommand)
+	sxml = f.read()
+	if int(partnerboxentry.enigma.value) == 0:
+		remote_timer_list = FillE2TimerList(sxml, sreference)
+	else:
+		remote_timer_list = FillE1TimerList(sxml, sreference)
 
 
 def getServiceRef(sreference):
-		if not sreference:
-			return ""
-		serviceref = sreference
-		hindex = sreference.find("http")
-		if hindex > 0: # partnerbox service ?
-			serviceref = serviceref[:hindex]
-		return serviceref
+	if not sreference:
+		return ""
+	serviceref = sreference
+	hindex = sreference.find("http")
+	if hindex > 0:  # partnerbox service ?
+		serviceref = serviceref[:hindex]
+	return serviceref

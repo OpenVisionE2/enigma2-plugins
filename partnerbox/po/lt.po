@@ -2,16 +2,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Partnerbox\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-22 13:15+0330\n"
-"PO-Revision-Date: 2021-09-15 15:38+0300\n"
+"POT-Creation-Date: 2022-07-22 17:52+0430\n"
+"PO-Revision-Date: 2017-07-10 19:32+0300\n"
 "Last-Translator: Vytenis P. <vyteniui@gmail.com>\n"
 "Language-Team: Vytenis P. <vyteniui@gmail.com>\n"
 "Language: lt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Poedit 3.0\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 2.0.2\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #, python-format
@@ -23,7 +23,7 @@ msgstr ""
 
 #, python-format
 msgid "%d min"
-msgstr "%d min."
+msgstr ""
 
 msgid "%d.%B %Y"
 msgstr "%Y %B.%d"
@@ -33,7 +33,7 @@ msgstr ""
 
 #, python-format
 msgid "%s%d min"
-msgstr "%s%d min."
+msgstr ""
 
 msgid "(ZAP)"
 msgstr "(PERJUNGTI)"
@@ -42,16 +42,17 @@ msgid "<unknown>"
 msgstr "<nežinomas>"
 
 msgid "Abort"
-msgstr "Nutraukti"
+msgstr ""
 
 msgid "Activate Picture in Picture"
-msgstr "Įjungti vaizdą vaizde (PiP)"
+msgstr ""
 
 msgid "Add"
 msgstr "Pridėti"
 
+#, fuzzy
 msgid "Add internal timer"
-msgstr "Įtraukti vidinį laikmatį"
+msgstr "Įtraukti laikmatį"
 
 msgid "Add timer"
 msgstr "Įtraukti laikmatį"
@@ -60,37 +61,37 @@ msgid "After event"
 msgstr "Po užduoties"
 
 msgid "Alternative"
-msgstr "Alternatyva"
+msgstr ""
 
 msgid "Alternative services are not supported!"
-msgstr "Alternatyvūs kanalai negalimi!"
+msgstr ""
 
 msgid "Apply"
-msgstr "Pritaikyti"
+msgstr ""
 
 msgid "Attention, this is repeated timer!\n"
-msgstr "Dėmesio, tai pasikartojantis laikmatis!\n"
+msgstr ""
 
 msgid "Bouquet List"
-msgstr "Bukietų sąrašas"
+msgstr ""
 
 msgid "Cancel"
 msgstr "Atšaukti"
 
 msgid "Change pin code"
-msgstr "Keisti PIN kodą"
+msgstr ""
 
 msgid "Channel"
 msgstr "Kanalas"
 
 msgid "Choice list Partnerbox"
-msgstr "Partnerbox pasirinkimų sąrašas"
+msgstr ""
 
 msgid "Choose action:"
-msgstr "Pasirinkite veiksmą:"
+msgstr ""
 
 msgid "Choose bouquet"
-msgstr "Pasirinkite bukietą"
+msgstr ""
 
 msgid "Clean up"
 msgstr "Valymas"
@@ -99,10 +100,10 @@ msgid "Cleaning up finished timer entries..."
 msgstr "Šalinami atliktų laikmačių įrašai..."
 
 msgid "DVB-C"
-msgstr "DVB-C"
+msgstr ""
 
 msgid "DVB-T"
-msgstr "DVB-T"
+msgstr ""
 
 msgid "DVR"
 msgstr "DVR"
@@ -110,33 +111,49 @@ msgstr "DVR"
 msgid "Date"
 msgstr "Data"
 
+#, fuzzy
 msgid "Deep Standby"
-msgstr "Gilus budėjimas"
+msgstr "į gilų budėjimą"
 
 msgid "Delete"
 msgstr "Šalinti"
 
+#, fuzzy
 msgid "Delete timer"
-msgstr "Šalinti laikmatį"
+msgstr "Pašalinti laikmatį"
 
 msgid "Description"
 msgstr "Aprašymas"
 
 msgid "Disable Picture in Picture"
-msgstr "Išjungti vaizdą vaizde (PiP)"
+msgstr ""
 
-#, python-format
+#, fuzzy
+msgid "Do you really want to clean up the finished timer entries?"
+msgstr ""
+"Ar tikrai norite pašalinti laikmatį\n"
+"%s ?"
+
+#, fuzzy, python-format
 msgid ""
 "Do you really want to delete the remote timer \n"
 "%s ?"
 msgstr ""
-"Ar tikrai norite pašalinti nuotolinį laikmatį\n"
+"Ar tikrai norite pašalinti laikmatį\n"
 "%s ?"
 
 #, python-format
 msgid ""
 "Do you really want to delete the timer \n"
 "%s ?"
+msgstr ""
+"Ar tikrai norite pašalinti laikmatį\n"
+"%s ?"
+
+#, fuzzy, python-format
+msgid ""
+"Do you really want to delete the timer \n"
+"%s?"
 msgstr ""
 "Ar tikrai norite pašalinti laikmatį\n"
 "%s ?"
@@ -148,13 +165,15 @@ msgid "Edit"
 msgstr "Redaguoti"
 
 msgid "Edit internal timer"
-msgstr "Redaguoti vidinį laikmatį"
+msgstr ""
 
+#, fuzzy
 msgid "Edit remote timer"
-msgstr "Redaguoti nuotolinį laikmatį"
+msgstr "Nuotolinis laikmatis"
 
+#, fuzzy
 msgid "Enable Partnerbox-Function in Channel Selector"
-msgstr "Įjungti Partnerbox funkciją kanalų pasirinkime"
+msgstr "Įjungti Partnerbox funkciją laikmačių nustatyme"
 
 msgid "Enable Partnerbox-Function in EPGList"
 msgstr "Įjungti Partnerbox funkciją EPG sąrašuose"
@@ -162,17 +181,20 @@ msgstr "Įjungti Partnerbox funkciją EPG sąrašuose"
 msgid "Enable Partnerbox-Function in TimerEvent"
 msgstr "Įjungti Partnerbox funkciją laikmačių nustatyme"
 
+#, fuzzy
 msgid "Enable Red Button-Function in single/multi EPG"
-msgstr "Įjungti Partnerbox 'RAUDONU' mygtuku viena(daugia)kanaliuose EPG"
+msgstr "Įjungti Partnerbox funkciją EPG sąrašuose"
 
 msgid "Enable VPS"
-msgstr "Įjungti VPS"
+msgstr ""
 
+#, fuzzy
 msgid "Enable VPS-Function in TimerEvent"
-msgstr "Įjungti VPS funkciją laikmačių nustatyme"
+msgstr "Įjungti Partnerbox funkciją laikmačių nustatyme"
 
+#, fuzzy
 msgid "Enable first Partnerbox-entry in Timeredit as default"
-msgstr "Pirmasis Partnerbox įrašas laikmačių redagavime - numatytasis"
+msgstr "Įjungti Partnerbox funkciją laikmačių nustatyme"
 
 msgid "EndTime"
 msgstr "Pabaigos laikas"
@@ -187,10 +209,11 @@ msgid "Enigma Type"
 msgstr "Enigma tipas"
 
 msgid "Enter the service pin"
-msgstr "Įrašykite kanalo PIN"
+msgstr ""
 
+#, fuzzy
 msgid "Error: "
-msgstr "Klaida: "
+msgstr "Klaida! Pasenusi"
 
 msgid "Error: No space left"
 msgstr "Klaida! Neliko laisvos vietos"
@@ -205,7 +228,7 @@ msgid "Error: Zap failed"
 msgstr "Klaida! Perjungti nepavyko"
 
 msgid "Eventview"
-msgstr "Įvykių peržiūra"
+msgstr ""
 
 msgid "Fri"
 msgstr "Pen"
@@ -219,8 +242,9 @@ msgstr "Gaunama kanalo informacija..."
 msgid "Getting EPG Information..."
 msgstr "Gaunama EPG informacija..."
 
+#, fuzzy
 msgid "Getting EPG data..."
-msgstr "Gaunami EPG duomenys..."
+msgstr "Gaunama EPG informacija..."
 
 msgid "Getting Partnerbox Bouquet Information..."
 msgstr "Gaunama Partnerbox bukietų informacija..."
@@ -229,10 +253,10 @@ msgid "Getting Partnerbox Information..."
 msgstr "Gaunama Partnerbox informacija..."
 
 msgid "Getting timerlist data..."
-msgstr "Gaunami laikmačių sąrašo duomenys..."
+msgstr ""
 
 msgid "Give Enigma time to fill epg cache..."
-msgstr "Palaukite, kol užpildomas EPG podėlis..."
+msgstr ""
 
 msgid "IP"
 msgstr "IP"
@@ -241,7 +265,7 @@ msgid "Info"
 msgstr "Informacija"
 
 msgid "Internet services are not supported!"
-msgstr "Internetiniai kanalai negalimi!"
+msgstr ""
 
 msgid "Location"
 msgstr "Padėtis"
@@ -250,7 +274,7 @@ msgid "Manage timer for other dreamboxes in network"
 msgstr "Valdykite laikmatį kituose tinklo aparatuose"
 
 msgid "Menu PiP"
-msgstr "PiP meniu"
+msgstr ""
 
 msgid "Mon"
 msgstr "Pir"
@@ -259,7 +283,7 @@ msgid "Monday"
 msgstr "pirmadienis"
 
 msgid "Move Picture in Picture"
-msgstr "Perkelti vaizdą vaizde (PiP)"
+msgstr ""
 
 msgid "NGRAB"
 msgstr "NGRAB"
@@ -273,11 +297,13 @@ msgstr "ne"
 msgid "OK"
 msgstr " Gerai"
 
+#, fuzzy
 msgid "Partnerbox"
-msgstr "Partnerbox"
+msgstr "Partnerbox įrašai"
 
+#, fuzzy
 msgid "Partnerbox - RemotePlayer"
-msgstr "Partnerbox - nuotolinis grotuvas"
+msgstr "Partnerbox įrašai"
 
 #, python-format
 msgid ""
@@ -290,11 +316,13 @@ msgstr ""
 msgid "Partnerbox Entries"
 msgstr "Partnerbox įrašai"
 
+#, fuzzy
 msgid "Partnerbox RemoteTimer"
-msgstr "Partnerbox nuotolinis laikmatis"
+msgstr "Partnerbox įrašai"
 
+#, fuzzy
 msgid "Partnerbox Setup"
-msgstr "Partnerbox sąranka"
+msgstr "Partnerbox įrašai"
 
 msgid "Partnerbox: Edit Entry"
 msgstr "Partnerbox: įrašų redagavimas"
@@ -302,11 +330,13 @@ msgstr "Partnerbox: įrašų redagavimas"
 msgid "Partnerbox: List of Entries"
 msgstr "Partnerbox: įrašų sąrašas"
 
+#, fuzzy
 msgid "Partnerbox: RemoteTV Player"
-msgstr "Partnerbox: nuotolinis TV grotuvas"
+msgstr "Partnerbox: įrašų redagavimas"
 
+#, fuzzy
 msgid "Partnerbox: RemoteTimer"
-msgstr "Partnerbox: nuotolinis laikmatis"
+msgstr "Partnerbox įrašai"
 
 msgid "Password"
 msgstr "Slaptažodis"
@@ -315,34 +345,36 @@ msgid "Port"
 msgstr "Prievadas"
 
 msgid "Power"
-msgstr "Įjungimas"
+msgstr ""
 
 msgid "Press OK to edit timer..."
-msgstr "Laikmačiui redaguoti, spauskite 'OK'...."
+msgstr ""
 
 msgid "Really delete this Partnerbox Entry?"
 msgstr "Ar tikrai ištrinti šį Partnerbox įrašą?"
 
+#, fuzzy
 msgid "Remote Player"
-msgstr "Nuotolinis grotuvas"
+msgstr "Nuotolinis laikmatis"
 
 msgid "Remote Timer"
 msgstr "Nuotolinis laikmatis"
 
+#, fuzzy
 msgid "RemoteTimer Timerlist"
-msgstr "Nuotolinių laikmačių sąrašas"
+msgstr "Nuotolinis laikmatis"
 
 msgid "Remove timer"
 msgstr "Pašalinti laikmatį"
 
 msgid "Repeated Timer are not supported!"
-msgstr "Pasikartojantys laikmačiai negalimi!"
+msgstr ""
 
 msgid "Restart"
-msgstr "Paleisti iš naujo"
+msgstr ""
 
 msgid "Restart enigma"
-msgstr "Paleisti Enigma2 iš naujo"
+msgstr ""
 
 msgid "Sat"
 msgstr "Šeš"
@@ -352,20 +384,22 @@ msgstr "šeštadienis"
 
 #, python-format
 msgid "Select action for remote timer '%s':"
-msgstr "Pasirinkite veiksmą nuotoliniam laikmačiui '%s':"
+msgstr ""
 
 #, python-format
 msgid "Select action for timer '%s':"
-msgstr "Pasirinkite veiksmą laikmačiui '%s':"
+msgstr ""
 
+#, fuzzy
 msgid "Select action:"
-msgstr "Pasirinkite veiksmą:"
+msgstr "EPG pasirinkimas"
 
+#, fuzzy
 msgid "Select operation for partnerbox"
-msgstr "Pasirinkite Partnerbox veiksmą"
+msgstr "Partnerbox sąranka"
 
 msgid "Servicelists/EPG"
-msgstr "Kanalų sąrašai/EPG duomenys"
+msgstr "Kanalų sąrašai / EPG duomenys"
 
 msgid "Show 'RemoteTV Player' in E-Menu"
 msgstr "'Nuotolinis TV grotuvas' plėtinių meniu"
@@ -373,43 +407,47 @@ msgstr "'Nuotolinis TV grotuvas' plėtinių meniu"
 msgid "Show 'RemoteTimer' in E-Menu"
 msgstr "'Nuotolinis laikmatis' plėtinių meniu"
 
+#, fuzzy
 msgid "Show 'RemoteTimer' in Event View context menu"
-msgstr "'Nuotolinis laikmatis' įvykių peržiūros kontekstiniame meniu"
+msgstr "'Nuotolinis laikmatis' plėtinių meniu"
 
+#, fuzzy
 msgid "Show 'RemoteTimer' in Eventinfo menu"
-msgstr "'Nuotolinis laikmatis' įvykių informacijos meniu"
+msgstr "'Nuotolinis laikmatis' plėtinių meniu"
 
 msgid "Show 'Stream current Service' in E-Menu"
 msgstr "'Transliuoti šį kanalą' plėtinių meniu"
 
 msgid "Show all icon for event in EPGList"
-msgstr "EPG sąraše rodyti įvykio piktogramą"
+msgstr ""
 
 msgid "Show duration time for event"
-msgstr "Rodyti įvykio trukmę"
+msgstr ""
 
 msgid "Shutdown"
-msgstr "Išjungti"
+msgstr ""
 
 msgid "Standard Zap"
-msgstr "Paprastas perjungimas"
+msgstr ""
 
+#, fuzzy
 msgid "Standby"
-msgstr "Budintis režimas"
+msgstr "į budėjimo režimą"
 
 msgid "StartTime"
 msgstr "Pradžios laikas"
 
 #, python-format
 msgid "Starting Remote Player (IP = %s)"
-msgstr "Nuotolinis TV grotuvas paleidžiamas (IP = %s)"
+msgstr ""
 
 msgid "Stream"
-msgstr "Transliacija"
+msgstr ""
 
 msgid "Stream TV from your Partnerbox"
 msgstr "TV transliacija iš Partnerbox"
 
+#, fuzzy
 msgid "Stream current Service from Partnerbox"
 msgstr "Transliuoti šį kanalą iš Partnerbox"
 
@@ -423,7 +461,7 @@ msgid "Sunday"
 msgstr "sekmadienis"
 
 msgid "The pin code you entered is wrong."
-msgstr "Įvedėte neteisingą PIN kodą."
+msgstr ""
 
 msgid "Thu"
 msgstr "Ket"
@@ -432,31 +470,33 @@ msgid "Thursday"
 msgstr "ketvirtadienis"
 
 msgid "Timer Overview"
-msgstr "Laikmačio apžvalga"
+msgstr ""
 
 msgid "Timer Type"
 msgstr "Laikmačio tipas"
 
 msgid "Timer can not be added...no locations on partnerbox available."
-msgstr "Laikmatis negali būti pridėtas... Partnerbox nėra laisvos vietos."
+msgstr ""
 
+#, fuzzy
 msgid "Timer entry"
-msgstr "Laikmačio įrašas"
+msgstr "Laikmačio tipas"
 
 msgid "Timer event deleted successfully."
-msgstr "Laikmačio įrašas pašalintas."
+msgstr ""
 
 msgid "Timer event was created successfully."
-msgstr "Laikmačio įrašas sukurtas."
+msgstr ""
 
+#, fuzzy
 msgid "Timer menu"
-msgstr "Laikmačio meniu"
+msgstr "Laikmačio tipas"
 
 msgid "Toggle Standby"
-msgstr "Perjungti budėjimo režimą"
+msgstr ""
 
 msgid "Toggle status (on/off)"
-msgstr "Perjungimo būsena (įjungta/išjungta)"
+msgstr ""
 
 msgid "Tue"
 msgstr "Ant"
@@ -465,7 +505,7 @@ msgid "Tuesday"
 msgstr "antradienis"
 
 msgid "Wakeup"
-msgstr "Pažadinti"
+msgstr ""
 
 msgid "Wed"
 msgstr "Tre"
@@ -474,10 +514,10 @@ msgid "Wednesday"
 msgstr "trečiadienis"
 
 msgid "Yes"
-msgstr "taip"
+msgstr ""
 
 msgid "Yes (safe mode)"
-msgstr "Taip (saugiuoju režimu)"
+msgstr ""
 
 msgid "You can not add services or bouquets from Enigma1-receivers into the channellist..."
 msgstr "Jūs negalite įkelti į kanalų sąrašą kanalų, ar bukietų iš Enigma1 imtuvų..."
@@ -486,19 +526,19 @@ msgid "Zap"
 msgstr "Perjungti"
 
 msgid "Zap focus to Picture in Picture"
-msgstr "Perjungti į vaizdą vaizde (PiP)"
+msgstr ""
 
 msgid "Zap focus to main screen"
-msgstr "Perjungti į pagrindinį ekraną"
+msgstr ""
 
 msgid "Zap to service when streaming"
 msgstr "Perjungti į transliuojamą kanalą"
 
 msgid "Zap/"
-msgstr "Perjungti/"
+msgstr ""
 
 msgid "Zapping to "
-msgstr "Perjungiama į "
+msgstr ""
 
 msgid "about to start"
 msgstr "pradedama"
