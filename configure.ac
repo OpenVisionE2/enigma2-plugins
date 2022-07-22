@@ -583,7 +583,7 @@ subsdownloader2/src/SourceCode/xbmc_subtitles/services/Makefile
 sudoku/Makefile
 sudoku/meta/Makefile
 sudoku/src/Makefile
-sodoku/src/pic/Makefile
+sudoku/src/pic/Makefile
 
 svdrp/Makefile
 svdrp/meta/Makefile
