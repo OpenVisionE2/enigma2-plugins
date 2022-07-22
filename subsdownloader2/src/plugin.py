@@ -37,7 +37,7 @@ from Screens.InfoBar import MoviePlayer as MP_parent
 from Components.AVSwitch import AVSwitch
 from Components.ActionMap import ActionMap
 from Plugins.Plugin import PluginDescriptor
-from Tools.Directories import fileExists, pathExists, resolveFilename, SCOPE_PLUGINS
+from Tools.Directories import fileExists, isPluginInstalled, resolveFilename, SCOPE_PLUGINS
 from time import strftime as time_strftime
 from time import localtime as time_localtime
 from re import compile as re_compile
@@ -46,17 +46,17 @@ from enigma import eConsoleAppContainer, eServiceReference, ePicLoad, getDesktop
 from Components.SystemInfo import BoxInfo
 
 #import players like Picture player, dvd player, music palyer
-if os.path.exists(resolveFilename(SCOPE_PLUGINS, "Extensions/PicturePlayer/plugin.pyo")):
+if isPluginInstalled("PicturePlayer"):
 	from Plugins.Extensions.PicturePlayer.plugin import Pic_Thumb, picshow
 	PicPlayerAviable = True
 else:
 	PicPlayerAviable = False
-if os.path.exists(resolveFilename(SCOPE_PLUGINS, "Extensions/DVDPlayer/plugin.pyo")):
+if isPluginInstalled("DVDPlayer"):
 	from Plugins.Extensions.DVDPlayer.plugin import DVDPlayer
 	DVDPlayerAviable = True
 else:
 	DVDPlayerAviable = False
-if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/MerlinMusicPlayer/plugin.pyo")):
+if isPluginInstalled("MerlinMusicPlayer"):
 	from Plugins.Extensions.MerlinMusicPlayer.plugin import MerlinMusicPlayerScreen, Item
 	MMPavaiable = True
 else:
@@ -87,7 +87,7 @@ XBMC_PLUGINS = list_XBMC_Periscope_plugins(resolveFilename(SCOPE_PLUGINS, 'Exten
 for server in XBMC_PLUGINS:
 	SUBTITLE_SERVER_LIST.append((server, server))
 config.plugins.subsdownloader.subtitleserver = ConfigSelection(default="OpenSubtitle", choices=SUBTITLE_SERVER_LIST)
-if os.path.exists(resolveFilename(SCOPE_PLUGINS, 'Extensions/DMnapi/DMnapi.py')):
+if isPluginInstalled("DMnapi"):
 	try:
 		from Plugins.Extensions.DMnapi.DMnapi import DMnapi, dmnapi_version
 		SUBTITLE_SERVER_LIST.append(('DMnapi', 'DMnapi'))

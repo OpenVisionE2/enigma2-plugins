@@ -61,7 +61,7 @@ class Modules(object):
 		files = [fname[:-3] for fname in os.listdir(path) if fname.endswith(".py") and not fname.startswith("__")]
 		log.debug(files)
 		if not files:
-			files = [fname[:-4] for fname in os.listdir(path) if fname.endswith(".pyo")]
+			files = [fname[:-4] for fname in os.listdir(path) if fname.endswith(".pyo") or fname.endswith(".pyc")]
 			log.debug(files)
 
 		# Import modules

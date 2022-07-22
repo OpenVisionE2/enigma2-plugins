@@ -35,7 +35,7 @@ from Components.PluginComponent import plugins
 from Components.PluginList import PluginList, PluginEntryComponent
 from Components.Sources.StaticText import StaticText
 from Components.config import config, getConfigListEntry, ConfigSubsection, ConfigSelection
-from Tools.Directories import fileExists, pathExists, resolveFilename, SCOPE_PLUGINS
+from Tools.Directories import fileExists, pathExists, resolveFilename, SCOPE_PLUGINS, isPluginInstalled
 from Tools.LoadPixmap import LoadPixmap
 from enigma import RT_HALIGN_LEFT, eListboxPythonMultiContent, gFont, getDesktop
 import pickle
@@ -494,84 +494,84 @@ def MPcallbackFunc(answer):
 				askBM.append((s, s))
 			EMsession.openWithCallback(BookmarksCallback, ChoiceBox, title=_("Select bookmark..."), list=askBM)
 	elif answer == "PICTURES":
-		if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/PicturePlayer/plugin.pyo")):
+		if isPluginInstalled("PicturePlayer"):
 			from Plugins.Extensions.PicturePlayer.plugin import picshow
 			EMsession.open(picshow)
 		else:
 			EMsession.open(MessageBox, text=_('Picture-player is not installed!'), type=MessageBox.TYPE_ERROR)
 	elif answer == "MUSIC":
-		if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/MerlinMusicPlayer/plugin.pyo")) and (config.plugins.easyMedia.music.value == "merlinmp"):
+		if isPluginInstalled("MerlinMusicPlayer") and (config.plugins.easyMedia.music.value == "merlinmp"):
 			from Plugins.Extensions.MerlinMusicPlayer.plugin import MerlinMusicPlayerFileList
 			servicelist = None
 			EMsession.open(MerlinMusicPlayerFileList, servicelist)
-		elif fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/MediaPlayer/plugin.pyo")) and (config.plugins.easyMedia.music.value == "mediaplayer"):
+		elif isPluginInstalled("MediaPlayer") and (config.plugins.easyMedia.music.value == "mediaplayer"):
 			from Plugins.Extensions.MediaPlayer.plugin import MediaPlayer
 			EMsession.open(MediaPlayer)
 		else:
 			EMsession.open(MessageBox, text=_('No Music-Player installed!'), type=MessageBox.TYPE_ERROR)
 	elif answer == "FILES":
-		if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/Tuxcom/plugin.pyo")) and (config.plugins.easyMedia.files.value == "tuxcom"):
+		if isPluginInstalled("Tuxcom") and (config.plugins.easyMedia.files.value == "tuxcom"):
 			from Plugins.Extensions.Tuxcom.plugin import TuxComStarter
 			EMsession.open(TuxComStarter)
-		elif fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/DreamExplorer/plugin.pyo")) and (config.plugins.easyMedia.files.value == "dreamexplorer"):
+		elif isPluginInstalled("DreamExplorer") and (config.plugins.easyMedia.files.value == "dreamexplorer"):
 			from Plugins.Extensions.DreamExplorer.plugin import DreamExplorerII
 			EMsession.open(DreamExplorerII)
-		elif fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/Filebrowser/plugin.pyo")) and (config.plugins.easyMedia.files.value == "filebrowser"):
+		elif isPluginInstalled("Filebrowser") and (config.plugins.easyMedia.files.value == "filebrowser"):
 			from Plugins.Extensions.Filebrowser.plugin import FilebrowserScreen
 			EMsession.open(FilebrowserScreen)
 		else:
 			EMsession.open(MessageBox, text=_('No File-Manager installed!'), type=MessageBox.TYPE_ERROR)
 	elif answer == "WEATHER":
-		if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/WeatherPlugin/plugin.pyo")):
+		if isPluginInstalled("WeatherPlugin"):
 			from Plugins.Extensions.WeatherPlugin.plugin import MSNWeatherPlugin
 			EMsession.open(MSNWeatherPlugin)
 		else:
 			EMsession.open(MessageBox, text=_('Weather Plugin is not installed!'), type=MessageBox.TYPE_ERROR)
 	elif answer == "DVD":
-		if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/DVDPlayer/plugin.pyo")):
+		if isPluginInstalled("DVDPlayer"):
 			from Plugins.Extensions.DVDPlayer.plugin import DVDPlayer
 			EMsession.open(DVDPlayer)
 		else:
 			EMsession.open(MessageBox, text=_('DVDPlayer Plugin is not installed!'), type=MessageBox.TYPE_ERROR)
 	elif answer == "MYTUBE":
-		if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/MyTube/plugin.pyo")):
+		if isPluginInstalled("MyTube"):
 			from Plugins.Extensions.MyTube.plugin import MyTubeMain
 			MyTubeMain(EMsession)
 		else:
 			EMsession.open(MessageBox, text=_('MyTube Plugin is not installed!'), type=MessageBox.TYPE_ERROR)
 	elif answer == "INTERNETRADIO":
-		if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/InternetRadio/plugin.pyo")):
+		if isPluginInstalled("InternetRadio"):
 			from Plugins.Extensions.InternetRadio.InternetRadioScreen import InternetRadioScreen
 			EMsession.open(InternetRadioScreen)
 		else:
 			EMsession.open(MessageBox, text=_('SHOUTcast Plugin is not installed!'), type=MessageBox.TYPE_ERROR)
 	elif answer == "ZDF":
-		if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/ZDFMediathek/plugin.pyo")):
+		if isPluginInstalled("ZDFMediathek"):
 			from Plugins.Extensions.ZDFMediathek.plugin import ZDFMediathek
 			EMsession.open(ZDFMediathek)
 		else:
 			EMsession.open(MessageBox, text=_('ZDFmediathek Plugin is not installed!'), type=MessageBox.TYPE_ERROR)
 	elif answer == "VLC":
-		if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/VlcPlayer/plugin.pyo")):
+		if isPluginInstalled("VlcPlayer"):
 			from Plugins.Extensions.VlcPlayer.plugin import main
 			main(EMsession)
 		else:
 			EMsession.open(MessageBox, text=_('VLC Player is not installed!'), type=MessageBox.TYPE_ERROR)
 	elif answer == "IDREAM":
-		if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/MerlinMusicPlayer/plugin.pyo")):
+		if isPluginInstalled("MerlinMusicPlayer"):
 			from Plugins.Extensions.MerlinMusicPlayer.plugin import iDreamMerlin
 			servicelist = None
 			EMsession.open(iDreamMerlin, servicelist)
 		else:
 			EMsession.open(MessageBox, text=_('Merlin iDream is not installed!'), type=MessageBox.TYPE_ERROR)
 	elif answer == "MYVIDEO":
-		if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/MyVideoPlayer/plugin.pyo")):
+		if isPluginInstalled("MyVideoPlayer"):
 			from Plugins.Extensions.MyVideoPlayer.plugin import Vidtype
 			EMsession.open(Vidtype)
 		else:
 			EMsession.open(MessageBox, text=_('MyVideo Player is not installed!'), type=MessageBox.TYPE_ERROR)
 	elif answer == "VIDEODB":
-		if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/VideoDB/plugin.pyo")):
+		if isPluginInstalled("VideoDB"):
 			from Plugins.Extensions.VideoDB.plugin import main as vdbmain
 			vdbmain(EMsession)
 		else:

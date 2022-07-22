@@ -21,7 +21,7 @@ from __future__ import print_function
 #  distributed other than under the conditions noted above.
 #
 from enigma import getDesktop
-from Tools.Directories import fileExists, resolveFilename, SCOPE_HDD, SCOPE_GUISKIN, SCOPE_PLUGIN
+from Tools.Directories import isPluginInstalled
 
 
 def printStackTrace():
@@ -70,23 +70,18 @@ class SkinTools():
 
 class Installed:
     def __init__(self):
-        self.GP3 = resolveFilename(SCOPE_PLUGIN, "Bp/geminimain/plugin.pyo")
-        self.BludiscPlayer = self.pluginInstalled("BludiscPlayer")
-        self.DVDPlayer = self.pluginInstalled("DVDPlayer")
-        self.TMDb = self.pluginInstalled("TMDb")
-        self.IMDb = self.pluginInstalled("IMDb")
-        self.OFDb = self.pluginInstalled("OFDb")
-        self.TheTVDB = self.pluginInstalled("TheTVDB")
-        self.AdvancedProgramGuide = self.pluginInstalled("AdvancedProgramGuide")
-        self.MerlinEPG = self.pluginInstalled("MerlinEPG")
-        self.MerlinEPGCenter = self.pluginInstalled("MerlinEPGCenter")
-        self.CoolTVGuide = self.pluginInstalled("CoolTVGuide")
-        self.YTTrailer = self.pluginInstalled("YTTrailer")
-        self.pipzap = self.pluginInstalled("pipzap")
-
-    def pluginInstalled(self, name):
-        plugin_path = resolveFilename(SCOPE_PLUGIN, "Extensions/%s/plugin.pyo" % (name))
-        return fileExists(plugin_path)
+        self.BludiscPlayer = isPluginInstalled("BludiscPlayer")
+        self.DVDPlayer = isPluginInstalled("DVDPlayer")
+        self.TMDb = isPluginInstalled("TMDb")
+        self.IMDb = isPluginInstalled("IMDb")
+        self.OFDb = isPluginInstalled("OFDb")
+        self.TheTVDB = isPluginInstalled("TheTVDB")
+        self.AdvancedProgramGuide = isPluginInstalled("AdvancedProgramGuide")
+        self.MerlinEPG = isPluginInstalled("MerlinEPG")
+        self.MerlinEPGCenter = isPluginInstalled("MerlinEPGCenter")
+        self.CoolTVGuide = isPluginInstalled("CoolTVGuide")
+        self.YTTrailer = isPluginInstalled("YTTrailer")
+        self.pipzap = isPluginInstalled("pipzap")
 
 
 pluginPresent = Installed()

@@ -4,7 +4,7 @@ SUBDIRS = res
 
 install_PYTHON = *.py
 
-install_DATA = pyo2xml dreamexplorer.png
+install_DATA = pyo2xml pyc2xml dreamexplorer.png
 
 install-data-hook:
 	chmod +x $(DESTDIR)$(installdir)/pyo2xml

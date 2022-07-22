@@ -5,7 +5,7 @@ from __future__ import print_function
 from . import _
 from enigma import eEPGCache, eServiceReference, eServiceCenter, RT_HALIGN_LEFT, RT_HALIGN_RIGHT, eRect, getDesktop, \
 		RT_HALIGN_CENTER, RT_VALIGN_CENTER, RT_WRAP, eListboxPythonMultiContent, gFont, ePicLoad
-from Tools.Directories import resolveFilename, SCOPE_GUISKIN, fileExists, SCOPE_PLUGINS
+from Tools.Directories import resolveFilename, SCOPE_GUISKIN, fileExists, SCOPE_PLUGINS, isPluginInstalled
 from Tools.LoadPixmap import LoadPixmap
 from Tools.Alternatives import GetWithAlternative
 from ServiceReference import ServiceReference
@@ -614,7 +614,7 @@ class EPGSearch(EPGSelection):
 		self.select = False
 		self.do_filter = None
 		self.eventid = None
-		self.isTMBD = fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/TMBD/plugin.pyo"))
+		self.isTMBD = isPluginInstalled("TMBD")
 		# Partnerbox
 		if PartnerBoxIconsEnabled:
 			EPGSelection.PartnerboxInit(self, False)
@@ -762,7 +762,7 @@ class EPGSearch(EPGSelection):
 				pass
 
 	def runTMBD(self):
-		if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/TMBD/plugin.pyo")):
+		if isPluginInstalled("TMBD"):
 			from Plugins.Extensions.TMBD.plugin import TMBD
 			cur = self["list"].getCurrent()
 			if cur[0] is not None:
@@ -817,9 +817,9 @@ class EPGSearch(EPGSelection):
 				(_("Save search as AutoTimer"), self.addAutoTimer),
 				(_("Export selected as AutoTimer"), self.exportAutoTimer),
 			))
-		if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/TMDb/plugin.pyo")):
+		if isPluginInstalled("TMBD"):
 			options.append((_("Search for TMDb info"), self.opentmdb))
-		if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/IMDb/plugin.pyo")):
+		if isPluginInstalled("IMDb"):
 			options.append((_("Open selected in IMDb"), self.openImdb))
 		history = config.plugins.epgsearch.history.value
 		if len(history) > 0:

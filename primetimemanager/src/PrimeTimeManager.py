@@ -74,7 +74,7 @@ from ServiceReference import ServiceReference
 import skin
 from Tools.BoundFunction import boundFunction
 from Tools.Notifications import AddPopup
-from Tools.Directories import resolveFilename, SCOPE_GUISKIN, SCOPE_PLUGIN, fileExists, SCOPE_PLUGINS
+from Tools.Directories import resolveFilename, SCOPE_GUISKIN, SCOPE_PLUGIN, isPluginInstalled, SCOPE_PLUGINS
 from Tools.LoadPixmap import LoadPixmap
 import NavigationInstance
 from ResultScreen import ResultScreen
@@ -2483,10 +2483,10 @@ class EventViewSuperSimple(Screen, EventViewBase):
 		self["key_blue"] = Button("")
 		self.TMBD = False
 		self.IMDb = False
-		if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/TMBD/plugin.pyo")):
+		if isPluginInstalled("TMBD"):
 			self.TMBD = True
 			self["key_blue"].setText(_("Lookup in TMBD"))
-		if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/IMDb/plugin.pyo")):
+		if isPluginInstalled("IMDb"):
 			self.IMDb = True
 			self["key_yellow"].setText(_("Search in IMDb"))
 		if not self.IMDb and self.TMBD:
@@ -2539,7 +2539,7 @@ class EventViewSuperSimple(Screen, EventViewBase):
 			pass
 
 	def runTMBD(self):
-		if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/TMBD/plugin.pyo")):
+		if isPluginInstalled("TMBD"):
 			try:
 				from Plugins.Extensions.TMBD.plugin import TMBD
 			except:
@@ -2582,7 +2582,7 @@ class EventViewSuperSimple(Screen, EventViewBase):
 					pass
 
 	def runIMDb(self):
-		if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/IMDb/plugin.pyo")):
+		if isPluginInstalled("IMDb"):
 			cur = self.event
 			if cur is not None:
 				try:
