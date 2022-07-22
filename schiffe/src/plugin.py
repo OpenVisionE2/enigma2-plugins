@@ -16,13 +16,13 @@ from Components.Sources.CanvasSource import CanvasSource
 from Components.Button import Button
 from Components.Label import Label
 from Components.ActionMap import ActionMap
-from Tools.Directories import fileExists, resolveFilename, SCOPE_CURRENT_PLUGIN, SCOPE_CURRENT_SKIN
+from Tools.Directories import fileExists, resolveFilename, SCOPE_PLUGIN, SCOPE_GUISKIN
 from enigma import eTimer, gFont, getDesktop, RT_HALIGN_CENTER, RT_VALIGN_CENTER
 from xml.etree.cElementTree import parse
 from random import randint
 from os import remove
 VERSION = "7.1r0"
-SAVEFILE = resolveFilename(SCOPE_CURRENT_PLUGIN, "Extensions/Schiffe/schiffe.sav")
+SAVEFILE = resolveFilename(SCOPE_PLUGIN, "Extensions/Schiffe/schiffe.sav")
 
 XMAX = 10
 YMAX = 10
@@ -153,9 +153,9 @@ class Schiffe(Screen):
             <screen position="center,center" size="%d,%d" title="Schiffe versenken %s" >
                 <widget source="Canvas" render="Canvas" position="5,20" size="%d,%d" />
                 <widget name="message" position="%d,%d" size="140,40" valign="center" halign="center" font="Regular;21"/>
-                <ePixmap name="green"    position="%d,%d"   zPosition="4" size="140,40" pixmap="skin_default/buttons/green.png" transparent="1" alphatest="on" />
-                <ePixmap name="blue" position="%d,%d" zPosition="4" size="140,40" pixmap="skin_default/buttons/blue.png" transparent="1" alphatest="on" />
-                <ePixmap name="red"   position="%d,%d" zPosition="4" size="140,40" pixmap="skin_default/buttons/red.png" transparent="1" alphatest="on" />
+                <ePixmap name="green"    position="%d,%d"   zPosition="4" size="140,40" pixmap="buttons/green.png" transparent="1" alphatest="on" />
+                <ePixmap name="blue" position="%d,%d" zPosition="4" size="140,40" pixmap="buttons/blue.png" transparent="1" alphatest="on" />
+                <ePixmap name="red"   position="%d,%d" zPosition="4" size="140,40" pixmap="buttons/red.png" transparent="1" alphatest="on" />
                 <widget name="key_green"    position="%d,%d"   zPosition="5" size="140,40" valign="center" halign="center" font="Regular;21" transparent="1" foregroundColor="white" shadowColor="black" shadowOffset="-1,-1" />
                 <widget name="key_blue" position="%d,%d" zPosition="5" size="140,40" valign="center" halign="center"  font="Regular;21" transparent="1" foregroundColor="white" shadowColor="black" shadowOffset="-1,-1" />
                 <widget name="key_red"   position="%d,%d" zPosition="5" size="140,40" valign="center" halign="center" font="Regular;21" transparent="1" foregroundColor="white" shadowColor="black" shadowOffset="-1,-1" />
@@ -181,7 +181,7 @@ class Schiffe(Screen):
                 </screen>"""
 
         # get window background color - find xml for actual skin...
-        filename = resolveFilename(SCOPE_CURRENT_SKIN, "skin.xml")
+        filename = resolveFilename(SCOPE_GUISKIN, "skin.xml")
         actualSkin = parse(filename).getroot()
 
         # get colors from skin and write to dictionary

@@ -47,10 +47,10 @@ class FilebrowserScreen(Screen, HelpableScreen):
             <widget name="yellow" position="270,390" size="120,30" valign="center" halign="center" zPosition="1" transparent="1" foregroundColor="white" font="Regular;18"/>
             <widget name="blue" position="400,390" size="120,30" valign="center" halign="center" zPosition="1" transparent="1" foregroundColor="white" font="Regular;18"/>
 
-            <ePixmap name="pred" position="10,390" size="120,30" zPosition="0" pixmap="skin_default/buttons/red.png" transparent="1" alphatest="on"/>
-            <ePixmap name="pgreen" position="140,390" size="120,30" zPosition="0" pixmap="skin_default/buttons/green.png" transparent="1" alphatest="on"/>
-            <ePixmap name="pyellow" position="270,390" size="120,30" zPosition="0" pixmap="skin_default/buttons/yellow.png" transparent="1" alphatest="on"/>
-            <ePixmap name="pblue" position="400,390" size="120,30" zPosition="0" pixmap="skin_default/buttons/blue.png" transparent="1" alphatest="on"/>
+            <ePixmap name="pred" position="10,390" size="120,30" zPosition="0" pixmap="buttons/red.png" transparent="1" alphatest="on"/>
+            <ePixmap name="pgreen" position="140,390" size="120,30" zPosition="0" pixmap="buttons/green.png" transparent="1" alphatest="on"/>
+            <ePixmap name="pyellow" position="270,390" size="120,30" zPosition="0" pixmap="buttons/yellow.png" transparent="1" alphatest="on"/>
+            <ePixmap name="pblue" position="400,390" size="120,30" zPosition="0" pixmap="buttons/blue.png" transparent="1" alphatest="on"/>
         </screen>
         """
 

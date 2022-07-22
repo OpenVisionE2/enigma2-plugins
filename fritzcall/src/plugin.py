@@ -424,15 +424,15 @@ class FritzMenu(Screen, HelpableScreen):
 					<widget name="FBFMailbox" position="%d,%d" size="%d,%d" font="Regular;%d" />
 					<widget name="mailbox_inactive" pixmap="%s" position="%d,%d" size="15,16" transparent="1" alphatest="blend"/>
 					<widget name="mailbox_active" pixmap="%s" position="%d,%d" size="15,16" transparent="1" alphatest="blend"/>
-					<ePixmap position="%d,%d" zPosition="4" size="140,40" pixmap="skin_default/buttons/yellow.png" transparent="1" alphatest="blend" />
+					<ePixmap position="%d,%d" zPosition="4" size="140,40" pixmap="buttons/yellow.png" transparent="1" alphatest="blend" />
 					<widget name="key_yellow" position="%d,%d" zPosition="5" size="140,40" valign="center" halign="center" font="Regular;21" transparent="1" foregroundColor="white" shadowColor="black" shadowOffset="-1,-1" />
 					""" % (
 							40, 5 + 2 * fontSize + 10 + varLinePos * fontSize + 10,  # position mailbox
 							width - 40 - 20, fontSize,  # size mailbox
 							fontSize - 2,
-							"skin_default/buttons/button_green_off.png",
+							"buttons/button_green_off.png",
 							20, 5 + 2 * fontSize + 10 + varLinePos * fontSize + 10 + (fontSize - 16) // 2,  # position button mailbox
-							"skin_default/buttons/button_green.png",
+							"buttons/button_green.png",
 							20, 5 + 2 * fontSize + 10 + varLinePos * fontSize + 10 + (fontSize - 16) // 2,  # position button mailbox
 							noButtons * buttonsGap + (noButtons - 1) * 140, buttonsVPos,
 							noButtons * buttonsGap + (noButtons - 1) * 140, buttonsVPos,
@@ -450,9 +450,9 @@ class FritzMenu(Screen, HelpableScreen):
 							40, 5 + 2 * fontSize + 10 + varLinePos * fontSize + 10,  # position dect
 							width - 40 - 20, fontSize,  # size dect
 							fontSize - 2,
-							"skin_default/buttons/button_green_off.png",
+							"buttons/button_green_off.png",
 							20, 5 + 2 * fontSize + 10 + varLinePos * fontSize + 10 + (fontSize - 16) // 2,  # position button dect
-							"skin_default/buttons/button_green.png",
+							"buttons/button_green.png",
 							20, 5 + 2 * fontSize + 10 + varLinePos * fontSize + 10 + (fontSize - 16) // 2,  # position button dect
 					)
 				varLinePos += 1
@@ -468,9 +468,9 @@ class FritzMenu(Screen, HelpableScreen):
 							40, 5 + 2 * fontSize + 10 + varLinePos * fontSize + 10,  # position dect
 							width - 40 - 20, fontSize,  # size dect
 							fontSize - 2,
-							"skin_default/buttons/button_green_off.png",
+							"buttons/button_green_off.png",
 							20, 5 + 2 * fontSize + 10 + varLinePos * fontSize + 10 + (fontSize - 16) // 2,  # position button dect
-							"skin_default/buttons/button_green.png",
+							"buttons/button_green.png",
 							20, 5 + 2 * fontSize + 10 + varLinePos * fontSize + 10 + (fontSize - 16) // 2,  # position button dect
 					)
 				varLinePos += 1
@@ -486,9 +486,9 @@ class FritzMenu(Screen, HelpableScreen):
 							40, 5 + 2 * fontSize + 10 + varLinePos * fontSize + 10,  # position dect
 							width - 40 - 20, fontSize,  # size dect
 							fontSize - 2,
-							"skin_default/buttons/button_green_off.png",
+							"buttons/button_green_off.png",
 							20, 5 + 2 * fontSize + 10 + varLinePos * fontSize + 10 + (fontSize - 16) // 2,  # position button dect
-							"skin_default/buttons/button_green.png",
+							"buttons/button_green.png",
 							20, 5 + 2 * fontSize + 10 + varLinePos * fontSize + 10 + (fontSize - 16) // 2,  # position button dect
 					)
 				varLinePos += 1
@@ -523,30 +523,30 @@ class FritzMenu(Screen, HelpableScreen):
 							40, 5 + 2 * fontSize + 10,  # position internet
 							width - 40, 2 * fontSize,  # size internet
 							fontSize - 2,
-							"skin_default/buttons/button_green_off.png",
+							"buttons/button_green_off.png",
 							20, 5 + 2 * fontSize + 10 + (fontSize - 16) // 2,  # position button internet
-							"skin_default/buttons/button_green.png",
+							"buttons/button_green.png",
 							20, 5 + 2 * fontSize + 10 + (fontSize - 16) // 2,  # position button internet
 							40, 5 + 2 * fontSize + 10 + 2 * fontSize + 10,  # position dsl
 							width - 40 - 20, fontSize,  # size dsl
 							fontSize - 2,
-							"skin_default/buttons/button_green_off.png",
+							"buttons/button_green_off.png",
 							20, 5 + 2 * fontSize + 10 + 2 * fontSize + 10 + (fontSize - 16) // 2,  # position button dsl
-							"skin_default/buttons/button_green.png",
+							"buttons/button_green.png",
 							20, 5 + 2 * fontSize + 10 + 2 * fontSize + 10 + (fontSize - 16) // 2,  # position button dsl
 							40, 5 + 2 * fontSize + 10 + 3 * fontSize + 10,  # position wlan
 							width - 40 - 20, fontSize,  # size wlan
 							fontSize - 2,
-							"skin_default/buttons/button_green_off.png",
+							"buttons/button_green_off.png",
 							20, 5 + 2 * fontSize + 10 + 3 * fontSize + 10 + (fontSize - 16) // 2,  # position button wlan
-							"skin_default/buttons/button_green.png",
+							"buttons/button_green.png",
 							20, 5 + 2 * fontSize + 10 + 3 * fontSize + 10 + (fontSize - 16) // 2,  # position button wlan
 							mailboxLine,
 							dectLine,
 							faxLine,
 							rufumlLine,
-							buttonsGap, buttonsVPos, "skin_default/buttons/red.png", buttonsGap, buttonsVPos,
-							buttonsGap + 140 + buttonsGap, buttonsVPos, "skin_default/buttons/green.png", buttonsGap + 140 + buttonsGap, buttonsVPos,
+							buttonsGap, buttonsVPos, "buttons/red.png", buttonsGap, buttonsVPos,
+							buttonsGap + 140 + buttonsGap, buttonsVPos, "buttons/green.png", buttonsGap + 140 + buttonsGap, buttonsVPos,
 							)
 
 			Screen.__init__(self, session)

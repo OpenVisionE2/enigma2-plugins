@@ -16,8 +16,8 @@ from Components.Console import Console
 from Tools.Directories import pathExists, createDir
 from Tools.BoundFunction import boundFunction
 from Tools.LoadPixmap import LoadPixmap
-from Tools.Directories import resolveFilename, SCOPE_SKINS
-SkinDefaultPath = resolveFilename(SCOPE_SKINS, "")
+from Tools.Directories import resolveFilename, SCOPE_SKINSS
+SkinDefaultPath = resolveFilename(SCOPE_SKINSS, "")
 from Components.ConfigList import ConfigListScreen
 from Components.config import config, getConfigListEntry, ConfigSubsection, ConfigInteger, ConfigYesNo, ConfigText, ConfigSelection, NoSave
 config.plugins.eparted = ConfigSubsection()

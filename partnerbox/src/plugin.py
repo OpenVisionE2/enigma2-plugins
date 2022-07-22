@@ -45,7 +45,7 @@ from Components.config import ConfigSubsection, ConfigSubList, ConfigIP, ConfigI
 from Components.GUIComponent import GUIComponent
 from enigma import eTimer, eServiceReference, eListboxPythonMultiContent, eListbox, gFont, RT_HALIGN_LEFT, RT_HALIGN_RIGHT, RT_VALIGN_CENTER, RT_VALIGN_TOP
 from Tools.LoadPixmap import LoadPixmap
-from Tools.Directories import resolveFilename, SCOPE_SKIN_IMAGE
+from Tools.Directories import resolveFilename, SCOPE_GUISKIN
 from Tools.FuzzyDate import FuzzyTime
 from timer import TimerEntry
 from time import localtime, time
@@ -63,7 +63,7 @@ from skin import fonts, parameters
 
 SIGN = '°'
 ENIGMA_WEBSERVICE_ID = 0x1012
-SKINDEFAULT = resolveFilename(SCOPE_SKIN_IMAGE, 'skin_default/')  # /usr/share/enigma2/skin_default
+SKINDEFAULT = resolveFilename(SCOPE_GUISKIN, 'skin_default/')  # /usr/share/enigma2/skin_default
 
 
 config.plugins.Partnerbox = ConfigSubsection()

@@ -16,12 +16,12 @@ from Components.Sources.CanvasSource import CanvasSource
 from Plugins.Plugin import PluginDescriptor
 from Screens.MessageBox import MessageBox
 from Screens.Screen import Screen
-from Tools.Directories import fileExists, resolveFilename, SCOPE_CURRENT_SKIN, SCOPE_CURRENT_PLUGIN
+from Tools.Directories import fileExists, resolveFilename, SCOPE_GUISKIN, SCOPE_PLUGIN
 from enigma import eTimer, gFont, getDesktop, RT_HALIGN_CENTER, RT_VALIGN_CENTER
 from random import seed, randint
 from xml.etree.cElementTree import parse
 VERSION = "7.1r0"
-SAVEFILE = resolveFilename(SCOPE_CURRENT_PLUGIN, "Extensions/Sudoku/Sudoku.sav")
+SAVEFILE = resolveFilename(SCOPE_PLUGIN, "Extensions/Sudoku/Sudoku.sav")
 helper = 'The playing strength can be changed with the "<" and ">"\nkeys, pressing the "0" the current field is deleted.\nUse CH + / CH- to change level. When you quit the game,\nthe game state is saved in the plugin directory and reloaded\nautomatically on next start ...good fun!\nDark Volli - by Robert Wohleb\nModded by Lululla - Skin by MMark at 20220714'
 
 
@@ -276,7 +276,7 @@ class Sudoku(Screen):
 		# i'm not really sure if this is the right way to get the background color from a skinned window?
 		# there must exist a better way? everything is taken from skin.py
 		# find xml for actual skin...
-		filename = resolveFilename(SCOPE_CURRENT_SKIN) + "skin.xml"
+		filename = resolveFilename(SCOPE_GUISKIN) + "skin.xml"
 		actualSkin = parse(filename).getroot()
 
 		# get colors from skin and write to dictionary

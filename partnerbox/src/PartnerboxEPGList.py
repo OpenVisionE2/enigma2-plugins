@@ -23,7 +23,7 @@ from enigma import eEPGCache, eListbox, eListboxPythonMultiContent, loadPNG, gFo
 from Components.config import config
 from time import localtime, strftime, ctime, time
 from skin import parameters as skinparameter
-from Tools.Directories import resolveFilename, SCOPE_SKIN_IMAGE
+from Tools.Directories import resolveFilename, SCOPE_GUISKIN
 from Tools.LoadPixmap import LoadPixmap
 from .PartnerboxFunctions import getServiceRef
 from . import PartnerboxFunctions as partnerboxfunctions
@@ -35,7 +35,7 @@ basebuildMultiEntry = None
 
 picDY = 0
 sf = 1
-SKINDEFAULT = resolveFilename(SCOPE_SKIN_IMAGE, 'skin_default/')  # /usr/share/enigma2/skin_default
+SKINDEFAULT = resolveFilename(SCOPE_GUISKIN, 'skin_default/')  # /usr/share/enigma2/skin_default
 
 
 def Partnerbox_EPGListInit():
