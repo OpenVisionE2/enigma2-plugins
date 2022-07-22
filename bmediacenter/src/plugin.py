@@ -11,13 +11,13 @@ from Plugins.Plugin import PluginDescriptor
 from Screens.Screen import Screen
 from Screens.MessageBox import MessageBox
 from skin import loadSkin
-from Tools.Directories import pathExists, fileExists
+from Tools.Directories import pathExists, fileExists, resolveFilename, SCOPE_PLUGINS
 from .__init__ import _
-
+from Components.Console import Console
 config.plugins.mc_global = ConfigSubsection()
 config.plugins.mc_global.vfd = ConfigSelection(default='off', choices=[('off', 'off'), ('on', 'on')])
 config.plugins.mc_globalsettings.upnp_enable = ConfigYesNo(default=False)
-loadSkin("/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/skin.xml")
+loadSkin(resolveFilename(SCOPE_PLUGINS, "Extensions/BMediaCenter/skins/defaultHD/skin.xml"))
 #try:
 #	from enigma import evfd
 #	config.plugins.mc_global.vfd.value = 'on'
@@ -31,7 +31,7 @@ except ImportError:
 	print("Media Center: Import DVDPlayer failed")
 	dvdplayer = False
 
-mcpath = '/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/'
+mcpath = resolveFilename(SCOPE_PLUGINS, 'Extensions/BMediaCenter/skins/defaultHD/images/')
 
 # Subclass of List to support horizontal menu
 
@@ -102,7 +102,7 @@ class DMC_MainMenu(Screen):
 		if config.plugins.mc_globalsettings.upnp_enable.getValue():
 			if fileExists("/media/upnp") is False:
 				os.mkdir("/media/upnp")
-			Console().ePopen'djmount /media/upnp &')
+			Console().ePopen('djmount /media/upnp &')
 
 	def next(self):
 		self["menu"].selectNext()
@@ -208,7 +208,7 @@ class DMC_MainMenu(Screen):
 				print("Set OSD Transparacy failed")
 #		if config.plugins.mc_global.vfd.value == "on":
 #			evfd.getInstance().vfd_write_string(_("Media Center"))
-		Console().ePopen'umount /media/upnp')
+		Console().ePopen('umount /media/upnp')
 		self.session.nav.playService(self.oldbmcService)
 		self.close()
 

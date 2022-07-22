@@ -7,7 +7,7 @@ from Components.Button import Button
 from Components.Sources.StaticText import StaticText
 from Components.Sources.List import List
 from Components.ServiceEventTracker import ServiceEventTracker
-
+from Tools.Directories import resolveFilename, SCOPE_PLUGINS
 from Screens.MessageBox import MessageBox
 
 from Components.ConfigList import ConfigListScreen
@@ -17,7 +17,7 @@ from pyexpat import ExpatError
 
 from os import path as os_path
 
-path = "/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/"
+path = resolveFilename(SCOPE_PLUGINS, "Extensions/BMediaCenter/")
 
 # IMPORT VLC PLAYER PLUGIN STUFF
 try:

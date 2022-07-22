@@ -29,7 +29,6 @@ import os
 from os import path as os_path, remove as os_remove, listdir as os_listdir
 from .__init__ import _
 from Components.Console import Console
-
 config.plugins.mc_ap = ConfigSubsection()
 sorts = [('default', _("default")), ('alpha', _("alphabet")), ('alphareverse', _("alphabet backward")), ('date', _("date")), ('datereverse', _("date backward")), ('size', _("size")), ('sizereverse', _("size backward"))]
 config.plugins.mc_ap_sortmode = ConfigSubsection()
@@ -208,7 +207,7 @@ class MC_AudioPlayer(Screen, HelpableScreen, InfoBarSeek):
 			if config.av.downmix_ac3.value == False:
 				config.av.downmix_ac3.value = True
 				config.av.downmix_ac3.save()
-				Console().ePopen"touch /tmp/.ac3on")
+				Console().ePopen("touch /tmp/.ac3on")
 		except Exception as e:
 			print("Media Center: no ac3")
 		self["play"] = Pixmap()
@@ -706,7 +705,7 @@ class MC_WebRadio(Screen, HelpableScreen):
 			if config.av.downmix_ac3.value == False:
 				config.av.downmix_ac3.value = True
 				config.av.downmix_ac3.save()
-				Console().ePopen"touch /tmp/.ac3on")
+				Console().ePopen("touch /tmp/.ac3on")
 		except Exception as e:
 			print("Media Center: no ac3")
 		self["play"] = Pixmap()
@@ -1003,7 +1002,7 @@ class MC_WebRadio(Screen, HelpableScreen):
 	def menuCallback(self, choice):
 		if choice is None:
 			return
-		Console().ePopen"echo " + choice[1] + " > /tmp/.webselect | wget -O /tmp/index.html " + radirl + "" + choice[1])
+		Console().ePopen("echo %s >/tmp/.webselect | wget -O /tmp/index.html %s%s" % (choice[1], radirl, choice[1]))
 		self.session.openWithCallback(self.updd, MC_WebDown)
 
 
@@ -1026,7 +1025,7 @@ class MC_WebDown(Screen):
 		selection = self["menu"].getCurrent()
 		if selection is not None:
 			gen = open("/tmp/.webselect").read().split('\n')
-			Console().ePopen"wget -O '" + mcpath + "radio/" + selection[1] + "' '" + radirl + "" + gen[0] + "" + selection[1].replace(" ", "%20") + "'")
+			Consile().ePopen("wget -O '$sradio/%s' '$s%s%s'" % (mcpath, selection[1], radirl, gen[0], selection[1].replace(" ", "%20")))
 			os.remove("/tmp/index.html")
 			self.close()
 
@@ -1381,7 +1380,7 @@ class Lyrics(Screen):
 		curPlay = self.session.nav.getCurrentService()
 		if curPlay is not None:
 			title = curPlay.info().getInfoString(iServiceInformation.sTagTitle)
-			Console().ePopen"echo '" + str(title) + "' > /tmp/.oldplaying | echo '" + str(title) + "' > /tmp/.curplaying ")
+			Console().ePopen("echo '%s' >/tmp/.oldplaying | echo '%s' >/tmp/.curplaying" % (str(title), str(title)))
 		self.RFTimer = eTimer()
 		self.RFTimer.callback.append(self.refresh)
 		self.__event_tracker = ServiceEventTracker(screen=self, eventmap={
@@ -1404,7 +1403,7 @@ class Lyrics(Screen):
 		self.RFTimer.start(time, True)
 		curPlay = self.session.nav.getCurrentService()
 		title = curPlay.info().getInfoString(iServiceInformation.sTagTitle)
-		Console().ePopen"echo '" + str(title) + "' > /tmp/.curplaying")
+		Console().ePopen("echo '%s' >/tmp/.curplaying" % str(title))
 		old = open("/tmp/.oldplaying").read()
 		oldtitle = old.split('\r\n')
 		tit = open("/tmp/.curplaying").read()
@@ -1413,7 +1412,7 @@ class Lyrics(Screen):
 			return
 		else:
 			self.startRun()
-			Console().ePopen"echo '" + str(title) + "' > /tmp/.oldplaying")
+			Console().ePopen("echo '%s' >/tmp/.oldplaying" % str(title))
 
 	def startRun(self):
 		text = getEncodedString(self.getLyricsFromID3Tag()).replace("\r\n", "\n")
@@ -1448,7 +1447,7 @@ class Lyrics(Screen):
 		title = root.findtext("{http://api.chartlyrics.com/}LyricSong").encode("utf-8", 'ignore')
 		artist = root.findtext("{http://api.chartlyrics.com/}LyricArtist").encode("utf-8", 'ignore')
 		coverly = root.findtext("{http://api.chartlyrics.com/}LyricCovertArtUrl").encode("utf-8", 'ignore')
-		Console().ePopen"wget -O /tmp/.onlinecover " + coverly + "")
+		Console().ePopen("wget -O /tmp/.onlinecover %s" % coverly)
 		self["coverly"].coverlyrics()
 		result = _("Response -> lyrics for: %s (%s)") % (title, artist)
 		self["resulttext"].setText(result)
@@ -1468,7 +1467,7 @@ class Lyrics(Screen):
 		if fileExists("/tmp/.onlinecover"):
 			os.remove("/tmp/.onlinecover")
 		if fileExists("/tmp/.curplaying") and fileExists("/tmp/.oldplaying"):
-			Console().ePopen"rm -rf /tmp/.*playing")
+			Console().ePopen("rm -rf /tmp/.*playing")
 		self.RFTimer.stop()
 		self.close()
 

@@ -15,14 +15,14 @@ from twisted.web.client import getPage, downloadPage
 from Components.Pixmap import Pixmap
 from .GlobalFunctions import Showiframe
 from enigma import eListboxPythonMultiContent, gFont, RT_HALIGN_LEFT, RT_VALIGN_CENTER, ePicLoad, eEnv
-from Tools.Directories import fileExists, pathExists
+from Tools.Directories import fileExists, pathExists, resolveFilename, SCOPE_PLUGINS
 from Components.AVSwitch import AVSwitch
 from Components.config import ConfigSubsection, getConfigListEntry, ConfigText, ConfigSelection, ConfigSubList, configfile, ConfigInteger, config
 from Components.ConfigList import ConfigList, ConfigListScreen
 import time
 import os
 import subprocess
-
+from Components.Console import Console
 from six.moves.urllib.parse import quote
 import six
 
@@ -50,7 +50,7 @@ def initConfig():
 
 
 initConfig()
-path = "/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/"
+path = resolveFilename(SCOPE_PLUGINS, "Extensions/BMediaCenter/")
 
 
 class WeatherIconItem:
@@ -128,7 +128,7 @@ class MC_WeatherInfo(Screen):
 		downname = "/tmp/.stadtindex"
 		stadd = stadt
 		if fileExists(downname):
-			Console().ePopen"rm -rf " + downname)
+			Console().ePopen("rm -rf %s" % downname)
 		downloadPage(six.ensure_binary(downlink), downname).addCallback(self.jpgdown, stadd).addErrback(self.error)
 
 	def jpgdown(self, value, stadd):

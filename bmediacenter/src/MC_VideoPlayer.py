@@ -16,6 +16,7 @@ from .MC_Filelist import FileList
 from .GlobalFunctions import shortname, MC_VideoInfoView, Showiframe
 import re
 import os
+from Components.Console import Console
 config.plugins.mc_vp = ConfigSubsection()
 config.plugins.mc_vp_sortmode = ConfigSubsection()
 sorts = [('default', _("default")), ('alpha', _("alphabet")), ('alphareverse', _("alphabet backward")), ('date', _("date")), ('datereverse', _("date backward")), ('size', _("size")), ('sizereverse', _("size backward"))]
@@ -50,7 +51,7 @@ class MC_VideoPlayer(Screen, HelpableScreen):
 		self.showiframe = Showiframe()
 		self.mvion = False
 		self.curfavfolder = -1
-		Console().ePopen"touch /tmp/bmcmovie")
+		Console().ePopen("touch /tmp/bmcmovie")
 		self["actions"] = HelpableActionMap(self, "MC_VideoPlayerActions",
 			{
 				"ok": (self.KeyOk, "Play selected file"),
