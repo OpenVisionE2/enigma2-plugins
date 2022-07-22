@@ -32,25 +32,25 @@ from Components.MenuList import MenuList
 from Components.Label import Label
 from Components.EpgList import EPGList, EPG_TYPE_SINGLE, Rect
 from Components.config import config, ConfigSubsection, ConfigYesNo, ConfigInteger, getConfigListEntry
-from Tools.Directories import resolveFilename, SCOPE_GUISKIN, fileExists, SCOPE_PLUGINS
+from Tools.Directories import resolveFilename, isPluginInstalled, SCOPE_PLUGINS
 from Tools.LoadPixmap import LoadPixmap
 from enigma import eServiceReference, eServiceCenter, getDesktop, eTimer, gFont, eListboxPythonMultiContent, RT_HALIGN_LEFT, RT_WRAP, eEPGCache
 from RecordTimer import RecordTimerEntry, parseEvent, AFTEREVENT
 from ServiceReference import ServiceReference
 from ShowMe import ShowMe
 from time import localtime, strftime
-if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/AutoTimer/AutoTimerEditor.pyo")):
+if isPluginInstalled("AutoTimer"):
 	from Plugins.Extensions.AutoTimer.AutoTimerEditor import addAutotimerFromEvent
 	from Plugins.Extensions.AutoTimer.plugin import main as AutoTimerView
 	AutoTimerPresent = True
 else:
 	AutoTimerPresent = False
-if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/IMDb/plugin.pyo")):
+if isPluginInstalled("IMDb"):
 	from Plugins.Extensions.IMDb.plugin import IMDB
 	IMDbPresent = True
 else:
 	IMDbPresent = False
-if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/EPGSearch/EPGSearch.pyo")):
+if isPluginInstalled("EPGSearch"):
 	from Plugins.Extensions.EPGSearch.EPGSearch import EPGSearchList, EPGSearch
 	epgSpresent = True
 else:

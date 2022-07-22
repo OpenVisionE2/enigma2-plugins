@@ -12,7 +12,7 @@ from Screens.MessageBox import MessageBox
 from Screens.ChoiceBox import ChoiceBox
 from Components.PluginComponent import PluginComponent, plugins
 from Components.Label import Label
-from Tools.Directories import resolveFilename, fileExists, SCOPE_GUISKIN, SCOPE_PLUGINS
+from Tools.Directories import resolveFilename, fileExists, SCOPE_GUISKIN, SCOPE_PLUGINS, isPluginInstalled
 from Tools.BoundFunction import boundFunction
 from Screens.InfoBarGenerics import InfoBarPlugins
 from Components.config import config, ConfigSubsection, ConfigYesNo
@@ -434,7 +434,7 @@ class SortingPluginBrowser(OriginalPluginBrowser):
 			(_("move event extensions"), boundFunction(self.openMover, PluginDescriptor.WHERE_EVENTINFO)),
 		]
 
-		if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/PluginHider/plugin.pyo")):
+		if isPluginInstalled("PluginHider"):
 			list.insert(0, (_("hide selected plugin"), self.hidePlugin))
 
 		if pluginSortHelp:

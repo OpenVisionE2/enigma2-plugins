@@ -28,10 +28,7 @@ from Tools.Directories import fileExists
 from Tools.Directories import resolveFilename, SCOPE_PLUGIN, SCOPE_CONFIG
 from shutil import copyfile
 
-if fileExists(resolveFilename(SCOPE_PLUGIN, "Bp/geminimain/plugin.pyo")):
-    __CONF__ = resolveFilename(SCOPE_CONFIG, "gemini_DateiBrowser.conf")
-else:
-    __CONF__ = resolveFilename(SCOPE_CONFIG, "AdvancedMovieSelection.conf")
+__CONF__ = resolveFilename(SCOPE_CONFIG, "AdvancedMovieSelection.conf")
 
 if not fileExists(__CONF__):
     copyfile(resolveFilename(SCOPE_PLUGIN, "Extensions/AdvancedMovieSelection/AdvancedMovieSelection.conf"), __CONF__)

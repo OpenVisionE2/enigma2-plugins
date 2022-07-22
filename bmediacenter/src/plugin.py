@@ -11,7 +11,7 @@ from Plugins.Plugin import PluginDescriptor
 from Screens.Screen import Screen
 from Screens.MessageBox import MessageBox
 from skin import loadSkin
-from Tools.Directories import pathExists, fileExists, resolveFilename, SCOPE_PLUGINS
+from Tools.Directories import fileExists, resolveFilename, SCOPE_PLUGINS, isPluginInstalled
 from .__init__ import _
 from Components.Console import Console
 config.plugins.mc_global = ConfigSubsection()
@@ -176,7 +176,7 @@ class DMC_MainMenu(Screen):
 				from .MC_AudioPlayer import MC_WebRadio
 				self.session.open(MC_WebRadio)
 			elif selection[1] == "MC_VLCPlayer":
-				if pathExists("/usr/lib/enigma2/python/Plugins/Extensions/VlcPlayer/") == True:
+				if isPluginInstalled("VlcPlayer"):
 					from .MC_VLCPlayer import MC_VLCServerlist
 					self.session.open(MC_VLCServerlist)
 				else:

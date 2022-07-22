@@ -38,7 +38,7 @@ from Components.EpgList import EPGList, EPG_TYPE_MULTI
 from Components.ConfigList import ConfigListScreen
 from Components.config import config, getConfigListEntry, ConfigSubsection, ConfigSelection, ConfigClock
 from Components.Sources.StaticText import StaticText
-from Tools.Directories import fileExists, pathExists, resolveFilename, SCOPE_PLUGINS
+from Tools.Directories import isPluginInstalled, pathExists, resolveFilename, SCOPE_PLUGINS
 from Tools.LoadPixmap import LoadPixmap
 from ServiceReference import ServiceReference
 from enigma import eListboxPythonMultiContent, gFont, getDesktop, eTimer, eServiceReference, RT_HALIGN_LEFT, RT_HALIGN_CENTER, RT_VALIGN_CENTER, RT_WRAP, RT_HALIGN_RIGHT, RT_VALIGN_TOP
@@ -593,7 +593,7 @@ def EINcallbackFunc(answer):
 		if epglist:
 			EINsession.open(EventViewSimple, epglist[0], ServiceReference(ref), InfoBar_instance.eventViewCallback)
 	elif answer == "merlinepg":
-		if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/MerlinEPG/plugin.pyo")):
+		if isPluginInstalled("MerlinEPG"):
 			from Plugins.Extensions.MerlinEPG.plugin import Merlin_PGII, Merlin_PGd
 			if config.plugins.MerlinEPG.Columns.value:
 				EINsession.open(Merlin_PGII, InfoBar_instance.servicelist)
@@ -602,13 +602,13 @@ def EINcallbackFunc(answer):
 		else:
 			EINsession.open(MessageBox, text=_('MerlinEPG is not installed!'), type=MessageBox.TYPE_INFO)
 	elif answer == "autotimer":
-		if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/AutoTimer/AutoTimerEditor.pyo")):
+		if isPluginInstalled("AutoTimer"):
 			from Plugins.Extensions.AutoTimer.plugin import main as AutoTimerView
 			AutoTimerView(EINsession)
 		else:
 			EINsession.open(MessageBox, text=_('Autotimer is not installed!'), type=MessageBox.TYPE_INFO)
 	elif answer == "epgsearch":
-		if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/EPGSearch/plugin.pyo")):
+		if isPluginInstalled("EPGSearch"):
 			from Plugins.Extensions.EPGSearch.EPGSearch import EPGSearch
 			service = EINsession.nav.getCurrentService()
 			info = service.info()
@@ -621,7 +621,7 @@ def EINcallbackFunc(answer):
 	elif answer == "channelinfo":
 		EINsession.open(ServiceInfo, InfoBar_instance.servicelist.getCurrentSelection())
 	elif answer == "imdbinfo":
-		if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/IMDb/plugin.pyo")):
+		if isPluginInstalled("IMDb"):
 			from Plugins.Extensions.IMDb.plugin import IMDB
 			service = EINsession.nav.getCurrentService()
 			info = service.info()
@@ -632,31 +632,31 @@ def EINcallbackFunc(answer):
 		else:
 			EINsession.open(MessageBox, text=_('IMDB is not installed!'), type=MessageBox.TYPE_INFO)
 	elif answer == "graphepg":
-		if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/GraphMultiEPG/plugin.pyo")):
+		if isPluginInstalled("GraphMultiEPG"):
 			from Plugins.Extensions.GraphMultiEPG.plugin import main as gmepgmain
 			gmepgmain(EINsession, InfoBar_instance.servicelist)
 		else:
 			EINsession.open(MessageBox, text=_('GraphMultiEPG is not installed!'), type=MessageBox.TYPE_INFO)
 	elif answer == "primetime":
-		if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/PrimeTimeManager/plugin.pyo")):
+		if isPluginInstalled("PrimeTimeManager"):
 			from Plugins.Extensions.PrimeTimeManager.plugin import main as ptmanmain
 			ptmanmain(EINsession)
 		else:
 			EINsession.open(MessageBox, text=_('Prime Time Manager is not installed!'), type=MessageBox.TYPE_INFO)
 	elif answer == "epgrefresh":
-		if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/EPGRefresh/plugin.pyo")):
+		if isPluginInstalled("EPGRefresh"):
 			from Plugins.Extensions.EPGRefresh.plugin import main as epgrefmain
 			epgrefmain(EINsession)
 		else:
 			EINsession.open(MessageBox, text=_('EPGRefresh is not installed!'), type=MessageBox.TYPE_INFO)
 	elif answer == "cooltv":
-		if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/CoolTVGuide/plugin.pyo")):
+		if isPluginInstalled("CoolTVGuide"):
 			from Plugins.Extensions.CoolTVGuide.plugin import main as ctvmain
 			ctvmain(EINsession, InfoBar_instance.servicelist)
 		else:
 			EINsession.open(MessageBox, text=_('CoolTVGuide is not installed!'), type=MessageBox.TYPE_INFO)
 	elif answer == "sysinfo":
-		if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/Sherlock/plugin.pyo")):
+		if isPluginInstalled("Sherlock"):
 			from Plugins.Extensions.Sherlock.plugin import SherlockII
 			EINsession.open(SherlockII)
 		else:
@@ -978,7 +978,7 @@ class EasyPG(EPGSelection, Screen):
 			self.infoKeyPressed()
 
 	def newRedFunc(self):
-		if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/EPGSearch/plugin.pyo")):
+		if isPluginInstalled("EPGSearch"):
 			from Plugins.Extensions.EPGSearch.EPGSearch import EPGSearch
 			epg_event = self["list"].getCurrent()[0]
 			if epg_event:

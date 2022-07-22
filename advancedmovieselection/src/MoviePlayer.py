@@ -32,7 +32,7 @@ from Source.ServiceProvider import ServiceCenter, eServiceReferenceBludisc
 from Source.CueSheetSupport import DVDCutListSupport, CutListSupport
 from Screens.MessageBox import MessageBox
 from Screens.InfoBar import MoviePlayer
-from Tools.Directories import resolveFilename, SCOPE_GUISKIN, fileExists, SCOPE_LIBDIR
+from Tools.Directories import fileExists
 from enigma import ePoint, eTimer, iPlayableService
 from Tools import Notifications
 from Components.Sources.ServiceEvent import ServiceEvent
@@ -416,9 +416,9 @@ class MoviePlayerExtended(CutListSupport, MoviePlayer, PlayerBase):
 
 
 if pluginPresent.DVDPlayer:
-    if fileExists(resolveFilename(SCOPE_LIBDIR, 'enigma2/python/Screens/DVD.pyo')):
+    try:
         from Screens.DVD import DVDPlayer as eDVDPlayer
-    else:
+    except:
         from Plugins.Extensions.DVDPlayer.plugin import DVDPlayer as eDVDPlayer
 
     class DVDPlayer(DVDCutListSupport, eDVDPlayer, PlayerBase):

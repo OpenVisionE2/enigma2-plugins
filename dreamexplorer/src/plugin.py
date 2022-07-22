@@ -43,17 +43,17 @@ from ServiceReference import ServiceReference
 from myFileList import FileList as myFileList
 #from vInputBox import vInputBox
 from Screens.InputBox import InputBox
-if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/PicturePlayer/plugin.pyo")):
+if isPluginInstalled("PicturePlayer"):
 	from Plugins.Extensions.PicturePlayer.plugin import Pic_Thumb, picshow
 	PicPlayerAviable = True
 else:
 	PicPlayerAviable = False
-if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/DVDPlayer/plugin.pyo")):
+if isPluginInstalled("DVDPlayer"):
 	from Plugins.Extensions.DVDPlayer.plugin import DVDPlayer
 	DVDPlayerAviable = True
 else:
 	DVDPlayerAviable = False
-if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/MerlinMusicPlayer/plugin.pyo")):
+if isPluginInstalled("MerlinMusicPlayer"):
 	from Plugins.Extensions.MerlinMusicPlayer.plugin import MerlinMusicPlayerScreen, Item
 	MMPavaiable = True
 else:
@@ -284,6 +284,11 @@ class DreamExplorerII(Screen):
 					self.commando = ["%s %s" % (resolveFilename(SCOPE_PLUGINS, "Extensions/DreamExplorer/pyo2xml"), filename)]
 					askList = [(_("Cancel"), "NO"), (_("Disassemble to bytecode..."), "YES")]
 					dei = self.session.openWithCallback(self.SysExecution, ChoiceBox, title=_("Pyo-Script:\\n" + filename), list=askList)
+					dei.setTitle(_("Dream-Explorer : Disassemble..."))
+				elif testFileName.endswith(".pyc"):
+					self.commando = ["%s %s" % (resolveFilename(SCOPE_PLUGINS, "Extensions/DreamExplorer/pyc2xml"), filename)]
+					askList = [(_("Cancel"), "NO"), (_("Disassemble to bytecode..."), "YES")]
+					dei = self.session.openWithCallback(self.SysExecution, ChoiceBox, title=_("Pyc-Script:\\n" + filename), list=askList)
 					dei.setTitle(_("Dream-Explorer : Disassemble..."))
 				elif testFileName.endswith(".sh"):
 					self.commando = [filename]
