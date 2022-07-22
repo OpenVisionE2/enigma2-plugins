@@ -1,2 +1,3 @@
 PLUGIN = Filebrowser
-include $(top_srcdir)/Rules-po.mak
+CATEGORY = Extensions
+include $(top_srcdir)/Rules_noxml-po.mak
