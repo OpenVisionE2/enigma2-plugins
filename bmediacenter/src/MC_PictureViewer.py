@@ -1,5 +1,3 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
 from __future__ import print_function
 from enigma import ePicLoad, eTimer, getDesktop, iPlayableService, eServiceReference
 from Screens.Screen import Screen
@@ -286,7 +284,7 @@ class MC_PicThumbViewer(Screen, HelpableScreen):
 		self.paintFrame()
 
 	def paintFrame(self):
-		#print("index=" + str(self.index))
+		#print "index=" + str(self.index)
 		if self.maxentry < self.index or self.index < 0:
 			return
 
@@ -485,7 +483,7 @@ class MC_PicView(Screen, InfoBarBase, InfoBarSeek, InfoBarNotifications, Helpabl
 			self.lastindex = self.currPic[1]
 			self["pic"].instance.setPixmap(self.currPic[2].__deref__())
 			self.currPic = []
-			self.next()
+			next(self)
 			self.start_decode()
 
 	def finish_decode(self, picInfo=""):

@@ -1,5 +1,3 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
 from enigma import eRect, eServiceReference, iServiceInformation, iPlayableService
 from Screens.Screen import Screen
 from Screens.ServiceInfo import ServiceInfoList, ServiceInfoListEntry
@@ -74,7 +72,7 @@ class Showiframe():
 def shortname(movie, showing=None):
 	movielist = movie.split('/')
 	for n in movielist:
-		if n is not "":
+		if n != "":
 			movie = n
 	movie = movie.upper()
 	movieback = movie

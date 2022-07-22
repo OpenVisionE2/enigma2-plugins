@@ -1,6 +1,6 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
 from __future__ import print_function
+from __future__ import absolute_import
 from enigma import eTimer, iServiceInformation, iPlayableService, ePicLoad, RT_VALIGN_CENTER, RT_HALIGN_LEFT, RT_HALIGN_RIGHT, RT_HALIGN_CENTER, gFont, eListbox, ePoint, eListboxPythonMultiContent, eServiceCenter
 from Components.MenuList import MenuList
 from Screens.Screen import Screen
@@ -23,13 +23,12 @@ from Components.Playlist import PlaylistIOInternal, PlaylistIOM3U, PlaylistIOPLS
 from Components.ConfigList import ConfigList, ConfigListScreen
 from Components.config import *
 from Tools.Directories import resolveFilename, fileExists, pathExists, createDir, SCOPE_MEDIA, SCOPE_PLAYLIST, SCOPE_GUISKIN, SCOPE_PLUGINS
-from MC_Filelist import FileList
+from .MC_Filelist import FileList
 from Screens.InfoBarGenerics import InfoBarSeek
 import os
 from os import path as os_path, remove as os_remove, listdir as os_listdir
-from __init__ import _
+from .__init__ import _
 from Components.Console import Console
-
 config.plugins.mc_ap = ConfigSubsection()
 sorts = [('default', _("default")), ('alpha', _("alphabet")), ('alphareverse', _("alphabet backward")), ('date', _("date")), ('datereverse', _("date backward")), ('size', _("size")), ('sizereverse', _("size backward"))]
 config.plugins.mc_ap_sortmode = ConfigSubsection()
@@ -85,7 +84,7 @@ def sendUrlCommand(url, contextFactory=None, timeout=50, *args, **kwargs):
 		# _URI class renamed to URI in 15.0.0
 		try:
 			from twisted.web.client import _URI as URI
-		except ImportError as e:
+		except ImportError:
 			from twisted.web.client import URI
 		uri = URI.fromBytes(url)
 		scheme = uri.scheme
@@ -103,7 +102,7 @@ mcpath = resolveFilename(SCOPE_PLUGINS, "Extensions/BMediaCenter/")
 def PlaylistEntryComponent(serviceref):
 	res = [serviceref]
 	text = serviceref.getName()
-	if text is "":
+	if text == "":
 		text = os_path.split(serviceref.getPath().split('/')[-1])[1]
 	res.append((eListboxPythonMultiContent.TYPE_TEXT, 25, 1, 470, 22, 0, RT_VALIGN_CENTER, text))
 	return res
@@ -1367,7 +1366,7 @@ class Lyrics(Screen):
 		<screen name="Lyrics" position="0,0" size="720,576" flags="wfNoBorder" backgroundColor="#00000000" title="Lyrics">
 		<eLabel backgroundColor="#999999" position="50,50" size="620,2" zPosition="1"/>
 		<widget name="headertext" position="50,73" zPosition="1" size="620,23" font="Regular;20" transparent="1"  foregroundColor="#fcc000" backgroundColor="#00000000"/>
-		<widget name="coverly" position="700,120" size="160,133" zPosition="9" valign="center" halign="center" pixmap="~/skins/defaultHD/images/no_coverArt.png" transparent="1" alphatest="blend" />
+		<widget name="coverly" position="700,120" size="160,133" zPosition="9" valign="center" halign="center" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/no_coverArt.png" transparent="1" alphatest="blend" />
 		<widget name="resulttext" position="50,100" zPosition="1" size="620,20" font="Regular;16" transparent="1"   backgroundColor="#00000000"/>
 		<widget name="lyric_text" position="50,150" zPosition="2" size="620,350" font="Regular;18" transparent="0"  backgroundColor="#00000000"/>
 		</screen>"""
@@ -1375,7 +1374,6 @@ class Lyrics(Screen):
 	def __init__(self, session):
 		self.session = session
 		Screen.__init__(self, session)
-		self.skin_path = resolveFilename(SCOPE_PLUGINS, "Extensions/BMediaCenter")
 		self["headertext"] = Label(_("Lyrics"))
 		self["resulttext"] = Label()
 		self["coverly"] = MediaPixmap()
@@ -1430,7 +1428,7 @@ class Lyrics(Screen):
 				titlely = curPlay.info().getName().split('/')[-1]
 			if artistly == "":
 				artistly = titlely
-		from urllib import quote
+		from six.moves.urllib.parse import quote
 		url = "http://api.chartlyrics.com/apiv1.asmx/SearchLyricDirect?artist=%s&song=%s" % (quote(artistly), quote(titlely))
 		sendUrlCommand(url, None, 10).addCallback(self.gotLyrics).addErrback(self.urlError)
 		return "No lyrics found in id3-tag, trying api.chartlyrics.com..."
