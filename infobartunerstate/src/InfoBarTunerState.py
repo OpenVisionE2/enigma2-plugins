@@ -59,10 +59,7 @@ from enigma import ePoint, eSize, getDesktop, eTimer, iPlayableService, iRecorda
 from .netstat import netstat
 
 # Extenal plugins: WebInterface
-try:
-	from Plugins.Extensions.WebInterface.WebScreens import StreamingWebScreen
-except:
-	StreamingWebScreen = None
+StreamingWebScreen = None
 
 
 # Globals

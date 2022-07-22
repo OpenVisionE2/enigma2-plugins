@@ -467,7 +467,7 @@ class Schiffe(Screen):
             else:
                 self.new_game()
         except Exception as e:
-            print(('error: ', str(e)))
+            print('error: ', str(e))
             pass
 
     def quit_game(self):

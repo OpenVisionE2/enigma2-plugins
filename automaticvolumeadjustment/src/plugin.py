@@ -28,7 +28,6 @@ from Plugins.Plugin import PluginDescriptor
 from .AutomaticVolumeAdjustmentSetup import AutomaticVolumeAdjustmentConfigScreen
 from .AutomaticVolumeAdjustment import AutomaticVolumeAdjustment
 from .AutomaticVolumeAdjustmentConfig import saveVolumeDict
-from boxbranding import getImageDistro
 
 
 def autostart(reason, **kwargs):
@@ -50,15 +49,8 @@ def setupAVA(session, **kwargs):
 
 
 def startSetup(menuid):
-	if getImageDistro() in ('openhdf', 'openatv'):
-		if menuid != "audio_menu":
-			return []
-	elif getImageDistro() in ('openvix',):
-		if menuid != "av":
-			return []
-	else:
-		if menuid != "system": # show setup only in system level menu
-			return []
+	if menuid != "system": # show setup only in system level menu
+		return []
 	return [(_("Automatic Volume Adjustment"), setupAVA, "AutomaticVolumeAdjustment", 46)]
 
 

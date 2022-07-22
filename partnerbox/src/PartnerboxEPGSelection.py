@@ -26,7 +26,7 @@ from Screens.EpgSelection import EPGSelection
 from Components.EpgList import EPG_TYPE_SINGLE, EPG_TYPE_SIMILAR, EPG_TYPE_MULTI
 from Screens.ChoiceBox import ChoiceBox
 from Tools.BoundFunction import boundFunction
-from Tools.Directories import fileExists
+from Tools.Directories import fileExists, isPluginInstalled
 from .PartnerboxFunctions import SetPartnerboxTimerlist, isInTimerList, isInRepeatTimer, sendPartnerBoxWebCommand, FillE1TimerList, FillE2TimerList
 from . import PartnerboxFunctions as partnerboxfunctions
 from enigma import eServiceReference, eServiceCenter
@@ -88,8 +88,8 @@ def Partnerbox_EPGSelection__init__(self, session, service, zapFunc=None, eventi
 
 def PartnerboxInit(self, filterRef):
     self.filterRef = filterRef
-    self.isTMBD = fileExists("/usr/lib/enigma2/python/Plugins/Extensions/TMBD/plugin.pyo")
-    self.AutoTimer = fileExists("/usr/lib/enigma2/python/Plugins/Extensions/AutoTimer/SimpleThread.pyo")
+    self.isTMBD = isPluginInstalled("TMBD")
+    self.AutoTimer = isPluginInstalled("AutoTimer")
     self.partnerboxentry = None
     partnerboxfunctions.remote_timer_list = []
     if int(config.plugins.Partnerbox.entriescount.value) >= 1:
