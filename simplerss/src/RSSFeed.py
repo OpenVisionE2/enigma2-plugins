@@ -1,8 +1,7 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
 from Plugins.SystemPlugins.Toolkit.TagStrip import strip, strip_readable
 from Components.Scanner import ScanFile
-
+from six import PY3
 NS_RDF = "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}"
 NS_RSS_09 = "{http://my.netscape.com/rdf/simple/0.9/}"
 NS_RSS_10 = "{http://purl.org/rss/1.0/}"
@@ -89,9 +88,6 @@ class RSSWrapper(ElementWrapper):
 		return self
 
 	def __next__(self):
-		return self.next()
-
-	def next(self):
 		idx = self.idx
 		if idx > self.len:
 			raise StopIteration
@@ -104,13 +100,17 @@ class RSSWrapper(ElementWrapper):
 	def __getitem__(self, index):
 		return RSSEntryWrapper(self._items[index], self._ns)
 
+	def next(self):
+		idx = self.idx
+		if idx > self.len:
+			raise StopIteration
+		self.idx = idx + 1
+		return self[idx]
+
 
 class RSS1Wrapper(RSSWrapper):
 	def __init__(self, feed, ns):
-		RSSWrapper.__init__(
-			self, feed.find(ns + 'channel'),
-			feed.findall(ns + 'item'), ns
-		)
+		RSSWrapper.__init__(self, feed.find(ns + 'channel'), feed.findall(ns + 'item'), ns)
 
 	def __getattr__(self, tag):
 		if tag == 'logo': # XXX: afaik not officially part of older rss, but can't hurt
@@ -121,9 +121,7 @@ class RSS1Wrapper(RSSWrapper):
 class RSS2Wrapper(RSSWrapper):
 	def __init__(self, feed, ns):
 		channel = feed.find("channel")
-		RSSWrapper.__init__(
-			self, channel, channel.findall("item")
-		)
+		RSSWrapper.__init__(self, channel, channel.findall("item"))
 
 	def __getattr__(self, tag):
 		if tag == 'logo':
@@ -134,9 +132,7 @@ class RSS2Wrapper(RSSWrapper):
 class PEAWrapper(RSSWrapper):
 	def __init__(self, feed, ns):
 		ns = feed.tag[:feed.tag.index("}") + 1]
-		RSSWrapper.__init__(
-			self, feed, feed.findall(ns + 'entry'), ns
-		)
+		RSSWrapper.__init__(self, feed, feed.findall(ns + 'entry'), ns)
 
 	def __getitem__(self, index):
 		return PEAEntryWrapper(self._items[index], self._ns)
@@ -153,10 +149,14 @@ class BaseFeed:
 
 	def __init__(self, uri, title="", description=""):
 		# Set URI (used as Identifier)
+		if not PY3:
+			uri = uri.encode('utf-8')
+			title = title.encode('utf-8')
+			description = description.encode('utf-8')
 		self.uri = uri
 
 		# Initialize
-		self.title = title or uri.encode("UTF-8")
+		self.title = title or uri
 		self.description = description
 		self.logoUrl = ''
 		self.history = []
@@ -192,7 +192,7 @@ class UniversalFeed(BaseFeed):
 		ids = self.last_ids
 		for item in wrapper:
 			# Try to read title, continue if none found
-			title = strip(item.title)
+			title = strip(item.title if PY3 else item.title.encode('utf-8'))
 			if not title:
 				continue
 
@@ -202,18 +202,13 @@ class UniversalFeed(BaseFeed):
 				continue
 
 			# Link
-			link = item.link
+			link = item.link if PY3 else item.link.encode('utf-8')
 
 			# Try to read summary, empty if none
-			summary = strip_readable(item.summary or "")
+			summary = strip_readable(item.summary or "") if PY3 else strip_readable(item.summary or "").encode('utf-8')
 
 			# Update Lists
-			self.history.insert(idx, (
-					title.encode("UTF-8"),
-					link.encode("UTF-8"),
-					summary.encode("UTF-8"),
-					item.enclosures
-			))
+			self.history.insert(idx, (title, link, summary, item.enclosures))
 			ids.add(id)
 
 			idx += 1
@@ -245,8 +240,8 @@ class UniversalFeed(BaseFeed):
 
 			wrapper = self.wrapper(feed, self.ns)
 
-			self.title = strip(wrapper.title).encode("UTF-8")
-			self.description = strip_readable(wrapper.description or "").encode("UTF-8")
+			self.title = strip(wrapper.title) if PY3 else strip(wrapper.title).encode('utf-8')
+			self.description = strip_readable(wrapper.description or "") if PY3 else strip_readable(wrapper.description or "").encode('utf-8')
 			self.logoUrl = wrapper.logo
 
 		return self.gotWrapper(wrapper)
