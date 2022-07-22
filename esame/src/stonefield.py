@@ -82,7 +82,7 @@ class StoneField:
 			self.c[stone.color] += 1
 
 	def Map(self, x, y):
-		return x + y * self.sizex
+		return int(x + y * self.sizex)
 
 	def mark1(self, x, y, force=False):
 		index = self.Map(x, y)
