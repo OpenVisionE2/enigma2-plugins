@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-10 08:22+0100\n"
+"POT-Creation-Date: 2022-07-22 17:52+0430\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,28 +17,17 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid ""
-"\n"
-"\n"
-"Cancel?"
+msgid "  Any time"
 msgstr ""
 
-msgid " (only services from bouquets when use \"favorites description match\")."
-msgstr ""
-
-msgid " - AutoTimer "
+msgid " (if services are enabled, bouquets are ignored.)."
 msgstr ""
 
 msgid " - Version: "
 msgstr ""
 
-msgid " 0 - timers will not be added."
-msgstr ""
-
-msgid " == attention: global option 'Save/check filterlist is still active!! =="
-msgstr ""
-
-msgid " add AutoTimer"
+#, python-format
+msgid " - Version: %s"
 msgstr ""
 
 #, python-format
@@ -60,28 +49,13 @@ msgstr ""
 msgid "%s: %s at %s"
 msgstr ""
 
-msgid "/etc/enigma2"
-msgstr ""
-
-msgid "/tmp"
-msgstr ""
-
-msgid "A new and empty config was created. A backup of the config can be found here (/etc/enigma2/autotimer.xml_old)."
-msgstr ""
-
 msgid "Activate VPS"
 msgstr ""
 
 msgid "Add"
 msgstr ""
 
-msgid "Add \"Choice list AutoTimer\" menu button to multi-EPG"
-msgstr ""
-
-msgid "Add \"Choice list AutoTimer\" menu button to single-EPG"
-msgstr ""
-
-msgid "Add AutoTimer"
+msgid "Add filters"
 msgstr ""
 
 msgid "Add new AutoTimer"
@@ -94,12 +68,6 @@ msgid "Add similar timer on conflict"
 msgstr ""
 
 msgid "Add timer as disabled on conflict"
-msgstr ""
-
-msgid "Advanced"
-msgstr ""
-
-msgid "Advanced (2000 events)"
 msgstr ""
 
 msgid "After event"
@@ -120,26 +88,16 @@ msgstr ""
 msgid "Amount of recordings left"
 msgstr ""
 
+msgid "Any Day filter refers to the day of the timespan start, even if the timespan crosses midnight."
+msgstr ""
+
 msgid "Any service/recording"
 msgstr ""
 
-msgid "Any time"
+msgid "Auto Timers"
 msgstr ""
 
 msgid "AutoTimer"
-msgstr ""
-
-#, python-format
-msgid ""
-"AutoTimer\n"
-"%d timer(s) were added."
-msgstr ""
-
-msgid "AutoTimer "
-msgstr ""
-
-#, python-format
-msgid "AutoTimer %s FilterListEntry"
 msgstr ""
 
 msgid "AutoTimer Context Menu"
@@ -157,14 +115,7 @@ msgstr ""
 msgid "AutoTimer Settings"
 msgstr ""
 
-#, python-format
-msgid "AutoTimer failed with error %s"
-msgstr ""
-
 msgid "AutoTimer overview"
-msgstr ""
-
-msgid "AutoTimer scan"
 msgstr ""
 
 msgid "AutoTimer was added successfully"
@@ -176,7 +127,10 @@ msgstr ""
 msgid "AutoTimer was removed"
 msgstr ""
 
-msgid "AutoTimers were changed successfully"
+msgid "AutoTimers"
+msgstr ""
+
+msgid "AutoTimers were changed successfully."
 msgstr ""
 
 msgid "Begin of \"after event\" timespan"
@@ -197,9 +151,6 @@ msgstr ""
 msgid "By enabling this you will be notified about timer conflicts found during automated polling. There is no intelligence involved, so it might bother you about the same conflict over and over."
 msgstr ""
 
-msgid "By enabling this you will be notified about timer(s) added during automated polling. Just not in standby mode."
-msgstr ""
-
 msgid "Cancel"
 msgstr ""
 
@@ -218,16 +169,10 @@ msgstr ""
 msgid "Check the event id (eit) and remove the timer if there is no corresponding EPG event. Due to compatibility issues with SerienRecorder and IPRec, only timer created by AutoTimer are affected."
 msgstr ""
 
-msgid "Choice list AutoTimer"
-msgstr ""
-
 msgid "Choose target folder"
 msgstr ""
 
 msgid "Classic"
-msgstr ""
-
-msgid "Clear memory before auto run"
 msgstr ""
 
 msgid "Clone selected timer"
@@ -239,16 +184,7 @@ msgstr ""
 msgid "Close and forget changes"
 msgstr ""
 
-msgid "Close and save"
-msgstr ""
-
-msgid "Close without saving"
-msgstr ""
-
-msgid "Close, save changes and search now"
-msgstr ""
-
-msgid "Configure AutoTimer behavior"
+msgid "Close and save changes"
 msgstr ""
 
 msgid "Control recording completely by service"
@@ -257,19 +193,10 @@ msgstr ""
 msgid "Couldn't load config file!"
 msgstr ""
 
-msgid "Create AutoTimer"
-msgstr ""
-
 msgid "Create a new timer using the classic editor"
 msgstr ""
 
 msgid "Create a new timer using the wizard"
-msgstr ""
-
-msgid "Create debug log file"
-msgstr ""
-
-msgid "Create searchlog file"
 msgstr ""
 
 #, python-format
@@ -282,29 +209,13 @@ msgstr ""
 msgid "Custom offset"
 msgstr ""
 
-msgid "Date"
-msgstr ""
-
 msgid "Defines where to search for duplicates (only title, short description or even extended description)"
-msgstr ""
-
-msgid "Delay after editing (in sec)"
 msgstr ""
 
 msgid "Delete"
 msgstr ""
 
 msgid "Description"
-msgstr ""
-
-msgid "Description - short equal extended for match"
-msgstr ""
-
-msgid "Do not skip match when not description"
-msgstr ""
-
-#, python-format
-msgid "Do you really want to delete %s?"
 msgstr ""
 
 msgid "EPG encoding"
@@ -319,7 +230,11 @@ msgstr ""
 msgid "Edit AutoTimer services"
 msgstr ""
 
+#. TRANSLATORS: description of AutoTimer in PluginBrowser
 msgid "Edit Timers and scan for new Events"
+msgstr ""
+
+msgid "Edit filters"
 msgstr ""
 
 msgid "Edit new timer defaults"
@@ -343,16 +258,10 @@ msgstr ""
 msgid "Enable Service Restriction"
 msgstr ""
 
-msgid "Enable this to add item for create the AutoTimer into event menu (needs restart GUI)."
-msgstr ""
-
 msgid "Enable this to be able to access the AutoTimer Overview from within the extension menu."
 msgstr ""
 
-msgid "Enable this to be able to access the add to AutoTimer from the channel selection context menu."
-msgstr ""
-
-msgid "Enable timer conflict detection"
+msgid "Enable this to be able to access the AutoTimer Overview from within the plugin browser."
 msgstr ""
 
 msgid "Enabled"
@@ -373,9 +282,6 @@ msgstr ""
 msgid "Enter or edit match title"
 msgstr ""
 
-msgid "Enter or edit text"
-msgstr ""
-
 msgid "Everyday"
 msgstr ""
 
@@ -388,21 +294,10 @@ msgstr ""
 msgid "Execute \"after event\" during timespan"
 msgstr ""
 
+msgid "Exit"
+msgstr ""
+
 msgid "Filter"
-msgstr ""
-
-msgid "FilterEntry"
-msgstr ""
-
-msgid "Filterlist"
-msgstr ""
-
-#, python-format
-msgid ""
-"Finished add to filterList with %s event(s):\n"
-"\n"
-" %s event(s) added \n"
-" %s event(s) skipped"
 msgstr ""
 
 msgid "First day to match events. No event that begins before this date will be matched."
@@ -414,6 +309,7 @@ msgid ""
 "%d Timer were added and\n"
 "%d modified,\n"
 "%d conflicts encountered,\n"
+"%d unchanged,\n"
 "%d similars added."
 msgstr ""
 
@@ -426,16 +322,16 @@ msgstr ""
 msgid "Friday"
 msgstr ""
 
-msgid "Full (3000 events)"
-msgstr ""
-
 msgid "Guess existing timer based on begin/end"
 msgstr ""
 
 msgid "Help"
 msgstr ""
 
-msgid "Here you can specify whether simultaneous timers of the same program can be created. This allows simultaneous recording of a program with different resolutions. (e.g. SD service and HD service)."
+msgid "Here you can specify whether simultaneous timers of the same program can be created. This allows simultaneous recording of a program with different resolutions. (e.g. SD service and HD service)"
+msgstr ""
+
+msgid "Hour"
 msgstr ""
 
 msgid "If 0, the popup will remain open."
@@ -459,41 +355,17 @@ msgstr ""
 msgid "If specified services or bouquets"
 msgstr ""
 
-msgid "If the style is advanced, you will see more information about each auto timer. This change will not take effect until the plugin has started again."
-msgstr ""
-
-msgid "If this enabled, debug Autotimer write in log file."
-msgstr ""
-
-msgid "If this enabled, debug log print in console mode start enigma2."
-msgstr ""
-
-msgid "If this enabled, search log write in autotimer_search.log."
-msgstr ""
-
-msgid "If this enabled, will check the list of timers, conflicting autotimers are disabled, the duplicate autotimers will be deleted."
+msgid "If this is disabled AutoTimer will NOT automatically look for events matching your AutoTimers but only when you leave the GUI with the green button."
 msgstr ""
 
 #, python-format
 msgid "If this is enabled an existing timer will also be considered recording an event if it records at least 80% of the it."
 msgstr ""
 
-msgid "If this is enabled, up on the MENU button in the multi-EPG will list of choices for AutoTimer."
-msgstr ""
-
-msgid "If this is enabled, up on the Menu button in the standard single-EPG will list of choices for AutoTimer."
-msgstr ""
-
 msgid "If this is selected, the name of the respective AutoTimer will be added as a tag to timers created by this plugin."
 msgstr ""
 
 msgid "If this is selected, the tag \"AutoTimer\" will be given to timers created by this plugin."
-msgstr ""
-
-msgid "If your receiver has a small amount of memory, clear memory before poll AutoTimer run."
-msgstr ""
-
-msgid "If your receiver has a small amount of memory, use mode 'Standard (1000 events)' or 'Advanced (2000 events)'."
 msgstr ""
 
 msgid "Import AutoTimer"
@@ -543,12 +415,6 @@ msgstr ""
 msgid "Match title: %s"
 msgstr ""
 
-msgid "Max. count for saved searchlog"
-msgstr ""
-
-msgid "Max. match search events"
-msgstr ""
-
 msgid "Maximum duration (in m)"
 msgstr ""
 
@@ -559,6 +425,9 @@ msgstr ""
 msgid ""
 "Message\n"
 "Do you really want to delete %s?"
+msgstr ""
+
+msgid "Minute"
 msgstr ""
 
 msgid "Modify existing timers"
@@ -582,15 +451,6 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-msgid "No log file found"
-msgstr ""
-
-msgid ""
-"No searchLog found!\n"
-"\n"
-"So you have no new or modified timer at last autotimer-search."
-msgstr ""
-
 msgid "None"
 msgstr ""
 
@@ -598,9 +458,6 @@ msgid "Not after"
 msgstr ""
 
 msgid "Not before"
-msgstr ""
-
-msgid "Not found xml config file!"
 msgstr ""
 
 msgid "Number of scheduled recordings left."
@@ -644,37 +501,20 @@ msgstr ""
 msgid "Open Context Menu"
 msgstr ""
 
-msgid "Open Timers list"
-msgstr ""
-
-msgid "Open plugin"
-msgstr ""
-
-msgid "Open select location"
-msgstr ""
-
-msgid "Open select location as timer name"
-msgstr ""
-
-msgid "Other filters (edit in filter menu)"
-msgstr ""
-
-msgid "Override found with alternative service"
-msgstr ""
-
-msgid "Path debug log"
-msgstr ""
-
-msgid "Percentage ratio for duplicates matches"
-msgstr ""
-
 msgid "Please provide a Text to match"
 msgstr ""
 
-msgid "Poll Interval (in h)"
+#, python-format
+msgid "Poll Interval (in %s)"
 msgstr ""
 
 msgid "Poll automatically"
+msgstr ""
+
+msgid "Poll unit"
+msgstr ""
+
+msgid "Poll unit selects whether the poll interval should be interpreted in hours or minutes."
 msgstr ""
 
 msgid "Popup timeout in seconds"
@@ -689,15 +529,6 @@ msgstr ""
 msgid "Preview AutoTimer"
 msgstr ""
 
-msgid "Preview for your AutoTimers"
-msgstr ""
-
-msgid "Print shell log"
-msgstr ""
-
-msgid "Reading file...\n"
-msgstr ""
-
 msgid "Really close without saving settings?"
 msgstr ""
 
@@ -705,16 +536,6 @@ msgid "Record a maximum of x times"
 msgstr ""
 
 msgid "Record on"
-msgstr ""
-
-msgid "Reload timers list after search events"
-msgstr ""
-
-#, python-format
-msgid ""
-"Reload timers list.\n"
-"%d autotimer(s) disabled because conflict.\n"
-"%d double autotimer(s) removed.\n"
 msgstr ""
 
 msgid "Remove not existing events"
@@ -732,16 +553,31 @@ msgstr ""
 msgid "Restrict \"after event\" to a certain timespan?"
 msgstr ""
 
+msgid ""
+"Restrict autotimer to bouquets.\n"
+"Use the blue key to edit the bouquet filter."
+msgstr ""
+
+msgid ""
+"Restrict autotimer to specific days.\n"
+"Use the yellow key to edit the day filter."
+msgstr ""
+
+msgid ""
+"Restrict autotimer to specific services, channels.\n"
+"Use the blue key to edit the service filter."
+msgstr ""
+
+msgid "Restrict to days"
+msgstr ""
+
 msgid "Restrict to events on certain dates"
 msgstr ""
 
-msgid "Restriction to certain bouquets (edit in services menu)"
+msgid "Restrict to specific bouquets"
 msgstr ""
 
-msgid "Restriction to certain days of week (edit in filter menu)"
-msgstr ""
-
-msgid "Restriction to certain services (edit in services menu)"
+msgid "Restrict to specific services"
 msgstr ""
 
 msgid "Sat"
@@ -753,37 +589,16 @@ msgstr ""
 msgid "Save"
 msgstr ""
 
-msgid "Save and search now"
-msgstr ""
-
-msgid "Save the by SeriesPlugin generated timer-name in a filterlist to filter at later timer-searches (only with SeriesPlugin)"
-msgstr ""
-
-msgid "Save/check labeled series in filterlist (SeriesPlugin)"
-msgstr ""
-
-msgid "Search new events matching for your AutoTimers"
-msgstr ""
-
 msgid "Search strictness"
 msgstr ""
 
 msgid "Search type"
 msgstr ""
 
-msgid "Select \"exact match\" to enforce \"Match title\" to match exactly, \"partial match\" if you only want to search for a part of the event title or \"description match\" if you only want to search for a part of the event description"
+msgid "Select \"exact match\" to enforce \"Match title\" to match exactly, \"partial match\" if you only want to search for a part of the event title or \"description match\" if you only want to search for a part of the event description."
 msgstr ""
 
 msgid "Select a timer to import"
-msgstr ""
-
-msgid "Select action"
-msgstr ""
-
-msgid "Select action for AutoTimer or input date/time:"
-msgstr ""
-
-msgid "Select action for AutoTimer:"
 msgstr ""
 
 msgid "Select bouquet to record on"
@@ -792,16 +607,7 @@ msgstr ""
 msgid "Select channel to record on"
 msgstr ""
 
-msgid "Select the count of the last saved searchlogs (min=5 max=20)"
-msgstr ""
-
 msgid "Select the location to save the recording to."
-msgstr ""
-
-msgid "Select the path for autotimer_search.log"
-msgstr ""
-
-msgid "Select the path where the autotimer_search.log should be saved"
 msgstr ""
 
 msgid "Select type of Filter"
@@ -825,9 +631,6 @@ msgstr ""
 msgid "Set timer type: zap, simple record, zap+record (always zap to service before start record)."
 msgstr ""
 
-msgid "Set wakeup receiver type. This works only for zap timers."
-msgstr ""
-
 msgid "Setup"
 msgstr ""
 
@@ -840,25 +643,10 @@ msgstr ""
 msgid "Should timers created by this AutoTimer be recorded to a custom location?"
 msgstr ""
 
-msgid "Show \"add to AutoTimer\" in channel selection menu"
-msgstr ""
-
-msgid "Show AutoTimer FilterTxt"
-msgstr ""
-
-msgid "Show Log file"
-msgstr ""
-
-msgid "Show in event menu"
-msgstr ""
-
 msgid "Show in extension menu"
 msgstr ""
 
-msgid "Show last SearchLog"
-msgstr ""
-
-msgid "Show notification on added timers"
+msgid "Show in plugin browser"
 msgstr ""
 
 msgid "Show notification on conflicts"
@@ -879,22 +667,10 @@ msgstr ""
 msgid "Sort Time"
 msgstr ""
 
-msgid "Specify the name and location for the log."
-msgstr ""
-
-msgid "Standard"
-msgstr ""
-
-msgid "Standard (1000 events)"
-msgstr ""
-
-msgid "Standard input date/time"
-msgstr ""
-
 msgid "Startup delay (in min)"
 msgstr ""
 
-msgid "Style auto timers list"
+msgid "Startup delay is the number of minutes before polling after a reboot, so as to not delay enigma2 startup time."
 msgstr ""
 
 msgid "Sun"
@@ -912,7 +688,7 @@ msgstr ""
 msgid "Tags the Timer/Recording will have."
 msgstr ""
 
-msgid "The autotimer file (/etc/enigma2/autotimer.xml) is corrupt and could not be loaded."
+msgid "The autotimer file (/etc/enigma2/autotimer.xml) is corrupt. A new and empty config was created. A backup of the config can be found here (/etc/enigma2/autotimer.xml_old) "
 msgstr ""
 
 msgid "The counter can automatically be reset to the limit at certain intervals."
@@ -921,37 +697,22 @@ msgstr ""
 msgid "The editor to be used for new AutoTimers. This can either be the Wizard or the classic editor."
 msgstr ""
 
-#, python-format
-msgid ""
-"The filterEntry '%s' already exist!\n"
-"The change was canceled."
-msgstr ""
-
 msgid "The match attribute is mandatory."
 msgstr ""
 
-msgid "The title attribute is mandatory."
+msgid ""
+"This allows you to apply other filters.\n"
+"Use the yellow key to edit other filters."
 msgstr ""
 
 msgid "This is a name you can give the AutoTimer. It will be shown in the Overview and the Preview."
 msgstr ""
 
-msgid "This is the delay in hours that the AutoTimer will wait after a search to search the EPG again."
-msgstr ""
-
-msgid "This is the delay in minutes that the AutoTimer will wait on initial launch to not delay enigma2 startup time."
-msgstr ""
-
-msgid "This is the delay in seconds that the AutoTimer will wait after editing the AutoTimers."
-msgstr ""
-
-msgid "This is the duration in minutes that the AutoTimer is allowed to run."
+#, python-format
+msgid "This is the delay in %s that the AutoTimer will wait after doing a search before searching the EPG again."
 msgstr ""
 
 msgid "This is what will be looked for in event titles. Note that looking for e.g. german umlauts can be tricky as you have to know the encoding the channel uses."
-msgstr ""
-
-msgid "This option allows you to turn off the timer confict detection. This option is for advanced users."
 msgstr ""
 
 msgid "This setting controls the behavior when a timer matches a found event."
@@ -966,25 +727,13 @@ msgstr ""
 msgid "Thursday"
 msgstr ""
 
-msgid "Time"
-msgstr ""
-
 msgid "Time in minutes to append to recording."
 msgstr ""
 
 msgid "Time in minutes to prepend to recording."
 msgstr ""
 
-msgid "Timeout (in min)"
-msgstr ""
-
-msgid "Timer from:\n"
-msgstr ""
-
 msgid "Timer type"
-msgstr ""
-
-msgid "Timers list"
 msgstr ""
 
 msgid "Title"
@@ -996,16 +745,10 @@ msgstr ""
 msgid "Title and all descriptions"
 msgstr ""
 
-msgid "To cater for spelling mistakes and small deviations in the EPG information, you can make the matching algorithm fuzzy by setting the percentage both programmes must be equal for. Use 100% if you only want a match when both are completely identical. Recommended default ratio 80%."
-msgstr ""
-
 msgid "Tue"
 msgstr ""
 
 msgid "Tuesday"
-msgstr ""
-
-msgid "Unless this is enabled AutoTimer will NOT automatically look for events matching your AutoTimers but only when you leave the GUI with the green button."
 msgstr ""
 
 msgid "Upper bound of timespan."
@@ -1017,13 +760,10 @@ msgstr ""
 msgid "Use a custom location"
 msgstr ""
 
-msgid "Use blue key to edit bouquets or services."
+msgid "Use automatic selection of alternates."
 msgstr ""
 
-msgid "Use yellow key to edit filters."
-msgstr ""
-
-msgid "Wakeup receiver for start timer"
+msgid "Use other filters"
 msgstr ""
 
 msgid "Wed"
@@ -1050,16 +790,10 @@ msgstr ""
 msgid "When this is enabled AutoTimer will ONLY check for new events whilst in stanadby."
 msgstr ""
 
-msgid "When this option enabled and short description and extended description match is empty and timer title exist in match title, match is not a duplicate. Attention, this may result in double timers."
-msgstr ""
-
-msgid "When this option enabled, short description to equal extended description if short description is empty."
-msgstr ""
-
 msgid "When this option is enabled the AutoTimer won't match events where another timer with the same description already exists in the timer list."
 msgstr ""
 
-msgid "With this option enabled the channel to record on can be changed to a alternative service it is restricted to."
+msgid "With this option enabled the channel to record will be selected automaticliy using your list of alternates."
 msgstr ""
 
 msgid "With this option you can restrict the AutoTimer to a certain amount of scheduled recordings. Set this to 0 to disable this functionality."
@@ -1069,12 +803,6 @@ msgid "Wizard"
 msgstr ""
 
 msgid "Write the config file after every change which the user quits by saving."
-msgstr ""
-
-msgid "Yes"
-msgstr ""
-
-msgid "Yes and show notify"
 msgstr ""
 
 msgid "Yes, and delete all timers generated by this autotimer"
@@ -1104,28 +832,18 @@ msgstr ""
 msgid "[S]  "
 msgstr ""
 
+#. TRANSLATORS: AutoTimer title in MovieList (automatically opens importer, I consider this no further interaction)
 msgid "add AutoTimer"
 msgstr ""
 
+#. TRANSLATORS: AutoTimer title in EventInfo dialog (requires the user to select an event to base the AutoTimer on)
 msgid "add AutoTimer..."
-msgstr ""
-
-msgid "add filters"
-msgstr ""
-
-msgid "add to AutoTimer filterList"
-msgstr ""
-
-msgid "always"
 msgstr ""
 
 msgid "auto"
 msgstr ""
 
 msgid "autotimers need a match attribute"
-msgstr ""
-
-msgid "begin searchLog from"
 msgstr ""
 
 msgid "case-insensitive search"
@@ -1135,12 +853,6 @@ msgid "case-sensitive search"
 msgstr ""
 
 msgid "config changed."
-msgstr ""
-
-msgid "create AutoTimer for current event"
-msgstr ""
-
-msgid "delete"
 msgstr ""
 
 msgid "description match"
@@ -1155,9 +867,6 @@ msgstr ""
 msgid "do nothing"
 msgstr ""
 
-msgid "edit filters"
-msgstr ""
-
 msgid "enable"
 msgstr ""
 
@@ -1167,13 +876,13 @@ msgstr ""
 msgid "exact match"
 msgstr ""
 
-msgid "favorites description match"
-msgstr ""
-
 msgid "go to deep standby"
 msgstr ""
 
 msgid "go to standby"
+msgstr ""
+
+msgid "hours"
 msgstr ""
 
 msgid "in Description"
@@ -1185,28 +894,16 @@ msgstr ""
 msgid "in Title"
 msgstr ""
 
-msgid "like autotimer.log"
+msgid "mins"
 msgstr ""
 
-msgid "mins"
+msgid "minutes"
 msgstr ""
 
 msgid "missing parameter \"id\""
 msgstr ""
 
-msgid "missing parameter \"xml\""
-msgstr ""
-
-msgid "never"
-msgstr ""
-
 msgid "on Weekday"
-msgstr ""
-
-msgid "only from deep standby"
-msgstr ""
-
-msgid "only from standby"
 msgstr ""
 
 msgid "partial match"
@@ -1215,16 +912,7 @@ msgstr ""
 msgid "record"
 msgstr ""
 
-msgid "scan for new Events"
-msgstr ""
-
-msgid "searchLog"
-msgstr ""
-
 msgid "standard"
-msgstr ""
-
-msgid "title ends with"
 msgstr ""
 
 msgid "title starts with"
@@ -1241,83 +929,6 @@ msgid "zap"
 msgstr ""
 
 msgid "zap and record"
-msgstr ""
-
-msgid "AutoTimer Help"
-msgstr ""
-
-msgid "Congratulations"
-msgstr ""
-
-msgid "Generic setup"
-msgstr ""
-
-msgid "The \"Overview\""
-msgstr ""
-
-msgid ""
-"The AutoTimer overview is the standard entry point to this plugin.\n"
-"\n"
-"If AutoTimers are configured you can choose them from a list to change them (OK button on your remove) or remove them (YELLOW button on your remote).\n"
-"New Timers can be added by pressing the BLUE button and the control menu can be opened using the MENU button.\n"
-"\n"
-"When leaving the plugin using the GREEN button it will search the EPG for matching events ONCE. To configure a regular search interval of the plugin to search for events open the control menu and enter the plugin setup."
-msgstr ""
-
-msgid ""
-"The control menu hides less frequently used options of the plugin, including the configuration and default settings for new AutoTimers.\n"
-"\n"
-"While you can just open the menu and take a look for yourself, let's go through the available options:\n"
-" - Help:\n"
-"   What you are looking at right now\n"
-" - Preview:\n"
-"   Simulate EPG search, helps finding errors in your setup.\n"
-" - Import existing Timer:\n"
-"   Create a new AutoTimer based on an existing regular timer.\n"
-" - Import from EPG:\n"
-"   Create an AutoTimer based on an EPG event.\n"
-" - Setup:\n"
-"   Generic configuration of the plugin.\n"
-" - Edit new timer defaults:\n"
-"   Configure default values for new AutoTimers.\n"
-" - Create a new timer using the wizard/classic editor:\n"
-"   Use the non-default editor to create a new AutoTimer."
-msgstr ""
-
-msgid ""
-"This help screen is supposed to give you a quick look at everything the AutoTimer has to offer.\n"
-"You can abort it at any time by pressing the RED or EXIT button on your remote control or bring it up at a later point by selecting it from the control menu using the MENU button from the regular entry point of the plugin (more on that later).\n"
-"\n"
-"\n"
-"But you really should consider to take the few minutes it takes to read these help pages."
-msgstr ""
-
-msgid ""
-"This is mostly a matter of taste.\n"
-"The Wizard provides you with a reduced set of options and presents them in smaller sets at a time. It is mostly aimed at users not very experienced with this plugin or the \"expert\" level features of enigma2.\n"
-"\n"
-"You can check out the \"classic\" editor by opening an existing timer from the overview and if you prefer this view over the wizard you can change the default editor in the setup dialog."
-msgstr ""
-
-msgid ""
-"This screen should be pretty straight-forward. If the option name does not give its meaning away there should be an explanation for each of them when you select them. If there is no visible explanation this is most likely a skin issue and please try if the default skin fixes the issue.\n"
-"\n"
-"A lot of effort has been put in making the parameters as easy to understand as possible, so give reading them a try ;-)."
-msgstr ""
-
-msgid "Welcome to the AutoTimer-Plugin"
-msgstr ""
-
-msgid "What is this \"control menu\" you keep talking about?"
-msgstr ""
-
-msgid "Wizard or Classic Editor?"
-msgstr ""
-
-msgid ""
-"You now know almost everything there is to know about the AutoTimer-Plugin.\n"
-"\n"
-"As a final hint I can't stress how important it is to take a look at the help texts that are shown in the setup dialogs as they cover the most frequently asked questions. Surprisingly even after the hints were added ;-)."
 msgstr ""
 
 msgid "Abort this Wizard."
@@ -1359,6 +970,9 @@ msgid ""
 "This Wizard will help you to create a new AutoTimer by providing descriptions for common settings."
 msgstr ""
 
+msgid "Yes"
+msgstr ""
+
 msgid "Yes, keep them."
 msgstr ""
 
@@ -1383,6 +997,72 @@ msgid ""
 "Please confirm if this was intentional, if not they will be removed."
 msgstr ""
 
+msgid "AutoTimer Help"
+msgstr ""
+
+msgid "Congratulations"
+msgstr ""
+
+msgid "Generic setup"
+msgstr ""
+
+msgid "The 'Overview'"
+msgstr ""
+
+msgid "The AutoTimer overview is the standard entry point to this plugin./n/nIf AutoTimers are configured you can choose them from a list to change them (OK button on your remote) or remove them (YELLOW button on your remote)./nNew Timers can be added by pressing the BLUE button and the control menu can be opened using the MENU button./n/nWhen leaving the plugin using the GREEN button it will search the EPG for matching events ONCE. To configure a regular search interval of the plugin to search for events open the control menu and enter the plugin setup."
+msgstr ""
+
+msgid "The control menu hides less frequently used options of the plugin, including the configuration and default settings for new AutoTimers./n/nWhile you can just open the menu and take a look for yourself, let's go through the available options:/n - Help:/n   What you are looking at right now/n - Preview:/n   Simulate EPG search, helps finding errors in your setup./n - Import existing Timer:/n   Create a new AutoTimer based on an existing regular timer./n - Import from EPG:/n   Create an AutoTimer based on an EPG event./n - Setup:/n   Generic configuration of the plugin./n - Edit new timer defaults:/n   Configure default values for new AutoTimers./n - Create a new timer using the wizard/classic editor:/n   Use the non-default editor to create a new AutoTimer."
+msgstr ""
+
+msgid "This help screen is supposed to give you a quick look at everything the AutoTimer has to offer./nYou can abort it at any time by pressing the RED or EXIT button on your remote control or bring it up at a later point by selecting it from the control menu using the MENU button from the regular entry point of the plugin (more on that later)./n/n/nBut you really should consider to take the few minutes it takes to read these help pages."
+msgstr ""
+
+msgid "This is mostly a matter of taste./nThe Wizard provides you with a reduced set of options and presents them in smaller sets at a time. It is mostly aimed at users not very experienced with this plugin or the 'expert' level features of enigma2./n/nYou can check out the 'classic' editor by opening an existing timer from the overview and if you prefer this view over the wizard you can change the default editor in the setup dialog."
+msgstr ""
+
+msgid "This screen should be pretty straight-forward. If the option name does not give its meaning away there should be an explanation for each of them when you select them. If there is no visible explanation this is most likely a skin issue and please try if the default skin fixes the issue./n/nA lot of effort has been put in making the parameters as easy to understand as possible, so give reading them a try ;-)."
+msgstr ""
+
+msgid "Welcome to the AutoTimer-Plugin"
+msgstr ""
+
+msgid "What is this 'control menu' you keep talking about?"
+msgstr ""
+
+msgid "Wizard or Classic Editor?"
+msgstr ""
+
+msgid "You now know almost everything there is to know about the AutoTimer-Plugin./n/nAs a final hint I can't stress how important it is to take a look at the help texts that are shown in the setup dialogs as they cover the most frequently asked questions. Surprisingly even after the hints were added ;-)."
+msgstr ""
+
+msgid "Autotimer Settings"
+msgstr ""
+
+msgid "If this is selected, the tag 'AutoTimer' will be given to timers created by this plugin."
+msgstr ""
+
+msgid "Include 'AutoTimer' in tags"
+msgstr ""
+
+msgid "Poll Interval (in mins)"
+msgstr ""
+
+msgid "Support 'Fast Scan'?"
+msgstr ""
+
+msgid "This is the delay in minutes that the AutoTimer will wait after a search to search the EPG again."
+msgstr ""
+
+msgid "This is the delay in minutes that the AutoTimer will wait on initial launch to not delay enigma2 startup time."
+msgstr ""
+
+msgid "Unless this is enabled AutoTimer will NOT automatically look for events matching your AutoTimers but only when you leave the GUI with the green button."
+msgstr ""
+
+msgid "When supporting 'Fast Scan' the service type is ignored. You don't need to enable this unless your Image supports 'Fast Scan' and you are using it."
+msgstr ""
+
 msgid "AutoTimer FAQ"
 msgstr ""
 
@@ -1392,33 +1072,14 @@ msgstr ""
 msgid "Frequently asked questions about the AutoTimer"
 msgstr ""
 
-msgid ""
-"Question: I found a problem with the AutoTimer, can you fix it? \n"
-"Answer: First try the AutoTimer version in a recent (experimental) Image to see if the problem was fixed. Then read the Help again and the upcoming FAQs to make sure that this is actually a problem and not expected behavior. \n"
-"If you still think there is something wrong with the AutoTimer, please visit http://www.dream-multimedia-tv.de/board and post your problem there. \n"
-"\n"
-"Q: The plugin only adds timers when leaving the configuration, not automatically. What can I do? \n"
-"A: From the Overview press MENU and enter the \"Setup\". In this screen enable \"Poll automatically\" and you should be good to go."
+msgid "Question: I found a problem with the AutoTimer, can you fix it?/nAnswer: First try the AutoTimer version in a recent (experimental) Image to see if the problem was fixed. Then read the Help again and the upcoming FAQs to make sure that this is actually a problem and not expected behavior./nIf you still think there is something wrong with the AutoTimer, please visit http://www.dream-multimedia-tv.de/board and post your problem there./n/nQ: The plugin only adds timers when leaving the configuration, not automatically. What can I do?/nA: From the Overview press MENU and enter the 'Setup'. In this screen enable 'Poll automatically' and you should be good to go."
 msgstr ""
 
-msgid ""
-"Question: My AutoTimer for \"Nachrichten\" does not record the \"Spätnachrichten\". \n"
-"Answer: Check \"Search type\" and \"Search strictness\" for the given AutoTimer. \n"
-"\n"
-"Q: The show I'm trying to record contains umlauts in its title. AutoTimer does not find it. \n"
-"A: Check the \"EPG encoding\" for the given AutoTimer. For german stations \"ISO8859-15\" should be selected. \n"
-"\n"
-"Q: I seem to be unable to record two subsequent events. There is only a single timer created that spans (part of) both events. \n"
-"A: From the Overview press MENU and enter the \"Setup\". In this screen disable \"Guess existing timer based on begin/end\"."
+msgid "Question: My AutoTimer for 'News' does not record the 'Late News'./nAnswer: Check 'Search type' and 'Search strictness' for the given AutoTimer./n/nQ: The show I'm trying to record contains umlauts in its title. AutoTimer does not find it./nA: Check the 'EPG encoding' for the given AutoTimer. For german stations 'UTF-8' should be selected./n/nQ: I seem to be unable to record two subsequent events. There is only a single timer created that spans (part of) both events./nA: From the Overview press MENU and enter the 'Setup'. In this screen disable 'Guess existing timer based on begin/end'."
 msgstr ""
 
-msgid ""
-"Question: You keep talking about help being provided for each parameter. I'm unable to read it (in part or in full). \n"
-"Answer: Try using the default skin and if it works ask the creator of your regular skin. If it still does not work your image might not provide the actual default skin so contact the creator of your image."
+msgid "Question: You keep talking about help being provided for each parameter. I'm unable to read it (in part or in full)./nAnswer: Try using the default skin and if it works ask the creator of your regular skin. If it still does not work your image might not provide the actual default skin so contact the creator of your image."
 msgstr ""
 
-msgid ""
-"This FAQ is supposed to help everyone unwilling to help themselves by reading all the provided help available, and those who did not find a solution to their problems within the provided documentation. \n"
-"\n"
-"To make these hints a little easier to read, they are split up on multiple pages. You can go to the next page using the BLUE button on your remote control and back using the YELLOW one. Pressing the RED button or EXIT will close the FAQ."
+msgid "This FAQ is supposed to help everyone unwilling to help themselves by reading all the provided help available, and those who did not find a solution to their problems within the provided documentation./n/nTo make these hints a little easier to read, they are split up on multiple pages. You can go to the next page using the BLUE button on your remote control and back using the YELLOW one. Pressing the RED button or EXIT will close the FAQ."
 msgstr ""

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-16 16:27+0430\n"
-"PO-Revision-Date: 2016-06-18 02:53+0200\n"
+"POT-Creation-Date: 2022-07-22 17:52+0430\n"
+"PO-Revision-Date: 2016-06-18 02:25+0200\n"
 "Last-Translator: MCelliot_g <mcelliot_g@hotmail.com>\n"
 "Language-Team: none\n"
 "Language: el\n"
@@ -19,31 +19,18 @@ msgstr ""
 "X-Generator: Poedit 1.7.7\n"
 
 #, fuzzy
-msgid ""
-"\n"
-"\n"
-"Cancel?"
-msgstr "Ακύρωση"
+msgid "  Any time"
+msgstr "Οποιαδήποτε στιγμή"
 
-#, fuzzy
-msgid " (only services from bouquets when use \"favorites description match\")."
-msgstr " (μόνο υπηρεσίες από τα μπουκέτα)."
-
-#, fuzzy
-msgid " - AutoTimer "
-msgstr "Αυτόματος Χρονοδιακόπτης"
+msgid " (if services are enabled, bouquets are ignored.)."
+msgstr ""
 
 msgid " - Version: "
 msgstr " - Έκδοση: "
 
-msgid " 0 - timers will not be added."
-msgstr "0 - χρονοδιακόπτες δεν θα προστεθούν."
-
-msgid " == attention: global option 'Save/check filterlist is still active!! =="
-msgstr ""
-
-msgid " add AutoTimer"
-msgstr " Προσθήκη Αυτ. Χρ/κόπτη"
+#, fuzzy, python-format
+msgid " - Version: %s"
+msgstr " - Έκδοση: "
 
 #, python-format
 msgid ""
@@ -68,15 +55,6 @@ msgstr "%d.%B %Y"
 msgid "%s: %s at %s"
 msgstr "%s: %s σε %s"
 
-msgid "/etc/enigma2"
-msgstr ""
-
-msgid "/tmp"
-msgstr ""
-
-msgid "A new and empty config was created. A backup of the config can be found here (/etc/enigma2/autotimer.xml_old)."
-msgstr ""
-
 msgid "Abort this Wizard."
 msgstr ""
 
@@ -86,14 +64,9 @@ msgstr "Ενεργοποίηση VPS"
 msgid "Add"
 msgstr "Προσθήκη"
 
-msgid "Add \"Choice list AutoTimer\" menu button to multi-EPG"
-msgstr "Προσθήκη πλήκτρου μενού \"Λίστας Επιλογών Αυτ. Χρ/κόπτη\" στον πολλαπλό EPG"
-
-msgid "Add \"Choice list AutoTimer\" menu button to single-EPG"
-msgstr "Προσθήκη πλήκτρου μενού \"Λίστας Επιλογών Αυτ. Χρ/κόπτη\" στον μονό EPG"
-
-msgid "Add AutoTimer"
-msgstr "Προσθήκη Αυτ. Χρ/κόπτη"
+#, fuzzy
+msgid "Add filters"
+msgstr "προσθήκη φίλτρων"
 
 msgid "Add new AutoTimer"
 msgstr "Προσθήκη νέου Αυτ. Χρ/κόπτη"
@@ -106,12 +79,6 @@ msgstr "Προσθήκη παρόμοιου χρονοδιακόπτη κατά 
 
 msgid "Add timer as disabled on conflict"
 msgstr "Προσθήκη χρονοδιακόπτη ως ανενεργού κατά τη διένεξη"
-
-msgid "Advanced"
-msgstr "Προχωρημένο"
-
-msgid "Advanced (2000 events)"
-msgstr ""
 
 msgid "After event"
 msgstr "Μετά την εκπομπή"
@@ -131,30 +98,18 @@ msgstr "Εγγραφή πάντα του αρχείου ρυθμίσεων"
 msgid "Amount of recordings left"
 msgstr "Αριθμός εγγραφών που απομένουν"
 
+msgid "Any Day filter refers to the day of the timespan start, even if the timespan crosses midnight."
+msgstr ""
+
 msgid "Any service/recording"
 msgstr "Κάθε υπηρεσία/εγγραφή"
 
-msgid "Any time"
-msgstr "Οποιαδήποτε στιγμή"
+#, fuzzy
+msgid "Auto Timers"
+msgstr "Αυτόματος Χρονοδιακόπτης"
 
 msgid "AutoTimer"
 msgstr "Αυτόματος Χρονοδιακόπτης"
-
-#, python-format
-msgid ""
-"AutoTimer\n"
-"%d timer(s) were added."
-msgstr ""
-"Αυτόματος Χρονοδιακόπης\n"
-"Προστέθηκε(αν) %d χρονοδιακόπτης(ες)."
-
-#, fuzzy
-msgid "AutoTimer "
-msgstr "Αυτόματος Χρονοδιακόπτης"
-
-#, fuzzy, python-format
-msgid "AutoTimer %s FilterListEntry"
-msgstr "Φίλτρα Αυτ. Χρ/κόπτη"
 
 msgid "AutoTimer Context Menu"
 msgstr "Μενού Περιεχομένων Αυτ. Χρ/κόπτη"
@@ -179,16 +134,8 @@ msgstr "Υπηρεσίες Αυτ. Χρ/κόπτη"
 msgid "AutoTimer Settings"
 msgstr "Ρυθμίσεις Αυτ. Χρ/κόπτη"
 
-#, python-format
-msgid "AutoTimer failed with error %s"
-msgstr "Ο Αυτόματος Χρονοδιακόπτης απέτυχε με σφάλμα %s"
-
 msgid "AutoTimer overview"
 msgstr "Επισκόπηση Αυτ. Χρ/κόπτη"
-
-#, fuzzy
-msgid "AutoTimer scan"
-msgstr "Αυτόματος Χρονοδιακόπτης"
 
 msgid "AutoTimer was added successfully"
 msgstr "Ο Αυτόματος Χρονοδιακόπτης προστέθηκε με επιτυχία"
@@ -200,8 +147,16 @@ msgid "AutoTimer was removed"
 msgstr "Ο Αυτ. Χρ/κόπτης αφαιρέθηκε"
 
 #, fuzzy
-msgid "AutoTimers were changed successfully"
+msgid "AutoTimers"
+msgstr "Αυτόματος Χρονοδιακόπτης"
+
+#, fuzzy
+msgid "AutoTimers were changed successfully."
 msgstr "Ο Αυτ. Χρ/κόπτης άλλαξε με επιτυχία"
+
+#, fuzzy
+msgid "Autotimer Settings"
+msgstr "Ρυθμίσεις Αυτ. Χρ/κόπτη"
 
 msgid "Begin of \"after event\" timespan"
 msgstr "Αρχή χρονικής διάρκειας \"μετά το πρόγραμμα\""
@@ -221,9 +176,6 @@ msgstr "Ενεργοποιώντας αυτό, θα ενημερώνεστε γ�
 msgid "By enabling this you will be notified about timer conflicts found during automated polling. There is no intelligence involved, so it might bother you about the same conflict over and over."
 msgstr "Ενεργοποιώντας αυτό, θα ενημερώνεστε για διενέξεις χρονοδιακοπτών που προκύπτουν κατά την αυτόματη ανίχνευση. Δεν είναι κάτι έξυπνο, οπότε μπορεί να σας ειδοποιεί συνεχώς για την ίδια διένεξη."
 
-msgid "By enabling this you will be notified about timer(s) added during automated polling. Just not in standby mode."
-msgstr "Ενεργοποιώντας αυτό, θα ενημερώνεστε για τους χρονοδιακόπτες που προστίθενται κατά την αυτόματη ανίχνευσή τους. Απλά όχι κατά την αναμονή."
-
 msgid "Cancel"
 msgstr "Ακύρωση"
 
@@ -242,17 +194,11 @@ msgstr "Έλεγχος μοναδικότητας σε"
 msgid "Check the event id (eit) and remove the timer if there is no corresponding EPG event. Due to compatibility issues with SerienRecorder and IPRec, only timer created by AutoTimer are affected."
 msgstr "Έλεγχος του id προγράμματος (eit) και αφαίρεση του χρονοδιακόπτη αν δεν υπάρχει αντίστοιχο στο EPG. Λόγω θεμάτων συμβατότητας με τα SerienRecorder και IPRec, θα επηρεάζεται μόνο ο χρονοδιακόπτης που δημιουργείται Αυτόματα."
 
-msgid "Choice list AutoTimer"
-msgstr "Λίστα επιλογών Αυτ. Χρ/κόπτη"
-
 msgid "Choose target folder"
 msgstr "Επιλογή φάκελου προορισμού"
 
 msgid "Classic"
 msgstr "Κλασσική"
-
-msgid "Clear memory before auto run"
-msgstr ""
 
 msgid "Clone selected timer"
 msgstr "Κλωνοποίηση επιλεγμένου χρονοδιακόπτη"
@@ -264,18 +210,8 @@ msgid "Close and forget changes"
 msgstr "Κλείσιμο και αγνόηση αλλαγών"
 
 #, fuzzy
-msgid "Close and save"
+msgid "Close and save changes"
 msgstr "Κλείσιμο και αγνόηση αλλαγών"
-
-#, fuzzy
-msgid "Close without saving"
-msgstr "Έξοδος χωρίς αποθήκευση ρυθμίσεων;"
-
-msgid "Close, save changes and search now"
-msgstr "Κλείσιμο, αποθήκευση αλλαγών και αναζήτηση τώρα"
-
-msgid "Configure AutoTimer behavior"
-msgstr "Ρύθμιση συμπεριφοράς του Αυτ. Χρ/κόπτη"
 
 msgid "Congratulations"
 msgstr ""
@@ -285,9 +221,6 @@ msgstr "Πλήρης έλεγχος της εγγραφής από την υπη
 
 msgid "Couldn't load config file!"
 msgstr "Αδυναμία φόρτωσης του αρχείου ρυθμίσεων!"
-
-msgid "Create AutoTimer"
-msgstr "Δημιουργία Αυτ. Χρ/κόπτη"
 
 #, fuzzy
 msgid "Create a new AutoTimer."
@@ -299,13 +232,6 @@ msgstr "Δημιουργία νέου χρονοδιακόπτη με χρήση
 msgid "Create a new timer using the wizard"
 msgstr "Δημιουργία νέου χρονοδιακόπτη με χρήση οδηγού"
 
-msgid "Create debug log file"
-msgstr "Δημιουργία αρχείου καταγραφής εκσφαλμάτωσης"
-
-#, fuzzy
-msgid "Create searchlog file"
-msgstr "Δημιουργία αρχείου καταγραφής εκσφαλμάτωσης"
-
 #, python-format
 msgid "Custom (%s)"
 msgstr "Ορισμένο από το χρήστη (%s)"
@@ -316,32 +242,14 @@ msgstr "Τοποθεσία ορισμένη από το χρήστη"
 msgid "Custom offset"
 msgstr "Μετατόπιση χρόνου από το χρήστη"
 
-msgid "Date"
-msgstr ""
-
 msgid "Defines where to search for duplicates (only title, short description or even extended description)"
 msgstr "Ορίζει πού θα γίνεται αναζήτηση διπλοτύπων (μόνο τίτλος, σύντομη περιγραφή ή ακόμα εκτεταμένη περιγραφή)"
-
-msgid "Delay after editing (in sec)"
-msgstr "Καθυστέρηση μετά την επεξεργασία (σε δευτ)"
 
 msgid "Delete"
 msgstr "Διαγραφή"
 
 msgid "Description"
 msgstr "Περιγραφή"
-
-msgid "Description - short equal extended for match"
-msgstr "Περιγραφή - η σύντομη ισούται με την εκτεταμένη για συσχέτιση"
-
-msgid "Do not skip match when not description"
-msgstr "Μη παράλειψη της συσχέτισης σε μη περιγραφή"
-
-#, fuzzy, python-format
-msgid "Do you really want to delete %s?"
-msgstr ""
-"Μήνυμα\n"
-"Θέλετε σίγουρα να διαγραφεί το %s;"
 
 msgid "EPG encoding"
 msgstr "Κωδικοποίηση EPG"
@@ -355,8 +263,13 @@ msgstr "Επεξεργασία φίλτρων Αυτ. Χρ/κόπτη"
 msgid "Edit AutoTimer services"
 msgstr "Επεξεργασία υπηρεσιών Αυτ. Χρ/κόπτη"
 
+#. TRANSLATORS: description of AutoTimer in PluginBrowser
 msgid "Edit Timers and scan for new Events"
 msgstr "Επεξεργασία Χρονοδιακοπτών και ανίχνευση για νέα Προγράμματα"
+
+#, fuzzy
+msgid "Edit filters"
+msgstr "επεξεργασία φίλτρων"
 
 msgid "Edit new timer defaults"
 msgstr "Επεξεργασία προεπιλογών νέου χρονοδιακόπτη"
@@ -379,17 +292,12 @@ msgstr "Ενεργοποίηση Φίλτρων"
 msgid "Enable Service Restriction"
 msgstr "Ενεργοποίηση Περιορισμού Υπηρεσίας"
 
-msgid "Enable this to add item for create the AutoTimer into event menu (needs restart GUI)."
-msgstr "Ενεργοποιώντας αυτό προστίθεται ο Αυτόματος Χρονοδιακόπτης στο μενού προγραμμάτων (απαιτείται επανεκκίνηση επιφάνειας χρήστη)."
-
 msgid "Enable this to be able to access the AutoTimer Overview from within the extension menu."
 msgstr "Αυτό ενεργοποιεί τη πρόσβαση της Προεπισκόπησης του Αυτ. Χρ/κόπτη από το μενού επεκτάσεων."
 
-msgid "Enable this to be able to access the add to AutoTimer from the channel selection context menu."
-msgstr "Αυτό ενεργοποιεί την πρόβαση στην προσθήκη Αυτ. Χρ/κόπτη από το μενού επιλογής καναλιών."
-
-msgid "Enable timer conflict detection"
-msgstr "Ενεργοποίηση εντοπισμού διενέξεων των χρονοδιακοπτών"
+#, fuzzy
+msgid "Enable this to be able to access the AutoTimer Overview from within the plugin browser."
+msgstr "Αυτό ενεργοποιεί τη πρόσβαση της Προεπισκόπησης του Αυτ. Χρ/κόπτη από το μενού επεκτάσεων."
 
 msgid "Enabled"
 msgstr "Ενεργό"
@@ -409,9 +317,6 @@ msgstr "Εισαγωγή η επεξεργασία περιγραφής"
 msgid "Enter or edit match title"
 msgstr "Εισαγωγή ή επεξεργασία συσχετισμένου τίτλου"
 
-msgid "Enter or edit text"
-msgstr "Εισαγωγή ή επεξεργασία κειμένου"
-
 msgid "Everyday"
 msgstr "Κάθε ημέρα"
 
@@ -424,18 +329,13 @@ msgstr "Εξαίρεση"
 msgid "Execute \"after event\" during timespan"
 msgstr "Εκτέλεση του \"μετά το πρόγραμμα\" κατά το χρονικό διάστημα"
 
+msgid "Exit"
+msgstr ""
+
 msgid "FAQ"
 msgstr ""
 
 msgid "Filter"
-msgstr "Φίλτρο"
-
-#, fuzzy
-msgid "FilterEntry"
-msgstr "Φίλτρο"
-
-#, fuzzy
-msgid "Filterlist"
 msgstr "Φίλτρο"
 
 msgid ""
@@ -443,23 +343,16 @@ msgid ""
 "Press BLUE to add a new restriction and YELLOW to remove the selected one."
 msgstr ""
 
-#, python-format
-msgid ""
-"Finished add to filterList with %s event(s):\n"
-"\n"
-" %s event(s) added \n"
-" %s event(s) skipped"
-msgstr ""
-
 msgid "First day to match events. No event that begins before this date will be matched."
 msgstr "Πρώτη ημέρα συσχέτισης προγραμμάτων. Δεν θα συσχετίζεται κανένα πρόγραμμα πριν αυτή την ημερομηνία."
 
-#, python-format
+#, fuzzy, python-format
 msgid ""
 "Found a total of %d matching Events.\n"
 "%d Timer were added and\n"
 "%d modified,\n"
 "%d conflicts encountered,\n"
+"%d unchanged,\n"
 "%d similars added."
 msgstr ""
 "Βρέθηκαν συνολικά %d συσχετισμένα Προγράμματα.\n"
@@ -481,9 +374,6 @@ msgstr "Παρ"
 msgid "Friday"
 msgstr "Παρασκευή"
 
-msgid "Full (3000 events)"
-msgstr ""
-
 msgid "Generic setup"
 msgstr ""
 
@@ -493,7 +383,10 @@ msgstr "Υπολογισμός  υπάρχοντος χρονοδιακόπτη 
 msgid "Help"
 msgstr "Βοήθεια"
 
-msgid "Here you can specify whether simultaneous timers of the same program can be created. This allows simultaneous recording of a program with different resolutions. (e.g. SD service and HD service)."
+msgid "Here you can specify whether simultaneous timers of the same program can be created. This allows simultaneous recording of a program with different resolutions. (e.g. SD service and HD service)"
+msgstr ""
+
+msgid "Hour"
 msgstr ""
 
 msgid "If 0, the popup will remain open."
@@ -515,34 +408,17 @@ msgstr ""
 msgid "If specified services"
 msgstr "Στην ίδια υπηρεσία"
 
+#, fuzzy
 msgid "If specified services or bouquets"
-msgstr ""
-
-msgid "If the style is advanced, you will see more information about each auto timer. This change will not take effect until the plugin has started again."
-msgstr "Αν το στυλ είναι προχωρημένο, θα δείτε περισσότερες πληροφορίες για τον κάθε αυτ. χρ/κόπτη."
-
-msgid "If this enabled, debug Autotimer write in log file."
-msgstr "Αν ενεργοποιηθεί, θα γίνεται εγγραφή εκσφαλμάτωσης του Αυτ. Χρ/κόπτη στο αρχείο καταγραφής."
-
-msgid "If this enabled, debug log print in console mode start enigma2."
-msgstr "Αν ενεργοποιηθεί, η η καταγραφή εκσφαλμάτωσης στην κονσόλα εκκινεί το enigma2."
+msgstr " (μόνο υπηρεσίες από τα μπουκέτα)."
 
 #, fuzzy
-msgid "If this enabled, search log write in autotimer_search.log."
-msgstr "Επιλογή ενέργειας του Αυτ. Χρ/κόπτη:"
-
-msgid "If this enabled, will check the list of timers, conflicting autotimers are disabled, the duplicate autotimers will be deleted."
-msgstr ""
+msgid "If this is disabled AutoTimer will NOT automatically look for events matching your AutoTimers but only when you leave the GUI with the green button."
+msgstr "Εκτός και αν είναι ενεργό, ο Αυτ. Χρ/κόπτης ΔΕΝ θα ψάξει για προγράμματα που ταιριάζουν με τους Αυτόματους Χρονοδιακόπτες, αλλά μόνο εάν φύγεται από το μενού με το πράσινο πλήκτρο."
 
 #, fuzzy, python-format
 msgid "If this is enabled an existing timer will also be considered recording an event if it records at least 80% of the it."
 msgstr "Αν ενεργοποιηθεί, ένας υπάρχων χρονοδιακόπτης θα λογίζεται ότι γράφει μία εκπομπή ακόμα και αν έχει εγγράψει το 80% της."
-
-msgid "If this is enabled, up on the MENU button in the multi-EPG will list of choices for AutoTimer."
-msgstr "Αν ενεργοποιηθεί, το πλήκτρο ΜΕΝΟΥ στον πολλαπλό EPG θα εμφανίζει τις επιλογές του Αυτ. Χρ/κόπτη."
-
-msgid "If this is enabled, up on the Menu button in the standard single-EPG will list of choices for AutoTimer."
-msgstr "Αν ενεργοποιηθεί, το πλήκτρο ΜΕΝΟΥ στον μονό EPG θα εμφανίζει τις επιλογές του Αυτ. Χρ/κόπτη."
 
 msgid "If this is selected, the name of the respective AutoTimer will be added as a tag to timers created by this plugin."
 msgstr "Αν ενεργοποιηθεί, το όνομα του αντίστοιχου Αυτ. Χρ/κόπτη θα προστεθεί ως εκτικέτα στους χρονοδιακόπτες που δημιουργήθηκαν από το πρόσθετο."
@@ -550,11 +426,9 @@ msgstr "Αν ενεργοποιηθεί, το όνομα του αντίστοι
 msgid "If this is selected, the tag \"AutoTimer\" will be given to timers created by this plugin."
 msgstr "Με αυτό επιλεγμένο, η ετικέτα \"AutoTimer\" θα δίνεται στους χρονοδιακόπτες που δημιουργήθηκαν από το πρόσθετο."
 
-msgid "If your receiver has a small amount of memory, clear memory before poll AutoTimer run."
-msgstr ""
-
-msgid "If your receiver has a small amount of memory, use mode 'Standard (1000 events)' or 'Advanced (2000 events)'."
-msgstr ""
+#, fuzzy
+msgid "If this is selected, the tag 'AutoTimer' will be given to timers created by this plugin."
+msgstr "Με αυτό επιλεγμένο, η ετικέτα \"AutoTimer\" θα δίνεται στους χρονοδιακόπτες που δημιουργήθηκαν από το πρόσθετο."
 
 msgid "Import AutoTimer"
 msgstr "Εισαγωγή Αυτ. Χρ/κόπτη"
@@ -569,6 +443,10 @@ msgid "Include"
 msgstr "Συμπερίληψη"
 
 msgid "Include \"AutoTimer\" in tags"
+msgstr "Συμπερίληψη \"Αυτ. Χρ/κόπτη\" στις ετικέτες"
+
+#, fuzzy
+msgid "Include 'AutoTimer' in tags"
 msgstr "Συμπερίληψη \"Αυτ. Χρ/κόπτη\" στις ετικέτες"
 
 msgid "Include AutoTimer name in tags"
@@ -609,12 +487,6 @@ msgstr "Συσχέτιση τίτλου"
 msgid "Match title: %s"
 msgstr "Συσχέτιση τίτλου: %s"
 
-msgid "Max. count for saved searchlog"
-msgstr ""
-
-msgid "Max. match search events"
-msgstr ""
-
 msgid "Maximum duration (in m)"
 msgstr "Μέγιστη διάρκεια (σε λεπτά)"
 
@@ -628,6 +500,9 @@ msgid ""
 msgstr ""
 "Μήνυμα\n"
 "Θέλετε σίγουρα να διαγραφεί το %s;"
+
+msgid "Minute"
+msgstr ""
 
 msgid "Modify existing timers"
 msgstr "Τροποποίηση υπάρχοντων χρονοδιακοπτών"
@@ -650,15 +525,6 @@ msgstr "Νέο"
 msgid "No"
 msgstr "Όχι"
 
-msgid "No log file found"
-msgstr ""
-
-msgid ""
-"No searchLog found!\n"
-"\n"
-"So you have no new or modified timer at last autotimer-search."
-msgstr ""
-
 msgid "No, remove them."
 msgstr ""
 
@@ -670,10 +536,6 @@ msgstr "Όχι έπειτα από"
 
 msgid "Not before"
 msgstr "Όχι πριν από"
-
-#, fuzzy
-msgid "Not found xml config file!"
-msgstr "Αδυναμία φόρτωσης του αρχείου ρυθμίσεων!"
 
 msgid "Number of scheduled recordings left."
 msgstr "Αριθμός προγραμματισμένων εγγραφών που απομένουν."
@@ -716,38 +578,25 @@ msgstr "Ανίχνευση μόνο κατά την αναμονή"
 msgid "Open Context Menu"
 msgstr "Άνοιγμα Μενού Πληροφοριών"
 
-msgid "Open Timers list"
-msgstr "Άνοιγμα λίστας Χρονοδιακοπτών"
-
-msgid "Open plugin"
-msgstr "Άνοιγμα προσθέτου"
-
-msgid "Open select location"
-msgstr "Άνοιγμα επιλεγμένης τοποθεσίας"
-
-msgid "Open select location as timer name"
-msgstr "Άνοιγμα επιλεγμένης τοποθεσίας ως όνομα χρονοδιακόπτη"
-
-msgid "Other filters (edit in filter menu)"
-msgstr "Άλλα φίλτρα (επεξεργασία στο μενού φίλτρων)"
-
-msgid "Override found with alternative service"
-msgstr "Βρέθηκε υπερκάλυψη με την εναλλακτική υπηρεσία"
-
-msgid "Path debug log"
-msgstr "Διαδρομή καταγραφών εκσφαλμάτωσης"
-
-msgid "Percentage ratio for duplicates matches"
-msgstr "Αναλογία ποσοστού για διπλότυπες συσχετίσεις"
-
 msgid "Please provide a Text to match"
 msgstr "Παρακαλώ εισάγετε Κείμενο προς συσχέτιση"
 
-msgid "Poll Interval (in h)"
+#, fuzzy, python-format
+msgid "Poll Interval (in %s)"
+msgstr "Μεσοδιάστημα ανίχνευσης (σε ώρες)"
+
+#, fuzzy
+msgid "Poll Interval (in mins)"
 msgstr "Μεσοδιάστημα ανίχνευσης (σε ώρες)"
 
 msgid "Poll automatically"
 msgstr "Ανίχνευση αυτόματα"
+
+msgid "Poll unit"
+msgstr ""
+
+msgid "Poll unit selects whether the poll interval should be interpreted in hours or minutes."
+msgstr ""
 
 msgid "Popup timeout in seconds"
 msgstr "Χρόνος λήξης αναδυόμενου παραθύρου σε δευτερόλεπτα"
@@ -761,38 +610,13 @@ msgstr "Προεπισκόπηση"
 msgid "Preview AutoTimer"
 msgstr "Προεπισκόπηση Αυτ. Χρ/κόπτη"
 
-msgid "Preview for your AutoTimers"
-msgstr "Προεπισκόπηση για τους Αυτ. Χρ/κόπτες"
-
-msgid "Print shell log"
-msgstr "Εκτύπωση καταγραφής κελύφους"
-
-msgid ""
-"Question: I found a problem with the AutoTimer, can you fix it? \n"
-"Answer: First try the AutoTimer version in a recent (experimental) Image to see if the problem was fixed. Then read the Help again and the upcoming FAQs to make sure that this is actually a problem and not expected behavior. \n"
-"If you still think there is something wrong with the AutoTimer, please visit http://www.dream-multimedia-tv.de/board and post your problem there. \n"
-"\n"
-"Q: The plugin only adds timers when leaving the configuration, not automatically. What can I do? \n"
-"A: From the Overview press MENU and enter the \"Setup\". In this screen enable \"Poll automatically\" and you should be good to go."
+msgid "Question: I found a problem with the AutoTimer, can you fix it?/nAnswer: First try the AutoTimer version in a recent (experimental) Image to see if the problem was fixed. Then read the Help again and the upcoming FAQs to make sure that this is actually a problem and not expected behavior./nIf you still think there is something wrong with the AutoTimer, please visit http://www.dream-multimedia-tv.de/board and post your problem there./n/nQ: The plugin only adds timers when leaving the configuration, not automatically. What can I do?/nA: From the Overview press MENU and enter the 'Setup'. In this screen enable 'Poll automatically' and you should be good to go."
 msgstr ""
 
-msgid ""
-"Question: My AutoTimer for \"Nachrichten\" does not record the \"Spätnachrichten\". \n"
-"Answer: Check \"Search type\" and \"Search strictness\" for the given AutoTimer. \n"
-"\n"
-"Q: The show I'm trying to record contains umlauts in its title. AutoTimer does not find it. \n"
-"A: Check the \"EPG encoding\" for the given AutoTimer. For german stations \"ISO8859-15\" should be selected. \n"
-"\n"
-"Q: I seem to be unable to record two subsequent events. There is only a single timer created that spans (part of) both events. \n"
-"A: From the Overview press MENU and enter the \"Setup\". In this screen disable \"Guess existing timer based on begin/end\"."
+msgid "Question: My AutoTimer for 'News' does not record the 'Late News'./nAnswer: Check 'Search type' and 'Search strictness' for the given AutoTimer./n/nQ: The show I'm trying to record contains umlauts in its title. AutoTimer does not find it./nA: Check the 'EPG encoding' for the given AutoTimer. For german stations 'UTF-8' should be selected./n/nQ: I seem to be unable to record two subsequent events. There is only a single timer created that spans (part of) both events./nA: From the Overview press MENU and enter the 'Setup'. In this screen disable 'Guess existing timer based on begin/end'."
 msgstr ""
 
-msgid ""
-"Question: You keep talking about help being provided for each parameter. I'm unable to read it (in part or in full). \n"
-"Answer: Try using the default skin and if it works ask the creator of your regular skin. If it still does not work your image might not provide the actual default skin so contact the creator of your image."
-msgstr ""
-
-msgid "Reading file...\n"
+msgid "Question: You keep talking about help being provided for each parameter. I'm unable to read it (in part or in full)./nAnswer: Try using the default skin and if it works ask the creator of your regular skin. If it still does not work your image might not provide the actual default skin so contact the creator of your image."
 msgstr ""
 
 msgid "Really close without saving settings?"
@@ -803,16 +627,6 @@ msgstr "Εγγραφή το μέγιστο x φορές"
 
 msgid "Record on"
 msgstr "Εγγραφή σε"
-
-msgid "Reload timers list after search events"
-msgstr ""
-
-#, python-format
-msgid ""
-"Reload timers list.\n"
-"%d autotimer(s) disabled because conflict.\n"
-"%d double autotimer(s) removed.\n"
-msgstr ""
 
 msgid "Remove not existing events"
 msgstr "Αφαίρεση μη υπάρχοντων προγραμμάτων"
@@ -829,16 +643,32 @@ msgstr "Μηδενισμός μετρητών"
 msgid "Restrict \"after event\" to a certain timespan?"
 msgstr "Περιορισμός του \"μετά το πρόγραμμα\" σε συγκεκριμένο χρονικό διάστημα;"
 
+msgid ""
+"Restrict autotimer to bouquets.\n"
+"Use the blue key to edit the bouquet filter."
+msgstr ""
+
+msgid ""
+"Restrict autotimer to specific days.\n"
+"Use the yellow key to edit the day filter."
+msgstr ""
+
+msgid ""
+"Restrict autotimer to specific services, channels.\n"
+"Use the blue key to edit the service filter."
+msgstr ""
+
+msgid "Restrict to days"
+msgstr ""
+
 msgid "Restrict to events on certain dates"
 msgstr "Περιορισμός σε προγράμματα συγκεκριμένων ημερομηνιών"
 
-msgid "Restriction to certain bouquets (edit in services menu)"
-msgstr "Περιορισμός σε συγκεκριμένες μπουκέτα (μενού υπηρεσιών)"
+msgid "Restrict to specific bouquets"
+msgstr ""
 
-msgid "Restriction to certain days of week (edit in filter menu)"
-msgstr "Περιορισμός σε συγκεκριμένες ημέρες (μενού φίλτρων)"
-
-msgid "Restriction to certain services (edit in services menu)"
+#, fuzzy
+msgid "Restrict to specific services"
 msgstr "Περιορισμός σε συγκεκριμένες υπηρεσίες (μενού υπηρεσιών)"
 
 msgid "Sat"
@@ -850,38 +680,17 @@ msgstr "Σάββατο"
 msgid "Save"
 msgstr "Αποθήκευση"
 
-msgid "Save and search now"
-msgstr "Αποθήκευση και αναζήτηση τώρα"
-
-msgid "Save the by SeriesPlugin generated timer-name in a filterlist to filter at later timer-searches (only with SeriesPlugin)"
-msgstr ""
-
-msgid "Save/check labeled series in filterlist (SeriesPlugin)"
-msgstr ""
-
-msgid "Search new events matching for your AutoTimers"
-msgstr "Αναζήτηση νέων προγραμμάτων που συσχετίζονται με τους Αυτ. Χρ/κόπτες"
-
 msgid "Search strictness"
 msgstr "Αυστηρότητα αναζήτησης"
 
 msgid "Search type"
 msgstr "Τύπος αναζήτησης"
 
-msgid "Select \"exact match\" to enforce \"Match title\" to match exactly, \"partial match\" if you only want to search for a part of the event title or \"description match\" if you only want to search for a part of the event description"
+msgid "Select \"exact match\" to enforce \"Match title\" to match exactly, \"partial match\" if you only want to search for a part of the event title or \"description match\" if you only want to search for a part of the event description."
 msgstr "Επιλέξτε \"ακριβής συσχέτιση\" για να αναγκάσετε τον ακριβή συσχετισμό του \"Συσχέτιση τίτλου\", \"μερική συσχέτιση\" αν θέλετε να ψάξετε μόνο ένα μέρος του τίτλου ή \"συσχετισμός περιγραφής\" αν θέλετε να ψάξετε μόνο ένα μέρος της περιγραφής του προγράμματος."
 
 msgid "Select a timer to import"
 msgstr "Επιλογή ενός χρονοδιακόπτη για εισαγωγή"
-
-msgid "Select action"
-msgstr "Επιλογή ενέργειας"
-
-msgid "Select action for AutoTimer or input date/time:"
-msgstr "Επιλογή ενέργειας για τον Αυτ. Χρ/κόπτη ή εισαγωγή ημερομηνίας/ώρας:"
-
-msgid "Select action for AutoTimer:"
-msgstr "Επιλογή ενέργειας του Αυτ. Χρ/κόπτη:"
 
 msgid "Select bouquet to record on"
 msgstr "Επιλογή μπουκέτου για εγγραφή"
@@ -889,18 +698,8 @@ msgstr "Επιλογή μπουκέτου για εγγραφή"
 msgid "Select channel to record on"
 msgstr "Επιλογή καναλιού προς εγγραφή"
 
-msgid "Select the count of the last saved searchlogs (min=5 max=20)"
-msgstr ""
-
 msgid "Select the location to save the recording to."
 msgstr "Επιλογή της τοποθεσίας αποθήκευσης της εγγραφής."
-
-#, fuzzy
-msgid "Select the path for autotimer_search.log"
-msgstr "Επιλογή ενέργειας του Αυτ. Χρ/κόπτη:"
-
-msgid "Select the path where the autotimer_search.log should be saved"
-msgstr ""
 
 msgid "Select type of Filter"
 msgstr "Επιλογή τύπου Φίλτρου"
@@ -923,9 +722,6 @@ msgstr "Επιλέξτε ΟΧΙ για απενεργοποίηση αυτού �
 msgid "Set timer type: zap, simple record, zap+record (always zap to service before start record)."
 msgstr "Ορισμός τύπου χρονοδιακόπτη: μετάβαση, απλή εγγραφή, μετάβαση+εγγραφή (πάντα μετάβαση στην υπηρεσία πριν την έναρξη της εγγραφής)."
 
-msgid "Set wakeup receiver type. This works only for zap timers."
-msgstr "Ορισμός τύπου αφύπνισης δέκτη. Αυτό λειτουργεί μόνο σε χρονοδιακόπτες ζάπινγκ."
-
 msgid "Setup"
 msgstr "Εγκατάσταση"
 
@@ -938,27 +734,11 @@ msgstr "Πρέπει αυτός ο Αυτ. Χρ/κόπτης να συσχετί
 msgid "Should timers created by this AutoTimer be recorded to a custom location?"
 msgstr "Πρέπει οι χρονοδιακόπτες που δημιουργούνται από αυτό τον Αυτ. Χρ/κόπτη να εγγράφονται σε ορισμένη τοποθεσία;"
 
-msgid "Show \"add to AutoTimer\" in channel selection menu"
-msgstr "Εμφάνιση του \"προσθήκη στον Αυτ. Χρ/κόπτη\" στο μενού επιλογής καναλιών"
-
-#, fuzzy
-msgid "Show AutoTimer FilterTxt"
-msgstr "Φίλτρα Αυτ. Χρ/κόπτη"
-
-msgid "Show Log file"
-msgstr ""
-
-msgid "Show in event menu"
-msgstr "Εμφάνιση στο μενού προγραμμάτων"
-
 msgid "Show in extension menu"
 msgstr "Εμφάνιση στο μενού επεκτάσεων"
 
-msgid "Show last SearchLog"
+msgid "Show in plugin browser"
 msgstr ""
-
-msgid "Show notification on added timers"
-msgstr "Προειδοποίηση για προστιθέμενους χρονοδιακόπτες"
 
 msgid "Show notification on conflicts"
 msgstr "Εμφάνιση προειδοποίησης στις διενέξεις"
@@ -978,23 +758,12 @@ msgstr "Ταξινόμηση Αυτ. Χρ/κόπτη"
 msgid "Sort Time"
 msgstr "Ταξινόμηση Χρόνου"
 
-msgid "Specify the name and location for the log."
-msgstr "Ορισμός του ονόματος και της τοποθεσίας της καταγραφής."
-
-msgid "Standard"
-msgstr "Στάνταρ"
-
-msgid "Standard (1000 events)"
-msgstr ""
-
-msgid "Standard input date/time"
-msgstr "Στάνταρ εισαγωγή ημερομηνίας/ώρας"
-
 msgid "Startup delay (in min)"
 msgstr "Καθυστέρηση εκκίνησης (σε λεπτά)"
 
-msgid "Style auto timers list"
-msgstr "Στυλ λίστας αυτόματων χρονοδιακοπτών"
+#, fuzzy
+msgid "Startup delay is the number of minutes before polling after a reboot, so as to not delay enigma2 startup time."
+msgstr "Καθυστέρηση σε λεπτά όπου ο Αυτ. Χρ/κόπτης θα περιμένει κατά την αρχική του εκκίνηση να μη καθυστερήσει την ώρα εκκίνησης του enigma2."
 
 msgid "Sun"
 msgstr "Κυρ"
@@ -1003,6 +772,10 @@ msgid "Sunday"
 msgstr "Κυριακή"
 
 msgid "Support \"Fast Scan\"?"
+msgstr "Υποστήριξη  \"Γρήγορης Ανίχνευσης \";"
+
+#, fuzzy
+msgid "Support 'Fast Scan'?"
 msgstr "Υποστήριξη  \"Γρήγορης Ανίχνευσης \";"
 
 msgid "Tags"
@@ -1017,16 +790,10 @@ msgid ""
 msgstr ""
 
 #, fuzzy
-msgid "The \"Overview\""
+msgid "The 'Overview'"
 msgstr "Επισκόπηση Αυτ. Χρ/κόπτη"
 
-msgid ""
-"The AutoTimer overview is the standard entry point to this plugin.\n"
-"\n"
-"If AutoTimers are configured you can choose them from a list to change them (OK button on your remove) or remove them (YELLOW button on your remote).\n"
-"New Timers can be added by pressing the BLUE button and the control menu can be opened using the MENU button.\n"
-"\n"
-"When leaving the plugin using the GREEN button it will search the EPG for matching events ONCE. To configure a regular search interval of the plugin to search for events open the control menu and enter the plugin setup."
+msgid "The AutoTimer overview is the standard entry point to this plugin./n/nIf AutoTimers are configured you can choose them from a list to change them (OK button on your remote) or remove them (YELLOW button on your remote)./nNew Timers can be added by pressing the BLUE button and the control menu can be opened using the MENU button./n/nWhen leaving the plugin using the GREEN button it will search the EPG for matching events ONCE. To configure a regular search interval of the plugin to search for events open the control menu and enter the plugin setup."
 msgstr ""
 
 msgid ""
@@ -1037,27 +804,10 @@ msgstr ""
 msgid "The Timespan of an AutoTimer is the first 'advanced' attribute. If a timespan is specified an event will only match this AutoTimer if it lies inside of this timespan."
 msgstr ""
 
-msgid "The autotimer file (/etc/enigma2/autotimer.xml) is corrupt and could not be loaded."
+msgid "The autotimer file (/etc/enigma2/autotimer.xml) is corrupt. A new and empty config was created. A backup of the config can be found here (/etc/enigma2/autotimer.xml_old) "
 msgstr ""
 
-msgid ""
-"The control menu hides less frequently used options of the plugin, including the configuration and default settings for new AutoTimers.\n"
-"\n"
-"While you can just open the menu and take a look for yourself, let's go through the available options:\n"
-" - Help:\n"
-"   What you are looking at right now\n"
-" - Preview:\n"
-"   Simulate EPG search, helps finding errors in your setup.\n"
-" - Import existing Timer:\n"
-"   Create a new AutoTimer based on an existing regular timer.\n"
-" - Import from EPG:\n"
-"   Create an AutoTimer based on an EPG event.\n"
-" - Setup:\n"
-"   Generic configuration of the plugin.\n"
-" - Edit new timer defaults:\n"
-"   Configure default values for new AutoTimers.\n"
-" - Create a new timer using the wizard/classic editor:\n"
-"   Use the non-default editor to create a new AutoTimer."
+msgid "The control menu hides less frequently used options of the plugin, including the configuration and default settings for new AutoTimers./n/nWhile you can just open the menu and take a look for yourself, let's go through the available options:/n - Help:/n   What you are looking at right now/n - Preview:/n   Simulate EPG search, helps finding errors in your setup./n - Import existing Timer:/n   Create a new AutoTimer based on an existing regular timer./n - Import from EPG:/n   Create an AutoTimer based on an EPG event./n - Setup:/n   Generic configuration of the plugin./n - Edit new timer defaults:/n   Configure default values for new AutoTimers./n - Create a new timer using the wizard/classic editor:/n   Use the non-default editor to create a new AutoTimer."
 msgstr ""
 
 msgid "The counter can automatically be reset to the limit at certain intervals."
@@ -1066,65 +816,41 @@ msgstr "Ο μετρητής μπορεί να μηδενιστεί αυτόμα�
 msgid "The editor to be used for new AutoTimers. This can either be the Wizard or the classic editor."
 msgstr "Επεξεργαστής για νέους Αυτ. Χρ/κόπτες. Αυτό μπορεί να είναι είτε ο Οδηγός ή η κλασσική επεξεργασία."
 
-#, python-format
-msgid ""
-"The filterEntry '%s' already exist!\n"
-"The change was canceled."
-msgstr ""
-
 msgid "The match attribute is mandatory."
 msgstr "Η παράμετρος συσχέτισης είναι υποχρεωτική."
 
-#, fuzzy
-msgid "The title attribute is mandatory."
-msgstr "Η παράμετρος συσχέτισης είναι υποχρεωτική."
-
-msgid ""
-"This FAQ is supposed to help everyone unwilling to help themselves by reading all the provided help available, and those who did not find a solution to their problems within the provided documentation. \n"
-"\n"
-"To make these hints a little easier to read, they are split up on multiple pages. You can go to the next page using the BLUE button on your remote control and back using the YELLOW one. Pressing the RED button or EXIT will close the FAQ."
+msgid "This FAQ is supposed to help everyone unwilling to help themselves by reading all the provided help available, and those who did not find a solution to their problems within the provided documentation./n/nTo make these hints a little easier to read, they are split up on multiple pages. You can go to the next page using the BLUE button on your remote control and back using the YELLOW one. Pressing the RED button or EXIT will close the FAQ."
 msgstr ""
 
 msgid ""
-"This help screen is supposed to give you a quick look at everything the AutoTimer has to offer.\n"
-"You can abort it at any time by pressing the RED or EXIT button on your remote control or bring it up at a later point by selecting it from the control menu using the MENU button from the regular entry point of the plugin (more on that later).\n"
-"\n"
-"\n"
-"But you really should consider to take the few minutes it takes to read these help pages."
+"This allows you to apply other filters.\n"
+"Use the yellow key to edit other filters."
+msgstr ""
+
+msgid "This help screen is supposed to give you a quick look at everything the AutoTimer has to offer./nYou can abort it at any time by pressing the RED or EXIT button on your remote control or bring it up at a later point by selecting it from the control menu using the MENU button from the regular entry point of the plugin (more on that later)./n/n/nBut you really should consider to take the few minutes it takes to read these help pages."
 msgstr ""
 
 msgid "This is a name you can give the AutoTimer. It will be shown in the Overview and the Preview."
 msgstr "Αυτό είναι το όνομα που μπορείτε να δώσετε στον Αυτ. Χρ/κόπτη. Θα εμφανίζεται στην Επισκόπηση και την Προεπισκόπηση."
 
-msgid ""
-"This is mostly a matter of taste.\n"
-"The Wizard provides you with a reduced set of options and presents them in smaller sets at a time. It is mostly aimed at users not very experienced with this plugin or the \"expert\" level features of enigma2.\n"
-"\n"
-"You can check out the \"classic\" editor by opening an existing timer from the overview and if you prefer this view over the wizard you can change the default editor in the setup dialog."
+msgid "This is mostly a matter of taste./nThe Wizard provides you with a reduced set of options and presents them in smaller sets at a time. It is mostly aimed at users not very experienced with this plugin or the 'expert' level features of enigma2./n/nYou can check out the 'classic' editor by opening an existing timer from the overview and if you prefer this view over the wizard you can change the default editor in the setup dialog."
 msgstr ""
 
-msgid "This is the delay in hours that the AutoTimer will wait after a search to search the EPG again."
+#, fuzzy, python-format
+msgid "This is the delay in %s that the AutoTimer will wait after doing a search before searching the EPG again."
+msgstr "Καθυστέρηση σε ώρες όπου ο Αυτ. Χρ/κόπτης θα περιμένει μετά από μία αναζήτηση να ξαναψάξει στο EPG ξανά."
+
+#, fuzzy
+msgid "This is the delay in minutes that the AutoTimer will wait after a search to search the EPG again."
 msgstr "Καθυστέρηση σε ώρες όπου ο Αυτ. Χρ/κόπτης θα περιμένει μετά από μία αναζήτηση να ξαναψάξει στο EPG ξανά."
 
 msgid "This is the delay in minutes that the AutoTimer will wait on initial launch to not delay enigma2 startup time."
 msgstr "Καθυστέρηση σε λεπτά όπου ο Αυτ. Χρ/κόπτης θα περιμένει κατά την αρχική του εκκίνηση να μη καθυστερήσει την ώρα εκκίνησης του enigma2."
 
-msgid "This is the delay in seconds that the AutoTimer will wait after editing the AutoTimers."
-msgstr "Καθυστέρηση σε δευτερόλεπτα όπου ο Αυτ. Χρ/κόπτης θα περιμένει μετά την επεξεργασία των Αυτ. Χρ/κοπτών."
-
-msgid "This is the duration in minutes that the AutoTimer is allowed to run."
-msgstr "Διάρκεια σε λεπτά όπου επιτρέπεται να εκτελείται ο Αυτόματος Χρονοδιακόπης."
-
 msgid "This is what will be looked for in event titles. Note that looking for e.g. german umlauts can be tricky as you have to know the encoding the channel uses."
 msgstr "Σε αυτό θα γίνεται αναζήτηση στους τίτλους προγραμμάτων. Σημειώστε ότι η αναζήτηση ειδικών χαρακτήρων π.χ διαλυτικά μπορεί να είναι προβληματική καθώς πρέπει να γνωρίζετε την κωδικοποίηση χαρακτήρων του καναλιού."
 
-msgid "This option allows you to turn off the timer confict detection. This option is for advanced users."
-msgstr "Με αυτή την επιλογή μπορείτε να απενεργοποιήσετε τον εντοπισμό διενέξεων του χρονοδιακόπτη. Απευθύνεται σε προχωρημένους χρήστες."
-
-msgid ""
-"This screen should be pretty straight-forward. If the option name does not give its meaning away there should be an explanation for each of them when you select them. If there is no visible explanation this is most likely a skin issue and please try if the default skin fixes the issue.\n"
-"\n"
-"A lot of effort has been put in making the parameters as easy to understand as possible, so give reading them a try ;-)."
+msgid "This screen should be pretty straight-forward. If the option name does not give its meaning away there should be an explanation for each of them when you select them. If there is no visible explanation this is most likely a skin issue and please try if the default skin fixes the issue./n/nA lot of effort has been put in making the parameters as easy to understand as possible, so give reading them a try ;-)."
 msgstr ""
 
 msgid "This setting controls the behavior when a timer matches a found event."
@@ -1139,27 +865,14 @@ msgstr "Πεμ"
 msgid "Thursday"
 msgstr "Πέμπτη"
 
-#, fuzzy
-msgid "Time"
-msgstr "Αυτόματος Χρονοδιακόπτης"
-
 msgid "Time in minutes to append to recording."
 msgstr "Χρόνος σε λεπτά που προστίθεται στην εγγραφή."
 
 msgid "Time in minutes to prepend to recording."
 msgstr "Χρόνος σε λεπτά που παρεμβάλλεται στην εγγραφή."
 
-msgid "Timeout (in min)"
-msgstr "Χρόνος λήξης (σε λεπτά)"
-
-msgid "Timer from:\n"
-msgstr ""
-
 msgid "Timer type"
 msgstr "Τύπος χρονοδιακόπτη"
-
-msgid "Timers list"
-msgstr "Λίστα χρονοδιακοπτών"
 
 msgid "Title"
 msgstr "Τίτλος"
@@ -1169,9 +882,6 @@ msgstr "Τίτλος και Σύντομη περιγραφή"
 
 msgid "Title and all descriptions"
 msgstr "Τίτλος και όλες οι περιγραφές"
-
-msgid "To cater for spelling mistakes and small deviations in the EPG information, you can make the matching algorithm fuzzy by setting the percentage both programmes must be equal for. Use 100% if you only want a match when both are completely identical. Recommended default ratio 80%."
-msgstr "Για να ληφθεί μέριμνα για ορθογραφικά λάθη και μικρές αποκλίσεις στις πληροφορίες EPG, μπορείτε να κάνετε τον αλγόριθμο συσχέτισης ασαφή ορίζοντας το ποσοστό με το οποίο πρέπει να ισούνται τα δύο προγράμματα. Χρησιμοποιήστε το 100% μόνο αν θέλετε να γίνει συσχέτιση όταν και τα δύο είναι όμοια. Η συνιστώμενη προεπιλεγμένη αναλογία είναι 80%."
 
 msgid "Tue"
 msgstr "Τρί"
@@ -1191,14 +901,12 @@ msgstr "Μέγιστο όριο χρονικού διαστήματος. Τίπ�
 msgid "Use a custom location"
 msgstr "Χρήση τοποθεσίας ορισμένης από το χρήστη"
 
-msgid "Use blue key to edit bouquets or services."
-msgstr "Χρήση μπλε πλήκτρου για επεξεργασία μπουκέτων ή υπηρεσιών."
+msgid "Use automatic selection of alternates."
+msgstr ""
 
-msgid "Use yellow key to edit filters."
-msgstr "Χρήση κίτρινου πλήκτρου για επεξεργασία φίλτρων."
-
-msgid "Wakeup receiver for start timer"
-msgstr "Αφύπνιση του δέκτη για χρονοδιακόπτη εκκίνησης"
+#, fuzzy
+msgid "Use other filters"
+msgstr "επεξεργασία φίλτρων"
 
 msgid "Wed"
 msgstr "Τετ"
@@ -1227,25 +935,25 @@ msgid ""
 "This Wizard will help you to create a new AutoTimer by providing descriptions for common settings."
 msgstr ""
 
-msgid "What is this \"control menu\" you keep talking about?"
+msgid "What is this 'control menu' you keep talking about?"
 msgstr ""
 
 msgid "When supporting \"Fast Scan\" the service type is ignored. You don't need to enable this unless your Image supports \"Fast Scan\" and you are using it."
 msgstr "Όταν υποστηρίζεται η \"Γρήγορη Ανίχνευση\" αγνοείται ο τύπος της υπηρεσίας. Δεν χρειάζεται να είναι ενεργό, εκτός και αν το Image σας υποστηρίζει τη \"Γρήγορη Ανίχνευση\" και τη χρησιμοποιείτε."
 
+#, fuzzy
+msgid "When supporting 'Fast Scan' the service type is ignored. You don't need to enable this unless your Image supports 'Fast Scan' and you are using it."
+msgstr "Όταν υποστηρίζεται η \"Γρήγορη Ανίχνευση\" αγνοείται ο τύπος της υπηρεσίας. Δεν χρειάζεται να είναι ενεργό, εκτός και αν το Image σας υποστηρίζει τη \"Γρήγορη Ανίχνευση\" και τη χρησιμοποιείτε."
+
+#, fuzzy
 msgid "When this is enabled AutoTimer will ONLY check for new events whilst in stanadby."
 msgstr "Με αυτή την επιλογή, ο Αυτ. Χρ/κόπτης θα ελέγχει ΜΟΝΟ για νέα προγράμματα κατά την αναμονή."
-
-msgid "When this option enabled and short description and extended description match is empty and timer title exist in match title, match is not a duplicate. Attention, this may result in double timers."
-msgstr "Όταν ενεργοποιηθεί αυτή η επιλογή και η συσχέτιση σύντομης και εκτεταμένης περιγραφής είναι άδεια και ο τίτλος του χρονοδιακόπτη υπάρχει στο συσχετισμένο τίτλο, η συσχέτιση δεν είναι διπλότυπη. Προσοχή, αυτό μπορεί να προκαλέσει διπλούς χρονοδιακόπτες."
-
-msgid "When this option enabled, short description to equal extended description if short description is empty."
-msgstr "Όταν ενεργοποιηθεί αυτή η επιλογή, η σύντομη περιγραφή θα ισούται με την εκτεταμένη, εάν η σύντομη είναι άδεια."
 
 msgid "When this option is enabled the AutoTimer won't match events where another timer with the same description already exists in the timer list."
 msgstr "Με αυτή την επιλογή, ο Αυτ. Χρ/κόπτης δεν θα συσχετίζει τα προγράμματα όταν υπάρχει άλλος χρονοδιακόπτης με την ίδια περιγραφή στη λίστα."
 
-msgid "With this option enabled the channel to record on can be changed to a alternative service it is restricted to."
+#, fuzzy
+msgid "With this option enabled the channel to record will be selected automaticliy using your list of alternates."
 msgstr "Με αυτή την επιλογή, το κανάλι προς εγγραφή μπορεί να αλλάξει στην εναλλακτική υπηρεσία όπου έχει περιοριστεί."
 
 msgid "With this option you can restrict the AutoTimer to a certain amount of scheduled recordings. Set this to 0 to disable this functionality."
@@ -1261,9 +969,6 @@ msgid "Write the config file after every change which the user quits by saving."
 msgstr "Εγγραφή του αρχείου ρυθμίσεων μετά κάθε αλλαγή που εγκαταλείπει ο χρήστης αποθηκεύοντας."
 
 msgid "Yes"
-msgstr ""
-
-msgid "Yes and show notify"
 msgstr ""
 
 msgid "Yes, and delete all timers generated by this autotimer"
@@ -1296,10 +1001,7 @@ msgstr ""
 "Έχετε εισάγει το \"%s\" ως Κείμενο προς συσχέτιση.\n"
 "Θέλετε να αφαιρεθούν τα κενά που ακολουθούν;"
 
-msgid ""
-"You now know almost everything there is to know about the AutoTimer-Plugin.\n"
-"\n"
-"As a final hint I can't stress how important it is to take a look at the help texts that are shown in the setup dialogs as they cover the most frequently asked questions. Surprisingly even after the hints were added ;-)."
+msgid "You now know almost everything there is to know about the AutoTimer-Plugin./n/nAs a final hint I can't stress how important it is to take a look at the help texts that are shown in the setup dialogs as they cover the most frequently asked questions. Surprisingly even after the hints were added ;-)."
 msgstr ""
 
 msgid ""
@@ -1327,30 +1029,19 @@ msgstr ""
 msgid "[S]  "
 msgstr ""
 
+#. TRANSLATORS: AutoTimer title in MovieList (automatically opens importer, I consider this no further interaction)
 msgid "add AutoTimer"
 msgstr "Προσθήκη Αυτ. Χρ/κόπτη"
 
+#. TRANSLATORS: AutoTimer title in EventInfo dialog (requires the user to select an event to base the AutoTimer on)
 msgid "add AutoTimer..."
 msgstr "Προσθήκη Αυτ. Χρ/κόπτη..."
-
-msgid "add filters"
-msgstr "προσθήκη φίλτρων"
-
-#, fuzzy
-msgid "add to AutoTimer filterList"
-msgstr "Επεξεργασία φίλτρων Αυτ. Χρ/κόπτη"
-
-msgid "always"
-msgstr "πάντα"
 
 msgid "auto"
 msgstr "αυτόματο"
 
 msgid "autotimers need a match attribute"
 msgstr "οι αυτόματοι χρονοδιακόπτες απαιτούν μία παράμετρο συσχέτισης"
-
-msgid "begin searchLog from"
-msgstr ""
 
 msgid "case-insensitive search"
 msgstr "αναζήτηση χωρίς διάκριση μικρών-κεφαλαίων"
@@ -1360,12 +1051,6 @@ msgstr "αναζήτηση με διάκριση μικρών-κεφαλαίων
 
 msgid "config changed."
 msgstr "το αρχείο ρυθμίσεων άλλαξε."
-
-msgid "create AutoTimer for current event"
-msgstr "δημιουργία Αυτ. Χρ/κόπτη για το τρέχον πρόγραμμα"
-
-msgid "delete"
-msgstr "διαγραφή"
 
 msgid "description match"
 msgstr "συσχέτιση περιγραφής"
@@ -1379,9 +1064,6 @@ msgstr "ανενεργό"
 msgid "do nothing"
 msgstr "να μη γίνει τίποτα"
 
-msgid "edit filters"
-msgstr "επεξεργασία φίλτρων"
-
 msgid "enable"
 msgstr "ενεργοποίηση"
 
@@ -1391,15 +1073,14 @@ msgstr "ενεργό"
 msgid "exact match"
 msgstr "ακριβής συσχέτιση"
 
-#, fuzzy
-msgid "favorites description match"
-msgstr "συσχέτιση περιγραφής"
-
 msgid "go to deep standby"
 msgstr "μετάβαση σε βαθιά αναμονή"
 
 msgid "go to standby"
 msgstr "μετάβαση σε αναμονή"
+
+msgid "hours"
+msgstr ""
 
 msgid "in Description"
 msgstr "σε Περιγραφή"
@@ -1410,31 +1091,17 @@ msgstr "σε Σύντομη περιγραφή"
 msgid "in Title"
 msgstr "σε Τίτλο"
 
-#, fuzzy
-msgid "like autotimer.log"
-msgstr "Στυλ λίστας αυτόματων χρονοδιακοπτών"
-
 msgid "mins"
 msgstr "λεπτά"
+
+msgid "minutes"
+msgstr ""
 
 msgid "missing parameter \"id\""
 msgstr "λείπει η παράμετρος \"id\""
 
-#, fuzzy
-msgid "missing parameter \"xml\""
-msgstr "λείπει η παράμετρος \"id\""
-
-msgid "never"
-msgstr "ποτέ"
-
 msgid "on Weekday"
 msgstr "σε Καθημερινή"
-
-msgid "only from deep standby"
-msgstr "μόνο από βαθιά αναμονή"
-
-msgid "only from standby"
-msgstr "μόνο από αναμονή"
 
 msgid "partial match"
 msgstr "μερική συσχέτιση"
@@ -1442,19 +1109,8 @@ msgstr "μερική συσχέτιση"
 msgid "record"
 msgstr "εγγραφή"
 
-#, fuzzy
-msgid "scan for new Events"
-msgstr "Επεξεργασία Χρονοδιακοπτών και ανίχνευση για νέα Προγράμματα"
-
-msgid "searchLog"
-msgstr ""
-
 msgid "standard"
 msgstr "στάνταρ"
-
-#, fuzzy
-msgid "title ends with"
-msgstr "ο τίτλος ξεκινά με"
 
 msgid "title starts with"
 msgstr "ο τίτλος ξεκινά με"
