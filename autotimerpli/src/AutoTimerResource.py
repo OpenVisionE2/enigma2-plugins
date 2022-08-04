@@ -314,7 +314,7 @@ class AutoTimerAddOrEditAutoTimerResource(AutoTimerBaseResource):
 			name = six.ensure_binary(name)
 			ret = req.args.get(name)
 			return six.ensure_str(ret[0]) if ret else default
-			
+
 		def getA(name, default=None):
 			name = six.ensure_binary(name)
 			ret = req.args.get(name)

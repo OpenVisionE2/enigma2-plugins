@@ -21,7 +21,7 @@ def _(txt):
 	if t == txt:
 		t = gettext.gettext(txt)
 	return t
-	
+
 
 def removeBad(val):
 	if six.PY3:
