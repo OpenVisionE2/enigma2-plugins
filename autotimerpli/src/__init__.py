@@ -22,6 +22,7 @@ def _(txt):
 		t = gettext.gettext(txt)
 	return t
 	
+
 def removeBad(val):
 	if six.PY3:
 		return val.replace('\x86', '').replace('\x87', '')
