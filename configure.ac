@@ -127,13 +127,13 @@ autoresolution/meta/Makefile
 autoresolution/po/Makefile
 autoresolution/src/Makefile
 
-autotimer/Makefile
-autotimer/po/Makefile
-autotimer/meta/Makefile
-autotimer/src/WebComponents/Makefile
-autotimer/src/Makefile
-autotimer/src/web-data/Makefile
-autotimer/src/WebChilds/Makefile
+autotimerpli/Makefile
+autotimerpli/po/Makefile
+autotimerpli/meta/Makefile
+autotimerpli/src/WebComponents/Makefile
+autotimerpli/src/Makefile
+autotimerpli/src/web-data/Makefile
+autotimerpli/src/WebChilds/Makefile
 
 babelzapper/etc/Makefile
 babelzapper/Makefile
