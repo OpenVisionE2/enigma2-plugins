@@ -11,7 +11,7 @@ SUBDIRS = \
 	automaticcleanup \
 	automaticvolumeadjustment \
 	autoresolution \
-	autotimer \
+	autotimerpli \
 	babelzapper \
 	birthdayreminder \
 	bmediacenter \
