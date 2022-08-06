@@ -2,7 +2,6 @@
 # Congratulations to the author
 # I only adapted the plugin to Enigma2 Python3
 # lululla coder - mmark skinner
-from __future__ import print_function
 from enigma import gFont, eTimer, getDesktop, RT_HALIGN_CENTER, RT_VALIGN_CENTER
 from Components.ActionMap import ActionMap
 from Components.Label import Label

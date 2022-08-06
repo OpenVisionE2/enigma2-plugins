@@ -1,4 +1,3 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
 """
 The gntp.notifier module is provided as a simple way to send notifications

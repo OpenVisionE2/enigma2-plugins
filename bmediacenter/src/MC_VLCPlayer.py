@@ -1,4 +1,4 @@
-from __future__ import print_function
+# -*- coding: utf-8 -*-
 from enigma import eServiceReference, iPlayableService, eServiceCenter
 from Screens.Screen import Screen
 from Components.ActionMap import ActionMap, NumberActionMap

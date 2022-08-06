@@ -1,4 +1,3 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
 from Plugins.Extensions.Widgets.Widget import Widget
 from Components.Label import Label

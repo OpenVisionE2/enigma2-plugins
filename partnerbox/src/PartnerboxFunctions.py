@@ -17,7 +17,6 @@
 #  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 #  GNU General Public License for more details.
 #
-from __future__ import print_function
 from time import localtime
 from timer import TimerEntry
 from twisted.internet import reactor

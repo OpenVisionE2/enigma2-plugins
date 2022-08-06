@@ -1,5 +1,4 @@
-#!/usr/bin/python
-# -*- coding: UTF-8 -*-
+# -*- coding: utf-8 -*-
 '''
 $Id: nrzuname.py 1587 2021-04-23 10:19:26Z michael $
 $Author: michael $
@@ -20,7 +19,6 @@ $Date: 2021-04-23 12:19:26 +0200 (Fri, 23 Apr 2021) $
 # C0410 multiple-imports
 # pylint: disable=C0111,C0103,C0301,W0603,C0302
 
-from __future__ import print_function
 import re
 import sys
 import os

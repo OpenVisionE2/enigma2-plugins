@@ -1,6 +1,4 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
 #
 # XML-RPC CLIENT LIBRARY
 # $Id: xmlrpclib.py 65467 2008-08-04 00:50:11Z brett.cannon $

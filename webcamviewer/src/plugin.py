@@ -1,6 +1,4 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
 from enigma import eListbox
 from enigma import eListboxPythonMultiContent
 from enigma import ePicLoad

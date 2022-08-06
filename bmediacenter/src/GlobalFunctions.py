@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from enigma import eRect, eServiceReference, iServiceInformation, iPlayableService
 from Screens.Screen import Screen
 from Screens.ServiceInfo import ServiceInfoList, ServiceInfoListEntry

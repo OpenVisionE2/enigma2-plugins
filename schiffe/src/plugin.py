@@ -8,7 +8,6 @@
 # version.
 # Adapted from Lululla for Py3 Enigma2 20220713 - SKIN by MMark
 #===============================================================================
-from __future__ import print_function
 from Plugins.Plugin import PluginDescriptor
 from Screens.Screen import Screen
 from Screens.MessageBox import MessageBox

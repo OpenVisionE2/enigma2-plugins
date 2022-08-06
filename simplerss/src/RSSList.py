@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from Components.MenuList import MenuList
 
 from enigma import eListboxPythonMultiContent, gFont, RT_HALIGN_LEFT, \

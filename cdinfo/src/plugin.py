@@ -1,6 +1,4 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
 from enigma import eServiceReference, eConsoleAppContainer
 from Components.MediaPlayer import PlayList
 import xml.dom.minidom

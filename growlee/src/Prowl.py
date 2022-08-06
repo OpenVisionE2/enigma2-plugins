@@ -1,4 +1,3 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
 from twisted.web.client import getPage
 from twisted.internet.defer import Deferred

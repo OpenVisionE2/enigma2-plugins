@@ -1,4 +1,3 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
 # CurlyTx main window
 # Copyright (C) 2011 Christian Weiske <cweiske@cweiske.de>

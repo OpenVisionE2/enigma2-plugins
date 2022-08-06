@@ -1,5 +1,4 @@
-# -*- coding: UTF-8 -*-
-from __future__ import print_function
+# -*- coding: utf-8 -*-
 
 # for localized messages
 from . import _, removeBad

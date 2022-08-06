@@ -1,6 +1,4 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
 from Components.Label import Label
 from Components.ProgressBar import ProgressBar
 from KTMultiPixmap import KTmultiPixmap

@@ -1,5 +1,5 @@
+# -*- coding: utf-8 -*-
 from __future__ import absolute_import
-# -*- coding: UTF-8 -*-
 from .AutoTimer import AutoTimer
 from .AutoTimerConfiguration import CURRENT_CONFIG_VERSION
 from RecordTimer import AFTEREVENT

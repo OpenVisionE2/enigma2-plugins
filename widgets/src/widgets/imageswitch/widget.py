@@ -1,6 +1,4 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
 from Plugins.Extensions.Widgets.Widget import Widget
 from enigma import ePicLoad, ePixmap, getDesktop, eTimer
 from Components.Pixmap import Pixmap

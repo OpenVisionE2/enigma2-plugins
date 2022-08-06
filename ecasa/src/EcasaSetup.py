@@ -1,4 +1,3 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
 # GUI (Screens)
 from Screens.Screen import Screen

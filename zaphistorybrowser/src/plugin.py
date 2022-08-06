@@ -1,6 +1,4 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
 ## Zap-History Browser by AliAbdul
 from Components.ActionMap import ActionMap
 from Components.config import config, ConfigInteger, ConfigSelection, \

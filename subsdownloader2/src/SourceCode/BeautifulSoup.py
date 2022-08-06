@@ -1,6 +1,4 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
 """Beautiful Soup
 Elixir and Tonic
 "The Screen-Scraper's Friend"

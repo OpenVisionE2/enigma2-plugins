@@ -1,4 +1,3 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
 #-----------------------
 # Name: pager.py    List-like structure designed for handling paged results

@@ -1,4 +1,3 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
 #  Advanced Movie Selection for Dreambox-Enigma2
 #

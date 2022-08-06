@@ -1,6 +1,4 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
 
 from traceback import print_exc
 from sys import stdout, exc_info

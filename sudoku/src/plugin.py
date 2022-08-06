@@ -1,4 +1,4 @@
-# -*- coding: ISO-8859-1 -*-
+# -*- coding: utf-8 -*-
 # ===============================================================================
 # Sudoku Plugin by DarkVolli 2009
 # class board by Robert Wohleb

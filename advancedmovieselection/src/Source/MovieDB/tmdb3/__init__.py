@@ -1,4 +1,3 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
 
 from tmdb_api import Configuration, searchMovie, searchMovieWithYear, \

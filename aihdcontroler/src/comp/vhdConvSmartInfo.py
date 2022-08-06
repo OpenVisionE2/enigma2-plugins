@@ -1,4 +1,3 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
 #
 #    SmartInfo-Converter for Dreambox/Enigma-2

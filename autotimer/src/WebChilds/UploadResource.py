@@ -1,4 +1,3 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
 from os import write as os_write, close as os_close, O_WRONLY as os_O_WRONLY, O_CREAT as os_O_CREAT, open as os_open, remove as os_remove
 from twisted.web import resource, http

@@ -1,4 +1,3 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
 from Screens import PluginBrowser as PBBase
 from Screens.InfoBarGenerics import InfoBarNotifications

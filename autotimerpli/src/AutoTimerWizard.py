@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # l10n
 from . import _
 

@@ -1,6 +1,4 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
 from Components.Sources.Source import Source
 from os import remove, path, popen
 from re import compile as re_compile

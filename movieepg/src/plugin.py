@@ -1,4 +1,3 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
 # Plugin definition
 from Plugins.Plugin import PluginDescriptor

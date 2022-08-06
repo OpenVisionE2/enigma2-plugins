@@ -1,6 +1,4 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
 # FanControl2
 # joergm6 IHAD
 # PID-controller by Lukasz S.

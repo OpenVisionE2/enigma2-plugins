@@ -1,6 +1,4 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
 # ZDF Mediathek by AliAbdul
 from Components.ActionMap import HelpableActionMap
 from Components.AVSwitch import AVSwitch

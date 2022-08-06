@@ -1,4 +1,3 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
 # by http://stackoverflow.com/questions/372365/set-timeout-for-xmlrpclib-serverproxy
 

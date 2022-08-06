@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from . import _
 from Components.config import config, getConfigListEntry, ConfigClock, ConfigDateTime, ConfigText, NoSave
 # GUI (Screens)

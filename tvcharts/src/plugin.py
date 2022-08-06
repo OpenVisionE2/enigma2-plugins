@@ -1,6 +1,4 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
 #####################################################
 # TVCharts Plugin for Enigma2 Dreamboxes
 # Coded by Homey (c) 2011

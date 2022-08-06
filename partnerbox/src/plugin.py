@@ -19,7 +19,6 @@
 #
 # for localized messages
 from __future__ import absolute_import
-from __future__ import print_function
 from . import _
 from Tools.BoundFunction import boundFunction
 from Components.ChoiceList import ChoiceEntryComponent

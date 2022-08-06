@@ -1,4 +1,3 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
 # -*- test-case-name: twisted.words.test.test_irc -*-
 # Copyright (c) 2001-2005 Twisted Matrix Laboratories.

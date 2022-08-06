@@ -1,6 +1,4 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
 
 ###############################################################################
 # Quick'n'easy switching of aspect ratio setting via configurable remote control keys (Enigma2)

@@ -17,7 +17,6 @@
 #  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 #  GNU General Public License for more details.
 #
-from __future__ import print_function, absolute_import
 from Screens.Screen import Screen
 from Screens.MessageBox import MessageBox
 from Components.config import config
