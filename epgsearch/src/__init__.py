@@ -35,7 +35,8 @@ config.plugins.epgsearch.scope = ConfigSelection(choices=[("all", _("all service
 config.plugins.epgsearch.defaultscope = ConfigSelection(choices=[("all", _("all services")), ("allbouquets", _("all bouquets")), ("currentbouquet", _("current bouquet")), ("currentservice", _("current service"))], default=__searchDefaultScope)
 config.plugins.epgsearch.search_type = ConfigSelection(default="partial", choices=[("partial", _("partial match")), ("partialdes", _("partial description")), ("exact", _("exact match")), ("start", _("title starts with"))])
 config.plugins.epgsearch.search_case = ConfigSelection(default="insensitive", choices=[("insensitive", _("case-insensitive search")), ("sensitive", _("case-sensitive search"))])
-config.plugins.epgsearch.showorbital = ConfigYesNo(default=True)
+allowShowOrbital = True
+config.plugins.epgsearch.showorbital = ConfigYesNo(default=allowShowOrbital)
 config.plugins.epgsearch.history = ConfigSet(choices=[])
 # XXX: configtext is more flexible but we cannot use this for a (not yet created) gui config
 config.plugins.epgsearch.encoding = ConfigSelection(choices=['UTF-8', 'ISO8859-15'], default='UTF-8')
