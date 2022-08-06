@@ -29,7 +29,7 @@ localeInit()
 language.addCallback(localeInit)
 
 config.plugins.epgsearch = ConfigSubsection()
-config.plugins.epgsearch.showinplugins = ConfigYesNo(default=False)
+config.plugins.epgsearch.showinplugins = ConfigYesNo(default=True)
 __searchDefaultScope = "all"
 config.plugins.epgsearch.scope = ConfigSelection(choices=[("all", _("all services")), ("allbouquets", _("all bouquets")), ("currentbouquet", _("current bouquet")), ("currentservice", _("current service")), ("ask", _("ask user"))], default=__searchDefaultScope)
 config.plugins.epgsearch.defaultscope = ConfigSelection(choices=[("all", _("all services")), ("allbouquets", _("all bouquets")), ("currentbouquet", _("current bouquet")), ("currentservice", _("current service"))], default=__searchDefaultScope)
