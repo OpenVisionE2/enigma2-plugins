@@ -149,7 +149,7 @@ class XDsetup(ConfigListScreen, Screen):
 			and fileExists(resolveFilename(SCOPE_LIBDIR, "enigma2/python/Components/Converter/vConvSmartInfo.%s" % PyExt)) \
 			and fileExists(resolveFilename(SCOPE_LIBDIR, "enigma2/python/Components/Converter/vConvClockToText.%s" % PyExt)):
 			CompsAreOK = True
-		if not(CompsAreOK):
+		if not (CompsAreOK):
 			self.session.open(MessageBox, _("Vali-XD converters and renderers are not installed!!!"), MessageBox.TYPE_ERROR)
 			self.close()
 		for x in self["config"].list:

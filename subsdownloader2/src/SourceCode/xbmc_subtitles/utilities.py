@@ -61,7 +61,7 @@ def hashFile(filename):
       returnedhash = "%016x" % hash
       return returnedhash
 
-    except(IOError):
+    except (IOError):
       return "IOError"
 
 
