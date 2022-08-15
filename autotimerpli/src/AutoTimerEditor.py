@@ -39,11 +39,7 @@ from enigma import eServiceCenter, eServiceReference, iServiceInformation
 from Tools import Directories
 
 # Tags
-try:
-	from Screens.TagEditor import TagEditor
-except ImportError:
-	TagEditor = None
-	from Screens.MovieSelection import getPreferredTagEditor
+from Screens.MovieSelection import getPreferredTagEditor
 
 from Components.Sources.Boolean import Boolean
 from Components.Pixmap import Pixmap
