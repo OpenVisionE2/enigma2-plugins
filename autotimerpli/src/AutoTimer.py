@@ -240,7 +240,8 @@ class AutoTimer:
 		return buildConfig(self.defaultTimer, self.timers, webif)
 
 	def writeXml(self):
-		file = open(XML_CONFIG, 'w')
+		from six import PY3
+		file = open(XML_CONFIG, 'w', encoding="UTF-8") if PY3 else open(XML_CONFIG, 'w')
 		file.writelines(buildConfig(self.defaultTimer, self.timers))
 		file.close()
 
