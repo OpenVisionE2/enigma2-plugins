@@ -30,7 +30,7 @@ import csv
 import json
 import six
 import xml.etree.ElementTree as ET
-from io import StringIO
+from six.moves import cStringIO as StringIO
 from twisted.python.failure import Failure
 from six.moves.urllib.parse import urlencode
 from six.moves import map, range

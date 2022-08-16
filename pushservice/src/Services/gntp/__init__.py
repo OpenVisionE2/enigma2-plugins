@@ -2,7 +2,10 @@
 import re
 import hashlib
 import time
-import StringIO
+try:
+	from cStringIO import StringIO
+except:
+	from io import StringIO
 
 __version__ = '0.7'
 
