@@ -10,7 +10,10 @@ from the gntp.notifier class since I do not know of an easy way to reuse the
 code yet fire using the copy of GrowlNotifier in this module
 """
 import os
-import ConfigParser
+try:
+	import ConfigParser
+except:
+	import configparser as ConfigParser
 import gntp.notifier
 import logging
 

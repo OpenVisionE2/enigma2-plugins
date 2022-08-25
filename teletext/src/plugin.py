@@ -31,7 +31,10 @@ from select import POLLIN, POLLPRI, POLLHUP, POLLERR
 from enigma import Teletext as TeletextInterface
 from enigma import DISABLED, BILINEAR, ANISOTROPIC, SHARP, SHARPER, BLURRY, ANTI_FLUTTER, ANTI_FLUTTER_BLURRY, ANTI_FLUTTER_SHARP
 
-from ConfigParser import ConfigParser, DuplicateSectionError
+try:
+	from ConfigParser import ConfigParser, DuplicateSectionError
+except:
+	from configparser import ConfigParser, DuplicateSectionError
 
 PLUGIN_VERSION = "20120807"
 
