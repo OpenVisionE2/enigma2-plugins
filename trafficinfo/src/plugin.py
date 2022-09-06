@@ -250,4 +250,4 @@ def main(session, **kwargs):
 
 
 def Plugins(**kwargs):
-  return PluginDescriptor(name="Verkehrsinfo", description="Show German traffic jams", where=PluginDescriptor.WHERE_PLUGINMENU, fnc=main, icon="plugin.png")
+    return PluginDescriptor(name="Verkehrsinfo", description="Show German traffic jams", where=PluginDescriptor.WHERE_PLUGINMENU, fnc=main, icon="plugin.png")

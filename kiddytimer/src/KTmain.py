@@ -370,8 +370,8 @@ class KiddyTimer():
         iCurPercent = int(self.remainingPercentage * 1000)
         iCount = 0
         for iPercent in self.dialog.percentageList:
-           if iCurPercent <= iPercent:
-               iCount = iCount + 1
+            if iCurPercent <= iPercent:
+                iCount = iCount + 1
         iCount = iCount - 1
         if iCount < 0:
             iCount = 0

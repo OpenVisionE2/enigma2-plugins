@@ -26,29 +26,29 @@ subtitle_pattern = 'alt="(.+?)" border="0" />[\r\n\t ]+?</div>[\r\n\t ]+?<div cl
 
 def getallsubs(content, title, subtitles_list, file_original_path):
     for matches in re.finditer(subtitle_pattern, content):
-      jezyk, numer_napisu, wydanie, tytul = matches.groups()
-      if 'other' in jezyk:
-          continue
-      else:
-          jezyk = jezyk
-      link = "%s%s/" % (down_url, numer_napisu)
-      log(__name__, "Subtitles found: %s %s (link=%s)" % (tytul, wydanie, link))
-      obraz_flagi = "flags/%s.gif" % (jezyk)
-      lang = twotofull(jezyk)
-      tytul_pelny = '%s %s' % (tytul, wydanie)
-      wydanie_sclean = wydanie.replace(" ", "")
-      wydanie_clean = wydanie_sclean.replace(",", ";")
-      wydanie_srednik = '%s;' % (wydanie_clean)
-      for wydania in re.finditer('(.+?);', wydanie_srednik):
-          wydania = wydania.group()
-      wydania_clean = wydania.replace(";", "")
-      wydania_upper = wydania_clean.upper()
-      filepatch_upper = file_original_path.upper()
-      if wydania_upper in filepatch_upper:
-        sync_value = True
-      else:
-        sync_value = False
-      subtitles_list.append({'filename': tytul_pelny, 'sync': sync_value, 'link': link, 'language_flag': obraz_flagi, 'language_name': lang, 'rating': ""})
+        jezyk, numer_napisu, wydanie, tytul = matches.groups()
+        if 'other' in jezyk:
+            continue
+        else:
+            jezyk = jezyk
+        link = "%s%s/" % (down_url, numer_napisu)
+        log(__name__, "Subtitles found: %s %s (link=%s)" % (tytul, wydanie, link))
+        obraz_flagi = "flags/%s.gif" % (jezyk)
+        lang = twotofull(jezyk)
+        tytul_pelny = '%s %s' % (tytul, wydanie)
+        wydanie_sclean = wydanie.replace(" ", "")
+        wydanie_clean = wydanie_sclean.replace(",", ";")
+        wydanie_srednik = '%s;' % (wydanie_clean)
+        for wydania in re.finditer('(.+?);', wydanie_srednik):
+            wydania = wydania.group()
+        wydania_clean = wydania.replace(";", "")
+        wydania_upper = wydania_clean.upper()
+        filepatch_upper = file_original_path.upper()
+        if wydania_upper in filepatch_upper:
+            sync_value = True
+        else:
+            sync_value = False
+        subtitles_list.append({'filename': tytul_pelny, 'sync': sync_value, 'link': link, 'language_flag': obraz_flagi, 'language_name': lang, 'rating': ""})
 
 #def search_subtitles( file_original_path, title, tvshow, year, season, episode, set_temp, rar, lang1, lang2, lang3, stack ): #standard input
 
@@ -57,27 +57,27 @@ def search_subtitles(file_original_path, title, tvshow, year, season, episode, s
     subtitles_list = []
     msg = ""
     if len(tvshow) > 0:
-      for rok in re.finditer(' \(\d\d\d\d\)', tvshow):
-          rok = rok.group()
-          if len(rok) > 0:
-              tvshow = tvshow.replace(rok, "")
-          else:
-              continue
-      tvshow_plus = tvshow.replace(" ", "+")
-      if len(str(season)) < 2:
-        season_full = '0%s' % (season)
-      else:
-        season_full = str(season)
-      if len(str(episode)) < 2:
-        episode_full = '0%s' % (episode)
-      else:
-        episode_full = str(episode)
-      url = '%s%s+%sx%s' % (main_url, tvshow_plus, season_full, episode_full)
+        for rok in re.finditer(' \(\d\d\d\d\)', tvshow):
+            rok = rok.group()
+            if len(rok) > 0:
+                tvshow = tvshow.replace(rok, "")
+            else:
+                continue
+        tvshow_plus = tvshow.replace(" ", "+")
+        if len(str(season)) < 2:
+            season_full = '0%s' % (season)
+        else:
+            season_full = str(season)
+        if len(str(episode)) < 2:
+            episode_full = '0%s' % (episode)
+        else:
+            episode_full = str(episode)
+        url = '%s%s+%sx%s' % (main_url, tvshow_plus, season_full, episode_full)
     else:
-      original_title = title #xbmc.getInfoLabel("VideoPlayer.OriginalTitle")
-      log(__name__, "Original title: [%s]" % (original_title))
-      movie_title_plus = original_title.replace(" ", "+")
-      url = '%s%s' % (main_url, movie_title_plus)
+        original_title = title #xbmc.getInfoLabel("VideoPlayer.OriginalTitle")
+        log(__name__, "Original title: [%s]" % (original_title))
+        movie_title_plus = original_title.replace(" ", "+")
+        url = '%s%s' % (main_url, movie_title_plus)
     log(__name__, "Pobieram z [ %s ]" % (url))
     response = urllib2.urlopen(url)
     content = response.read()

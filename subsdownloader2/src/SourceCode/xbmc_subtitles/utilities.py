@@ -23,7 +23,7 @@ def log(module, msg):
 #---
 #-  xbmc.output("### [%s-%s] - %s" % (__scriptname__,module,msg,),level=xbmc.LOGDEBUG )
 #+++
-  print(msg, module, "D")
+    print(msg, module, "D")
 #+++
 
 ###-------------------------  Hash  -----------------###############
@@ -31,38 +31,38 @@ def log(module, msg):
 
 def hashFile(filename):
     try:
-      longlongformat = '<LL'  # signed long, unsigned long
-      bytesize = struct.calcsize(longlongformat)
-      f = open(filename, "rb")
+        longlongformat = '<LL'  # signed long, unsigned long
+        bytesize = struct.calcsize(longlongformat)
+        f = open(filename, "rb")
 
-      filesize = os.path.getsize(filename)
-      hash = filesize
+        filesize = os.path.getsize(filename)
+        hash = filesize
 
-      if filesize < 65536 * 2:
-        return "Error"
-      b = f.read(65536)
-      for x in range(65536 / bytesize):
-        buffer = b[x * bytesize:x * bytesize + bytesize]
-        (l2, l1) = struct.unpack(longlongformat, buffer)
-        l_value = (int(l1) << 32) | int(l2)
-        hash += l_value
-        hash = hash & 0xFFFFFFFFFFFFFFFF #to remain as 64bit number
+        if filesize < 65536 * 2:
+            return "Error"
+        b = f.read(65536)
+        for x in range(65536 / bytesize):
+            buffer = b[x * bytesize:x * bytesize + bytesize]
+            (l2, l1) = struct.unpack(longlongformat, buffer)
+            l_value = (int(l1) << 32) | int(l2)
+            hash += l_value
+            hash = hash & 0xFFFFFFFFFFFFFFFF #to remain as 64bit number
 
-      f.seek(max(0, filesize - 65536), 0)
-      b = f.read(65536)
-      for x in range(65536 / bytesize):
-        buffer = b[x * bytesize:x * bytesize + bytesize]
-        (l2, l1) = struct.unpack(longlongformat, buffer)
-        l_value = (int(l1) << 32) | int(l2)
-        hash += l_value
-        hash = hash & 0xFFFFFFFFFFFFFFFF
+        f.seek(max(0, filesize - 65536), 0)
+        b = f.read(65536)
+        for x in range(65536 / bytesize):
+            buffer = b[x * bytesize:x * bytesize + bytesize]
+            (l2, l1) = struct.unpack(longlongformat, buffer)
+            l_value = (int(l1) << 32) | int(l2)
+            hash += l_value
+            hash = hash & 0xFFFFFFFFFFFFFFFF
 
-      f.close()
-      returnedhash = "%016x" % hash
-      return returnedhash
+        f.close()
+        returnedhash = "%016x" % hash
+        return returnedhash
 
     except (IOError):
-      return "IOError"
+        return "IOError"
 
 
 ###-------------------------- match sub to file  -------------################
@@ -84,31 +84,31 @@ def regex_tvshow(compare, file, sub=""):
     tvshow = 0
 
     for regex in regex_expressions:
-      response_file = re.findall(regex, file)
-      if len(response_file) > 0:
-        print("Regex File Se: %s, Ep: %s," % (str(response_file[0][0]), str(response_file[0][1]),))
-        tvshow = 1
-        if not compare:
-            title = re.split(regex, file)[0]
-            for char in ['[', ']', '_', '(', ')', '.', '-']:
-               title = title.replace(char, ' ')
-            if title.endswith(" "):
-              title = title[:-1]
-            return title, response_file[0][0], response_file[0][1]
-        else:
-            break
+        response_file = re.findall(regex, file)
+        if len(response_file) > 0:
+            print("Regex File Se: %s, Ep: %s," % (str(response_file[0][0]), str(response_file[0][1]),))
+            tvshow = 1
+            if not compare:
+                title = re.split(regex, file)[0]
+                for char in ['[', ']', '_', '(', ')', '.', '-']:
+                    title = title.replace(char, ' ')
+                if title.endswith(" "):
+                    title = title[:-1]
+                return title, response_file[0][0], response_file[0][1]
+            else:
+                break
 
     if (tvshow == 1):
-      for regex in regex_expressions:
-        response_sub = re.findall(regex, sub)
-        if len(response_sub) > 0:
-          try:
-              sub_info = "Regex Subtitle Ep: %s," % (str(response_sub[0][1]),)
-              if (int(response_sub[0][1]) == int(response_file[0][1])):
-                return True
-          except:
-            pass
-      return False
+        for regex in regex_expressions:
+            response_sub = re.findall(regex, sub)
+            if len(response_sub) > 0:
+                try:
+                    sub_info = "Regex Subtitle Ep: %s," % (str(response_sub[0][1]),)
+                    if (int(response_sub[0][1]) == int(response_file[0][1])):
+                        return True
+                except:
+                    pass
+        return False
     if compare:
         return True
     else:
@@ -577,6 +577,6 @@ LANGUAGES = (
 
 
 def languageTranslate(lang, lang_from, lang_to):
-  for x in LANGUAGES:
-    if lang == x[lang_from]:
-      return x[lang_to]
+    for x in LANGUAGES:
+        if lang == x[lang_from]:
+            return x[lang_to]

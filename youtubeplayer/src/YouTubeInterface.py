@@ -503,7 +503,7 @@ class YouTubeInterface():
 		newPlaylist = None
 		newPlaylistEntry = self.ytService.AddPlaylist(name, description, private)
 		if isinstance(newPlaylistEntry, gdata.youtube.YouTubePlaylistEntry):
-  			newPlaylist = YouTubePlaylistEntry(newPlaylistEntry)
+            			newPlaylist = YouTubePlaylistEntry(newPlaylistEntry)
 		return newPlaylist
 
 	def deletePlaylist(self, playlistEntry):

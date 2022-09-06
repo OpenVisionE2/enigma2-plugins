@@ -99,23 +99,23 @@ class NETcasterScreenBrowser(Screen):
     def connectToMetadataUpdates(self):
         global streamplayer
         if streamplayer is not None:
-             streamplayer.metadatachangelisteners.append(self.onMetadataChanged)
-             streamplayer.onStop.append(self._onStop)
+            streamplayer.metadatachangelisteners.append(self.onMetadataChanged)
+            streamplayer.onStop.append(self._onStop)
 
     def disconnectFromMetadataUpdates(self):
         global streamplayer
         try:
-             streamplayer.metadatachangelisteners.remove(self.onMetadataChanged)
+            streamplayer.metadatachangelisteners.remove(self.onMetadataChanged)
         except Exception as e:
             pass
         try:
-             streamplayer.onStop.remove(self._onStop)
+            streamplayer.onStop.remove(self._onStop)
         except Exception as e:
             pass
 
     def onMetadataChanged(self, title):
         try:
-             self["metadata"].setText(title)
+            self["metadata"].setText(title)
         except Exception as e:
             self.disconnectFromMetadataUpdates()
 
@@ -184,14 +184,14 @@ class NETcasterScreenBrowser(Screen):
             self.setTitle("%s" % (stream.getName()))
 
     def onStreamlistLoaded(self, list):
-       self["streamlist"].buildList(list)
+        self["streamlist"].buildList(list)
 
     def showMainMenu(self):
         menu = []
         if self["streamlist"].l.getCurrentSelection() is not None:
-             selectedStream = self["streamlist"].l.getCurrentSelection()[0]
+            selectedStream = self["streamlist"].l.getCurrentSelection()[0]
         else:
-             selectedStream = None
+            selectedStream = None
         # generic menuitems
         for p in self.pluginlist:
             for i in p.getMenuItems(selectedStream, generic=True):

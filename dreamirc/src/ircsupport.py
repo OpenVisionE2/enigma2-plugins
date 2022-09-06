@@ -50,7 +50,7 @@ class IRCPerson(e2support.AbstractPerson):
         if self.account.client is None:
             print("not connected")
         else:
-        	  self.account.client.quit("user logged off")
+            	  self.account.client.quit("user logged off")
 
 
 class IRCGroup(e2support.AbstractGroup):
@@ -95,7 +95,7 @@ class IRCGroup(e2support.AbstractGroup):
         if self.account.client is None:
             print("not connected")
         else:
-        	self.account.client.quit("user logged off")
+            	self.account.client.quit("user logged off")
 
 
 class IRCProto(e2support.AbstractClientMixin, irc.IRCClient):
@@ -144,7 +144,7 @@ class IRCProto(e2support.AbstractClientMixin, irc.IRCClient):
 
     def quit(self, message='bye bye'):
 #         self.quit_str=str("QUIT :%s" % message)
-         self.sendLine("QUIT :%s" % message)
+        self.sendLine("QUIT :%s" % message)
 
     def kickedFrom(self, channel, kicker, message):
         """Called when I am kicked from a channel.
@@ -197,10 +197,10 @@ class IRCProto(e2support.AbstractClientMixin, irc.IRCClient):
             self._namreplies[group] = []
         self._namreplies[group].extend(users)
         for nickname in users:
-                try:
-                    self._ingroups[nickname].append(group)
-                except:
-                    self._ingroups[nickname] = [group]
+            try:
+                self._ingroups[nickname].append(group)
+            except:
+                self._ingroups[nickname] = [group]
 
     def irc_RPL_ENDOFNAMES(self, prefix, params):
         group = params[1][1:]

@@ -358,12 +358,12 @@ class Schiffe(Screen):
 
     # displays moves and time in title...
     def timerHandler(self):
-            if isFHD():
-                self["result"].setText("%10d shots" % self.moves)
-                self["movex"].setText("%10d sec" % self.cnt)
-            else:
-                self.instance.setTitle("Schiffe versenken %s %10d shots %10d sec" % (VERSION, self.moves, self.cnt))
-            self.cnt += 1
+        if isFHD():
+            self["result"].setText("%10d shots" % self.moves)
+            self["movex"].setText("%10d sec" % self.cnt)
+        else:
+            self.instance.setTitle("Schiffe versenken %s %10d shots %10d sec" % (VERSION, self.moves, self.cnt))
+        self.cnt += 1
 
     # create new game...
     def new_game(self, loadFromFile=False):
@@ -414,21 +414,21 @@ class Schiffe(Screen):
     def save_game(self):
         try:
             # if not self.gameover:
-                sav = open(SAVEFILE, "w")
-                sav.write("%d %d\n" % (self.moves, self.cnt))
-                for i, cell in enumerate(self.boxCells):
-                    sav.write("%d " % cell.value())
-                    if (i + 1) % XMAX == 0:
-                        sav.write("\n")
-                for i, cell in enumerate(self.youCells):
-                    sav.write("%d " % cell.value())
-                    if (i + 1) % XMAX == 0:
-                        sav.write("\n")
-                sav.close()
+            sav = open(SAVEFILE, "w")
+            sav.write("%d %d\n" % (self.moves, self.cnt))
+            for i, cell in enumerate(self.boxCells):
+                sav.write("%d " % cell.value())
+                if (i + 1) % XMAX == 0:
+                    sav.write("\n")
+            for i, cell in enumerate(self.youCells):
+                sav.write("%d " % cell.value())
+                if (i + 1) % XMAX == 0:
+                    sav.write("\n")
+            sav.close()
             # else:
-                # # gameover no savefile needed...
-                # if fileExists(SAVEFILE):
-                    # remove(SAVEFILE)
+            # # gameover no savefile needed...
+            # if fileExists(SAVEFILE):
+                # remove(SAVEFILE)
         except IOError:
             pass
 

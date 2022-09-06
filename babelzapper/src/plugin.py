@@ -361,8 +361,8 @@ class BabelZapperStartup(Screen):
 		elif cmdname.startswith("RUN"):
 			i = len(babelmenu)
 			while i > 1:
- 				i = i - 1
- 				babelmenu.pop(i)
+                				i = i - 1
+                				babelmenu.pop(i)
 			babelfile = "%s/%s.zbb" % (babelzapper_menus, cmdname.replace("RUN", "").replace(" ", "").replace("	", ""))
 			print("[BABELZAPPER] RUNs: %s\n" % babelfile)
 			if os.path.exists(babelfile):

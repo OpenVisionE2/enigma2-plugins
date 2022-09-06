@@ -50,14 +50,14 @@ class GetFPS(object):
         track = 0
         self.file.seek(0)
         while True:
-                class_id, length = self.eblm()
-                # print("class_id: %X length %i position:%i" % (class_id, length,self.file.tell()))
-                if (class_id == 0x83):
-                        track = ord(self.file.read(1))
-                elif (class_id == 0x23E383 and track == 1):
-                        break
-                elif (class_id not in [0x18538067, 0x1654AE6B, 0xAE, 0x83]):
+            class_id, length = self.eblm()
+            # print("class_id: %X length %i position:%i" % (class_id, length,self.file.tell()))
+            if (class_id == 0x83):
+                track = ord(self.file.read(1))
+            elif (class_id == 0x23E383 and track == 1):
+                break
+            elif (class_id not in [0x18538067, 0x1654AE6B, 0xAE, 0x83]):
 #Segment,Tracks,TrackEntry,TrackType
-                        self.file.seek(length, 1)
+                self.file.seek(length, 1)
 
         return (1000000000 / float(struct.unpack('>I', self.file.read(4))[0]))

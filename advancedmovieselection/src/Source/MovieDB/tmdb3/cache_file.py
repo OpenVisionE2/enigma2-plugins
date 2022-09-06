@@ -297,7 +297,7 @@ class FileEngine(CacheEngine):
                 self.cachefd.seek(0)
                 return
         except:
-        	pass # catch issue of no cachefile yet opened
+            	pass # catch issue of no cachefile yet opened
         self.cachefd = io.open(self.cachefile, mode)
 
     def _read(self, date):

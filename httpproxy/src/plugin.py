@@ -129,7 +129,7 @@ class ProxyProtocol(proxy.Proxy):
 
 
 class ProxyFactory(http.HTTPFactory):
-        protocol = ProxyProtocol
+    protocol = ProxyProtocol
 
 ###############################################################################
 
@@ -155,7 +155,7 @@ def autostart(reason, **kwargs):
 
 
 def Plugins(**kwargs):
-  return [
-          PluginDescriptor(name="HTTP Proxy", description="use your receiver as Web Proxy", where=PluginDescriptor.WHERE_PLUGINMENU, fnc=main),
-          PluginDescriptor(where=[PluginDescriptor.WHERE_NETWORKCONFIG_READ], fnc=autostart)
-          ]
+    return [
+            PluginDescriptor(name="HTTP Proxy", description="use your receiver as Web Proxy", where=PluginDescriptor.WHERE_PLUGINMENU, fnc=main),
+            PluginDescriptor(where=[PluginDescriptor.WHERE_NETWORKCONFIG_READ], fnc=autostart)
+            ]

@@ -64,8 +64,8 @@ class SHOUTcasterFavorites:
         sections = self.configparser.sections()
         print(sections)
         for section in sections:
-                stream = self.getStreamByName(section)
-                streams.append(stream)
+            stream = self.getStreamByName(section)
+            streams.append(stream)
         return streams
 
     def isStream(self, streamname):
@@ -114,8 +114,8 @@ class SHOUTcasterFavorites:
         elif self.configparser.has_section(streamnew.getName()) is True:
             return False, "stream with that name exists already"
         else:
-           self.configparser.remove_section(streamold.getName())
-           return self.addStream(streamnew)
+            self.configparser.remove_section(streamold.getName())
+            return self.addStream(streamnew)
 
     def deleteStreamWithName(self, streamname):
         self.configparser.remove_section(streamname)

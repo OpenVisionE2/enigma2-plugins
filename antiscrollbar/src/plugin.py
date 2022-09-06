@@ -98,11 +98,11 @@ class AntiScrollOverlay(Screen):
             self.hide()
 
     def move(self, x, y):
-      self.instance.move(ePoint(x, y))
+        self.instance.move(ePoint(x, y))
 
     def resize(self, w, h):
-      self.instance.resize(eSize(*(w, h)))
-      self["label"].instance.resize(eSize(*(w - 2, h - 2)))
+        self.instance.resize(eSize(*(w, h)))
+        self["label"].instance.resize(eSize(*(w - 2, h - 2)))
 
 
 #############################
@@ -217,16 +217,16 @@ class CurrentSeviceConfig(Screen):
                  }, -1)
 
     def go(self):
-      self.mode.posx.value = self.position[0]
-      self.mode.posy.value = self.position[1]
-      self.mode.sizex.value = self.size[0]
-      self.mode.sizey.value = self.size[1]
-      self.mode.enabled.value = self.enabled
-      self.mode.save()
-      self.close()
+        self.mode.posx.value = self.position[0]
+        self.mode.posy.value = self.position[1]
+        self.mode.sizex.value = self.size[0]
+        self.mode.sizey.value = self.size[1]
+        self.mode.enabled.value = self.enabled
+        self.mode.save()
+        self.close()
 
     def cancel(self):
-       self.close()
+        self.close()
 
     def key0(self):
         if self.enabled:
@@ -237,43 +237,43 @@ class CurrentSeviceConfig(Screen):
             self["label"].setText("")
 
     def key2(self):
-      self.size = [self.size[0], self.size[1] - self.step]
-      self.resize(self.size[0], self.size[1])
+        self.size = [self.size[0], self.size[1] - self.step]
+        self.resize(self.size[0], self.size[1])
 
     def key8(self):
-      self.size = [self.size[0], self.size[1] + self.step]
-      self.resize(self.size[0], self.size[1])
+        self.size = [self.size[0], self.size[1] + self.step]
+        self.resize(self.size[0], self.size[1])
 
     def key4(self):
-      self.size = [self.size[0] - self.step, self.size[1]]
-      self.resize(self.size[0], self.size[1])
+        self.size = [self.size[0] - self.step, self.size[1]]
+        self.resize(self.size[0], self.size[1])
 
     def key6(self):
-      self.size = [self.size[0] + self.step, self.size[1]]
-      self.resize(self.size[0], self.size[1])
+        self.size = [self.size[0] + self.step, self.size[1]]
+        self.resize(self.size[0], self.size[1])
 
     def down(self):
-      self.position = [self.position[0], self.position[1] + self.step]
-      self.move(self.position[0], self.position[1])
+        self.position = [self.position[0], self.position[1] + self.step]
+        self.move(self.position[0], self.position[1])
 
     def up(self):
-      self.position = [self.position[0], self.position[1] - self.step]
-      self.move(self.position[0], self.position[1])
+        self.position = [self.position[0], self.position[1] - self.step]
+        self.move(self.position[0], self.position[1])
 
     def left(self):
-      self.position = [self.position[0] - self.step, self.position[1]]
-      self.move(self.position[0], self.position[1])
+        self.position = [self.position[0] - self.step, self.position[1]]
+        self.move(self.position[0], self.position[1])
 
     def right(self):
-      self.position = [self.position[0] + self.step, self.position[1]]
-      self.move(self.position[0], self.position[1])
+        self.position = [self.position[0] + self.step, self.position[1]]
+        self.move(self.position[0], self.position[1])
 
     def move(self, x, y):
-      self.instance.move(ePoint(x, y))
+        self.instance.move(ePoint(x, y))
 
     def resize(self, w, h):
-      self.instance.resize(eSize(*(w, h)))
-      self["label"].instance.resize(eSize(*(w, h)))
+        self.instance.resize(eSize(*(w, h)))
+        self["label"].instance.resize(eSize(*(w, h)))
 
 #############################
 
@@ -305,5 +305,5 @@ def autostart(session, **kwargs):
 
 
 def Plugins(**kwargs):
-  return [PluginDescriptor(name=myname, description="overlay for scrolling bars", where=PluginDescriptor.WHERE_PLUGINMENU, fnc=main, icon="plugin.png"),
-          PluginDescriptor(where=PluginDescriptor.WHERE_SESSIONSTART, fnc=autostart)]
+    return [PluginDescriptor(name=myname, description="overlay for scrolling bars", where=PluginDescriptor.WHERE_PLUGINMENU, fnc=main, icon="plugin.png"),
+            PluginDescriptor(where=PluginDescriptor.WHERE_SESSIONSTART, fnc=autostart)]

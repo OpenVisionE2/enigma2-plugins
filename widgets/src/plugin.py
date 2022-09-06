@@ -394,10 +394,10 @@ def loadSkinReal(skinPath):
     if os.path.exists(skinPath):
         print("[Widgets] Loading skin ", skinPath)
         for skin in dom_skins:
-        	print("skin", skin)
+            	print("skin", skin)
 
-        	if skin[0] == skinPath.replace("skin.xml", ""):
-        		dom_skins.remove(skin)
+            	if skin[0] == skinPath.replace("skin.xml", ""):
+                		dom_skins.remove(skin)
         loadSkin(skinPath)
 
 

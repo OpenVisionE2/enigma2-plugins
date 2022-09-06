@@ -96,9 +96,9 @@ from Plugins.Extensions.SubsDownloader2.SourceCode.xbmc_subtitles.utilities impo
 
 OS_LANGS = {}
 for x in LANGUAGES:
-  #languageTranslate(x[0], 0, 2)
-  #languageTranslate(x[0], 0, 3)
-  OS_LANGS.update({languageTranslate(x[0], 0, 2): languageTranslate(x[0], 0, 3)})
+    #languageTranslate(x[0], 0, 2)
+    #languageTranslate(x[0], 0, 3)
+    OS_LANGS.update({languageTranslate(x[0], 0, 2): languageTranslate(x[0], 0, 3)})
 
 
 class OpenSubtitle(SubtitleDatabase.SubtitleDB):
@@ -199,13 +199,13 @@ class OpenSubtitle(SubtitleDatabase.SubtitleDB):
         search = {}
         sublinks = []
         if moviehash:
-        	search['moviehash'] = moviehash
+            	search['moviehash'] = moviehash
         if imdbID:
-        	search['imdbid'] = imdbID
+            	search['imdbid'] = imdbID
         if bytesize:
-        	search['moviebytesize'] = str(bytesize)
+            	search['moviebytesize'] = str(bytesize)
         if langs:
-        	search['sublanguageid'] = ",".join([self.getLanguage(lang) for lang in langs])
+            	search['sublanguageid'] = ",".join([self.getLanguage(lang) for lang in langs])
         if len(search) == 0:
             logging.debug("No search term, we'll use the filename")
             # Let's try to guess what to search:

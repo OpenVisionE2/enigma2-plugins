@@ -637,6 +637,6 @@ class ImageConverter:
             self.lastURL = sourceURL
 
     def onImageLoaded(self, dummy):
-            self.currPic = loadPic(self.tmpfile, self.width, self.height, 0, 1, 0, 1)
-            os_remove(self.tmpfile)
-            self.callBack(pixmap=self.currPic)
+        self.currPic = loadPic(self.tmpfile, self.width, self.height, 0, 1, 0, 1)
+        os_remove(self.tmpfile)
+        self.callBack(pixmap=self.currPic)

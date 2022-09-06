@@ -212,4 +212,4 @@ def download_subtitles(subtitles_list, pos, zip_subs, tmp_sub_dir, sub_folder, s
 
 
 def __restartMessage__(screen_session, callback=None):
-        screen_session.open(MessageBox, _("Please restart GUI to apply changes.\n\n If UNRAR package haven't been installed it means that Your image doesn't have it. \n You can download package from project Google Code page or unpack rar manually and make local convertion."), MessageBox.TYPE_INFO, timeout=25)
+    screen_session.open(MessageBox, _("Please restart GUI to apply changes.\n\n If UNRAR package haven't been installed it means that Your image doesn't have it. \n You can download package from project Google Code page or unpack rar manually and make local convertion."), MessageBox.TYPE_INFO, timeout=25)
