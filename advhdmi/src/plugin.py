@@ -128,7 +128,8 @@ def callHook(advhdmi_event):
 	if config.plugins.AdvHdmiCec.debug.value:
 		_print("Debug: call Hooks for Event '" + str(advhdmi_event) + "'")
 	if advhdmiHooks:
-		for hookKey, hook in advhdmiHooks.items():
+		from six import iteritems
+		for hookKey, hook in advhdmiHooks.iteritems():
 			if config.plugins.AdvHdmiCec.debug.value:
 				_print("Debug: call Hook '" + str(hookKey) + "'")
 			try:

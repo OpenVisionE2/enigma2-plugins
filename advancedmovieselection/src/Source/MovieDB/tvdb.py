@@ -44,12 +44,8 @@ def getLocale():
     return config['locale']
 
 
-import urllib.request
-import urllib.parse
-import urllib.error
-import urllib.request
-import urllib.error
-import urllib.parse
+from six.moves.urllib.request import urlopen
+from six.moves.urllib.parse import quote
 import xml.etree.cElementTree as ElementTree
 
 
@@ -77,7 +73,7 @@ class XmlHandler:
 
     def _grabUrl(self, url):
         try:
-            urlhandle = urllib.request.urlopen(url)
+            urlhandle = urlopen(url)
         except IOError as errormsg:
             raise TvdHttpError(errormsg)
 
@@ -193,7 +189,7 @@ class MovieDb:
         """Searches for a film by its title.
         Returns SearchResults (a list) containing all matches (Movie instances)
         """
-        title = urllib.parse.quote(title.encode('utf-8'))
+        title = quote(title.encode('utf-8'))
         url = config['urls']['movie.search'] % title
         etree = XmlHandler(url).getEt()
         search_results = SearchResults()

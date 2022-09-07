@@ -116,7 +116,10 @@ class MovieScanner():
         if self.isWorking:
             print("[AdvancedMovieSelection] MovieScanner action canceled! reload in progress")
             return
-        from _thread import start_new_thread
+        try:
+            from thread import start_new_thread
+        except:
+            from _thread import start_new_thread
         start_new_thread(self.updateMovieList, (dir_list, delay))
         self.isWorking = True
 

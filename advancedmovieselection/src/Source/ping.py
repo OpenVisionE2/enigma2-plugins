@@ -86,6 +86,11 @@ import struct
 import select
 import time
 
+try:
+	xrange
+except Exception:
+	xrange = range
+
 __version__ = "0.1"
 
 # From /usr/include/linux/icmp.h; your milage may vary.
@@ -208,7 +213,7 @@ def verbose_ping(dest_addr, timeout=2, count=4):
     Send >count< ping to >dest_addr< with the given >timeout< and display
     the result.
     """
-    for i in range(count):
+    for i in xrange(count):
         print("ping %s..." % dest_addr,)
         try:
             delay = do_one(dest_addr, timeout)
