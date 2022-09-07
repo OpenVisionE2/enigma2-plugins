@@ -88,12 +88,12 @@ class DMC_MainMenu(Screen):
 		{
 			"cancel": self.Exit,
 			"ok": self.okbuttonClick,
-			"right": self.__next__,
+			"right": self.next,
 			"upRepeated": self.prev,
-			"down": self.__next__,
-			"downRepeated": self.__next__,
+			"down": self.next,
+			"downRepeated": self.next,
 			"leftRepeated": self.prev,
-			"rightRepeated": self.__next__,
+			"rightRepeated": self.next,
 			"up": self.prev,
 			"left": self.prev
 		}, -1)
@@ -104,7 +104,7 @@ class DMC_MainMenu(Screen):
 				os.mkdir("/media/upnp")
 			Console().ePopen('djmount /media/upnp &')
 
-	def __next__(self):
+	def next(self):
 		self["menu"].selectNext()
 		if self["menu"].getIndex() == 1:
 			self["menu"].setIndex(2)

@@ -74,5 +74,5 @@ def Plugins(**kwargs):
 	list.append(PluginDescriptor(where=[PluginDescriptor.WHERE_AUTOSTART, PluginDescriptor.WHERE_SESSIONSTART], fnc=autostart))
 	list.append(PluginDescriptor(name="Birthday Reminder", description=_("Helps to remind of birthdays"), where=PluginDescriptor.WHERE_PLUGINMENU, icon="plugin.png", fnc=settings))
 	if config.plugins.birthdayreminder.showInExtensions.value:
-        	list.append(PluginDescriptor(name="Birthday Reminder", description=_("Helps to remind of birthdays"), where=[PluginDescriptor.WHERE_EXTENSIONSMENU, PluginDescriptor.WHERE_EVENTINFO], fnc=main))
+		list.append(PluginDescriptor(name="Birthday Reminder", description=_("Helps to remind of birthdays"), where=[PluginDescriptor.WHERE_EXTENSIONSMENU, PluginDescriptor.WHERE_EVENTINFO], fnc=main))
 	return list

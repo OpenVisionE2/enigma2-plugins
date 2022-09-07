@@ -506,7 +506,7 @@ class MC_PicView(Screen, InfoBarBase, InfoBarSeek, InfoBarNotifications, Helpabl
 		self.picload.startDecode(self.filelist[self.index])
 		self["point"].show()
 
-	def __next__(self):
+	def next(self):
 		self.index += 1
 		if self.index > self.maxentry:
 			self.index = 0
