@@ -14,7 +14,7 @@ class NameRepr(object):
     """Mixin for __repr__ methods using 'name' attribute."""
 
     def __repr__(self):
-        return "<{0.__class__.__name__} '{0.name}'>"\
+        return u"<{0.__class__.__name__} '{0.name}'>"\
                                 .format(self).encode('utf-8')
 
 
@@ -26,7 +26,7 @@ class SearchRepr(object):
 
     def __repr__(self):
         name = self._name if self._name else self._request._kwargs['query']
-        return "<Search Results: {0}>".format(name).encode('utf-8')
+        return u"<Search Results: {0}>".format(name).encode('utf-8')
 
 
 class Poller(object):
@@ -113,7 +113,7 @@ class Data(object):
     """
 
     def __init__(self, field, initarg=None, handler=None, poller=None,
-                 raw=True, default='', lang=False):
+                 raw=True, default=u'', lang=False):
         """
         This defines how the dictionary value is to be processed by the poller
             field   -- defines the dictionary key that filters what data this uses
@@ -376,5 +376,5 @@ class ElementType(type):
         return obj
 
 
-class Element(object, metaclass=ElementType):
+class Element(object, metaclass=ElementType): # Will this work for py2?
     _lang = 'en'

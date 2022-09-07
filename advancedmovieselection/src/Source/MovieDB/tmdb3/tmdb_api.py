@@ -69,12 +69,6 @@ from .tmdb_auth import get_session, set_session
 from .tmdb_exceptions import *
 
 import json
-import urllib.request
-import urllib.parse
-import urllib.error
-import urllib.request
-import urllib.error
-import urllib.parse
 import datetime
 
 DEBUG = False
@@ -251,14 +245,14 @@ class Image(Element):
         return self.filename == other.filename
     # special handling for boolean to see if exists
 
-    def __bool__(self):
+    def __nonzero__(self):
         if len(self.filename) == 0:
             return False
         return True
 
     def __repr__(self):
         # BASE62 encoded filename, no need to worry about unicode
-        return "<{0.__class__.__name__} '{0.filename}'>".format(self)
+        return u"<{0.__class__.__name__} '{0.filename}'>".format(self)
 
 
 class Backdrop(Image):
@@ -298,7 +292,7 @@ class AlternateTitle(Element):
         return self.country == other.country
 
     def __repr__(self):
-        return "<{0.__class__.__name__} '{0.title}' ({0.country})>"\
+        return u"<{0.__class__.__name__} '{0.title}' ({0.country})>"\
                         .format(self).encode('utf-8')
 
 
@@ -316,7 +310,7 @@ class Person(Element):
     aliases = Datalist('also_known_as')
 
     def __repr__(self):
-        return "<{0.__class__.__name__} '{0.name}'>"\
+        return u"<{0.__class__.__name__} '{0.name}'>"\
                             .format(self).encode('utf-8')
 
     def _populate(self):
@@ -341,7 +335,7 @@ class Cast(Person):
     order = Datapoint('order')
 
     def __repr__(self):
-        return "<{0.__class__.__name__} '{0.name}' as '{0.character}'>"\
+        return u"<{0.__class__.__name__} '{0.name}' as '{0.character}'>"\
                             .format(self).encode('utf-8')
 
 
@@ -350,7 +344,7 @@ class Crew(Person):
     department = Datapoint('department')
 
     def __repr__(self):
-        return "<{0.__class__.__name__} '{0.name}','{0.job}'>"\
+        return u"<{0.__class__.__name__} '{0.name}','{0.job}'>"\
                             .format(self).encode('utf-8')
 
 
@@ -359,7 +353,7 @@ class Keyword(Element):
     name = Datapoint('name')
 
     def __repr__(self):
-        return "<{0.__class__.__name__} {0.name}>".format(self).encode('utf-8')
+        return u"<{0.__class__.__name__} {0.name}>".format(self).encode('utf-8')
 
 
 class Release(Element):
@@ -368,7 +362,7 @@ class Release(Element):
     releasedate = Datapoint('release_date', handler=process_date)
 
     def __repr__(self):
-        return "<{0.__class__.__name__} {0.country}, {0.releasedate}>"\
+        return u"<{0.__class__.__name__} {0.country}, {0.releasedate}>"\
                             .format(self).encode('utf-8')
 
 
@@ -384,7 +378,7 @@ class YoutubeTrailer(Trailer):
 
     def __repr__(self):
         # modified BASE64 encoding, no need to worry about unicode
-        return "<{0.__class__.__name__} '{0.name}'>".format(self)
+        return u"<{0.__class__.__name__} '{0.name}'>".format(self)
 
 
 class AppleTrailer(Element):
@@ -401,7 +395,7 @@ class AppleTrailer(Element):
         return self.sources[size].source
 
     def __repr__(self):
-        return "<{0.__class__.__name__} '{0.name}'>".format(self)
+        return u"<{0.__class__.__name__} '{0.name}'>".format(self)
 
 
 class Translation(Element):
@@ -410,7 +404,7 @@ class Translation(Element):
     englishname = Datapoint('english_name')
 
     def __repr__(self):
-        return "<{0.__class__.__name__} '{0.name}' ({0.language})>"\
+        return u"<{0.__class__.__name__} '{0.name}' ({0.language})>"\
                                 .format(self).encode('utf-8')
 
 
@@ -686,17 +680,17 @@ class Movie(Element):
 
     def _printable_name(self):
         if self.title is not None:
-            s = "'{0}'".format(self.title)
+            s = u"'{0}'".format(self.title)
         elif self.originaltitle is not None:
-            s = "'{0}'".format(self.originaltitle)
+            s = u"'{0}'".format(self.originaltitle)
         else:
-            s = "'No Title'"
+            s = u"'No Title'"
         if self.releasedate:
-            s = "{0} ({1})".format(s, self.releasedate.year)
+            s = u"{0} ({1})".format(s, self.releasedate.year)
         return s
 
     def __repr__(self):
-        return "<{0} {1}>".format(self.__class__.__name__,
+        return u"<{0} {1}>".format(self.__class__.__name__,
                                    self._printable_name()).encode('utf-8')
 
 
@@ -704,7 +698,7 @@ class ReverseCast(Movie):
     character = Datapoint('character')
 
     def __repr__(self):
-        return "<{0.__class__.__name__} '{0.character}' on {1}>"\
+        return u"<{0.__class__.__name__} '{0.character}' on {1}>"\
                         .format(self, self._printable_name()).encode('utf-8')
 
 
@@ -713,7 +707,7 @@ class ReverseCrew(Movie):
     job = Datapoint('job')
 
     def __repr__(self):
-        return "<{0.__class__.__name__} '{0.job}' for {1}>"\
+        return u"<{0.__class__.__name__} '{0.job}' for {1}>"\
                         .format(self, self._printable_name()).encode('utf-8')
 
 
