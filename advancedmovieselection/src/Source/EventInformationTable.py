@@ -31,9 +31,6 @@ Digital Video Broadcasting (DVB) Specification for Service Information (SI) in D
 """
 import os
 import time
-import urllib.request
-import urllib.parse
-import urllib.error
 from struct import unpack, pack
 from calendar import timegm
 from .MovieDB import tmdb, tvdb, downloadCover
@@ -363,16 +360,17 @@ def setTmdbCertificationtion(movie, file_name):
         print(str(e))
 
 
-INV_CHARS = [('e\u0301', 'e'), ('\u010c', 'C'), ('\u010d', 'c'), ('\u0106', 'c'), ('\u0107', 'c'), ('\u0110', 'D'), ('\u0111', 'd'), ('\u0160', 'S'), ('\u0161', 's'),
- ('\u017d', 'Z'), ('\u017e', 'z'), ('\u201e', '"'), ('\u201c', '"'), ('\u201d', '"'), ('\u2019', "'"), ('\u2018', "'"), ('\xab', '<'), ('\xbb', '>')]
+INV_CHARS = [(u'e\u0301', 'e'), (u'\u010c', 'C'), (u'\u010d', 'c'), (u'\u0106', 'c'), (u'\u0107', 'c'), (u'\u0110', 'D'), (u'\u0111', 'd'), (u'\u0160', 'S'), (u'\u0161', 's'),
+ (u'\u017d', 'Z'), (u'\u017e', 'z'), (u'\u201e', '"'), (u'\u201c', '"'), (u'\u201d', '"'), (u'\u2019', "'"), (u'\u2018', "'"), (u'\xab', '<'), (u'\xbb', '>')]
 
 
 def convertToUnicode(text):
-    text = str(text)
+    from six import text_type
+    text = text_type(text)
     for ic in INV_CHARS:
         text = text.replace(ic[0], ic[1])
 
-    return str(text)
+    return text_type(text)
 
 
 def writeEIT(file_name, eit_file, name, overview, genre, extended_info, released, runtime, language_code='DEU'):

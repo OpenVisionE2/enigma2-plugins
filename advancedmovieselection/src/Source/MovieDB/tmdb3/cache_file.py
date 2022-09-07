@@ -16,7 +16,7 @@ import os
 import io
 
 try:
-	from io import StringIO
+	from cStringIO import StringIO
 except:
 	from io import StringIO
 

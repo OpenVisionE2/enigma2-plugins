@@ -98,7 +98,7 @@ class ISORead:
 
 
 try:
-	import subprocess
+	import commands
 except:
 	import subprocess as commands
 
@@ -148,7 +148,7 @@ class ISOInfo:
                 os.mkdir(self.MOUNT_PATH)
             cmd = 'mount -r -o loop "%s" "%s"' % (iso, self.MOUNT_PATH)
             print('exec command:', cmd)
-            out = subprocess.getoutput(cmd)
+            out = commands.getoutput(cmd)
             if out:
                 print('error:', out)
             return not out
@@ -161,7 +161,7 @@ class ISOInfo:
         try:
             cmd = 'umount -df "%s"' % ISOInfo.MOUNT_PATH
             print('exec command:', cmd)
-            out = subprocess.getoutput(cmd)
+            out = commands.getoutput(cmd)
             if out:
                 print('error:', out)
             return not out

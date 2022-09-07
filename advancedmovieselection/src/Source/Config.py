@@ -123,7 +123,7 @@ config.AdvancedMovieSelection.showcoveroptions = ConfigYesNo(default=True)
 config.AdvancedMovieSelection.showpreview = ConfigYesNo(default=True)
 config.AdvancedMovieSelection.showrename = ConfigYesNo(default=True)
 config.AdvancedMovieSelection.description = ConfigYesNo(default=True)
-poster_sizes = ('w92', 'w154', 'w185', 'w342', 'w500', 'original')
+poster_sizes = (u'w92', u'w154', u'w185', u'w342', u'w500', u'original')
 from .MovieDB.tmdb import poster_sizes, setPosterSize
 poster_choices = [
                   (poster_sizes[0], _("Thumb (92x138)")),

@@ -93,7 +93,7 @@ class AdvancedKeyBoard(VirtualKeyBoard, NumericalTextInput, SkinResolutionHelper
                 "0": self.keyNumberGlobal
             }, -1) # to prevent left/right overriding the listbox
             if use & self.KEYBOARD:
-                self.selectedKey = self.getKeyIndex("OK")
+                self.selectedKey = self.getKeyIndex(u"OK")
 
         self.onLayoutFinish.append(self.__onLayoutFinish)
         self.onClose.append(self.__onClose)
