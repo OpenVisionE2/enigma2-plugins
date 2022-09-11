@@ -290,13 +290,13 @@ class SeriesPluginRenamer(object):
 
 		result = None
 
-		if data and isinstance(data, dict):
-			result = rename(servicepath, name, short, data)
-
 		try:
 			basestring
 		except NameError:
 			basestring = str
+
+		if data and isinstance(data, dict):
+			result = rename(servicepath, name, short, data)
 
 		elif data and isinstance(data, basestring):
 			msg = _("Failed: %s." % (str(data)))
