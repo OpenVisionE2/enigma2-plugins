@@ -311,7 +311,8 @@ class NcidClientPhonebook:
 					os.rename(phonebookFilename, phonebookFilename + ".bck")
 					fNew = open(phonebookFilename, 'w')
 					# Beware: strings in phonebook.phonebook are utf-8!
-					for (number, name) in self.phonebook.items():
+					from six import iteritems
+					for (number, name) in self.phonebook.iteritems():
 						# Beware: strings in PhoneBook.txt have to be in utf-8!
 						fNew.write(number + "#" + name.encode("utf-8"))
 					fNew.close()
@@ -488,7 +489,8 @@ class NcidClientPhonebook:
 			debug("[NcidClientPhonebook] displayPhonebook/display")
 			self.sortlist = []
 			# Beware: strings in phonebook.phonebook are utf-8!
-			sortlistHelp = sorted((name.lower(), name, number) for (number, name) in phonebook.phonebook.items())
+			from six import iteritems
+			sortlistHelp = sorted((name.lower(), name, number) for (number, name) in phonebook.phonebook.iteritems())
 			for (low, name, number) in sortlistHelp:
 				if number == "01234567890":
 					continue

@@ -27,7 +27,7 @@ import os
 import traceback
 import json
 import base64
-import six
+from six import ensure_text, ensure_str, PY3
 import logging
 import binascii
 import locale
@@ -78,7 +78,7 @@ try:
 except:
 	from . import _  # @UnresolvedImport
 
-if six.PY3:
+if PY3:
 	import codecs
 	encode = lambda x: codecs.encode(x, "rot13")
 	decode = lambda x: codecs.decode(x, "rot13")
@@ -232,9 +232,9 @@ def initAvon():
 	if os.path.exists(avonFileName):
 		for line in open(avonFileName):
 			try:
-				line = six.ensure_text(line)
+				line = ensure_text(line)
 			except UnicodeDecodeError:
-				line = six.ensure_text(line, "iso-8859-1")  # to deal with old avon.dat
+				line = ensure_text(line, "iso-8859-1")  # to deal with old avon.dat
 			if line[0] == '#':
 				continue
 			parts = line.split(':')
@@ -262,7 +262,7 @@ def resolveNumberWithAvon(number, countrycode):
 
 
 def handleReverseLookupResult(name):
-	name = six.ensure_text(name)
+	name = ensure_text(name)
 	found = re.match("NA: ([^;]*);VN: ([^;]*);STR: ([^;]*);HNR: ([^;]*);PLZ: ([^;]*);ORT: ([^;]*)", name)
 	if found:
 		(name, firstname, street, streetno, zipcode, city) = (found.group(1),
@@ -886,19 +886,19 @@ class FritzMenu(Screen, HelpableScreen):
 				self["FBFInfo"].setText(_("Refreshing..."))
 			else:
 				if boxInfo:
-					self["FBFInfo"].setText(six.ensure_str(boxInfo))
+					self["FBFInfo"].setText(ensure_str(boxInfo))
 				else:
 					self["FBFInfo"].setText('BoxInfo ' + _('Status not available'))
 
 			if ipAddress:
 				if upTime:
-					self["FBFInternet"].setText('Internet ' + _('IP Address:') + ' ' + ipAddress + '\n' + _('Connected since') + ' ' + six.ensure_str(upTime))
+					self["FBFInternet"].setText('Internet ' + _('IP Address:') + ' ' + ipAddress + '\n' + _('Connected since') + ' ' + ensure_str(upTime))
 				else:
 					self["FBFInternet"].setText('Internet ' + _('IP Address:') + ' ' + ipAddress)
 				self["internet_inactive"].hide()
 				self["internet_active"].show()
 			elif upTime:
-				self["FBFInternet"].setText(_('Connected since') + ' ' + six.ensure_str(upTime))
+				self["FBFInternet"].setText(_('Connected since') + ' ' + ensure_str(upTime))
 				self["internet_inactive"].hide()
 				self["internet_active"].show()
 			else:
@@ -915,7 +915,7 @@ class FritzMenu(Screen, HelpableScreen):
 						message = "DSL"
 					if dslState[1]:
 						message = message + ' ' + dslState[1]
-					self["FBFDsl"].setText(six.ensure_str(message))
+					self["FBFDsl"].setText(ensure_str(message))
 				else:
 					self["dsl_active"].hide()
 					self["dsl_inactive"].show()
@@ -942,7 +942,7 @@ class FritzMenu(Screen, HelpableScreen):
 							message = message + ', ' + wlanState[2] + ' ' + _('devices active')
 					if len(wlanState) == 4:
 						message = message + ", " + wlanState[3]
-					self["FBFWlan"].setText(six.ensure_str(message))
+					self["FBFWlan"].setText(ensure_str(message))
 				else:
 					self["wlan_active"].hide()
 					self["wlan_inactive"].show()
@@ -1274,7 +1274,7 @@ class FritzDisplayCalls(Screen, HelpableScreen):
 			return direct
 
 		# debug("[FritzDisplayCalls] %s" %repr(listOfCalls))
-		self.list = [(number, date[:6] + ' ' + date[9:14], pixDir(direct), six.ensure_str(remote), length, six.ensure_str(here)) for (number, date, direct, remote, length, here) in listOfCalls]
+		self.list = [(number, date[:6] + ' ' + date[9:14], pixDir(direct), ensure_str(remote), length, ensure_str(here)) for (number, date, direct, remote, length, here) in listOfCalls]
 		# debug("[FritzDisplayCalls] %s" %repr(self.list))
 		self["entries"].setList(self.list)
 		#=======================================================================
@@ -1296,7 +1296,7 @@ class FritzDisplayCalls(Screen, HelpableScreen):
 				fullname = phonebook.search(cur[0])
 				if fullname:
 					# we have a name for this number
-					name = six.ensure_str(fullname)
+					name = ensure_str(fullname)
 					self.session.open(FritzOfferAction, self, number, name)
 				elif cur[3]:
 					name = cur[3]
@@ -1305,7 +1305,7 @@ class FritzDisplayCalls(Screen, HelpableScreen):
 					# we don't
 					fullname = resolveNumberWithAvon(number, config.plugins.FritzCall.countrycode.value)
 					if fullname:
-						name = six.ensure_str(fullname)
+						name = ensure_str(fullname)
 						self.session.open(FritzOfferAction, self, number, name)
 					else:
 						self.session.open(FritzOfferAction, self, number)
@@ -1508,7 +1508,7 @@ class FritzCallPhonebook(object):
 				debug("[FritzCallPhonebook] read %s", phonebookFilename)
 
 				try:
-					for k, v in list(json.loads(six.ensure_text(open(phonebookFilename).read())).items()):
+					for k, v in list(json.loads(ensure_text(open(phonebookFilename).read())).items()):
 						# TODO if we change the value to a list of lines, we have to adapt this here
 						self.phonebook[k] = v
 				except (ValueError, UnicodeError, IOError) as e:
@@ -1585,7 +1585,7 @@ class FritzCallPhonebook(object):
 						info("[FritzCallPhonebook] empty Phonebook.json created")
 
 					phonebookTmp = {}
-					for k, v in list(json.loads(six.ensure_text(open(phonebookFilename).read())).items()):
+					for k, v in list(json.loads(ensure_text(open(phonebookFilename).read())).items()):
 						phonebookTmp[k] = v
 					phonebookTmp[number] = name
 					json.dump(phonebookTmp, open(phonebookFilename, "w"), ensure_ascii=False, indent=0, separators=(',', ': '), sort_keys=True)
@@ -1623,7 +1623,7 @@ class FritzCallPhonebook(object):
 						return True
 
 					phonebookTmp = {}
-					for k, v in list(json.loads(six.ensure_text(open(phonebookFilename).read())).items()):
+					for k, v in list(json.loads(ensure_text(open(phonebookFilename).read())).items()):
 						phonebookTmp[k] = v
 					if number in phonebookTmp:
 						del phonebookTmp[number]
@@ -1790,13 +1790,14 @@ class FritzCallPhonebook(object):
 			debug("[FritzDisplayPhonebook]")
 			self.sortlist = []
 			# Beware: strings in phonebook.phonebook are utf-8!
-			sortlistHelp = sorted(((name.lower(), name, number) for (number, name) in six.iteritems(phonebook.phonebook)), key=lambda x: locale.strxfrm(x[0]))
+			from six import iteritems
+			sortlistHelp = sorted(((name.lower(), name, number) for (number, name) in iteritems(phonebook.phonebook)), key=lambda x: locale.strxfrm(x[0]))
 			for (low, name, number) in sortlistHelp:
 				if number == "01234567890":
 					continue
-				low = six.ensure_str(low)
-				name = six.ensure_str(name).strip()
-				number = six.ensure_str(number).strip()
+				low = ensure_str(low)
+				name = ensure_str(name).strip()
+				number = ensure_str(number).strip()
 
 				if filterNumber:
 					filterNumber = filterNumber.lower()
@@ -2634,12 +2635,12 @@ mutedOnConnID = None
 
 
 def notifyCall(event, date, number, caller, phone, connID): # @UnusedVariable # pylint: disable=W0613
-	event = six.ensure_str(event)
-	date = six.ensure_str(date)
-	number = six.ensure_str(number)
-	caller = six.ensure_str(caller)
-	phone = six.ensure_str(phone)
-	connID = six.ensure_str(connID)
+	event = ensure_str(event)
+	date = ensure_str(date)
+	number = ensure_str(number)
+	caller = ensure_str(caller)
+	phone = ensure_str(phone)
+	connID = ensure_str(connID)
 	if Standby.inStandby is None or config.plugins.FritzCall.afterStandby.value == "each":
 		if event == "RING":
 			text = _("Incoming Call on %(date)s at %(time)s from\n---------------------------------------------\n%(number)s\n%(caller)s\n---------------------------------------------\nto: %(phone)s") % {'date': date[:8], 'time': date[9:], 'number': number, 'caller': caller, 'phone': phone}
@@ -2769,7 +2770,7 @@ class FritzProtocol(LineReceiver):  # pylint: disable=W0223
 # 15.07.06 00:38:58;DISCONNECT;1;0;
 # 15.07.06 00:39:22;RING;0;<from/extern>;<to/our msn>;
 # 15.07.06 00:39:27;DISCONNECT;0;0;
-		anEvent = six.ensure_str(line).split(';')
+		anEvent = ensure_str(line).split(';')
 		(self.date, self.event) = anEvent[0:2]
 		self.connID = anEvent[2]
 

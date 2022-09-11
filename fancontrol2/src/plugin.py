@@ -42,8 +42,12 @@ from Components.ActionMap import NumberActionMap
 from Components.Harddisk import harddiskmanager
 from Tools.Directories import resolveFilename, SCOPE_PLUGINS
 from threading import Thread, Lock
-import queue
-Briefkasten = queue.Queue()
+try:
+	import Queue
+	Briefkasten = Queue.Queue()
+except:
+	import queue
+	Briefkasten = queue.Queue()
 
 
 def main(session, **kwargs):

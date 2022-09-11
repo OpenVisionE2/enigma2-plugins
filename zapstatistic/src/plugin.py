@@ -46,7 +46,7 @@ language.addCallback(localeInit)
 
 def decode_charset(str, charset):
 	try:
-		uni = str(str, charset, 'strict')
+		uni = unicode(str, charset, 'strict')
 	except:
 		uni = str
 	return uni

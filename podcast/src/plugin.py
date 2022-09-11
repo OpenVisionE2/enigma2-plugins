@@ -28,9 +28,7 @@ from xml.etree.cElementTree import parse
 from xml.dom.minidom import parseString as xmlparseString, parse as xmlparse
 import gettext
 import re
-import urllib.request
-import urllib.error
-import urllib.parse
+from six.moves.urllib.request import urlopen
 
 ###################################################
 
@@ -419,7 +417,7 @@ class PodcastXML(Screen):
 				print("open url")
 				file.close
 				try:
-					source = urllib.request.urlopen(head)
+					source = urlopen(head)
 				except:
 					pass
 			else:
@@ -481,7 +479,7 @@ class PodcastFeedly(Screen):
 			try:
 				if head.startswith("http"):
 					file.close
-					source = urllib.request.urlopen(head)
+					source = urlopen(head)
 				else:
 					file.close
 					source = open(fileName)

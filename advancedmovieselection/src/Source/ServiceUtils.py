@@ -191,7 +191,10 @@ class Job:
     def StartAsync(self, do_move=False):
         self.do_move = do_move
         self.abort = False
-        from _thread import start_new_thread
+        try:
+            from thread import start_new_thread
+        except:
+            from _thread import start_new_thread
         start_new_thread(self.Run, (do_move,))
 
     def Run(self, do_move=False):
@@ -450,7 +453,10 @@ class eServiceReference:
 class JobMonitor:
 
     def __init__(self, monitor):
-        from _thread import start_new_thread
+        try:
+            from thread import start_new_thread
+        except:
+            from _thread import start_new_thread
         start_new_thread(self.Run, (monitor,))
 
     def Run(self, monitor):

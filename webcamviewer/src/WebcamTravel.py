@@ -25,7 +25,7 @@ from os import remove as os_remove
 from os.path import exists as os_path_exists
 from datetime import datetime
 
-from urllib.parse import quote as urllib_quote
+from six.moves.urllib.parse import quote as urllib_quote
 #########################################
 
 
@@ -135,9 +135,9 @@ class TravelWebcamviewer(Screen):
 
 	def onSearchkeyEntered(self, value):
 		if value is not None and self.finish_loading != False:
-            			self.timer_status.start(1)
-            			WebcamTravelerAPI().search(self.onDataLoaded, value)
-            			self.finish_loading = False
+			self.timer_status.start(1)
+			WebcamTravelerAPI().search(self.onDataLoaded, value)
+			self.finish_loading = False
 
 	def loadData(self):
 		if self.finish_loading != False:

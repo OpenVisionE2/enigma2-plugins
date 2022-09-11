@@ -5,7 +5,6 @@ from Tools.Directories import resolveFilename, SCOPE_PLUGINS, SCOPE_LANGUAGE
 import os
 import gettext
 
-
 # Config
 from Components.config import config, ConfigSubsection, ConfigEnableDisable, \
 	ConfigNumber, ConfigSelection, ConfigYesNo, ConfigText
@@ -84,7 +83,7 @@ config.plugins.autotimer.skip_during_records = ConfigYesNo(default=False)
 config.plugins.autotimer.skip_during_epgrefresh = ConfigYesNo(default=False)
 
 try:
-	xrange = xrange
+	xrange
 	iteritems = lambda d: iter(d.items())
 	itervalues = lambda d: iter(d.values())
 except NameError:

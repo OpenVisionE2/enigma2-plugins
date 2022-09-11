@@ -6,10 +6,14 @@
 #-----------------------
 
 try:
-	#Python >= 3.10
 	from collections.abc import Sequence, Iterator
 except ImportError:
 	from collections import Sequence, Iterator
+
+try:
+	xrange
+except NameError:
+	xrange = range
 
 
 class PagedIterator(Iterator):
@@ -21,7 +25,7 @@ class PagedIterator(Iterator):
     def __iter__(self):
         return self
 
-    def __next__(self):
+    def next(self):
         self._index += 1
         if self._index == self._len:
             raise StopIteration
@@ -64,7 +68,7 @@ class PagedList(Sequence):
 
     def __getitem__(self, index):
         if isinstance(index, slice):
-            return [self[x] for x in range(*index.indices(len(self)))]
+            return [self[x] for x in xrange(*index.indices(len(self)))]
         if index >= len(self):
             raise IndexError("list index outside range")
         if (index >= len(self._data)) \

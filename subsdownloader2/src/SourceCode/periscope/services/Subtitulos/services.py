@@ -18,12 +18,7 @@
 
 import zipfile
 import os
-import urllib.request
-import urllib.error
-import urllib.parse
-import urllib.request
-import urllib.parse
-import urllib.error
+from six.moves.urllib.request import Request, urlopen
 import logging
 import traceback
 import http.client
@@ -161,9 +156,9 @@ class Subtitulos(SubtitleDatabase.SubtitleDB):
 
     def downloadFile(self, url, filename):
         ''' Downloads the given url to the given filename '''
-        req = urllib.request.Request(url, headers={'Referer': url, 'User-Agent': 'Mozilla/5.0 (X11; U; Linux x86_64; en-US; rv:1.9.1.3)'})
+        req = Request(url, headers={'Referer': url, 'User-Agent': 'Mozilla/5.0 (X11; U; Linux x86_64; en-US; rv:1.9.1.3)'})
 
-        f = urllib.request.urlopen(req)
+        f = urlopen(req)
         dump = open(filename, "wb")
         dump.write(f.read())
         dump.close()

@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import os
-import urllib.request
-import urllib.parse
-import urllib.error
+from six.moves.urllib.request import urlretrieve
 #from ..StopWatch import clockit
 
 #@clockit
@@ -13,7 +11,7 @@ def downloadCover(url, filename, overwrite=False):
     try:
         if not os.path.exists(filename) or overwrite:
             print("Try loading: ", str(url), "->", str(filename))
-            urllib.request.urlretrieve(url, filename)
+            urlretrieve(url, filename)
         else:
             print("Download skipped:", str(url), "->", str(filename))
     except:

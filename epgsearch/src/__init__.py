@@ -96,7 +96,8 @@ def isOrbposName(name):
 
 def doSave():
 	saveFile = False
-	for name, confItem in config.plugins.epgsearch.dict().items():
+	from six import iteritems
+	for name, confItem in config.plugins.epgsearch.dict().iteritems():
 		if (name == "numorbpos" or isOrbposName(name)) and confItem.isChanged():
 			saveFile = True
 			confItem.save()
@@ -105,9 +106,10 @@ def doSave():
 
 
 def unusedOrbPosConfList():
+	from six import iteritems
 	numorbpos = int(config.plugins.epgsearch.numorbpos.value)
 	return [
-		item for item in config.plugins.epgsearch.dict().items()
+		item for item in config.plugins.epgsearch.dict().iteritems()
 		if isOrbposName(item[0]) and int(item[0][6:]) >= numorbpos
 	]
 

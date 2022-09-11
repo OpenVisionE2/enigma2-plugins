@@ -24,7 +24,7 @@ import struct
 import traceback
 import logging
 try:
-	import subprocess
+	import commands
 except:
 	import subprocess as commands
 

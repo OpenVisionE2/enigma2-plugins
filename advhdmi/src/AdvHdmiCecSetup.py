@@ -131,11 +131,11 @@ class AdvHdmiCecSetup(Screen, ConfigListScreen):
 
 	def showInfo(self):
 		from Plugins.SystemPlugins.AdvHdmi.plugin import advhdmiHooks, ADVHDMI_VERSION
-
 		infoMsg = _("Version: ") + ADVHDMI_VERSION + "\n\n"
 		if advhdmiHooks:
 			infoMsg += _("Registered HDMI-Cec-Hooks:") + "\n"
-			for hookKey, hook in advhdmiHooks.items():
+			from six import iteritems
+			for hookKey, hook in advhdmiHooks.iteritems():
 				infoMsg += _("Hook") + " '" + str(hookKey) + "':\n"
 				infoMsg += str(hook.hookDescription) + "\n\n"
 		else:

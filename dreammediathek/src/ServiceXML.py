@@ -42,7 +42,8 @@ class WebTVStations():
 				print("[WebTVStations] Error reading Stations:", e)
 
 	def getWebTVStationsList(self):
-		return sorted(self.webtv_stations.keys())
+		from six import iterkeys
+		return sorted(self.webtv_stations.iterkeys())
 
 
 iWebTVStations = WebTVStations()

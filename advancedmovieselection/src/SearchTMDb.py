@@ -1,9 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from .__init__ import _
-import urllib.request
-import urllib.parse
-import urllib.error
 import shutil
 import os
 from enigma import RT_WRAP, RT_VALIGN_CENTER, RT_HALIGN_LEFT, RT_HALIGN_RIGHT, gFont, eListbox, eListboxPythonMultiContent

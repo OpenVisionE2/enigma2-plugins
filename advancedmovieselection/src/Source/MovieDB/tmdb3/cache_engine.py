@@ -40,7 +40,7 @@ class CacheEngineType(type):
             Engines.register(mcs)
 
 
-class CacheEngine(object, metaclass=CacheEngineType):
+class CacheEngine(object, metaclass=CacheEngineType): # Will this work for py2?
     name = 'unspecified'
 
     def __init__(self, parent):

@@ -24,7 +24,10 @@ must pass on to the recipients the same freedoms that you received. You must mak
 that they, too, receive or can get the source code. And you must show them these terms so they know their rights.
 '''
 
-import socketserver
+try:
+	import SocketServer
+except:
+	import socketserver as SocketServer
 import socket
 
 serverInstance = None
@@ -51,7 +54,7 @@ def getIpAddress(iface):
     return None
 
 
-class TCPHandler(socketserver.BaseRequestHandler):
+class TCPHandler(SocketServer.BaseRequestHandler):
     """
     The RequestHandler class for our server.
 
@@ -90,7 +93,7 @@ class MessageServer():
             return
         import threading
         self.shutdown()
-        self.server = socketserver.TCPServer((self.host, self.port), TCPHandler)
+        self.server = SocketServer.TCPServer((self.host, self.port), TCPHandler)
         self.t = threading.Thread(target=self.server.serve_forever)
         self.t.setDaemon(True) # don't hang on exit
         self.t.start()

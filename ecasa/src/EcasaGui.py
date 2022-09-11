@@ -37,7 +37,7 @@ from collections import deque
 from Plugins.SystemPlugins.Toolkit.SimpleThread import SimpleThread
 
 try:
-	xrange = xrange
+	xrange
 except NameError:
 	xrange = range
 
@@ -109,7 +109,7 @@ class EcasaPictureWall(Screen, HelpableScreen, InfoBarNotifications):
 		self["key_green"] = StaticText(_("Albums"))
 		self["key_yellow"] = StaticText()
 		self["key_blue"] = StaticText(_("Search"))
-		for i in range(self.PICS_PER_PAGE):
+		for i in xrange(self.PICS_PER_PAGE):
 			self['image%d' % i] = Pixmap()
 			self['title%d' % i] = StaticText()
 		self["highlight"] = MovingPixmap()
@@ -210,7 +210,7 @@ class EcasaPictureWall(Screen, HelpableScreen, InfoBarNotifications):
 		self["highlight"].show()
 		self.queue.clear()
 		pictures = self.pictures
-		for i in range(self.PICS_PER_PAGE):
+		for i in xrange(self.PICS_PER_PAGE):
 			try:
 				our_print("trying to initiate download of idx", i + self.offset)
 				picture = pictures[i + self.offset]
@@ -460,7 +460,7 @@ class EcasaOverview(EcasaPictureWall):
 		if api != self.api:
 			self.pictures = ()
 			self["highlight"].hide()
-			for i in range(self.PICS_PER_PAGE):
+			for i in xrange(self.PICS_PER_PAGE):
 				self['image%d' % i].instance.setPixmap(None)
 			self["waitingtext"].show()
 
@@ -657,7 +657,7 @@ class EcasaPicture(Screen, HelpableScreen, InfoBarNotifications):
 		if prevFunc and nextFunc:
 			self["directionActions"] = HelpableActionMap(self, "DirectionActions", {
 				"left": self.previous,
-				"right": self.__next__,
+				"right": self.next,
 				}, -2)
 
 		self.picload = ePicLoad()
@@ -824,7 +824,7 @@ class EcasaPicture(Screen, HelpableScreen, InfoBarNotifications):
 			self.reloadData(self.prevFunc())
 		self['pixmap'].instance.setPixmap(None)
 
-	def __next__(self):
+	def next(self):
 		if self.nextFunc:
 			self.reloadData(self.nextFunc())
 		self['pixmap'].instance.setPixmap(None)

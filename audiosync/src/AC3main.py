@@ -247,8 +247,9 @@ class AC3SetCustomValue:
         self.session.openWithCallback(self.DoSetCustomValue, ChoiceBox, _("Select the key you want to set to %i ms") % (iDelay), self.getKeyList())
 
     def getKeyList(self):
+        from six import iteritems
         keyList = []
-        for i, iValue in self.keyStep.items():
+        for i, iValue in self.keyStep.iteritems():
             if i != "0":
                 keyList.append((_("Key %(key)s (current value: %(value)i ms)") % dict(key=i, value=iValue), i))
         return keyList

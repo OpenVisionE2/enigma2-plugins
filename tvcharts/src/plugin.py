@@ -36,7 +36,7 @@ from random import randint
 from time import time, gmtime, strftime
 from twisted.web.client import getPage
 from xml.dom.minidom import parse, parseString
-from urllib.parse import urlencode
+from six.moves.urllib.parse import urlencode
 import timer
 import xml.etree.cElementTree
 import Screens.Standby

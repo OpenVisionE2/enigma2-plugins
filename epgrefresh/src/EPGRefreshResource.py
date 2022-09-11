@@ -9,11 +9,10 @@ from time import localtime
 from .OrderedSet import OrderedSet
 from ServiceReference import ServiceReference
 from Tools.XMLTools import stringToXML
+from six.moves.urllib.parse import unquote
 try:
-	from urllib.parse import unquote
 	iteritems = lambda d: iter(d.items())
 except ImportError as ie:
-	from urllib.parse import unquote
 	iteritems = lambda d: list(d.items())
 
 API_VERSION = "1.4"

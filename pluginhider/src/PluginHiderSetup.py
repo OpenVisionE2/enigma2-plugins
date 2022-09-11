@@ -71,7 +71,7 @@ class PluginHiderSetup(Screen, HelpableScreen):
 				"cancel": (self.cancel, _("end editing")),
 				"green": (self.save, _("save")),
 				"blue": (self.run, _("run selected plugin")),
-				"next": (self.__next__, _("select next tab")),
+				"next": (self.next, _("select next tab")),
 				"previous": (self.previous, _("select previous tab")),
 			}, -1
 		)
@@ -114,7 +114,7 @@ class PluginHiderSetup(Screen, HelpableScreen):
 			self.selectedList = LIST_EVENTINFO
 		self.updateList()
 
-	def __next__(self):
+	def next(self):
 		self.keepCurrent()
 		self.selectedList += 1
 		if self.selectedList > LIST_EVENTINFO:

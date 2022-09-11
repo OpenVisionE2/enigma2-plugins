@@ -12,10 +12,9 @@ from .tmdb_exceptions import *
 from .locales import get_locale
 from .cache import Cache
 
-from urllib.parse import urlencode
-import urllib.request
-import urllib.error
-import urllib.parse
+from six.moves.urllib.parse import urlencode
+from six.moves.urllib.request import urlopen, Request
+from six.moves.urllib.error import HTTPError
 import json
 import os
 
@@ -45,7 +44,7 @@ def set_cache(engine=None, *args, **kwargs):
     cache.configure(engine, *args, **kwargs)
 
 
-class Request(urllib.request.Request):
+class Request(Request):
     _api_key = None
     _base_url = "http://api.themoviedb.org/3/"
 
@@ -69,7 +68,7 @@ class Request(urllib.request.Request):
             kwargs[k] = locale.encode(v)
         url = '{0}{1}?{2}'.format(self._base_url, self._url, urlencode(kwargs))
 
-        urllib.request.Request.__init__(self, url)
+        Request.__init__(self, url)
         self.add_header('Accept', 'application/json')
         self.lifetime = 3600 # 1hr
 
@@ -88,7 +87,7 @@ class Request(urllib.request.Request):
 
     def add_data(self, data):
         """Provide data to be sent with POST."""
-        urllib.request.Request.add_data(self, urlencode(data))
+        Request.add_data(self, urlencode(data))
 
     def open(self):
         """Open a file object to the specified URL."""
@@ -97,15 +96,15 @@ class Request(urllib.request.Request):
                 print('loading ' + self.get_full_url())
                 if self.has_data():
                     print('  ' + self.get_data())
-            return urllib.request.urlopen(self)
-        except urllib.error.HTTPError as e:
+            return urlopen(self)
+        except HTTPError as e:
             raise TMDBHTTPError(e)
 
     def read(self):
         """Return result from specified URL as a string."""
         return self.open().read()
 
-    @cache.cached(urllib.request.Request.get_full_url)
+    @cache.cached(Request.get_full_url)
     def readJSON(self):
         """Parse result from specified URL as JSON data."""
         url = self.get_full_url()
