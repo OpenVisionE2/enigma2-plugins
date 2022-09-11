@@ -302,7 +302,8 @@ class ChannelsBase(XMLFile):
 				# Build Body
 				def build(root, channels):
 					if channels:
-						for reference, namealternatives in channels.items():
+						from six import iteritems
+						for reference, namealternatives in channels.iteritems():
 							name, alternatives = namealternatives[:]
 							if alternatives:
 								# Add channel

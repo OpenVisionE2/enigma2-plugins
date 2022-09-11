@@ -12,10 +12,7 @@ from Components.ActionMap import ActionMap
 from .FTPDownloader import FTPDownloader
 from twisted.web.client import HTTPDownloader
 from twisted.internet import reactor
-try:
-	from urllib.parse import urlparse, urlunparse
-except:
-	from urllib.parse import urlparse, urlunparse
+from six.moves.urllib.parse import urlparse, urlunparse
 
 
 def _parse(url, defaultPort=None):
@@ -142,7 +139,7 @@ class PictureScreen(Screen):
 			 "green": self.AutoReloaderSwitch,
 			 "yellow": self.pause,
 			 "red": self.prev,
-			 "blue": self.__next__,
+			 "blue": self.next,
 			 }, -1)
 
 		self.onLayoutFinish.append(self.do)
@@ -241,7 +238,7 @@ class PictureScreen(Screen):
 			self.paused = True
 		self.slideshowcallback(prev=True)
 
-	def __next__(self):
+	def next(self):
 		if not self.slideshowcallback:
 			return
 		if not self.paused:

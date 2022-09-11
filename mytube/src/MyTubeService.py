@@ -9,24 +9,16 @@ from gdata.service import BadAuthentication
 
 from twisted.web import client
 from twisted.internet import reactor
-from urllib.request import Request, urlopen as urlopen2
-from urllib.error import URLError
+from six.moves.urllib.request import Request, urlopen
+from six.moves.urllib.error import URLError
 from socket import gaierror, error
 import os
 import socket
 import http.client
-import urllib.request
-import urllib.parse
-import urllib.error
-import urllib.request
-import urllib.error
-import urllib.parse
 import re
 import json
-from urllib.parse import quote, unquote_plus, unquote, urlencode
+from six.moves.urllib.parse import quote, unquote_plus, urlencode, parse_qs, parse_qsl
 from http.client import HTTPConnection, CannotSendRequest, BadStatusLine, HTTPException
-
-from urllib.parse import parse_qs, parse_qsl
 from threading import Thread
 
 HTTPConnection.debuglevel = 1
@@ -121,9 +113,9 @@ class CVevoSignAlgoExtractor:
         # use algoCache
         if playerUrl not in self.algoCache:
             # get player HTML 5 sript
-            request = urllib.request.Request(playerUrl)
+            request = Request(playerUrl)
             try:
-                self.playerData = urllib.request.urlopen(request).read()
+                self.playerData = urlopen(request).read()
                 self.playerData = self.playerData.decode('utf-8', 'ignore')
             except:
                 printDBG('Unable to download playerUrl webpage')
@@ -276,14 +268,14 @@ class MyTubeFeedEntry():
 		self.favoritesFeed = favoritesFeed
 		self.thumbnail = {}
 		"""self.myopener = MyOpener()
-		urllib.urlopen = MyOpener().open
+		urlopen = MyOpener().open
 		if config.plugins.mytube.general.useHTTPProxy.value is True:
 			proxy = {'http': 'http://'+str(config.plugins.mytube.general.ProxyIP.getText())+':'+str(config.plugins.mytube.general.ProxyPort.value)}
 			self.myopener = MyOpener(proxies=proxy)
-			urllib.urlopen = MyOpener(proxies=proxy).open
+			urlopen = MyOpener(proxies=proxy).open
 		else:
 			self.myopener = MyOpener()
-			urllib.urlopen = MyOpener().open"""
+			urlopen = MyOpener().open"""
 
 	def isPlaylistEntry(self):
 		return False
@@ -437,7 +429,7 @@ class MyTubeFeedEntry():
 
 		try:
 			print("[MyTube] trying to find out if a HD Stream is available", watch_url)
-			result = urlopen2(watchrequest).read()
+			result = urlopen(watchrequest).read()
 		except (URLError, HTTPException, socket.error) as err:
 			print("[MyTube] Error: Unable to retrieve watchpage - Error code: ", str(err))
 			return video_url
@@ -447,7 +439,7 @@ class MyTubeFeedEntry():
 			info_url = ('http://www.youtube.com/get_video_info?&video_id=%s%s&ps=default&eurl=&gl=US&hl=en' % (video_id, el))
 			request = Request(info_url, None, std_headers)
 			try:
-				infopage = urlopen2(request).read()
+				infopage = urlopen(request).read()
 				videoinfo = parse_qs(infopage)
 				if ('url_encoded_fmt_stream_map' or 'fmt_url_map') in videoinfo:
 					break
@@ -497,10 +489,11 @@ class MyTubeFeedEntry():
 			if fmtid in VIDEO_FMT_PRIORITY_MAP and fmtid != "":
 				video_fmt_map[VIDEO_FMT_PRIORITY_MAP[fmtid]] = {'fmtid': fmtid, 'fmturl': unquote_plus(fmturl)}
 				fmt_infomap[int(fmtid)] = unquote_plus(fmturl)
-		print("[MyTube] got", sorted(fmt_infomap.keys()))
+		from six import iterkeys
+		print("[MyTube] got", sorted(fmt_infomap.iterkeys()))
 		if video_fmt_map and len(video_fmt_map):
-			print("[MyTube] found best available video format:", video_fmt_map[sorted(video_fmt_map.keys())[0]]['fmtid'])
-			best_video = video_fmt_map[sorted(video_fmt_map.keys())[0]]
+			print("[MyTube] found best available video format:", video_fmt_map[sorted(video_fmt_map.iterkeys())[0]]['fmtid'])
+			best_video = video_fmt_map[sorted(video_fmt_map.iterkeys())[0]]
 			video_url = "%s" % (best_video['fmturl'].split(';')[0])
 			print("[MyTube] found best available video url:", video_url)
 
@@ -565,7 +558,7 @@ class MyTubePlayerService():
 		#os.environ['http_proxy'] = 'http://169.229.50.12:3128'
 		#proxy = os.environ.get('http_proxy')
 		#print("FOUND ENV PROXY-->",proxy)
-		#for a in os.environ.keys():
+		#for a in os.environ.iterkeys():
 		#	print(a)
 
 	def stopService(self):

@@ -23,10 +23,7 @@
 #
 
 from Plugins.Plugin import PluginDescriptor
-try:
-	from urllib.parse import urlparse
-except:
-	from urllib.parse import urlparse
+from six.moves.urllib.parse import urlparse, quote
 from Screens.Screen import Screen
 from Screens.InfoBar import InfoBar
 from Components.SystemInfo import BoxInfo
@@ -50,7 +47,6 @@ from Components.ConfigList import ConfigListScreen
 from Screens.MessageBox import MessageBox
 from Components.GUIComponent import GUIComponent
 from Components.Sources.StaticText import StaticText
-from urllib.parse import quote
 from twisted.web.client import downloadPage
 from Screens.ChoiceBox import ChoiceBox
 from Screens.VirtualKeyBoard import VirtualKeyBoard

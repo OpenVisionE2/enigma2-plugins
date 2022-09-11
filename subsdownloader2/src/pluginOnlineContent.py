@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import threading
-import urllib.request
-import urllib.parse
-import urllib.error
+from six.moves.urllib.request import urlopen
 import os
 from Screens.Console import Console
 from Screens.Screen import Screen
@@ -42,7 +40,7 @@ class IsNewVersionCheck(threading.Thread):
         except:
             error_detected = 1
         try:
-            latest_vestion_data = urllib.request.urlopen(self.__latest_version_info_url)
+            latest_vestion_data = urlopen(self.__latest_version_info_url)
             latest_verion = latest_vestion_data.readlines()
             latest_vestion_data.close()
             print("Latest version: %s" % str(latest_verion[0]))
@@ -121,7 +119,7 @@ class PluginIpkUpdate(Screen): #, IsNewVersionCheck):
 
 
 #def flagcounetr(CallBackFunction):
-#    flag = urllib.urlopen(flag_counter_url,)
+#    flag = urlopen(flag_counter_url,)
 #    #Subtitle_Downloader_temp_dir = '/tmp/SubsDownloader_cache/' # Sprawdzac czy sciezka jest taka sama jak w plugin.py
 #    picture_file = open(Subtitle_Downloader_temp_dir+"plugin_users.png", "wb")
 #    picture_file.write(flag.read())
@@ -136,7 +134,7 @@ class CommertialBannerDownload(threading.Thread):
 	def __download_picture_urls(self):
 		picture_links = []
 		try:
-			URL_file = urllib.request.urlopen(URL_text_file)
+			URL_file = urlopen(URL_text_file)
 			picture_links = URL_file.readlines()
 			URL_file.close()
 		except:
@@ -155,7 +153,7 @@ class CommertialBannerDownload(threading.Thread):
 		picture_counter = 0
 		for x in pictures_URLS:
 			try:
-				flag = urllib.request.urlopen(x,)
+				flag = urlopen(x,)
 				picture_file = open((Subtitle_Downloader_temp_dir + "%s.png" % picture_counter), "wb")
 				picture_file.write(flag.read())
 				flag.close()

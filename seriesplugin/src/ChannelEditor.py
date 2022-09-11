@@ -9,9 +9,6 @@ import time
 import shutil
 import datetime
 import codecs
-import urllib.request
-import urllib.error
-import urllib.parse
 
 from Components.ActionMap import ActionMap, HelpableActionMap
 from Components.MenuList import MenuList
@@ -29,7 +26,6 @@ from enigma import eListboxPythonMultiContent, eListbox, gFont, RT_HALIGN_LEFT, 
 from Tools.Directories import resolveFilename, SCOPE_PLUGINS, SCOPE_PLUGIN
 from twisted.web import client, error as weberror
 from twisted.internet import reactor, defer
-from urllib.parse import urlencode
 from skin import parseColor, parseFont, parseSize
 
 try:

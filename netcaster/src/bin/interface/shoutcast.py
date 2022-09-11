@@ -54,7 +54,7 @@ class Interface(StreamInterface):
 
 
 try:
-	import pickle as pickle
+	import cPickle as pickle
 except:
 	import pickle
 from six.moves.urllib.request import FancyURLopener
