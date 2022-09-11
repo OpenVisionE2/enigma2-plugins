@@ -25,6 +25,8 @@ from Components.Language import language
 import os
 import gettext
 
+from six import itervalues
+
 PluginLanguageDomain = "EIBox"
 PluginLanguagePath = "Extensions/EIBox/locale"
 
@@ -211,7 +213,7 @@ class EIBObjects(object):
 
 	def EIBreadAll(self):
 		persist_request_cmd = '<read><objects>'
-		for EIBObject in self.ids.values():
+		for EIBObject in self.ids.itervalues():
 			if EIBObject.object_type != EIB_GOTO:
 				persist_request_cmd += '<object id="%s"/>' % EIBObject.object_id
 		persist_request_cmd += '</objects></read>\n\x04'
@@ -294,7 +296,7 @@ class EIBObjects(object):
 			print("[parseMultiRead] XML parser error")
 
 	def __iter__(self):
-		list = iter(self.ids.values())
+		list = iter(self.ids.itervalues())
 		return iter(sorted(list, key=lambda EIBObject: EIBObject.order))
 
 

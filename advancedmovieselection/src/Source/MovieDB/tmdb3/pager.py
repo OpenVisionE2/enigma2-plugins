@@ -12,7 +12,7 @@ except ImportError:
 
 try:
 	xrange
-except Exception:
+except NameError:
 	xrange = range
 
 

@@ -25,15 +25,13 @@ from Components.MovieList import KNOWN_EXTENSIONS
 from Tools.Directories import fileExists, resolveFilename, SCOPE_PLUGINS
 import os
 import re
-import six
-
+from six import unichr, PY2
 from six.moves.urllib.parse import quote_plus
 
 try:
-	import html.entities
+	import htmlentitydefs
 except ImportError as ie:
 	from html import entities as htmlentitydefs
-	chr = chr
 
 
 # Configuration
@@ -55,7 +53,7 @@ config.plugins.imdb.showepisodeinfo = ConfigYesNo(default=False)
 def quoteEventName(eventName, safe="/()" + ''.join(map(chr, list(range(192, 255))))):
 	# BBC uses '\x86' markers in program names, remove them
 	try:
-		text = eventName.decode('utf8').replace('\x86', '').replace('\x87', '').encode('utf8')
+		text = eventName.decode('utf8').replace(u'\x86', u'').replace(u'\x87', u'').encode('utf8')
 	except:
 		text = eventName
 	# IMDb doesn't seem to like urlencoded characters at all, hence the big "safe" list
@@ -87,10 +85,10 @@ class IMDB(Screen, HelpableScreen):
 		</screen>"""
 
 	# Some HTML entities as utf-8
-	NBSP = six.chr(html.entities.name2codepoint['nbsp'])
-	RAQUO = six.chr(html.entities.name2codepoint['raquo'])
-	HELLIP = six.chr(html.entities.name2codepoint['hellip'])
-	if six.PY2:
+	NBSP = unichr(htmlentitydefs.name2codepoint['nbsp'])
+	RAQUO = unichr(htmlentitydefs.name2codepoint['raquo'])
+	HELLIP = unichr(htmlentitydefs.name2codepoint['hellip'])
+	if PY2:
 		NBSP = NBSP.encode("utf8")
 		RAQUO = RAQUO.encode("utf8")
 		HELLIP = HELLIP.encode("utf8")
@@ -573,7 +571,8 @@ class IMDB(Screen, HelpableScreen):
 
 	def getIMDB(self, search=False):
 		self.resetLabels()
-		if not isinstance(self.eventName, six.string_types):
+		from six import string_types
+		if not isinstance(self.eventName, string_types):
 			self["statusbar"].setText("")
 			return
 		if not self.eventName:
@@ -634,28 +633,28 @@ class IMDB(Screen, HelpableScreen):
 			key = x.group(0)
 			if key not in entitydict:
 				if x.group(1):
-					if x.group(1) in html.entities.name2codepoint:
-						entitydict[key] = html.entities.name2codepoint[x.group(1)]
+					if x.group(1) in htmlentitydefs.name2codepoint:
+						entitydict[key] = htmlentitydefs.name2codepoint[x.group(1)]
 				elif x.group(2):
 					entitydict[key] = str(int(x.group(2), 16))
 				else:  # x.group(3)
 					entitydict[key] = x.group(3)
-
+		from six import iteritems
 		if utf8:
-			for key, codepoint in six.iteritems(entitydict):
-				cp = six.chr(int(codepoint))
-				if six.PY2:
+			for key, codepoint in iteritems(entitydict):
+				cp = unichr(int(codepoint))
+				if PY2:
 					cp = cp.encode('utf8')
 				in_html = in_html.replace(key, cp)
 			self.inhtml = in_html
 		else:
-			for key, codepoint in six.iteritems(entitydict):
-				cp = six.chr(int(codepoint))
-				if six.PY2:
+			for key, codepoint in iteritems(entitydict):
+				cp = unichr(int(codepoint))
+				if PY2:
 					cp = cp.encode('latin-1', 'ignore')
 				in_html = in_html.replace(key, cp)
 #			print("[IMDB][html2utf8] decode html ")
-			if six.PY2:
+			if PY2:
 				self.inhtml = in_html.decode('latin-1').encode('utf8')
 
 	def IMDBquery(self, string):
@@ -1104,7 +1103,7 @@ def movielistSearch(session, serviceref, **kwargs):
 	eventName = info and info.getName(serviceref) or ''
 	(root, ext) = os.path.splitext(eventName)
 	if ext in KNOWN_EXTENSIONS or ext in KNOWN_EXTENSIONS2:
-		if six.PY2:
+		if PY2:
 			root = root.decode("utf8")
 			eventName = re.sub(r"[\W_]+", ' ', root, 0, re.LOCALE | re.UNICODE)
 			eventName = eventName.encode("utf8")

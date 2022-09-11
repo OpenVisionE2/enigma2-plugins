@@ -41,7 +41,7 @@ from Screens.InfoBar import InfoBar
 from Components.GUIComponent import GUIComponent
 from enigma import ePicLoad
 from xml.etree.cElementTree import fromstring as cet_fromstring
-from urllib.parse import quote
+from six.moves.urllib.parse import quote
 from Components.ScrollLabel import ScrollLabel
 from Components.AVSwitch import AVSwitch
 from Tools.Directories import fileExists, resolveFilename, SCOPE_GUISKIN

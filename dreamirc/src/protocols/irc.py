@@ -53,6 +53,15 @@ import socket
 
 from os import path
 
+try:
+	xrange
+	pyuni = unicode
+	pybytes = types.StringType
+except NameError:
+	xrange = range
+	pyuni = str
+	pybytes = bytes
+
 NUL = chr(0)
 CR = chr(0o15)
 NL = chr(0o12)
@@ -128,7 +137,7 @@ class IRC(protocol.Protocol):
 
     def sendLine(self, line):
         if self.encoding is not None:
-            if isinstance(line, str):
+            if isinstance(line, pyuni):
                 line = line.encode(self.encoding)
         self.transport.write("%s%s%s" % (line, CR, LF))
 
@@ -929,11 +938,11 @@ class IRCClient(basic.LineReceiver):
             # Remove some of the oldest entries.
             byValue = sorted([(v, k) for (k, v) in list(self._pings.items())])
             excess = self._MAX_PINGRING - len(self._pings)
-            for i in range(excess):
+            for i in xrange(excess):
                 del self._pings[byValue[i][1]]
 
     def dccSend(self, user, file):
-        if isinstance(file, bytes):
+        if isinstance(file, pybytes):
             file = open(file, 'r')
 
         size = fileSize(file)
@@ -1550,7 +1559,7 @@ class DccSendProtocol(protocol.Protocol, styles.Ephemeral):
     connected = 0
 
     def __init__(self, file):
-        if isinstance(file, bytes):
+        if isinstance(file, pybytes):
             self.file = open(file, 'r')
 
     def connectionMade(self):
@@ -1929,7 +1938,7 @@ def ctcpExtract(message):
     normal_messages[:] = [_f for _f in normal_messages if _f]
 
     extended_messages[:] = list(map(ctcpDequote, extended_messages))
-    for i in range(len(extended_messages)):
+    for i in xrange(len(extended_messages)):
         m = string.split(extended_messages[i], SPC, 1)
         tag = m[0]
         if len(m) > 1:
@@ -2023,7 +2032,7 @@ def ctcpStringify(messages):
     coded_messages = []
     for (tag, data) in messages:
         if data:
-            if not isinstance(data, bytes):
+            if not isinstance(data, pybytes):
                 try:
                     # data as list-of-strings
                     data = " ".join(map(str, data))

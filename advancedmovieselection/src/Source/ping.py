@@ -88,7 +88,7 @@ import time
 
 try:
 	xrange
-except Exception:
+except NameError:
 	xrange = range
 
 __version__ = "0.1"

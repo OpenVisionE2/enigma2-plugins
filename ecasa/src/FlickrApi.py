@@ -11,6 +11,11 @@ from twisted.internet import reactor
 from twisted.internet.defer import Deferred
 from twisted.web.client import downloadPage
 
+try:
+	pybytes = types.StringType
+except Exception:
+	pybytes = bytes
+
 our_print = lambda *args, **kwargs: print("[FlickrApi]", *args, **kwargs)
 
 
@@ -99,7 +104,7 @@ class PictureGenerator:
 		self.len = len(self) - 1
 		return self
 
-	def __next__(self):
+	def next(self):
 		idx = self.idx
 		if idx > self.len:
 			raise StopIteration
@@ -150,7 +155,7 @@ class FlickrApi(PictureApi):
 
 	def getAlbum(self, album):
 		# workaround to allow displaying the photostream without changes to the gui. we use it as a virtual album (or 'set' in flickr) and use the nsid as album object
-		if isinstance(album, bytes):
+		if isinstance(album, pybytes):
 			photos = self.flickr_api.people_getPublicPhotos(user_id=album, per_page='500', total='500', extras='url_l,url_o,url_m,url_s,url_t,description')
 			pset = photos.find('photos')
 		else:

@@ -39,17 +39,17 @@ class GNTPPacket:
 
 	def encode(self):
 		# TODO: add encryption support
-		message = 'GNTP/%s %s ' % (self.version, self.messageType)
+		message = u'GNTP/%s %s ' % (self.version, self.messageType)
 
 		if self.encryptionAlgorithm is None:
-			message += 'NONE'
+			message += u'NONE'
 		else:
-			message += '%s:%s' % (self.encryptionAlgorithm, self.ivValue)
+			message += u'%s:%s' % (self.encryptionAlgorithm, self.ivValue)
 
 		if self.hashAlgorithm is not None:
-			message += ' %s:%s.%s' % (self.hashAlgorithm, self.keyHash, self.salt)
+			message += u' %s:%s.%s' % (self.hashAlgorithm, self.keyHash, self.salt)
 
-		message += '\r\n'
+		message += u'\r\n'
 		return message
 
 	def set_password(self, password, hashAlgorithm='MD5', encryptionAlgorithm=None):
@@ -106,14 +106,14 @@ class GNTPRegister(GNTPPacket):
 	def encode(self):
 		assert self.notifications, "At least one notification needs to be registered"
 		base = GNTPPacket.encode(self)
-		base += "Application-Name: %s\r\n" % self.applicationName
-		base += "Notifications-Count: %d\r\n" % len(self.notifications)
+		base += u"Application-Name: %s\r\n" % self.applicationName
+		base += u"Notifications-Count: %d\r\n" % len(self.notifications)
 
 		for note in self.notifications:
-			base += '\r\n'
+			base += u'\r\n'
 			for key, value in iteritems(note):
-				base += '%s: %s\r\n' % (key, value)
-		base += '\r\n'
+				base += u'%s: %s\r\n' % (key, value)
+		base += u'\r\n'
 		return base.encode('utf8', 'replace')
 
 
@@ -132,14 +132,14 @@ class GNTPNotice(GNTPPacket):
 
 	def encode(self):
 		base = GNTPPacket.encode(self)
-		base += "Application-Name: %s\r\n" % self.applicationName
-		base += "Notification-Name: %s\r\n" % self.name
-		base += "Notification-Text: %s\r\n" % self.text.replace('\r\n', '\n') # NOTE: just in case replace CRLF by LF so we don't break protocol
-		base += "Notification-Title: %s\r\n" % self.title
-		base += "Notification-Sticky: %s\r\n" % self.sticky
-		base += "Notification-Priority: %s\r\n" % self.priority
-		base += "Notifications-Count: 1\r\n"
-		base += '\r\n'
+		base += u"Application-Name: %s\r\n" % self.applicationName
+		base += u"Notification-Name: %s\r\n" % self.name
+		base += u"Notification-Text: %s\r\n" % self.text.replace('\r\n', '\n') # NOTE: just in case replace CRLF by LF so we don't break protocol
+		base += u"Notification-Title: %s\r\n" % self.title
+		base += u"Notification-Sticky: %s\r\n" % self.sticky
+		base += u"Notification-Priority: %s\r\n" % self.priority
+		base += u"Notifications-Count: 1\r\n"
+		base += u'\r\n'
 		return base.encode('utf8', 'replace')
 
 

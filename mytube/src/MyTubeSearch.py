@@ -215,7 +215,7 @@ class MyTubeSuggestionsListScreen(Screen):
 					for suggest in suggested:
 						name = None
 						numresults = None
-						if suggesttype[count] == 'NAVIGATION':
+						if suggesttype[count] == u'NAVIGATION':
 							count += 1
 							continue
 						name = str(suggest)

@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import urllib.request
-import urllib.parse
-import urllib.error
+from six.moves.urllib.parse import quote
 from twisted.web.client import getPage
 from xml.dom.minidom import parseString
 
@@ -600,7 +598,7 @@ class GoogleMapsGeoSearchScreen(InputBox):
         self.do_search_timer.stop()
         config.plugins.GoogleMaps.last_searchkey.value = searchkey
         self["infotext"].setText("searching with '%s' ..." % (searchkey))
-        s = urllib.parse.quote(searchkey)
+        s = quote(searchkey)
         url = "http://maps.google.com/maps/geo?q=%s&output=xml&key=abcdefg&oe=utf8" % s
         cb = lambda result: self.onLoadFinished(searchkey, result)
         getPage(url).addCallback(cb).addErrback(self.onLoadFailed)

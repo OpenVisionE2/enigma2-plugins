@@ -25,8 +25,6 @@ import sys
 import os
 import six
 from xml.dom.minidom import parse
-from six import chr
-from six.moves import html_entities
 
 try:
 	import logging
@@ -86,6 +84,7 @@ def html2unicode(in_html):
 		entitydict[x.group(1)] = x.group(2)
 	for key, name in list(entitydict.items()):
 		try:
+			from six.moves import html_entities
 			entitydict[key] = html_entities.name2codepoint[str(name)]
 		except KeyError:
 			warning("KeyError " + key + "/" + name)
@@ -97,7 +96,8 @@ def html2unicode(in_html):
 		entitydict[x.group(1)] = x.group(2)
 	for key, codepoint in list(entitydict.items()):
 		try:
-			uml = chr(int(codepoint))
+			from six import unichr
+			uml = unichr(int(codepoint))
 			debug("replace %s with %s in %s", repr(key), repr(uml), repr(in_html[0:20] + '...'))
 			in_html = in_html.replace(key, uml)
 		except ValueError as e:
