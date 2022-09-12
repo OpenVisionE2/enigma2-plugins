@@ -36,14 +36,7 @@ from operator import itemgetter
 from collections import defaultdict
 
 from skin import parameters as skinparameter
-try:
-	from functools import reduce
-except:
-	pass
-try:
-	basestring
-except NameError:
-	basestring = str
+from functools import reduce
 
 # Partnerbox installed and icons in epglist enabled?
 try:
@@ -578,7 +571,8 @@ class EPGSearch(EPGSelection):
 			self.searchEPG(ret[1])
 
 	def searchEPG(self, searchString=None, searchSave=True, lastAsk=None):
-		if isinstance(searchString, basestring) and searchString:
+		from six import string_types
+		if isinstance(searchString, string_types) and searchString:
 			if searchSave:
 				# Maintain history
 				history = config.plugins.epgsearch.history.value

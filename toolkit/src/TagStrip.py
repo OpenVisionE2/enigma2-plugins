@@ -7,7 +7,7 @@ try:
 except ImportError as ie:
 	from html import entities as htmlentitydefs
 	iteritems = lambda d: d.items()
-	unichr = chr
+from six import unichr
 
 
 def strip_readable(html):

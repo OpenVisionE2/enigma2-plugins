@@ -36,10 +36,7 @@ import binascii
 import os
 import sys
 
-try:
-	basestring
-except NameError:
-	basestring = str
+from six import string_types
 
 __all__ = ["Error", "encode", "decode"]
 
@@ -55,7 +52,7 @@ def encode(in_file, out_file, name=None, mode=None):
     #
     if in_file == '-':
         in_file = sys.stdin
-    elif isinstance(in_file, basestring):
+    elif isinstance(in_file, string_types):
         if name is None:
             name = os.path.basename(in_file)
         if mode is None:
@@ -69,7 +66,7 @@ def encode(in_file, out_file, name=None, mode=None):
     #
     if out_file == '-':
         out_file = sys.stdout
-    elif isinstance(out_file, basestring):
+    elif isinstance(out_file, string_types):
         out_file = open(out_file, 'w')
     #
     # Set defaults for name and mode
@@ -96,7 +93,7 @@ def decode(in_file, out_file=None, mode=None, quiet=0):
     #
     if in_file == '-':
         in_file = sys.stdin
-    elif isinstance(in_file, basestring):
+    elif isinstance(in_file, string_types):
         in_file = open(in_file)
     #
     # Read until a begin is encountered or we've exhausted the file
@@ -126,7 +123,7 @@ def decode(in_file, out_file=None, mode=None, quiet=0):
     opened = False
     if out_file == '-':
         out_file = sys.stdout
-    elif isinstance(out_file, basestring):
+    elif isinstance(out_file, string_types):
         fp = open(out_file, 'wb')
         try:
             os.path.chmod(out_file, mode) #@UndefinedVariable
@@ -177,7 +174,7 @@ def test():
 
     if options.decode:
         if options.text:
-            if isinstance(output, basestring):
+            if isinstance(output, string_types):
                 output = open(output, 'w')
             else:
                 print(sys.argv[0], ': cannot do -t to stdout')
@@ -185,7 +182,7 @@ def test():
         decode(input, output)
     else:
         if options.text:
-            if isinstance(input, basestring):
+            if isinstance(input, string_types):
                 input = open(input, 'r')
             else:
                 print(sys.argv[0], ': cannot do -t from stdin')

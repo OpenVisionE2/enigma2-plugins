@@ -148,10 +148,13 @@ from types import *
 # --------------------------------------------------------------------
 # Internal stuff
 
+from six import text_type
+from six.moves.urllib.parse import splituser, unquote, splittype, splithost
 try:
-    str
-except NameError:
-    str = None # unicode support not available
+	from httplib import HTTP, HTTPS
+except:
+	from http.client import HTTP, HTTPS
+import base64
 
 try:
     import datetime
@@ -166,8 +169,8 @@ except NameError:
 
 def _decode(data, encoding, is8bit=re.compile("[\x80-\xff]").search):
     # decode non-ascii string (if possible)
-    if str and encoding and is8bit(data):
-        data = str(data, encoding)
+    if text_type and encoding and is8bit(data):
+        data = text_type(data, encoding)
     return data
 
 
@@ -177,7 +180,7 @@ def escape(s, replace=string.replace):
     return replace(s, ">", "&gt;",)
 
 
-if str:
+if text_type:
     def _stringify(string):
         # convert to 7-bit ascii if possible
         try:
@@ -191,8 +194,8 @@ else:
 __version__ = "1.0.1"
 
 # xmlrpc integer limits
-MAXINT = 2**31 - 1
-MININT = -2**31
+MAXINT = 2L**31 - 1
+MININT = -2L**31
 
 # --------------------------------------------------------------------
 # Error constants (from Dan Libby's specification at
@@ -334,7 +337,7 @@ else:
         def __int__(self):
             return self.value
 
-        def __bool__(self):
+        def __nonzero__(self):
             return self.value
 
     mod_dict['True'] = Boolean(1)
@@ -405,7 +408,7 @@ class DateTime:
         elif datetime and isinstance(other, datetime.datetime):
             s = self.value
             o = other.strftime("%Y%m%dT%H:%M:%S")
-        elif isinstance(other, str):
+        elif isinstance(other, text_type):
             s = self.value
             o = other
         elif hasattr(other, "timetuple"):
@@ -489,11 +492,10 @@ def _datetime_type(data):
 # @param data An 8-bit string containing arbitrary data.
 
 
-import base64
 try:
-    import io as StringIO
+    import cStringIO as StringIO
 except ImportError as e:
-    import io
+    import io as StringIO
 
 
 class Binary:
@@ -520,7 +522,7 @@ class Binary:
 
     def encode(self, out):
         out.write("<value><base64>\n")
-        base64.encode(io.StringIO(self.data), out)
+        base64.encode(StringIO(self.data), out)
         out.write("</base64></value>\n")
 
 
@@ -769,7 +771,7 @@ class Marshaller:
         write("</string></value>\n")
     dispatch[StringType] = dump_string
 
-    if str:
+    if text_type:
         def dump_unicode(self, value, write, escape=escape):
             value = value.encode(self.encoding)
             write("<value><string>")
@@ -801,7 +803,7 @@ class Marshaller:
         for k, v in list(value.items()):
             write("<member>\n")
             if not isinstance(k, StringType):
-                if str and isinstance(k, UnicodeType):
+                if text_type and isinstance(k, UnicodeType):
                     k = k.encode(self.encoding)
                 else:
                     raise TypeError("dictionary key must be string")
@@ -1317,14 +1319,10 @@ class Transport:
         if isinstance(host, TupleType):
             host, x509 = host
 
-        import urllib.request
-        import urllib.parse
-        import urllib.error
-        auth, host = urllib.parse.splituser(host)
+        auth, host = splituser(host)
 
         if auth:
-            import base64
-            auth = base64.encodestring(urllib.parse.unquote(auth))
+            auth = base64.encodestring(unquote(auth))
             auth = string.join(string.split(auth), "") # get rid of whitespace
             extra_headers = [
                 ("Authorization", "Basic " + auth)
@@ -1342,9 +1340,8 @@ class Transport:
 
     def make_connection(self, host):
         # create a HTTP connection object from a host descriptor
-        import http.client
         host, extra_headers, x509 = self.get_host_info(host)
-        return http.client.HTTP(host)
+        return HTTP(host)
 
     ##
     # Send request header.
@@ -1445,10 +1442,9 @@ class SafeTransport(Transport):
     def make_connection(self, host):
         # create a HTTPS connection object from a host descriptor
         # host may be a string, or a (host, x509-dict) tuple
-        import http.client
         host, extra_headers, x509 = self.get_host_info(host)
         try:
-            HTTPS = http.client.HTTPS
+            HTTPS = HTTPS
         except AttributeError:
             raise NotImplementedError(
                 "your version of httplib doesn't support HTTPS"
@@ -1501,13 +1497,10 @@ class ServerProxy:
         # establish a "logical" server connection
 
         # get the url
-        import urllib.request
-        import urllib.parse
-        import urllib.error
-        type, uri = urllib.parse.splittype(uri)
+        type, uri = splittype(uri)
         if type not in ("http", "https"):
             raise IOError("unsupported XML-RPC protocol")
-        self.__host, self.__handler = urllib.parse.splithost(uri)
+        self.__host, self.__handler = splithost(uri)
         if not self.__handler:
             self.__handler = "/RPC2"
 

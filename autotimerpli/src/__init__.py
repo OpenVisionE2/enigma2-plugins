@@ -3,7 +3,7 @@ from Components.Language import language
 from Tools.Directories import resolveFilename, SCOPE_PLUGINS
 from os import environ as os_environ
 import gettext
-from six import PY3, iteritems, itervalues
+from six import PY3, range
 
 # Config
 from Components.config import config, ConfigSubsection, ConfigOnOff, \
@@ -126,12 +126,10 @@ config.plugins.autotimer.max_search_events_match = ConfigSelection(choices=[
 config.plugins.autotimer.clear_memory = ConfigYesNo(default=False)
 
 try:
-	xrange
 	iteritems = lambda d: iteritems(d)
 	itervalues = lambda d: itervalues(d)
 except NameError:
-	xrange = range
 	iteritems = lambda d: d.items()
 	itervalues = lambda d: d.values()
 
-__all__ = ['_', 'config', 'iteritems', 'itervalues', 'xrange']
+__all__ = ['_', 'config', 'iteritems', 'itervalues', 'range']

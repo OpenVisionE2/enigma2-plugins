@@ -138,7 +138,7 @@ class RSSEntryView(RSSBaseView):
 			"yellow": self.selectEnclosure,
 			"up": self.up,
 			"down": self.down,
-			"right": self.__next__,
+			"right": self.next,
 			"left": self.previous,
 			"nextBouquet": self.nextFeed,
 			"prevBouquet": self.previousFeed,
@@ -167,7 +167,7 @@ class RSSEntryView(RSSBaseView):
 	def down(self):
 		self["content"].pageDown()
 
-	def __next__(self):
+	def next(self):
 		if self.parent is not None:
 			(self.data, self.cur_idx, self.entries) = self.parent.nextEntry()
 			self.setContent()
@@ -259,7 +259,7 @@ class RSSFeedView(RSSBaseView):
 			{
 				"ok": self.showCurrentEntry,
 				"cancel": self.close,
-				"nextBouquet": self.__next__,
+				"nextBouquet": self.next,
 				"prevBouquet": self.previous,
 				"menu": self.menu,
 				"yellow": self.selectEnclosure,
@@ -343,7 +343,7 @@ class RSSFeedView(RSSBaseView):
 		self["content"].selectPrevious()
 		return (self["content"].current, self["content"].index, len(self.feed.history))
 
-	def __next__(self):
+	def next(self):
 		# Show next Feed
 		if self.parent is not None:
 			(self.feed, self.id) = self.parent.nextFeed()

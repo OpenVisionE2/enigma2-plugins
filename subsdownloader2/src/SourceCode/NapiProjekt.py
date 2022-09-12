@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function
 import sys
-import urllib.request
-import urllib.parse
-import urllib.error
+from six.moves.urllib.request import urlopen
+from six import range
 import tempfile
 import time
 import os
@@ -77,7 +76,7 @@ class NapiProjekt():
         while repeat > 0:
             repeat = repeat - 1
             try:
-                self.sub = urllib.request.urlopen(self.url)
+                self.sub = urlopen(self.url)
                 if hasattr(self.sub, 'getcode'):
                     http_code = self.sub.getcode()
                     self.sub = self.sub.read()

@@ -18,9 +18,9 @@
 
 import os
 import shutil
-import urllib.request
-import urllib.error
-import urllib.parse
+from six.moves.urllib.request import Request, urlopen
+from six.moves.urllib.error import HTTPError, URLError
+from six import text_type
 import sys
 import logging
 import traceback
@@ -114,16 +114,16 @@ class SubtitleDB(object):
         ''' Downloads the given url and returns its contents.'''
         try:
             log.debug("Downloading %s" % url)
-            req = urllib.request.Request(url, headers={'Referer': url, 'User-Agent': USER_AGENT})
+            req = Request(url, headers={'Referer': url, 'User-Agent': USER_AGENT})
             if timeout:
                 socket.setdefaulttimeout(timeout)
-            f = urllib.request.urlopen(req)
+            f = urlopen(req)
             content = f.read()
             f.close()
             return content
-        except urllib.error.HTTPError as e:
+        except HTTPError as e:
             log.warning("HTTP Error: %s - %s" % (e.code, url))
-        except urllib.error.URLError as e:
+        except URLError as e:
             log.warning("URL Error: %s - %s" % (e.reason, url))
 
     def downloadFile(self, url, filename):
@@ -167,7 +167,7 @@ class SubtitleDB(object):
         return fname
 
     def guessFileData(self, filename):
-        filename = str(self.getFileName(filename).lower())
+        filename = text_type(self.getFileName(filename).lower())
         matches_tvshow = self.tvshowRegex.match(filename)
         if matches_tvshow: # It looks like a tv show
             (tvshow, season, episode, teams) = matches_tvshow.groups()

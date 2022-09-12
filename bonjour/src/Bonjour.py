@@ -6,11 +6,6 @@ from xml.etree.ElementTree import ParseError
 from os import path, listdir
 from os import remove as os_remove, fsync
 
-try:
-	basestring
-except NameError:
-	basestring = str
-
 
 class Bonjour:
 	AVAHI_SERVICES_DIR = '/etc/avahi/services/'
@@ -33,8 +28,9 @@ class Bonjour:
 				'\t\t<port>%s</port>\n' % (service['port'])
 				]
 		text = service.get('text', None)
-		if text:
-			if isinstance(text, (basestring)):
+		if text:	
+			from six import string_types
+			if isinstance(text, (string_types)):
 				lines.append('\t\t<txt-record>%s</txt-record>\n' % (text))
 			else:
 				for txt in text:

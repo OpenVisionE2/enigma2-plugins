@@ -25,12 +25,10 @@ from Tools.LoadPixmap import LoadPixmap
 from twisted.web.client import downloadPage, getPage
 try:
 	import htmlentitydefs
-	pyuni = unicode
 except ImportError as ie:
 	from html import entities as htmlentitydefs
-	pyuni = str
-	unichr = chr
 import re
+from six import text_type, unichr
 from six.moves.urllib.request import Request, urlopen
 from six.moves.urllib.error import URLError
 from socket import error
@@ -92,7 +90,7 @@ def decode(line):
 
 	def sub(mo):
 		return unichr(fromHex(mo.group(1)))
-	return pat.sub(sub, pyuni(line))
+	return pat.sub(sub, text_type(line))
 
 
 def decode2(line):
@@ -100,7 +98,7 @@ def decode2(line):
 
 	def sub(mo):
 		return unichr(int(mo.group(1)))
-	return decode3(pat.sub(sub, pyuni(line)))
+	return decode3(pat.sub(sub, text_type(line)))
 
 
 def decode3(line):

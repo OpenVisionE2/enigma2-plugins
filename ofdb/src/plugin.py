@@ -21,7 +21,7 @@ try:
 	import htmlentitydefs
 except ImportError as ie:
 	from html import entities as htmlentitydefs
-	unichr = chr
+from six import unichr
 from six.moves.urllib.parse import quote
 import os
 import gettext

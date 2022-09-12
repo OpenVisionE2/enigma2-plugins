@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
 # by http://stackoverflow.com/questions/372365/set-timeout-for-xmlrpclib-serverproxy
 
-import xmlrpc.client
+try:
+	from xmlrpclib import ServerProxy
+except:
+	from xmlrpc.client import ServerProxy
 import socket
 
 from time import time
@@ -16,13 +19,13 @@ skip_expiration = 5.0 * 60 	# in seconds
 reduced_timeout = 3.0		# in seconds
 
 
-class TimeoutServerProxy(xmlrpc.client.ServerProxy):
+class TimeoutServerProxy(ServerProxy):
 	def __init__(self, *args, **kwargs):
 
 		from Plugins.Extensions.SeriesPlugin.plugin import REQUEST_PARAMETER
 		uri = config.plugins.seriesplugin.serienserver_url.value + REQUEST_PARAMETER
 
-		xmlrpc.client.ServerProxy.__init__(self, uri, verbose=False, *args, **kwargs)
+		ServerProxy.__init__(self, uri, verbose=False, *args, **kwargs)
 
 		timeout = config.plugins.seriesplugin.socket_timeout.value
 		socket.setdefaulttimeout(float(timeout))

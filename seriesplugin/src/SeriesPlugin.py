@@ -97,7 +97,8 @@ def getInstance():
 			sys.exc_clear()
 
 		try:
-			for key, value in config.plugins.seriesplugin.dict().items():
+			from six import iteritems
+			for key, value in config.plugins.seriesplugin.dict().iteritems():
 				log.debug(" config..%s = %s" % (key, str(value.value)))
 		except Exception as e:
 			sys.exc_clear()
@@ -426,7 +427,8 @@ class SeriesPlugin(Modules, ChannelsBase):
 		elif future:
 			identifier = self.identifier_future
 		else:
-			identifier = self.modules and self.instantiateModule(next(iter(self.modules.values())))
+			from six import itervalues
+			identifier = self.modules and self.instantiateModule(next(iter(self.modules.itervalues())))
 
 		if not identifier:
 			msg = _("No identifier available") + "\n\n" + _("Please check Your installation")

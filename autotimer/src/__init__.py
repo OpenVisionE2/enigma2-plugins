@@ -4,6 +4,7 @@ from Components.Language import language
 from Tools.Directories import resolveFilename, SCOPE_PLUGINS, SCOPE_LANGUAGE
 import os
 import gettext
+from six import range
 
 # Config
 from Components.config import config, ConfigSubsection, ConfigEnableDisable, \
@@ -83,12 +84,10 @@ config.plugins.autotimer.skip_during_records = ConfigYesNo(default=False)
 config.plugins.autotimer.skip_during_epgrefresh = ConfigYesNo(default=False)
 
 try:
-	xrange
 	iteritems = lambda d: iter(d.items())
 	itervalues = lambda d: iter(d.values())
 except NameError:
-	xrange = range
 	iteritems = lambda d: list(d.items())
 	itervalues = lambda d: list(d.values())
 
-__all__ = ['_', 'config', 'iteritems', 'itervalues', 'xrange']
+__all__ = ['_', 'config', 'iteritems', 'itervalues', 'range']

@@ -15,7 +15,7 @@ try:
 	import htmlentitydefs
 except ImportError as ie:
 	from html import entities as htmlentitydefs
-	unichr = chr
+from six import unichr
 from xml.dom.minidom import parse
 from twisted.web.client import getPage #@UnresolvedImport
 from twisted.internet import reactor #@UnresolvedImport

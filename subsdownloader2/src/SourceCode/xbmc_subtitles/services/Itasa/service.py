@@ -5,13 +5,12 @@ import sys
 import re
 import string
 import time
-import urllib.request
-import urllib.parse
-import urllib.error
-import urllib.request
-import urllib.error
-import urllib.parse
-import http.cookiejar
+from six.moves.urllib.request import urlopen, build_opener, HTTPCookieProcessor, install_opener, Request
+from six.moves.urllib.parse import urlencode
+try:
+	from cookielib import cookiejar
+except:
+	from http.cookiejar import CookieJar
 from Screens.MessageBox import MessageBox
 from Components.config import config
 from Components.Console import Console
@@ -49,7 +48,7 @@ subtitle_download_pattern = '<a href=\'http://www\.italiansubs\.net/(index\.php\
 def geturl(url):
     log(__name__, " Getting url: %s" % (url))
     try:
-        response = urllib.request.urlopen(url)
+        response = urlopen(url)
         content = response.read()
     except:
         log(__name__, " Failed to get url:%s" % (url))
@@ -70,13 +69,13 @@ def login(username, password):
                 return_value = match.group(1)
                 unique_name = match.group(2)
                 unique_value = match.group(3)
-                login_postdata = urllib.parse.urlencode({'username': username, 'passwd': password, 'remember': 'yes', 'Submit': 'Login', 'remember': 'yes', 'option': 'com_user', 'task': 'login', 'silent': 'true', 'return': return_value, unique_name: unique_value})
-                cj = http.cookiejar.CookieJar()
-                my_opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(cj))
+                login_postdata = urlencode({'username': username, 'passwd': password, 'remember': 'yes', 'Submit': 'Login', 'remember': 'yes', 'option': 'com_user', 'task': 'login', 'silent': 'true', 'return': return_value, unique_name: unique_value})
+                cj = CookieJar()
+                my_opener = build_opener(HTTPCookieProcessor(cj))
                 my_opener.addheaders = [('Referer', main_url)]
-                urllib.request.install_opener(my_opener)
-                request = urllib.request.Request(main_url + 'index.php', login_postdata)
-                response = urllib.request.urlopen(request).read()
+                install_opener(my_opener)
+                request = Request(main_url + 'index.php', login_postdata)
+                response = urlopen(request).read()
                 match = re.search('logouticon.png', response, re.IGNORECASE | re.DOTALL)
                 if match:
                     return 1

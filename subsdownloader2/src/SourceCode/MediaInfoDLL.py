@@ -32,6 +32,7 @@
 import os
 import sys
 from ctypes import *
+from six import text_type
 
 if os.name == "nt" or os.name == "dos" or os.name == "os2" or os.name == "ce":
 	MediaInfoDLL_Handler = windll.MediaInfo
@@ -195,7 +196,7 @@ class MediaInfo:
 		self.MediaInfo_Delete(self.Handle)
 
 	def Open(self, File):
-		if isinstance(File, str):
+		if isinstance(File, text_type):
 			return self.MediaInfoA_Open(self.Handle, File)
 		elif MustUseAnsi:
 			return self.MediaInfoA_Open(self.Handle, File.encode("utf-8"))
@@ -214,30 +215,30 @@ class MediaInfo:
 	#General information
 	def Inform(self):
 		if MustUseAnsi:
-			return str(self.MediaInfoA_Inform(self.Handle, 0), "utf_8")
+			return text_type(self.MediaInfoA_Inform(self.Handle, 0), "utf_8")
 		else:
 			return self.MediaInfo_Inform(self.Handle, 0)
 
 	def Get(self, StreamKind, StreamNumber, Parameter, InfoKind=Info.Text, SearchKind=Info.Name):
-		if isinstance(Parameter, str):
-			return str(self.MediaInfoA_Get(self.Handle, StreamKind, StreamNumber, Parameter, InfoKind, SearchKind), "utf_8")
+		if isinstance(Parameter, text_type):
+			return text_type(self.MediaInfoA_Get(self.Handle, StreamKind, StreamNumber, Parameter, InfoKind, SearchKind), "utf_8")
 		elif MustUseAnsi:
-			return str(self.MediaInfoA_Get(self.Handle, StreamKind, StreamNumber, Parameter.encode("utf-8"), InfoKind, SearchKind), "utf_8")
+			return text_type(self.MediaInfoA_Get(self.Handle, StreamKind, StreamNumber, Parameter.encode("utf-8"), InfoKind, SearchKind), "utf_8")
 		else:
 			return self.MediaInfo_Get(self.Handle, StreamKind, StreamNumber, Parameter, InfoKind, SearchKind)
 
 	def GetI(self, StreamKind, StreamNumber, Parameter, InfoKind=Info.Text):
 		if MustUseAnsi:
-			return str(self.MediaInfoA_GetI(self.Handle, StreamKind, StreamNumber, Parameter, InfoKind), "utf_8")
+			return text_type(self.MediaInfoA_GetI(self.Handle, StreamKind, StreamNumber, Parameter, InfoKind), "utf_8")
 		else:
 			return self.MediaInfo_GetI(self.Handle, StreamKind, StreamNumber, Parameter, InfoKind)
 
-	def Set(self, ToSet, StreamKind, StreamNumber, Parameter, OldParameter=""):
-		if isinstance(Parameter, str) and isinstance(OldParameter, str):
+	def Set(self, ToSet, StreamKind, StreamNumber, Parameter, OldParameter=u""):
+		if isinstance(Parameter, text_type) and isinstance(OldParameter, text_type):
 			Parameter = Parameter.decode("utf-8")
-		if isinstance(Parameter, str) and isinstance(OldParameter, str):
+		if isinstance(Parameter, text_type) and isinstance(OldParameter, text_type):
 			OldParameter = OldParameter.decode("utf-8")
-		if isinstance(Parameter, str):
+		if isinstance(Parameter, text_type):
 			return self.MediaInfoA_Set(self.Handle, ToSet, StreamKind, StreamNumber, Parameter, OldParameter)
 		elif MustUseAnsi:
 			return self.MediaInfoA_Set(self.Handle, ToSet, StreamKind, StreamNumber, Parameter.encode("utf-8"), OldParameter.encode("utf-8"))
@@ -251,27 +252,27 @@ class MediaInfo:
 			return self.MediaInfo_SetI(self.Handle, ToSet, StreamKind, StreamNumber, Parameter, OldValue)
 
 	#Options
-	def Option(self, Option, Value=""):
-		if isinstance(Option, str) and isinstance(Value, str):
+	def Option(self, Option, Value=u""):
+		if isinstance(Option, text_type) and isinstance(Value, text_type):
 			Option = Option.decode("utf-8")
-		if isinstance(Option, str) and isinstance(Value, str):
+		if isinstance(Option, text_type) and isinstance(Value, text_type):
 			Value = Value.decode("utf-8")
-		if isinstance(Option, str):
-			return str(self.MediaInfoA_Option(self.Handle, Option.encode("utf-8"), Value.encode("utf-8")), "utf_8")
+		if isinstance(Option, text_type):
+			return text_type(self.MediaInfoA_Option(self.Handle, Option.encode("utf-8"), Value.encode("utf-8")), "utf_8")
 		elif MustUseAnsi:
-			return str(self.MediaInfoA_Option(self.Handle, Option.encode("utf-8"), Value.encode("utf-8")), "utf_8")
+			return text_type(self.MediaInfoA_Option(self.Handle, Option.encode("utf-8"), Value.encode("utf-8")), "utf_8")
 		else:
 			return self.MediaInfo_Option(self.Handle, Option, Value)
 
-	def Option_Static(self, Option, Value=""):
-		if isinstance(Option, str) and isinstance(Value, str):
+	def Option_Static(self, Option, Value=u""):
+		if isinstance(Option, text_type) and isinstance(Value, text_type):
 			Option = Option.decode("utf-8")
-		if isinstance(Option, str) and isinstance(Value, str):
+		if isinstance(Option, text_type) and isinstance(Value, text_type):
 			Value = Value.decode("utf-8")
-		if isinstance(Option, str):
-			return str(self.MediaInfoA_Option(None, Option, Value), "utf_8")
+		if isinstance(Option, text_type):
+			return text_type(self.MediaInfoA_Option(None, Option, Value), "utf_8")
 		elif MustUseAnsi:
-			return str(self.MediaInfoA_Option(None, Option.encode("utf-8"), Value.encode("utf-8")), "utf_8")
+			return text_type(self.MediaInfoA_Option(None, Option.encode("utf-8"), Value.encode("utf-8")), "utf_8")
 		else:
 			return self.MediaInfo_Option(None, Option, Value)
 
@@ -408,17 +409,17 @@ class MediaInfoList:
 	def Get(self, FilePos, StreamKind, StreamNumber, Parameter, InfoKind=Info.Text, SearchKind=Info.Name):
 		return MediaInfoList_Get(self.Handle, FilePos, StreamKind, StreamNumber, (Parameter), InfoKind, SearchKind)
 
-	def SetI(self, ToSet, FilePos, StreamKind, StreamNumber, Parameter, OldParameter=""):
+	def SetI(self, ToSet, FilePos, StreamKind, StreamNumber, Parameter, OldParameter=u""):
 		return MediaInfoList_SetI(self, Handle, ToSet, FilePos, StreamKind, StreamNumber, Parameter, OldParameter)
 
-	def Set(self, ToSet, FilePos, StreamKind, StreamNumber, Parameter, OldParameter=""):
+	def Set(self, ToSet, FilePos, StreamKind, StreamNumber, Parameter, OldParameter=u""):
 		return MediaInfoList_Set(self.Handle, ToSet, FilePos, StreamKind, StreamNumber, Parameter, OldParameter)
 
 	#Options
-	def Option(self, Option, Value=""):
+	def Option(self, Option, Value=u""):
 		return MediaInfoList_Option(self.Handle, Option, Value)
 
-	def Option_Static(self, Option, Value=""):
+	def Option_Static(self, Option, Value=u""):
 		return MediaInfoList_Option(None, Option, Value)
 
 	def State_Get(self):
