@@ -40,7 +40,7 @@ from .Modules import Modules
 from .ConfigFile import ConfigFile
 from .ServiceBase import ServiceBase
 from .ControllerBase import ControllerBase
-
+from six import iteritems
 
 # Constants
 SERVICE = "Service"
@@ -83,7 +83,7 @@ class PushServiceBase(Modules, ConfigFile):
 		slist = []
 		if self.servicemodules:
 			serviceclasses = [service.getClass() for service in self.services] if self.services else []
-			for name, module in self.servicemodules.items():
+			for name, module in self.servicemodules.iteritems():
 				if module.forceSingle():
 					# We have to check if there is already a plugin instance
 					if name in serviceclasses:
@@ -123,7 +123,7 @@ class PushServiceBase(Modules, ConfigFile):
 		plist = []
 		if self.controllermodules:
 			controllerclasses = [controller.getClass() for controller in self.controllers] if self.controllers else []
-			for name, module in self.controllermodules.items():
+			for name, module in self.controllermodules.iteritems():
 				if module.forceSingle():
 					# We have to check if there is already a controller instance
 					if name in controllerclasses:

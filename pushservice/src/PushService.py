@@ -63,7 +63,7 @@ class PushService(PushServiceBase):
 		self.stopTimer()
 
 		self.begin()
-		next(self)
+		self.next()
 
 	def stop(self):
 		print("PushService stop")
@@ -97,7 +97,7 @@ class PushService(PushServiceBase):
 
 	def do(self):
 		self.run()
-		next(self)
+		self.next()
 
 	def startTimer(self, seconds, state=None):
 		if state:

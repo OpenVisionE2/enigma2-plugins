@@ -100,7 +100,7 @@ def autostart(reason, **kwargs):
 					gLeavePlayerConfirmed = MoviePlayer.leavePlayerConfirmed
 				MoviePlayer.leavePlayerConfirmed = leavePlayerConfirmedMP
 
-				Session.doInstantiateDialog.__self__.__class__.doInstantiateDialog = doInstantiateDialogSF
+				Session.doInstantiateDialog.im_class.doInstantiateDialog = doInstantiateDialogSF
 				modname = Session.doInstantiateDialog.__module__
 				print("[SF-Plugin] mytest.Session.doInstantiateDialog modname = %s = %s" % (str(type(modname)), str(modname)))
 

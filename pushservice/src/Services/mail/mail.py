@@ -27,7 +27,7 @@
 import types
 import os.path
 try:
-	from io import StringIO
+	from cStringIO import StringIO
 except:
 	from io import StringIO
 from OpenSSL.SSL import TLSv1_2_METHOD
@@ -43,12 +43,21 @@ from twisted.internet.defer import Deferred
 from twisted.internet.ssl import ClientContextFactory
 from twisted.mail.smtp import ESMTPSenderFactory
 
+try:
+	pybytes = types.StringType
+	pydict = types.DictType
+	pyint = types.IntType
+except NameError:
+	pybytes = bytes
+	pydict = dict
+	pyint = int
+
 
 class Message(object):
     def __init__(self, from_addr, to_addrs, subject, message, mime="text/plain", charset="utf-8"):
         self.subject = subject
         self.from_addr = from_addr
-        self.to_addrs = isinstance(to_addrs, bytes) and [to_addrs] or to_addrs
+        self.to_addrs = isinstance(to_addrs, pybytes) and [to_addrs] or to_addrs
 
         self.msg = None
         self.__cache = None
@@ -63,7 +72,7 @@ class Message(object):
             content = fd.read()
             fd.close()
 
-        if not isinstance(content, bytes):
+        if not isinstance(content, pybytes):
             raise TypeError("don't know how to handle content: %s" % type(content))
 
         part = MIMEBase("application", "octet-stream")
@@ -112,14 +121,14 @@ def sendmail(mailconf, message):
     mailconf["retries"] = 0 (optional, default 0)
     mailconf["timeout"] = 30 (optional, default 30)
     """
-    if not isinstance(mailconf, dict):
+    if not isinstance(mailconf, pydict):
         raise TypeError("mailconf must be a regular python dictionary")
 
     if not isinstance(message, Message):
         raise TypeError("message must be an instance of nuswit.mail.Message")
 
     host = mailconf.get("host")
-    if not isinstance(host, bytes):
+    if not isinstance(host, pybytes):
         raise ValueError("mailconf requires a 'host' configuration")
 
     ssl = mailconf.get("ssl", True)
@@ -135,7 +144,7 @@ def sendmail(mailconf, message):
     retries = mailconf.get("retries", 0)
     timeout = mailconf.get("timeout", 30)
 
-    if not isinstance(port, int):
+    if not isinstance(port, pyint):
         raise ValueError("mailconf requires a proper 'port' configuration")
 
     deferred = Deferred()

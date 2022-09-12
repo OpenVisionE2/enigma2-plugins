@@ -6,9 +6,9 @@ from . import _
 from .MPHelp import MPHelp
 
 try:
-	from collections.abc import Callable
-except ImportError:
 	from collections import Callable
+except ImportError:
+	from collections.abc import Callable
 
 helpList = []
 

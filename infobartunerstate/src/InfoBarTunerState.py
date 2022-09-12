@@ -22,15 +22,18 @@
 from . import _
 from math import ceil
 from six.moves import range
-from six import itervalues, PY2
+from six import itervalues
 from os import path, statvfs, stat
 from socket import gethostbyaddr, herror
-from collections import defaultdict
+try:
+	from collections import defaultdict
+except ImportError:
+	from collections.abc import defaultdict
 from operator import attrgetter, itemgetter
 import NavigationInstance
-if PY2:
+try:
 	from itertools import izip_longest as zip_longest # py2x
-else:
+except:
 	from itertools import zip_longest # py3k
 
 # Plugin

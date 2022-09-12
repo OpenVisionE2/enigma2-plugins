@@ -36,7 +36,10 @@ from enigma import eEPGCache, eServiceReference, eServiceCenter, iServiceInforma
 from .AutoTimerComponent import preferredAutoTimerComponent
 
 from itertools import chain
-from collections import defaultdict
+try:
+	from collections import defaultdict
+except ImportError:
+	from collections.abc import defaultdict
 from difflib import SequenceMatcher
 from operator import itemgetter
 

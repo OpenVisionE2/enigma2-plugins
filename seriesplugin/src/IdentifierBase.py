@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
 # by betonme @2012
 
-from collections import defaultdict
-
-from _thread import start_new_thread
+try:
+	from collections import defaultdict
+	from thread import start_new_thread
+except ImportError:
+	from collections.abc import defaultdict
+	from _thread import start_new_thread
 
 #TODO Implement Twisted handler
 #Twisted 12.x

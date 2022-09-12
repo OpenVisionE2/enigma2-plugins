@@ -6,6 +6,7 @@ try:
 	from cStringIO import StringIO
 except:
 	from io import StringIO
+from six import text_type, iteritems
 
 __version__ = '0.7'
 
@@ -48,7 +49,7 @@ class UnsupportedError(BaseError):
 	errordesc = 'Currently unsupported by gntp.py'
 
 
-class _GNTPBuffer(io.StringIO):
+class _GNTPBuffer(StringIO):
 	"""GNTP Buffer class"""
 
 	def writefmt(self, str="", *args):
@@ -188,7 +189,7 @@ class _GNTPBase(object):
 
 		:return string:
 		"""
-		info = 'GNTP/%s %s' % (
+		info = u'GNTP/%s %s' % (
 			self.info.get('version'),
 			self.info.get('messagetype'),
 		)
@@ -221,16 +222,16 @@ class _GNTPBase(object):
 			if not match:
 				continue
 
-			key = str(match.group(1).strip(), 'utf8', 'replace')
-			val = str(match.group(2).strip(), 'utf8', 'replace')
+			key = text_type(match.group(1).strip(), 'utf8', 'replace')
+			val = text_type(match.group(2).strip(), 'utf8', 'replace')
 			dict[key] = val
 		return dict
 
 	def add_header(self, key, value):
-		if isinstance(value, str):
+		if isinstance(value, text_type):
 			self.headers[key] = value
 		else:
-			self.headers[key] = str('%s' % value, 'utf8', 'replace')
+			self.headers[key] = text_type('%s' % value, 'utf8', 'replace')
 
 	def add_resource(self, data):
 		"""Add binary resource
@@ -263,12 +264,12 @@ class _GNTPBase(object):
 		buffer.writefmt(self._format_info())
 
 		#Headers
-		for k, v in self.headers.items():
+		for k, v in self.headers.iteritems():
 			buffer.writefmt('%s: %s', k, v)
 		buffer.writefmt()
 
 		#Resources
-		for resource, data in self.resources.items():
+		for resource, data in self.resources.iteritems():
 			buffer.writefmt('Identifier: %s', resource)
 			buffer.writefmt('Length: %d', len(data))
 			buffer.writefmt()
@@ -342,8 +343,8 @@ class GNTPRegister(_GNTPBase):
 		:param boolean enabled: Enable this notification by default
 		"""
 		notice = {}
-		notice['Notification-Name'] = '%s' % name
-		notice['Notification-Enabled'] = '%s' % enabled
+		notice['Notification-Name'] = u'%s' % name
+		notice['Notification-Enabled'] = u'%s' % enabled
 
 		self.notifications.append(notice)
 		self.add_header('Notifications-Count', len(self.notifications))
@@ -359,19 +360,19 @@ class GNTPRegister(_GNTPBase):
 		buffer.writefmt(self._format_info())
 
 		#Headers
-		for k, v in self.headers.items():
+		for k, v in self.headers.iteritems():
 			buffer.writefmt('%s: %s', k, v)
 		buffer.writefmt()
 
 		#Notifications
 		if len(self.notifications) > 0:
 			for notice in self.notifications:
-				for k, v in notice.items():
+				for k, v in notice.iteritems():
 					buffer.writefmt('%s: %s', k, v)
 				buffer.writefmt()
 
 		#Resources
-		for resource, data in self.resources.items():
+		for resource, data in self.resources.iteritems():
 			buffer.writefmt('Identifier: %s', resource)
 			buffer.writefmt('Length: %d', len(data))
 			buffer.writefmt()

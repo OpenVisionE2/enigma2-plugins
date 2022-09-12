@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 from threading import Lock
-from collections import deque
+try:
+	from collections import deque
+except ImportError:
+	from collections.abc import deque
 
 
 class ThreadQueue:

@@ -33,7 +33,10 @@ from .FlickrApi import FlickrApi
 from enigma import ePicLoad, eTimer, getDesktop
 from Tools.Directories import resolveFilename, SCOPE_PLUGINS
 from Tools.Notifications import AddPopup
-from collections import deque
+try:
+	from collections import deque
+except ImportError:
+	from collections.abc import deque
 from Plugins.SystemPlugins.Toolkit.SimpleThread import SimpleThread
 
 from six import range
