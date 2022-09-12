@@ -28,14 +28,13 @@ from gdata.service import BadAuthentication
 from Tools.LoadPixmap import LoadPixmap
 
 from twisted.web.client import downloadPage
-from urllib.request import urlopen, Request
-from urllib.error import URLError, HTTPError
-from urllib.parse import quote, unquote_plus, unquote
-
-from http.client import HTTPConnection, HTTPException
-
-from urllib.parse import parse_qs
-
+from six.moves.urllib.request import urlopen, Request
+from six.moves.urllib.error import URLError
+from six.moves.urllib.parse import unquote_plus, parse_qs
+try:
+	from httplib import HTTPException
+except:
+	from http.client import HTTPException
 from socket import gaierror, error
 
 import os

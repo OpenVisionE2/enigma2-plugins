@@ -32,12 +32,13 @@ from enigma import eServiceReference, RT_WRAP, RT_VALIGN_CENTER, RT_HALIGN_LEFT,
 import gdata.youtube
 import gdata.youtube.service
 from socket import gaierror, error as sorcket_error
-from urllib.request import Request, urlopen as urlopen2
-from urllib.error import URLError
-from urllib.parse import unquote_plus
-from http.client import HTTPException
-from urllib.parse import parse_qs
-
+from six.moves.urllib.request import Request, urlopen
+from six.moves.urllib.error import URLError
+from six.moves.urllib.parse import unquote_plus, parse_qs
+try:
+	from httplib import HTTPException
+except:
+	from http.client import HTTPException
 from Components.config import config, ConfigSubsection, ConfigSelection, getConfigListEntry, configfile, ConfigText, ConfigInteger, ConfigYesNo
 from Components.ConfigList import ConfigListScreen
 
@@ -225,7 +226,7 @@ class YTTrailer:
 		watchrequest = Request(watch_url, None, std_headers)
 		try:
 			print("[YTTrailer] trying to find out if a HD Stream is available", watch_url)
-			watchvideopage = urlopen2(watchrequest).read()
+			watchvideopage = urlopen(watchrequest).read()
 		except (URLError, HTTPException, socket_error) as err:
 			print("[YTTrailer] Error: Unable to retrieve watchpage - Error code: ", str(err))
 			return video_url
@@ -235,7 +236,7 @@ class YTTrailer:
 			info_url = ('http://www.youtube.com/get_video_info?&video_id=%s%s&ps=default&eurl=&gl=US&hl=en' % (video_id, el))
 			request = Request(info_url, None, std_headers)
 			try:
-				infopage = urlopen2(request).read()
+				infopage = urlopen(request).read()
 				videoinfo = parse_qs(infopage)
 				if ('url_encoded_fmt_stream_map' or 'fmt_url_map') in videoinfo:
 					break
@@ -287,10 +288,11 @@ class YTTrailer:
 			if fmtid in VIDEO_FMT_PRIORITY_MAP and fmtid != "":
 				video_fmt_map[VIDEO_FMT_PRIORITY_MAP[fmtid]] = {'fmtid': fmtid, 'fmturl': unquote_plus(fmturl)}
 				fmt_infomap[int(fmtid)] = unquote_plus(fmturl)
-		print("[YTTrailer] got", sorted(fmt_infomap.keys()))
+		from six import iterkeys
+		print("[YTTrailer] got", sorted(fmt_infomap.iterkeys()))
 		if video_fmt_map and len(video_fmt_map):
-			print("[YTTrailer] found best available video format:", video_fmt_map[sorted(video_fmt_map.keys())[0]]['fmtid'])
-			best_video = video_fmt_map[sorted(video_fmt_map.keys())[0]]
+			print("[YTTrailer] found best available video format:", video_fmt_map[sorted(video_fmt_map.iterkeys())[0]]['fmtid'])
+			best_video = video_fmt_map[sorted(video_fmt_map.iterkeys())[0]]
 			video_url = "%s" % (best_video['fmturl'].split(';')[0])
 			print("[YTTrailer] found best available video url:", video_url)
 

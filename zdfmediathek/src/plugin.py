@@ -23,15 +23,21 @@ from Tools.BoundFunction import boundFunction
 from Tools.Directories import resolveFilename, SCOPE_PLUGINS, SCOPE_PLUGIN
 from Tools.LoadPixmap import LoadPixmap
 from twisted.web.client import downloadPage, getPage
-import html.entities
+try:
+	import htmlentitydefs
+	pyuni = unicode
+except ImportError as ie:
+	from html import entities as htmlentitydefs
+	pyuni = str
+	unichr = chr
 import re
-import urllib.request
-import urllib.error
-import urllib.parse
-from urllib.request import Request, urlopen as urlopen2
-from urllib.error import URLError
+from six.moves.urllib.request import Request, urlopen
+from six.moves.urllib.error import URLError
 from socket import error
-from http.client import HTTPConnection, HTTPException
+try:
+	from httplib import HTTPConnection, HTTPException
+except:
+	from http.client import HTTPConnection, HTTPException
 from Components.SystemInfo import BoxInfo
 
 HTTPConnection.debuglevel = 1
@@ -85,23 +91,23 @@ def decode(line):
 	pat = re.compile(r'\\u(....)')
 
 	def sub(mo):
-		return chr(fromHex(mo.group(1)))
-	return pat.sub(sub, str(line))
+		return unichr(fromHex(mo.group(1)))
+	return pat.sub(sub, pyuni(line))
 
 
 def decode2(line):
 	pat = re.compile(r'&#(\d+);')
 
 	def sub(mo):
-		return chr(int(mo.group(1)))
-	return decode3(pat.sub(sub, str(line)))
+		return unichr(int(mo.group(1)))
+	return decode3(pat.sub(sub, pyuni(line)))
 
 
 def decode3(line):
-	dic = html.entities.name2codepoint
+	dic = htmlentitydefs.name2codepoint
 	for key in list(dic.keys()):
 		entity = "&" + key + ";"
-		line = line.replace(entity, chr(dic[key]))
+		line = line.replace(entity, unichr(dic[key]))
 	return line
 
 
@@ -261,7 +267,7 @@ def getCategoryDetails(div):
 def getMovieUrl(url):
 	req = Request(url, None, std_headers)
 	try:
-		txt = urlopen2(req).read()
+		txt = urlopen(req).read()
 	except (URLError, HTTPException, error) as err:
 		print("[ZDFMediaThek] Error: Unable to retrieve videopage - Error code: ", str(err))
 		return ""
@@ -456,7 +462,7 @@ class LeftMenuList(MenuList):
 		if len(self.menu):
 			self.select(self.current - 1)
 
-	def __next__(self):
+	def next(self):
 		if len(self.menu):
 			self.select(self.current + 1)
 
@@ -543,8 +549,8 @@ class RightMenuList(List):
 			if not thumbUrl.startswith("http://"):
 				thumbUrl = "%s%s" % (MAIN_PAGE, thumbUrl)
 			try:
-				req = urllib.request.Request(thumbUrl)
-				url_handle = urllib.request.urlopen(req)
+				req = Request(thumbUrl)
+				url_handle = urlopen(req)
 				headers = url_handle.info()
 				contentType = headers.getheader("content-type")
 			except:
@@ -1035,7 +1041,7 @@ class ZDFMediathek(Screen, HelpableScreen):
 	def down(self):
 		if not self.working:
 			if self.currentList == LIST_LEFT:
-				next(self["leftList"])
+				self["leftList"].next()
 			elif self.currentList == LIST_RIGHT and self["rightList"].active:
 				self["rightList"].selectNext()
 

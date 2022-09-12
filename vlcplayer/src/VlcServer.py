@@ -12,13 +12,10 @@
 
 import re
 import posixpath
-import urllib.request
-import urllib.parse
-import urllib.error
+from six.moves.urllib.request import pathname2url, urlopen
 from sys import maxsize
 from random import randint, seed
-from urllib.parse import urlencode, quote_plus
-from urllib.request import urlopen
+from six.moves.urllib.parse import urlencode, quote_plus
 from xml.dom.minidom import parse
 from .VlcPlayer import VlcPlayer, isDvdUrl
 
@@ -298,7 +295,7 @@ class VlcServer:
 
 		# Fix for nat. chars in path/filename
 		if not re.match("dvd", filename):
-			filename = urllib.request.pathname2url(filename)
+			filename = pathname2url(filename)
 
 		if re.match("[a-zA-Z]:", filename):
 			# Fix for subtitles with VLC on Windows.
