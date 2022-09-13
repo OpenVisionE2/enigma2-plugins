@@ -376,5 +376,6 @@ class ElementType(type):
         return obj
 
 
-class Element(object, metaclass=ElementType): # Will this work for py2?
+class Element(object):
+    __metaclass__ = ElementType
     _lang = 'en'

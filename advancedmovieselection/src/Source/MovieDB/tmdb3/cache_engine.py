@@ -8,7 +8,6 @@
 
 import time
 from weakref import ref
-from six import PY2
 
 
 class Engines(object):
@@ -41,43 +40,24 @@ class CacheEngineType(type):
             Engines.register(mcs)
 
 
-if PY2:
-        class CacheEngine(object):
-            __metaclass__ = CacheEngineType
-            name = 'unspecified'
+class CacheEngine(object):
+    __metaclass__ = CacheEngineType
+    name = 'unspecified'
 
-            def __init__(self, parent):
-                self.parent = ref(parent)
+    def __init__(self, parent):
+        self.parent = ref(parent)
 
-            def configure(self):
-                raise RuntimeError
+    def configure(self):
+        raise RuntimeError
 
-            def get(self, date):
-                raise RuntimeError
+    def get(self, date):
+        raise RuntimeError
 
-            def put(self, key, value, lifetime):
-                raise RuntimeError
+    def put(self, key, value, lifetime):
+        raise RuntimeError
 
-            def expire(self, key):
-                raise RuntimeError
-else:
-        class CacheEngine(object, metaclass=CacheEngineType):
-            name = 'unspecified'
-
-            def __init__(self, parent):
-                self.parent = ref(parent)
-
-            def configure(self):
-                raise RuntimeError
-
-            def get(self, date):
-                raise RuntimeError
-
-            def put(self, key, value, lifetime):
-                raise RuntimeError
-
-            def expire(self, key):
-                raise RuntimeError
+    def expire(self, key):
+        raise RuntimeError
 
 
 class CacheObject(object):
