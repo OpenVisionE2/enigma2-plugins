@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from enigma import eServiceReference, eConsoleAppContainer
-from Components.MediaPlayer import PlayList
+from enigma import eConsoleAppContainer
 import xml.dom.minidom
 from Plugins.Plugin import PluginDescriptor
 from Components.ActionMap import ActionMap
