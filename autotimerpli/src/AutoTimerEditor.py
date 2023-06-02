@@ -132,6 +132,7 @@ class AutoTimerEPGSelection(EPGSelection):
 	def __init__(self, *args):
 		EPGSelection.__init__(self, *args)
 		self.skinName = "EPGSelection"
+		self["key_red"].setText(_(" add AutoTimer"))
 
 	def eventSelected(self):
 		self.zapTo()
@@ -184,6 +185,8 @@ class AutoTimerEditorBase:
 		else:
 			self.serviceRestriction = False
 
+		self.isIPTV = bool([service for service in timer.services if ":http" in service])
+
 		self.createSetup(timer)
 
 	def createSetup(self, timer):
@@ -220,18 +223,18 @@ class AutoTimerEditorBase:
 			default = True
 			now[3] = timer.timespan[0][0]
 			now[4] = timer.timespan[0][1]
-			begin = mktime(tuple(now))
+			begin = mktime((now[0], now[1], now[2], now[3], now[4], 0, 0, 0, now[8]))
 			now[3] = timer.timespan[1][0]
 			now[4] = timer.timespan[1][1]
-			end = mktime(tuple(now))
+			end = mktime((now[0], now[1], now[2], now[3], now[4], 0, 0, 0, now[8]))
 		else:
 			default = False
 			now[3] = 20
 			now[4] = 15
-			begin = mktime(tuple(now))
+			begin = mktime((now[0], now[1], now[2], now[3], now[4], 0, 0, 0, now[8]))
 			now[3] = 23
 			now[4] = 15
-			end = mktime(tuple(now))
+			end = mktime((now[0], now[1], now[2], now[3], now[4], 0, 0, 0, now[8]))
 		self.timespan = NoSave(ConfigEnableDisable(default=default))
 		self.timespanbegin = NoSave(ConfigClock(default=begin))
 		self.timespanend = NoSave(ConfigClock(default=end))
@@ -246,7 +249,7 @@ class AutoTimerEditorBase:
 			now = [x for x in localtime()]
 			now[3] = 0
 			now[4] = 0
-			begin = mktime(tuple(now))
+			begin = mktime((now[0], now[1], now[2], now[3], now[4], 0, 0, 0, now[8]))
 			end = begin + 604800 # today + 7d
 		self.timeframe = NoSave(ConfigEnableDisable(default=default))
 		self.timeframebegin = NoSave(ConfigDateTime(begin, _("%d.%B %Y"), increment=86400))
@@ -264,8 +267,8 @@ class AutoTimerEditorBase:
 			begin = 5
 			end = 5
 		self.offset = NoSave(ConfigEnableDisable(default=default))
-		self.offsetbegin = NoSave(ConfigNumber(default=int(begin)))
-		self.offsetend = NoSave(ConfigNumber(default=int(end)))
+		self.offsetbegin = NoSave(ConfigNumber(default=begin))
+		self.offsetend = NoSave(ConfigNumber(default=end))
 
 		# AfterEvent
 		if timer.hasAfterEvent():
@@ -289,18 +292,18 @@ class AutoTimerEditorBase:
 			default = True
 			now[3] = timer.afterevent[0][1][0][0]
 			now[4] = timer.afterevent[0][1][0][1]
-			begin = mktime(tuple(now))
+			begin = mktime((now[0], now[1], now[2], now[3], now[4], 0, 0, 0, now[8]))
 			now[3] = timer.afterevent[0][1][1][0]
 			now[4] = timer.afterevent[0][1][1][1]
-			end = mktime(tuple(now))
+			end = mktime((now[0], now[1], now[2], now[3], now[4], 0, 0, 0, now[8]))
 		else:
 			default = False
 			now[3] = 23
 			now[4] = 15
-			begin = mktime(tuple(now))
+			begin = mktime((now[0], now[1], now[2], now[3], now[4], 0, 0, 0, now[8]))
 			now[3] = 7
 			now[4] = 0
-			end = mktime(tuple(now))
+			end = mktime((now[0], now[1], now[2], now[3], now[4], 0, 0, 0, now[8]))
 		self.afterevent_timespan = NoSave(ConfigEnableDisable(default=default))
 		self.afterevent_timespanbegin = NoSave(ConfigClock(default=begin))
 		self.afterevent_timespanend = NoSave(ConfigClock(default=end))
@@ -316,15 +319,15 @@ class AutoTimerEditorBase:
 			default = False
 			duration = 70
 		self.duration = NoSave(ConfigEnableDisable(default=default))
-		self.durationlength = NoSave(ConfigNumber(default=int(duration)))
+		self.durationlength = NoSave(ConfigNumber(default=duration))
 
 		# Counter
 		if timer.hasCounter():
 			default = timer.matchCount
 		else:
 			default = 0
-		self.counter = NoSave(ConfigNumber(default=int(default)))
-		self.counterLeft = NoSave(ConfigNumber(default=int(timer.matchLeft)))
+		self.counter = NoSave(ConfigNumber(default=default))
+		self.counterLeft = NoSave(ConfigNumber(default=timer.matchLeft))
 		default = timer.getCounterFormatString()
 		selection = [("", _("Never")), ("%m", _("Monthly")), ("%U", _("Weekly (Sunday)")), ("%W", _("Weekly (Monday)"))]
 		if default not in ('', '%m', '%U', '%W'):
@@ -447,20 +450,13 @@ class AutoTimerEditorBase:
 			self.tags.setChoices([len(ret) == 0 and _("None") or ' '.join(ret)])
 
 	def chooseTags(self):
-		if TagEditor is not None:
+		preferredTagEditor = getPreferredTagEditor()
+		if preferredTagEditor:
 			self.session.openWithCallback(
 				self.tagEditFinished,
-				TagEditor,
-				tags=self.timerentry_tags
+				preferredTagEditor,
+				self.timerentry_tags
 			)
-		else:
-			preferredTagEditor = getPreferredTagEditor()
-			if preferredTagEditor:
-				self.session.openWithCallback(
-					self.tagEditFinished,
-					preferredTagEditor,
-					self.timerentry_tags
-				)
 
 
 HD = False
@@ -543,7 +539,7 @@ class AutoTimerEditor(Screen, ConfigListScreen, AutoTimerEditorBase):
 
 		# Initialize Buttons
 		self["key_red"] = StaticText(_("Cancel"))
-		self["key_green"] = StaticText(_("Save"))
+		self["key_green"] = StaticText(_("OK"))
 		self["key_yellow"] = StaticText()
 		self["key_blue"] = StaticText()
 
@@ -579,27 +575,29 @@ class AutoTimerEditor(Screen, ConfigListScreen, AutoTimerEditorBase):
 			self["key_yellow"].text = _("edit filters")
 		else:
 			self["key_yellow"].text = _("add filters")
-		if self.excludes[0] or self.excludes[1] or self.excludes[2] or self.includes[0] or self.includes[1] or self.includes[2]:
+		if self.filterSet and (self.excludes[0] or self.excludes[1] or self.excludes[2] or self.includes[0] or self.includes[1] or self.includes[2]):
 			self.isActive_otherfilters_value = _("enabled")
 		else:
 			self.isActive_otherfilters_value = _("disabled")
-		if self.excludes[3] or self.includes[3]:
+		if self.filterSet and (self.excludes[3] or self.includes[3]):
 			self.isActive_dayofweek_value = _("enabled")
 		else:
 			self.isActive_dayofweek_value = _("disabled")
 		self.reloadList(True)
 
 	def renameServiceButton(self):
-		if self.serviceRestriction:
+		if self.isIPTV:
+			self["key_blue"].text = ""
+		elif self.serviceRestriction:
 			self["key_blue"].text = _("Edit services")
 		else:
 			self["key_blue"].text = _("Add services")
 			self.isActive_services_value = _("disabled")
-		if self.services:
+		if self.isIPTV or (self.serviceRestriction and self.services):
 			self.isActive_services_value = _("enabled")
 		else:
 			self.isActive_services_value = _("disabled")
-		if self.bouquets:
+		if self.serviceRestriction and self.bouquets:
 			self.isActive_bouquets_value = _("enabled")
 		else:
 			self.isActive_bouquets_value = _("disabled")
@@ -633,7 +631,7 @@ class AutoTimerEditor(Screen, ConfigListScreen, AutoTimerEditorBase):
 			self.match: _("This is what will be looked for in event titles. Note that looking for e.g. german umlauts can be tricky as you have to know the encoding the channel uses."),
 			self.encoding: _("Encoding the channel uses for it's EPG data. You only need to change this if you're searching for special characters like the german umlauts."),
 			self.searchType: _("Select \"exact match\" to enforce \"Match title\" to match exactly, \"partial match\" if you only want to search for a part of the event title or \"description match\" if you only want to search for a part of the event description") + _(" (only services from bouquets when use \"favorites description match\")."),
-			self.searchCase: _("Select whether or not you want to enforce case correctness."),
+			self.searchCase: _("Select whether or not you want to enforce case correctness.") + "\n" + _("Attention! We recommend that you ignore case when searching in Cyrillic if the search name contains uppercase and lowercase letters."),
 			self.justplay: _("Set timer type: zap, simple record, zap+record (always zap to service before start record)."),
 			self.zap_wakeup: _("Set wakeup receiver type. This works only for zap timers."),
 			self.setEndtime: _("Set an end time for the timer. If you do, the timespan of the event might be blocked for recordings."),
@@ -784,8 +782,11 @@ class AutoTimerEditor(Screen, ConfigListScreen, AutoTimerEditorBase):
 		self.isActive_bouquets = NoSave(ConfigSelection([("0", self.isActive_bouquets_value)], default="0"))
 		self.isActive_dayofweek = NoSave(ConfigSelection([("0", self.isActive_dayofweek_value)], default="0"))
 		self.isActive_otherfilters = NoSave(ConfigSelection([("0", self.isActive_otherfilters_value)], default="0"))
-		list.append(getConfigListEntry(_("Restriction to certain services (edit in services menu)"), self.isActive_services))
-		list.append(getConfigListEntry(_("Restriction to certain bouquets (edit in services menu)"), self.isActive_bouquets))
+		if not self.isIPTV:
+			list.append(getConfigListEntry(_("Restriction to certain services (edit in services menu)"), self.isActive_services))
+			list.append(getConfigListEntry(_("Restriction to certain bouquets (edit in services menu)"), self.isActive_bouquets))
+		else:
+			list.append(getConfigListEntry(_("IPTV stream use only this service for search"), self.isActive_services))
 		list.append(getConfigListEntry(_("Restriction to certain days of week (edit in filter menu)"), self.isActive_dayofweek))
 		list.append(getConfigListEntry(_("Other filters (edit in filter menu)"), self.isActive_otherfilters))
 
@@ -813,13 +814,14 @@ class AutoTimerEditor(Screen, ConfigListScreen, AutoTimerEditorBase):
 			self.renameFilterButton()
 
 	def editServices(self):
-		self.session.openWithCallback(
-			self.editServicesCallback,
-			AutoTimerServiceEditor,
-			self.serviceRestriction,
-			self.services,
-			self.bouquets
-		)
+		if not self.isIPTV:
+			self.session.openWithCallback(
+				self.editServicesCallback,
+				AutoTimerServiceEditor,
+				self.serviceRestriction,
+				self.services,
+				self.bouquets
+			)
 
 	def editServicesCallback(self, ret):
 		if ret:
@@ -1162,9 +1164,9 @@ class AutoTimerFilterEditor(Screen, ConfigListScreen):
 			if item[1].value == "" or idx < 2:
 				continue
 			elif idx < self.lenExcludes:
-				self.excludes[self.idx].append(str(item[1].value))
+				self.excludes[self.idx].append(item[1].value)
 			else:
-				self.includes[self.idx].append(str(item[1].value))
+				self.includes[self.idx].append(item[1].value)
 
 	def refresh(self, *args, **kwargs):
 		self.saveCurrent()

@@ -5,7 +5,6 @@ from RecordTimer import AFTEREVENT
 from twisted.internet import reactor
 from twisted.web import http, resource, server
 import threading
-from six import ensure_binary, ensure_str, iteritems
 from six.moves.urllib.parse import unquote
 from ServiceReference import ServiceReference
 from Tools.XMLTools import stringToXML
@@ -22,11 +21,11 @@ class AutoTimerBaseResource(resource.Resource):
 		req.setHeader('Content-type', 'application/xhtml+xml')
 		req.setHeader('charset', 'UTF-8')
 
-		return ensure_binary("""<?xml version=\"1.0\" encoding=\"UTF-8\" ?>
+		return """<?xml version=\"1.0\" encoding=\"UTF-8\" ?>
 <e2simplexmlresult>
 	<e2state>%s</e2state>
 	<e2statetext>%s</e2statetext>
-</e2simplexmlresult>\n""" % ('True' if state else 'False', statetext))
+</e2simplexmlresult>\n""" % ('True' if state else 'False', statetext)
 
 
 class AutoTimerBackgroundThread(threading.Thread):
@@ -89,7 +88,7 @@ class AutoTimerDoParseResource(AutoTimerBaseResource):
 		req.setResponseCode(http.OK)
 		req.setHeader('Content-type', 'application/xhtml+xml')
 		req.setHeader('charset', 'UTF-8')
-		req.write("""<?xml version=\"1.0\" encoding=\"UTF-8\" ?><e2simplexmlresult>""")
+		req.write(b"""<?xml version=\"1.0\" encoding=\"UTF-8\" ?><e2simplexmlresult>""")
 		return server.NOT_DONE_YET
 
 	def connectionLost(self, err):
@@ -101,7 +100,7 @@ class AutoTimerDoParseResource(AutoTimerBaseResource):
 	<e2statetext>""" + _("Found a total of %d matching Events.\n%d Timer were added and\n%d modified,\n%d conflicts encountered,\n%d similars added.") % (ret[0], ret[1], ret[2], len(ret[4]), len(ret[5])) + "</e2statetext></e2simplexmlresult>"
 
 			def finishRequest():
-				self._req.write(ret)
+				self._req.write(ret.encode('utf-8'))
 				self._req.finish()
 			reactor.callFromThread(finishRequest)
 
@@ -111,7 +110,7 @@ class AutoTimerDoParseResource(AutoTimerBaseResource):
 	<e2statetext>""" + _("AutoTimer failed with error %s") % (str(failure),) + "</e2statetext></e2simplexmlresult>"
 
 			def finishRequest():
-				self._req.write(ret)
+				self._req.write(ret.encode('utf-8'))
 				self._req.finish()
 			reactor.callFromThread(finishRequest)
 
@@ -123,17 +122,17 @@ class AutoTimerSimulateBackgroundThread(AutoTimerBackgroundThread):
 			req.setResponseCode(http.OK)
 			req.setHeader('Content-type', 'application/xhtml+xml')
 			req.setHeader('charset', 'UTF-8')
-			reactor.callFromThread(lambda: req.write("<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<e2autotimersimulate api_version=\"" + str(API_VERSION) + "\">\n"))
+			reactor.callFromThread(lambda: req.write(("<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<e2autotimersimulate api_version=\"" + str(API_VERSION) + "\">\n").encode('utf-8')))
 
 		def finishRequest():
-			req.write('</e2autotimersimulate>')
+			req.write(b'</e2autotimersimulate>')
 			req.finish()
 
 		try:
 			autotimer.parseEPG(simulateOnly=True, callback=self.intermediateWrite)
 		except Exception as e:
 			def finishRequest():
-				req.write('<exception>' + str(e) + '</exception><|PURPOSEFULLYBROKENXML<')
+				req.write(('<exception>' + str(e) + '</exception><|PURPOSEFULLYBROKENXML<').encode('utf-8'))
 				req.finish()
 
 		if self._stillAlive:
@@ -157,7 +156,7 @@ class AutoTimerSimulateBackgroundThread(AutoTimerBackgroundThread):
 			))
 
 		if self._stillAlive:
-			reactor.callFromThread(lambda: self._req.write(''.join(returnlist)))
+			reactor.callFromThread(lambda: self._req.write(bytes(''.join(returnlist), 'utf-8')))
 
 
 class AutoTimerTestBackgroundThread(AutoTimerBackgroundThread):
@@ -167,13 +166,13 @@ class AutoTimerTestBackgroundThread(AutoTimerBackgroundThread):
 			req.setResponseCode(http.OK)
 			req.setHeader('Content-type', 'application/xhtml+xml')
 			req.setHeader('charset', 'UTF-8')
-			reactor.callFromThread(lambda: req.write("<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<e2autotimersimulate api_version=\"" + str(API_VERSION) + "\">\n"))
+			reactor.callFromThread(lambda: req.write(("<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<e2autotimersimulate api_version=\"" + str(API_VERSION) + "\">\n").encode('utf-8')))
 
 		def finishRequest():
-			req.write('</e2autotimersimulate>')
+			req.write(b'</e2autotimersimulate>')
 			req.finish()
 
-		id = req.args.get("id")
+		id = req.args.get("id".encode('utf-8'))
 		if id:
 			self.id = int(id[0])
 		else:
@@ -183,7 +182,7 @@ class AutoTimerTestBackgroundThread(AutoTimerBackgroundThread):
 			autotimer.parseEPG(simulateOnly=True, uniqueId=self.id, callback=self.intermediateWrite)
 		except Exception as e:
 			def finishRequest():
-				req.write('<exception>' + str(e) + '</exception><|PURPOSEFULLYBROKENXML<')
+				req.write(('<exception>' + str(e) + '</exception><|PURPOSEFULLYBROKENXML<').encode('utf-8'))
 				req.finish()
 
 		if self._stillAlive:
@@ -225,7 +224,7 @@ class AutoTimerTestBackgroundThread(AutoTimerBackgroundThread):
 				))
 
 		if self._stillAlive:
-			reactor.callFromThread(lambda: self._req.write(''.join(returnlist)))
+			reactor.callFromThread(lambda: self._req.write(bytes(''.join(returnlist), 'utf-8')))
 
 
 class AutoTimerSimulateResource(AutoTimerBaseResource):
@@ -242,14 +241,14 @@ class AutoTimerListAutoTimerResource(AutoTimerBaseResource):
 		except Exception as e:
 			return self.returnResult(req, False, _("Couldn't load config file!") + '\n' + str(e))
 		webif = True
-		p = req.args.get(b'webif')
+		p = req.args.get('webif')
 		if p:
-			webif = not (p[0] == b"false")
+			webif = not (p[0] == "false")
 		# show xml
 		req.setResponseCode(http.OK)
 		req.setHeader('Content-type', 'application/xhtml+xml')
 		req.setHeader('charset', 'UTF-8')
-		return ensure_binary(''.join(autotimer.getXml(webif)))
+		return ''.join(autotimer.getXml(webif))
 
 
 class AutoTimerTestResource(AutoTimerBaseResource):
@@ -265,9 +264,9 @@ class AutoTimerRemoveAutoTimerResource(AutoTimerBaseResource):
 			autotimer.remove(int(id[0]))
 			if config.plugins.autotimer.always_write_config.value:
 				autotimer.writeXml()
-			return self.returnResult(req, True, _("AutoTimer was removed"))
+			return self.returnResult(req, True, _("AutoTimer was removed")).encode('utf-8')
 		else:
-			return self.returnResult(req, False, _("missing parameter \"id\""))
+			return self.returnResult(req, False, _("missing parameter \"id\"")).encode('utf-8')
 
 
 class AutoTimerAddXMLAutoTimerResource(AutoTimerBaseResource):
@@ -276,15 +275,15 @@ class AutoTimerAddXMLAutoTimerResource(AutoTimerBaseResource):
 		req.setResponseCode(http.OK)
 		req.setHeader('Content-type', 'application/xhtml+xml;')
 		req.setHeader('charset', 'UTF-8')
-		xml = req.args.get("xml")
+		xml = req.args.get(b"xml")
 		if xml:
 			autotimer.readXml() # read current timers to ensure autotimer.timers is populated with current autotimers
-			autotimer.readXmlTimer(ensure_str(req.args[b'xml'][0]))
+			autotimer.readXmlTimer(xml[0])
 			if config.plugins.autotimer.always_write_config.value:
 				autotimer.writeXml()
-			return self.returnResult(req, True, _("AutoTimer was added successfully"))
+			return self.returnResult(req, True, _("AutoTimer was added successfully")).encode('utf-8')
 		else:
-			return self.returnResult(req, False, _("missing parameter \"xml\""))
+			return self.returnResult(req, False, _("missing parameter \"xml\"")).encode('utf-8')
 
 
 class AutoTimerUploadXMLConfigurationAutoTimerResource(AutoTimerBaseResource):
@@ -293,14 +292,14 @@ class AutoTimerUploadXMLConfigurationAutoTimerResource(AutoTimerBaseResource):
 		req.setResponseCode(http.OK)
 		req.setHeader('Content-type', 'application/xhtml+xml;')
 		req.setHeader('charset', 'UTF-8')
-		xml = req.args.get("xml")
+		xml = req.args.get(b"xml")
 		if xml:
-			autotimer.readXml(xml_string=ensure_str([b'xml'][0]))
+			autotimer.readXml(xml_string=xml[0])
 			if config.plugins.autotimer.always_write_config.value:
 				autotimer.writeXml()
-			return self.returnResult(req, True, _("AutoTimers were changed successfully"))
+			return self.returnResult(req, True, _("AutoTimers were changed successfully")).encode('utf-8')
 		else:
-			return self.returnResult(req, False, _("Not found xml config file!"))
+			return self.returnResult(req, False, _("Not found xml config file!")).encode('utf-8')
 
 
 class AutoTimerAddOrEditAutoTimerResource(AutoTimerBaseResource):
@@ -308,14 +307,8 @@ class AutoTimerAddOrEditAutoTimerResource(AutoTimerBaseResource):
 	# TODO: allow to edit defaults?
 	def render(self, req):
 		def get(name, default=None):
-			name = ensure_binary(name)
-			ret = req.args.get(name)
-			return ensure_str(ret[0]) if ret else default
-
-		def getA(name, default=None):
-			name = ensure_binary(name)
-			ret = req.args.get(name)
-			return [ensure_str(x) for x in ret] if ret else default
+			ret = req.args.get(name.encode('utf-8'))
+			return ret[0].decode() if ret else default
 
 		id = get("id")
 		timer = None
@@ -466,10 +459,10 @@ class AutoTimerAddOrEditAutoTimerResource(AutoTimerBaseResource):
 			timer.maxduration = None
 
 		# Includes
-		title = getA("title")
-		shortdescription = getA("shortdescription")
-		description = getA("description")
-		dayofweek = getA("dayofweek")
+		title = req.args.get(b"title")
+		shortdescription = req.args.get(b"shortdescription")
+		description = req.args.get(b"description")
+		dayofweek = req.args.get(b"dayofweek")
 		if title or shortdescription or description or dayofweek:
 			includes = timer.include
 			title = [unquote(x) for x in title] if title else includes[0]
@@ -487,10 +480,10 @@ class AutoTimerAddOrEditAutoTimerResource(AutoTimerBaseResource):
 			timer.include = (title, shortdescription, description, dayofweek)
 
 		# Excludes
-		title = getA("!title")
-		shortdescription = getA("!shortdescription")
-		description = getA("!description")
-		dayofweek = getA("!dayofweek")
+		title = req.args.get(b"!title")
+		shortdescription = req.args.get(b"!shortdescription")
+		description = req.args.get(b"!description")
+		dayofweek = req.args.get(b"!dayofweek")
 		if title or shortdescription or description or dayofweek:
 			excludes = timer.exclude
 			title = [unquote(x) for x in title] if title else excludes[0]
@@ -507,7 +500,7 @@ class AutoTimerAddOrEditAutoTimerResource(AutoTimerBaseResource):
 				dayofweek.remove('')
 			timer.exclude = (title, shortdescription, description, dayofweek)
 
-		tags = getA("tag")
+		tags = req.args.get(b"tag")
 		if tags:
 			while '' in tags:
 				tags.remove('')
@@ -603,16 +596,14 @@ class AutoTimerAddOrEditAutoTimerResource(AutoTimerBaseResource):
 		if config.plugins.autotimer.always_write_config.value:
 			autotimer.writeXml()
 
-		return self.returnResult(req, True, message)
+		return self.returnResult(req, True, message).encode('utf-8')
 
 
 class AutoTimerChangeSettingsResource(AutoTimerBaseResource):
 	def render(self, req):
 		for key, value in iteritems(req.args):
-			key = ensure_str(key)
-			if value:
-				value = value[0]
-				value = ensure_str(value)
+			value = value[0].decode()
+			key = key.decode()
 			if key == "autopoll":
 				config.plugins.autotimer.autopoll.value = True if value == "true" else False
 			elif key == "interval":
@@ -672,7 +663,7 @@ class AutoTimerChangeSettingsResource(AutoTimerBaseResource):
 
 		if config.plugins.autotimer.autopoll.value:
 			if plugin.autopoller is None:
-				from . AutoPoller import AutoPoller
+				from AutoPoller import AutoPoller
 				plugin.autopoller = AutoPoller()
 			plugin.autopoller.start(initial=False)
 		else:
@@ -680,7 +671,7 @@ class AutoTimerChangeSettingsResource(AutoTimerBaseResource):
 				plugin.autopoller.stop()
 				plugin.autopoller = None
 
-		return self.returnResult(req, True, _("config changed."))
+		return self.returnResult(req, True, _("config changed.")).encode('utf-8')
 
 
 class AutoTimerSettingsResource(resource.Resource):
@@ -690,7 +681,7 @@ class AutoTimerSettingsResource(resource.Resource):
 		req.setHeader('charset', 'UTF-8')
 
 		try:
-			from . Plugins.SystemPlugins.vps import Vps
+			from Plugins.SystemPlugins.vps import Vps
 		except ImportError as ie:
 			hasVps = False
 		else:
@@ -703,7 +694,7 @@ class AutoTimerSettingsResource(resource.Resource):
 		else:
 			hasSeriesPlugin = True
 
-		return ensure_binary("""<?xml version=\"1.0\" encoding=\"UTF-8\" ?>
+		return ("""<?xml version=\"1.0\" encoding=\"UTF-8\" ?>
 <e2settings>
 	<e2setting>
 		<e2settingname>config.plugins.autotimer.autopoll</e2settingname>
@@ -841,7 +832,7 @@ class AutoTimerSettingsResource(resource.Resource):
 		<e2settingname>autotimer_version</e2settingname>
 		<e2settingvalue>%s</e2settingvalue>
 	</e2setting>
-</e2settings>""") % (
+</e2settings>""" % (
 				config.plugins.autotimer.autopoll.value,
 				config.plugins.autotimer.interval.value,
 				config.plugins.autotimer.refresh.value,
@@ -876,4 +867,4 @@ class AutoTimerSettingsResource(resource.Resource):
 				CURRENT_CONFIG_VERSION,
 				API_VERSION,
 				AUTOTIMER_VERSION
-			)
+			)).encode('utf-8')

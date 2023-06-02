@@ -106,7 +106,7 @@ class AutoTimerOverview(Screen, HelpableScreen):
 
 		# Button Labels
 		self["key_red"] = StaticText(_("Timers list"))
-		self["key_green"] = StaticText(_("Save and search"))
+		self["key_green"] = StaticText(_("Save and search now"))
 		self["key_yellow"] = StaticText(_("Delete"))
 		self["key_blue"] = StaticText(_("Add"))
 
@@ -193,7 +193,7 @@ class AutoTimerOverview(Screen, HelpableScreen):
 
 	def showFilterTxt(self):
 		if hasSeriesPlugin:
-			from . AutoTimerFilterList import AutoTimerFilterListOverview
+			from AutoTimerFilterList import AutoTimerFilterListOverview
 			self.session.open(AutoTimerFilterListOverview)
 
 	def timer_menu(self):
@@ -273,7 +273,6 @@ class AutoTimerOverview(Screen, HelpableScreen):
 				list=list,
 				selection=0
 			)
-			self.close(self.session)
 
 	def removeCallback(self, answer):
 		cur = self["entries"].getCurrent()

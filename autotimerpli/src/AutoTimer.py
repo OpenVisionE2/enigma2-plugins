@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 # Plugins Config
 from xml.etree.cElementTree import parse as cet_parse, fromstring as cet_fromstring
 import os
@@ -30,19 +29,13 @@ from enigma import eEPGCache, eServiceReference, eServiceCenter, iServiceInforma
 from twisted.internet import reactor, defer
 from twisted.python import failure
 from threading import currentThread
-try:
-	import Queue
-except:
-	import queue as Queue
+import queue as Queue
 
 # AutoTimer Component
 from .AutoTimerComponent import preferredAutoTimerComponent
 
 from itertools import chain
-try:
-	from collections import defaultdict
-except ImportError:
-	from collections.abc import defaultdict
+from collections import defaultdict
 from difflib import SequenceMatcher
 from operator import itemgetter
 
@@ -64,7 +57,7 @@ try:
 except:
 	hasVps = False
 
-from . import config, range, itervalues
+from . import config, xrange, itervalues
 
 CONFLICTINGDOUBLEID = 'AutoTimerConflictingDoubleTimersNotification'
 addNewTimers = []
@@ -243,8 +236,7 @@ class AutoTimer:
 		return buildConfig(self.defaultTimer, self.timers, webif)
 
 	def writeXml(self):
-		from six import PY3
-		file = open(XML_CONFIG, 'w', encoding="UTF-8") if PY3 else open(XML_CONFIG, 'w')
+		file = open(XML_CONFIG, 'w')
 		file.writelines(buildConfig(self.defaultTimer, self.timers))
 		file.close()
 
@@ -331,17 +323,19 @@ class AutoTimer:
 			except UnicodeDecodeError:
 				pass
 
-		if timer.searchType == "favoritedesc":
+		self.isIPTV = bool([service for service in timer.services if ":http" in service])
+
+		if timer.searchType == "favoritedesc" or self.isIPTV:
 			epgmatches = []
 
 			casesensitive = timer.searchCase == "sensitive"
 			if not casesensitive:
 				match = match.lower()
 
-			test = []
+			servicesList = []
 			if timer.services or timer.bouquets:
 				if timer.services:
-					test = [(service, 0, -1, -1) for service in timer.services]
+					servicesList = [service for service in timer.services]
 				if timer.bouquets:
 					for bouquet in timer.bouquets:
 						services = serviceHandler.list(eServiceReference(bouquet))
@@ -350,9 +344,11 @@ class AutoTimer:
 								service = services.getNext()
 								if not service.valid():
 									break
-								playable = not (service.flags & (eServiceReference.isMarker | eServiceReference.isDirectory)) or (service.flags & eServiceReference.isNumberedMarker)
+								playable = not (service.flags & (eServiceReference.isMarker | eServiceReference.isDirectory | eServiceReference.isNumberedMarker))
 								if playable:
-									test.append((service.toString(), 0, -1, -1))
+									sref = service.toString()
+									if sref not in servicesList:
+										servicesList.append(sref)
 			else: # Get all bouquets
 				bouquetlist = []
 				if config.usage.multibouquet.value:
@@ -373,12 +369,12 @@ class AutoTimer:
 					refstr = '%s FROM BOUQUET "userbouquet.favourites.tv" ORDER BY bouquet' % (service_types_tv)
 					bouquetroot = eServiceReference(refstr)
 					info = serviceHandler.info(bouquetroot)
-					if info:
+					if info and bouquetroot.valid() and not bouquetroot.flags & eServiceReference.isInvisible:
 						bouquetlist.append(bouquetroot)
 				if bouquetlist:
 					for bouquet in bouquetlist:
 						if not bouquet.valid():
-							break
+							continue
 						if bouquet.flags & eServiceReference.isDirectory:
 							services = serviceHandler.list(bouquet)
 							if services:
@@ -386,20 +382,37 @@ class AutoTimer:
 									service = services.getNext()
 									if not service.valid():
 										break
-									playable = not (service.flags & (eServiceReference.isMarker | eServiceReference.isDirectory)) or (service.flags & eServiceReference.isNumberedMarker)
+									playable = not (service.flags & (eServiceReference.isMarker | eServiceReference.isDirectory | eServiceReference.isNumberedMarker))
 									if playable:
-										test.append((service.toString(), 0, -1, -1))
+										sref = service.toString()
+										if sref not in servicesList:
+											servicesList.append(sref)
 
-			if test:
+			if servicesList:
 				# Get all events
 				#  eEPGCache.lookupEvent( [ format of the returned tuples, ( service, 0 = event intersects given start_time, start_time -1 for now_time), ] )
-				test.insert(0, 'RITBDSE')
-				allevents = epgcache.lookupEvent(test) or []
+				allevents = []
+				for sref in servicesList:
+					lookup = ["RITBDSE", (sref, 0, -1, -1)]
+					try:
+						event = epgcache.lookupEvent(lookup) or []
+					except Exception as e:
+						print("[AutoTimer] wrong event", e)
+					else:
+						allevents += event
 
 				# Filter events
 				for serviceref, eit, name, begin, duration, shortdesc, extdesc in allevents:
-					if match in (shortdesc if casesensitive else shortdesc.lower()) or match in (extdesc if casesensitive else extdesc.lower()) or match in (name if casesensitive else name.lower()):
-						epgmatches.append((serviceref, eit, name, begin, duration, shortdesc, extdesc))
+					if timer.searchType == "favoritedesc":
+						if match in (shortdesc if casesensitive else shortdesc.lower()) or match in (extdesc if casesensitive else extdesc.lower()) or match in (name if casesensitive else name.lower()):
+							epgmatches.append((serviceref, eit, name, begin, duration, shortdesc, extdesc))
+					else: # IPTV streams
+						if timer.searchType == "exact" and match == (name if casesensitive else name.lower()) or \
+							timer.searchType == "partial" and match in (name if casesensitive else name.lower()) or \
+							timer.searchType == "start" and (name if casesensitive else name.lower()).startswith(match) or \
+							timer.searchType == "end" and (name if casesensitive else name.lower()).endswith(match) or \
+							timer.searchType == "description" and (match in (shortdesc if casesensitive else shortdesc.lower()) or match in (extdesc if casesensitive else extdesc.lower())):
+							epgmatches.append((serviceref, eit, name, begin, duration, shortdesc, extdesc))
 
 		else:
 			# Search EPG, default to empty list
@@ -450,6 +463,11 @@ class AutoTimer:
 			#	i = evt.getLinkageService(eserviceref, n-1)
 			#	serviceref = i.toString()
 			#	doLog("[AutoTimer] Serviceref2 %s" % serviceref)
+
+			if end < time():
+				doLog("[AutoTimer] Skipping expired timer")
+				skipped.append((name, begin, end, serviceref, timer.name, getLog()))
+				continue
 
 			# If event starts in less than 60 seconds skip it
 			if begin < time() + 60:
@@ -651,7 +669,7 @@ class AutoTimer:
 					if not rtimer.disabled:
 						if self.checkDoubleTimers(timer, name, rtimer.name, begin, rtimer.begin, end, rtimer.end, serviceref, rtimer.service_ref.ref.toString(), enable_multiple_timer):
 							oldExists = True
-							print("[AutoTimer] We found a timer with same start time, skipping event")
+							doLog("[AutoTimer] We found a timer with same start time, skipping event")
 							break
 						if timer.avoidDuplicateDescription >= 2:
 							if self.checkSimilarity(timer, name, rtimer.name, shortdesc, rtimer.description, extdesc, rtimer.extdesc):
@@ -843,7 +861,7 @@ class AutoTimer:
 						# We start our search right after our actual index
 						# Attention we have to use a copy of the list, because we have to append the previous older matches
 						lepgm = len(epgmatches)
-						for i in range(lepgm):
+						for i in xrange(lepgm):
 							servicerefS, eitS, nameS, beginS, durationS, shortdescS, extdescS = epgmatches[(i + idx + 1) % lepgm]
 							if self.checkSimilarity(timer, name, nameS, shortdesc, shortdescS, extdesc, extdescS, force=True):
 								# Check if the similar is already known
@@ -967,7 +985,7 @@ class AutoTimer:
 					del conflicting[:]
 					del similars[:]
 					del skipped[:]
-				if callback != None:
+				else:
 					new += tup[0]
 					modified += tup[1]
 

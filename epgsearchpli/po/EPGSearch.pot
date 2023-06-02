@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-22 13:32+0330\n"
+"POT-Creation-Date: 2023-05-12 15:53+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -80,7 +80,13 @@ msgstr ""
 msgid "EPGSearch"
 msgstr ""
 
+msgid "EPGSearch - History"
+msgstr ""
+
 msgid "EPGSearch Setup"
+msgstr ""
+
+msgid "Edit & search"
 msgstr ""
 
 msgid "Encoding Search to EPG"
@@ -119,6 +125,12 @@ msgstr ""
 msgid "Import from Timer"
 msgstr ""
 
+msgid "Include IPTV services"
+msgstr ""
+
+msgid "Include IPTV services in search, in some cases slows down the searching."
+msgstr ""
+
 msgid "Length of History"
 msgstr ""
 
@@ -126,6 +138,9 @@ msgid "List of history is cleared !"
 msgstr ""
 
 msgid "Lookup in TMBD"
+msgstr ""
+
+msgid "Modify searched text"
 msgstr ""
 
 msgid "New Search"
@@ -179,13 +194,13 @@ msgstr ""
 msgid "Select channel"
 msgstr ""
 
-msgid "Select text to search for"
+msgid "Select item for search and press 'OK' or edit item with yellow button."
 msgstr ""
 
 msgid "Select type for filter search. Press button P +/- for show/hide filter in description after search."
 msgstr ""
 
-msgid "Select type for search, \"partial match\" for the most extensive search."
+msgid "Select type for search, \"partial match\" for the most extensive search, \"partial description\" for the most description search."
 msgstr ""
 
 msgid "Select type: 'Search and Select channel' or 'Search'."
@@ -224,6 +239,9 @@ msgstr ""
 msgid "only Search"
 msgstr ""
 
+msgid "partial description"
+msgstr ""
+
 msgid "partial match"
 msgstr ""
 
@@ -231,6 +249,9 @@ msgid "search EPG"
 msgstr ""
 
 msgid "search EPG..."
+msgstr ""
+
+msgid "title ends with"
 msgstr ""
 
 msgid "title starts with"

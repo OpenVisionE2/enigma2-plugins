@@ -1,3 +1,3 @@
 PLUGIN = EPGSearch
-CATEGORY = Extensions
-include $(top_srcdir)/Rules_noxml-po.mak
+LANGS = ar cs de es fa fi fr it lt lv nl ru sk sl sr sv tr 
+include $(top_srcdir)/Rules-po.mak

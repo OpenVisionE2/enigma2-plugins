@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Enigma 2 EPGSearch Plugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-23 15:06+0330\n"
+"POT-Creation-Date: 2023-05-12 14:32+0200\n"
 "PO-Revision-Date: 2014-11-22 20:46+0100\n"
 "Last-Translator: ims <ims21@users.sourceforge.net>\n"
 "Language-Team: www.linux-sprejemniki.info\n"
@@ -78,8 +78,16 @@ msgstr "EPG iskanje"
 msgid "EPGSearch"
 msgstr "EPG iskanje"
 
+#, fuzzy
+msgid "EPGSearch - History"
+msgstr "Nastavitve"
+
 msgid "EPGSearch Setup"
 msgstr "Nastavitve"
+
+#, fuzzy
+msgid "Edit & search"
+msgstr "EPG iskanje"
 
 #, fuzzy
 msgid "Encoding Search to EPG"
@@ -119,6 +127,12 @@ msgstr "Uvoz iz EPG sistema"
 msgid "Import from Timer"
 msgstr "Uvoz iz seznama časovnikov"
 
+msgid "Include IPTV services"
+msgstr ""
+
+msgid "Include IPTV services in search, in some cases slows down the searching."
+msgstr ""
+
 msgid "Length of History"
 msgstr "Dolžina zgodovine"
 
@@ -126,6 +140,9 @@ msgid "List of history is cleared !"
 msgstr ""
 
 msgid "Lookup in TMBD"
+msgstr ""
+
+msgid "Modify searched text"
 msgstr ""
 
 msgid "New Search"
@@ -182,13 +199,13 @@ msgstr ""
 msgid "Select channel"
 msgstr ""
 
-msgid "Select text to search for"
-msgstr "Izberite besedilo za potrebe iskanja"
+msgid "Select item for search and press 'OK' or edit item with yellow button."
+msgstr ""
 
 msgid "Select type for filter search. Press button P +/- for show/hide filter in description after search."
 msgstr ""
 
-msgid "Select type for search, \"partial match\" for the most extensive search."
+msgid "Select type for search, \"partial match\" for the most extensive search, \"partial description\" for the most description search."
 msgstr ""
 
 msgid "Select type: 'Search and Select channel' or 'Search'."
@@ -228,6 +245,9 @@ msgstr ""
 msgid "only Search"
 msgstr "Iskanje"
 
+msgid "partial description"
+msgstr ""
+
 msgid "partial match"
 msgstr ""
 
@@ -237,6 +257,9 @@ msgstr "EPG iskanje"
 
 msgid "search EPG..."
 msgstr "Iskanje po EPG sistemu"
+
+msgid "title ends with"
+msgstr ""
 
 msgid "title starts with"
 msgstr ""

@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 from Components.Language import language
-from Tools.Directories import resolveFilename, SCOPE_PLUGINS
+from Tools.Directories import resolveFilename, SCOPE_PLUGINS, SCOPE_LANGUAGE
 from os import environ as os_environ
 import gettext
-from six.moves import range
 
 # Config
 from Components.config import config, ConfigSubsection, ConfigOnOff, \
@@ -21,14 +20,6 @@ def _(txt):
 	if t == txt:
 		t = gettext.gettext(txt)
 	return t
-
-
-def removeBad(val):
-	from six import PY3
-	if PY3:
-		return val.replace('\x86', '').replace('\x87', '')
-	else:
-		return val.replace('\xc2\x86', '').replace('\xc2\x87', '')
 
 
 localeInit()
@@ -126,7 +117,13 @@ config.plugins.autotimer.max_search_events_match = ConfigSelection(choices=[
 )
 config.plugins.autotimer.clear_memory = ConfigYesNo(default=False)
 
-iteritems = lambda d: d.items()
-itervalues = lambda d: d.values()
+try:
+	xrange = xrange
+	iteritems = lambda d: d.iteritems()
+	itervalues = lambda d: d.itervalues()
+except NameError:
+	xrange = range
+	iteritems = lambda d: d.items()
+	itervalues = lambda d: d.values()
 
-__all__ = ['_', 'config', 'iteritems', 'itervalues', 'range']
+__all__ = ['_', 'config', 'iteritems', 'itervalues', 'xrange']

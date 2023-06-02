@@ -105,8 +105,7 @@ def doLog(*args):
 		log += "&#13;&#10;" + strargs
 
 	global logger
-	from logging import StreamHandler
-	if logger and hasattr(StreamHandler, "write"):
+	if logger:
 		logger.info(strargs)
 
 	elif config.plugins.autotimer.log_shell.value:

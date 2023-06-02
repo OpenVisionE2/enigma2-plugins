@@ -1,14 +1,10 @@
 # -*- coding: utf-8 -*-
-
-
-from . import _
-from enigma import eEPGCache, eServiceReference, eServiceCenter, RT_HALIGN_LEFT, RT_HALIGN_RIGHT, eRect, getDesktop, \
-		RT_HALIGN_CENTER, RT_VALIGN_CENTER, RT_WRAP, eListboxPythonMultiContent, gFont, ePicLoad
+from enigma import eEPGCache, eServiceReference, eServiceCenter, RT_HALIGN_LEFT, RT_HALIGN_RIGHT, \
+		RT_VALIGN_CENTER, eListboxPythonMultiContent, gFont, ePicLoad
 from Tools.Directories import resolveFilename, SCOPE_GUISKIN, fileExists, SCOPE_PLUGINS, isPluginInstalled
 from Tools.LoadPixmap import LoadPixmap
 from Tools.Alternatives import GetWithAlternative
 from ServiceReference import ServiceReference
-from .EPGSearchSetup import EPGSearchSetup
 from Screens.ChannelSelection import SimpleChannelSelection
 from Screens.ChoiceBox import ChoiceBox
 from Screens.EpgSelection import EPGSelection
@@ -22,14 +18,19 @@ from Components.EpgList import EPGList, EPG_TYPE_SINGLE, EPG_TYPE_MULTI, Rect
 from Components.TimerList import TimerList
 from Components.Sources.ServiceEvent import ServiceEvent
 from Components.Sources.Event import Event
+from Components.Label import Label
+from Components.Sources.List import List
 
 from Components.GUIComponent import GUIComponent
 from skin import parseFont
 
+from .EPGSearchSetup import EPGSearchSetup
+from . import _
+
 try:
 	from Components.Renderer.Picon import getPiconName
 	getPiconsName = True
-except:
+except ImportError:
 	getPiconsName = False
 from time import localtime, time
 from operator import itemgetter
@@ -37,13 +38,14 @@ from operator import itemgetter
 typeMap = {
 	"exact": eEPGCache.EXAKT_TITLE_SEARCH,
 	"partial": eEPGCache.PARTIAL_TITLE_SEARCH,
-	"start": eEPGCache.START_TITLE_SEARCH
+	"partialdes": eEPGCache.PARTIAL_DESCRIPTION_SEARCH,
+	"start": eEPGCache.START_TITLE_SEARCH,
+	"end": eEPGCache.END_TITLE_SEARCH
 }
 
 caseMap = {
 	"sensitive": eEPGCache.CASE_CHECK,
-	"insensitive": eEPGCache.NO_CASE_CHECK
-}
+	"insensitive": eEPGCache.NO_CASE_CHECK}
 
 
 def GetTypeMap():
@@ -56,32 +58,31 @@ def GetCaseMap():
 	return caseMap.get(search_case, eEPGCache.NO_CASE_CHECK)
 
 
-# Partnerbox installed and icons in epglist enabled?
 try:
 	from Plugins.Extensions.Partnerbox.PartnerboxEPGList import \
 			isInRemoteTimer, getRemoteClockPixmap
 	from Plugins.Extensions.Partnerbox.plugin import \
 			showPartnerboxIconsinEPGList
 	PartnerBoxIconsEnabled = showPartnerboxIconsinEPGList()
-except ImportError as e:
+except ImportError:
 	PartnerBoxIconsEnabled = False
 
 try:
 	from Plugins.Extensions.Partnerbox.PartnerboxEPGList import getRemoteClockZapPixmap
 	from Plugins.Extensions.Partnerbox.plugin import showPartnerboxZapRepIconsinEPGList
 	PartnerBoxZapRepIcons = showPartnerboxZapRepIconsinEPGList()
-except ImportError as e:
+except ImportError:
 	PartnerBoxZapRepIcons = False
 
-# AutoTimer installed?
 try:
 	from Plugins.Extensions.AutoTimer.AutoTimerEditor import \
 			addAutotimerFromEvent, addAutotimerFromSearchString
 	autoTimerAvailable = True
-except ImportError as e:
+except ImportError:
 	autoTimerAvailable = False
 
-# Modified EPGSearchList with support for PartnerBox
+BouquetChannelListList = None
+IptvBouquetChannelListList = None
 
 
 class EPGSearchList(EPGList):
@@ -154,33 +155,6 @@ class EPGSearchList(EPGList):
 		refstr = ':'.join(service.split(':')[:11])
 		for x in self.timer.timer_list:
 			check = ':'.join(x.service_ref.ref.toString().split(':')[:11]) == refstr
-			if not check:
-				sref = x.service_ref.ref
-				parent_sid = sref.getUnsignedData(5)
-				parent_tsid = sref.getUnsignedData(6)
-				if parent_sid and parent_tsid:
-					# check for subservice
-					sid = sref.getUnsignedData(1)
-					tsid = sref.getUnsignedData(2)
-					sref.setUnsignedData(1, parent_sid)
-					sref.setUnsignedData(2, parent_tsid)
-					sref.setUnsignedData(5, 0)
-					sref.setUnsignedData(6, 0)
-					check = sref.toCompareString() == refstr
-					num = 0
-					if check:
-						check = False
-						event = eEPGCache.getInstance().lookupEventId(sref, eventid)
-						num = event and event.getNumOfLinkageServices() or 0
-					sref.setUnsignedData(1, sid)
-					sref.setUnsignedData(2, tsid)
-					sref.setUnsignedData(5, parent_sid)
-					sref.setUnsignedData(6, parent_tsid)
-					for cnt in range(num):
-						subservice = event.getLinkageService(sref, cnt)
-						if sref.toCompareString() == subservice.toCompareString():
-							check = True
-							break
 			if check:
 				timer_end = x.end
 				timer_begin = x.begin
@@ -192,7 +166,7 @@ class EPGSearchList(EPGList):
 						timer_begin = begin
 				if x.justplay:
 					type_offset = 5
-					if x.pipzap:
+					if x.pipzap and not x.repeated:
 						type_offset = 30
 					if (timer_end - x.begin) <= 1:
 						timer_end += 60
@@ -307,10 +281,10 @@ class EPGSearchList(EPGList):
 							time_match = end - begin
 							type = type_offset + 2
 				if time_match:
-					#if type in (2,7,12):
-						# When full recording do not look further
-					#	returnValue = (time_match, [type])
-					#	break
+					# if type in (2,7,12):
+					# When full recording do not look further
+					# returnValue = (time_match, [type])
+					# break
 					if returnValue:
 						if type not in returnValue[1]:
 							returnValue[1].append(type)
@@ -341,7 +315,7 @@ class EPGSearchList(EPGList):
 					prefix = ""
 				remaining = _(" (%s%d min)") % (prefix, total)
 		t = localtime(beginTime)
-		serviceref = ServiceReference(service) # for Servicename
+		serviceref = ServiceReference(service)  # for Servicename
 		if config.plugins.epgsearch.picons.value:
 			if getPiconsName:
 				picon = getPiconName(service)
@@ -353,20 +327,20 @@ class EPGSearchList(EPGList):
 				png = self.picon.getData()
 				dy = int((self.height - self.piconSize[1]) / 2.)
 				res = [
-					None, # no private data needed
+					None,  # no private data needed
 					(eListboxPythonMultiContent.TYPE_PIXMAP_ALPHATEST, r1.left(), r1.top() + dy, self.piconSize[0], self.piconSize[1], png),
 					(eListboxPythonMultiContent.TYPE_TEXT, r1.left() + dx, r1.top(), r1.width(), r1.height(), 0, RT_HALIGN_RIGHT, self.days[t[6]]),
 					(eListboxPythonMultiContent.TYPE_TEXT, r2.left() + dx, r2.top(), r2.width(), r1.height(), 1, RT_HALIGN_RIGHT | RT_VALIGN_CENTER, "%02d.%02d, %02d:%02d" % (t[2], t[1], t[3], t[4]))
 				]
 			else:
 				res = [
-					None, # no private data needed
+					None,  # no private data needed
 					(eListboxPythonMultiContent.TYPE_TEXT, r1.left() + dx, r1.top(), r1.width(), r1.height(), 0, RT_HALIGN_RIGHT, self.days[t[6]]),
 					(eListboxPythonMultiContent.TYPE_TEXT, r2.left() + dx, r2.top(), r2.width(), r1.height(), 1, RT_HALIGN_RIGHT | RT_VALIGN_CENTER, "%02d.%02d, %02d:%02d" % (t[2], t[1], t[3], t[4]))
 				]
 		else:
 			res = [
-				None, # no private data needed
+				None,  # no private data needed
 				(eListboxPythonMultiContent.TYPE_TEXT, r1.left(), r1.top(), r1.width(), r1.height(), 0, RT_HALIGN_RIGHT, self.days[t[6]]),
 				(eListboxPythonMultiContent.TYPE_TEXT, r2.left(), r2.top(), r2.width(), r1.height(), 1, RT_HALIGN_RIGHT | RT_VALIGN_CENTER, "%02d.%02d, %02d:%02d" % (t[2], t[1], t[3], t[4]))
 			]
@@ -399,8 +373,8 @@ class EPGSearchList(EPGList):
 						res.append((eListboxPythonMultiContent.TYPE_TEXT, r3.left() + (i + 1) * self.space + dx + self.nextIcon, r3.top(), r3.width(), r3.height(), 0, RT_HALIGN_LEFT | RT_VALIGN_CENTER, serviceref.getServiceName() + ": " + EventName + remaining))
 					else:
 						res.extend((
-						(eListboxPythonMultiContent.TYPE_PIXMAP_ALPHATEST, r3.left() + dx, r3.top() + self.dy, self.iconSize, self.iconSize, clock_pic),
-						(eListboxPythonMultiContent.TYPE_TEXT, r3.left() + self.pboxDistance + self.nextIcon, r3.top(), r3.width(), r3.height(), 0, RT_HALIGN_LEFT | RT_VALIGN_CENTER, serviceref.getServiceName() + ": " + EventName + remaining)))
+							(eListboxPythonMultiContent.TYPE_PIXMAP_ALPHATEST, r3.left() + dx, r3.top() + self.dy, self.iconSize, self.iconSize, clock_pic),
+							(eListboxPythonMultiContent.TYPE_TEXT, r3.left() + self.pboxDistance + self.nextIcon, r3.top(), r3.width(), r3.height(), 0, RT_HALIGN_LEFT | RT_VALIGN_CENTER, serviceref.getServiceName() + ": " + EventName + remaining)))
 			else:
 				res.append((eListboxPythonMultiContent.TYPE_TEXT, r3.left() + dx, r3.top(), r3.width(), r3.height(), 0, RT_HALIGN_LEFT | RT_VALIGN_CENTER, serviceref.getServiceName() + ": " + EventName + remaining))
 		else:
@@ -432,8 +406,8 @@ class EPGSearchList(EPGList):
 						res.append((eListboxPythonMultiContent.TYPE_TEXT, r3.left() + (i + 1) * self.space + self.nextIcon, r3.top(), r3.width(), r3.height(), 0, RT_HALIGN_LEFT | RT_VALIGN_CENTER, serviceref.getServiceName() + ": " + EventName + remaining))
 					else:
 						res.extend((
-						(eListboxPythonMultiContent.TYPE_PIXMAP_ALPHATEST, r3.left(), r3.top() + self.dy, self.iconSize, self.iconSize, clock_pic),
-						(eListboxPythonMultiContent.TYPE_TEXT, r3.left() + self.space + self.nextIcon, r3.top(), r3.width(), r3.height(), 0, RT_HALIGN_LEFT | RT_VALIGN_CENTER, serviceref.getServiceName() + ": " + EventName + remaining)))
+							(eListboxPythonMultiContent.TYPE_PIXMAP_ALPHATEST, r3.left(), r3.top() + self.dy, self.iconSize, self.iconSize, clock_pic),
+							(eListboxPythonMultiContent.TYPE_TEXT, r3.left() + self.space + self.nextIcon, r3.top(), r3.width(), r3.height(), 0, RT_HALIGN_LEFT | RT_VALIGN_CENTER, serviceref.getServiceName() + ": " + EventName + remaining)))
 			else:
 				res.append((eListboxPythonMultiContent.TYPE_TEXT, r3.left(), r3.top(), r3.width(), r3.height(), 0, RT_HALIGN_LEFT | RT_VALIGN_CENTER, serviceref.getServiceName() + ": " + EventName + remaining))
 		return res
@@ -483,7 +457,7 @@ class EPGSearchList(EPGList):
 				xpos += w
 				w = width / 10 * 5
 				self.descr_rect = Rect(xpos, 0, width, height)
-		else: # EPG_TYPE_SIMILAR
+		else:  # EPG_TYPE_SIMILAR
 			if self.skinColumns:
 				x = 0
 				self.weekday_rect = Rect(0, 0, self.gap(self.col[0]), height)
@@ -577,8 +551,8 @@ class EPGSearch(EPGSelection):
 # begin stripped copy of EPGSelection.__init__
 		self.bouquetChangeCB = None
 		self.serviceChangeCB = None
-		self.ask_time = -1 #now
-		self["key_red"] = Button("")
+		self.ask_time = -1  # now
+		self["key_red"] = Button(_("Cancel"))
 		self.closeRecursive = False
 		self.saved_title = None
 		self["Service"] = ServiceEvent()
@@ -592,20 +566,20 @@ class EPGSearch(EPGSelection):
 		self.key_red_choice = self.EMPTY
 		self["list"] = EPGSearchList(type=self.type, selChangedCB=self.onSelectionChanged, timer=session.nav.RecordTimer)
 		self["actions"] = ActionMap(["EPGSelectActions", "OkCancelActions", "MenuActions"],
-			{
-				"menu": self.menu,
-				"cancel": self.closeScreen,
-				"ok": self.eventSelected,
-				"timerAdd": self.timerAdd,
-				"yellow": self.yellowButtonPressed,
-				"blue": self.blueButtonPressed,
-				"info": self.infoKeyPressed,
-				"red": self.zapToselect, # needed --> Partnerbox
-				"nextBouquet": self.nextBouquet, # just used in multi epg yet
-				"prevBouquet": self.prevBouquet, # just used in multi epg yet
-				"nextService": self.nextService, # just used in single epg yet
-				"prevService": self.prevService, # just used in single epg yet
-			})
+		{
+			"menu": self.menu,
+			"cancel": self.closeScreen,
+			"ok": self.eventSelected,
+			"timerAdd": self.timerAdd,
+			"yellow": self.yellowButtonPressed,
+			"blue": self.blueButtonPressed,
+			"info": self.infoKeyPressed,
+			"red": self.key_red_pressed,
+			"nextBouquet": self.nextBouquet,  # just used in multi epg yet
+			"prevBouquet": self.prevBouquet,  # just used in multi epg yet
+			"nextService": self.nextService,  # just used in single epg yet
+			"prevService": self.prevService,  # just used in single epg yet
+		})
 
 		self["actions"].csel = self
 		self.onLayoutFinish.append(self.onCreate)
@@ -627,7 +601,7 @@ class EPGSearch(EPGSelection):
 		# Hook up actions for yttrailer if installed
 		try:
 			from Plugins.Extensions.YTTrailer.plugin import baseEPGSelection__init__
-		except ImportError as ie:
+		except ImportError:
 			pass
 		else:
 			if baseEPGSelection__init__ is not None:
@@ -730,16 +704,22 @@ class EPGSearch(EPGSelection):
 			if self.isTMBD:
 				self["key_red"].setText(_("Choice list"))
 
+	def key_red_pressed(self):
+		if not PartnerBoxIconsEnabled and not self.isTMBD:
+			self.closeScreen()
+		else:
+			self.zapToselect()
+
 	def zapToselect(self):
 		if not PartnerBoxIconsEnabled:
 			self.runTMBD()
 		else:
 			if self.select:
-				list = [
-				(_("Lookup in TMBD"), "runtmbd"),
-				(_("Partnerbox Entries"), "partnerbox"),
+				slist = [
+					(_("Lookup in TMBD"), "runtmbd"),
+					(_("Partnerbox Entries"), "partnerbox"),
 				]
-				dlg = self.session.openWithCallback(self.RedbuttonCallback, ChoiceBox, title=_("Select action:"), list=list)
+				dlg = self.session.openWithCallback(self.RedbuttonCallback, ChoiceBox, title=_("Select action:"), list=slist)
 				dlg.setTitle(_("Choice list RED Button"))
 			else:
 				self.zapTo()
@@ -761,7 +741,7 @@ class EPGSearch(EPGSelection):
 				pass
 
 	def runTMBD(self):
-		if isPluginInstalled("TMBD"):
+		if self.isTMBD:
 			from Plugins.Extensions.TMBD.plugin import TMBD
 			cur = self["list"].getCurrent()
 			if cur[0] is not None:
@@ -816,7 +796,7 @@ class EPGSearch(EPGSelection):
 				(_("Save search as AutoTimer"), self.addAutoTimer),
 				(_("Export selected as AutoTimer"), self.exportAutoTimer),
 			))
-		if isPluginInstalled("TMBD"):
+		if self.isTMBD:
 			options.append((_("Search for TMDb info"), self.opentmdb))
 		if isPluginInstalled("IMDb"):
 			options.append((_("Open selected in IMDb"), self.openImdb))
@@ -881,14 +861,8 @@ class EPGSearch(EPGSelection):
 		else:
 			# Fetch match strings
 			# XXX: we could use the timer title as description
-			options = [(x.match, x.match) for x in autotimer.getTimerList()]
-
-			self.session.openWithCallback(
-				self.searchEPGWrapper,
-				ChoiceBox,
-				title=_("Select text to search for"),
-				list=options
-			)
+			options = [x.match for x in autotimer.getTimerList()]
+			self.session.openWithCallback(self.searchEPGWrapper, EPGSearchHistory, options)
 		finally:
 			# Remove instance if there wasn't one before
 			if removeInstance:
@@ -918,7 +892,7 @@ class EPGSearch(EPGSelection):
 		try:
 			from Plugins.Extensions.IMDb.plugin import IMDB
 			self.session.open(IMDB, cur[0].getEventName())
-		except ImportError as ie:
+		except ImportError:
 			pass
 
 	def zapToSelectedService(self):
@@ -929,12 +903,12 @@ class EPGSearch(EPGSelection):
 				from Screens.InfoBar import InfoBar
 				InfoBarInstance = InfoBar.instance
 				if InfoBarInstance is not None:
-						InfoBarInstance.servicelist.clearPath()
-						InfoBarInstance.servicelist.setRoot(serviceref.ref)
-						InfoBarInstance.servicelist.enterPath(serviceref.ref)
-						InfoBarInstance.servicelist.saveRoot()
-						InfoBarInstance.servicelist.saveChannel(serviceref.ref)
-						InfoBarInstance.servicelist.addToHistory(serviceref.ref)
+					InfoBarInstance.servicelist.clearPath()
+					InfoBarInstance.servicelist.setRoot(serviceref.ref)
+					InfoBarInstance.servicelist.enterPath(serviceref.ref)
+					InfoBarInstance.servicelist.saveRoot()
+					InfoBarInstance.servicelist.saveChannel(serviceref.ref)
+					InfoBarInstance.servicelist.addToHistory(serviceref.ref)
 				self.session.nav.playService(serviceref.ref)
 			except:
 				pass
@@ -946,7 +920,7 @@ class EPGSearch(EPGSelection):
 			try:
 				from Plugins.Extensions.TMDb.plugin import TMDbMain
 				self.session.open(TMDbMain, event.getEventName())
-			except ImportError as ie:
+			except ImportError:
 				pass
 
 	def ClearHistory(self):
@@ -959,15 +933,9 @@ class EPGSearch(EPGSelection):
 		self.session.open(EPGSearchSetup)
 
 	def blueButtonPressed(self):
-		options = [(x, x) for x in config.plugins.epgsearch.history.value]
-
-		if options:
-			self.session.openWithCallback(
-				self.searchEPGWrapper,
-				ChoiceBox,
-				title=_("Select text to search for"),
-				list=options
-			)
+		if len(config.plugins.epgsearch.history.value):
+			history = [x for x in config.plugins.epgsearch.history.value]
+			self.session.openWithCallback(self.searchEPGWrapper, EPGSearchHistory, history)
 		else:
 			self.session.open(
 				MessageBox,
@@ -976,11 +944,12 @@ class EPGSearch(EPGSelection):
 				timeout=3
 			)
 
-	def searchEPGWrapper(self, ret):
-		if ret:
-			self.searchEPG(ret[1])
+	def searchEPGWrapper(self, item):
+		if item:
+			self.searchEPG(item)
 
 	def searchEPG(self, searchString=None, searchSave=True):
+		global BouquetChannelListList, IptvBouquetChannelListList
 		if searchString:
 			self.do_filter = None
 			self.eventid = None
@@ -1010,12 +979,45 @@ class EPGSearch(EPGSelection):
 					pass
 
 			# Search EPG, default to empty list
-			epgcache = eEPGCache.getInstance() # XXX: the EPGList also keeps an instance of the cache but we better make sure that we get what we want :-)
-			ret = epgcache.search(('RIBDT', 1500, GetTypeMap(), searchString, GetCaseMap())) or []
-			ret.sort(key=itemgetter(2)) # sort by time
-			if config.plugins.epgsearch.bouquet.value:
-				ret = self.sortEPGList(ret) # sort only user bouquets
-
+			epgcache = eEPGCache.getInstance()  # XXX: the EPGList also keeps an instance of the cache but we better make sure that we get what we want :-)
+			epgmatches = []
+			if IptvBouquetChannelListList == None:
+				BouquetChannelListList, IptvBouquetChannelListList = self.getBouquetChannelList()
+			if config.plugins.epgsearch.include_iptv.value and IptvBouquetChannelListList:
+				_searchString = searchString
+				searchType = config.plugins.epgsearch.search_type.value
+				casesensitive = config.plugins.epgsearch.search_case.value == "sensitive"
+				if not casesensitive:
+					_searchString = _searchString.lower()
+				allevents = []
+				for sref in IptvBouquetChannelListList[:]:
+					lookup = ["RIBDTSE", (sref, 0, -1, -1)]
+					try:
+						event = epgcache.lookupEvent(lookup) or []
+					except Exception as e:
+						print("[EPGSearch] wrong event", e)
+					else:
+						allevents += event
+				# Filter events
+				for serviceref, eit, begin, duration, name, shortdesc, extdesc in allevents:
+					if searchType == "exact" and _searchString == (name if casesensitive else name.lower()) or \
+						searchType == "partial" and _searchString in (name if casesensitive else name.lower()) or \
+						searchType == "start" and (name if casesensitive else name.lower()).startswith(_searchString) or \
+						searchType == "end" and (name if casesensitive else name.lower()).endswith(_searchString) or \
+						searchType == "partialdes" and (_searchString in (shortdesc if casesensitive else shortdesc.lower()) or _searchString in (extdesc if casesensitive else extdesc.lower())):
+						epgmatches.append((serviceref, eit, begin, duration, name))
+						if len(epgmatches) > 1000:
+							del epgmatches[1000:]
+							break
+				del allevents
+			ret = epgcache.search(("RIBDT", 1000, GetTypeMap(), searchString, GetCaseMap())) or []
+			if epgmatches:
+				ret = ret + epgmatches
+				if len(ret) > 1500:
+					del ret[1500:]
+			ret.sort(key=itemgetter(2))  # sort by time
+			if ret and config.plugins.epgsearch.bouquet.value:
+				ret = self.sortEPGList(ret)  # sort only user bouquets
 			# Update List
 			l = self["list"]
 			l.recalcEntrySize()
@@ -1023,53 +1025,77 @@ class EPGSearch(EPGSelection):
 			l.l.setList(ret)
 
 	def sortEPGList(self, epglist):
-		usr_ref_list = []
-		serviceHandler = eServiceCenter.getInstance()
-		if not config.usage.multibouquet.value:
-			service_types_tv = '1:7:1:0:0:0:0:0:0:0:(type == 1) || (type == 17) || (type == 22) || (type == 25) || (type == 134) || (type == 195)'
-			bqrootstr = '%s FROM BOUQUET "userbouquet.favourites.tv" ORDER BY bouquet' % (service_types_tv)
-			bouquet = eServiceReference(bqrootstr)
-			servicelist = serviceHandler.list(bouquet)
-			if not servicelist is None:
-				while True:
-					service = servicelist.getNext()
-					if not service.valid():
-						break
-					if not (service.flags & (eServiceReference.isMarker | eServiceReference.isDirectory)):
-						usr_ref_list.append(service.toString())
-		else:
-			bqrootstr = '1:7:1:0:0:0:0:0:0:0:FROM BOUQUET "bouquets.tv" ORDER BY bouquet'
-			bouquet = eServiceReference(bqrootstr)
-			bouquetlist = serviceHandler.list(bouquet)
-			if not bouquetlist is None:
-				while True:
-					bouquet = bouquetlist.getNext()
-					if not bouquet.valid():
-						break
-					if bouquet.flags & eServiceReference.isDirectory and not bouquet.flags & eServiceReference.isInvisible:
-						servicelist = serviceHandler.list(bouquet)
-						if not servicelist is None:
-							while True:
-								service = servicelist.getNext()
-								if not service.valid():
-									break
-								if not (service.flags & (eServiceReference.isMarker | eServiceReference.isDirectory)):
-									usr_ref_list.append(service.toString())
+		global BouquetChannelListList, IptvBouquetChannelListList
+		if BouquetChannelListList == None:
+			BouquetChannelListList, IptvBouquetChannelListList = self.getBouquetChannelList()
 		result = []
-		if config.plugins.epgsearch.favorit_name.value:
-			for e in epglist:
-				for x in usr_ref_list:
-					y = ':'.join(GetWithAlternative(x).split(':')[:11])
-					if y == e[0]:
-						new_e = (x, e[1], e[2], e[3], e[4])
-						result.append(new_e)
-		else:
-			for e in epglist:
-				for x in usr_ref_list:
-					y = ':'.join(GetWithAlternative(x).split(':')[:11])
-					if y == e[0]:
+		if BouquetChannelListList != None and epglist:
+			if config.plugins.epgsearch.favorit_name.value:
+				for e in epglist:
+					if ":http" in e[0]:
 						result.append(e)
+						continue
+					for x in BouquetChannelListList:
+						y = ':'.join(GetWithAlternative(x).split(':')[:11])
+						if y == e[0]:
+							new_e = (x, e[1], e[2], e[3], e[4])
+							result.append(new_e)
+							continue
+			else:
+				for e in epglist:
+					if ":http" in e[0]:
+						result.append(e)
+						continue
+					for x in BouquetChannelListList:
+						y = ':'.join(GetWithAlternative(x).split(':')[:11])
+						if y == e[0]:
+							result.append(e)
+							continue
 		return result
+
+	def getBouquetChannelList(self):
+		channels = []
+		iptv_channels = []
+		bouquetlist = []
+		serviceHandler = eServiceCenter.getInstance()
+		if config.usage.multibouquet.value:
+			refstr = '1:7:1:0:0:0:0:0:0:0:FROM BOUQUET "bouquets.tv" ORDER BY bouquet'
+			bouquetroot = eServiceReference(refstr)
+			bouquets = serviceHandler.list(bouquetroot)
+			if bouquets:
+				while True:
+					s = bouquets.getNext()
+					if not s.valid():
+						break
+					if s.flags & eServiceReference.isDirectory and not s.flags & eServiceReference.isInvisible:
+						info = serviceHandler.info(s)
+						if info:
+							bouquetlist.append(s)
+		else:
+			service_types_tv = '1:7:1:0:0:0:0:0:0:0:(type == 1) || (type == 17) || (type == 22) || (type == 25) || (type == 31) || (type == 134) || (type == 195)'
+			refstr = '%s FROM BOUQUET "userbouquet.favourites.tv" ORDER BY bouquet' % (service_types_tv)
+			bouquetroot = eServiceReference(refstr)
+			info = serviceHandler.info(bouquetroot)
+			if info and bouquetroot.valid() and not bouquetroot.flags & eServiceReference.isInvisible:
+				bouquetlist.append(bouquetroot)
+		if bouquetlist:
+			for bouquet in bouquetlist:
+				if not bouquet.valid():
+					continue
+				if bouquet.flags & eServiceReference.isDirectory:
+					services = serviceHandler.list(bouquet)
+					if services:
+						while True:
+							service = services.getNext()
+							if not service.valid():
+								break
+							playable = not (service.flags & (eServiceReference.isMarker | eServiceReference.isDirectory | eServiceReference.isNumberedMarker))
+							if playable:
+								sref = service.toString()
+								if ":http" in sref:
+									iptv_channels.append(sref)
+								channels.append(sref)
+		return channels, iptv_channels
 
 
 class EPGSearchTimerImport(Screen):
@@ -1084,8 +1110,6 @@ class EPGSearchTimerImport(Screen):
 
 		self["key_red"] = Button(_("Cancel"))
 		self["key_green"] = Button(_("OK"))
-		self["key_yellow"] = Button("")
-		self["key_blue"] = Button("")
 
 		self["actions"] = ActionMap(["OkCancelActions", "ColorActions"],
 		{
@@ -1170,7 +1194,6 @@ class EPGSearchEPGSelection(EPGSelection):
 	def eventSelected(self):
 		cur = self["list"].getCurrent()
 		evt = cur[0]
-		sref = cur[1]
 		if not evt:
 			return
 
@@ -1181,3 +1204,65 @@ class EPGSearchEPGSelection(EPGSelection):
 			)
 		else:
 			self.close(evt.getEventName())
+
+
+class EPGSearchHistory(Screen):
+	skin = """
+	<screen name="EPGSearchHistory" position="center,center" size="565,415" title="EPGSearch - History">
+		<ePixmap name="red"    position="0,0"   zPosition="2" size="140,40" pixmap="buttons/red.png" transparent="1" alphaTest="on"/>
+		<ePixmap name="green"  position="140,0" zPosition="2" size="140,40" pixmap="buttons/green.png" transparent="1" alphaTest="on"/>
+		<ePixmap name="yellow" position="280,0" zPosition="2" size="140,40" pixmap="buttons/yellow.png" transparent="1" alphaTest="on"/>
+		<widget name="key_red" position="0,0" size="140,40" verticalAlignment="center" horizontalAlignment="center" zPosition="4"  foregroundColor="white" font="Regular;20" transparent="1" shadowColor="background" shadowOffset="-2,-2"/>
+		<widget name="key_green" position="140,0" size="140,40" verticalAlignment="center" horizontalAlignment="center" zPosition="4"  foregroundColor="white" font="Regular;20" transparent="1" shadowColor="background" shadowOffset="-2,-2"/>
+		<widget name="key_yellow" position="280,0" size="140,40" verticalAlignment="center" horizontalAlignment="center" zPosition="4"  foregroundColor="white" font="Regular;20" transparent="1" shadowColor="background" shadowOffset="-2,-2"/>
+		<widget source="history" render="Listbox" position="5,47" size="550,300" scrollbarMode="showOnDemand">
+			<convert type="StringList"/>
+		</widget>
+		<ePixmap pixmap="div-h.png" position="5,355" zPosition="2" size="560,2"/>
+		<widget name="help" position="5,360" zPosition="2" size="560,50" verticalAlignment="center" horizontalAlignment="left" font="Regular;22" foregroundColor="white"/>
+	</screen>
+	"""
+
+	def __init__(self, session, data):
+		Screen.__init__(self, session)
+		self.session = session
+		self.skinName = ["EPGSearchHistory"]
+		self.setTitle(_("EPGSearch - History"))
+
+		self.list = List([])
+		self["history"] = self.list
+		self["history"].setList(data)
+
+		self["OkCancelActions"] = ActionMap(["OkCancelActions"],
+		{
+			"cancel": self.exit,
+			"ok": self.select,
+		})
+		self["EPGSearchHistoryActions"] = ActionMap(["ColorActions"],
+		{
+			"red": self.exit,
+			"green": self.select,
+			"yellow": self.edit,
+		}, -2)
+
+		self["key_red"] = Button(_("Cancel"))
+		self["key_green"] = Button(_("OK"))
+		self["key_yellow"] = Button(_("Edit & search"))
+		self["help"] = Label(_("Select item for search and press 'OK' or edit item with yellow button."))
+
+	def select(self):
+		item = self["history"].getCurrent()
+		if item:
+			self.close(item)
+
+	def edit(self):
+		item = self["history"].getCurrent()
+		if item:
+			def result(text):
+				if not text:
+					text = item
+				self.close(text)
+			self.session.openWithCallback(result, VirtualKeyBoard, title=_("Modify searched text"), text=item)
+
+	def exit(self):
+		self.close(False)

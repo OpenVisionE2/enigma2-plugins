@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
-
 # for localized messages
-from . import _, removeBad
+from . import _
 
 from .AutoTimerComponent import preferredAutoTimerComponent, getDefaultEncoding
 from RecordTimer import AFTEREVENT
@@ -73,13 +72,13 @@ def parseConfig(configuration, list, version=None, uniqueTimerId=0, defaultTimer
 def parseEntry(element, baseTimer, defaults=False):
 	if not defaults:
 		# Read out match
-		baseTimer.match = str(element.get("match", ""))
+		baseTimer.match = element.get("match", "")
 		if not baseTimer.match:
 			doLog('[AutoTimer] Erroneous config is missing attribute "match", skipping entry')
 			return False
 
 		# Read out name
-		baseTimer.name = str(element.get("name", ""))
+		baseTimer.name = element.get("name", "")
 		if not baseTimer.name:
 			doLog('[AutoTimer] Timer is missing attribute "name", defaulting to match')
 			baseTimer.name = baseTimer.match
@@ -150,7 +149,7 @@ def parseEntry(element, baseTimer, defaults=False):
 
 	# Read out recording path
 	default = baseTimer.destination or ""
-	baseTimer.destination = str(element.get("location", default)) or None
+	baseTimer.destination = element.get("location", default) or None
 
 	# Read out offset
 	offset = element.get("offset")
@@ -190,6 +189,31 @@ def parseEntry(element, baseTimer, defaults=False):
 	# Read out ratioThresholdDuplicate
 	baseTimer.ratioThresholdDuplicate = float(element.get("ratioThresholdDuplicate", 0.8))
 
+	# Read out allowed services/bouquets via Partnerbox
+	l = element.findall("e2service")
+	if l:
+		servicelist = []
+		bouquets = []
+		for servicereferences in l:
+			services = servicereferences.findall("e2servicereference")
+			for service in services:
+				value = service.text
+				if value:
+					if not 'bouquet' in value:
+						myref = eServiceReference(str(value))
+						if not (myref.flags & eServiceReference.isGroup):
+							# strip all after last :
+							pos = value.rfind(':')
+							if pos != -1:
+								if value[pos - 1] == ':':
+									pos -= 1
+								value = value[:pos + 1]
+						servicelist.append(value)
+					else:
+						bouquets.append(value)
+			baseTimer.bouquets = bouquets
+			baseTimer.services = servicelist
+
 	# Read out allowed services
 	l = element.findall("serviceref")
 	if l:
@@ -197,7 +221,7 @@ def parseEntry(element, baseTimer, defaults=False):
 
 		for service in l:
 			value = service.text
-			if value:
+			if value and not 'bouquet' in value:
 				myref = eServiceReference(str(value))
 				if not (myref.flags & eServiceReference.isGroup):
 					# strip all after last :
@@ -262,7 +286,7 @@ def parseEntry(element, baseTimer, defaults=False):
 				continue
 
 			if where in idx:
-				excludes[idx[where]].append(str(value))
+				excludes[idx[where]].append(value)
 		baseTimer.exclude = excludes
 
 	# Read out includes (use same idx)
@@ -276,7 +300,7 @@ def parseEntry(element, baseTimer, defaults=False):
 				continue
 
 			if where in idx:
-				includes[idx[where]].append(str(value.encode))
+				includes[idx[where]].append(value)
 		baseTimer.include = includes
 
 	# Read out recording tags
@@ -288,7 +312,7 @@ def parseEntry(element, baseTimer, defaults=False):
 			if not value:
 				continue
 
-			tags.append(str(value))
+			tags.append(value)
 		baseTimer.tags = tags
 
 	return True
@@ -305,11 +329,11 @@ def parseConfigOld(configuration, list, uniqueTimerId=0):
 		# Get name (V2+)
 		name = timer.get("name")
 		if name:
-			name = str(name)
+			name = name.encode("UTF-8")
 		# Get name (= match) (V1)
 		else:
 			# Read out name
-			name = getValue(str(timer.findall("name"), ""))
+			name = getValue(timer.findall("name"), "").encode("UTF-8")
 
 		if not name:
 			doLog('[AutoTimer] Erroneous config is missing attribute "name", skipping entry')
@@ -319,7 +343,7 @@ def parseConfigOld(configuration, list, uniqueTimerId=0):
 		match = timer.get("match")
 		if match:
 			# Read out match
-			match = str(match)
+			match = match.encode("UTF-8")
 			if not match:
 				doLog('[AutoTimer] Erroneous config contains empty attribute "match", skipping entry')
 				continue
@@ -480,7 +504,7 @@ def parseConfigOld(configuration, list, uniqueTimerId=0):
 				continue
 
 			if where in idx:
-				excludes[idx[where]].append(str(value))
+				excludes[idx[where]].append(value.encode("UTF-8"))
 
 		# Read out includes (use same idx) (V4+ feature, should not harm V3-)
 		includes = ([], [], [], [])
@@ -491,7 +515,7 @@ def parseConfigOld(configuration, list, uniqueTimerId=0):
 				continue
 
 			if where in idx:
-				includes[idx[where]].append(str(value))
+				includes[idx[where]].append(value.encode("UTF-8"))
 
 		# Read out max length (V4+)
 		maxlen = timer.get("maxduration")
@@ -508,7 +532,7 @@ def parseConfigOld(configuration, list, uniqueTimerId=0):
 				maxlen = None
 
 		# Read out recording path
-		destination = timer.get(str("destination", "")) or None
+		destination = timer.get("destination", "").encode("UTF-8") or None
 
 		# Read out recording tags
 		tags = []
@@ -517,7 +541,7 @@ def parseConfigOld(configuration, list, uniqueTimerId=0):
 			if not value:
 				continue
 
-			tags.append(str(value))
+			tags.append(value.encode("UTF-8"))
 
 		# Finally append timer
 		list.append(preferredAutoTimerComponent(
@@ -650,7 +674,7 @@ def buildConfig(defaultTimer, timers, webif=False):
 			extend((
 				'  <e2service>\n',
 				'   <e2servicereference>', stringToXML(str(serviceref)), '</e2servicereference>\n',
-				'   <e2servicename>', stringToXML(removeBad(ref.getServiceName())), '</e2servicename>\n',
+				'   <e2servicename>', stringToXML(ref.getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', '').replace('^', '')), '</e2servicename>\n',
 				'  </e2service>\n',
 			))
 	else:
@@ -822,7 +846,7 @@ def buildConfig(defaultTimer, timers, webif=False):
 				extend((
 					'  <e2service>\n',
 					'   <e2servicereference>', stringToXML(str(serviceref)), '</e2servicereference>\n',
-					'   <e2servicename>', stringToXML(removeBad(ref.getServiceName())), '</e2servicename>\n',
+					'   <e2servicename>', stringToXML(ref.getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', '').replace('^', '')), '</e2servicename>\n',
 					'  </e2service>\n',
 				))
 		else:

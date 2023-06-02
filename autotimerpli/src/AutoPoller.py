@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # for localized messages
-
 from . import _
+
 # Core functionality
 from enigma import eTimer, ePythonMessagePump, eConsoleAppContainer
 
@@ -82,7 +82,7 @@ class AutoPollerThread(Thread):
 			delay = config.plugins.autotimer.interval.value * 3600
 
 		self.__timer.startLongTimer(delay)
-		if hasattr(self, "isAlive") and not self.isAlive():
+		if not self.is_alive():
 			Thread.start(self)
 
 	def pause(self):

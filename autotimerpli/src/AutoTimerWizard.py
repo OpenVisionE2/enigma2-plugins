@@ -4,7 +4,7 @@ from . import _
 
 # GUI (Screens)
 from Screens.WizardLanguage import WizardLanguage
-from Screens.HelpMenu import ShowRemoteControl
+from Screens.Rc import Rc
 from .AutoTimerEditor import AutoTimerEditorBase, AutoTimerServiceEditor, \
 		AutoTimerFilterEditor
 
@@ -23,7 +23,7 @@ from Tools import Directories
 from .Logger import doLog
 
 
-class AutoTimerWizard(WizardLanguage, AutoTimerEditorBase, ShowRemoteControl):
+class AutoTimerWizard(WizardLanguage, AutoTimerEditorBase, Rc):
 	STEP_ID_BASIC = 2
 	STEP_ID_TIMESPAN = 5
 	STEP_ID_SERVICES = 7
@@ -40,7 +40,7 @@ class AutoTimerWizard(WizardLanguage, AutoTimerEditorBase, ShowRemoteControl):
 			<ePixmap pixmap="buttons/button_blue.png" position="40,250" zPosition="0" size="15,16" transparent="1" alphaTest="on" />
 			<widget name="languagetext" position="55,225" size="95,30" font="Regular;18" />
 			<widget name="wizard" pixmap="wizard.png" position="40,50" zPosition="10" size="110,174" alphaTest="on" />
-			<widget name="rc" pixmaps="rc.png,rcold.png" position="500,50" zPosition="10" size="154,500" alphaTest="on" />
+			<widget name="rc" pixmaps="skin_default/rc.png,skin_default/rcold.png" position="500,50" zPosition="10" size="154,500" alphaTest="on" />
 			<widget name="arrowdown" pixmap="arrowdown.png" position="-100,-100" zPosition="11" size="37,70" alphaTest="on" />
 			<widget name="arrowdown2" pixmap="arrowdown.png" position="-100,-100" zPosition="11" size="37,70" alphaTest="on" />
 			<widget name="arrowup" pixmap="arrowup.png" position="-100,-100" zPosition="11" size="37,70" alphaTest="on" />
@@ -56,7 +56,7 @@ class AutoTimerWizard(WizardLanguage, AutoTimerEditorBase, ShowRemoteControl):
 
 		WizardLanguage.__init__(self, session, showSteps=True, showStepSlider=True)
 		AutoTimerEditorBase.__init__(self, newTimer)
-		ShowRemoteControl.__init__(self)
+		Rc.__init__(self)
 
 		#self.skinName = ["AutoTimerWizard", "NetworkWizard"]
 		self["wizard"] = Pixmap()

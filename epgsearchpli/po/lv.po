@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Enigma 2 EPGSearch Plugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-23 15:06+0330\n"
+"POT-Creation-Date: 2023-05-12 14:32+0200\n"
 "PO-Revision-Date: 2014-12-13 18:20+0300\n"
 "Last-Translator: Tapat <taapat@gmail.com>\n"
 "Language-Team: Taapat <taapat@gmail.com>\n"
@@ -66,7 +66,7 @@ msgid "Could not read AutoTimer timer list: %s"
 msgstr "Nevar nolasīt auto taimeru sarakstu: %s"
 
 msgid "Custom search"
-msgstr ""
+msgstr "Pielāgota meklēšana"
 
 msgid "Display name service as in bouquets"
 msgstr "Attēlot kanāla nosakukumu kā buķetē"
@@ -77,8 +77,14 @@ msgstr "EPG meklēšana"
 msgid "EPGSearch"
 msgstr "EPG meklētājs"
 
+msgid "EPGSearch - History"
+msgstr "EPGSearch vēsture"
+
 msgid "EPGSearch Setup"
 msgstr "EPGSearch iestatījumi"
+
+msgid "Edit & search"
+msgstr "Rediģēt"
 
 msgid "Encoding Search to EPG"
 msgstr "Meklēt EPG kodējumā"
@@ -116,6 +122,12 @@ msgstr "Iegūt no EPG"
 msgid "Import from Timer"
 msgstr "Iegūt no taimera"
 
+msgid "Include IPTV services"
+msgstr ""
+
+msgid "Include IPTV services in search, in some cases slows down the searching."
+msgstr ""
+
 msgid "Length of History"
 msgstr "Vēstures ilgums"
 
@@ -125,6 +137,9 @@ msgstr "Vēsture ir attīrīta!"
 msgid "Lookup in TMBD"
 msgstr "Meklēt TMBD"
 
+msgid "Modify searched text"
+msgstr "Mainīt meklēto tekstu"
+
 msgid "New Search"
 msgstr "Meklēt no jauna"
 
@@ -132,7 +147,7 @@ msgid "No history !"
 msgstr "Nav vēstures!"
 
 msgid "OK"
-msgstr "Labi"
+msgstr "Lietot"
 
 msgid "Open selected in IMDb"
 msgstr "Atvērt izvēlēto IMDb"
@@ -176,14 +191,14 @@ msgstr "Izvēlieties darbību:"
 msgid "Select channel"
 msgstr "Izvēlieties kanālu"
 
-msgid "Select text to search for"
-msgstr "Norādiet tekstu kuru meklēt"
+msgid "Select item for search and press 'OK' or edit item with yellow button."
+msgstr "Izvēlieties meklējamo tekstu un nospiediet 'Lietot' vai rediģējiet tekstu ar dzelteno pogu."
 
 msgid "Select type for filter search. Press button P +/- for show/hide filter in description after search."
 msgstr "Izvēlieties meklēšanas veidu filtrēšanai. Lietojiet P +/- lai parādītu/slēptu filtrus aprakstā pēc meklēšanas."
 
-msgid "Select type for search, \"partial match\" for the most extensive search."
-msgstr "Izvēlieties meklēšanas tipu, \"atbilst daļēji\" lielākam rezultātu daudzumam."
+msgid "Select type for search, \"partial match\" for the most extensive search, \"partial description\" for the most description search."
+msgstr "Izvēlieties meklēšanas tipu, \"atbilst daļēji\" lielākam rezultātu daudzumam, \"līdzīgs apraksts\" labākai meklēšanai aprakstos."
 
 msgid "Select type: 'Search and Select channel' or 'Search'."
 msgstr "Izvēlieties veidu: 'Meklēt un izvēlēties kanālu' vai 'meklēt'."
@@ -221,6 +236,9 @@ msgstr "atbilst tieši"
 msgid "only Search"
 msgstr "tikai meklēt"
 
+msgid "partial description"
+msgstr "līdzīgs apraksts"
+
 msgid "partial match"
 msgstr "atbilst daļēji"
 
@@ -229,6 +247,10 @@ msgstr "meklēt EPG"
 
 msgid "search EPG..."
 msgstr "meklēt EPG..."
+
+#, fuzzy
+msgid "title ends with"
+msgstr "nosaukums sākas ar"
 
 msgid "title starts with"
 msgstr "nosaukums sākas ar"

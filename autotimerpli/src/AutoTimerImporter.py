@@ -133,16 +133,17 @@ class AutoTimerImporter(Screen):
 
 		# Keep AutoTimer
 		self.autotimer = autotimer
+		self.sref = sref
+		self.isIPTV = bool(sref and ":http" in str(sref))
 
 		# Initialize Buttons
 		self["key_red"] = StaticText(_("Cancel"))
-		self["key_green"] = StaticText(_("Importer event"))
+		self["key_green"] = StaticText(_("OK"))
 		self["key_yellow"] = StaticText()
 		self["key_blue"] = StaticText()
 
 		entries = []
 		append = entries.append
-		self["list"] = SelectionList()
 
 		if disabled is not None:
 			append(
@@ -170,7 +171,7 @@ class AutoTimerImporter(Screen):
 			))
 
 		self.update_weekdays = False
-		if begin and end and sref.getServiceName():
+		if begin and end:
 			self.start = localtime(begin + bmargin)
 			self.begin = localtime(begin)
 			self.update_weekdays = self.start.tm_wday != self.begin.tm_wday
@@ -182,23 +183,22 @@ class AutoTimerImporter(Screen):
 					2,
 					True
 			))
-			# append(
-				# SelectionEntryComponent(
-					# _("Only on Weekday: %s") % (weekdays[self.begin.tm_wday][1],), # XXX: the lookup is dirty but works :P
-					# str(self.begin.tm_wday),
-					# 9,
-					# True
-			# ))
+			append(
+				SelectionEntryComponent(
+					_("Only on Weekday: %s") % (weekdays[self.begin.tm_wday][1],), # XXX: the lookup is dirty but works :P
+					str(self.begin.tm_wday),
+					9,
+					True
+			))
 
-		if hasattr(sref, "getServiceName"):
-			if sref.getServiceName():
-				append(
-					SelectionEntryComponent(
-						_("Only on Service: %s") % (sref.getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', '')),
-						str(sref),
-						3,
-						True
-				))
+		if sref and not self.isIPTV:
+			append(
+				SelectionEntryComponent(
+					_("Only on Service: %s") % (sref.getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', '')),
+					str(sref),
+					3,
+					True
+			))
 
 		if afterEvent is not None:
 			append(
@@ -261,13 +261,13 @@ class AutoTimerImporter(Screen):
 			entrylist.list[idx] = SelectionEntryComponent(item[0], item[1], item[2], val)
 			if self.update_weekdays and item[2] == 2:
 				next_idx = idx + 1
-				# try:
-					# next_item = entrylist.list[next_idx][0]
-					# if next_item[2] == 9:
-						# entry_val = val and self.begin.tm_wday or self.start.tm_wday
-						# entrylist.list[next_idx] = SelectionEntryComponent(_("Only on Weekday: %s") % (weekdays[entry_val][1]), str(entry_val), next_item[2], next_item[3])
-				# except:
-					# pass
+				try:
+					next_item = entrylist.list[next_idx][0]
+					if next_item[2] == 9:
+						entry_val = val and self.begin.tm_wday or self.start.tm_wday
+						entrylist.list[next_idx] = SelectionEntryComponent(_("Only on Weekday: %s") % (weekdays[entry_val][1]), str(entry_val), next_item[2], next_item[3])
+				except:
+					pass
 			entrylist.setList(entrylist.list)
 
 	def cancel(self):
@@ -319,18 +319,17 @@ class AutoTimerImporter(Screen):
 			elif item[2] == 2: # Timespan
 				autotimer.timespan = item[1]
 			elif item[2] == 3: # Service
-				value = item[1]
-
-				myref = eServiceReference(value)
-				if not (myref.flags & eServiceReference.isGroup):
-					# strip all after last :
-					pos = value.rfind(':')
-					if pos != -1:
-						if value[pos - 1] == ':':
-							pos -= 1
-						value = value[:pos + 1]
-
-				autotimer.services = [value]
+				if not self.isIPTV:
+					value = item[1]
+					myref = eServiceReference(value)
+					if not (myref.flags & eServiceReference.isGroup):
+						# strip all after last :
+						pos = value.rfind(':')
+						if pos != -1:
+							if value[pos - 1] == ':':
+								pos -= 1
+							value = value[:pos + 1]
+					autotimer.services = [value]
 			elif item[2] == 4: # AfterEvent
 				autotimer.afterevent = [(item[1], None)]
 			elif item[2] == 5: # Justplay
@@ -342,14 +341,27 @@ class AutoTimerImporter(Screen):
 			elif item[2] == 8: # Exact match
 				autotimer.searchType = "exact"
 				autotimer.searchCase = "sensitive"
-			# elif item[2] == 9: # Weekday
-				# includes = [
-						# autotimer.getIncludedTitle(),
-						# autotimer.getIncludedShort(),
-						# autotimer.getIncludedDescription(),
-						# [item[1]],
-				# ]
-				# autotimer.include = includes
+			elif item[2] == 9: # Weekday
+				includes = [
+						autotimer.getIncludedTitle(),
+						autotimer.getIncludedShort(),
+						autotimer.getIncludedDescription(),
+						[item[1]],
+				]
+				autotimer.include = includes
+
+		# if current service is an IPTV stream force to single service search only
+		if self.isIPTV:
+			value = str(self.sref)
+			myref = eServiceReference(value)
+			if not (myref.flags & eServiceReference.isGroup):
+				# strip all after last :
+				pos = value.rfind(':')
+				if pos != -1:
+					if value[pos - 1] == ':':
+						pos -= 1
+					value = value[:pos + 1]
+			autotimer.services = [value]
 
 		if autotimer.match == "":
 			self.session.openWithCallback(

@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 # for localized messages
-from . import _, removeBad
+from . import _
 
 # GUI (Screens)
 from Screens.Screen import Screen
+
 # GUI (Components)
 from Components.ActionMap import ActionMap
 from Components.Sources.List import List
@@ -12,6 +13,8 @@ from Components.Sources.StaticText import StaticText
 from ServiceReference import ServiceReference
 from Tools.FuzzyDate import FuzzyTime
 from enigma import getDesktop
+from .AutoTimerList import getBouquetChannelList
+prewBouquetChannelListList = None
 HD = False
 if getDesktop(0).size().width() >= 1280:
 	HD = True
@@ -72,24 +75,25 @@ class AutoTimerPreview(Screen):
 		self.sort_type = 0
 
 		# name, begin, end, serviceref, timername -> name, begin, timername, sname, timestr
-		self.timers = []
-		from six import PY2
-		if PY2:
-			for x in timers:
-				serviceref = removeBad(ServiceReference(x[3]).getServiceName())
-				serviceref = serviceref.encode('utf-8', 'ignore')
-				self.timers.append(
-					(x[0], x[1], x[4],
-					serviceref,
-					(("%s, %s ... %s (%d " + _("mins") + ")") % (FuzzyTime(x[1]) + FuzzyTime(x[2])[1:] + ((x[2] - x[1]) / 60,))))
-					)
-		else:
-			self.timers = [
-				(x[0], x[1], x[4],
-				ServiceReference(x[3]).getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', ''),
-				(("%s, %s ... %s (%d " + _("mins") + ")") % (FuzzyTime(x[1]) + FuzzyTime(x[2])[1:] + ((x[2] - x[1]) / 60,))))
-				for x in timers
-			]
+		def renameIPTV(sref):
+			global prewBouquetChannelListList
+			iptv_text = ""
+			if ":http" in sref:
+				if prewBouquetChannelListList is None:
+					prewBouquetChannelListList = getBouquetChannelList(iptv_only=True)
+				if prewBouquetChannelListList:
+					for service in prewBouquetChannelListList:
+						if sref in service:
+							sref = service
+							iptv_text = " (IPTV)"
+							break
+			return ServiceReference(sref).getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', '') + iptv_text
+		self.timers = [
+			(x[0], x[1], x[4],
+			renameIPTV(x[3]),
+			(("%s, %s ... %s (%d " + _("mins") + ")") % (FuzzyTime(x[1]) + FuzzyTime(x[2])[1:] + ((x[2] - x[1]) / 60,))))
+			for x in timers
+		]
 
 		self["timerlist"] = List(self.timers)
 

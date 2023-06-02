@@ -1,11 +1,9 @@
 # -*- coding: utf-8 -*-
-from Components.Language import language
-from Tools.Directories import resolveFilename, SCOPE_PLUGINS, SCOPE_LANGUAGE
-from os import environ as os_environ
 import gettext
 
-# Config
-from Components.config import config, ConfigSet, ConfigSubsection, ConfigText, ConfigNumber, ConfigYesNo, ConfigSelection
+from Components.Language import language
+from Tools.Directories import resolveFilename, SCOPE_PLUGINS
+from Components.config import config, ConfigSet, ConfigSubsection, ConfigNumber, ConfigYesNo, ConfigSelection
 
 
 def localeInit():
@@ -33,8 +31,9 @@ config.plugins.epgsearch.type_button_blue = ConfigSelection([('0', _("only Searc
 config.plugins.epgsearch.picons = ConfigYesNo(default=False)
 config.plugins.epgsearch.bouquet = ConfigYesNo(default=False)
 config.plugins.epgsearch.favorit_name = ConfigYesNo(default=False)
+config.plugins.epgsearch.include_iptv = ConfigYesNo(default=False)
 config.plugins.epgsearch.show_in_furtheroptionsmenu = ConfigYesNo(default=True)
 config.plugins.epgsearch.search_in_channelmenu = ConfigYesNo(default=True)
 config.plugins.epgsearch.filter_type = ConfigSelection(default="exact", choices=[("partial", _("partial match")), ("exact", _("exact match"))])
 config.plugins.epgsearch.search_case = ConfigSelection(default="insensitive", choices=[("insensitive", _("case-insensitive search")), ("sensitive", _("case-sensitive search"))])
-config.plugins.epgsearch.search_type = ConfigSelection(default="partial", choices=[("partial", _("partial match")), ("exact", _("exact match")), ("start", _("title starts with"))])
+config.plugins.epgsearch.search_type = ConfigSelection(default="partial", choices=[("partial", _("partial match")), ("partialdes", _("partial description")), ("exact", _("exact match")), ("start", _("title starts with")), ("end", _("title ends with"))])
