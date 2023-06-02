@@ -64,6 +64,7 @@ SUBDIRS = \
 	mytube \
 	ncidclient \
 	netcaster \
+	netzkino \
 	ofdb \
 	orfat \
 	orfteletext \

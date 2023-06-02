@@ -434,6 +434,10 @@ netcaster/src/bin/Makefile
 netcaster/src/etc/Makefile
 netcaster/src/Makefile
 
+netzkino/Makefile
+netzkino/meta/Makefile
+netzkino/src/Makefile
+
 ofdb/Makefile
 ofdb/meta/Makefile
 ofdb/po/Makefile
