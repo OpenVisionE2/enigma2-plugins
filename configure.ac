@@ -546,6 +546,11 @@ seriesplugin/src/Logos/Makefile
 seriesplugin/src/Makefile
 seriesplugin/src/Skins/Makefile
 
+Series2Folder/Makefile
+Series2Folder/meta/Makefile
+Series2Folder/po/Makefile
+Series2Folder/src/Makefile
+
 setpasswd/Makefile
 setpasswd/meta/Makefile
 setpasswd/po/Makefile

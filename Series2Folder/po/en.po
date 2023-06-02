@@ -1,0 +1,223 @@
+# Move series recordings into folders.
+# Copyright (C) 2022 THE Series2Folder package's COPYRIGHT HOLDER
+# This file is distributed under the same license as the Series2Folder package.
+# Automatically generated, 2022.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Series2Folder v1.11\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-05-18 03:10+0100\n"
+"PO-Revision-Date: 2022-09-19 12:48+1000\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid ""
+"\n"
+"To allow Series to Folder to run automatically in the background, configure it to enable \"Allow Series to Folder to run in the background\""
+msgstr ""
+"\n"
+"To allow Series to Folder to run automatically in the background, configure it to enable \"Allow Series to Folder to run in the background\""
+
+msgid " - Error"
+msgid_plural " - Errors"
+msgstr[0] " - Error"
+msgstr[1] " - Errors"
+
+msgid " - with an error"
+msgid_plural " - with errors"
+msgstr[0] " - with an error"
+msgstr[1] " - with errors"
+
+#, python-format
+msgid "%s v%s"
+msgstr "%s v%s"
+
+msgid "1 recording"
+msgstr "1 recording"
+
+msgid "10 recordings"
+msgstr "10 recordings"
+
+msgid "2 recordings"
+msgstr "2 recordings"
+
+msgid "3 recordings"
+msgstr "3 recordings"
+
+msgid "4 recordings"
+msgstr "4 recordings"
+
+msgid "5 recordings"
+msgstr "5 recordings"
+
+msgid "6 recordings"
+msgstr "6 recordings"
+
+msgid "7 recordings"
+msgstr "7 recordings"
+
+msgid "8 recordings"
+msgstr "8 recordings"
+
+msgid "9 recordings"
+msgstr "9 recordings"
+
+msgid "Allow Series to Folder to run in the background"
+msgstr "Allow Series to Folder to run in the background"
+
+msgid "Auto Series to Folder"
+msgstr "Auto Series to Folder"
+
+msgid "Automatically create folders"
+msgstr "Automatically create folders"
+
+#, python-format
+msgid "Can not extract show name for: %s"
+msgstr "Can not extract show name for: %s"
+
+msgid "Cancel"
+msgstr "Cancel"
+
+msgid "Configure move series recordings to folders"
+msgstr "Configure move series recordings to folders"
+
+msgid "Configure which notification popups will be shown by Series to Folder when run in the background"
+msgstr "Configure which notification popups will be shown by Series to Folder when run in the background"
+
+msgid "Create a folder for a series automatically if there are this number of recordings or more. If set to \"no autocreate\", only move recordings if a folder already exists for them."
+msgstr "Create a folder for a series automatically if there are this number of recordings or more. If set to \"no autocreate\", only move recordings if a folder already exists for them."
+
+msgid "Folder for movies"
+msgstr "Folder for movies"
+
+msgid "If enabled, Series to Folder will run automatically in the background shortly after startup and after each recording finishes."
+msgstr "If enabled, Series to Folder will run automatically in the background shortly after startup and after each recording finishes."
+
+msgid "Keyboard"
+msgstr "Keyboard"
+
+msgid "Move recordings whose names start with \"Movie: \" (case insensitive) to a folder for movies."
+msgstr "Move recordings whose names start with \"Movie: \" (case insensitive) to a folder for movies."
+
+msgid "Move selected series recording to folder"
+msgid_plural "Move selected series recordings to folder"
+msgstr[0] "Move selected series recording to folder"
+msgstr[1] "Move selected series recordings to folder"
+
+msgid "Move series recordings to folders"
+msgstr "Move series recordings to folders"
+
+msgid "Put movies into folder"
+msgstr "Put movies into folder"
+
+msgid "Repeat tag to be stripped from from series titles when creating directory names."
+msgstr "Repeat tag to be stripped from from series titles when creating directory names."
+
+msgid "Repeat tag to strip"
+msgstr "Repeat tag to strip"
+
+msgid "Save"
+msgstr "Save"
+
+msgid "Sel Series to Folder"
+msgstr "Sel Series to Folder"
+
+msgid "SelSeries2Folder"
+msgstr "SelSeries2Folder"
+
+msgid "Series to Folder"
+msgstr "Series to Folder"
+
+#, python-format
+msgid "Series to Folder actions%s"
+msgstr "Series to Folder actions%s"
+
+#, python-format
+msgid "Series to Folder actions:%s"
+msgstr "Series to Folder actions:%s"
+
+#, python-format
+msgid "Series to Folder did not find anything to move in %s"
+msgstr "Series to Folder did not find anything to move in %s"
+
+msgid "Series to Folder is already running in the background."
+msgstr "Series to Folder is already running in the background."
+
+msgid "Series to Folder moved the following recording"
+msgid_plural "Series to Folder moved the following recordings"
+msgstr[0] "Series to Folder moved the following recording"
+msgstr[1] "Series to Folder moved the following recordings"
+
+msgid "Series to Folder notifications"
+msgstr "Series to Folder notifications"
+
+msgid "Series to Folder..."
+msgstr "Series to Folder..."
+
+msgid "Series2Folder"
+msgstr "Series2Folder"
+
+msgid "Series2Folder..."
+msgstr "Series2Folder..."
+
+msgid "Show move selected series option"
+msgstr "Show move selected series option"
+
+msgid "Show move series option"
+msgstr "Show move series option"
+
+#, python-format
+msgid "Single-action move selected series to folder shown in menu and as button option. Displays in menu and buttons as \"%s\". Requires restart if changed."
+msgstr "Single-action move selected series to folder shown in menu and as button option. Displays in menu and buttons as \"%s\". Requires restart if changed."
+
+#, python-format
+msgid "Single-action move series to folder shown in menu and as button option. Displays in menu and buttons as \"%s\". Requires restart if changed."
+msgstr "Single-action move series to folder shown in menu and as button option. Displays in menu and buttons as \"%s\". Requires restart if changed."
+
+msgid "Strip repeat tagging from series titles when creating directory names."
+msgstr "Strip repeat tagging from series titles when creating directory names."
+
+msgid "Strip repeat tags from series names"
+msgstr "Strip repeat tags from series names"
+
+msgid "The name of the folder for movies."
+msgstr "The name of the folder for movies."
+
+#, python-format
+msgid "Too many recordings with similar filenames: %s"
+msgstr "Too many recordings with similar filenames: %s"
+
+msgid "Use more portable (Windows-friendly) names for folders."
+msgstr "Use more portable (Windows-friendly) names for folders."
+
+msgid "Use portable folder names"
+msgstr "Use portable folder names"
+
+#, python-format
+msgid "Your %s %s is running tasks that may be accessing the recordings. No recordings moved."
+msgstr "Your %s %s is running tasks that may be accessing the recordings. No recordings moved."
+
+#, python-format
+msgid "Your %s %s is trying to shut down. No recordings moved."
+msgstr "Your %s %s is trying to shut down. No recordings moved."
+
+msgid "all"
+msgstr "all"
+
+msgid "error"
+msgstr "error"
+
+msgid "error and \"moved\""
+msgstr "error and \"moved\""
+
+msgid "no autocreate"
+msgstr "no autocreate"
+
+msgid "none"
+msgstr "none"

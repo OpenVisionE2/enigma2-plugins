@@ -477,7 +477,7 @@ class VlcServerConfigScreen(Screen, ConfigListScreen):
 	def handleInputHelpers(self):
 		ConfigListScreen.handleInputHelpers(self)
 		currConfig = self["config"].getCurrent()
-		if currConfig is not None and isinstance(currConfig[1], (ConfigMutable,)):
+		if currConfig is not None and isinstance(currConfig[1], ConfigMutable):
 			self["ConfigMutableActions"].setEnabled(True)
 		else:
 			self["ConfigMutableActions"].setEnabled(False)

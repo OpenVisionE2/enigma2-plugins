@@ -84,6 +84,7 @@ SUBDIRS = \
 	remotetimer \
 	schiffe \
 	seriesplugin \
+	Series2Folder \
 	setpasswd \
 	shoutcast \
 	showclock \
