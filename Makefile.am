@@ -5,6 +5,7 @@ SUBDIRS = \
 	advhdmi \
 	aihdcontroler \
 	antiscrollbar \
+	ardmediathek \
 	aspectratioswitch \
 	audiorestart \
 	audiosync \
