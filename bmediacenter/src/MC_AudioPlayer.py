@@ -1424,7 +1424,7 @@ class Lyrics(Screen):
 		<screen name="Lyrics" position="0,0" size="720,576" flags="wfNoBorder" backgroundColor="#00000000" title="Lyrics">
 		<eLabel backgroundColor="#999999" position="50,50" size="620,2" zPosition="1"/>
 		<widget name="headertext" position="50,73" zPosition="1" size="620,23" font="Regular;20" transparent="1"  foregroundColor="#fcc000" backgroundColor="#00000000"/>
-		<widget name="coverly" position="700,120" size="160,200" zPosition="9" verticalAlignment="center" horizontalAlignment="center" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/no_cover.png" transparent="1" alphaTest="blend" />
+		<widget name="coverly" position="700,120" size="160,200" zPosition="9" verticalAlignment="center" horizontalAlignment="center" pixmap="~/skins/defaultHD/images/no_cover.png" transparent="1" alphaTest="blend" />
 		<widget name="resulttext" position="50,100" zPosition="1" size="620,20" font="Regular;16" transparent="1"   backgroundColor="#00000000"/>
 		<widget name="lyric_text" position="50,150" zPosition="2" size="620,350" font="Regular;18" transparent="0"  backgroundColor="#00000000"/>
 		</screen>"""

@@ -24,13 +24,14 @@ from Screens.VirtualKeyBoard import VirtualKeyBoard
 from six import ensure_str
 from six.moves.urllib.parse import quote_plus
 from twisted.internet.reactor import callInThread
-from Tools.Downloader import downloadWithProgress
+from Tools.Downloader import DownloadWithProgress
+from Tools.Directories resolveFilename, SCOPE_PLUGINS
 config.plugins.ZDF = ConfigSubsection()
 config.plugins.ZDF.savetopath = ConfigDirectory(default="/media/hdd/movie/")
 config.plugins.ZDF.SaveResumePoint = ConfigYesNo(default=False)
 config.plugins.ZDF.UT_DL = ConfigYesNo(default=False)
 config.plugins.ZDF.COVER_DL = ConfigYesNo(default=False)
-PLUGINPATH = "/usr/lib/enigma2/python/Plugins/Extensions/ZDFMediathek/"
+PLUGINPATH = resolveFilename(SCOPE_PLUGINS, "Extensions/ZDFMediathek/")
 FHD = getDesktop(0).size().height() > 720
 SKINFILE = PLUGINPATH + "skin_FHD.xml" if FHD else PLUGINPATH + "skin_HD.xml"
 FONT = "/usr/share/fonts/LiberationSans-Regular.ttf"
@@ -166,19 +167,19 @@ class ZDFMediathek(Screen):
                 self.DL_File = None
             else:
                 if config.plugins.ZDF.COVER_DL:
-                    downloader = downloadWithProgress(str(self["movielist"].getCurrent()[4]), str(config.plugins.ZDF.savetopath.value) + str(answer[2][:-3] + "jpg"))
-                    if hasattr(downloadWithProgress, "setAgent"):
+                    downloader = DownloadWithProgress(str(self["movielist"].getCurrent()[4]), str(config.plugins.ZDF.savetopath.value) + str(answer[2][:-3] + "jpg"))
+                    if hasattr(DownloadWithProgress, "setAgent"):
                         downloader.setAgent(UA)
                     downloader.start()
                 if config.plugins.ZDF.UT_DL.value and url[1]:
-                    downloader = downloadWithProgress(str(url[1]), str(config.plugins.ZDF.savetopath.value) + str(answer[2]))
-                    if hasattr(downloadWithProgress, "setAgent"):
+                    downloader = DownloadWithProgress(str(url[1]), str(config.plugins.ZDF.savetopath.value) + str(answer[2]))
+                    if hasattr(DownloadWithProgress, "setAgent"):
                         downloader.setAgent(UA)
                     downloader.start()
                 self["progress"].show()
                 self["DownloadLabel"].show()
-                self.downloader = downloadWithProgress(str(url[0]), self.DL_File)
-                if hasattr(downloadWithProgress, "setAgent"):
+                self.downloader = DownloadWithProgress(str(url[0]), self.DL_File)
+                if hasattr(DownloadWithProgress, "setAgent"):
                     self.downloader.setAgent(UA)
                 self.downloader.addProgress(self.DL_progress)
                 self.downloader.addEnd(self.DL_finished)

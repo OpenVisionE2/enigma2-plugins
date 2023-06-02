@@ -50,7 +50,7 @@ from Components.Label import Label
 from Components.ScrollLabel import ScrollLabel
 from Components.AVSwitch import AVSwitch
 from Components.FileList import FileList
-from Components.SystemInfo import SystemInfo
+from Components.SystemInfo import BoxInfo
 from Components.VideoWindow import VideoWindow
 from Components.GUIComponent import GUIComponent
 from Components.Pixmap import Pixmap, MultiPixmap
@@ -589,7 +589,7 @@ class MerlinMusicPlayerTV(MerlinMusicPlayerScreenSaver):
             skin = """
                 <screen backgroundColor="transparent" flags="wfNoBorder" position="0,0" size="%d,%d" title="MerlinMusicPlayerTV">
                     <widget backgroundColor="transparent" name="video" position="0,0" size="%d,%d" zPosition="1"/>
-                    <widget name="coverArt" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MerlinMusicPlayer/images/no_coverArt.png" position="%d,%d" size="64,64" transparent="1" alphaTest="blend" zPosition="2" />
+                    <widget name="coverArt" pixmap="~/images/no_coverArt.png" position="%d,%d" size="64,64" transparent="1" alphaTest="blend" zPosition="2" />
                     <widget name="display" position="%d,%d" size="%d,24" zPosition="2" backgroundColor="#33000000" font="Regular;20" foregroundColor="#fcc000" />
                 </screen>""" % (w, h, w, h, cx, cy, dx, dy, dw)
 
@@ -1009,7 +1009,7 @@ class MerlinMusicPlayerScreen(Screen, InfoBarBase, InfoBarSeek, InfoBarNotificat
         self.session.openWithCallback(self.setupFinished, MerlinMusicPlayerSetup, False)
 
     def showTV(self):
-        if SystemInfo.get("NumVideoDecoders", 1) > 1:
+        if BoxInfo.getItem("NumVideoDecoders", 1) > 1:
             if self.screenSaverTimer.isActive():
                 self.screenSaverTimer.stop()
             if self.screenSaverScreen:

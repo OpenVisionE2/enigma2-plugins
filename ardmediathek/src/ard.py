@@ -26,7 +26,8 @@ from Screens.VirtualKeyBoard import VirtualKeyBoard
 from six import ensure_str
 from six.moves.urllib.parse import quote_plus
 from twisted.internet.reactor import callInThread
-from Tools.Downloader import downloadWithProgress
+from Tools.Downloader import DownloadWithProgress
+from Tools.Directories resolveFilename, SCOPE_PLUGINS
 config.plugins.ARD = ConfigSubsection()
 config.plugins.ARD.savetopath = ConfigDirectory(default="/media/hdd/movie/")
 config.plugins.ARD.SaveResumePoint = ConfigYesNo(default=False)
@@ -34,7 +35,7 @@ config.plugins.ARD.UT_DL = ConfigYesNo(default=False)
 config.plugins.ARD.COVER_DL = ConfigYesNo(default=False)
 config.plugins.ARD.DESC = ConfigYesNo(default=False)
 config.plugins.ARD.AUTOPLAY = ConfigYesNo(default=False)
-PLUGINPATH = "/usr/lib/enigma2/python/Plugins/Extensions/ArdMediathek/"
+PLUGINPATH = resolveFilename(SCOPE_PLUGINS, "Extensions/ArdMediathek/")
 RegionList = [("bw", ("Baden-Württemberg (SWR)")), ("by", ("Bayern (BR)")), ("be", ("Berlin (rbb)")), ("bb", ("Brandenburg (rbb)")), ("hb", ("Bremen (radiobremen)")), ("hh", ("Hamburg (NDR)")), ("he", ("Hessen (hr)")), ("mv", ("Mecklenburg-Vorpommern (NDR)")), ("ni", ("Niedersachsen (NDR)")), ("nw", ("Nordrhein-Westfalen (WDR)")), ("rp", ("Rheinland-Pfalz (SWR)")), ("sl", ("Saarland (SR)")), ("sn", ("Sachsen (mdr)")), ("st", ("Sachsen-Anhalt (mdr)")), ("sh", ("Schleswig-Holstein (NDR)")), ("th", ("Thüringen (mdr)"))]
 config.plugins.ARD.Region = ConfigSelection(default="nw", choices=RegionList)
 FHD = getDesktop(0).size().height() > 720
@@ -370,8 +371,8 @@ class ArdMediathek(Screen):
                     n = "%s_(%i)%s" % (root, i, ext)
                 self.DL_File = n
             if config.plugins.ARD.COVER_DL.value:
-                downloader = downloadWithProgress(str(self["movielist"].getCurrent()[4].replace("w=360", "w=1080")), self.DL_File[:-3] + "jpg")
-                if hasattr(downloadWithProgress, "setAgent"):
+                downloader = DownloadWithProgress(str(self["movielist"].getCurrent()[4].replace("w=360", "w=1080")), self.DL_File[:-3] + "jpg")
+                if hasattr(DownloadWithProgress, "setAgent"):
                     downloader.setAgent(UA)
                 downloader.start()
             if config.plugins.ARD.UT_DL.value and url[1]:
@@ -391,8 +392,8 @@ class ArdMediathek(Screen):
                             f.write(desc)
             self["progress"].show()
             self["DownloadLabel"].show()
-            self.downloader = downloadWithProgress(str(url[0]), self.DL_File)
-            if hasattr(downloadWithProgress, "setAgent"):
+            self.downloader = DownloadWithProgress(str(url[0]), self.DL_File)
+            if hasattr(DownloadWithProgress, "setAgent"):
                 self.downloader.setAgent(UA)
             self.downloader.addProgress(self.DL_progress)
             self.downloader.addEnd(self.DL_finished)

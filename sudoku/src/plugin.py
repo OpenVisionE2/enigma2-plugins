@@ -235,7 +235,7 @@ class Sudoku(Screen):
 		if isFHD():
 			Sudoku.skin = """
 					<screen name="Sudoku" position="60,140" size="1800,900" title="Sudoku" backgroundColor="#101010">
-						<ePixmap position="0,0" size="1800,900" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/Sudoku/pic/sudoku.jpg" />
+						<ePixmap position="0,0" size="1800,900" pixmap="~/pic/sudoku.jpg" />
 						<widget name="gamelevel" position="145,80" size="331,70" verticalAlignment="center" horizontalAlignment="center" font="Regular;40" foregroundColor="yellow" backgroundColor="#000000" transparent="1" zPosition="1" />
 						<widget source="Canvas" render="Canvas" position="1025,99" size="696,661" backgroundColor="#60ffffff" transparent="1" alphaTest="blend" zPosition="2" />
 						<ePixmap position="50,250" pixmap="buttons/key_green.png" size="80,40" alphaTest="blend" zPosition="2" />
@@ -245,7 +245,7 @@ class Sudoku(Screen):
 						<ePixmap position="50,350" pixmap="buttons/key_blue.png" size="80,40" alphaTest="blend" zPosition="2" />
 						<widget name="key_blue" font="Regular;30" position="132,350" size="450,40" horizontalAlignment="left" verticalAlignment="center" backgroundColor="black" zPosition="1" transparent="1" />
 						<eLabel position="50,410" size="450,3" backgroundColor="#202020" zPosition="1" />
-						<ePixmap position="62,77" size="80,80" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/Sudoku/pic/rocket.png" alphaTest="blend" zPosition="3" />
+						<ePixmap position="62,77" size="80,80" pixmap="~/pic/rocket.png" alphaTest="blend" zPosition="3" />
 						<widget name="result" render="Label" position="80,499" size="835,276" font="Regular; 32" horizontalAlignment="left" foregroundColor="#ffff00" backgroundColor="#000000" transparent="1" zPosition="3" />
 						<widget name="movex" render="Label" position="133,193" size="229,50" font="Regular; 34" horizontalAlignment="left" foregroundColor="yellow" backgroundColor="#000000" transparent="1" zPosition="3" />
 					</screen>"""
@@ -254,14 +254,14 @@ class Sudoku(Screen):
 		else:
 			Sudoku.skin = """
 						<screen name="Sudoku" position="0,0" size="1260,720" title="Sudoku" backgroundColor="#101010">
-						<ePixmap position="0,0" size="1259,720" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/Sudoku/pic/sudokuHD.jpg" />
+						<ePixmap position="0,0" size="1259,720" pixmap="~/pic/sudokuHD.jpg" />
 						<widget name="gamelevel" position="58,104" size="250,50" verticalAlignment="center" horizontalAlignment="center" font="Regular; 34" foregroundColor="yellow" backgroundColor="#000000" transparent="1" zPosition="1" />
 						<widget source="Canvas" render="Canvas" position="534,28" size="696,661" backgroundColor="#60ffffff" transparent="1" alphaTest="blend" zPosition="2" />
 						<widget name="key_green" font="Regular;30" position="135,165" size="450,40" horizontalAlignment="left" verticalAlignment="center" backgroundColor="black" zPosition="1" transparent="1" />
 						<widget name="key_red" font="Regular;30" position="135,216" size="450,40" horizontalAlignment="left" verticalAlignment="center" backgroundColor="black" zPosition="1" transparent="1" />
 						<widget name="key_blue" font="Regular;30" position="133,265" size="450,40" horizontalAlignment="left" verticalAlignment="center" backgroundColor="black" zPosition="1" transparent="1" />
 						<eLabel position="50,315" size="300,3" backgroundColor="#202020" zPosition="1" />
-						<ePixmap position="50,7" size="80,80" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/Sudoku/pic/rocket.png" alphaTest="blend" zPosition="3" />
+						<ePixmap position="50,7" size="80,80" pixmap="~/pic/rocket.png" alphaTest="blend" zPosition="3" />
 						<widget name="result" render="Label" position="12,316" size="510,370" font="Regular; 22" horizontalAlignment="left" foregroundColor="#ffff00" backgroundColor="#000000" transparent="1" zPosition="4" verticalAlignment="top" />
 						<widget name="movex" render="Label" position="324,103" size="186,50" font="Regular; 34" horizontalAlignment="right" foregroundColor="yellow" backgroundColor="dark" transparent="1" zPosition="3" />
 						<eLabel name="" position="13,316" size="510,370" zPosition="2" />

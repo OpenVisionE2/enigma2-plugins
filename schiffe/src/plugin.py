@@ -163,8 +163,8 @@ class Schiffe(Screen):
         if isFHD():
             Schiffe.skin = """
                 <screen name="Schiffe" position="center,140" size="1800,900" title="Schiffe" backgroundColor="#101010">
-                    <ePixmap position="0,0" size="1800,900" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/Schiffe/pic/Schiffe.jpg" />
-                    <ePixmap position="1050,170" size="130,400" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/Schiffe/pic/ship.jpg" zPosition="5" />
+                    <ePixmap position="0,0" size="1800,900" pixmap="~/pic/Schiffe.jpg" />
+                    <ePixmap position="1050,170" size="130,400" pixmap="~/pic/ship.jpg" zPosition="5" />
                     <widget name="message" position="50,10" size="350,70" verticalAlignment="center" horizontalAlignment="center" font="Regular;40" foregroundColor="yellow" backgroundColor="#000000" transparent="1" zPosition="1" />
                     <widget source="Canvas" render="Canvas" position="520,150" size="1200,550" backgroundColor="#60ffffff" transparent="1" alphaTest="blend" zPosition="2" />
                     <ePixmap position="50,150" pixmap="buttons/key_green.png" size="80,40" alphaTest="blend" zPosition="2" />
@@ -174,7 +174,7 @@ class Schiffe(Screen):
                     <ePixmap position="50,250" pixmap="buttons/key_blue.png" size="80,40" alphaTest="blend" zPosition="2" />
                     <widget name="key_blue" font="Regular;30" position="135,250" size="450,40" horizontalAlignment="left" verticalAlignment="center" backgroundColor="black" zPosition="1" transparent="1" />
                     <eLabel position="50,300" size="300,3" backgroundColor="#202020" zPosition="1" />
-                    <ePixmap position="48,332" size="80,80" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/Schiffe/pic/rocket.png" alphaTest="blend" zPosition="1" />
+                    <ePixmap position="48,332" size="80,80" pixmap="~/pic/rocket.png" alphaTest="blend" zPosition="1" />
                     <widget name="result" render="Label" position="131,335" size="200,34" font="Regular;30" horizontalAlignment="left" foregroundColor="yellow" backgroundColor="#000000" transparent="1" zPosition="3" />
                     <widget name="movex" render="Label" position="130,375" size="200,34" font="Regular;30" horizontalAlignment="left" foregroundColor="yellow" backgroundColor="#000000" transparent="1" zPosition="3" />
                 </screen>"""

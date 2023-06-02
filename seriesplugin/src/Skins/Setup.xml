@@ -1,8 +1,8 @@
 <screen name="SeriesPluginConfiguration" position="center,100" size="1120,580" title="SeriesPlugin Setup">
-	<ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/SeriesPlugin/Images/red_round.png" position="10,5" size="32,32" alphaTest="on" />
-	<ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/SeriesPlugin/Images/green_round.png" position="280,5" size="32,32" alphaTest="on" />
-	<ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/SeriesPlugin/Images/yellow_round.png" position="550,5" size="32,32" alphaTest="on" />
-	<ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/SeriesPlugin/Images/blue_round.png" position="820,5" size="32,32" alphaTest="on" />
+	<ePixmap pixmap="~/Images/red_round.png" position="10,5" size="32,32" alphaTest="on" />
+	<ePixmap pixmap="~/Images/green_round.png" position="280,5" size="32,32" alphaTest="on" />
+	<ePixmap pixmap="~/Images/yellow_round.png" position="550,5" size="32,32" alphaTest="on" />
+	<ePixmap pixmap="~/Images/blue_round.png" position="820,5" size="32,32" alphaTest="on" />
 	<widget name="key_red" position="60,0" size="200,42" zPosition="1" font="Regular;20" horizontalAlignment="left" verticalAlignment="center" backgroundColor="#9f1313" transparent="1" shadowColor="black" shadowOffset="-2,-2" />
 	<widget name="key_green" position="330,0" size="200,42" zPosition="1" font="Regular;20" horizontalAlignment="left" verticalAlignment="center" backgroundColor="#1f771f" transparent="1" shadowColor="black" shadowOffset="-2,-2" />
 	<widget name="key_yellow" position="600,0" size="200,42" zPosition="1" font="Regular;20" horizontalAlignment="left" verticalAlignment="center" backgroundColor="#a08500" transparent="1" shadowColor="black" shadowOffset="-2,-2" />

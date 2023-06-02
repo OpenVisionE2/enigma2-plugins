@@ -17,8 +17,8 @@
 		<widget name = "label_video_duration" position = "150,10" size = "95,20" font = "Regular;20" halign = "right" />
 		<widget name = "video_duration" position = "250,10" size = "90,20" valign = "left" font = "Regular;20"/>
 		<widget name = "label_video_rating_average" position = "345,10" size = "95,20" font = "Regular;20" halign = "right" />
-		<widget name = "starsbg" pixmap = "/usr/lib/enigma2/python/Plugins/Extensions/YouTubePlayer/starsbar_empty.png" position = "445,10" zPosition = "0" size = "100,20" transparent = "1" alphatest = "on" />
-		<widget name = "stars" position = "445,10" size = "100,20" pixmap = "/usr/lib/enigma2/python/Plugins/Extensions/YouTubePlayer/starsbar_filled.png" transparent = "1" />
+		<widget name = "starsbg" pixmap = "~/starsbar_empty.png" position = "445,10" zPosition = "0" size = "100,20" transparent = "1" alphatest = "on" />
+		<widget name = "stars" position = "445,10" size = "100,20" pixmap = "~/starsbar_filled.png" transparent = "1" />
 		<widget name = "label_video_statistics_view_count" position = "150,30" size = "95,20" font = "Regular;20" halign = "right" />
 		<widget name = "video_statistics_view_count" position = "250,30" size = "90,20" valign = "left" font = "Regular;20"/>
 		<widget name = "label_video_numraters" position = "345,30" size = "95,20" font = "Regular;20" halign = "right" />

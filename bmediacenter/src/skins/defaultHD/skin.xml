@@ -14,26 +14,26 @@
 -->
   <!-- DMC Main Menu -->
   <screen name="ColorButtons">
-    <widget source="key_red" render="Pixmap" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/icons/key_red.png" position="23,1018" size="35,35" alphaTest="blend" objectTypes="key_red,StaticText" transparent="1" scale="1">
+    <widget source="key_red" render="Pixmap" pixmap="~/icons/key_red.png" position="23,1018" size="35,35" alphaTest="blend" objectTypes="key_red,StaticText" transparent="1" scale="1">
       <convert type="ConditionalShowHide" />
     </widget>
     <widget source="key_red" render="Label" position="70,1000" size="240,70" zPosition="1" verticalAlignment="center" font="Regular; 27" horizontalAlignment="left" backgroundColor="black" objectTypes="key_red,StaticText" transparent="1" />
-    <widget source="key_green" render="Pixmap" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/icons/key_green.png" position="323,1018" size="35,35" alphaTest="blend" objectTypes="key_green,StaticText" transparent="1" scale="1">
+    <widget source="key_green" render="Pixmap" pixmap="~/icons/key_green.png" position="323,1018" size="35,35" alphaTest="blend" objectTypes="key_green,StaticText" transparent="1" scale="1">
       <convert type="ConditionalShowHide" />
     </widget>
     <widget source="key_green" render="Label" position="370,1000" size="240,70" zPosition="1" verticalAlignment="center" font="Regular; 27" horizontalAlignment="left" backgroundColor="black" objectTypes="key_green,StaticText" transparent="1" />
-    <widget source="key_yellow" render="Pixmap" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/icons/key_yellow.png" position="623,1018" size="35,35" alphaTest="blend" objectTypes="key_yellow,StaticText" transparent="1" scale="1">
+    <widget source="key_yellow" render="Pixmap" pixmap="~/icons/key_yellow.png" position="623,1018" size="35,35" alphaTest="blend" objectTypes="key_yellow,StaticText" transparent="1" scale="1">
       <convert type="ConditionalShowHide" />
     </widget>
     <widget source="key_yellow" render="Label" position="670,1000" size="240,70" zPosition="1" verticalAlignment="center" font="Regular; 27" horizontalAlignment="left" backgroundColor="black" objectTypes="key_yellow,StaticText" transparent="1" />
-    <widget source="key_blue" render="Pixmap" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/icons/key_blue.png" position="923,1018" size="35,35" alphaTest="blend" objectTypes="key_blue,StaticText" transparent="1" scale="1">
+    <widget source="key_blue" render="Pixmap" pixmap="~/icons/key_blue.png" position="923,1018" size="35,35" alphaTest="blend" objectTypes="key_blue,StaticText" transparent="1" scale="1">
       <convert type="ConditionalShowHide" />
     </widget>
     <widget source="key_blue" render="Label" position="970,1000" size="240,70" zPosition="1" verticalAlignment="center" font="Regular; 27" horizontalAlignment="left" backgroundColor="black" objectTypes="key_blue,StaticText" transparent="1" />
-    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/icons/key_red.png" position="23,1018" size="35,35" alphaTest="blend" scale="1" objectTypes="key_red,Label,Button"/>
-    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/icons/key_green.png" position="323,1018" size="35,35" alphaTest="blend" scale="1" objectTypes="key_green,Label,Button"/>
-    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/icons/key_yellow.png" position="623,1018" size="35,35" alphaTest="blend" scale="1" objectTypes="key_yellow,Label,Button"/>
-    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/icons/key_blue.png" position="923,1018" size="35,35" alphaTest="blend" scale="1" objectTypes="key_blue,Label,Button"/>
+    <ePixmap pixmap="~/icons/key_red.png" position="23,1018" size="35,35" alphaTest="blend" scale="1" objectTypes="key_red,Label,Button"/>
+    <ePixmap pixmap="~/icons/key_green.png" position="323,1018" size="35,35" alphaTest="blend" scale="1" objectTypes="key_green,Label,Button"/>
+    <ePixmap pixmap="~/icons/key_yellow.png" position="623,1018" size="35,35" alphaTest="blend" scale="1" objectTypes="key_yellow,Label,Button"/>
+    <ePixmap pixmap="~/icons/key_blue.png" position="923,1018" size="35,35" alphaTest="blend" scale="1" objectTypes="key_blue,Label,Button"/>
     <widget name="key_red" position="70,1000" size="240,70" zPosition="1" verticalAlignment="center" font="Regular; 27" horizontalAlignment="left" backgroundColor="black" transparent="1" objectTypes="key_red,Label,Button"/>
     <widget name="key_green" position="370,1000" size="240,70" zPosition="1" verticalAlignment="center" font="Regular; 27" horizontalAlignment="left" backgroundColor="black" transparent="1" objectTypes="key_green,Label,Button"/>
     <widget name="key_yellow" position="670,1000" size="240,70" zPosition="1" verticalAlignment="center" font="Regular; 27" horizontalAlignment="left" backgroundColor="black" transparent="1" objectTypes="key_yellow,Label,Button"/>
@@ -42,77 +42,77 @@
 
   <screen name="DMC_MainMenu" position="0,0" size="1920,1080" resolution="1920,1080" title="Home" flags="wfNoBorder" backgroundColor="black">
     <eLabel text="BMedia Center Menu" position="120,25" size="720,50" font="Regular; 36" horizontalAlignment="left" verticalAlignment="center" foregroundColor="#0050bbff" backgroundColor="black" transparent="1" zPosition="1" />
-    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/Browser.png" position="0,0" zPosition="-20" size="1920,1080" scale="1" />
+    <ePixmap pixmap="~/skins/defaultHD/images/Browser.png" position="0,0" zPosition="-20" size="1920,1080" scale="1" />
     <widget source="global.CurrentTime" render="Label" position="1280,30" size="600,40" font="Regular; 32" horizontalAlignment="right" foregroundColor="#00ccffff" backgroundColor="black" transparent="1">
     <convert type="ClockToText">Format:%a, %d.%m.%Y   %H:%M</convert>
     </widget>
     <widget source="menu" render="Listbox" zPosition="0" transparent="1" position="0,0" size="0,0">
     <convert type="StringList" />
     </widget>
-    <widget name="left" position="650,1005" zPosition="2" size="64,64" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/MenuIconSettingssw.png" transparent="1" alphaTest="blend" scale="1" />
-    <widget name="middle" position="24,124" zPosition="-18" size="1872,836" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/BMediaCenter.png" transparent="1" alphaTest="blend" scale="1" />
-    <widget name="right" position="1210,1005" zPosition="3" size="64,64" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/MenuIconVideosw.png" transparent="1" alphaTest="blend" scale="1" />
+    <widget name="left" position="650,1005" zPosition="2" size="64,64" pixmap="~/skins/defaultHD/images/MenuIconSettingssw.png" transparent="1" alphaTest="blend" scale="1" />
+    <widget name="middle" position="24,124" zPosition="-18" size="1872,836" pixmap="~/skins/defaultHD/images/BMediaCenter.png" transparent="1" alphaTest="blend" scale="1" />
+    <widget name="right" position="1210,1005" zPosition="3" size="64,64" pixmap="~/skins/defaultHD/images/MenuIconVideosw.png" transparent="1" alphaTest="blend" scale="1" />
     <widget name="text" zPosition="1" transparent="4" horizontalAlignment="center" verticalAlignment="center" position="774,997" size="374,80" font="Regular; 54" />
     <widget source="menu" render="Listbox" zPosition="0" transparent="1" position="0,0" size="0,0">
     <convert type="StringList" />
     </widget>
     <!--
-    <widget source="menu" render="Pixmap" transparent="1" zPosition="2" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/dock_ap.png" position="925,1884" size="64,64" alphaTest="on" scale="1">
+    <widget source="menu" render="Pixmap" transparent="1" zPosition="2" pixmap="~/skins/defaultHD/images/dock_ap.png" position="925,1884" size="64,64" alphaTest="on" scale="1">
     <convert type="MenuEntryCompare">menu_music</convert>
     <convert type="ConditionalShowHide" />
     </widget>
-    <widget source="menu" render="Pixmap" transparent="1" zPosition="2" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/dock_video.png" position="925,1884" size="64,64" alphaTest="on" scale="1">
+    <widget source="menu" render="Pixmap" transparent="1" zPosition="2" pixmap="~/skins/defaultHD/images/dock_video.png" position="925,1884" size="64,64" alphaTest="on" scale="1">
     <convert type="MenuEntryCompare">menu_video</convert>
     <convert type="ConditionalShowHide" />
     </widget>
-    <widget source="menu" render="Pixmap" transparent="1" zPosition="2" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/dock_picture.png" position="925,1884" size="64,64" alphaTest="on" scale="1">
+    <widget source="menu" render="Pixmap" transparent="1" zPosition="2" pixmap="~/skins/defaultHD/images/dock_picture.png" position="925,1884" size="64,64" alphaTest="on" scale="1">
     <convert type="MenuEntryCompare">menu_pictures</convert>
     <convert type="ConditionalShowHide" />
     </widget>
-    <widget source="menu" render="Pixmap" transparent="1" zPosition="2" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/dock_vlc.png" position="925,1884" size="64,64" alphaTest="on" scale="1">
+    <widget source="menu" render="Pixmap" transparent="1" zPosition="2" pixmap="~/skins/defaultHD/images/dock_vlc.png" position="925,1884" size="64,64" alphaTest="on" scale="1">
     <convert type="MenuEntryCompare">menu_vlc</convert>
     <convert type="ConditionalShowHide" />
     </widget>
-    <widget source="menu" render="Pixmap" transparent="1" zPosition="2" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/dock_webradio.png" position="925,1884" size="64,64" alphaTest="on" scale="1">
+    <widget source="menu" render="Pixmap" transparent="1" zPosition="2" pixmap="~/skins/defaultHD/images/dock_webradio.png" position="925,1884" size="64,64" alphaTest="on" scale="1">
     <convert type="MenuEntryCompare">menu_radio</convert>
     <convert type="ConditionalShowHide" />
     </widget>
-    <widget source="menu" render="Pixmap" transparent="1" zPosition="2" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/dock_settings.png" position="925,1884" size="64,64" alphaTest="on" scale="1">
+    <widget source="menu" render="Pixmap" transparent="1" zPosition="2" pixmap="~/skins/defaultHD/images/dock_settings.png" position="925,1884" size="64,64" alphaTest="on" scale="1">
     <convert type="MenuEntryCompare">menu_settings</convert>
     <convert type="ConditionalShowHide" />
     </widget>
     -->
-    <ePixmap position="10,28" size="100,40" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/plugin.png" transparent="1" alphaTest="blend" zPosition="3" scale="1" />
-    <ePixmap position="1800,1018" size="60,36" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/icons/key_ok.png" transparent="1" alphaTest="blend" zPosition="3" scale="1" />
-    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/icons/left.png" position="730,1023" size="35,35" alphaTest="blend" scale="1" />
-    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/icons/right.png" position="1163,1023" size="35,35" alphaTest="blend" scale="1" />
+    <ePixmap position="10,28" size="100,40" pixmap="~/plugin.png" transparent="1" alphaTest="blend" zPosition="3" scale="1" />
+    <ePixmap position="1800,1018" size="60,36" pixmap="~/icons/key_ok.png" transparent="1" alphaTest="blend" zPosition="3" scale="1" />
+    <ePixmap pixmap="~/icons/left.png" position="730,1023" size="35,35" alphaTest="blend" scale="1" />
+    <ePixmap pixmap="~/icons/right.png" position="1163,1023" size="35,35" alphaTest="blend" scale="1" />
   </screen>
     <!-- DMC Settings Menu -->
   <screen name="MC_Settings" position="0,0" size="1920,1080" resolution="1920,1080" title="Home" flags="wfNoBorder" backgroundColor="black">
     <eLabel text="DMC Settings" position="120,25" size="720,50" font="Regular; 36" horizontalAlignment="left" verticalAlignment="center" foregroundColor="#0050bbff" backgroundColor="black" transparent="1" zPosition="1" />
-    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/Browser.png" position="-2,0" zPosition="-20" size="1920,1080" scale="1" />
+    <ePixmap pixmap="~/skins/defaultHD/images/Browser.png" position="-2,0" zPosition="-20" size="1920,1080" scale="1" />
     <widget source="global.CurrentTime" render="Label" position="1280,30" size="600,40" font="Regular; 32" horizontalAlignment="right" foregroundColor="#00ccffff" backgroundColor="black" transparent="1">
     <convert type="ClockToText">Format:%a, %d.%m.%Y   %H:%M</convert>
     </widget>
-    <ePixmap position="1720,1018" size="60,36" zPosition="10" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/icons/key_ok.png" transparent="1" alphaTest="blend" scale="1" />
-    <ePixmap position="1800,1018" size="60,36" zPosition="10" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/icons/key_exit.png" transparent="1" alphaTest="blend" scale="1" />
-    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/dock_settings.png" position="20,12" size="80,80" zPosition="4" transparent="1" alphaTest="on" scale="1" />
+    <ePixmap position="1720,1018" size="60,36" zPosition="10" pixmap="~/icons/key_ok.png" transparent="1" alphaTest="blend" scale="1" />
+    <ePixmap position="1800,1018" size="60,36" zPosition="10" pixmap="~/icons/key_exit.png" transparent="1" alphaTest="blend" scale="1" />
+    <ePixmap pixmap="~/skins/defaultHD/images/dock_settings.png" position="20,12" size="80,80" zPosition="4" transparent="1" alphaTest="on" scale="1" />
     <widget name="configlist" position="385,235" zPosition="3" size="1150,605" itemHeight="45" font="Regular; 32" scrollbarMode="showOnDemand" transparent="1" />
-    <ePixmap name="" position="24,124" zPosition="-18" size="1872,836" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/MenuIconSettings.png" transparent="1" alphaTest="blend" scale="1" />
+    <ePixmap name="" position="24,124" zPosition="-18" size="1872,836" pixmap="~/skins/defaultHD/images/MenuIconSettings.png" transparent="1" alphaTest="blend" scale="1" />
   </screen>
     <!-- DMC Favorite Folders -->
   <screen name="MC_FavoriteFolders" position="0,0" size="1920,1080" resolution="1920,1080" title="Favorite Folders" flags="wfNoBorder" backgroundColor="black">
-    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/Browser.png" position="0,0" zPosition="-20" size="1920,1080" scale="1" />
-    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/MenuIconVideo.png" position="24,124" zPosition="-18" size="1872,836" transparent="1" alphaTest="blend" scale="1" />
-    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/folder.png" position="20,12" size="80,80" zPosition="4" transparent="1" alphaTest="on" scale="1" />
+    <ePixmap pixmap="~/skins/defaultHD/images/Browser.png" position="0,0" zPosition="-20" size="1920,1080" scale="1" />
+    <ePixmap pixmap="~/skins/defaultHD/images/MenuIconVideo.png" position="24,124" zPosition="-18" size="1872,836" transparent="1" alphaTest="blend" scale="1" />
+    <ePixmap pixmap="~/skins/defaultHD/images/folder.png" position="20,12" size="80,80" zPosition="4" transparent="1" alphaTest="on" scale="1" />
     <widget source="global.CurrentTime" render="Label" position="1280,30" size="600,40" font="Regular; 32" horizontalAlignment="right" foregroundColor="#00ccffff" backgroundColor="black" transparent="1">
     <convert type="ClockToText">Format:%a, %d.%m.%Y   %H:%M</convert>
     </widget>
     <widget source="title" transparent="1" render="Label" zPosition="2" position="120,25" size="720,50" foregroundColor="#0050bbff" backgroundColor="black" horizontalAlignment="left" verticalAlignment="center" font="Regular;36" />
-    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/icons/key_red.png" position="23,1018" size="35,35" alphaTest="off" scale="1" />
-    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/icons/key_green.png" position="323,1018" size="35,35" alphaTest="off" scale="1" />
-    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/icons/key_yellow.png" position="623,1018" size="35,35" alphaTest="off" scale="1" />
-    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/icons/key_blue.png" position="923,1018" size="35,35" alphaTest="off" scale="1" />
+    <ePixmap pixmap="~/icons/key_red.png" position="23,1018" size="35,35" alphaTest="off" scale="1" />
+    <ePixmap pixmap="~/icons/key_green.png" position="323,1018" size="35,35" alphaTest="off" scale="1" />
+    <ePixmap pixmap="~/icons/key_yellow.png" position="623,1018" size="35,35" alphaTest="off" scale="1" />
+    <ePixmap pixmap="~/icons/key_blue.png" position="923,1018" size="35,35" alphaTest="off" scale="1" />
     <widget name="key_red" render="Label" position="70,1000" size="240,70" zPosition="1" verticalAlignment="center" font="Regular; 27" horizontalAlignment="left" backgroundColor="black" transparent="1" />
     <widget name="key_green" render="Label" position="370,1000" size="240,70" zPosition="1" verticalAlignment="center" font="Regular; 27" horizontalAlignment="left" backgroundColor="black" transparent="1" />
     <widget name="key_yellow" render="Label" position="670,1000" size="240,70" zPosition="1" verticalAlignment="center" font="Regular; 27" horizontalAlignment="left" backgroundColor="black" transparent="1" />
@@ -124,7 +124,7 @@
     <!-- DMC Audio Player -->
   <screen name="MC_AudioPlayer" position="0,0" size="1920,1080" resolution="1920,1080" title="Audio Player" flags="wfNoBorder" backgroundColor="black">
     <eLabel text="Audio Player" position="120,25" size="720,50" font="Regular; 36" horizontalAlignment="left" verticalAlignment="center" foregroundColor="#0050bbff" backgroundColor="black" transparent="1" zPosition="1" />
-    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/Browser.png" position="0,0" zPosition="-20" size="1920,1080" scale="1" />
+    <ePixmap pixmap="~/skins/defaultHD/images/Browser.png" position="0,0" zPosition="-20" size="1920,1080" scale="1" />
     <widget source="global.CurrentTime" render="Label" position="1280,30" size="600,40" font="Regular; 32" horizontalAlignment="right" foregroundColor="#00ccffff" backgroundColor="black" transparent="1">
       <convert type="ClockToText">Format:%a, %d.%m.%Y   %H:%M</convert>
     </widget>
@@ -138,49 +138,49 @@
       <convert type="ServicePosition">Position</convert>
     </widget>
     <eLabel name="" position="1000,555" size="550,1" backgroundColor="#0050bbff" zPosition="5" />
-    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/folder_path.png" position="181,136" zPosition="2" size="64,64" transparent="1" alphaTest="on" scale="1" />
-    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/icons/key_red.png" position="23,1018" size="35,35" alphaTest="blend" scale="1" />
-    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/icons/key_yellow.png" position="623,1018" size="35,35" alphaTest="blend" scale="1" />
-    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/icons/key_blue.png" position="923,1018" size="35,35" alphaTest="blend" scale="1" />
+    <ePixmap pixmap="~/skins/defaultHD/images/folder_path.png" position="181,136" zPosition="2" size="64,64" transparent="1" alphaTest="on" scale="1" />
+    <ePixmap pixmap="~/icons/key_red.png" position="23,1018" size="35,35" alphaTest="blend" scale="1" />
+    <ePixmap pixmap="~/icons/key_yellow.png" position="623,1018" size="35,35" alphaTest="blend" scale="1" />
+    <ePixmap pixmap="~/icons/key_blue.png" position="923,1018" size="35,35" alphaTest="blend" scale="1" />
     <eLabel text="Playlist/Filelist" position="70,1000" size="240,70" zPosition="1" verticalAlignment="center" font="Regular; 27" horizontalAlignment="left" backgroundColor="black" transparent="1" />
     <eLabel text="Play / Pause" position="1205,570" size="180,40" zPosition="1" verticalAlignment="center" font="Regular; 27" horizontalAlignment="left" backgroundColor="black" transparent="1" />
     <eLabel text="Zur Playlist" position="670,1000" size="240,70" zPosition="1" verticalAlignment="center" font="Regular; 27" horizontalAlignment="left" backgroundColor="black" transparent="1" />
     <eLabel text="Settings" position="970,1000" size="240,70" zPosition="1" verticalAlignment="center" font="Regular; 27" horizontalAlignment="left" backgroundColor="black" transparent="1" />
-    <widget name="green" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/icons/repeatoffgreen.png" position="365,1025" size="240,27" zPosition="2" transparent="1" alphaTest="blend" scale="1" />
+    <widget name="green" pixmap="~/icons/repeatoffgreen.png" position="365,1025" size="240,27" zPosition="2" transparent="1" alphaTest="blend" scale="1" />
     <widget name="text" zPosition="6" transparent="1" horizontalAlignment="center" position="1000,620" size="550,250" foregroundColor="white" />
-    <widget name="coverArt" position="1570,220" size="320,400" zPosition="6" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/no_cover.png" transparent="1" alphaTest="on" scale="1" />
+    <widget name="coverArt" position="1570,220" size="320,400" zPosition="6" pixmap="~/skins/defaultHD/images/no_cover.png" transparent="1" alphaTest="on" scale="1" />
     <widget name="filelist" enableWrapAround="1" font="Regular; 32" transparent="1" position="180,222" zPosition="6" size="800,650" scrollbarMode="showNever" />
     <widget name="fileinfo" zPosition="6" font="Regular; 30" transparent="1" horizontalAlignment="left" position="1000,222" size="550,260" foregroundColor="white" />
     <widget name="currentfavname" zPosition="6" transparent="1" horizontalAlignment="left" position="1001,500" size="550,40" font="Regular;32" foregroundColor="white" />
    <widget name="currentfolder" zPosition="6" transparent="1" horizontalAlignment="left" position="260,149" size="1600,40" font="Regular; 30" foregroundColor="white" backgroundColor="black" />
-    <ePixmap name="mb_bgdockap" position="20,12" zPosition="3" size="80,80" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/dock_ap.png" transparent="1" alphaTest="on" scale="1" />
-    <ePixmap name="skipback" position="1466,834" zPosition="7" size="80,32" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/icons/key_left_right.png" transparent="1" alphaTest="on" scale="1" />
-    <widget name="play" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/icons/stop_enabled.png" position="1163,575" size="32,32" zPosition="6" transparent="1" alphaTest="on" scale="1" />
-    <widget name="screensaver" position="0,0" zPosition="9" size="1920,1080" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/no_coverArt.png" alphaTest="on" scale="1" />
-    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/icons/key_green.png" position="323,1018" size="35,35" alphaTest="blend" scale="1" />
-    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/MenuIconMusic.png" position="24,124" zPosition="-18" size="1872,836" transparent="1" alphaTest="blend" scale="1" />
-    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/icons/key_info.png" position="1223,1018" size="60,36" alphaTest="on" scale="1" />
+    <ePixmap name="mb_bgdockap" position="20,12" zPosition="3" size="80,80" pixmap="~/skins/defaultHD/images/dock_ap.png" transparent="1" alphaTest="on" scale="1" />
+    <ePixmap name="skipback" position="1466,834" zPosition="7" size="80,32" pixmap="~/icons/key_left_right.png" transparent="1" alphaTest="on" scale="1" />
+    <widget name="play" pixmap="~/icons/stop_enabled.png" position="1163,575" size="32,32" zPosition="6" transparent="1" alphaTest="on" scale="1" />
+    <widget name="screensaver" position="0,0" zPosition="9" size="1920,1080" pixmap="~/skins/defaultHD/images/no_coverArt.png" alphaTest="on" scale="1" />
+    <ePixmap pixmap="~/icons/key_green.png" position="323,1018" size="35,35" alphaTest="blend" scale="1" />
+    <ePixmap pixmap="~/skins/defaultHD/images/MenuIconMusic.png" position="24,124" zPosition="-18" size="1872,836" transparent="1" alphaTest="blend" scale="1" />
+    <ePixmap pixmap="~/icons/key_info.png" position="1223,1018" size="60,36" alphaTest="on" scale="1" />
     <eLabel text="Lyrics" position="1295,1000" size="240,70" zPosition="1" verticalAlignment="center" font="Regular; 27" horizontalAlignment="left" backgroundColor="black" transparent="1" />
   </screen>
     <!-- DMC Audio Playlist -->
   <screen name="MC_AudioPlaylist" position="0,0" size="1920,1080" resolution="1920,1080" title="Music Playlist" flags="wfNoBorder" backgroundColor="black">
     <eLabel text="Music Playlist" position="120,25" size="720,50" font="Regular; 36" horizontalAlignment="left" verticalAlignment="center" foregroundColor="#0050bbff" backgroundColor="black" transparent="1" zPosition="1" />
-    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/Browser.png" position="0,0" zPosition="-20" size="1920,1080" scale="1" />
+    <ePixmap pixmap="~/skins/defaultHD/images/Browser.png" position="0,0" zPosition="-20" size="1920,1080" scale="1" />
     <widget source="global.CurrentTime" render="Label" position="1280,30" size="600,40" font="Regular; 32" horizontalAlignment="right" foregroundColor="#00ccffff" backgroundColor="black" transparent="1">
     <convert type="ClockToText">Format:%a, %d.%m.%Y   %H:%M</convert>
     </widget>
-    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/MenuIconMusic.png" position="24,124" zPosition="-18" size="1872,836" transparent="1" alphaTest="blend" scale="1" />
-    <ePixmap name="mb_bgdockapplaylist" position="20,12" zPosition="3" size="80,80" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/dock_applaylist.png" transparent="1" alphaTest="on" scale="1" />
+    <ePixmap pixmap="~/skins/defaultHD/images/MenuIconMusic.png" position="24,124" zPosition="-18" size="1872,836" transparent="1" alphaTest="blend" scale="1" />
+    <ePixmap name="mb_bgdockapplaylist" position="20,12" zPosition="3" size="80,80" pixmap="~/skins/defaultHD/images/dock_applaylist.png" transparent="1" alphaTest="on" scale="1" />
     <widget name="key_red" position="70,1000" size="240,70" zPosition="1" verticalAlignment="center" font="Regular; 27" horizontalAlignment="left" backgroundColor="black" transparent="1" />
     <widget name="key_green" position="370,1000" size="240,70" zPosition="1" verticalAlignment="center" font="Regular; 27" horizontalAlignment="left" backgroundColor="black" transparent="1" />
     <widget name="key_yellow" position="670,1000" size="240,70" zPosition="1" verticalAlignment="center" font="Regular; 27" horizontalAlignment="left" backgroundColor="black" transparent="1" />
     <widget name="key_blue" position="970,1000" size="240,70" zPosition="1" verticalAlignment="center" font="Regular; 27" horizontalAlignment="left" backgroundColor="black" transparent="1" />
-    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/icons/key_red.png" position="23,1018" size="35,35" alphaTest="blend" scale="1" />
-    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/icons/key_green.png" position="323,1018" size="35,35" alphaTest="blend" scale="1" />
-    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/icons/key_yellow.png" position="623,1018" size="35,35" alphaTest="blend" scale="1" />
-    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/icons/key_blue.png" position="923,1018" size="35,35" alphaTest="blend" scale="1" />
-    <widget name="coverArt" position="1000,570" size="240,300" zPosition="6" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/no_cover.png" transparent="1" alphaTest="blend" scale="1" />
-    <widget name="screensaver" position="0,0" zPosition="9" size="1920,1080" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/no_coverArt.png" alphaTest="on" scale="1" />
+    <ePixmap pixmap="~/icons/key_red.png" position="23,1018" size="35,35" alphaTest="blend" scale="1" />
+    <ePixmap pixmap="~/icons/key_green.png" position="323,1018" size="35,35" alphaTest="blend" scale="1" />
+    <ePixmap pixmap="~/icons/key_yellow.png" position="623,1018" size="35,35" alphaTest="blend" scale="1" />
+    <ePixmap pixmap="~/icons/key_blue.png" position="923,1018" size="35,35" alphaTest="blend" scale="1" />
+    <widget name="coverArt" position="1000,570" size="240,300" zPosition="6" pixmap="~/skins/defaultHD/images/no_cover.png" transparent="1" alphaTest="blend" scale="1" />
+    <widget name="screensaver" position="0,0" zPosition="9" size="1920,1080" pixmap="~/skins/defaultHD/images/no_coverArt.png" alphaTest="on" scale="1" />
     <widget name="playlist" position="180,218" zPosition="6" size="800,655" scrollbarMode="showOnDemand" transparent="1" />
     <widget source="session.CurrentService" render="Label" position="1000,520" size="150,40" zPosition="6" font="Regular; 28" horizontalAlignment="center" transparent="1">
     <convert type="ServicePosition">Position,ShowHours</convert>
@@ -192,37 +192,37 @@
       <convert type="ServicePosition">Position</convert>
     </widget>
     <eLabel text="Play / Pause" position="1205,520" size="180,40" zPosition="1" verticalAlignment="center" font="Regular; 27" horizontalAlignment="left" backgroundColor="black" transparent="1" />
-    <widget name="play" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/icons/stop_enabled.png" position="1163,525" size="32,32" zPosition="6" transparent="1" alphaTest="on" scale="1" />
+    <widget name="play" pixmap="~/icons/stop_enabled.png" position="1163,525" size="32,32" zPosition="6" transparent="1" alphaTest="on" scale="1" />
     <eLabel name="" position="1000,504" size="550,1" backgroundColor="#0050bbff" zPosition="5" />
     <widget name="fileinfo" zPosition="6" transparent="1" horizontalAlignment="left" position="1000,222" size="550,260" font="Regular; 28" foregroundColor="grey" />
-    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/folder_path.png" position="361,136" zPosition="2" size="64,64" transparent="1" alphaTest="on" scale="1" />
+    <ePixmap pixmap="~/skins/defaultHD/images/folder_path.png" position="361,136" zPosition="2" size="64,64" transparent="1" alphaTest="on" scale="1" />
     <widget name="currentfolder" zPosition="6" transparent="1" horizontalAlignment="left" position="439,156" size="800,40" font="Regular;28" foregroundColor="white" backgroundColor="black" />
-    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/icons/key_info.png" position="1223,1018" size="60,36" alphaTest="on" scale="1" />
+    <ePixmap pixmap="~/icons/key_info.png" position="1223,1018" size="60,36" alphaTest="on" scale="1" />
     <eLabel text="Lyrics" position="1295,1000" size="240,70" zPosition="1" verticalAlignment="center" font="Regular; 27" horizontalAlignment="left" backgroundColor="black" transparent="1" />
-    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/icons/key_menu.png" position="1548,1018" size="60,36" alphaTest="on" scale="1" />
+    <ePixmap pixmap="~/icons/key_menu.png" position="1548,1018" size="60,36" alphaTest="on" scale="1" />
     <eLabel text="Settings" position="1620,1000" size="240,70" zPosition="1" verticalAlignment="center" font="Regular; 27" horizontalAlignment="left" backgroundColor="black" transparent="1" />
   </screen>
     <!-- DMC Audio Playersetting -->
   <screen name="AudioPlayerSettings" position="0,0" size="1920,1080" resolution="1920,1080" flags="wfNoBorder" title="Audioplayer Settings" backgroundColor="black">
       <eLabel text="Audioplayer Settings" position="120,25" size="720,50" font="Regular; 36" horizontalAlignment="left" verticalAlignment="center" foregroundColor="#0050bbff" backgroundColor="black" transparent="1" zPosition="1" />
-      <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/Browser.png" position="0,0" zPosition="-20" size="1920,1080" scale="1" />
+      <ePixmap pixmap="~/skins/defaultHD/images/Browser.png" position="0,0" zPosition="-20" size="1920,1080" scale="1" />
       <widget source="global.CurrentTime" render="Label" position="1280,30" size="600,40" font="Regular; 32" horizontalAlignment="right" foregroundColor="#00ccffff" backgroundColor="black" transparent="1">
       <convert type="ClockToText">Format:%a, %d.%m.%Y   %H:%M</convert>
       </widget>
-      <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/MenuIconMusic.png" position="24,124" zPosition="-18" size="1872,836" transparent="1" alphaTest="blend" scale="1" />
-      <ePixmap name="mb_bgdockapsettings" position="20,12" zPosition="3" size="80,80" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/dock_apsettings.png" transparent="1" alphaTest="on" scale="1" />
+      <ePixmap pixmap="~/skins/defaultHD/images/MenuIconMusic.png" position="24,124" zPosition="-18" size="1872,836" transparent="1" alphaTest="blend" scale="1" />
+      <ePixmap name="mb_bgdockapsettings" position="20,12" zPosition="3" size="80,80" pixmap="~/skins/defaultHD/images/dock_apsettings.png" transparent="1" alphaTest="on" scale="1" />
       <widget name="configlist" position="385,235" zPosition="3" size="1150,605" font="Regular; 34" itemHeight="45" scrollbarMode="showOnDemand" transparent="1" />
     </screen>
     <!-- DMC Lyrics -->
   <screen name="Lyrics" position="0,0" size="1920,1080" resolution="1920,1080" flags="wfNoBorder" title="Lyrics" backgroundColor="black">
       <eLabel text="Lyrics" position="120,25" size="720,50" font="Regular; 36" horizontalAlignment="left" verticalAlignment="center" foregroundColor="#0050bbff" backgroundColor="black" transparent="1" zPosition="1" />
-      <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/Browser.png" position="0,0" zPosition="-20" size="1920,1080" scale="1" />
+      <ePixmap pixmap="~/skins/defaultHD/images/Browser.png" position="0,0" zPosition="-20" size="1920,1080" scale="1" />
       <widget source="global.CurrentTime" render="Label" position="1280,30" size="600,40" font="Regular; 32" horizontalAlignment="right" foregroundColor="#00ccffff" backgroundColor="black" transparent="1">
       <convert type="ClockToText">Format:%a, %d.%m.%Y   %H:%M</convert>
       </widget>
-      <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/MenuIconMusic.png" position="24,124" zPosition="-18" size="1872,836" transparent="1" alphaTest="blend" scale="1" />
-      <ePixmap name="mb_bgdockapplaylist" position="20,12" zPosition="3" size="80,80" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/dock_aplyric.png" transparent="1" alphaTest="on" scale="1" />
-      <widget name="coverly" position="1570,350" size="320,400" zPosition="9" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/no_cover.png" transparent="1" alphaTest="on" scale="1" />
+      <ePixmap pixmap="~/skins/defaultHD/images/MenuIconMusic.png" position="24,124" zPosition="-18" size="1872,836" transparent="1" alphaTest="blend" scale="1" />
+      <ePixmap name="mb_bgdockapplaylist" position="20,12" zPosition="3" size="80,80" pixmap="~/skins/defaultHD/images/dock_aplyric.png" transparent="1" alphaTest="on" scale="1" />
+      <widget name="coverly" position="1570,350" size="320,400" zPosition="9" pixmap="~/skins/defaultHD/images/no_cover.png" transparent="1" alphaTest="on" scale="1" />
       <widget name="headertext" position="422,223" zPosition="3" size="878,40" font="Regular; 32" transparent="1" foregroundColor="yellow" backgroundColor="black" horizontalAlignment="center" />
       <widget name="resulttext" position="418,824" zPosition="3" size="882,35" font="Regular; 28" transparent="1" backgroundColor="black" horizontalAlignment="center" />
       <widget name="lyric_text" position="225,280" zPosition="4" size="1282,530" font="Regular; 40" transparent="1" backgroundColor="black" />
@@ -230,19 +230,19 @@
     <!-- DMC MC Webradio -->
   <screen name="MC_WebRadio" position="0,0" size="1920,1080" resolution="1920,1080" title="Audio Player" flags="wfNoBorder" backgroundColor="black">
       <eLabel text="Web Radio" position="120,25" size="720,50" font="Regular; 36" horizontalAlignment="left" verticalAlignment="center" foregroundColor="#0050bbff" backgroundColor="black" transparent="1" zPosition="1" />
-      <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/Browser.png" position="0,0" zPosition="-20" size="1920,1080" scale="1" />
+      <ePixmap pixmap="~/skins/defaultHD/images/Browser.png" position="0,0" zPosition="-20" size="1920,1080" scale="1" />
       <widget source="global.CurrentTime" render="Label" position="1280,30" size="600,40" font="Regular; 32" horizontalAlignment="right" foregroundColor="#00ccffff" backgroundColor="black" transparent="1">
       <convert type="ClockToText">Format:%a, %d.%m.%Y   %H:%M</convert>
       </widget>
-      <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/MenuIconRadio.png" position="24,124" zPosition="-18" size="1872,836" transparent="1" alphaTest="blend" scale="1" />
-      <ePixmap name="mb_bgdockapplaylist" position="20,12" zPosition="3" size="80,80" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/dock_webradio.png" transparent="1" alphaTest="on" scale="1" />
-      <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/icons/key_red.png" position="23,1018" size="35,35" alphaTest="blend" scale="1" />
-      <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/icons/key_green.png" position="323,1018" size="35,35" alphaTest="blend" scale="1" />
-      <widget name="play" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/icons/stop_enabled.png" position="988,1022" size="32,32" zPosition="6" transparent="1" alphaTest="on" scale="1" />
-      <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/icons/key_blue.png" position="623,1018" size="35,35" alphaTest="blend" scale="1" />
+      <ePixmap pixmap="~/skins/defaultHD/images/MenuIconRadio.png" position="24,124" zPosition="-18" size="1872,836" transparent="1" alphaTest="blend" scale="1" />
+      <ePixmap name="mb_bgdockapplaylist" position="20,12" zPosition="3" size="80,80" pixmap="~/skins/defaultHD/images/dock_webradio.png" transparent="1" alphaTest="on" scale="1" />
+      <ePixmap pixmap="~/icons/key_red.png" position="23,1018" size="35,35" alphaTest="blend" scale="1" />
+      <ePixmap pixmap="~/icons/key_green.png" position="323,1018" size="35,35" alphaTest="blend" scale="1" />
+      <widget name="play" pixmap="~/icons/stop_enabled.png" position="988,1022" size="32,32" zPosition="6" transparent="1" alphaTest="on" scale="1" />
+      <ePixmap pixmap="~/icons/key_blue.png" position="623,1018" size="35,35" alphaTest="blend" scale="1" />
       <widget name="filelist" itemHeight="45" transparent="1" font="Regular; 32" position="370,222" zPosition="5" size="600,635" scrollbarMode="showOnDemand" />
       <widget name="fileinfo" zPosition="6" transparent="1" horizontalAlignment="left" position="1000,222" size="550,635" font="Regular; 30" foregroundColor="grey" />
-      <widget name="screensaver" position="0,0" zPosition="9" size="1920,1080" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/no_coverArt.png" alphaTest="on" scale="1" />
+      <widget name="screensaver" position="0,0" zPosition="9" size="1920,1080" pixmap="~/skins/defaultHD/images/no_coverArt.png" alphaTest="on" scale="1" />
       <widget source="session.CurrentService" render="Label" position="1271,1018" size="240,40" zPosition="6" font="Regular; 28" horizontalAlignment="left" transparent="1" foregroundColor="#0050bbff">
       <convert type="ServicePosition">Position,ShowHours</convert>
       </widget>
@@ -254,12 +254,12 @@
     <!-- DMC MC Webdown -->
   <screen name="MC_WebDown" position="0,0" size="1920,1080" resolution="1920,1080" title="Home" flags="wfNoBorder" backgroundColor="black">
       <eLabel text="Web Download" position="120,25" size="720,50" font="Regular; 36" horizontalAlignment="left" verticalAlignment="center" foregroundColor="#0050bbff" backgroundColor="black" transparent="1" zPosition="1" />
-      <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/Browser.png" position="0,0" zPosition="-20" size="1920,1080" scale="1" />
+      <ePixmap pixmap="~/skins/defaultHD/images/Browser.png" position="0,0" zPosition="-20" size="1920,1080" scale="1" />
       <widget source="global.CurrentTime" render="Label" position="1280,30" size="600,40" font="Regular; 32" horizontalAlignment="right" foregroundColor="#00ccffff" backgroundColor="black" transparent="1">
       <convert type="ClockToText">Format:%a, %d.%m.%Y   %H:%M</convert>
       </widget>
-      <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/MenuIconRadio.png" position="24,124" zPosition="-18" size="1872,836" transparent="1" alphaTest="blend" scale="1" />
-      <ePixmap name="mb_bgdockapplaylist" position="20,12" zPosition="3" size="80,80" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/dock_webradio.png" transparent="1" alphaTest="on" scale="1" />
+      <ePixmap pixmap="~/skins/defaultHD/images/MenuIconRadio.png" position="24,124" zPosition="-18" size="1872,836" transparent="1" alphaTest="blend" scale="1" />
+      <ePixmap name="mb_bgdockapplaylist" position="20,12" zPosition="3" size="80,80" pixmap="~/skins/defaultHD/images/dock_webradio.png" transparent="1" alphaTest="on" scale="1" />
       <widget source="menu" render="Listbox" transparent="1" position="417,259" zPosition="5" size="1082,550">
       <convert type="StringList" />
       </widget>
@@ -270,30 +270,30 @@
     <!-- DMC Video Player -->
   <screen name="VideoPlayerSettings" position="0,0" size="1920,1080" resolution="1920,1080" flags="wfNoBorder" title="VideoPlayerSettings" backgroundColor="black">
       <eLabel text="Video Player Settings" position="120,25" size="720,50" font="Regular; 36" horizontalAlignment="left" verticalAlignment="center" foregroundColor="#0050bbff" backgroundColor="black" transparent="1" zPosition="1" />
-      <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/Browser.png" position="0,0" zPosition="-20" size="1920,1080" scale="1" />
+      <ePixmap pixmap="~/skins/defaultHD/images/Browser.png" position="0,0" zPosition="-20" size="1920,1080" scale="1" />
       <widget source="global.CurrentTime" render="Label" position="1280,30" size="600,40" font="Regular; 32" horizontalAlignment="right" foregroundColor="#00ccffff" backgroundColor="black" transparent="1">
       <convert type="ClockToText">Format:%a, %d.%m.%Y   %H:%M</convert>
       </widget>
-      <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/MenuIconVideo.png" position="24,124" zPosition="-18" size="1872,836" transparent="1" alphaTest="blend" scale="1" />
-      <ePixmap name="mb_bgdockapsettings" position="20,12" zPosition="3" size="80,80" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/dock_settings.png" transparent="1" alphaTest="on" scale="1" />
+      <ePixmap pixmap="~/skins/defaultHD/images/MenuIconVideo.png" position="24,124" zPosition="-18" size="1872,836" transparent="1" alphaTest="blend" scale="1" />
+      <ePixmap name="mb_bgdockapsettings" position="20,12" zPosition="3" size="80,80" pixmap="~/skins/defaultHD/images/dock_settings.png" transparent="1" alphaTest="on" scale="1" />
       <widget name="config" font="Regular; 32" itemHeight="45" position="417,259" zPosition="3" size="1082,550" scrollbarMode="showOnDemand" transparent="1" />
     </screen>
       <!-- MC_VideoPlayer -->
   <screen name="MC_VideoPlayer" position="0,0" size="1920,1080" resolution="1920,1080" title="Video Player" flags="wfNoBorder" backgroundColor="black">
     <eLabel text="Video Player" position="120,25" size="720,50" font="Regular; 36" horizontalAlignment="left" verticalAlignment="center" foregroundColor="#0050bbff" backgroundColor="black" transparent="1" zPosition="1" />
-    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/Browser.png" position="0,0" zPosition="-20" size="1920,1080" scale="1" />
+    <ePixmap pixmap="~/skins/defaultHD/images/Browser.png" position="0,0" zPosition="-20" size="1920,1080" scale="1" />
     <widget source="global.CurrentTime" render="Label" position="1280,30" size="600,40" font="Regular; 32" horizontalAlignment="right" foregroundColor="#00ccffff" backgroundColor="black" transparent="1">
     <convert type="ClockToText">Format:%a, %d.%m.%Y   %H:%M</convert>
     </widget>
     <widget name="currentfolder" zPosition="5" transparent="1" horizontalAlignment="left" position="500,30" size="900,40" font="Regular; 32" foregroundColor="white" backgroundColor="black" />
-    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/MenuIconVideo.png" position="20,120" zPosition="-18" size="1880,844" transparent="1" alphaTest="blend" scale="1" />
-    <ePixmap name="mb_bgdockapsettings" position="20,12" zPosition="3" size="80,80" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/dock_video.png" transparent="1" alphaTest="on" scale="1" />
+    <ePixmap pixmap="~/skins/defaultHD/images/MenuIconVideo.png" position="20,120" zPosition="-18" size="1880,844" transparent="1" alphaTest="blend" scale="1" />
+    <ePixmap name="mb_bgdockapsettings" position="20,12" zPosition="3" size="80,80" pixmap="~/skins/defaultHD/images/dock_video.png" transparent="1" alphaTest="on" scale="1" />
     <widget name="filelist" font="Regular; 32" itemHeight="45" transparent="1" enableWrapAround="1" position="40,140" zPosition="5" size="1179,760" scrollbarMode="showOnDemand" />
   <!--  <widget name="new widget" position="0, 0" size="10, 10" /> -->
-    <ePixmap name="mb_bgdockapsettings" position="420,15" zPosition="3" size="64,64" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/folder_path.png" transparent="1" alphaTest="on" scale="1" />
+    <ePixmap name="mb_bgdockapsettings" position="420,15" zPosition="3" size="64,64" pixmap="~/skins/defaultHD/images/folder_path.png" transparent="1" alphaTest="on" scale="1" />
 
 
-    <ePixmap position="923,1018" zPosition="4" size="32,32" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/icons/play_enabled.png" transparent="1" alphaTest="blend" scale="1" />
+    <ePixmap position="923,1018" zPosition="4" size="32,32" pixmap="~/icons/play_enabled.png" transparent="1" alphaTest="blend" scale="1" />
     <eLabel text="OK / Play" position="970,1000" size="240,70" font="Regular; 27" horizontalAlignment="left" verticalAlignment="center" backgroundColor="black" transparent="1" zPosition="1" />
     <widget source="Service" render="RunningText" options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=5,startdelay=900,always=0" position="50,917" size="1140,36" zPosition="2" font="Regular; 32" horizontalAlignment="left" verticalAlignment="center" transparent="1" foregroundColor="white" backgroundColor="black"> 
     <convert type="MovieInfo">ShortDescription</convert>
@@ -319,7 +319,7 @@
       <convert type="EventName">Name</convert>
     </widget>
     <panel name="ColorButtons"/>
-   <widget source="moviedetailsbg" render="Pixmap" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/Bg_moviedetails.png" position="22,122" size="1177,787" transparent="0" alphaTest="on" scale="1" zPosition="-17" objectTypes="moviedetailsbg,StaticText">
+   <widget source="moviedetailsbg" render="Pixmap" pixmap="~/skins/defaultHD/images/Bg_moviedetails.png" position="22,122" size="1177,787" transparent="0" alphaTest="on" scale="1" zPosition="-17" objectTypes="moviedetailsbg,StaticText">
       <convert type="ConditionalShowHide" />
     </widget>
     <widget name="moviedetails" position="52,152" size="1116,724" font="Regular;32" splitPosition="200" transparent="1" />  
@@ -327,66 +327,66 @@
     <!-- DMC Picture Player -->
   <screen name="MC_PictureViewer" position="0,0" size="1920,1080" resolution="1920,1080" title="Pic Viewer" flags="wfNoBorder" backgroundColor="black">
       <eLabel text="Picture Viewer" position="120,25" size="720,50" font="Regular; 36" horizontalAlignment="left" verticalAlignment="center" foregroundColor="#0050bbff" backgroundColor="black" transparent="1" zPosition="1" />
-      <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/Browser.png" position="0,0" zPosition="-20" size="1920,1080" scale="1" />
+      <ePixmap pixmap="~/skins/defaultHD/images/Browser.png" position="0,0" zPosition="-20" size="1920,1080" scale="1" />
       <widget source="global.CurrentTime" render="Label" position="1280,30" size="600,40" font="Regular; 32" horizontalAlignment="right" foregroundColor="#00ccffff" backgroundColor="black" transparent="1">
       <convert type="ClockToText">Format:%a, %d.%m.%Y   %H:%M</convert>
       </widget>
-      <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/MenuIconPicture.png" position="24,124" zPosition="-18" size="1872,836" transparent="1" alphaTest="blend" scale="1" />
-      <ePixmap name="mb_bgdockapsettings" position="20,12" zPosition="3" size="80,80" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/dock_picture.png" transparent="1" alphaTest="on" scale="1" />
-      <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/icons/key_green.png" position="23,1018" size="35,35" alphaTest="off" scale="1" />
-      <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/icons/key_yellow.png" position="323,1018" size="35,35" alphaTest="off" scale="1" />
-      <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/icons/key_blue.png" position="623,1018" size="35,35" alphaTest="off" scale="1" />
+      <ePixmap pixmap="~/skins/defaultHD/images/MenuIconPicture.png" position="24,124" zPosition="-18" size="1872,836" transparent="1" alphaTest="blend" scale="1" />
+      <ePixmap name="mb_bgdockapsettings" position="20,12" zPosition="3" size="80,80" pixmap="~/skins/defaultHD/images/dock_picture.png" transparent="1" alphaTest="on" scale="1" />
+      <ePixmap pixmap="~/icons/key_green.png" position="23,1018" size="35,35" alphaTest="off" scale="1" />
+      <ePixmap pixmap="~/icons/key_yellow.png" position="323,1018" size="35,35" alphaTest="off" scale="1" />
+      <ePixmap pixmap="~/icons/key_blue.png" position="623,1018" size="35,35" alphaTest="off" scale="1" />
       <widget name="key_green" position="70,1000" size="240,70" zPosition="1" verticalAlignment="center" font="Regular; 27" horizontalAlignment="left" backgroundColor="black" transparent="1" />
       <widget name="key_yellow" position="370,1000" size="240,70" zPosition="1" verticalAlignment="center" font="Regular; 27" horizontalAlignment="left" backgroundColor="black" transparent="1" />
       <eLabel text="Settings" position="670,1000" size="240,70" zPosition="1" verticalAlignment="center" font="Regular; 27" horizontalAlignment="left" backgroundColor="black" transparent="1" />
       <widget name="filelist" transparent="1" font="Regular; 32" itemHeight="45" enableWrapAround="1" position="383,235" zPosition="5" size="1160,620" scrollbarMode="showOnDemand" />
       <widget name="thumbnail" position="1428,140" size="450,300" zPosition="6" alphaTest="on" />
-      <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/folder_path.png" position="1005,1003" zPosition="2" size="64,64" transparent="1" alphaTest="on" scale="1" />
+      <ePixmap pixmap="~/skins/defaultHD/images/folder_path.png" position="1005,1003" zPosition="2" size="64,64" transparent="1" alphaTest="on" scale="1" />
       <widget name="currentfavname" zPosition="7" transparent="1" horizontalAlignment="left" position="1413,447" size="480,40" font="Regular;22" foregroundColor="unf0f0f0" />
       <widget name="currentfolder" zPosition="5" transparent="1" horizontalAlignment="left" position="1080,1021" size="800,40" font="Regular; 30" foregroundColor="white" />
     </screen>
     <!-- DMC MC_Pic Setup -->
   <screen name="MC_PicSetup" position="0,0" size="1920,1080" resolution="1920,1080" title="Settings" flags="wfNoBorder" backgroundColor="black">
       <eLabel text="Picture Viewer" position="120,25" size="720,50" font="Regular; 36" horizontalAlignment="left" verticalAlignment="center" foregroundColor="#0050bbff" backgroundColor="black" transparent="1" zPosition="1" />
-      <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/Browser.png" position="0,0" zPosition="-20" size="1920,1080" scale="1" />
+      <ePixmap pixmap="~/skins/defaultHD/images/Browser.png" position="0,0" zPosition="-20" size="1920,1080" scale="1" />
       <widget source="global.CurrentTime" render="Label" position="1280,30" size="600,40" font="Regular; 32" horizontalAlignment="right" foregroundColor="#00ccffff" backgroundColor="black" transparent="1">
       <convert type="ClockToText">Format:%a, %d.%m.%Y   %H:%M</convert>
       </widget>
-      <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/MenuIconPicture.png" position="24,124" zPosition="-18" size="1872,836" transparent="1" alphaTest="blend" scale="1" />
-      <ePixmap name="mb_bgdockapsettings" position="20,12" zPosition="3" size="80,80" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/dock_picturesettings.png" transparent="1" alphaTest="on" scale="1" />
+      <ePixmap pixmap="~/skins/defaultHD/images/MenuIconPicture.png" position="24,124" zPosition="-18" size="1872,836" transparent="1" alphaTest="blend" scale="1" />
+      <ePixmap name="mb_bgdockapsettings" position="20,12" zPosition="3" size="80,80" pixmap="~/skins/defaultHD/images/dock_picturesettings.png" transparent="1" alphaTest="on" scale="1" />
       <widget name="config" size="1082,550" position="417,259" itemHeight="45" enableWrapAround="1" zPosition="3" scrollbarMode="showOnDemand" transparent="1" font="Regular; 32" />
       <widget name="footnote" size="0,0" position="0,0" transparent="1" font="Regular; 32" />
       <widget name="description" size="0,0" position="0,0" transparent="1" font="Regular; 32" />
-      <ePixmap name="key_green" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/icons/key_green.png" position="23,1018" size="35,35" alphaTest="off" scale="1" />
+      <ePixmap name="key_green" pixmap="~/icons/key_green.png" position="23,1018" size="35,35" alphaTest="off" scale="1" />
       <widget source="key_green" render="Label" position="70,1000" size="240,70" zPosition="1" verticalAlignment="center" font="Regular; 27" horizontalAlignment="left" backgroundColor="black" transparent="1" />
     </screen>
     <!-- DMC Selectmusic -->
     <screen name="Selectmusic" position="0,0" size="1920,1080" resolution="1920,1080" title="Settings" flags="wfNoBorder" backgroundColor="black">
     <eLabel text="Settings" position="120,25" size="720,50" font="Regular; 36" horizontalAlignment="left" verticalAlignment="center" foregroundColor="#0050bbff" backgroundColor="black" transparent="1" zPosition="1" />
-    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/Browser.png" position="0,0" zPosition="-20" size="1920,1080" scale="1" />
+    <ePixmap pixmap="~/skins/defaultHD/images/Browser.png" position="0,0" zPosition="-20" size="1920,1080" scale="1" />
     <widget source="global.CurrentTime" render="Label" position="1280,30" size="600,40" font="Regular; 32" horizontalAlignment="right" foregroundColor="#00ccffff" backgroundColor="black" transparent="1">
     <convert type="ClockToText">Format:%a, %d.%m.%Y   %H:%M</convert>
     </widget>
-    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/MenuIconMusic.png" position="24,124" zPosition="-18" size="1872,836" transparent="1" alphaTest="blend" scale="1" />
-    <ePixmap name="mb_bgdockapsettings" position="20,12" zPosition="3" size="80,80" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/dock_apsettings.png" transparent="1" alphaTest="on" scale="1" />
+    <ePixmap pixmap="~/skins/defaultHD/images/MenuIconMusic.png" position="24,124" zPosition="-18" size="1872,836" transparent="1" alphaTest="blend" scale="1" />
+    <ePixmap name="mb_bgdockapsettings" position="20,12" zPosition="3" size="80,80" pixmap="~/skins/defaultHD/images/dock_apsettings.png" transparent="1" alphaTest="on" scale="1" />
     <widget name="filelist" transparent="1" position="417,259" zPosition="4" size="1082,550" font="Regular; 32" scrollbarMode="showOnDemand" enableWrapAround="1" />
     <widget name="currentfolder" zPosition="5" transparent="1" horizontalAlignment="left" position="1080,1021" size="800,40" font="Regular; 30" foregroundColor="white" />
-    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/folder_path.png" position="1005,1003" zPosition="2" size="64,64" transparent="1" alphaTest="on" scale="1" />
+    <ePixmap pixmap="~/skins/defaultHD/images/folder_path.png" position="1005,1003" zPosition="2" size="64,64" transparent="1" alphaTest="on" scale="1" />
   </screen>
     <!-- DMC VLC Player-Serverlist -->
   <screen name="MC_VLCServerlist" position="0,0" size="1920,1080" resolution="1920,1080" title="Media Center - VLC Player - Serverlist" flags="wfNoBorder" backgroundColor="black">
     <eLabel text="VLC Player - Serverlist" position="120,25" size="720,50" font="Regular; 36" horizontalAlignment="left" verticalAlignment="center" foregroundColor="#0050bbff" backgroundColor="black" transparent="1" zPosition="1" />
-    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/Browser.png" position="0,0" zPosition="-20" size="1920,1080" scale="1" />
+    <ePixmap pixmap="~/skins/defaultHD/images/Browser.png" position="0,0" zPosition="-20" size="1920,1080" scale="1" />
     <widget source="global.CurrentTime" render="Label" position="1280,30" size="600,40" font="Regular; 32" horizontalAlignment="right" foregroundColor="#00ccffff" backgroundColor="black" transparent="1">
     <convert type="ClockToText">Format:%a, %d.%m.%Y   %H:%M</convert>
     </widget>
-    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/MenuIconVLC.png" position="24,124" zPosition="-18" size="1872,836" transparent="1" alphaTest="blend" scale="1" />
-    <ePixmap name="mb_bgdockapsettings" position="20,12" zPosition="3" size="80,80" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/dock_vlc.png" transparent="1" alphaTest="on" scale="1" /> 
+    <ePixmap pixmap="~/skins/defaultHD/images/MenuIconVLC.png" position="24,124" zPosition="-18" size="1872,836" transparent="1" alphaTest="blend" scale="1" />
+    <ePixmap name="mb_bgdockapsettings" position="20,12" zPosition="3" size="80,80" pixmap="~/skins/defaultHD/images/dock_vlc.png" transparent="1" alphaTest="on" scale="1" /> 
     <widget name="serverlist" transparent="1" position="417,259" zPosition="3" size="1082,550" font="Regular; 32" scrollbarMode="showOnDemand" />
-    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/icons/key_red.png" position="23,1018" size="35,35" alphaTest="blend" scale="1" />
-    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/icons/key_green.png" position="323,1018" size="35,35" alphaTest="blend" scale="1" />
-    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/icons/key_yellow.png" position="623,1018" size="35,35" alphaTest="blend" scale="1" />
-    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/icons/key_blue.png" position="923,1018" size="35,35" alphaTest="blend" scale="1" />
+    <ePixmap pixmap="~/icons/key_red.png" position="23,1018" size="35,35" alphaTest="blend" scale="1" />
+    <ePixmap pixmap="~/icons/key_green.png" position="323,1018" size="35,35" alphaTest="blend" scale="1" />
+    <ePixmap pixmap="~/icons/key_yellow.png" position="623,1018" size="35,35" alphaTest="blend" scale="1" />
+    <ePixmap pixmap="~/icons/key_blue.png" position="923,1018" size="35,35" alphaTest="blend" scale="1" />
     <widget name="key_red" position="70,1000" size="240,70" zPosition="1" verticalAlignment="center" font="Regular; 27" horizontalAlignment="left" backgroundColor="black" transparent="1" />
     <widget name="key_green" position="370,1000" size="240,70" zPosition="1" verticalAlignment="center" font="Regular; 27" horizontalAlignment="left" backgroundColor="black" transparent="1" />
     <widget name="key_yellow" position="670,1000" size="240,70" zPosition="1" verticalAlignment="center" font="Regular; 27" horizontalAlignment="left" backgroundColor="black" transparent="1" />
@@ -395,20 +395,20 @@
     <!-- DMC VLC Player-Medialist -->
   <screen name="MC_VLCMedialist" position="0,0" size="1920,1080" resolution="1920,1080" title="VLC Player - Medialist" flags="wfNoBorder" backgroundColor="black">
     <eLabel text="VLC Player - Serverlist" position="120,25" size="720,50" font="Regular; 36" horizontalAlignment="left" verticalAlignment="center" foregroundColor="#0050bbff" backgroundColor="black" transparent="1" zPosition="1" />
-    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/Browser.png" position="0,0" zPosition="-20" size="1920,1080" scale="1" />
+    <ePixmap pixmap="~/skins/defaultHD/images/Browser.png" position="0,0" zPosition="-20" size="1920,1080" scale="1" />
     <widget source="global.CurrentTime" render="Label" position="1280,30" size="600,40" font="Regular; 32" horizontalAlignment="right" foregroundColor="#00ccffff" backgroundColor="black" transparent="1">
     <convert type="ClockToText">Format:%a, %d.%m.%Y   %H:%M</convert>
     </widget>
-    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/icons/key_red.png" position="23,1018" size="35,35" alphaTest="blend" scale="1" />
-    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/icons/key_green.png" position="323,1018" size="35,35" alphaTest="blend" scale="1" />
-    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/icons/key_yellow.png" position="623,1018" size="35,35" alphaTest="blend" scale="1" />
-    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/icons/key_blue.png" position="923,1018" size="35,35" alphaTest="blend" scale="1" />
+    <ePixmap pixmap="~/icons/key_red.png" position="23,1018" size="35,35" alphaTest="blend" scale="1" />
+    <ePixmap pixmap="~/icons/key_green.png" position="323,1018" size="35,35" alphaTest="blend" scale="1" />
+    <ePixmap pixmap="~/icons/key_yellow.png" position="623,1018" size="35,35" alphaTest="blend" scale="1" />
+    <ePixmap pixmap="~/icons/key_blue.png" position="923,1018" size="35,35" alphaTest="blend" scale="1" />
     <widget name="key_red" position="70,1000" size="240,70" zPosition="1" verticalAlignment="center" font="Regular; 27" horizontalAlignment="left" backgroundColor="black" transparent="1" />
     <widget name="key_green" position="370,1000" size="240,70" zPosition="1" verticalAlignment="center" font="Regular; 27" horizontalAlignment="left" backgroundColor="black" transparent="1" />
     <widget name="key_yellow" position="670,1000" size="240,70" zPosition="1" verticalAlignment="center" font="Regular; 27" horizontalAlignment="left" backgroundColor="black" transparent="1" />
     <widget name="key_blue" position="970,1000" size="240,70" zPosition="1" verticalAlignment="center" font="Regular; 27" horizontalAlignment="left" backgroundColor="black" transparent="1" />
-    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/MenuIconVLC.png" position="24,124" zPosition="-18" size="1872,836" transparent="1" alphaTest="blend" scale="1" />
-    <ePixmap name="mb_bgdockapsettings" position="20,12" zPosition="3" size="80,80" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/dock_vlc.png" transparent="1" alphaTest="on" scale="1" /> 
+    <ePixmap pixmap="~/skins/defaultHD/images/MenuIconVLC.png" position="24,124" zPosition="-18" size="1872,836" transparent="1" alphaTest="blend" scale="1" />
+    <ePixmap name="mb_bgdockapsettings" position="20,12" zPosition="3" size="80,80" pixmap="~/skins/defaultHD/images/dock_vlc.png" transparent="1" alphaTest="on" scale="1" /> 
     <widget source="session.VideoPicture" render="Pig" position="365,440" size="747,420" zPosition="5" backgroundColor="transparent" transparent="1" />
     <widget name="filelist" transparent="1" position="467,272" zPosition="3" size="382,154" scrollbarMode="showNever" />
     <widget name="currentdir" zPosition="6" transparent="1" horizontalAlignment="left" position="1471,705" size="400,250" font="Regular;28" foregroundColor="grey" />
@@ -421,20 +421,20 @@
     <!-- DMC VLC Player-Favorite Folders -->
   <screen name="MC_VLCFavoriteFolders" position="0,0" size="1920,1080" resolution="1920,1080" title="Media Center - VLC Favorites" flags="wfNoBorder" backgroundColor="black">
     <eLabel text="VLC Favorites" position="120,25" size="720,50" font="Regular; 36" horizontalAlignment="left" verticalAlignment="center" foregroundColor="#0050bbff" backgroundColor="black" transparent="1" zPosition="1" />
-    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/Browser.png" position="0,0" zPosition="-20" size="1920,1080" scale="1" />
+    <ePixmap pixmap="~/skins/defaultHD/images/Browser.png" position="0,0" zPosition="-20" size="1920,1080" scale="1" />
     <widget source="global.CurrentTime" render="Label" position="1280,30" size="600,40" font="Regular; 32" horizontalAlignment="right" foregroundColor="#00ccffff" backgroundColor="black" transparent="1">
     <convert type="ClockToText">Format:%a, %d.%m.%Y   %H:%M</convert>
     </widget>
-    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/icons/key_red.png" position="23,1018" size="35,35" alphaTest="blend" scale="1" />
-    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/icons/key_green.png" position="323,1018" size="35,35" alphaTest="blend" scale="1" />
-    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/icons/key_yellow.png" position="623,1018" size="35,35" alphaTest="blend" scale="1" />
-    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/icons/key_blue.png" position="923,1018" size="35,35" alphaTest="blend" scale="1" />
+    <ePixmap pixmap="~/icons/key_red.png" position="23,1018" size="35,35" alphaTest="blend" scale="1" />
+    <ePixmap pixmap="~/icons/key_green.png" position="323,1018" size="35,35" alphaTest="blend" scale="1" />
+    <ePixmap pixmap="~/icons/key_yellow.png" position="623,1018" size="35,35" alphaTest="blend" scale="1" />
+    <ePixmap pixmap="~/icons/key_blue.png" position="923,1018" size="35,35" alphaTest="blend" scale="1" />
     <widget name="key_red" position="70,1000" size="240,70" zPosition="1" verticalAlignment="center" font="Regular; 27" horizontalAlignment="left" backgroundColor="black" transparent="1" />
     <widget name="key_green" position="370,1000" size="240,70" zPosition="1" verticalAlignment="center" font="Regular; 27" horizontalAlignment="left" backgroundColor="black" transparent="1" />
     <widget name="key_yellow" position="670,1000" size="240,70" zPosition="1" verticalAlignment="center" font="Regular; 27" horizontalAlignment="left" backgroundColor="black" transparent="1" />
     <widget name="key_blue" position="970,1000" size="240,70" zPosition="1" verticalAlignment="center" font="Regular; 27" horizontalAlignment="left" backgroundColor="black" transparent="1" />
-    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/MenuIconVLC.png" position="24,124" zPosition="-18" size="1872,836" transparent="1" alphaTest="blend" scale="1" />
-    <ePixmap name="mb_bgdockapsettings" position="20,12" zPosition="3" size="80,80" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/dock_vlc.png" transparent="1" alphaTest="on" scale="1" /> 
+    <ePixmap pixmap="~/skins/defaultHD/images/MenuIconVLC.png" position="24,124" zPosition="-18" size="1872,836" transparent="1" alphaTest="blend" scale="1" />
+    <ePixmap name="mb_bgdockapsettings" position="20,12" zPosition="3" size="80,80" pixmap="~/skins/defaultHD/images/dock_vlc.png" transparent="1" alphaTest="on" scale="1" /> 
     <widget source="favoritelist" render="Listbox" zPosition="3" transparent="1" font="Regular;32" position="511,273" size="892,551" scrollbarMode="showOnDemand" foregroundColorSelected="white">
     <convert type="StringList" />
     </widget>

@@ -38,7 +38,7 @@ from Components.MenuList import MenuList
 from Components.Label import Label
 from Components.Button import Button
 from Components.EpgList import Rect
-from Components.SystemInfo import SystemInfo
+from Components.SystemInfo import BoxInfo
 from Components.ConfigList import ConfigList, ConfigListScreen
 from Components.config import ConfigSubsection, ConfigSubList, ConfigIP, ConfigInteger, ConfigSelection, ConfigText, ConfigYesNo, getConfigListEntry, configfile
 from Components.GUIComponent import GUIComponent
@@ -907,7 +907,7 @@ class RemotePlayer(Screen, InfoBarAudioSelection):
 	def activatePiP(self):
 		if self.pipZapAvailable is None:
 			return
-		if SystemInfo.get("NumVideoDecoders", 1) > 1:
+		if BoxInfo.getItem("NumVideoDecoders", 1) > 1:
 			if InfoBar.instance is not None:
 				modeslist = []
 				keyslist = []

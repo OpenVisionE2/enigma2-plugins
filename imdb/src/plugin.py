@@ -198,8 +198,8 @@ class IMDB(Screen, HelpableScreen):
 			<widget name="statusbar" position="10,404" size="580,16" font="Regular;16" foregroundColor="#cccccc" />
 			<widget name="poster" position="4,90" size="96,140" alphaTest="on" />
 			<widget name="menu" position="10,115" size="580,275" zPosition="3" scrollbarMode="showOnDemand" />
-			<widget name="starsbg" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/IMDb/starsbar_empty.png" position="340,40" zPosition="0" size="210,21" transparent="1" alphaTest="on" />
-			<widget name="stars" position="340,40" size="210,21" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/IMDb/starsbar_filled.png" transparent="1" />
+			<widget name="starsbg" pixmap="~/starsbar_empty.png" position="340,40" zPosition="0" size="210,21" transparent="1" alphaTest="on" />
+			<widget name="stars" position="340,40" size="210,21" pixmap="~/starsbar_filled.png" transparent="1" />
 		</screen>"""
 
 	def __init__(self, session, eventName, callbackNeeded=False, save=False, savepath=None, localpath=None, imdbId=None):

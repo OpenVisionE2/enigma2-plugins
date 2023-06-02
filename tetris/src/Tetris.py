@@ -218,7 +218,7 @@ class Board(Screen):
 		print('is fhd----------------------------')
 		skin = """
 				<screen name="Tetrisfhd" position="center,100" size="1800,940" title="Tetris" backgroundColor="#101010">
-					<ePixmap position="0,0" size="1800,940" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/Tetris/pic/tetris.jpg" />
+					<ePixmap position="0,0" size="1800,940" pixmap="~/pic/tetris.jpg" />
 					<widget source="canvas"  render="Canvas" position="center ,40" size="430,860" backgroundColor="#60ffffff" transparent="1" alphaTest="blend" zPosition="2" />
 					<widget source="preview" render="Canvas" position="1230,100" size="176,174" zPosition="3" />
 					<widget name="previewtext" position="1220,30" size="210,40" verticalAlignment="center" horizontalAlignment="center" font="Regular;34" foregroundColor="yellow" backgroundColor="#000000" transparent="1" zPosition="1" />
@@ -237,7 +237,7 @@ class Board(Screen):
 		print('is hd----------------------------')
 		skin = """
 			<screen name="Tetrishd" position="0,0" size="1280,720" title="Tetris" flags="wfNoBorder">
-				<ePixmap position="0,0" size="1280,720" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/Tetris/pic/tetrishd.jpg" />
+				<ePixmap position="0,0" size="1280,720" pixmap="~/pic/tetrishd.jpg" />
 				<widget source="canvas" render="Canvas" position="508,75" size="272,541" zPosition="1" />
 				<widget source="preview" render="Canvas" position="883,77" size="110,110" zPosition="2" />
 				<widget name="state" position="34,50" size="237,54" font="Regular; 34" foregroundColor="#00cc0000" zPosition="2" />

@@ -33,7 +33,7 @@ from Tools.Directories import resolveFilename, SCOPE_PLUGINS
 CurrentIP = None
 remote_timer_list = None
 oldIP = None
-PLUGINPATH = resolveFilename(SCOPE_PLUGINS, 'Extensions/Partnerbox/')  # /usr/lib/enigma2/python/Plugins/Extensions/Partnerbox
+PLUGINPATH = resolveFilename(SCOPE_PLUGINS, 'Extensions/Partnerbox/')
 if getDesktop(0).size().width() > 1280:
 	FHD = True
 	SCALE = 1.5

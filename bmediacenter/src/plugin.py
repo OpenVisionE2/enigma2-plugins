@@ -10,7 +10,7 @@ from Components.config import config, ConfigSubsection, ConfigSelection, ConfigY
 from Plugins.Plugin import PluginDescriptor
 from Screens.Screen import Screen
 from Screens.MessageBox import MessageBox
-from Tools.Directories import pathExists, fileExists
+from Tools.Directories import fileExists, resolveFilename, SCOPE_PLUGINS, isPluginInstalled
 
 from .MC_VideoPlayer import MC_VideoPlayer
 from .MC_PictureViewer import MC_PictureViewer
@@ -22,7 +22,7 @@ from .__init__ import _  # for localized messages
 config.plugins.mc_global = ConfigSubsection()
 config.plugins.mc_global.vfd = ConfigSelection(default='off', choices=[('off', 'off'), ('on', 'on')])
 config.plugins.mc_globalsettings.upnp_enable = ConfigYesNo(default=False)
-loadSkin("/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/skin.xml")
+loadSkin(resolveFilename(SCOPE_PLUGINS, "Extensions/BMediaCenter/skins/defaultHD/skin.xml")
 try:
 	from Plugins.Extensions.DVDPlayer.plugin import *
 	dvdplayer = True
@@ -30,7 +30,7 @@ except ImportError:
 	print("Media Center: Import DVDPlayer failed")
 	dvdplayer = False
 
-mcpath = '/usr/lib/enigma2/python/Plugins/Extensions/BMediaCenter/skins/defaultHD/images/'
+mcpath = resolveFilename(SCOPE_PLUGINS, "Extensions/BMediaCenter/skins/defaultHD/images/")
 PNAME = "Media Center"
 
 
@@ -136,7 +136,7 @@ class DMC_MainMenu(Screen):
 			elif selection[1] == "MC_WebRadio":
 				self.session.open(MC_WebRadio)
 			elif selection[1] == "MC_VLCPlayer":
-				if pathExists("/usr/lib/enigma2/python/Plugins/Extensions/VlcPlayer/") == True:
+				if isPluginInstalled("VlcPlayer")
 					self.session.open(MC_VLCServerlist)
 				else:
 					self.session.open(MessageBox, "Error: VLC-Player Plugin not installed ...", MessageBox.TYPE_INFO)
