@@ -25,13 +25,13 @@ config.plugins.mc_globalsettings.upnp_enable = ConfigYesNo(default=False)
 loadSkin(resolveFilename(SCOPE_PLUGINS, "Extensions/BMediaCenter/skins/defaultHD/skin.xml")
 try:
 	from Plugins.Extensions.DVDPlayer.plugin import *
-	dvdplayer = True
+	dvdplayer=True
 except ImportError:
 	print("Media Center: Import DVDPlayer failed")
-	dvdplayer = False
+	dvdplayer=False
 
-mcpath = resolveFilename(SCOPE_PLUGINS, "Extensions/BMediaCenter/skins/defaultHD/images/")
-PNAME = "Media Center"
+mcpath=resolveFilename(SCOPE_PLUGINS, "Extensions/BMediaCenter/skins/defaultHD/images/")
+PNAME="Media Center"
 
 
 # Subclass of List to support horizontal menu
@@ -41,14 +41,14 @@ class DMC_List(List):
 
 	def selectPrevious(self):
 		if self.getIndex() - 1 < 0:
-			self.index = self.count() - 1
+			self.index=self.count() - 1
 		else:
 			self.index -= 1
 		self.setIndex(self.index)
 
 	def selectNext(self):
 		if self.getIndex() + 1 >= self.count():
-			self.index = 0
+			self.index=0
 		else:
 			self.index += 1
 		self.setIndex(self.index)
@@ -57,24 +57,24 @@ class DMC_List(List):
 class DMC_MainMenu(Screen):
 	def __init__(self, session):
 		Screen.__init__(self, session)
-		self["text"] = Label(_("My Music"))
-		self["left"] = Pixmap()
-		self["middle"] = Pixmap()
-		self["right"] = Pixmap()
-		self.oldbmcService = self.session.nav.getCurrentlyPlayingServiceReference()
+		self["text"]=Label(_("My Music"))
+		self["left"]=Pixmap()
+		self["middle"]=Pixmap()
+		self["right"]=Pixmap()
+		self.oldbmcService=self.session.nav.getCurrentlyPlayingServiceReference()
 		self.session.nav.stopService()
 		# Disable OSD Transparency
 		try:
-			self.can_osd_alpha = open("/proc/stb/video/alpha", "r") and True or False
+			self.can_osd_alpha=open("/proc/stb/video/alpha", "r") and True or False
 		except:
-			self.can_osd_alpha = False
+			self.can_osd_alpha=False
 		if self.can_osd_alpha:
 			open("/proc/stb/video/alpha", "w").write(str("255"))
 		try:
 			open("/proc/sys/vm/drop_caches", "w").write(str("3"))
 		except:
 			pass
-		menulist = []
+		menulist=[]
 		menulist.append((_("My Music"), "MC_AudioPlayer", "menu_music", "50"))
 		menulist.append((_("My Videos"), "MC_VideoPlayer", "menu_video", "50"))
 #		menulist.append((_("DVD Player"), "MC_DVDPlayer", "menu_video", "50"))
@@ -82,8 +82,8 @@ class DMC_MainMenu(Screen):
 		menulist.append((_("Web Radio"), "MC_WebRadio", "menu_radio", "50"))
 #		menulist.append((_("VLC Player"), "MC_VLCPlayer", "menu_vlc", "50"))
 		menulist.append((_("Settings"), "MC_Settings", "menu_settings", "50"))
-		self["menu"] = DMC_List(menulist)
-		self["actions"] = ActionMap(["OkCancelActions", "DirectionActions"],
+		self["menu"]=DMC_List(menulist)
+		self["actions"]=ActionMap(["OkCancelActions", "DirectionActions"],
 		{
 			"cancel": self.Exit,
 			"ok": self.okbuttonClick,
@@ -110,9 +110,9 @@ class DMC_MainMenu(Screen):
 		self.update()
 
 	def update(self):
-		menus = ["Settings", "Music", "Video", "Picture", "Radio", "Settings", "Music"]
+		menus=["Settings", "Music", "Video", "Picture", "Radio", "Settings", "Music"]
 #		menus = ["Settings", "Music", "Video", "DVD", "Picture", "Radio", "VLC", "Settings", "Music"]
-		idx = self["menu"].getIndex()
+		idx=self["menu"].getIndex()
 		print(idx)
 		self["middle"].instance.setPixmapFromFile(mcpath + "MenuIcon%s.png" % menus[idx + 1])
 		self["left"].instance.setPixmapFromFile(mcpath + "MenuIcon%ssw.png" % menus[idx])
@@ -120,7 +120,7 @@ class DMC_MainMenu(Screen):
 		self["text"].setText(self["menu"].getCurrent()[0])
 
 	def okbuttonClick(self):
-		selection = self["menu"].getCurrent()
+		selection=self["menu"].getCurrent()
 		if selection is not None:
 			if selection[1] == "MC_VideoPlayer":
 				self.session.open(MC_VideoPlayer)
@@ -158,9 +158,9 @@ class DMC_MainMenu(Screen):
 		if self.can_osd_alpha:
 			try:
 				if config.plugins.mc_global.vfd.value == "on":
-					trans = config.av.osd_alpha.value
+					trans=config.av.osd_alpha.value
 				else:
-					trans = config.osd.alpha.value
+					trans=config.osd.alpha.value
 				open("/proc/stb/video/alpha", "w").write(str(trans))
 			except:
 				print("Set OSD Transparacy failed")
@@ -178,8 +178,8 @@ def menu(menuid, **kwargs):
 
 
 def Plugins(**kwargs):
-	PDESC = "Media Center Plugin for your STB_BOX"
-	plist = [PluginDescriptor(name=PNAME, description=PDESC, icon="plugin.png", where=PluginDescriptor.WHERE_PLUGINMENU, fnc=main)]
+	PDESC="Media Center Plugin for your STB_BOX"
+	plist=[PluginDescriptor(name=PNAME, description=PDESC, icon="plugin.png", where=PluginDescriptor.WHERE_PLUGINMENU, fnc=main)]
 	if config.plugins.mc_globalsettings.showinmainmenu.value:
 		plist.append(PluginDescriptor(name=PNAME, description=PDESC, where=PluginDescriptor.WHERE_MENU, fnc=menu))
 	if config.plugins.mc_globalsettings.showinextmenu.value:
