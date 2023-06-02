@@ -62,7 +62,7 @@ from skin import fonts, parameters
 
 SIGN = '°'
 ENIGMA_WEBSERVICE_ID = 0x1012
-SKINDEFAULT = resolveFilename(SCOPE_GUISKIN, 'skin_default/')  # /usr/share/enigma2/skin_default
+SKINDEFAULT = resolveFilename(SCOPE_GUISKIN, 'skin_default/')
 
 
 config.plugins.Partnerbox = ConfigSubsection()

@@ -35,7 +35,7 @@ basebuildMultiEntry = None
 
 picDY = 0
 sf = 1
-SKINDEFAULT = resolveFilename(SCOPE_GUISKIN, 'skin_default/')  # /usr/share/enigma2/skin_default
+SKINDEFAULT = resolveFilename(SCOPE_GUISKIN, 'skin_default/')
 
 
 def Partnerbox_EPGListInit():

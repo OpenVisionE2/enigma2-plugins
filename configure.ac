@@ -707,6 +707,7 @@ zapstatistic/src/Makefile
 zdfmediathek/Makefile
 zdfmediathek/meta/Makefile
 zdfmediathek/src/Makefile
+zdfmediathek/src/img/Makefile
 
 ])
 AC_OUTPUT
